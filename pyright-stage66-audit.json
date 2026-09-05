@@ -1,0 +1,11 @@
+{
+  "include": [
+    "scripts/audit_scientific_recovery_v9_stage66.py",
+    "scripts/recover_stage66_tables.py",
+    "scripts/analyze_stage66_frozen_tables.py",
+    "scripts/package_stage66_block.py"
+  ],
+  "extraPaths": ["src", "scripts", "."],
+  "typeCheckingMode": "basic",
+  "reportMissingTypeStubs": "none"
+}
