@@ -13,6 +13,7 @@ import numpy as np
 import torch
 
 from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner
+from e_jepa_ttc.artifacts.replication_barrier_v11 import verify_replication_barrier
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
 from e_jepa_ttc.data.event_context128 import RateNormalization, four_contexts
@@ -65,8 +66,10 @@ def _publish_arrays(path: Path, arrays: dict[str, np.ndarray]) -> dict[str, Any]
 
 def recover_or_publish_arrays(path: Path, arrays: dict[str, np.ndarray]) -> dict[str, Any]:
     """Adopt a closed orphan only after deterministic recomputation matches its full payload."""
-    if path.resolve() != path.absolute() or path.is_symlink() or (
-        path.exists() and path.stat().st_nlink != 1
+    if (
+        path.resolve() != path.absolute()
+        or path.is_symlink()
+        or (path.exists() and path.stat().st_nlink != 1)
     ):
         raise ValueError("orphan inference payload is redirected or hard-linked")
     if not path.exists():
@@ -119,8 +122,12 @@ def infer_initial_endpoint(
     calibration enter this path. Evaluation joins targets only after publication.
     """
     owner.check()
-    barrier = verify_initial_barrier(
-        barrier_path, expected_stage=job.plan.stage, expected_lock=job.training_lock_sha256
+    barrier = (
+        verify_replication_barrier(barrier_path, expected_lock=job.training_lock_sha256)
+        if job.plan.stage == "S74"
+        else verify_initial_barrier(
+            barrier_path, expected_stage=job.plan.stage, expected_lock=job.training_lock_sha256
+        )
     )
     lock = require_scientific_lock(lock_path, job.training_lock_sha256)
     validate_outer_view(job, reader, tokens, lock)

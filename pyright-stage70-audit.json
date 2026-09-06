@@ -62,7 +62,8 @@
     "src/e_jepa_ttc/training/stage72_73_runtime_v11.py",
     "src/e_jepa_ttc/data/nested_architecture_recipes_v11.py",
     "scripts/audit_stage70_train_foreground.py",
-    "scripts/resolve_stage75_nested_recipes.py"
+    "scripts/resolve_stage75_nested_recipes.py",
+    "src/e_jepa_ttc/artifacts/replication_barrier_v11.py"
   ],
   "extraPaths": [
     "src",
