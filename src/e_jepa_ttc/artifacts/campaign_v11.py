@@ -8,6 +8,8 @@ from pathlib import Path
 
 import psutil
 
+from e_jepa_ttc.artifacts.risk_geometry_v10 import CampaignOwner
+
 
 @dataclass(frozen=True)
 class ResourcePolicy:
@@ -78,3 +80,31 @@ def host_ram_reservation(
         planned_bytes,
         policy.host_ram_available_bytes,
     )
+
+
+class ResourceOwner(CampaignOwner):
+    """Reuse atomic writer ownership/telemetry with the amended fixed margins."""
+
+    def __init__(self, root: Path, *, remaining_bytes: int, planned_ram_bytes: int) -> None:
+        if min(remaining_bytes, planned_ram_bytes) < 0:
+            raise ValueError("negative resource reservation")
+        super().__init__(root)
+        self.estimated_remaining_bytes = remaining_bytes
+        self.planned_ram_bytes = planned_ram_bytes
+
+    def check(self) -> None:
+        """Monitor live RAM and disk remaining after the outstanding write budget."""
+        if self.failure:
+            raise RuntimeError(self.failure)
+        if not host_ram_reservation(0).passes:
+            raise RuntimeError("RESOURCE_BLOCKED: available host RAM below fixed 4 GiB")
+        if not disk_reservation(self.root, self.estimated_remaining_bytes).passes:
+            raise RuntimeError("RESOURCE_BLOCKED: projected free disk below fixed 120 GB")
+
+    def __enter__(self) -> ResourceOwner:
+        """Reserve the full maximum incremental RAM before starting allocations."""
+        self.root.mkdir(parents=True, exist_ok=True)
+        if not host_ram_reservation(self.planned_ram_bytes).passes:
+            raise RuntimeError("RESOURCE_BLOCKED: full RAM reservation leaves less than 4 GiB")
+        super().__enter__()
+        return self
