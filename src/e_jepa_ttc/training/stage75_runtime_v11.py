@@ -12,6 +12,7 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_
 from e_jepa_ttc.evaluation.nested_treatment_export_v11 import export_nested_treatment
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import diagnose_pretext_checkpoint
 from e_jepa_ttc.evaluation.standalone_outer_v11 import infer_initial_endpoint
+from e_jepa_ttc.evaluation.supervised_checkpoint_diagnostics_v11 import diagnose_supervised_series
 from e_jepa_ttc.training.correspondence_pretext_v11 import PretextTextures
 from e_jepa_ttc.training.nested_architecture_sources_v11 import (
     materialize_nested_sources,
@@ -111,6 +112,15 @@ def run_new_nested_producers(
                     output=root / f"pretext_diagnostics_{update:06d}",
                     check=runtime.owner.check,
                 )
+        diagnose_supervised_series(
+            runtime.paths["endpoint_root"] / plan.job_id,
+            loaded.view,
+            loaded.normalization,
+            loaded.supervision,
+            recipe_sha256=job.identity,
+            endpoint=treatment(plan.treatment_name).supervised_updates,
+            check=runtime.owner.check,
+        )
         jobs.append(job)
         completed.append(plan.job_id)
         progress("MATERIALIZE_AND_FIT_NEW_INNER", None)

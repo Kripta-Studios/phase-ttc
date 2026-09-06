@@ -2,6 +2,7 @@
 
 import json
 import random
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -91,3 +92,107 @@ def test_texture_summary_keeps_train_and_held_controls_and_invalid_draw_counts(t
         assert result[scope]["minimum_direction_queries"] == 64
     with pytest.raises(ValueError, match="omitted"):
         summarize_texture_trace(path, expected_images=3)
+
+
+@pytest.mark.parametrize("interruption", ["forward", "publication"])
+def test_partial_diagnostic_preserves_attempt_and_recovers_without_selection(
+    tmp_path, monkeypatch, interruption
+):
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
+    from e_jepa_ttc.evaluation import pretext_diagnostics_v11 as module
+
+    checkpoint = tmp_path / "checkpoint.pt"
+    torch.save(
+        {
+            "spec": {
+                "arm": "CORRESPONDENCE",
+                "training_view_sha256": "a" * 64,
+                "seed": 7,
+                "technical": True,
+            },
+            "update": 10,
+            "model": nn.Linear(2, 2).state_dict(),
+            "history": [],
+        },
+        checkpoint,
+    )
+    monkeypatch.setattr(module, "ContextEncoder", lambda: nn.Linear(2, 2))
+    calls = []
+
+    class Textures:
+        def __init__(self, view, normalization, trace):
+            self.trace = trace
+
+        def objective(self, encoder, **kwargs):
+            calls.append(kwargs["diagnostic"])
+            row = {
+                "kind": "valid_correspondence",
+                "diagnostic": kwargs["diagnostic"],
+                "token": "fixture",
+                "cross_entropy": 1.0,
+                "matching_error_pixels": 2.0,
+                "constant_descriptor_ce": 7.0,
+                "shuffled_correspondence_ce": 8.0,
+                "descriptor_variance": 0.1,
+                "masked_fraction": 0.2,
+                "query_counts": [64, 64],
+            }
+            with self.trace.open("a", encoding="utf-8") as stream:
+                stream.write((json.dumps(row) + "\n") * 2)
+
+    monkeypatch.setattr(module, "PretextTextures", Textures)
+    output = tmp_path / "diagnostic"
+    pool = SimpleNamespace(identity="a" * 64, view=None, normalization=None)
+    checks = 0
+
+    def check():
+        nonlocal checks
+        checks += 1
+        if interruption == "forward" and checks == 2:
+            raise RuntimeError("injected forward interruption")
+
+    original_publish = module.atomic_json
+
+    def publish(path, record):
+        if interruption == "publication" and path == output / "PRETEXT_DIAGNOSTICS.json":
+            raise RuntimeError("injected publication interruption")
+        original_publish(path, record)
+
+    monkeypatch.setattr(module, "atomic_json", publish)
+    rng = torch.get_rng_state()
+    with pytest.raises(RuntimeError, match="injected"):
+        module.diagnose_pretext_checkpoint(
+            binding(checkpoint),
+            pool,
+            seed=7,
+            output=output,
+            check=check,
+            device="cpu",
+        )
+    assert torch.equal(rng, torch.get_rng_state())
+    partial = binding(output / "attempt_0000/TEXTURE_DIAGNOSTICS.jsonl")
+    calls_before = len(calls)
+    monkeypatch.setattr(module, "atomic_json", original_publish)
+    result = module.diagnose_pretext_checkpoint(
+        binding(checkpoint),
+        pool,
+        seed=7,
+        output=output,
+        check=check,
+        device="cpu",
+    )
+    assert binding(output / "attempt_0000/TEXTURE_DIAGNOSTICS.jsonl") == partial
+    assert len(calls) - calls_before == (16 if interruption == "forward" else 0)
+    assert result["incomplete_prior_attempts"] == (1 if interruption == "forward" else 0)
+    assert torch.equal(rng, torch.get_rng_state())
+    assert (
+        module.diagnose_pretext_checkpoint(
+            binding(checkpoint),
+            pool,
+            seed=7,
+            output=output,
+            check=check,
+            device="cpu",
+        )
+        == result
+    )

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import time
 from collections.abc import Callable, Iterator
 from contextlib import contextmanager
 from pathlib import Path
@@ -13,6 +14,7 @@ import torch
 from torch import nn
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
+from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned
 from e_jepa_ttc.models.projective_phase_network import ContextEncoder
 from e_jepa_ttc.training.correspondence_pretext_v11 import PretextTextures
 from e_jepa_ttc.training.eap_highres_jepa import _capture_rng_state, _restore_rng_state
@@ -110,25 +112,53 @@ def diagnose_pretext_checkpoint(
         "TTC_labels_used": False,
         "optimizer_updates": 0,
     }
+    if output.resolve() != output.absolute():
+        raise ValueError("pretext diagnostic output was redirected")
+    output.mkdir(parents=True, exist_ok=True)
     result_path = output / "PRETEXT_DIAGNOSTICS.json"
-    if result_path.exists():
-        result = json.loads(result_path.read_text(encoding="utf-8"))
+    intent_path = output / "DIAGNOSTIC_INTENT.json"
+    if intent_path.exists():
+        if json.loads(intent_path.read_text(encoding="utf-8")) != identity:
+            raise ValueError("pretext diagnostic recovery changed its fixed identity")
+    elif not result_path.exists():
+        if any(output.iterdir()):
+            raise ValueError("unfinished pretext diagnostic lacks its prospective identity")
+        atomic_json(intent_path, identity)
+    candidates = (
+        [result_path]
+        if result_path.exists()
+        else list(output.glob("attempt_*/PRETEXT_DIAGNOSTICS.json"))
+    )
+    if len(candidates) > 1:
+        raise ValueError("multiple completed pretext diagnostic attempts cannot be selected")
+    if candidates:
+        if candidates[0].resolve() != candidates[0].absolute():
+            raise ValueError("completed pretext diagnostic was redirected")
+        result = json.loads(candidates[0].read_text(encoding="utf-8"))
         unsigned = {key: value for key, value in result.items() if key != "artifact_sha256"}
         if (
             object_digest(unsigned) != result.get("artifact_sha256")
             or result.get("identity") != identity
         ):
             raise ValueError("pretext diagnostic receipt changed")
-        verify(result["trace"])
+        directory = Path(result["trace"]["path"]).parent
+        if directory != output and (
+            directory.parent != output or not directory.name.startswith("attempt_")
+        ):
+            raise ValueError("pretext diagnostic trace escaped its owned attempt")
+        _owned(result["trace"], directory, "TEXTURE_DIAGNOSTICS.jsonl")
+        if not result_path.exists():
+            atomic_json(result_path, result)
         return result
-    if output.exists() and any(output.iterdir()):
-        raise ValueError("unfinished diagnostic trace requires a separate logged recovery attempt")
-    output.mkdir(parents=True, exist_ok=True)
-    trace = output / "TEXTURE_DIAGNOSTICS.jsonl"
+    attempt = output / f"attempt_{len(list(output.glob('attempt_*'))):04d}"
+    attempt.mkdir()
+    atomic_json(attempt / "STARTED.json", identity)
+    trace = attempt / "TEXTURE_DIAGNOSTICS.jsonl"
     diagnostic_pool = PretextTextures(pool.view, pool.normalization, trace)
     generator = torch.Generator().manual_seed(730076 + seed)
     global_state = _capture_rng_state(generator)
     encoder = None
+    started = time.monotonic()
     try:
         encoder = ContextEncoder().to(device)
         encoder.load_state_dict(payload["model"], strict=True)
@@ -154,8 +184,11 @@ def diagnose_pretext_checkpoint(
                 payload["history"][-1]["gradient_norm"] if payload["history"] else None
             ),
             "held_normalization_scope": "full permissible TRAIN view; not independent confirmation",
+            "incomplete_prior_attempts": len(list(output.glob("attempt_*"))) - 1,
+            "elapsed_this_attempt_seconds": time.monotonic() - started,
         }
         result["artifact_sha256"] = object_digest(result)
+        atomic_json(attempt / "PRETEXT_DIAGNOSTICS.json", result)
         atomic_json(result_path, result)
         return result
     finally:

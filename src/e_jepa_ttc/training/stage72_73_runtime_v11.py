@@ -18,6 +18,7 @@ from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import build_initial_ev
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import export_initial_treatment
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import diagnose_pretext_checkpoint
 from e_jepa_ttc.evaluation.standalone_outer_v11 import infer_initial_endpoint
+from e_jepa_ttc.evaluation.supervised_checkpoint_diagnostics_v11 import diagnose_supervised_series
 from e_jepa_ttc.training.correspondence_pretext_v11 import PretextTextures
 from e_jepa_ttc.training.resolved_architecture_sources_v11 import (
     ResolvedArchitectureSources,
@@ -198,6 +199,15 @@ class InitialArchitectureRuntime:
                             / f"pretext_diagnostics_{update:06d}",
                             check=self.owner.check,
                         )
+                diagnose_supervised_series(
+                    self.paths["endpoint_root"] / plan.job_id,
+                    loaded.view,
+                    loaded.normalization,
+                    loaded.supervision,
+                    recipe_sha256=job.identity,
+                    endpoint=treatment(plan.treatment_name).supervised_updates,
+                    check=self.owner.check,
+                )
                 jobs.append(job)
                 completed.append(plan.job_id)
                 self._progress("FITTING", None, completed)

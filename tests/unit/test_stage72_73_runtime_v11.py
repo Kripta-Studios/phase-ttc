@@ -45,6 +45,11 @@ def test_s73_all_available_jobs_run_without_reading_or_gating_on_s72_scores(tmp_
                 )
 
     monkeypatch.setattr(runtime, "execute_architecture_job", fit)
+    monkeypatch.setattr(
+        runtime,
+        "diagnose_supervised_series",
+        lambda *args, **kwargs: events.append(("supervised_diagnostic", kwargs["endpoint"])),
+    )
     monkeypatch.setattr(runtime, "PretextTextures", lambda *args: None)
     monkeypatch.setattr(
         runtime,
