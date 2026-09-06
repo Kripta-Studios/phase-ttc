@@ -25,7 +25,10 @@
     "scripts/qa_stage71_real_train_gpu.py",
     "src/e_jepa_ttc/training/stage72_supervision.py",
     "scripts/partition_stage70_train_labels.py",
-    "scripts/prepare_stage70_expansion_inventory.py"
+    "scripts/prepare_stage70_expansion_inventory.py",
+    "src/e_jepa_ttc/training/correspondence_pretext_v11.py",
+    "scripts/qa_stage71_correspondence_learning.py",
+    "scripts/qa_stage73_pretext_resume.py"
   ],
   "extraPaths": [
     "src"
