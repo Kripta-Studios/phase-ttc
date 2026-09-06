@@ -58,7 +58,8 @@
     "src/e_jepa_ttc/evaluation/pretext_diagnostics_v11.py",
     "scripts/qa_stage73_checkpoint_diagnostics.py",
     "src/e_jepa_ttc/training/resolved_architecture_sources_v11.py",
-    "scripts/qa_stage72_resolved_source_graph.py"
+    "scripts/qa_stage72_resolved_source_graph.py",
+    "src/e_jepa_ttc/training/stage72_73_runtime_v11.py"
   ],
   "extraPaths": [
     "src",
