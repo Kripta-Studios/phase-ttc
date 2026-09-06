@@ -19,6 +19,7 @@ from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import verify_initial_e
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
 from e_jepa_ttc.evaluation.nested_treatment_export_v11 import historical_table
 from e_jepa_ttc.evaluation.risk_geometry_v10 import loss_frame
+from e_jepa_ttc.evaluation.router_evidence_v11 import analyze_router_rows
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase
 from e_jepa_ttc.training.nested_full_cost_fit_v11 import (
     fit_full_cost_endpoint,
@@ -225,10 +226,30 @@ def run_nested_routers(
         if not final.exists():
             atomic_json(final, record)
         exports[arm] = binding(final)
+    runtime._reserve_resources("router_analysis")
+    analysis = analyze_router_rows(
+        new_outer,
+        exports,
+        identity={
+            "training_lock_sha256": runtime.lock_sha256,
+            "router_endpoint_barrier": binding(freeze_path),
+            "initial_evidence": binding(
+                Path(lock["initial_evidence_root"]) / "INITIAL_EVIDENCE.json"
+            ),
+            "new_endpoint_barrier": barrier,
+            "stage_authorization": decision_source,
+            "standalone_row_sources": {
+                expert: initial["row_sources"][name] for expert, name in active.items()
+            },
+        },
+        root=root / "analysis",
+        owner=runtime.owner,
+    )
     return {
         "status": "ROUTER_ENDPOINTS_AND_EXPORTS_COMPLETE",
         "exports": exports,
         "barrier": binding(freeze_path),
         "prescribed_ridge_endpoints": 6,
-        "statistical_analysis_pending": True,
+        "statistical_analysis_pending": False,
+        "analysis": analysis,
     }

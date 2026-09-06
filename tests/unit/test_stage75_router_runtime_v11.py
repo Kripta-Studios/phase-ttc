@@ -38,7 +38,12 @@ def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features
             prediction_phase=benchmark_phase(prediction),
             finite=True,
             failure=False,
+            mid_loss=10000 * abs(benchmark_phase(prediction) - benchmark_phase(targets)),
+            A5_ttc_s=targets + 0.01,
+            C2F_ttc_s=targets + 0.02,
+            PAIR_ttc_s=targets + 0.03,
         )
+        rows["S65-RISK17_ttc"] = targets + 0.01
         for index, diagnostic in enumerate(DIAGNOSTICS):
             rows[diagnostic] = np.arange(count) % (index + 2) / (index + 2)
         rows_by_name[name] = rows
@@ -92,6 +97,9 @@ def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features
     barrier = tmp_path / "barriers/S75_ALL_ENDPOINTS_FROZEN.json"
     barrier.parent.mkdir()
     barrier.write_text("synthetic endpoint barrier")
+    initial_evidence = tmp_path / "evidence/INITIAL_EVIDENCE.json"
+    initial_evidence.parent.mkdir()
+    initial_evidence.write_text("synthetic complete initial evidence")
     runtime = SimpleNamespace(
         root=tmp_path,
         lock_sha256="a" * 64,
@@ -103,6 +111,7 @@ def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features
         },
         _reserve_resources=lambda key: None,
         ledger=SimpleNamespace(record_ridge_attempt=lambda attempt, completed: None),
+        owner=SimpleNamespace(check=lambda: None),
     )
     decision = {
         "canonical_candidates": names,
@@ -140,6 +149,9 @@ def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features
     )
     result = module.run_nested_routers(runtime, {"path": "synthetic decision"})
     assert len(fits) == 6 and set(result["exports"]) == set(module.ARMS)
+    assert not result["statistical_analysis_pending"]
+    assert not result["analysis"]["decision"]["development_utility_pass"]
+    assert result["analysis"]["decision"]["association_is_separate_from_utility"]
     for source in result["exports"].values():
         import json
 
