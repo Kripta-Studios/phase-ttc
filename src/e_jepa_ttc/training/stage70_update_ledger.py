@@ -77,16 +77,23 @@ class UpdateLedger:
     def totals(self) -> dict[str, int]:
         """Report confirmed work, uncertain charged attempts and future reservations."""
         jobs = list(self.state["jobs"].values())
+        audits = list(self.state.get("technical_audits", {}).values())
         return {
-            "confirmed_optimizer_updates": sum(job["confirmed"] for job in jobs),
+            "confirmed_optimizer_updates": sum(job["confirmed"] for job in jobs)
+            + sum(audit["confirmed"] for audit in audits),
             "uncertain_optimizer_attempts": sum(job["uncertain"] for job in jobs)
-            + int(self.state["pending"] is not None),
-            "charged_optimizer_attempts": sum(job["charged"] for job in jobs),
-            "reserved_remaining_updates": sum(job["remaining"] for job in jobs),
+            + int(self.state["pending"] is not None)
+            + sum(audit["uncertain"] for audit in audits),
+            "charged_optimizer_attempts": sum(job["charged"] for job in jobs)
+            + sum(audit["charged"] for audit in audits),
+            "reserved_remaining_updates": sum(job["remaining"] for job in jobs)
+            + sum(audit["remaining"] for audit in audits),
             "technical_charged_and_reserved": sum(
                 job["charged"] + job["remaining"] for job in jobs if job["spec"]["technical"]
-            ),
-            "optimizer_fits_started": sum(job["charged"] > 0 for job in jobs),
+            )
+            + sum(audit["charged"] + audit["remaining"] for audit in audits),
+            "optimizer_fits_started": sum(job["charged"] > 0 for job in jobs)
+            + sum(audit["optimizer_instances_started"] for audit in audits),
             "optimizer_endpoints_complete": sum(job["status"] == "COMPLETE" for job in jobs),
             "ridge_fits": len(self.state["ridge_fits"]),
         }
@@ -108,6 +115,70 @@ class UpdateLedger:
                 raise ValueError("negative optimizer ledger accounting")
             if job["confirmed"] + job["uncertain"] > job["charged"]:
                 raise ValueError("optimizer accounting exceeds charged attempts")
+        for audit in self.state.get("technical_audits", {}).values():
+            if (
+                min(audit[key] for key in ("charged", "confirmed", "uncertain", "remaining")) < 0
+                or audit["confirmed"] + audit["uncertain"] != audit["charged"]
+                or audit["charged"] + audit["remaining"] > audit["limit"]
+            ):
+                raise ValueError("invalid bounded technical audit accounting")
+
+    def reserve_technical_audit(self, audit_id: str, limit: int, identity: str) -> None:
+        """Reserve a bounded test suite, without pretending its quota is a model endpoint."""
+        if (
+            not audit_id
+            or not 1 <= limit <= MAX_TECHNICAL_UPDATES
+            or (len(identity) != 64 or any(c not in "0123456789abcdef" for c in identity))
+        ):
+            raise ValueError("invalid technical audit reservation")
+        audits = self.state.setdefault("technical_audits", {})
+        if audit_id in audits:
+            if (audits[audit_id]["limit"], audits[audit_id]["identity"]) != (limit, identity):
+                raise ValueError("technical audit reservation changed")
+            return
+        audits[audit_id] = {
+            "identity": identity,
+            "limit": limit,
+            "status": "RESERVED",
+            "charged": 0,
+            "confirmed": 0,
+            "uncertain": 0,
+            "remaining": limit,
+            "optimizer_instances_started": 0,
+            "receipt": None,
+        }
+        try:
+            self._publish()
+        except BaseException:
+            audits.pop(audit_id)
+            raise
+
+    def settle_technical_audit(self, audit_id: str, receipt_path: Path) -> None:
+        """Bind closed-process accounting; a finished suite is not a scientific endpoint."""
+        receipt_binding = binding(receipt_path)
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        signature = receipt.pop("sha256")
+        if object_digest(receipt) != signature or not receipt.get("all_processes_closed"):
+            raise ValueError("technical audit requires signed closed-process accounting")
+        audit = self.state["technical_audits"][audit_id]
+        if audit["status"] != "RESERVED":
+            raise ValueError("technical audit already settled")
+        if receipt["identity"] != audit["identity"] or receipt["limit"] != audit["limit"]:
+            raise ValueError("technical audit identity or quota changed")
+        before = dict(audit)
+        audit.update(
+            {
+                key: receipt[key]
+                for key in ("charged", "confirmed", "uncertain", "optimizer_instances_started")
+            }
+        )
+        audit.update(status="CLOSED", remaining=0, receipt=receipt_binding)
+        try:
+            self._publish()
+        except BaseException:
+            audit.clear()
+            audit.update(before)
+            raise
 
     def _publish(self) -> None:
         self._assert_owner()

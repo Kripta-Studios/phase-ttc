@@ -42,10 +42,14 @@
     "src/e_jepa_ttc/artifacts/producer_lineage_v11.py",
     "src/e_jepa_ttc/data/confirmation_access_v11.py",
     "src/e_jepa_ttc/data/new_expert_tables_v11.py",
-    "src/e_jepa_ttc/training/stage76_confirmation.py"
+    "src/e_jepa_ttc/training/stage76_confirmation.py",
+    "src/e_jepa_ttc/training/stage72_jobs.py",
+    "scripts/run_stage70_test_audit.py",
+    "scripts/qa_support"
   ],
   "extraPaths": [
-    "src"
+    "src",
+    "scripts/qa_support"
   ],
   "typeCheckingMode": "basic",
   "pythonVersion": "3.11"
