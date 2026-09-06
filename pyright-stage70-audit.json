@@ -49,7 +49,8 @@
     "scripts/audit_stage70_garl_checkpoint_lineage.py",
     "scripts/summarize_stage70_test_audit.py",
     "scripts/prepare_stage72_original_views.py",
-    "scripts/prepare_stage73_expanded_views.py"
+    "scripts/prepare_stage73_expanded_views.py",
+    "scripts/compare_stage70_test_evidence.py"
   ],
   "extraPaths": [
     "src",
