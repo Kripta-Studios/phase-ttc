@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections.abc import Callable
 from dataclasses import asdict
@@ -13,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+import numpy as np
 import pandas as pd
 import torch
 from qa_stage71_fixed_fit import equal_state
@@ -22,11 +24,13 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_
 from e_jepa_ttc.data.event_context128 import RateNormalization
 from e_jepa_ttc.data.event_context128_reader import CountReader, TrainingView
 from e_jepa_ttc.data.stage70_roles import TrainRoles
+from e_jepa_ttc.evaluation.standalone_outer_v11 import recover_or_publish_arrays
 from e_jepa_ttc.models.phase_distribution_v11 import weighted_training_loss
 from e_jepa_ttc.models.projective_phase_network import Arm, ProjectivePhaseNetwork
 from e_jepa_ttc.training.stage70_fixed_fit import FixedFit, deterministic_runtime
 from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger
 from e_jepa_ttc.training.stage72_architecture import SupervisedBatches, initialize_architecture
+from e_jepa_ttc.training.stage72_augmentation import time_derangement
 from e_jepa_ttc.training.stage72_supervision import (
     Supervision,
     initialize_train_prior,
@@ -73,16 +77,22 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--campaign", type=Path, required=True)
     parser.add_argument(
+        "--attempt", default="", help="Unique technical QA suffix; preserves earlier evidence"
+    )
+    parser.add_argument(
         "--production-flow",
         action="store_true",
         help="Use all four arms with registered count augmentation and fixed TIMEPERM (80 updates)",
     )
     args = parser.parse_args()
+    if args.attempt and not re.fullmatch(r"[a-z0-9_]+", args.attempt):
+        raise ValueError("technical attempt must be a simple lowercase identifier")
     campaign = args.campaign.resolve(strict=True)
     if not campaign.is_relative_to(ROOT / "artifacts"):
         raise ValueError("GPU QA output must remain in this worktree")
     output = campaign / (
-        "technical_production_train_gpu" if args.production_flow else "technical_real_train_gpu"
+        ("technical_production_train_gpu" if args.production_flow else "technical_real_train_gpu")
+        + ("_" + args.attempt if args.attempt else "")
     )
     receipt_path = output / "REAL_TRAIN_GPU_EQUIVALENCE.json"
     if receipt_path.exists():
@@ -164,6 +174,8 @@ def main() -> None:
                 "training/stage70_update_ledger.py",
                 "training/stage72_supervision.py",
                 "training/stage72_architecture.py",
+                "training/architecture_loss_diagnostics_v11.py",
+                "evaluation/standalone_outer_v11.py",
                 "training/stage72_augmentation.py",
                 "training/eap_highres_jepa.py",
                 "reproducibility.py",
@@ -211,7 +223,8 @@ def main() -> None:
                     initialize_train_prior(model, supervision)
                 model.cuda()
                 spec = FitSpec(
-                    f"technical_{'production_' if args.production_flow else ''}gpu_{arm}_{mode}",
+                    f"technical_{'production_' if args.production_flow else ''}gpu_{arm}_{mode}"
+                    + ("_" + args.attempt if args.attempt else ""),
                     "S71_TECHNICAL",
                     arm,
                     0,
@@ -298,8 +311,48 @@ def main() -> None:
                     for mode in ("continuous", "resumed")
                 ]
                 equality["sampler_augmentation_timeperm_trace"] = traces[0] == traces[1]
+            model = ProjectivePhaseNetwork(checkpoint_sweep=False).cuda().eval()
+            model.load_state_dict(states[0]["model"])
+            sample = view.inputs(tokens[0], normalization)
+            permutation = (
+                torch.tensor([time_derangement(tokens[0], 7)], device="cuda", dtype=torch.int64)
+                if arm == "PPS-TIMEPERM"
+                else None
+            )
+            safe = recover_or_publish_arrays(
+                output / arm / "SAFE_INFERENCE_WEIGHTS.npz",
+                {key: value.cpu().numpy().copy() for key, value in model.state_dict().items()},
+            )
+            with torch.inference_mode():
+                native = model(
+                    sample.contexts[None].cuda(),
+                    sample.times[None].cuda(),
+                    arm=arm,
+                    permutation=permutation,
+                )
+                with np.load(verify(safe), allow_pickle=False) as arrays:
+                    model.load_state_dict(
+                        {key: torch.from_numpy(arrays[key].copy()) for key in arrays.files}
+                    )
+                portable = model(
+                    sample.contexts[None].cuda(),
+                    sample.times[None].cuda(),
+                    arm=arm,
+                    permutation=permutation,
+                )
+            equality["portable_npz_inference_all_fields"] = all(
+                torch.equal(value, portable[key]) for key, value in native.items()
+            )
+            del model, native, portable
             results.append(
-                {"arm": arm, "equality": equality, "profiles": profiles, "endpoints": endpoints}
+                {
+                    "arm": arm,
+                    "equality": equality,
+                    "profiles": profiles,
+                    "endpoints": endpoints,
+                    "portable_weights": safe,
+                    "portable_parity_TRAIN_token": tokens[0],
+                }
             )
             del states
             atomic_json(

@@ -14,6 +14,80 @@ from e_jepa_ttc.evaluation.initial_treatment_export_v11 import (
 from e_jepa_ttc.evaluation.standalone_outer_v11 import _publish_arrays
 
 
+def test_physical_metadata_uses_bound_event_clock_and_preserves_empty_roi(tmp_path):
+    """A token suffix must never become time; zero-event rows retain their mass."""
+    import json
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import AllowlistedSources, binding
+    from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import DiagnosticExport
+    from e_jepa_ttc.evaluation.initial_treatment_export_v11 import append_physical_metadata
+
+    token = "sequence_999999999999999"
+    windows = []
+    for index in range(2):
+        windows.append(
+            {
+                "sample_token": token,
+                "window_id": index,
+                "sequence_id": "seq",
+                "window_start_us": 1000000 + index * 100000,
+                "window_end_us": 1100000 + index * 100000,
+                "frame_to_event_clock_offset_us": 7000000,
+                "target_anchor_us": 8200000,
+                "roi_x0": 0,
+                "roi_y0": 0,
+                "roi_x1": 32,
+                "roi_y1": 32,
+                "h5_file_sha256": "a" * 64,
+            }
+        )
+    raw = tmp_path / "RAW_BINDINGS.csv"
+    pd.DataFrame(windows).to_csv(raw, index=False)
+    observations = tmp_path / "diagnostics_00000.json"
+    observations.write_text(
+        json.dumps([{"sample_token": token, "windows": [{"roi_events": 0}, {"roi_events": 0}]}])
+    )
+    source = binding(observations)
+    source["path"] = observations.name
+    manifest = tmp_path / "CACHE_MANIFEST.json"
+    manifest.write_text(json.dumps({"shards": [{"components": {observations.name: source}}]}))
+    lock = {
+        "raw_deployment": {"bindings": binding(raw)},
+        "count_caches": {"original": binding(manifest)},
+    }
+    receipt = {
+        "identity": {
+            "ordered_tokens": [token],
+            "count_cache_sha256": "b" * 64,
+            "job_sha256": "c" * 64,
+            "weights": {"sha256": "d" * 64},
+        }
+    }
+    rows = pd.DataFrame(
+        {"sample_token": [token], "global_mass": [1.0], "mid_loss": [10.0], "finite": [True]}
+    )
+    export = DiagnosticExport(rows, {}, {})
+    journal = tmp_path / "reads.jsonl"
+    append_physical_metadata(
+        export, lock, [receipt], AllowlistedSources([binding(raw), binding(manifest)], journal)
+    )
+    assert rows.label_anchor_event_us.iloc[0] == 1200000
+    assert rows.label_anchor_annotation_us.iloc[0] == 8200000
+    assert rows.observation_cutoff_event_us.iloc[0] == 1200000
+    assert rows.event_density_per_pixel_second.iloc[0] == 0
+    assert rows.global_mass.iloc[0] == 1
+    np.testing.assert_allclose(
+        export.arrays["context_relative_times_seconds"], [[-0.175, -0.125, -0.075, -0.025]]
+    )
+    assert export.summary["physical_cuts"]["roi_area_pixels"]["groups"][1]["conditional_MiD"] == 10
+    damaged = copy.deepcopy(receipt)
+    damaged["identity"]["ordered_tokens"] = ["wrong_token"]
+    with pytest.raises(KeyError):
+        append_physical_metadata(
+            export, lock, [damaged], AllowlistedSources([binding(raw), binding(manifest)], journal)
+        )
+
+
 def fixture(root, *, damage=None):
     receipts, roots = [], []
     for fold in range(3):

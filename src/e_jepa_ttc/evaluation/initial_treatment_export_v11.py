@@ -20,11 +20,121 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import (
     verify,
 )
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
-from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import evaluate_rows
+from e_jepa_ttc.data.stage70_clock import context_clock
+from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import DiagnosticExport, evaluate_rows
 from e_jepa_ttc.evaluation.standalone_outer_v11 import _publish_arrays, verify_inference_shards
 from e_jepa_ttc.evaluation.train_prior_baseline_v11 import append_prior_baseline, frozen_prior
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
 from e_jepa_ttc.training.stage73_factorial import Availability, PlannedFit, initial_jobs
+
+
+def append_physical_metadata(
+    diagnostic: DiagnosticExport,
+    lock: dict[str, Any],
+    receipts: list[dict[str, Any]],
+    sources: AllowlistedSources,
+) -> None:
+    """Join immutable clock and cache observations; never infer time from token spelling."""
+    rows = diagnostic.rows
+    raw_binding = lock["raw_deployment"]["bindings"]
+    table = pd.read_csv(sources.access(Path(raw_binding["path"])), dtype={"sample_token": str})
+    if table.duplicated(["sample_token", "window_id"]).any():
+        raise ValueError("duplicate physical diagnostic windows")
+    indexed = table.set_index(["sample_token", "window_id"])
+    cache_path = sources.access(Path(lock["count_caches"]["original"]["path"]))
+    cache = json.loads(cache_path.read_text(encoding="utf-8"))
+    observations = {}
+    for shard in cache["shards"]:
+        for name, record in shard["components"].items():
+            if not name.startswith("diagnostics_"):
+                continue
+            path = cache_path.parent / name
+            if path.resolve().parent != cache_path.parent or Path(record["path"]).name != name:
+                raise ValueError("diagnostic cache member escaped its manifest")
+            physical = {"path": str(path), "bytes": record["bytes"], "sha256": record["sha256"]}
+            journal = AllowlistedSources([physical], sources.journal)
+            for item in json.loads(journal.access(path).read_text(encoding="utf-8")):
+                token = item["sample_token"]
+                if token in observations:
+                    raise ValueError("duplicate cached diagnostic token")
+                observations[token] = item["windows"]
+    endpoint_by_token = {}
+    for receipt in receipts:
+        identity = receipt["identity"]
+        for token in identity["ordered_tokens"]:
+            if token in endpoint_by_token:
+                raise ValueError("diagnostic token belongs to multiple outer producers")
+            endpoint_by_token[token] = identity
+    clocks, physical_rows = [], []
+    for token in rows.sample_token:
+        pair = [indexed.loc[(token, window)] for window in (0, 1)]
+        bounds = [(int(row.window_start_us), int(row.window_end_us)) for row in pair]
+        frames = [int(row.window_end_us) + int(row.frame_to_event_clock_offset_us) for row in pair]
+        clock = context_clock(bounds, frames, int(pair[1].target_anchor_us))
+        roi = [
+            (float(row.roi_x0), float(row.roi_y0), float(row.roi_x1), float(row.roi_y1))
+            for row in pair
+        ]
+        if roi[0] != roi[1]:
+            raise ValueError("diagnostic ROI changed between context windows")
+        area = (roi[0][2] - roi[0][0]) * (roi[0][3] - roi[0][1])
+        if area <= 0:
+            raise ValueError("diagnostic ROI has no area")
+        windows = observations[token]
+        if len(windows) != 2:
+            raise ValueError("diagnostic token lacks both physical windows")
+        count = sum(window["roi_events"] for window in windows)
+        seconds = sum(end - start for start, end in bounds) * 1e-6
+        identity = endpoint_by_token[token]
+        clocks.append(np.asarray(clock.midpoint_twice_relative_us, dtype=np.float64) * 0.5e-6)
+        physical_rows.append(
+            {
+                "label_anchor_annotation_us": int(pair[1].target_anchor_us),
+                "label_anchor_event_us": bounds[1][1],
+                "observation_cutoff_event_us": max(end for _, end in bounds),
+                "roi_area_pixels": area,
+                "roi_events": count,
+                "event_density_per_pixel_second": count / (area * seconds),
+                "raw_source_sha256": str(pair[1].h5_file_sha256),
+                "source_sha256": identity["count_cache_sha256"],
+                "config_and_job_sha256": identity["job_sha256"],
+                "checkpoint_sha256": identity["weights"]["sha256"],
+                "acquisition_group": str(pair[1].sequence_id),
+                "acquisition_group_basis": "sequence_fallback_acquisition_identity_unverified",
+            }
+        )
+    for key in physical_rows[0]:
+        rows[key] = [item[key] for item in physical_rows]
+    diagnostic.arrays["context_relative_times_seconds"] = np.stack(clocks)
+    diagnostic.summary["physical_diagnostic_sources"] = {
+        "raw_bindings": raw_binding,
+        "cache_manifest": lock["count_caches"]["original"],
+        "density_definition": "sum ROI events / (common ROI pixels * summed window seconds)",
+        "acquisition_limitation": "sequence fallback; no independent acquisition claim",
+    }
+    cuts = {}
+    for column, boundaries in (
+        ("roi_area_pixels", (1024.0, 4096.0, 16384.0, 65536.0)),
+        ("event_density_per_pixel_second", (1.0, 10.0, 100.0, 1000.0)),
+    ):
+        indices = np.searchsorted(boundaries, rows[column].to_numpy(), side="right")
+        rows[column + "_cut"] = indices
+        result = []
+        for index in range(len(boundaries) + 1):
+            group = rows.loc[indices == index]
+            mass = group.global_mass.to_numpy(np.float64)
+            result.append(
+                {
+                    "cut": index,
+                    "rows": len(group),
+                    "population_mass": float(mass.sum()),
+                    "conditional_MiD": float(mass @ group.mid_loss.to_numpy() / mass.sum())
+                    if len(group) and group.finite.all()
+                    else None,
+                }
+            )
+        cuts[column] = {"boundaries": boundaries, "groups": result}
+    diagnostic.summary["physical_cuts"] = cuts
 
 
 def publish_export_payloads(
@@ -234,7 +344,10 @@ def export_initial_treatment(
         for field in ("rows", "arrays", "source_reads"):
             verify(completed[field])
         return completed
-    sources = AllowlistedSources([source_record], output / "SOURCE_READS.jsonl")
+    sources = AllowlistedSources(
+        [source_record, lock["raw_deployment"]["bindings"], lock["count_caches"]["original"]],
+        output / "SOURCE_READS.jsonl",
+    )
     owner.check()
     historical = pd.read_csv(
         sources.access(Path(source_record["path"])), dtype={"sample_token": str}
@@ -257,6 +370,7 @@ def export_initial_treatment(
     old.index = pd.Index(metadata.sample_token)
     diagnostic = evaluate_rows(metadata, arrays, edges, old)
     append_prior_baseline(diagnostic, metadata, priors)
+    append_physical_metadata(diagnostic, lock, receipts, sources)
     for name in historical.columns:
         if name.startswith(("S65-", "S67-")) and name.endswith("_ttc"):
             diagnostic.rows[name] = historical[name].to_numpy(np.float64)

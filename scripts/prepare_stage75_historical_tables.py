@@ -16,25 +16,114 @@ sys.path.insert(0, str(ROOT / "src"))
 
 import numpy as np
 import pandas as pd
+import torch
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import (
     AllowlistedSources,
     atomic_json,
     binding,
     object_digest,
+    verify,
 )
 from e_jepa_ttc.data.frozen_expert_tables_v10 import create_record, load_table
 from e_jepa_ttc.models.full_regret_router import FullRegretRidge
+from e_jepa_ttc.models.simplex_risk_router import SimplexRiskRouter
+from e_jepa_ttc.training.risk_router_v10 import normalized
+
+
+def replay_simplex(campaign: Path) -> None:
+    """Replay safe historical arrays without fitting or changing the recovered tables."""
+    output = campaign / "historical_simplex_replay"
+    output.mkdir(exist_ok=False)
+    historical = json.loads(
+        (campaign / "historical_nested_tables/HISTORICAL_NESTED_TABLES.json").read_text()
+    )
+    source = historical["source_zip"]
+    access = AllowlistedSources([source], output / "SOURCE_READS.jsonl")
+    members, folds = {}, []
+    with zipfile.ZipFile(access.access(verify(source))) as archive:
+
+        def member(name: str) -> bytes:
+            raw = archive.read(name)
+            members[name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+            return raw
+
+        for fold in range(3):
+            stem = f"S67-SIMPLEX17_seed7_outer{fold}"
+            metadata = json.loads(member(f"run/safe_model_arrays/{stem}.json"))
+            if metadata["update"] != 1500 or metadata["identity"]["arm"] != "S67-SIMPLEX17":
+                raise ValueError("historical SIMPLEX endpoint identity changed")
+            raw = member(f"run/safe_model_arrays/{stem}.npz")
+            (output / f"{stem}.npz").write_bytes(raw)
+            with np.load(io.BytesIO(raw), allow_pickle=False) as arrays:
+                with torch.random.fork_rng(devices=[]):
+                    model = SimplexRiskRouter(17).double().eval()
+                model.load_state_dict(
+                    {key: torch.from_numpy(arrays[key].copy()) for key in model.state_dict()}
+                )
+                mean, std = arrays["mean"].copy(), arrays["std"].copy()
+            table = load_table(historical["tables"][f"outer{fold}_outer_dev"], role="outer_dev")
+            expected = pd.read_csv(
+                io.BytesIO(member(f"run/stage67_seeds7/{stem}_outer_dev.csv"))
+            ).set_index("sample_token")
+            tokens = list(table.metadata.sample_token)
+            if len(expected) != len(tokens) or set(expected.index) != set(tokens):
+                raise ValueError("historical SIMPLEX token coverage changed")
+            expected = expected.loc[tokens]
+            z, _ = normalized(table.inputs, mean, std, "S67-SIMPLEX17")
+            with torch.no_grad():
+                cost = model(
+                    torch.from_numpy(z), torch.from_numpy(table.inputs.phases.copy())
+                ).numpy()
+            selected = cost.argmin(1)
+            prediction = table.inputs.expert_ttc[np.arange(len(tokens)), selected]
+            expected_cost = expected[[f"predicted_cost{i}" for i in range(3)]].to_numpy()
+            delta = float(np.max(np.abs(prediction - expected.prediction_ttc_s.to_numpy())))
+            cost_delta = float(np.max(np.abs(cost - expected_cost)))
+            if (
+                not np.array_equal(selected, expected.selected_expert.to_numpy())
+                or delta > 1e-12
+                or not np.allclose(cost, expected_cost, rtol=1e-12, atol=1e-12)
+            ):
+                raise ValueError("historical SIMPLEX inference differs from frozen outputs")
+            folds.append(
+                {
+                    "fold": fold,
+                    "rows": len(tokens),
+                    "max_ttc_delta": delta,
+                    "max_cost_delta": cost_delta,
+                    "selected_experts_exact": True,
+                }
+            )
+    record = {
+        "kind": "HISTORICAL_SIMPLEX17_SAFE_ARRAY_REPLAY",
+        "status": "PASS",
+        "source_zip": source,
+        "members": members,
+        "folds": folds,
+        "optimizer_updates": 0,
+        "statistical_fits": 0,
+        "historical_results_modified": False,
+        "script": binding(Path(__file__)),
+        "source_reads": binding(output / "SOURCE_READS.jsonl"),
+    }
+    record["artifact_sha256"] = object_digest(record)
+    atomic_json(output / "SIMPLEX17_REPLAY.json", record)
+    print(json.dumps(folds), flush=True)
 
 
 def main() -> None:
     """Read only exact verified historical package members; never fit or initialize an encoder."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--campaign", type=Path, required=True)
+    parser.add_argument("--simplex-replay-only", action="store_true")
     args = parser.parse_args()
     campaign = args.campaign.resolve(strict=True)
     if campaign != ROOT / "artifacts/stage70_76_architecture":
         raise ValueError("historical table recovery must remain in its own campaign")
+    if args.simplex_replay_only:
+        replay_simplex(campaign)
+        return
     output = campaign / "historical_nested_tables"
     if output.exists():
         raise ValueError("historical table recovery attempt already exists")

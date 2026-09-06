@@ -266,3 +266,42 @@ def test_resigned_training_confirmation_path_swap_is_not_accepted(setup):
         SealedTrainPartitions(
             sign(forged), access.output_root, expected_manifest_sha256=partitions["artifact_sha256"]
         )
+
+
+def test_scoped_missing_data_disposition_never_opens_confirmation(tmp_path):
+    import json
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding
+    from e_jepa_ttc.training.stage76_confirmation import publish_blocked_confirmation
+
+    source = tmp_path / "inventory.json"
+    atomic_json(source, {"available_masks": 0})
+    prerequisite = tmp_path / "prerequisite.json"
+    atomic_json(
+        prerequisite,
+        {
+            "status": "PREREQUISITE_BLOCKED",
+            "blockers": ["missing foreground"],
+            "evidence": [binding(source)],
+        },
+    )
+    recipe = tmp_path / "future.json"
+    atomic_json(recipe, {"confirmation_reads": 1, "endpoints_required": 6})
+    lock = {
+        "campaign_root": str(tmp_path),
+        "artifact_sha256": "a" * 64,
+        "confirmation_prerequisites": binding(prerequisite),
+        "confirmation_future_recipe": binding(recipe),
+    }
+    output = tmp_path / "S76_DISPOSITION.json"
+    result = publish_blocked_confirmation(lock, {"status": "NOT_TRIGGERED"}, output)
+    assert result["status"] == "PREREQUISITE_BLOCKED"
+    assert not result["confirmation_labels_read"]
+    assert not result["scientific_negative"]
+    assert result["optimizer_updates"] == 0
+    assert publish_blocked_confirmation(lock, {"status": "NOT_TRIGGERED"}, output) == result
+    saved = json.loads(output.read_text())
+    saved["selected_stable_family"] = "forged"
+    atomic_json(output, saved)
+    with pytest.raises(ValueError, match="completed S76"):
+        publish_blocked_confirmation(lock, {"status": "NOT_TRIGGERED"}, output)

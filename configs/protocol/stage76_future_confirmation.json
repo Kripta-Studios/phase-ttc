@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "scope": "S76 only; missing prerequisites never suppress S72, S73, S74 or S75",
+  "required_prerequisites": [
+    "six fixed TRAIN confirmation groups with verified transitive acquisition independence",
+    "at least one stable canonical family on all seeds 7,13,23",
+    "source-audited scratch Garl event-only 40-channel ResNet50 with required foreground supervision"
+  ],
+  "family_selection": {
+    "metric": "mean of the three old-development seed losses, not averaged TTC",
+    "tie_MiD": 0.1,
+    "tie_order": ["lower measured raw-to-output latency", "C_DIRECT"],
+    "freeze_before_confirmation_read": true
+  },
+  "architecture": {
+    "seeds": [7,13,23],
+    "training_rows_cap": 32768,
+    "source_pool": "all authorized TRAIN except fixed confirmation and protected roles",
+    "sampling": "existing target-free expansion sampling rule",
+    "recipe": "selected canonical A/D recipe, unchanged",
+    "supervised_updates": 8000,
+    "pretext_updates_if_A": 3000,
+    "effective_batch": 16,
+    "physical_microbatch": 2,
+    "accumulation": 8,
+    "checkpoint_selection": false
+  },
+  "garl": {
+    "initialization": "scratch encoder and head for every pilot and final seed",
+    "profile_selection_seed": 7,
+    "internal_validation": "three hashed groups from FINAL TRAIN only, disjoint from confirmation",
+    "profiles": [
+      {"name": "supervised_example_budget", "sampled_supervised_examples": 128000, "schedule": "proportionally mapped source schedule"},
+      {"name": "source_style", "epochs": 50, "optimizer": "Adam", "learning_rate": 0.001, "weight_decay": 0, "milestones": [10,20,30,40], "gamma": 0.5, "losses": "source mask and height losses"}
+    ],
+    "native_batch": 128,
+    "permitted_pre_pilot_native_batch_adaptations": [32,64],
+    "batch_adaptation_requires_visible_frozen_variant": true,
+    "batchnorm_accumulation_equivalence_claim": false,
+    "final_seeds": [7,13,23],
+    "final_fit": "refit selected profile and count on full FINAL TRAIN including pilot validation groups"
+  },
+  "confirmation": {
+    "barrier": "all three architecture and three Garl endpoints and family decision frozen",
+    "coordinated_reads": 1,
+    "primary_metric": "present_bucket_normalized_sequence_macro_MiD",
+    "weights": [0.5,0.3,0.1,0.1],
+    "report_denominators_and_category_counts": true,
+    "secondary_metric": "pooled release bucket MiD when all four global buckets exist",
+    "meaningful_win": "at least5 MiD improvement, both grouped CI upper bounds below0, full coverage, no material sign/crucial deterioration",
+    "failed_or_inconclusive": "terminal; no new tuning or family against these labels",
+    "official_benchmark_claim": false
+  },
+  "router_future_comparison": {
+    "authorized_in_current_S76": false,
+    "prerequisite": "separate full-TRAIN genuinely nested meta-fit with all producer ancestors excluding confirmation; freeze all endpoints before any new evaluation",
+    "old_fold_router_reuse_as_fresh_confirmation": false
+  },
+  "unresolved_pre_pilot_bindings": [
+    "verified acquisition lineage",
+    "available role-safe foreground bytes",
+    "exact final sampled tokens and internal hashed group IDs",
+    "measured native Garl batch feasibility and explicit schedule mapping"
+  ],
+  "unresolved_bindings_authorize_execution": false
+}

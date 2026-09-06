@@ -49,11 +49,78 @@ def main() -> None:
     """Materialize the fixed, source-bound full-suite comparison with no waived failures."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--campaign", type=Path, required=True)
+    parser.add_argument(
+        "--current-audit",
+        type=Path,
+        help="Compare one new complete suite, reusing only verified baseline rechecks",
+    )
     args = parser.parse_args()
     campaign = args.campaign.resolve(strict=True)
     if campaign != ROOT / "artifacts/stage70_76_architecture":
         raise ValueError("comparison must remain in this campaign")
     qa = campaign / "baseline_qa"
+    if args.current_audit is not None:
+        current_root = args.current_audit.resolve(strict=True)
+        if current_root.parent != qa:
+            raise ValueError("current audit must be a direct campaign QA child")
+        current_path = current_root / "TEST_DISPOSITION.json"
+        current = signed(current_path)
+        recipe = signed(current_root / "RECIPE.json")
+        if not current["complete_suite"] or recipe["tests"] != ["tests"]:
+            raise ValueError("a complete full-suite current audit is required")
+        baseline_path = qa / "BASELINE_COMPLETE_COVERAGE.json"
+        baseline = signed(baseline_path)
+        if not baseline["complete_node_coverage"]:
+            raise ValueError("baseline node coverage incomplete")
+        tables = {"baseline": outcomes(baseline), "current": outcomes(current)}
+        references = [
+            binding(baseline_path),
+            binding(current_path),
+            binding(current_root / "RECIPE.json"),
+        ]
+        for name in ("baseline_source57b_uv_environment", "baseline_source57b_python_imports"):
+            path = qa / name / "TEST_DISPOSITION.json"
+            recheck = signed(path)
+            if not recheck["complete_suite"] or recheck["confirmed_optimizer_updates"] != 0:
+                raise ValueError("baseline environment recheck is not complete and fit-free")
+            replacements = outcomes(recheck)
+            if not set(replacements) <= set(tables["baseline"]):
+                raise ValueError("baseline recheck changed its node universe")
+            tables["baseline"].update(replacements)
+            references.append(binding(path))
+        failures = {
+            side: {node for node, value in table.items() if value == "failed"}
+            for side, table in tables.items()
+        }
+        result = {
+            "kind": "BASELINE_VERSUS_CURRENT_EXACT_FAILURE_IDS",
+            "baseline_source_commit": baseline["source_commit"],
+            "current_full_suite_commit": recipe["commit"],
+            "counts": {
+                side: {
+                    state: sum(value == state for value in table.values())
+                    for state in ("passed", "failed", "skipped")
+                }
+                for side, table in tables.items()
+            },
+            "baseline_failure_ids": sorted(failures["baseline"]),
+            "current_failure_ids": sorted(failures["current"]),
+            "new_failure_ids": sorted(failures["current"] - failures["baseline"]),
+            "resolved_failure_ids": sorted(failures["baseline"] - failures["current"]),
+            "added_test_ids": sorted(tables["current"].keys() - tables["baseline"].keys()),
+            "removed_test_ids": sorted(tables["baseline"].keys() - tables["current"].keys()),
+            "source_bindings": references,
+            "current_outcomes_replaced_by_historical_rechecks": False,
+            "all_old_failure_observations_preserved": True,
+        }
+        output = qa / f"BASELINE_VERSUS_CURRENT_{recipe['commit'][:12]}.json"
+        if output.exists():
+            raise ValueError("immutable comparison already exists")
+        atomic_json(output, {**result, "sha256": object_digest(result)})
+        print(
+            json.dumps({"counts": result["counts"], "new_failure_ids": result["new_failure_ids"]})
+        )
+        return
     output = qa / "BASELINE_VERSUS_CURRENT_4A8B545.json"
     if output.exists():
         raise ValueError("immutable comparison already exists")

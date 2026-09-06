@@ -226,6 +226,54 @@ def infer_initial_endpoint(
     )
     model.cuda().eval()
     recipe = treatment(job.plan.treatment_name)
+    safe_weights = recover_or_publish_arrays(
+        output / "INFERENCE_WEIGHTS.npz",
+        {key: value.detach().cpu().numpy().copy() for key, value in model.state_dict().items()},
+    )
+    # Verify the portable, pickle-free representation on a real held-out input only
+    # after the same complete endpoint barrier that authorizes ordinary inference.
+    observation = reader.observation(tokens[0])
+    sample = four_contexts(
+        observation.counts,
+        observation.durations_s,
+        observation.support,
+        observation.midpoint_twice_relative_us,
+        normalization,
+    )
+    permutation = None
+    if recipe.architecture == "PPS-TIMEPERM":
+        permutation = torch.tensor(
+            [time_derangement(tokens[0], job.plan.seed)], device="cuda", dtype=torch.int64
+        )
+    with torch.inference_mode():
+        native_output = model(
+            sample.contexts[None].cuda(),
+            sample.times[None].cuda(),
+            arm=recipe.architecture,
+            permutation=permutation,
+        )
+        with np.load(verify(safe_weights), allow_pickle=False) as saved:
+            model.load_state_dict({key: torch.from_numpy(saved[key].copy()) for key in saved.files})
+        portable_output = model(
+            sample.contexts[None].cuda(),
+            sample.times[None].cuda(),
+            arm=recipe.architecture,
+            permutation=permutation,
+        )
+        parity = all(
+            np.array_equal(value.cpu().numpy(), portable_output[key].cpu().numpy(), equal_nan=True)
+            for key, value in native_output.items()
+        )
+        if not parity:
+            raise ValueError("portable NPZ inference differs from native endpoint")
+    portable_receipt = {
+        "weights": safe_weights,
+        "native_weights": matches[0]["inference_weights"],
+        "token": tokens[0],
+        "all_output_arrays_equal": parity,
+        "nonfinite_values_retained": True,
+        "optimizer_updates": 0,
+    }
     shards = []
     started = time.monotonic()
     torch.cuda.reset_peak_memory_stats()
@@ -315,6 +363,7 @@ def infer_initial_endpoint(
             "elapsed_this_invocation_seconds": time.monotonic() - started,
             "peak_allocated_vram_bytes": torch.cuda.max_memory_allocated(),
             "total_model_parameters": sum(p.numel() for p in model.parameters()),
+            "portable_inference": portable_receipt,
         }
         record["artifact_sha256"] = object_digest(record)
         atomic_json(receipt_path, record)

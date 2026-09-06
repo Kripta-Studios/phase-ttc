@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, strict_macro_mass
+from e_jepa_ttc.evaluation.stage63_65 import BUCKETS, benchmark_phase, strict_macro_mass
 from e_jepa_ttc.models.phase_distribution_v11 import crps, quantile, validate_edges
 
 
@@ -129,6 +129,21 @@ def posterior_diagnostics(output: Mapping[str, np.ndarray], edges: np.ndarray) -
             rows.loc[valid, name] = quantile(logits, edge_tensor, level).numpy()
     arrays["posterior108"] = probability
     arrays["phase_edges"] = edge_tensor.numpy().copy()
+    centers = (np.asarray(edges[:-1]) + np.asarray(edges[1:])) / 2
+    observable = arrays["observability"] & np.isfinite(arrays["evidence"])
+    peaks = np.argmax(np.where(observable, arrays["evidence"], -np.inf), axis=2)
+    peak_phase = np.where(observable.any(axis=2), centers[peaks], np.nan)
+    arrays["pair_evidence_peak_phase"] = peak_phase
+    for pair in range(4):
+        rows[f"pair{pair}_observable_fraction"] = observable[:, pair].mean(axis=1)
+        rows[f"pair{pair}_evidence_peak_phase"] = peak_phase[:, pair]
+    disagreements = []
+    for left in range(4):
+        for right in range(left + 1, 4):
+            delta = np.abs(peak_phase[:, left] - peak_phase[:, right])
+            rows[f"pair{left}_{right}_peak_disagreement"] = delta
+            disagreements.append(delta)
+    arrays["pair_disagreement"] = np.stack(disagreements, axis=1)
     return DiagnosticExport(
         rows,
         arrays,
@@ -175,6 +190,9 @@ def evaluate_rows(
     cost = 10000 * abs(point - target)
     lo, hi = old_phase.min(axis=1), old_phase.max(axis=1)
     rows["target_phase"], rows["global_mass"] = target, mass
+    rows["bucket"] = "unassigned"
+    for label, lower, upper, _ in BUCKETS:
+        rows.loc[(rows.target_ttc_s > lower) & (rows.target_ttc_s <= upper), "bucket"] = str(label)
     rows["signed_phase_error"] = point - target
     rows["finite_clip_phase_delta"] = point - rows.raw_posterior_median_phase
     rows["signed_ttc_error_s"] = rows.prediction_ttc_s - rows.target_ttc_s
@@ -256,7 +274,7 @@ def evaluate_rows(
         else None
     )
     summary["group_statistics"] = {}
-    for fields in (("sequence_id",), ("sequence_id", "track_id")):
+    for fields in (("sequence_id",), ("sequence_id", "track_id"), ("sequence_id", "bucket")):
         groups = []
         for identity, group in rows.groupby(list(fields), sort=True):
             indices = group.index.to_numpy()

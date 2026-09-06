@@ -1,5 +1,7 @@
 {
   "include": [
+    "scripts/run_scientific_recovery_v10_stage70_76.py",
+    "scripts/package_scientific_recovery_v10_stage70_76.py",
     "scripts/audit_stage70_76_preflight.py",
     "scripts/audit_stage70_garl_source.py",
     "src/e_jepa_ttc/artifacts/campaign_v11.py",
