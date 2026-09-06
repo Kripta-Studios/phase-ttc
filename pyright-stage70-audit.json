@@ -1,0 +1,10 @@
+{
+  "include": [
+    "scripts/audit_stage70_76_preflight.py",
+    "scripts/audit_stage70_garl_source.py",
+    "src/e_jepa_ttc/artifacts/campaign_v11.py"
+  ],
+  "extraPaths": ["src"],
+  "typeCheckingMode": "basic",
+  "pythonVersion": "3.11"
+}

@@ -1,0 +1,17 @@
+{
+  "amendment_id": "STAGE70_76_RESOURCE_001",
+  "status": "USER_AUTHORIZED_BEFORE_SCIENTIFIC_FITS",
+  "date": "2026-09-06",
+  "authority": "User: olvida y cambia esa regla, no necesitas 15% de disco, necesitas minimo 120GB; con la RAM igual, determina una cantidad fija",
+  "supersedes": "Document05 15 percent physical disk headroom requirement",
+  "disk_minimum_free_bytes_after_reservation": 120000000000,
+  "disk_units": "decimal GB: 120 GB = 120000000000 bytes",
+  "host_ram_minimum_available_bytes_after_reservation": 4294967296,
+  "host_ram_units": "4 GiB; fixed existing document05 minimum, no percentage",
+  "applies_to": "Volumes receiving new writes and host RAM used by each job; read-only source volumes need no write reservation",
+  "reservation": "Before starting a job, reserve its full remaining output/cache/checkpoint and optimizer-update budget",
+  "vram": "Document05 GPU allocated-memory limit unchanged; this amendment changes disk and host RAM",
+  "scientific_recipe_changed": false,
+  "optimizer_updates_consumed_at_amendment": 0,
+  "immutable_handoff_modified": false
+}
