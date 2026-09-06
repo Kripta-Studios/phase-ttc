@@ -99,3 +99,36 @@ def test_unclosed_or_overquota_receipt_cannot_release_reservation(tmp_path):
         ledger.settle_technical_audit("fixture", path)
     assert ledger.totals()["reserved_remaining_updates"] == 2
     assert ledger.totals()["charged_optimizer_attempts"] == 0
+
+
+def test_cache_reservation_decreases_only_with_same_representation_progress(tmp_path):
+    from scripts.run_stage70_test_audit import expansion_reservation
+
+    output = tmp_path / "counts_expansion27307"
+    output.mkdir()
+    progress = {
+        "identity_sha256": "a" * 64,
+        "completed_rows": 64,
+        "shards": [
+            {
+                "rows": 64,
+                "components": {
+                    "counts_00000.npy": {
+                        "dtype": "uint16",
+                        "shape": [64, 2, 8, 2, 128, 128],
+                    }
+                },
+            }
+        ],
+    }
+    path = output / "CACHE_PROGRESS.json"
+    path.write_text(json.dumps(progress))
+    remaining, identity = expansion_reservation(tmp_path)
+    assert remaining == (27307 - 64) * (1048576 + 4096) + 4 * 1024**2
+    assert identity == "a" * 64
+    with pytest.raises(ValueError, match="identity changed"):
+        expansion_reservation(tmp_path, "b" * 64)
+    progress["completed_rows"] = 128
+    path.write_text(json.dumps(progress))
+    with pytest.raises(ValueError, match="inconsistent"):
+        expansion_reservation(tmp_path, identity)

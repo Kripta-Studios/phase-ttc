@@ -31,6 +31,36 @@ def _git(checkout: Path, *arguments: str) -> str:
     ).strip()
 
 
+def expansion_reservation(campaign: Path, expected_identity: str | None = None) -> tuple[int, str]:
+    """Account for the live, fixed 27,307-row cache without reading source data."""
+    progress = json.loads(
+        (campaign / "counts_expansion27307/CACHE_PROGRESS.json").read_text(encoding="utf-8")
+    )
+    identity = progress["identity_sha256"]
+    if expected_identity is not None and identity != expected_identity:
+        raise ValueError("concurrent expansion cache identity changed")
+    completed = progress["completed_rows"]
+    shards = progress["shards"]
+    if not 0 <= completed <= 27307 or completed != sum(shard["rows"] for shard in shards):
+        raise ValueError("concurrent expansion cache progress is inconsistent")
+    # uint32 is the conservative whole-cache fallback; the present cache is uint16.
+    itemsize = 4
+    if shards:
+        records = [
+            value
+            for shard in shards
+            for key, value in shard["components"].items()
+            if key.startswith("counts_")
+        ]
+        dtypes = {record["dtype"] for record in records}
+        if dtypes not in ({"uint16"}, {"uint32"}) or any(
+            record["shape"][1:] != [2, 8, 2, 128, 128] for record in records
+        ):
+            raise ValueError("concurrent expansion cache representation changed")
+        itemsize = 2 if dtypes == {"uint16"} else 4
+    return (27307 - completed) * (2 * 8 * 2 * 128 * 128 * itemsize + 4096) + 4 * 1024**2, identity
+
+
 def main() -> None:
     """Reserve the complete QA allowance before any test process imports Torch."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -39,6 +69,7 @@ def main() -> None:
     parser.add_argument("--update-allowance", type=int, required=True)
     parser.add_argument("--disk-reservation-bytes", type=int, required=True)
     parser.add_argument("--ram-reservation-bytes", type=int, default=4 * 1024**3)
+    parser.add_argument("--track-expansion-cache", action="store_true")
     parser.add_argument("tests", nargs="*", default=["tests"])
     args = parser.parse_args()
     checkout = args.checkout.resolve(strict=True)
@@ -74,9 +105,12 @@ def main() -> None:
         "runtime": {"python": sys.version, "cuda_visible_devices": "-1", "threads": 2},
     }
     identity = object_digest(recipe)
+    concurrent_bytes, cache_identity = (
+        expansion_reservation(campaign) if args.track_expansion_cache else (0, None)
+    )
     with ResourceOwner(
         campaign / "training_writer",
-        remaining_bytes=args.disk_reservation_bytes,
+        remaining_bytes=args.disk_reservation_bytes + concurrent_bytes,
         planned_ram_bytes=args.ram_reservation_bytes,
     ) as owner:
         ledger = UpdateLedger(campaign / "UPDATE_LEDGER.json", owner.root)
@@ -115,6 +149,11 @@ def main() -> None:
             )
             try:
                 while process.poll() is None:
+                    if args.track_expansion_cache:
+                        concurrent_bytes, _ = expansion_reservation(campaign, cache_identity)
+                        owner.estimated_remaining_bytes = (
+                            args.disk_reservation_bytes + concurrent_bytes
+                        )
                     owner.check()
                     progress = {**snapshot(database), "pid": process.pid, "timestamp": time.time()}
                     atomic_json(output / "PROGRESS.json", progress)

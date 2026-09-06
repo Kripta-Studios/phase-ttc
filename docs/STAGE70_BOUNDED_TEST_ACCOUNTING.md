@@ -25,9 +25,16 @@ instrumentation; the known training subprocesses inherit the environment. This i
 audited application contract, not an operating-system security boundary.
 
 Thirteen accounting and composite-job tests pass without actual optimizer work.
-The cross-process instrumentation still needs measured acceptance on real synthetic
-optimizer work before the complete suites are run. The resource reservation must
+The real synthetic CPU training-flow test passed with exactly one charged and
+confirmed update, one optimizer instance and no uncertain attempt. The receipt is
+`baseline_qa/instrumentation_cpu_acceptance/CLOSED_ACCOUNTING.json`. Inherited child
+process coverage will also be inspected in the complete baseline suite. The resource reservation must
 include outstanding concurrent cache writes as well as the suite's own allocation.
+
+Scoped Pyright passed all 48 files with the explicit shared Python interpreter.
+The initial invocation without `--pythonpath` reported nine pandas typing errors;
+it resolved a different environment. No source or type suppression was needed.
+Use `--pythonpath ../e-jepa-ttc/.venv/Scripts/python.exe` for this worktree.
 
 The composite architecture executor reserves pretext and supervised budgets before
 either phase starts, requires a signed scientific lock and physically bound source
