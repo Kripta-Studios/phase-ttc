@@ -28,7 +28,11 @@
     "scripts/prepare_stage70_expansion_inventory.py",
     "src/e_jepa_ttc/training/correspondence_pretext_v11.py",
     "scripts/qa_stage71_correspondence_learning.py",
-    "scripts/qa_stage73_pretext_resume.py"
+    "scripts/qa_stage73_pretext_resume.py",
+    "src/e_jepa_ttc/data/stage70_expansion_binding.py",
+    "scripts/build_stage71_expansion_cache.py",
+    "scripts/validate_stage70_expansion_rows.py",
+    "scripts/profile_stage71_sweep_chunks.py"
   ],
   "extraPaths": [
     "src"
