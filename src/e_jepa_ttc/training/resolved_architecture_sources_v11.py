@@ -34,6 +34,7 @@ def load_architecture_sources(
     expected_fold: int,
     expected_expansion: bool,
     source_role_sha256: str,
+    nested_recipe: dict[str, Any] | None = None,
 ) -> ResolvedArchitectureSources:
     """Validate actual arrays against their signed fold source before reserving any fit."""
     source = json.loads(verify(source_binding).read_text(encoding="utf-8"))
@@ -53,6 +54,40 @@ def load_architecture_sources(
     original = reader.metadata.loc[original_mask]
     held = original.loc[original.outer_fold == expected_fold]
     required_train = set(original.loc[original.outer_fold != expected_fold, "sample_token"])
+    if nested_recipe is not None:
+        recipe_unsigned = {
+            key: value for key, value in nested_recipe.items() if key != "artifact_sha256"
+        }
+        if (
+            object_digest(recipe_unsigned) != nested_recipe.get("artifact_sha256")
+            or source.get("nested_recipe_sha256") != nested_recipe["artifact_sha256"]
+            or source.get("inner_fold") != nested_recipe["inner_fold"]
+            or nested_recipe.get("outer_fold") != expected_fold
+            or nested_recipe.get("cache_sha256") != reader.identity
+        ):
+            raise ValueError("nested TRAIN source differs from its prospective recipe")
+        for field in (
+            "ordered_tokens",
+            "excluded_sequences",
+            "train_sequences",
+            "allowed_train_groups",
+            "excluded_groups",
+            "training_view_sha256",
+            "include_expansion",
+        ):
+            if source.get(field) != nested_recipe.get(field):
+                raise ValueError(f"nested TRAIN source changed its prospective {field}")
+        if not set(held.sequence_id.astype(str)) <= set(nested_recipe["outer_excluded_sequences"]):
+            raise ValueError("nested recipe omits actual outer exclusions")
+        if set(nested_recipe["inner_prediction_tokens"]) & set(tokens):
+            raise ValueError("nested TRAIN source exposed inner prediction rows")
+        required_train = set(
+            original.loc[
+                original.sequence_id.isin(nested_recipe["train_sequences"]), "sample_token"
+            ]
+        )
+    elif source.get("inner_fold") is not None or source.get("nested_recipe_sha256") is not None:
+        raise ValueError("nested TRAIN source requires its prospectively authorized recipe")
     if (
         held.empty
         or not required_train <= set(tokens)

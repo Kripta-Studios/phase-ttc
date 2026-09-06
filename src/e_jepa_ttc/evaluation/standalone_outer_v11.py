@@ -13,12 +13,14 @@ import numpy as np
 import torch
 
 from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner
+from e_jepa_ttc.artifacts.nested_architecture_barrier_v11 import verify_nested_barrier
 from e_jepa_ttc.artifacts.replication_barrier_v11 import verify_replication_barrier
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
 from e_jepa_ttc.data.event_context128 import RateNormalization, four_contexts
 from e_jepa_ttc.data.event_context128_reader import CountReader
 from e_jepa_ttc.models.projective_phase_network import ProjectivePhaseNetwork
+from e_jepa_ttc.training.nested_architecture_sources_v11 import prospective_nested_recipe
 from e_jepa_ttc.training.stage70_fixed_fit import deterministic_runtime
 from e_jepa_ttc.training.stage72_augmentation import time_derangement
 from e_jepa_ttc.training.stage72_jobs import FitJob, require_scientific_lock
@@ -62,6 +64,35 @@ def _publish_arrays(path: Path, arrays: dict[str, np.ndarray]) -> dict[str, Any]
         os.fsync(stream.fileno())
     os.replace(temporary, path)
     return binding(path)
+
+
+def validate_inner_view(
+    job: FitJob, reader: CountReader, tokens: tuple[str, ...], lock: dict[str, Any]
+) -> None:
+    """Use the fixed two-sequence inner prediction pool, never an outer-OOF training substitute."""
+    _, recipe = prospective_nested_recipe(job.plan, lock)
+    if (
+        reader.identity != lock["outer_count_cache_sha256"]
+        or list(tokens) != recipe["inner_prediction_tokens"]
+    ):
+        raise ValueError("inner inference changed its original cache or prospective rows")
+    rows = reader.metadata.loc[
+        reader.metadata.sequence_id.isin(recipe["inner_prediction_sequences"])
+    ]
+    if (
+        tuple(rows.sample_token.astype(str)) != tokens
+        or len(set(tokens)) != len(tokens)
+        or not tokens
+    ):
+        raise ValueError("inner inference must cover its entire original split")
+    groups = {lock["sequence_to_group"][sequence] for sequence in rows.sequence_id.astype(str)}
+    if (
+        groups & set(job.allowed_train_groups)
+        or not groups <= set(job.excluded_groups)
+        or set(tokens) & set(recipe["ordered_tokens"])
+        or set(rows.sequence_id.astype(str)) & set(recipe["outer_excluded_sequences"])
+    ):
+        raise ValueError("inner prediction acquisition was exposed or belongs to outer evaluation")
 
 
 def recover_or_publish_arrays(path: Path, arrays: dict[str, np.ndarray]) -> dict[str, Any]:
@@ -123,14 +154,19 @@ def infer_initial_endpoint(
     """
     owner.check()
     barrier = (
-        verify_replication_barrier(barrier_path, expected_lock=job.training_lock_sha256)
+        verify_nested_barrier(barrier_path, expected_lock=job.training_lock_sha256)
+        if job.plan.stage == "S75"
+        else verify_replication_barrier(barrier_path, expected_lock=job.training_lock_sha256)
         if job.plan.stage == "S74"
         else verify_initial_barrier(
             barrier_path, expected_stage=job.plan.stage, expected_lock=job.training_lock_sha256
         )
     )
     lock = require_scientific_lock(lock_path, job.training_lock_sha256)
-    validate_outer_view(job, reader, tokens, lock)
+    if job.plan.stage == "S75":
+        validate_inner_view(job, reader, tokens, lock)
+    else:
+        validate_outer_view(job, reader, tokens, lock)
     matches = [row for row in barrier["endpoints"] if row["job_sha256"] == job.identity]
     if len(matches) != 1:
         raise ValueError("inference job is absent from the complete stage barrier")
@@ -139,7 +175,8 @@ def infer_initial_endpoint(
         or normalization.training_view_sha256 != job.training_view_sha256
     ):
         raise ValueError("outer inference normalizer differs from its TRAIN producer")
-    expected_output = Path(lock["outer_inference_root"]) / job.plan.job_id
+    output_key = "inner_inference_root" if job.plan.stage == "S75" else "outer_inference_root"
+    expected_output = Path(lock[output_key]) / job.plan.job_id
     if output.absolute() != expected_output or output.resolve() != expected_output:
         raise ValueError("outer inference output escaped its frozen owned directory")
     output.mkdir(parents=True, exist_ok=True)
@@ -268,7 +305,9 @@ def infer_initial_endpoint(
         torch.cuda.synchronize()
         verify_inference_shards(shards, tokens, identity_sha, output)
         record = {
-            "kind": "FIXED_ENDPOINT_OUTER_INFERENCE",
+            "kind": "FIXED_ENDPOINT_INNER_INFERENCE"
+            if job.plan.stage == "S75"
+            else "FIXED_ENDPOINT_OUTER_INFERENCE",
             "identity": identity,
             "identity_sha256": identity_sha,
             "shards": shards,

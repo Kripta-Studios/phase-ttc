@@ -68,6 +68,19 @@ exportación e inferencia; estas pruebas no consumieron actualizaciones de
 optimizador. Ruff y Pyright se verifican nuevamente con la implementación final.
 No existe todavía un lock científico ni ha empezado S72.
 
+La materialización S75 ajusta momentos y prior nuevos sobre las filas exactas
+de cada receta interna, únicamente después de verificar el criterio de oracle.
+El cargador común admite estas fuentes con su receta explícita y rechaza
+normalizaciones o priors de otro productor. La barrera S75 exige todos los
+endpoints nuevos; la inferencia interna verifica también los alias de grupos y
+excluye las filas de evaluación exterior. Pasan 32 tests de fuentes e inferencia.
+
+`nested_source_integration_qa/SOURCE_INTEGRATION.json` registra la comprobación
+real del cargador ampliado: seis vistas iniciales idénticas y nueve vistas
+internas con sus identidades originales. Se verificaron ambas cachés físicas.
+No se ajustaron normalizaciones, priors ni modelos reales en esa comprobación.
+La materialización real y el entrenamiento S75 permanecen condicionados.
+
 Falta terminar la integración de las ramas condicionales, los diagnósticos TRAIN
 supervisados y las intervenciones de mecanismo, la contabilidad de coste total,
 la recuperación de checkpoints dañados, la CLI/PowerShell y el empaquetado.

@@ -195,6 +195,27 @@ def execute_architecture_job(
     ):
         raise ValueError("resolved job tensors or TRAIN normalizer/prior identity differs")
     sources = lock.get("authorized_source_manifests", {})
+    if job.plan.stage == "S75":
+        from e_jepa_ttc.artifacts.architecture_stage_decisions_v11 import verify_stage_decision
+        from e_jepa_ttc.training.nested_architecture_sources_v11 import (
+            verify_nested_materialization,
+        )
+
+        if stage_authorization is None:
+            raise ValueError("nested fit has no source-bound headroom authorization")
+        resolved_lock = {**lock, "artifact_sha256": job.training_lock_sha256}
+        nested_decision, nested_plans = verify_stage_decision(
+            stage_authorization, resolved_lock, "S75"
+        )
+        if (
+            job.plan not in nested_plans
+            or nested_decision["artifact_sha256"] != job.stage_authorization_sha256
+        ):
+            raise ValueError("nested fit is absent from the exact canonical headroom decision")
+        nested_source = verify_nested_materialization(
+            job.plan, resolved_lock, nested_decision["artifact_sha256"]
+        )
+        sources = {job.source_manifest_sha256: nested_source}
     if job.source_manifest_sha256 not in sources:
         raise ValueError("job source view is not authorized by the frozen stage graph")
     source = json.loads(verify(sources[job.source_manifest_sha256]).read_text())
