@@ -37,7 +37,8 @@
     "src/e_jepa_ttc/models/full_cost_router_v11.py",
     "src/e_jepa_ttc/data/composite_counts_v11.py",
     "src/e_jepa_ttc/training/stage72_architecture.py",
-    "src/e_jepa_ttc/training/stage72_augmentation.py"
+    "src/e_jepa_ttc/training/stage72_augmentation.py",
+    "src/e_jepa_ttc/evaluation/architecture_diagnostics_v11.py"
   ],
   "extraPaths": [
     "src"
