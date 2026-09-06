@@ -81,7 +81,8 @@
     "src/e_jepa_ttc/evaluation/supervised_checkpoint_diagnostics_v11.py",
     "src/e_jepa_ttc/evaluation/replication_evidence_v11.py",
     "src/e_jepa_ttc/evaluation/router_evidence_v11.py",
-    "src/e_jepa_ttc/evaluation/architecture_mechanisms_v11.py"
+    "src/e_jepa_ttc/evaluation/architecture_mechanisms_v11.py",
+    "src/e_jepa_ttc/evaluation/train_prior_baseline_v11.py"
   ],
   "extraPaths": [
     "src",

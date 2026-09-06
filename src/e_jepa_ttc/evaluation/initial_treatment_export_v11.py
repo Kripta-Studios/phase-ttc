@@ -22,6 +22,7 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import (
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
 from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import evaluate_rows
 from e_jepa_ttc.evaluation.standalone_outer_v11 import _publish_arrays, verify_inference_shards
+from e_jepa_ttc.evaluation.train_prior_baseline_v11 import append_prior_baseline, frozen_prior
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
 from e_jepa_ttc.training.stage73_factorial import Availability, PlannedFit, initial_jobs
 
@@ -181,10 +182,12 @@ def export_initial_treatment(
         raise ValueError("treatment export escaped its frozen output directory")
     source_record = lock["historical_audit_rows"]
     receipts, roots, inference_bindings = [], [], []
+    priors, prior_sources = {}, {}
     for plan in plans:
         rows = [row for row in barrier["endpoints"] if row["job_id"] == plan.job_id]
         if len(rows) != 1:
             raise ValueError("treatment outer producer absent from complete stage barrier")
+        priors[plan.outer_fold], prior_sources[str(plan.outer_fold)] = frozen_prior(plan, lock)
         root = Path(lock["outer_inference_root"]) / plan.job_id
         path = root / "INFERENCE_COMPLETE.json"
         if root.resolve() != root or path.is_symlink():
@@ -210,6 +213,7 @@ def export_initial_treatment(
         "training_lock_sha256": lock_sha256,
         "historical_audit_rows": source_record,
         "inference_endpoints": inference_bindings,
+        "TRAIN_prior_sources": prior_sources,
     }
     intent_path = output / "EXPORT_INTENT.json"
     if intent_path.exists():
@@ -252,6 +256,7 @@ def export_initial_treatment(
     old.columns = ["A5", "C2F", "PAIR"]
     old.index = pd.Index(metadata.sample_token)
     diagnostic = evaluate_rows(metadata, arrays, edges, old)
+    append_prior_baseline(diagnostic, metadata, priors)
     for name in historical.columns:
         if name.startswith(("S65-", "S67-")) and name.endswith("_ttc"):
             diagnostic.rows[name] = historical[name].to_numpy(np.float64)
