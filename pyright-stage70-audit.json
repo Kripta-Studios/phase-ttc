@@ -15,7 +15,9 @@
     "scripts/prepare_stage70_roles.py",
     "src/e_jepa_ttc/data/event_context128.py",
     "src/e_jepa_ttc/data/event_context128_cache.py",
-    "scripts/build_stage71_counts.py"
+    "scripts/build_stage71_counts.py",
+    "src/e_jepa_ttc/data/event_context128_reader.py",
+    "src/e_jepa_ttc/training/stage73_correspondence.py"
   ],
   "extraPaths": [
     "src"
