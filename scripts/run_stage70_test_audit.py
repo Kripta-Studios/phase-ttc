@@ -21,7 +21,7 @@ import psutil
 from stage70_optimizer_audit import initialize, snapshot
 
 from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner
-from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.training.stage70_update_ledger import UpdateLedger
 
 
@@ -70,6 +70,7 @@ def main() -> None:
     parser.add_argument("--disk-reservation-bytes", type=int, required=True)
     parser.add_argument("--ram-reservation-bytes", type=int, default=4 * 1024**3)
     parser.add_argument("--track-expansion-cache", action="store_true")
+    parser.add_argument("--continue-audit", type=Path)
     parser.add_argument("tests", nargs="*", default=["tests"])
     args = parser.parse_args()
     checkout = args.checkout.resolve(strict=True)
@@ -104,6 +105,34 @@ def main() -> None:
         "files": [binding(path) for path in [Path(__file__), *sorted(SUPPORT.glob("*.py"))]],
         "runtime": {"python": sys.version, "cuda_visible_devices": "-1", "threads": 2},
     }
+    selection = None
+    if args.continue_audit is not None:
+        prior = args.continue_audit.resolve(strict=True)
+        if not prior.is_relative_to(campaign / "baseline_qa"):
+            raise ValueError("continued audit must belong to this campaign")
+        disposition_path = prior / "TEST_DISPOSITION.json"
+        disposition = json.loads(disposition_path.read_text(encoding="utf-8"))
+        signature = disposition.pop("sha256")
+        if object_digest(disposition) != signature or disposition["complete_suite"]:
+            raise ValueError("continuation requires a signed interrupted test disposition")
+        for source in disposition["source_bindings"]:
+            verify(source)
+        prior_recipe = json.loads((prior / "RECIPE.json").read_text(encoding="utf-8"))
+        prior_signature = prior_recipe.pop("sha256")
+        if object_digest(prior_recipe) != prior_signature or (
+            prior_recipe["commit"] != commit
+            or prior_recipe["checkout"] != str(checkout)
+            or prior_recipe["tests"] != args.tests
+        ):
+            raise ValueError("continued test source or suite differs from the interrupted attempt")
+        selection = {
+            "full_nodeids": prior_recipe["continued_selection"]["full_nodeids"]
+            if "continued_selection" in prior_recipe
+            else json.loads((prior / "capture/COLLECTED_NODEIDS.json").read_text(encoding="utf-8")),
+            "pending_ids": disposition["pending_ids"],
+            "prior_disposition": binding(disposition_path),
+        }
+        recipe["continued_selection"] = selection
     identity = object_digest(recipe)
     concurrent_bytes, cache_identity = (
         expansion_reservation(campaign) if args.track_expansion_cache else (0, None)
@@ -129,6 +158,12 @@ def main() -> None:
             "STAGE70_QA_IDENTITY": identity,
             "STAGE70_QA_OUTPUT": str(output / "capture"),
         }
+        if selection is not None:
+            selection_sha = object_digest(selection)
+            selection_path = output / "PENDING_SELECTION.json"
+            atomic_json(selection_path, {**selection, "sha256": selection_sha})
+            environment["STAGE70_QA_PENDING_SELECTION"] = str(selection_path)
+            environment["STAGE70_QA_PENDING_SHA256"] = selection_sha
         command = [
             sys.executable,
             "-B",

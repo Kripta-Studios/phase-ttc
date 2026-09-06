@@ -6,6 +6,7 @@ accounting is a separate prerequisite before using it for training-heavy tests.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import sys
@@ -63,6 +64,28 @@ def pytest_collection_finish(session: pytest.Session) -> None:
     """Save literal node IDs, without reconstructing them from JUnit class names."""
     COLLECTED.extend(item.nodeid for item in session.items)
     _write("COLLECTED_NODEIDS.json", COLLECTED)
+
+
+def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item]) -> None:
+    """Continue only signed pending IDs after verifying the complete source inventory."""
+    selection_path = os.environ.get("STAGE70_QA_PENDING_SELECTION")
+    if not selection_path:
+        return
+    selection = json.loads(Path(selection_path).read_text(encoding="utf-8"))
+    signature = selection.pop("sha256")
+    digest = hashlib.sha256(
+        json.dumps(selection, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+    ).hexdigest()
+    if signature != digest or digest != os.environ.get("STAGE70_QA_PENDING_SHA256"):
+        raise pytest.UsageError("pending test selection signature differs")
+    if [item.nodeid for item in items] != selection["full_nodeids"]:
+        raise pytest.UsageError("source test inventory changed since the interrupted attempt")
+    pending = set(selection["pending_ids"])
+    if not pending or not pending.issubset(selection["full_nodeids"]):
+        raise pytest.UsageError("invalid pending test selection")
+    removed = [item for item in items if item.nodeid not in pending]
+    items[:] = [item for item in items if item.nodeid in pending]
+    config.hook.pytest_deselected(items=removed)
 
 
 def _record(report: pytest.CollectReport | pytest.TestReport, phase: str) -> None:
