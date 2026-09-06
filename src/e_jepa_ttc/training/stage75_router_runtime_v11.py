@@ -116,6 +116,7 @@ def run_nested_routers(
                 experts=experts,
                 identity=identity,
                 output=output,
+                on_attempt=runtime.ledger.record_ridge_attempt,
             )
             endpoints[f"{arm}_outer{outer}"] = binding(output / "RIDGE_ENDPOINT.json")
     frozen = {

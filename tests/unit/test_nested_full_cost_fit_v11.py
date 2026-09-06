@@ -70,3 +70,35 @@ def test_changed_coefficients_block_completed_evidence_without_refitting(tmp_pat
     monkeypatch.setattr(module.FullCostRouterV11, "fit", forbidden)
     with pytest.raises(ValueError, match="physical identity changed"):
         fit(tmp_path)
+
+
+def test_real_solve_is_counted_once_without_charging_optimizer_updates(tmp_path, monkeypatch):
+    import json
+    import os
+
+    import psutil
+
+    from e_jepa_ttc.training.stage70_update_ledger import UpdateLedger
+
+    (tmp_path / "ACTIVE_OWNER.json").write_text(
+        json.dumps({"pid": os.getpid(), "created": psutil.Process().create_time()})
+    )
+    ledger = UpdateLedger(tmp_path / "LEDGER.json", tmp_path)
+    features, costs, mass = inputs()
+    kwargs = {
+        "experts": ("A5", "C2F", "PAIR", "DIRECT", "PPS"),
+        "identity": {"technical_synthetic_fixture": True},
+        "output": tmp_path / "fit",
+        "on_attempt": ledger.record_ridge_attempt,
+    }
+    module.fit_full_cost_endpoint(features, costs, mass, **kwargs)
+    assert ledger.totals()["ridge_fits"] == 1
+    assert ledger.totals()["confirmed_optimizer_updates"] == 0
+    assert ledger.state["ridge_fits"][0]["completed"] is not None
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("ledger recovery repeated an already completed solve")
+
+    monkeypatch.setattr(module.FullCostRouterV11, "fit", forbidden)
+    module.fit_full_cost_endpoint(features, costs, mass, **kwargs)
+    assert ledger.totals()["ridge_fits"] == 1

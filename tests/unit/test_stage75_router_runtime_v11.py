@@ -102,6 +102,7 @@ def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features
             "treatment_export_root": str(tmp_path / "initial_exports"),
         },
         _reserve_resources=lambda key: None,
+        ledger=SimpleNamespace(record_ridge_attempt=lambda attempt, completed: None),
     )
     decision = {
         "canonical_candidates": names,

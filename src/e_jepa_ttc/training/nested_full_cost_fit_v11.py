@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import time
+from collections.abc import Callable
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any
@@ -25,6 +26,7 @@ def fit_full_cost_endpoint(
     experts: tuple[str, ...],
     identity: dict[str, Any],
     output: Path,
+    on_attempt: Callable[[dict[str, Any], dict[str, Any] | None], None] | None = None,
 ) -> dict[str, Any]:
     """Solve the fixed full-cost ridge once; completed payloads cannot be silently replaced.
 
@@ -52,6 +54,19 @@ def fit_full_cost_endpoint(
         raise ValueError("ridge output lacks its prospective source identity")
     else:
         atomic_json(intent, input_identity)
+    if on_attempt is not None:
+        for started_path in sorted(output.glob("attempt_*/SOLVE_STARTED.json")):
+            if started_path.resolve() != started_path.absolute():
+                raise ValueError("ridge accounting source was redirected")
+            started_record = json.loads(started_path.read_text(encoding="utf-8"))
+            if started_record["identity"] != input_identity:
+                raise ValueError("earlier ridge attempt changed its fixed input universe")
+            completed_path = started_path.parent / "SOLVE_COMPLETE.json"
+            if completed_path.exists():
+                load_full_cost_endpoint(completed_path)
+            on_attempt(
+                binding(started_path), binding(completed_path) if completed_path.exists() else None
+            )
     final = output / "RIDGE_ENDPOINT.json"
     if final.exists():
         record, _ = load_full_cost_endpoint(final)
@@ -80,6 +95,8 @@ def fit_full_cost_endpoint(
     )
     started = time.monotonic()
     try:
+        if on_attempt is not None:
+            on_attempt(binding(attempt / "SOLVE_STARTED.json"), None)
         model = FullCostRouterV11.fit(features, costs, mass, experts=experts)
         elapsed = time.monotonic() - started
         values = {
@@ -99,6 +116,8 @@ def fit_full_cost_endpoint(
         }
         record["artifact_sha256"] = object_digest(record)
         atomic_json(attempt / "SOLVE_COMPLETE.json", record)
+        if on_attempt is not None:
+            on_attempt(record["fit_attempt"], binding(attempt / "SOLVE_COMPLETE.json"))
         atomic_json(final, record)
         return record
     except Exception as error:

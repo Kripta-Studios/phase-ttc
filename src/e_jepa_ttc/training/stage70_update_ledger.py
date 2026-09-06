@@ -300,3 +300,39 @@ class UpdateLedger:
         verify(job["checkpoint"])
         job["status"], job["endpoint"] = "COMPLETE", job["checkpoint"]
         self._publish()
+
+    def record_ridge_attempt(
+        self, attempt: dict[str, Any], completed: dict[str, Any] | None
+    ) -> None:
+        """Count physical solve attempts separately from optimizer work and preserve completion."""
+        started = json.loads(verify(attempt).read_text(encoding="utf-8"))
+        if started.get("optimizer_updates") != 0 or not started.get("identity"):
+            raise ValueError("ridge accounting requires its immutable pre-solve identity")
+        if completed is not None:
+            endpoint = json.loads(verify(completed).read_text(encoding="utf-8"))
+            unsigned = {key: value for key, value in endpoint.items() if key != "artifact_sha256"}
+            if (
+                object_digest(unsigned) != endpoint.get("artifact_sha256")
+                or endpoint.get("fit_attempt") != attempt
+                or endpoint.get("identity") != started["identity"]
+                or endpoint.get("completed_ridge_solves") != 1
+                or endpoint.get("optimizer_updates") != 0
+            ):
+                raise ValueError("ridge completion does not match the recorded solve attempt")
+        matches = [
+            entry
+            for entry in self.state["ridge_fits"]
+            if entry["attempt"]["path"] == attempt["path"]
+        ]
+        if matches:
+            entry = matches[0]
+            if entry["attempt"] != attempt or (
+                completed is not None and entry["completed"] not in (None, completed)
+            ):
+                raise ValueError("a recorded ridge solve cannot be replaced")
+            if entry["completed"] is not None or completed is None:
+                return
+            entry["completed"] = completed
+        else:
+            self.state["ridge_fits"].append({"attempt": attempt, "completed": completed})
+        self._publish()
