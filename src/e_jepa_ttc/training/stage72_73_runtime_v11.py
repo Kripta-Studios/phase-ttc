@@ -102,8 +102,12 @@ class InitialArchitectureRuntime:
                 or producers.get("kind") != "CAPACITY_NESTED_PRODUCER_ROLES"
                 or set(self.original.metadata.sample_token) != set(cohort["ordered_tokens"])
                 or any(
-                    row.outer_fold != cohort["sequence_to_outer_fold"].get(str(row.sequence_id))
-                    for row in self.original.metadata.itertuples()
+                    fold != cohort["sequence_to_outer_fold"].get(str(sequence))
+                    for fold, sequence in zip(
+                        self.original.metadata.outer_fold,
+                        self.original.metadata.sequence_id,
+                        strict=True,
+                    )
                 )
             ):
                 raise ValueError("physical count cache differs from the fixed expanded cohort")
