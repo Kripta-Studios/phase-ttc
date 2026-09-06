@@ -7,12 +7,14 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
+from e_jepa_ttc.artifacts.architecture_stage_decisions_v11 import publish_stage_decision
 from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner, host_ram_reservation
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import freeze_initial_stage
 from e_jepa_ttc.data.composite_counts_v11 import CompositeCountReader
 from e_jepa_ttc.data.event_context128_reader import CountReader
 from e_jepa_ttc.data.stage70_roles import TrainRoles
+from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import build_initial_evidence
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import export_initial_treatment
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import diagnose_pretext_checkpoint
 from e_jepa_ttc.evaluation.standalone_outer_v11 import infer_initial_endpoint
@@ -61,6 +63,8 @@ class InitialArchitectureRuntime:
             "outer_inference_root",
             "treatment_export_root",
             "stage_barrier_root",
+            "initial_evidence_root",
+            "stage_decision_root",
         ):
             path = Path(self.lock[field])
             if path.resolve() != path or not path.is_relative_to(self.root):
@@ -250,3 +254,24 @@ class InitialArchitectureRuntime:
             )
         self._progress("INITIAL_EXPORTS_COMPLETE_CONDITIONAL_STAGES_PENDING", None, completed)
         return exports
+
+    def analyze_initial_stages(
+        self, exports: dict[str, Any], barriers: dict[str, Any]
+    ) -> dict[str, Any]:
+        """Bind fixed endpoint statistics to both exact conditional stage decisions."""
+        self._reserve_resources("initial_evidence")
+        self._progress("INITIAL_PAIRED_ANALYSIS", None, [])
+        build_initial_evidence(
+            exports,
+            barriers,
+            lock_path=self.lock_path,
+            lock_sha256=self.lock_sha256,
+            output=self.paths["initial_evidence_root"],
+            owner=self.owner,
+        )
+        decisions = {}
+        for stage in ("S74", "S75"):
+            publish_stage_decision(stage, {**self.lock, "artifact_sha256": self.lock_sha256})
+            decisions[stage] = binding(self.paths["stage_decision_root"] / f"{stage}_DECISION.json")
+        self._progress("INITIAL_EVIDENCE_COMPLETE_CONDITIONAL_DECISIONS_FROZEN", None, [])
+        return decisions

@@ -7,6 +7,7 @@ from dataclasses import asdict, replace
 from pathlib import Path
 from typing import Any, cast
 
+from e_jepa_ttc.artifacts.architecture_stage_decisions_v11 import verify_stage_decision
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _verify_job_source, verify_fit_endpoint
 from e_jepa_ttc.evaluation.stage70_76 import Evidence
@@ -68,7 +69,9 @@ def freeze_replication_stage(
 ) -> dict[str, Any]:
     """Require every new encoder/head seed endpoint authorized by the frozen S74 decision."""
     lock = require_scientific_lock(lock_path, lock_sha256)
-    decision = json.loads(decision_path.read_text(encoding="utf-8"))
+    decision, _ = verify_stage_decision(
+        binding(decision_path), {**lock, "artifact_sha256": lock_sha256}, "S74"
+    )
     plans = replication_decision_plans(decision, {**lock, "artifact_sha256": lock_sha256})
     if not plans or tuple(job.plan for job in jobs) != plans:
         raise ValueError("replication barrier requires every prospectively authorized endpoint")
@@ -120,7 +123,9 @@ def verify_replication_barrier(path: Path, *, expected_lock: str) -> dict[str, A
     ):
         raise ValueError("invalid full replication endpoint barrier")
     lock = require_scientific_lock(verify(record["training_lock"]), expected_lock)
-    decision = json.loads(verify(record["stage_authorization"]).read_text(encoding="utf-8"))
+    decision, _ = verify_stage_decision(
+        record["stage_authorization"], {**lock, "artifact_sha256": expected_lock}, "S74"
+    )
     plans = replication_decision_plans(decision, {**lock, "artifact_sha256": expected_lock})
     if (
         not plans

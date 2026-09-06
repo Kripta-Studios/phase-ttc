@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 
 from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner
+from e_jepa_ttc.artifacts.replication_barrier_v11 import verify_replication_barrier
 from e_jepa_ttc.artifacts.risk_geometry_v10 import (
     AllowlistedSources,
     atomic_json,
@@ -22,7 +23,7 @@ from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barri
 from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import evaluate_rows
 from e_jepa_ttc.evaluation.standalone_outer_v11 import _publish_arrays, verify_inference_shards
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
-from e_jepa_ttc.training.stage73_factorial import Availability, initial_jobs
+from e_jepa_ttc.training.stage73_factorial import Availability, PlannedFit, initial_jobs
 
 
 def publish_export_payloads(
@@ -31,8 +32,10 @@ def publish_export_payloads(
     """Recover closed orphan exports only when recomputation reproduces every value."""
     for name in ("ROWS.csv", "DIAGNOSTIC_ARRAYS.npz"):
         path = output / name
-        if path.resolve() != path.absolute() or path.is_symlink() or (
-            path.exists() and path.stat().st_nlink != 1
+        if (
+            path.resolve() != path.absolute()
+            or path.is_symlink()
+            or (path.exists() and path.stat().st_nlink != 1)
         ):
             raise ValueError("export payload is redirected or hard-linked")
     rows_path = output / "ROWS.csv"
@@ -143,19 +146,31 @@ def export_initial_treatment(
     lock_sha256: str,
     output: Path,
     owner: ResourceOwner,
+    seed: int = 7,
 ) -> dict[str, Any]:
     """Read development targets only after the complete scientific endpoint barrier verifies."""
     owner.check()
-    barrier = verify_initial_barrier(barrier_path, expected_stage=stage, expected_lock=lock_sha256)
     lock = require_scientific_lock(lock_path, lock_sha256)
-    plans = [
-        plan
-        for plan in initial_jobs(Availability(**lock["availability"]))
-        if plan.stage == stage and plan.treatment_name == treatment_name
-    ]
+    if stage == "S74":
+        if seed not in (13, 23):
+            raise ValueError("replication export requires a prescribed new seed")
+        barrier = verify_replication_barrier(barrier_path, expected_lock=lock_sha256)
+        plans = [PlannedFit("S74", treatment_name, fold, seed) for fold in (0, 1, 2)]
+        expected_output = Path(lock["replication_export_root"]) / treatment_name / f"seed{seed}"
+    else:
+        if seed != 7:
+            raise ValueError("initial exports require seed7")
+        barrier = verify_initial_barrier(
+            barrier_path, expected_stage=stage, expected_lock=lock_sha256
+        )
+        plans = [
+            plan
+            for plan in initial_jobs(Availability(**lock["availability"]))
+            if plan.stage == stage and plan.treatment_name == treatment_name
+        ]
+        expected_output = Path(lock["treatment_export_root"]) / treatment_name
     if len(plans) != 3:
         raise ValueError("treatment is not in the prospectively available initial stage")
-    expected_output = Path(lock["treatment_export_root"]) / treatment_name
     if output.absolute() != expected_output or output.resolve() != expected_output:
         raise ValueError("treatment export escaped its frozen output directory")
     source_record = lock["historical_audit_rows"]
@@ -184,6 +199,7 @@ def export_initial_treatment(
     identity = {
         "treatment": treatment_name,
         "stage": stage,
+        "seed": seed,
         "stage_barrier": binding(barrier_path),
         "training_lock_sha256": lock_sha256,
         "historical_audit_rows": source_record,
@@ -237,7 +253,11 @@ def export_initial_treatment(
         output, diagnostic.rows, diagnostic.arrays
     )
     receipt = {
-        "kind": "COMPLETE_INITIAL_TREATMENT_DIAGNOSTICS",
+        "kind": (
+            "COMPLETE_REPLICATION_TREATMENT_DIAGNOSTICS"
+            if stage == "S74"
+            else "COMPLETE_INITIAL_TREATMENT_DIAGNOSTICS"
+        ),
         **identity,
         "rows": rows_binding,
         "arrays": array_binding,

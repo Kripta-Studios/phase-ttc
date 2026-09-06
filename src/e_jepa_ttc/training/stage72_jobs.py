@@ -215,6 +215,18 @@ def execute_architecture_job(
     if job.stage_authorization_sha256 is not None:
         if stage_authorization is None:
             raise ValueError("conditional fit has no physically bound stage decision")
+        from e_jepa_ttc.artifacts.architecture_stage_decisions_v11 import verify_stage_decision
+
+        verified_decision, verified_plans = verify_stage_decision(
+            stage_authorization,
+            {**lock, "artifact_sha256": job.training_lock_sha256},
+            job.plan.stage,
+        )
+        if (
+            job.plan not in verified_plans
+            or verified_decision["artifact_sha256"] != job.stage_authorization_sha256
+        ):
+            raise ValueError("conditional job differs from its source-bound canonical decision")
         decision = json.loads(verify(stage_authorization).read_text())
         decision_signature = decision.pop("artifact_sha256", None)
         if (

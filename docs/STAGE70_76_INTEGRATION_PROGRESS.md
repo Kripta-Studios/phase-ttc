@@ -54,6 +54,20 @@ comparador condicional S76 y no bloquea DIRECT/PPS ni sus tratamientos A/D.
 
 ## Pendiente antes de congelar
 
+La integración añadida después de `6f89fa1` vincula las decisiones S74/S75 a los
+endpoints, exportaciones de filas y estadísticas pareadas de ambos estadios
+iniciales. Recalcula el oracle conjunto usando exclusivamente C_DIRECT/C_PPS:
+ningún control mejor puede activar S75. La publicación es idempotente y rechaza
+decisiones numéricas que no coincidan con la evidencia física de origen.
+
+El ejecutor S74 resuelve exactamente los mismos pools TRAIN de los candidatos
+canónicos y usa nuevas semillas 13/23 para encoder, cabeza y pretexto cuando
+corresponda. Congela todos sus endpoints antes de inferir y exporta cada semilla
+por separado. Se verificaron 16 tests de decisiones/contratos y 14 de ejecución,
+exportación e inferencia; estas pruebas no consumieron actualizaciones de
+optimizador. Ruff y Pyright se verifican nuevamente con la implementación final.
+No existe todavía un lock científico ni ha empezado S72.
+
 Falta terminar la integración de las ramas condicionales, los diagnósticos TRAIN
 supervisados y las intervenciones de mecanismo, la contabilidad de coste total,
 la recuperación de checkpoints dañados, la CLI/PowerShell y el empaquetado.
