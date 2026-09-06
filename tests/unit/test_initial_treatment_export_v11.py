@@ -79,6 +79,25 @@ def test_original_row_order_restored_across_all_three_outer_folds(tmp_path):
         )
 
 
+def test_nested_assembly_rejects_outer_oof_substitution(tmp_path):
+    receipts, roots = fixture(tmp_path)
+    tokens = tuple(f"row{i}" for i in range(6))
+    with pytest.raises(ValueError, match="receipt identity"):
+        assemble_fold_arrays(
+            receipts, roots, tokens, inference_kind="FIXED_ENDPOINT_INNER_INFERENCE"
+        )
+    for receipt in receipts:
+        receipt.pop("artifact_sha256")
+        receipt["kind"] = "FIXED_ENDPOINT_INNER_INFERENCE"
+        receipt["artifact_sha256"] = object_digest(receipt)
+    arrays, _ = assemble_fold_arrays(
+        receipts, roots, tokens, inference_kind="FIXED_ENDPOINT_INNER_INFERENCE"
+    )
+    np.testing.assert_array_equal(arrays["ttc"], np.arange(6))
+    with pytest.raises(ValueError, match="receipt identity"):
+        assemble_fold_arrays(receipts, roots, tokens)
+
+
 @pytest.mark.parametrize("damage", ["edges", "dtype", "missing"])
 def test_producer_schema_changes_are_not_silently_coerced(tmp_path, damage):
     receipts, roots = fixture(tmp_path, damage=damage)

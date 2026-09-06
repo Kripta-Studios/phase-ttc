@@ -69,7 +69,10 @@
     "src/e_jepa_ttc/training/stage74_runtime_v11.py",
     "src/e_jepa_ttc/training/nested_architecture_sources_v11.py",
     "scripts/qa_stage75_nested_source_integration.py",
-    "src/e_jepa_ttc/artifacts/nested_architecture_barrier_v11.py"
+    "src/e_jepa_ttc/artifacts/nested_architecture_barrier_v11.py",
+    "src/e_jepa_ttc/training/stage75_runtime_v11.py",
+    "scripts/prepare_stage75_historical_tables.py",
+    "src/e_jepa_ttc/evaluation/nested_treatment_export_v11.py"
   ],
   "extraPaths": [
     "src",

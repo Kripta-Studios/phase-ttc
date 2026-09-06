@@ -66,9 +66,15 @@ def publish_export_payloads(
 
 
 def assemble_fold_arrays(
-    receipts: list[dict[str, Any]], roots: list[Path], canonical_tokens: tuple[str, ...]
+    receipts: list[dict[str, Any]],
+    roots: list[Path],
+    canonical_tokens: tuple[str, ...],
+    *,
+    inference_kind: str = "FIXED_ENDPOINT_OUTER_INFERENCE",
 ) -> tuple[dict[str, np.ndarray], np.ndarray]:
     """Load verified numeric shards, retain nonfinite rows and restore exact original order."""
+    if inference_kind not in ("FIXED_ENDPOINT_OUTER_INFERENCE", "FIXED_ENDPOINT_INNER_INFERENCE"):
+        raise ValueError("unknown prediction producer role")
     if len(receipts) != 3 or len(roots) != 3 or len(set(canonical_tokens)) != len(canonical_tokens):
         raise ValueError("three outer producers and unique canonical rows required")
     joined: dict[str, list[np.ndarray]] = {}
@@ -90,7 +96,7 @@ def assemble_fold_arrays(
         if (
             object_digest(unsigned) != receipt.get("artifact_sha256")
             or object_digest(identity) != receipt.get("identity_sha256")
-            or receipt.get("kind") != "FIXED_ENDPOINT_OUTER_INFERENCE"
+            or receipt.get("kind") != inference_kind
             or identity.get("targets_read") is not False
             or identity.get("optimizer_updates") != 0
         ):

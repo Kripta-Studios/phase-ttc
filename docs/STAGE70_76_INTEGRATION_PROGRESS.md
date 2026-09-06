@@ -81,6 +81,17 @@ internas con sus identidades originales. Se verificaron ambas cachés físicas.
 No se ajustaron normalizaciones, priors ni modelos reales en esa comprobación.
 La materialización real y el entrenamiento S75 permanecen condicionados.
 
+El ejecutor S75 conecta materialización, ajustes nuevos, barrera completa,
+inferencia interna y exportación por candidato/fold exterior. Los tests de
+orquestación y exportación comprueban los 18 productores y seis tablas; el
+agregado de inferencia rechaza mezclar recibos de outer-OOF con inner-OOF.
+
+`historical_nested_tables/HISTORICAL_NESTED_TABLES.json` recupera las seis tablas
+compactas originales desde el ZIP verificado, conserva sus roles físicos y
+comprueba los mismos tokens internos de las nueve recetas nuevas. Reproduce los
+tres RISK17 congelados: 8.192 predicciones con diferencia máxima absoluta de
+2,8422e-14 s y selección de experto exacta. No se ajustó ningún ridge nuevo.
+
 Falta terminar la integración de las ramas condicionales, los diagnósticos TRAIN
 supervisados y las intervenciones de mecanismo, la contabilidad de coste total,
 la recuperación de checkpoints dañados, la CLI/PowerShell y el empaquetado.
