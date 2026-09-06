@@ -26,6 +26,7 @@ from e_jepa_ttc.models.phase_distribution_v11 import weighted_training_loss
 from e_jepa_ttc.models.projective_phase_network import Arm, ProjectivePhaseNetwork
 from e_jepa_ttc.training.stage70_fixed_fit import FixedFit, deterministic_runtime
 from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger
+from e_jepa_ttc.training.stage72_architecture import SupervisedBatches, initialize_architecture
 from e_jepa_ttc.training.stage72_supervision import (
     Supervision,
     initialize_train_prior,
@@ -68,14 +69,21 @@ def loss_callback(
 
 
 def main() -> None:
-    """Run40 counted technical updates; no outer prediction or selection is performed."""
+    """Run40 adapter or80 full production updates, without outer prediction or selection."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--campaign", type=Path, required=True)
+    parser.add_argument(
+        "--production-flow",
+        action="store_true",
+        help="Use all four arms with registered count augmentation and fixed TIMEPERM (80 updates)",
+    )
     args = parser.parse_args()
     campaign = args.campaign.resolve(strict=True)
     if not campaign.is_relative_to(ROOT / "artifacts"):
         raise ValueError("GPU QA output must remain in this worktree")
-    output = campaign / "technical_real_train_gpu"
+    output = campaign / (
+        "technical_production_train_gpu" if args.production_flow else "technical_real_train_gpu"
+    )
     receipt_path = output / "REAL_TRAIN_GPU_EQUIVALENCE.json"
     if receipt_path.exists():
         raise ValueError("completed GPU QA receipt exists; do not rerun completed fits")
@@ -121,8 +129,16 @@ def main() -> None:
             if normalization.training_view_sha256 != view.identity:
                 raise ValueError("stored normalization belongs to another TRAIN view")
         else:
-            print(f"fitting TRAIN-only normalization over{len(tokens)} rows", flush=True)
-            normalization = view.fit_normalization()
+            previous = campaign / "technical_real_train_gpu/NORMALIZATION.json"
+            if args.production_flow and previous.exists():
+                source = json.loads((previous.parent / "INPUTS.json").read_text())
+                verify(source["normalization"])
+                normalization = RateNormalization(**json.loads(previous.read_text()))
+                if normalization.training_view_sha256 != view.identity:
+                    raise ValueError("previous technical normalization TRAIN identity differs")
+            else:
+                print(f"fitting TRAIN-only normalization over{len(tokens)} rows", flush=True)
+                normalization = view.fit_normalization()
             atomic_json(normalization_path, asdict(normalization))
         atomic_json(
             output / "INPUTS.json",
@@ -147,6 +163,8 @@ def main() -> None:
                 "training/stage70_fixed_fit.py",
                 "training/stage70_update_ledger.py",
                 "training/stage72_supervision.py",
+                "training/stage72_architecture.py",
+                "training/stage72_augmentation.py",
                 "training/eap_highres_jepa.py",
                 "reproducibility.py",
                 "data/event_context128_reader.py",
@@ -170,21 +188,30 @@ def main() -> None:
                 "microbatch": 2,
                 "effective_batch": 16,
                 "technical_only": True,
+                "full_production_supervised_flow": args.production_flow,
             }
         )
         ledger = UpdateLedger(campaign / "UPDATE_LEDGER.json", owner.root)
         results = []
-        for arm in ("DIRECT", "PPS-TRAJ"):
+        arms: tuple[Arm, ...] = (
+            ("DIRECT", "PPS-PAIR", "PPS-TRAJ", "PPS-TIMEPERM")
+            if args.production_flow
+            else ("DIRECT", "PPS-TRAJ")
+        )
+        for arm in arms:
             endpoints, profiles = [], []
             for mode in ("continuous", "resumed"):
                 deterministic_runtime(7)
                 torch.cuda.empty_cache()
                 torch.cuda.reset_peak_memory_stats()
-                model = ProjectivePhaseNetwork(checkpoint_sweep=True)
-                initialize_train_prior(model, supervision)
+                if args.production_flow:
+                    model = initialize_architecture(7, supervision)
+                else:
+                    model = ProjectivePhaseNetwork(checkpoint_sweep=True)
+                    initialize_train_prior(model, supervision)
                 model.cuda()
                 spec = FitSpec(
-                    f"technical_gpu_{arm}_{mode}",
+                    f"technical_{'production_' if args.production_flow else ''}gpu_{arm}_{mode}",
                     "S71_TECHNICAL",
                     arm,
                     0,
@@ -201,17 +228,39 @@ def main() -> None:
                     continue
                 fit.resume()
                 journal = fit.output / "CONSUMED_TRAIN_TOKENS.jsonl"
-                if mode == "resumed" and fit.update < 5:
-                    fit.run(
-                        loss_callback(model, view, normalization, supervision, arm, journal),
-                        stop_after=5,
+
+                def callback(
+                    current_model: ProjectivePhaseNetwork,
+                    selected_arm: Arm = arm,
+                    selected_journal: Path = journal,
+                ) -> Callable[[int, int, int, torch.Generator], torch.Tensor]:
+                    if args.production_flow:
+                        return SupervisedBatches(
+                            current_model,
+                            view,
+                            normalization,
+                            supervision,
+                            selected_arm,
+                            7,
+                            selected_journal,
+                        )
+                    return loss_callback(
+                        current_model,
+                        view,
+                        normalization,
+                        supervision,
+                        selected_arm,
+                        selected_journal,
                     )
+
+                if mode == "resumed" and fit.update < 5:
+                    fit.run(callback(model), stop_after=5)
                     del fit, model
                     deterministic_runtime(123)
                     model = ProjectivePhaseNetwork(checkpoint_sweep=True).cuda()
                     fit = FixedFit(model, spec, ledger, owner, output / arm / mode, warmup=2)
                     fit.resume()
-                fit.run(loss_callback(model, view, normalization, supervision, arm, journal))
+                fit.run(callback(model))
                 profiles.append(
                     {
                         "mode": mode,
@@ -238,6 +287,17 @@ def main() -> None:
                 [{k: v for k, v in row.items() if k != "seconds"} for row in states[0]["history"]],
                 [{k: v for k, v in row.items() if k != "seconds"} for row in states[1]["history"]],
             )
+            if args.production_flow:
+                traces = [
+                    [
+                        json.loads(line)
+                        for line in (output / arm / mode / "CONSUMED_TRAIN_TOKENS.jsonl")
+                        .read_text()
+                        .splitlines()
+                    ]
+                    for mode in ("continuous", "resumed")
+                ]
+                equality["sampler_augmentation_timeperm_trace"] = traces[0] == traces[1]
             results.append(
                 {"arm": arm, "equality": equality, "profiles": profiles, "endpoints": endpoints}
             )

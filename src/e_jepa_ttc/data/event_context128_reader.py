@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
 import numpy as np
 import pandas as pd
@@ -112,12 +112,23 @@ class CountReader:
         return CountObservation(counts, durations, support, times)
 
 
+class CountSource(Protocol):
+    """Verified count collection, including an explicit union of compatible caches."""
+
+    identity: str
+    metadata: pd.DataFrame
+
+    def observation(self, token: str) -> CountObservation:
+        """Return one owned observation without labels or surviving file handles."""
+        ...
+
+
 class TrainingView:
     """A fixed token view whose normalization excludes every held-out ancestor."""
 
     def __init__(
         self,
-        reader: CountReader,
+        reader: CountSource,
         tokens: tuple[str, ...],
         roles: TrainRoles,
         *,
