@@ -17,7 +17,10 @@
     "src/e_jepa_ttc/data/event_context128_cache.py",
     "scripts/build_stage71_counts.py",
     "src/e_jepa_ttc/data/event_context128_reader.py",
-    "src/e_jepa_ttc/training/stage73_correspondence.py"
+    "src/e_jepa_ttc/training/stage73_correspondence.py",
+    "src/e_jepa_ttc/training/stage70_update_ledger.py",
+    "src/e_jepa_ttc/training/stage70_fixed_fit.py",
+    "scripts/qa_stage71_fixed_fit.py"
   ],
   "extraPaths": [
     "src"
