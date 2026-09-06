@@ -44,4 +44,12 @@ The extended `qa_stage71_real_train_gpu.py --production-flow` runs four arms on 
 same original fold0-TRAIN pool, with10 continuous versus5+resume5 updates each:
 80 technical updates, never scientific candidates. Its separate receipt and output
 root prevent replacing the earlier40-update smoke. All production-flow numerical
-acceptance remains pending until this real GPU run finishes and is inspected.
+acceptance has now completed: all four arms passed10 versus5+resume5 with exact
+model, optimizer, RNG, update, loss/gradient/LR history and complete
+sampler/augmentation/TIMEPERM trace equality. The foreground process exited0.
+Its recipe hash is
+`72abfdc14921f7fef17f83006707798e1e4f8fa8e07499437f56494992227963`.
+The campaign ledger records260 confirmed technical updates,17 completed optimizer
+fits,0 uncertain attempts and0 scientific fits after this acceptance. Peak
+allocated VRAM was below709MB for every tested arm; these short fixed-pool
+measurements do not substitute for whole-campaign resource accounting.

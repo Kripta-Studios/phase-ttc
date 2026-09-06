@@ -38,7 +38,11 @@
     "src/e_jepa_ttc/data/composite_counts_v11.py",
     "src/e_jepa_ttc/training/stage72_architecture.py",
     "src/e_jepa_ttc/training/stage72_augmentation.py",
-    "src/e_jepa_ttc/evaluation/architecture_diagnostics_v11.py"
+    "src/e_jepa_ttc/evaluation/architecture_diagnostics_v11.py",
+    "src/e_jepa_ttc/artifacts/producer_lineage_v11.py",
+    "src/e_jepa_ttc/data/confirmation_access_v11.py",
+    "src/e_jepa_ttc/data/new_expert_tables_v11.py",
+    "src/e_jepa_ttc/training/stage76_confirmation.py"
   ],
   "extraPaths": [
     "src"
