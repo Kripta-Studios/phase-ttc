@@ -29,13 +29,27 @@ no finitas para que el diagnóstico posterior marque el fallo sin eliminar filas
 No estima calibración, no lee targets y no utiliza predicciones de otros expertos.
 
 Los bloques publicados se verifican para reanudar; su manifiesto exige cobertura
-completa y orden exacto. Un archivo huérfano sin recibo causa una interrupción
-explícita. No se sobrescribe silenciosamente. Los tiempos registrados en cada
+completa y orden exacto. Un archivo huérfano sin recibo se recupera únicamente si
+la recomputación reproduce su esquema y todos sus valores, bajo la misma identidad
+prospectiva. Un desacuerdo o un enlace a otro archivo produce una interrupción
+explícita; no se sobrescribe. Los tiempos registrados en cada
 invocación no equivalen todavía al coste total acumulado de un trabajo reanudado;
 la contabilidad de invocaciones del ejecutor completo sigue pendiente.
 
-Validación sintética: 13 pruebas del cierre y cuatro de aislamiento/publicación
-de inferencia pasan sin ejecutar optimizadores. Ruff y Pyright pasan. Las pruebas
+La comparación usa el bootstrap histórico compartido de 8.192 sorteos por
+secuencia y trayectoria, y el diagnóstico exacto por secuencia. Recalcula pérdidas
+de fase, diferencia de signo, error del bucket crucial y ganancia del oráculo.
+Conserva candidatos fallidos sin reemplazarlos. La ganancia conjunta de todos los
+modelos suministrados se etiqueta explícitamente; la decisión S75 deberá calcular
+la ganancia del conjunto canónico autorizado, no la de todos los controles.
+
+El exportador ensambla los tres folds en el orden original de 8.192 filas. Solo
+después del cierre lee la tabla histórica autorizada y produce los diagnósticos,
+arrays numéricos y predicciones históricas de referencia. La recuperación verifica
+los payloads existentes contra la recomputación antes de completar su recibo.
+
+Validación sintética: cierre, aislamiento/publicación, ensamblado y comparación
+con pérdidas conocidas, sin ejecutar optimizadores. Las pruebas
 crean checkpoints ficticios exclusivamente bajo el directorio temporal de pytest;
 no son endpoints científicos ni evidencia de aprendizaje. Falta ejecutar la
 integración de inferencia con el runner completo, la evaluación conjunta, los

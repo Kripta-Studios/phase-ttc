@@ -1,5 +1,6 @@
 """No-fit checks for source-isolated outer inference and durable numeric publication."""
 
+import os
 from dataclasses import replace
 from types import SimpleNamespace
 
@@ -11,6 +12,7 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest
 from e_jepa_ttc.evaluation.standalone_outer_v11 import (
     _publish_arrays,
     infer_initial_endpoint,
+    recover_or_publish_arrays,
     validate_outer_view,
     verify_inference_shards,
 )
@@ -127,3 +129,23 @@ def test_numeric_shard_publication_and_resume_reject_partial_or_foreign_payloads
         stream.write(b"changed")
     with pytest.raises(ValueError, match="physical identity"):
         verify_inference_shards(shards, tokens, identity, tmp_path)
+
+
+def test_orphan_is_recovered_only_after_matching_recomputed_values(tmp_path):
+    path = tmp_path / "orphan.npz"
+    arrays = {"ttc": np.array([2.0, np.nan], dtype=np.float32)}
+    original = _publish_arrays(path, arrays)
+    timestamp = path.stat().st_mtime_ns
+    assert recover_or_publish_arrays(path, arrays) == original
+    assert path.stat().st_mtime_ns == timestamp
+    with pytest.raises(ValueError, match="orphan inference payload"):
+        recover_or_publish_arrays(path, {"ttc": np.array([3.0, np.nan], dtype=np.float32)})
+
+
+def test_hard_linked_orphan_is_rejected_before_its_bytes_are_read(tmp_path):
+    source = tmp_path / "foreign.npz"
+    source.write_bytes(b"deliberately not an npz: must never be parsed")
+    path = tmp_path / "orphan.npz"
+    os.link(source, path)
+    with pytest.raises(ValueError, match="hard-linked"):
+        recover_or_publish_arrays(path, {"ttc": np.array([2.0], dtype=np.float32)})

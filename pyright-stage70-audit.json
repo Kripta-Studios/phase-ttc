@@ -52,7 +52,9 @@
     "scripts/prepare_stage73_expanded_views.py",
     "scripts/compare_stage70_test_evidence.py",
     "src/e_jepa_ttc/artifacts/stage_endpoint_barrier_v11.py",
-    "src/e_jepa_ttc/evaluation/standalone_outer_v11.py"
+    "src/e_jepa_ttc/evaluation/standalone_outer_v11.py",
+    "src/e_jepa_ttc/evaluation/architecture_comparison_v11.py",
+    "src/e_jepa_ttc/evaluation/initial_treatment_export_v11.py"
   ],
   "extraPaths": [
     "src",

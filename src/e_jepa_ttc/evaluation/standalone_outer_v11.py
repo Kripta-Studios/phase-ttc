@@ -63,6 +63,23 @@ def _publish_arrays(path: Path, arrays: dict[str, np.ndarray]) -> dict[str, Any]
     return binding(path)
 
 
+def recover_or_publish_arrays(path: Path, arrays: dict[str, np.ndarray]) -> dict[str, Any]:
+    """Adopt a closed orphan only after deterministic recomputation matches its full payload."""
+    if path.resolve() != path.absolute() or path.is_symlink() or (
+        path.exists() and path.stat().st_nlink != 1
+    ):
+        raise ValueError("orphan inference payload is redirected or hard-linked")
+    if not path.exists():
+        return _publish_arrays(path, arrays)
+    with np.load(path, allow_pickle=False) as saved:
+        if set(saved.files) != set(arrays) or any(
+            saved[key].dtype != value.dtype or not np.array_equal(saved[key], value, equal_nan=True)
+            for key, value in arrays.items()
+        ):
+            raise ValueError("orphan inference payload differs from fixed recomputation")
+    return binding(path)
+
+
 def verify_inference_shards(
     shards: list[dict[str, Any]], tokens: tuple[str, ...], identity_sha: str, output: Path
 ) -> None:
@@ -133,6 +150,14 @@ def infer_initial_endpoint(
         "optimizer_updates": 0,
     }
     identity_sha = object_digest(identity)
+    intent_path = output / "INFERENCE_INTENT.json"
+    if intent_path.exists():
+        if json.loads(intent_path.read_text(encoding="utf-8")) != identity:
+            raise ValueError("inference recovery recipe differs from its prospective identity")
+    else:
+        if any(output.iterdir()):
+            raise ValueError("nonempty inference output lacks a prospective publication identity")
+        atomic_json(intent_path, identity)
     receipt_path = output / "INFERENCE_COMPLETE.json"
     if receipt_path.exists():
         receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
@@ -218,7 +243,7 @@ def infer_initial_endpoint(
                     "identity_sha256": identity_sha,
                     "first_row": first,
                     "tokens": list(selected),
-                    "arrays": _publish_arrays(shard_path, arrays),
+                    "arrays": recover_or_publish_arrays(shard_path, arrays),
                 }
                 record["artifact_sha256"] = object_digest(record)
                 atomic_json(shard_receipt, record)
