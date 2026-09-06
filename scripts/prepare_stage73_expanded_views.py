@@ -44,8 +44,7 @@ def main() -> None:
     ledger = json.loads((campaign / "UPDATE_LEDGER.json").read_text(encoding="utf-8"))
     ledger_signature = ledger.pop("sha256")
     if object_digest(ledger) != ledger_signature or any(
-        not job["spec"]["technical"] and job["charged"] > 0
-        for job in ledger["jobs"].values()
+        not job["spec"]["technical"] and job["charged"] > 0 for job in ledger["jobs"].values()
     ):
         raise ValueError("A/D prerequisites must resolve before new scientific optimizer work")
     role_path = campaign / "data_roles/DATA_ROLES.json"
