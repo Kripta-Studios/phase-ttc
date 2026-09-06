@@ -45,7 +45,9 @@
     "src/e_jepa_ttc/training/stage76_confirmation.py",
     "src/e_jepa_ttc/training/stage72_jobs.py",
     "scripts/run_stage70_test_audit.py",
-    "scripts/qa_support"
+    "scripts/qa_support",
+    "scripts/audit_stage70_garl_checkpoint_lineage.py",
+    "scripts/summarize_stage70_test_audit.py"
   ],
   "extraPaths": [
     "src",
