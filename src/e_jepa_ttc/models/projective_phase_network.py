@@ -59,6 +59,26 @@ class ContextEncoder(nn.Module):
         return self.net(x)
 
 
+class QuadrantAveragePool(nn.Module):
+    """Adaptive 2x2 averages with deterministic CUDA reduction backward.
+
+    Floor starts and ceiling ends preserve the original adaptive-pool regions,
+    including overlapping regions when a spatial dimension is odd.
+    """
+
+    def forward(self, x: Tensor) -> Tensor:
+        height, width = x.shape[-2:]
+        rows = []
+        for iy in range(2):
+            columns = []
+            y0, y1 = iy * height // 2, ((iy + 1) * height + 1) // 2
+            for ix in range(2):
+                x0, x1 = ix * width // 2, ((ix + 1) * width + 1) // 2
+                columns.append(x[..., y0:y1, x0:x1].mean(dim=(-2, -1)))
+            rows.append(torch.stack(columns, -1))
+        return torch.stack(rows, -2)
+
+
 class ProjectivePhaseNetwork(nn.Module):
     """Shared architecture with matched interventions; inference returns phase distribution.
 
@@ -77,12 +97,14 @@ class ProjectivePhaseNetwork(nn.Module):
         radius: int = 6,
         displacement_step: float = 0.0625,
         sweep_chunk: int = 8,
+        checkpoint_sweep: bool = False,
         edges: Tensor | None = None,
     ) -> None:
         super().__init__()
         self.register_buffer("edges", phase_edges() if edges is None else edges.detach().clone())
         self.register_buffer("offsets", translations(radius=radius, step=displacement_step))
         self.sweep_chunk = sweep_chunk
+        self.checkpoint_sweep = checkpoint_sweep
         self.encoder = ContextEncoder()
         bins = len(self.edges) - 1
         self.direct = nn.Sequential(
@@ -95,7 +117,7 @@ class ProjectivePhaseNetwork(nn.Module):
             nn.GroupNorm(8, 160),
             nn.SiLU(),
             ResidualBlock(160),
-            nn.AdaptiveAvgPool2d((2, 2)),
+            QuadrantAveragePool(),
             nn.Flatten(),
             nn.Linear(640, 256),
             nn.SiLU(),
@@ -171,7 +193,13 @@ class ProjectivePhaseNetwork(nn.Module):
                         q.float(), times[:, a, None].float(), times[:, c, None].float()
                     )
                     scores, overlap = sweep_scores(
-                        f0, f1, scale, self.offsets.float(), weights, chunk=self.sweep_chunk
+                        f0,
+                        f1,
+                        scale,
+                        self.offsets.float(),
+                        weights,
+                        chunk=self.sweep_chunk,
+                        checkpoint_chunks=self.checkpoint_sweep,
                     )
                     ev, ok = marginalize_translation(scores, overlap)
                     ok = ok & physical

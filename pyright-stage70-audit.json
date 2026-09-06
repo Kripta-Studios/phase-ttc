@@ -10,7 +10,9 @@
     "src/e_jepa_ttc/models/projective_geometry_v11.py",
     "src/e_jepa_ttc/models/projective_phase_sweep.py",
     "src/e_jepa_ttc/models/projective_phase_network.py",
-    "src/e_jepa_ttc/evaluation/stage70_76.py"
+    "src/e_jepa_ttc/evaluation/stage70_76.py",
+    "src/e_jepa_ttc/data/stage70_roles.py",
+    "scripts/prepare_stage70_roles.py"
   ],
   "extraPaths": [
     "src"

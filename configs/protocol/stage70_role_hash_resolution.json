@@ -1,0 +1,11 @@
+{
+  "resolution_id": "STAGE70_ROLE_HASH_001",
+  "status": "PROSPECTIVE_BEFORE_ROLE_ASSIGNMENT_AND_FITS",
+  "document04_role_hash_prefix": "EJEPA_STAGE70_20260906",
+  "protocol_data_role_seed": "E_JEPA_V10_STAGE70_76_20260906",
+  "resolved_role_order": "SHA256(UTF8(document04_role_hash_prefix + '|' + acquisition_group_id))",
+  "reason": "Document04 specifies the complete role-order hash expression. The JSON seed differs; retain both source values and apply the explicit document04 expression for role assignment.",
+  "selection_inputs": "TRAIN metadata identities and historical exposure membership only",
+  "scientific_results_used_to_choose_prefix": false,
+  "immutable_handoff_modified": false
+}

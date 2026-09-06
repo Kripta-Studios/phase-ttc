@@ -7,11 +7,46 @@ would erase the scale constraint. The resulting scores are features, not TTC.
 
 from __future__ import annotations
 
+from typing import cast
+
 import torch
 from torch import Tensor
 from torch.nn import functional
+from torch.utils.checkpoint import checkpoint
 
 from .projective_geometry_v11 import pixel_centers
+
+
+def sample_correlations(correlation: Tensor, grid: Tensor) -> Tensor:
+    """Bilinear zero-padded sampling with a deterministic CUDA input backward.
+
+    Equivalent to grid_sample for single-channel correlation images with
+    align_corners=False. CUDA grid_sample backward rejects strict deterministic
+    mode. Gather backward supports it, retaining connected feature gradients.
+    This routine is also differentiable in grid coordinates away from cell edges.
+    """
+    if correlation.ndim != 4 or correlation.shape[1] != 1:
+        raise ValueError("correlation images must be N1HW")
+    if grid.ndim != 4 or grid.shape[0] != correlation.shape[0] or grid.shape[-1] != 2:
+        raise ValueError("sampling grid must be NXY2")
+    n, _, height, width = correlation.shape
+    coordinates = grid.reshape(n, -1, 2)
+    x = ((coordinates[..., 0] + 1) * width - 1) / 2
+    y = ((coordinates[..., 1] + 1) * height - 1) / 2
+    left, top = x.floor(), y.floor()
+    dx, dy = x - left, y - top
+    result = torch.zeros_like(x)
+    flat = correlation.flatten(1)
+    for ix, iy, mass in (
+        (left, top, (1 - dx) * (1 - dy)),
+        (left + 1, top, dx * (1 - dy)),
+        (left, top + 1, (1 - dx) * dy),
+        (left + 1, top + 1, dx * dy),
+    ):
+        inside = (ix >= 0) & (ix < width) & (iy >= 0) & (iy < height)
+        index = iy.clamp(0, height - 1).long() * width + ix.clamp(0, width - 1).long()
+        result = result + flat.gather(1, index) * (mass * inside)
+    return result.reshape(n, 1, grid.shape[1], grid.shape[2])
 
 
 def translations(
@@ -37,6 +72,7 @@ def sweep_scores(
     *,
     chunk: int = 8,
     min_overlap: float = 0.60,
+    checkpoint_chunks: bool = False,
 ) -> tuple[Tensor, Tensor]:
     """Return [B,K,D] cosine scores and weighted overlap.
 
@@ -79,26 +115,40 @@ def sweep_scores(
     corr = torch.einsum("bcp,bcq->bpq", f, g).reshape(b * n, 1, h, w)
     centers = pixel_centers(h, w, device=source.device, dtype=source.dtype).reshape(n, 2)
     k, d = scales.shape[1], displacement.shape[0]
-    outputs, overlaps = [], []
-    for first in range(0, k, chunk):
-        count = min(chunk, k - first)
+
+    def one_chunk(
+        correlation: Tensor, partial_scales: Tensor, source_mass: Tensor
+    ) -> tuple[Tensor, Tensor]:
+        count = partial_scales.shape[1]
         grid = (
-            scales[:, first : first + count, None, None, None] * centers[None, None, None, :, :]
+            partial_scales[:, :, None, None, None] * centers[None, None, None, :, :]
             + displacement[None, None, :, None, :]
         )  # B,k,D,P,2
         valid = (grid[..., 0].abs() <= (1 - 1 / w + 1e-6)) & (
             grid[..., 1].abs() <= (1 - 1 / h + 1e-6)
         )
         sampling = grid.permute(0, 3, 1, 2, 4).reshape(b * n, count * d, 1, 2)
-        values = functional.grid_sample(
-            corr, sampling, mode="bilinear", padding_mode="zeros", align_corners=False
-        )
+        values = sample_correlations(correlation, sampling)
         values = values.reshape(b, n, count, d).permute(0, 2, 3, 1)
-        support = mass[:, None, None, :] * valid.to(mass.dtype)
+        support = source_mass[:, None, None, :] * valid.to(source_mass.dtype)
         overlap = support.sum(-1)
         scores = (values * support).sum(-1) / overlap.clamp_min(1e-8)
         # Finite sentinel; the caller must consume the validity mask too.
         scores = torch.where(overlap >= min_overlap, scores, torch.full_like(scores, -2.0))
+        return scores, overlap
+
+    outputs, overlaps = [], []
+    for first in range(0, k, chunk):
+        partial = scales[:, first : first + chunk]
+        if checkpoint_chunks and torch.is_grad_enabled():
+            scores, overlap = cast(
+                tuple[Tensor, Tensor],
+                checkpoint(
+                    one_chunk, corr, partial, mass, use_reentrant=False, preserve_rng_state=False
+                ),
+            )
+        else:
+            scores, overlap = one_chunk(corr, partial, mass)
         outputs.append(scores)
         overlaps.append(overlap)
     return torch.cat(outputs, 1), torch.cat(overlaps, 1)
