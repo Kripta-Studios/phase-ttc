@@ -54,7 +54,9 @@
     "src/e_jepa_ttc/artifacts/stage_endpoint_barrier_v11.py",
     "src/e_jepa_ttc/evaluation/standalone_outer_v11.py",
     "src/e_jepa_ttc/evaluation/architecture_comparison_v11.py",
-    "src/e_jepa_ttc/evaluation/initial_treatment_export_v11.py"
+    "src/e_jepa_ttc/evaluation/initial_treatment_export_v11.py",
+    "src/e_jepa_ttc/evaluation/pretext_diagnostics_v11.py",
+    "scripts/qa_stage73_checkpoint_diagnostics.py"
   ],
   "extraPaths": [
     "src",
