@@ -90,6 +90,22 @@ def canonical_candidates(availability: Availability) -> dict[Family, str]:
     return {"C_DIRECT": direct, "C_PPS": pps}
 
 
+def candidate_key(name: str, capacity: Capacity) -> str:
+    """Separate model sizes in evidence while retaining legacy2M identifiers."""
+    treatment(name)
+    if capacity not in ("2M", "4M", "8M"):
+        raise ValueError("unregistered model capacity")
+    return name if capacity == "2M" else f"{name}-capacity{capacity}"
+
+
+def canonical_evidence_keys(availability: Availability) -> dict[Family, str]:
+    """Name the primary candidates before any size's outcomes are available."""
+    return {
+        family: candidate_key(name, availability.primary_capacity)
+        for family, name in canonical_candidates(availability).items()
+    }
+
+
 @dataclass(frozen=True)
 class PlannedFit:
     """Prospective recipe; a concrete executor must additionally bind all source ancestors."""
@@ -118,6 +134,11 @@ class PlannedFit:
                 raise ValueError("new nested producers require seed7 and three inner folds")
         elif self.inner_fold is not None:
             raise ValueError("inner fold supplied outside nested routing")
+
+    @property
+    def candidate_key(self) -> str:
+        """Return the fold-independent treatment/capacity evidence identity."""
+        return candidate_key(self.treatment_name, self.capacity)
 
     @property
     def job_id(self) -> str:
@@ -171,7 +192,12 @@ def replication_jobs(
     jobs = []
     for family, name in candidates.items():
         result = evidence[family]
-        if result is not None and decide(result)["replicate_new_architecture"]:
+        if (
+            result is not None
+            and decide(result, expanded_cohort=availability.primary_capacity == "4M")[
+                "replicate_new_architecture"
+            ]
+        ):
             jobs.extend(
                 PlannedFit("S74", name, fold, seed, capacity=availability.primary_capacity)
                 for seed in (13, 23)

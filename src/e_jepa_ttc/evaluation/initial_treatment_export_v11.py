@@ -24,8 +24,14 @@ from e_jepa_ttc.data.stage70_clock import context_clock
 from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import DiagnosticExport, evaluate_rows
 from e_jepa_ttc.evaluation.standalone_outer_v11 import _publish_arrays, verify_inference_shards
 from e_jepa_ttc.evaluation.train_prior_baseline_v11 import append_prior_baseline, frozen_prior
+from e_jepa_ttc.models.projective_phase_network import Capacity
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
-from e_jepa_ttc.training.stage73_factorial import Availability, PlannedFit, initial_jobs
+from e_jepa_ttc.training.stage73_factorial import (
+    Availability,
+    PlannedFit,
+    candidate_key,
+    initial_jobs,
+)
 
 
 def append_physical_metadata(
@@ -264,16 +270,25 @@ def export_initial_treatment(
     output: Path,
     owner: ResourceOwner,
     seed: int = 7,
+    capacity: Capacity = "2M",
 ) -> dict[str, Any]:
     """Read development targets only after the complete scientific endpoint barrier verifies."""
     owner.check()
     lock = require_scientific_lock(lock_path, lock_sha256)
+    evidence_key = candidate_key(treatment_name, capacity)
+    availability = Availability(**lock["availability"])
+    if capacity not in availability.capacities:
+        raise ValueError("export capacity absent from the frozen matrix")
     if stage == "S74":
         if seed not in (13, 23):
             raise ValueError("replication export requires a prescribed new seed")
         barrier = verify_replication_barrier(barrier_path, expected_lock=lock_sha256)
-        plans = [PlannedFit("S74", treatment_name, fold, seed) for fold in (0, 1, 2)]
-        expected_output = Path(lock["replication_export_root"]) / treatment_name / f"seed{seed}"
+        if capacity != availability.primary_capacity:
+            raise ValueError("replication export requires the registered primary capacity")
+        plans = [
+            PlannedFit("S74", treatment_name, fold, seed, capacity=capacity) for fold in (0, 1, 2)
+        ]
+        expected_output = Path(lock["replication_export_root"]) / evidence_key / f"seed{seed}"
     else:
         if seed != 7:
             raise ValueError("initial exports require seed7")
@@ -283,9 +298,11 @@ def export_initial_treatment(
         plans = [
             plan
             for plan in initial_jobs(Availability(**lock["availability"]))
-            if plan.stage == stage and plan.treatment_name == treatment_name
+            if plan.stage == stage
+            and plan.treatment_name == treatment_name
+            and plan.capacity == capacity
         ]
-        expected_output = Path(lock["treatment_export_root"]) / treatment_name
+        expected_output = Path(lock["treatment_export_root"]) / evidence_key
     if len(plans) != 3:
         raise ValueError("treatment is not in the prospectively available initial stage")
     if output.absolute() != expected_output or output.resolve() != expected_output:
@@ -325,6 +342,8 @@ def export_initial_treatment(
         "inference_endpoints": inference_bindings,
         "TRAIN_prior_sources": prior_sources,
     }
+    if availability.primary_capacity == "4M":
+        identity.update(capacity=capacity, candidate_key=evidence_key)
     intent_path = output / "EXPORT_INTENT.json"
     if intent_path.exists():
         if json.loads(intent_path.read_text(encoding="utf-8")) != identity:

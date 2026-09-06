@@ -8,6 +8,42 @@ from e_jepa_ttc.training.stage72_jobs import FitJob
 from e_jepa_ttc.training.stage73_factorial import Availability, initial_jobs, treatment
 
 
+def test_expanded_exports_keep_every_capacity_separate_after_all_inferences(tmp_path, monkeypatch):
+    engine = runtime.InitialArchitectureRuntime.__new__(runtime.InitialArchitectureRuntime)
+    engine.plans = initial_jobs(
+        Availability(True, False, "a" * 64, "b" * 64, ("2M", "4M", "8M"), "4M")
+    )
+    engine.lock = {"outer_tokens_by_fold": {str(fold): [f"t{fold}"] for fold in range(3)}}
+    engine.lock_path = tmp_path / "lock.json"
+    engine.lock_sha256 = "a" * 64
+    engine.original = object()
+    engine.owner = SimpleNamespace(check=lambda: None)
+    engine.paths = {
+        "outer_inference_root": tmp_path / "inference",
+        "treatment_export_root": tmp_path / "exports",
+    }
+    monkeypatch.setattr(engine, "_reserve_resources", lambda *args: None)
+    monkeypatch.setattr(engine, "_progress", lambda *args: None)
+    monkeypatch.setattr(engine, "resolve", lambda plan: (plan, SimpleNamespace(normalization=None)))
+    monkeypatch.setattr(runtime, "verify", lambda source: Path(source))
+    inferred, exported = [], []
+    monkeypatch.setattr(
+        runtime, "infer_initial_endpoint", lambda plan, **kwargs: inferred.append(plan.job_id)
+    )
+
+    def export(name, **kwargs):
+        assert len(inferred) == 42
+        exported.append((name, kwargs["capacity"]))
+        path = kwargs["output"] / "TREATMENT_EXPORT.json"
+        path.parent.mkdir(parents=True)
+        path.write_text("synthetic export dispatch fixture")
+
+    monkeypatch.setattr(runtime, "export_initial_treatment", export)
+    result = engine.infer_and_export({"S72": "s72", "S73": "s73"})
+    assert len(result) == len(set(exported)) == 14
+    assert {size for name, size in exported if name == "S72-PPS-TRAJ"} == {"2M", "4M", "8M"}
+
+
 def test_s73_all_available_jobs_run_without_reading_or_gating_on_s72_scores(tmp_path, monkeypatch):
     availability = Availability(True, True, "a" * 64, "b" * 64)
     engine = runtime.InitialArchitectureRuntime.__new__(runtime.InitialArchitectureRuntime)

@@ -18,7 +18,7 @@ class Evidence:
     finite_fraction: float
     new_oracle_gain: float = 0.0
 
-    def validate(self) -> None:
+    def validate(self, *, expanded_cohort: bool = False) -> None:
         values = (
             self.delta_vs_risk17,
             self.hierarchical_high,
@@ -30,15 +30,24 @@ class Evidence:
         )
         if not all(math.isfinite(x) for x in values):
             raise ValueError("incomplete/nonfinite evidence is not a scientific negative")
-        if self.sequence_count != 9 or not 0 <= self.sequence_wins <= 9:
+        if expanded_cohort:
+            if (
+                type(self.sequence_count) is not int
+                or self.sequence_count < 3
+                or type(self.sequence_wins) is not int
+                or not 0 <= self.sequence_wins <= self.sequence_count
+            ):
+                raise ValueError("expanded evidence requires at least three complete sequences")
+        elif self.sequence_count != 9 or not 0 <= self.sequence_wins <= 9:
             raise ValueError("this historical development gate requires exactly nine sequences")
 
 
-def decide(e: Evidence) -> dict[str, bool | str]:
-    e.validate()
+def decide(e: Evidence, *, expanded_cohort: bool = False) -> dict[str, bool | str]:
+    e.validate(expanded_cohort=expanded_cohort)
     valid = e.finite_fraction == 1.0
     guarded = valid and e.sign_error_increase <= 0.005 and e.crucial_delta <= 3.0
-    practical = guarded and e.delta_vs_risk17 <= -5.0 and e.sequence_wins >= 6
+    required_wins = math.ceil(2 * e.sequence_count / 3) if expanded_cohort else 6
+    practical = guarded and e.delta_vs_risk17 <= -5.0 and e.sequence_wins >= required_wins
     complementary = valid and e.new_oracle_gain >= 8.0
     accepted_development = practical and e.hierarchical_high < 0 and e.sequence_high < 0
     return {

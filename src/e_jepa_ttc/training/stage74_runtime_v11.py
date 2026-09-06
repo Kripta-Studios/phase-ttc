@@ -133,11 +133,12 @@ def run_replication(
         completed.append(plan.job_id)
         progress("OUTER_INFERENCE", None)
     exports = {}
-    for name, seed in dict.fromkeys((plan.treatment_name, plan.seed) for plan in plans):
+    unique_exports = {(plan.candidate_key, plan.seed): plan for plan in plans}
+    for (name, seed), plan in unique_exports.items():
         runtime._reserve_resources("treatment_export")
         output = export_root / name / f"seed{seed}"
         export_initial_treatment(
-            name,
+            plan.treatment_name,
             stage="S74",
             seed=seed,
             barrier_path=barrier_path,
@@ -145,6 +146,7 @@ def run_replication(
             lock_sha256=runtime.lock_sha256,
             output=output,
             owner=runtime.owner,
+            capacity=plan.capacity,
         )
         exports[f"{name}_seed{seed}"] = binding(output / "TREATMENT_EXPORT.json")
     runtime._reserve_resources("replication_evidence")

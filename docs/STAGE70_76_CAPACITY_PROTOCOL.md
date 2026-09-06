@@ -42,6 +42,11 @@ El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
 - Métrica primaria: pesos originales normalizados sobre buckets presentes de cada
   secuencia, sin eliminar filas. Prerregistrar incertidumbre para N variable y
   registrar descartes por soporte. Separar la comparación histórica estricta.
+  Incertidumbre ampliada:8.192 draws Monte Carlo, seed70, remuestreo pareado de
+  adquisiciones completas, conservando las secuencias relacionadas y sus scores
+  de buckets fijos; cociente de totales por número de secuencias de cada draw.
+  No se tratan ventanas como réplicas independientes ni se afirma cálculo exacto.
+  El soporte ausente se registra por secuencia, sin descartar draws ni filas.
 - S76 mantiene sus prerrequisitos de replicación, Garl TRAIN-only e independencia.
   Si la campaña anterior llegó a leer confirmación, esos grupos no se presentan
   como confirmación nueva de esta ampliación. No se adquieren nuevos datos sin
@@ -57,7 +62,8 @@ El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
    del turno exclusivo posterior a la campaña original.
 2. Datos: selección y folds por adquisición implementados. La selección real dio
    27secuencias/8.192tokens y cuatro externas; D bloqueado por su mínimo de grupos.
-   Pendientes bindings físicos, cache, validación interna y fuentes de normalización.
+   Reloj/targets:8.192 válidas, cero sustituciones, deriva máxima2µs y gap0.
+   Bindings/cache en ejecución CPU; pendientes validación interna y normalización.
 3. Evaluación/procedencia: pendientes universo variable, exportación por tamaño,
    bootstrap, comparadores reproducidos y productores anidados del nuevo universo.
 4. Ejecución/entrega: grafo y admisión aritmética implementados; contador heredado

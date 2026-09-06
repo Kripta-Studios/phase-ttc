@@ -251,17 +251,19 @@ class InitialArchitectureRuntime:
             completed.append(plan.job_id)
             self._progress("OUTER_INFERENCE", None, completed)
         exports = {}
-        for name in dict.fromkeys(plan.treatment_name for plan in self.plans):
+        unique_plans = {plan.candidate_key: plan for plan in self.plans}
+        for name, plan in unique_plans.items():
             self._reserve_resources("treatment_export")
             stage = "S72" if name.startswith("S72") else "S73"
             export_initial_treatment(
-                name,
+                plan.treatment_name,
                 stage=stage,
                 barrier_path=verify(barriers[stage]),
                 lock_path=self.lock_path,
                 lock_sha256=self.lock_sha256,
                 output=self.paths["treatment_export_root"] / name,
                 owner=self.owner,
+                capacity=plan.capacity,
             )
             exports[name] = binding(
                 self.paths["treatment_export_root"] / name / "TREATMENT_EXPORT.json"
