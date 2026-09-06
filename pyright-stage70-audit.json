@@ -32,7 +32,9 @@
     "src/e_jepa_ttc/data/stage70_expansion_binding.py",
     "scripts/build_stage71_expansion_cache.py",
     "scripts/validate_stage70_expansion_rows.py",
-    "scripts/profile_stage71_sweep_chunks.py"
+    "scripts/profile_stage71_sweep_chunks.py",
+    "src/e_jepa_ttc/training/stage73_factorial.py",
+    "src/e_jepa_ttc/models/full_cost_router_v11.py"
   ],
   "extraPaths": [
     "src"
