@@ -75,7 +75,9 @@
     "src/e_jepa_ttc/evaluation/nested_treatment_export_v11.py",
     "src/e_jepa_ttc/data/nested_router_inputs_v11.py",
     "src/e_jepa_ttc/training/nested_full_cost_fit_v11.py",
-    "src/e_jepa_ttc/training/stage75_router_runtime_v11.py"
+    "src/e_jepa_ttc/training/stage75_router_runtime_v11.py",
+    "src/e_jepa_ttc/training/checkpoint_recovery_v11.py",
+    "scripts/qa_stage71_corrupt_checkpoint_resume.py"
   ],
   "extraPaths": [
     "src",

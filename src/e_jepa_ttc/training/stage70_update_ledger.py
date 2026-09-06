@@ -244,7 +244,9 @@ class UpdateLedger:
         job["checkpoint"], job["checkpoint_update"] = record, update
         self._publish()
 
-    def recover(self, job_id: str) -> dict[str, Any] | None:
+    def recover(
+        self, job_id: str, *, fallback: dict[str, Any] | None = None
+    ) -> dict[str, Any] | None:
         """Recover only the latest bound checkpoint and reserve all replay work again."""
         job = self.state["jobs"][job_id]
         if job["status"] == "COMPLETE":
@@ -252,9 +254,25 @@ class UpdateLedger:
         pending = self.state["pending"]
         if pending is not None and pending["job_id"] != job_id:
             raise ValueError("another fit owns the unresolved optimizer attempt")
+        old_state = json.loads(json.dumps(self.state))
+        if fallback is not None:
+            recovery = json.loads(verify(fallback).read_text(encoding="utf-8"))
+            unsigned = {key: value for key, value in recovery.items() if key != "artifact_sha256"}
+            if (
+                object_digest(unsigned) != recovery.get("artifact_sha256")
+                or recovery.get("kind") != "LATEST_VALID_CHECKPOINT_RECOVERY"
+                or recovery.get("latest_bound_update") != job["checkpoint_update"]
+                or not 0 <= recovery["selected_update"] < job["checkpoint_update"]
+            ):
+                raise ValueError(
+                    "checkpoint fallback lacks a valid chronological recovery incident"
+                )
+            verify(recovery["selected_checkpoint"])
+            job["checkpoint"] = recovery["selected_checkpoint"]
+            job["checkpoint_update"] = recovery["selected_update"]
+            job.setdefault("corruption_recoveries", []).append(fallback)
         if job["checkpoint"] is not None:
             verify(job["checkpoint"])
-        old_state = json.loads(json.dumps(self.state))
         if pending is not None:
             job["uncertain"] += 1
             self.state["pending"] = None

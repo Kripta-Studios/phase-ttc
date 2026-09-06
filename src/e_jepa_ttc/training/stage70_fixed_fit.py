@@ -105,7 +105,35 @@ class FixedFit:
     def resume(self) -> None:
         """Restore every state from the latest ledger-bound checkpoint, never a best score."""
         self._finish_publication()
-        record = self.ledger.recover(self.spec.job_id)
+        job = self.ledger.state["jobs"][self.spec.job_id]
+        fallback = None
+        if job["status"] != "COMPLETE" and job["checkpoint"] is not None:
+            checkpoint_path = Path(job["checkpoint"]["path"])
+            expected_path = self.output.absolute() / f"checkpoint_{job['checkpoint_update']:06d}.pt"
+            if (
+                checkpoint_path.resolve() != expected_path
+                or checkpoint_path.is_symlink()
+                or (checkpoint_path.is_file() and checkpoint_path.stat().st_nlink != 1)
+            ):
+                raise PermissionError(
+                    "checkpoint recovery cannot follow a redirected or linked source"
+                )
+            try:
+                verify(job["checkpoint"])
+            except (OSError, ValueError):
+                from e_jepa_ttc.training.checkpoint_recovery_v11 import (
+                    existing_recovery,
+                    latest_valid_publication,
+                    preserve_corrupt_publications,
+                )
+
+                recovery = existing_recovery(self.output, self.identity, job["checkpoint_update"])
+                if recovery is None:
+                    recovery = latest_valid_publication(
+                        self.output, self.identity, job["checkpoint_update"]
+                    )
+                fallback = preserve_corrupt_publications(self.output, recovery)
+        record = self.ledger.recover(self.spec.job_id, fallback=fallback)
         if record is None:
             if self.update != 0:
                 raise ValueError("initial-state resume requires a freshly seeded model")

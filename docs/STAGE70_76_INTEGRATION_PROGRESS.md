@@ -108,6 +108,17 @@ científicos y cero actualizaciones nuevas de optimizador. La comparación exact
 de targets reales entre auditoría y tablas exteriores también pasó en los tres
 folds. El análisis estadístico final del router sigue pendiente de sus modelos.
 
+La recuperación del entrenador ahora busca el último checkpoint publicado con
+hash válido, por actualización descendente. Conserva bytes y recibos corruptos
+en incidentes propios antes de volver a publicar esos números de actualización;
+no consulta pérdidas para elegir un estado y no reinicia endpoints completos.
+También retoma una preservación interrumpida entre movimientos de archivos.
+Pasaron nueve tests de integridad/ledger y una prueba CPU real de 24 updates:
+10 continuos frente a 8 iniciales y recuperación desde 4 hasta 10. Pesos,
+optimizador, RNG e historial de pérdidas/gradientes/LR coinciden exactamente.
+Los cuatro updates repetidos están cargados otra vez en el ledger. Son dos
+endpoints técnicos no seleccionables; no usaron datos reales.
+
 Falta terminar la integración de las ramas condicionales, los diagnósticos TRAIN
 supervisados y las intervenciones de mecanismo, la contabilidad de coste total,
 la recuperación de checkpoints dañados, la CLI/PowerShell y el empaquetado.
