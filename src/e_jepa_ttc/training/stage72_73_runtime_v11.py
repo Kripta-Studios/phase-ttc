@@ -87,6 +87,27 @@ class InitialArchitectureRuntime:
             values["role_prefix"],
         )
         self.original = CountReader(verify(self.lock["count_caches"]["original"]).parent)
+        self.producer_recipe = None
+        if self.availability.primary_capacity == "4M":
+            cohort = json.loads(verify(self.lock["capacity_cohort"]).read_text(encoding="utf-8"))
+            producers = json.loads(
+                verify(self.lock["capacity_producer_roles"]).read_text(encoding="utf-8")
+            )
+            for record in (cohort, producers):
+                unsigned = {k: v for k, v in record.items() if k != "artifact_sha256"}
+                if object_digest(unsigned) != record.get("artifact_sha256"):
+                    raise ValueError("capacity cohort or producer roles changed")
+            if (
+                producers.get("cohort_sha256") != cohort["artifact_sha256"]
+                or producers.get("kind") != "CAPACITY_NESTED_PRODUCER_ROLES"
+                or set(self.original.metadata.sample_token) != set(cohort["ordered_tokens"])
+                or any(
+                    row.outer_fold != cohort["sequence_to_outer_fold"].get(str(row.sequence_id))
+                    for row in self.original.metadata.itertuples()
+                )
+            ):
+                raise ValueError("physical count cache differs from the fixed expanded cohort")
+            self.producer_recipe = producers
         self.expanded = None
         if self.availability.diversity:
             additional = CountReader(verify(self.lock["count_caches"]["expanded"]).parent)
@@ -111,6 +132,7 @@ class InitialArchitectureRuntime:
             expected_fold=plan.outer_fold,
             expected_expansion=expanded,
             source_role_sha256=self.lock["source_role_sha256"],
+            producer_recipe=self.producer_recipe,
         )
         if loaded.source_sha256 != sha:
             raise ValueError("resolved job source differs from its frozen assignment")

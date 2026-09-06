@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Protocol
@@ -159,10 +160,12 @@ class TrainingView:
             }
         )
 
-    def fit_normalization(self) -> RateNormalization:
+    def fit_normalization(self, check: Callable[[], None] | None = None) -> RateNormalization:
         """Read only this TRAIN view; zero-activity observations remain included."""
         moments = RateMoments()
         for token in self.tokens:
+            if check is not None:
+                check()
             observation = self.reader.observation(token)
             moments.add(log_rates(observation.counts, observation.durations_s), observation.support)
         return moments.finish(self.identity)

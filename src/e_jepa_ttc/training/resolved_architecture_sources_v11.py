@@ -143,7 +143,9 @@ def load_architecture_sources(
         raise ValueError("normalization does not describe this TRAIN polarity view")
     supervision = json.loads(verify(source["supervision"]).read_text(encoding="utf-8"))
     expected_estimand = (
-        "present_bucket_normalized_TRAIN" if expected_expansion else "strict_original_TRAIN"
+        "present_bucket_normalized_TRAIN"
+        if expected_expansion or producer_recipe is not None
+        else "strict_original_TRAIN"
     )
     if (
         supervision.get("training_view_sha256") != view.identity
