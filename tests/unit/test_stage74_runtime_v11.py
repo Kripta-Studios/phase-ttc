@@ -93,8 +93,17 @@ def test_every_new_encoder_head_and_pretext_finishes_before_any_replication_oute
         events.append(("export", (name, kwargs["seed"])))
 
     monkeypatch.setattr(module, "export_initial_treatment", export)
+
+    def analyze(exports, *args, **kwargs):
+        assert sum(event[0] == "export" for event in events) == 4
+        assert len(exports) == 4
+        events.append(("analysis", None))
+        return {"synthetic_analysis": True}
+
+    monkeypatch.setattr(module, "build_replication_evidence", analyze)
     result = module.run_replication(runtime, {"path": str(tmp_path / "decision.json")})
     assert len(result["exports"]) == 4
+    assert result["analysis"] == {"synthetic_analysis": True}
     assert sum(event[0] == "diagnostic" for event in events) == 12
     assert [event[1] for event in events if event[0] == "fit"] == [plan.job_id for plan in plans]
 

@@ -16,6 +16,79 @@ from e_jepa_ttc.evaluation.risk_geometry_v10 import hierarchical_losses
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, strict_macro_mass
 from e_jepa_ttc.evaluation.stage70_76 import Evidence, decide
 
+INITIAL_CONTRASTS = (
+    ("S72-PPS-TRAJ", "S72-DIRECT"),
+    ("S72-PPS-TRAJ", "S72-PPS-PAIR"),
+    ("S72-PPS-TRAJ", "S72-PPS-TIMEPERM"),
+    ("S73-PPS-A", "S72-PPS-TRAJ"),
+    ("S73-PPS-D", "S72-PPS-TRAJ"),
+    ("S73-PPS-AD", "S72-PPS-TRAJ"),
+    ("S73-PPS-AD", "S73-PPS-D"),
+    ("S73-PPS-AD", "S73-PPS-A"),
+    ("S73-PPS-A", "S73-PPS-EXTRA"),
+    ("S73-PPS-EXTRA", "S72-PPS-TRAJ"),
+    ("S73-DIRECT-D", "S72-DIRECT"),
+)
+
+
+def paired_contrasts(
+    metadata: pd.DataFrame,
+    losses: np.ndarray,
+    sampled_losses: np.ndarray,
+    names: list[str],
+    pairs: tuple[tuple[str, str], ...],
+) -> dict[str, Any]:
+    """Use the same paired draws for prospectively named mechanism/compute contrasts."""
+    losses = np.asarray(losses, dtype=np.float64)
+    sampled_losses = np.asarray(sampled_losses, dtype=np.float64)
+    if (
+        losses.shape != (len(metadata), len(names))
+        or sampled_losses.ndim != 2
+        or sampled_losses.shape[1] != len(names)
+        or sampled_losses.shape[0] < 2
+        or len(set(names)) != len(names)
+        or not np.isfinite(losses).all()
+        or not np.isfinite(sampled_losses).all()
+        or len(set(pairs)) != len(pairs)
+        or any(left == right for left, right in pairs)
+    ):
+        raise ValueError("contrasts require aligned finite losses and shared paired draws")
+    sequence = metadata.sequence_id.astype(str).to_numpy()
+    sequences = sorted(set(sequence))
+    if len(sequences) != 9:
+        raise ValueError("initial contrasts retain exactly nine original sequences")
+    mass = strict_macro_mass(metadata.target_ttc_s.to_numpy(np.float64), sequence)
+    result = {}
+    for left, right in pairs:
+        key = f"{left}_minus_{right}"
+        record: dict[str, Any] = {
+            "candidate": left,
+            "reference": right,
+            "negative_favors_candidate": True,
+            "confirmatory": False,
+            "selects_candidate_identity": False,
+        }
+        if left not in names or right not in names:
+            result[key] = {**record, "status": "UNAVAILABLE_OR_INVALID_ENDPOINT"}
+            continue
+        li, ri = names.index(left), names.index(right)
+        delta = losses[:, li] - losses[:, ri]
+        draws = sampled_losses[:, li] - sampled_losses[:, ri]
+        per_sequence = np.array(
+            [9 * float(mass[sequence == seq] @ delta[sequence == seq]) for seq in sequences]
+        )
+        result[key] = {
+            **record,
+            "status": "COMPLETE",
+            "delta": float(mass @ delta),
+            "hierarchical_ci95": np.quantile(draws, [0.025, 0.975]).tolist(),
+            "hierarchical_fraction_negative": float(np.mean(draws < 0)),
+            "exact_sequence": exact_sequence_diagnostic(per_sequence),
+            "sequence_order": sequences,
+            "per_sequence_delta": per_sequence.tolist(),
+        }
+    return result
+
 
 def aligned_loss_vectors(
     metadata: pd.DataFrame, rows: pd.DataFrame
@@ -130,6 +203,9 @@ def compare_standalone_rows(
         "joint_oracle_model_names": model_names,
         "bootstrap": bootstrap,
         "bootstrap_columns": ["RISK17", *model_names],
+        "prospective_initial_contrasts": paired_contrasts(
+            metadata, losses, sampled, ["RISK17", *model_names], INITIAL_CONTRASTS
+        ),
         "bootstrap_loss_array": binding(output / "BOOTSTRAP_LOSSES.npy"),
         "bootstrap_draw_journal": binding(output / "HIERARCHICAL_DRAWS.jsonl"),
         "independent_confirmation": False,

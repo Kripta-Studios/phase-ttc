@@ -11,6 +11,7 @@ from e_jepa_ttc.artifacts.replication_barrier_v11 import freeze_replication_stag
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import export_initial_treatment
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import diagnose_pretext_checkpoint
+from e_jepa_ttc.evaluation.replication_evidence_v11 import build_replication_evidence
 from e_jepa_ttc.evaluation.standalone_outer_v11 import infer_initial_endpoint
 from e_jepa_ttc.evaluation.supervised_checkpoint_diagnostics_v11 import diagnose_supervised_series
 from e_jepa_ttc.training.correspondence_pretext_v11 import PretextTextures
@@ -142,10 +143,19 @@ def run_replication(
             owner=runtime.owner,
         )
         exports[f"{name}_seed{seed}"] = binding(output / "TREATMENT_EXPORT.json")
-    progress("REPLICATION_EXPORTS_COMPLETE_ANALYSIS_PENDING", None)
+    runtime._reserve_resources("replication_evidence")
+    analysis = build_replication_evidence(
+        exports,
+        decision_source,
+        lock_path=runtime.lock_path,
+        lock_sha256=runtime.lock_sha256,
+        owner=runtime.owner,
+    )
+    progress("REPLICATION_ANALYSIS_COMPLETE", None)
     return {
         "status": "ENDPOINTS_AND_EXPORTS_COMPLETE",
         "stage_authorization": decision_source,
         "barrier": binding(barrier_path),
         "exports": exports,
+        "analysis": analysis,
     }
