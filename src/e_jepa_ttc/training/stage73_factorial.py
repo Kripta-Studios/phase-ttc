@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from e_jepa_ttc.evaluation.stage70_76 import Evidence, decide
-from e_jepa_ttc.models.projective_phase_network import Arm
+from e_jepa_ttc.models.projective_phase_network import Arm, Capacity
 
 Family = Literal["C_DIRECT", "C_PPS"]
 
@@ -21,8 +21,16 @@ class Availability:
     diversity: bool
     pretext_evidence_sha256: str
     diversity_evidence_sha256: str
+    capacities: tuple[Capacity, ...] = ("2M",)
+    primary_capacity: Capacity = "2M"
 
     def __post_init__(self) -> None:
+        object.__setattr__(self, "capacities", tuple(self.capacities))
+        if (self.capacities, self.primary_capacity) not in (
+            (("2M",), "2M"),
+            (("2M", "4M", "8M"), "4M"),
+        ):
+            raise ValueError("capacity matrix and primary size must be prospectively registered")
         if type(self.pretext) is not bool or type(self.diversity) is not bool:
             raise ValueError("A and D availability must both be resolved before plan freeze")
         for value in (self.pretext_evidence_sha256, self.diversity_evidence_sha256):
@@ -91,8 +99,11 @@ class PlannedFit:
     outer_fold: int
     seed: int
     inner_fold: int | None = None
+    capacity: Capacity = "2M"
 
     def __post_init__(self) -> None:
+        if self.capacity not in ("2M", "4M", "8M"):
+            raise ValueError("unregistered model capacity")
         recipe = treatment(self.treatment_name)
         if self.outer_fold not in (0, 1, 2):
             raise ValueError("all architecture fits use the original three outer folds")
@@ -112,7 +123,11 @@ class PlannedFit:
     def job_id(self) -> str:
         """Return a stable identity without a result-dependent suffix."""
         suffix = f"_inner{self.inner_fold}" if self.inner_fold is not None else ""
-        return f"{self.stage}_{self.treatment_name}_outer{self.outer_fold}{suffix}_seed{self.seed}"
+        capacity = "" if self.capacity == "2M" else f"_capacity{self.capacity}"
+        return (
+            f"{self.stage}_{self.treatment_name}_outer{self.outer_fold}{suffix}"
+            f"_seed{self.seed}{capacity}"
+        )
 
 
 def initial_jobs(availability: Availability) -> tuple[PlannedFit, ...]:
@@ -129,8 +144,19 @@ def initial_jobs(availability: Availability) -> tuple[PlannedFit, ...]:
         )
     ]
     return tuple(
-        PlannedFit("S72" if recipe.name.startswith("S72") else "S73", recipe.name, fold, 7)
+        PlannedFit(
+            "S72" if recipe.name.startswith("S72") else "S73",
+            recipe.name,
+            fold,
+            7,
+            capacity=capacity,
+        )
         for recipe in recipes
+        for capacity in (
+            availability.capacities
+            if recipe.name.startswith("S72")
+            else (availability.primary_capacity,)
+        )
         for fold in (0, 1, 2)
     )
 
@@ -147,7 +173,9 @@ def replication_jobs(
         result = evidence[family]
         if result is not None and decide(result)["replicate_new_architecture"]:
             jobs.extend(
-                PlannedFit("S74", name, fold, seed) for seed in (13, 23) for fold in (0, 1, 2)
+                PlannedFit("S74", name, fold, seed, capacity=availability.primary_capacity)
+                for seed in (13, 23)
+                for fold in (0, 1, 2)
             )
     return tuple(jobs)
 
@@ -164,7 +192,7 @@ def nested_jobs(
     if joint_oracle_gain < 8:
         return ()
     return tuple(
-        PlannedFit("S75", name, fold, 7, inner)
+        PlannedFit("S75", name, fold, 7, inner, capacity=availability.primary_capacity)
         for family, name in canonical_candidates(availability).items()
         if technically_valid[family]
         for fold in (0, 1, 2)

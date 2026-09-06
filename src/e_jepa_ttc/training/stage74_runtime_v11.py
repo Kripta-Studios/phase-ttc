@@ -88,6 +88,7 @@ def run_replication(
                     binding(root / "pretext" / f"checkpoint_{update:06d}.pt"),
                     pool,
                     seed=plan.seed,
+                    capacity=plan.capacity,
                     output=root / f"pretext_diagnostics_{update:06d}",
                     check=runtime.owner.check,
                 )
@@ -98,6 +99,7 @@ def run_replication(
             loaded.supervision,
             recipe_sha256=job.identity,
             endpoint=treatment(plan.treatment_name).supervised_updates,
+            capacity=plan.capacity,
             check=runtime.owner.check,
         )
         observe_job_deployment(job, loaded, runtime.lock, runtime.owner)

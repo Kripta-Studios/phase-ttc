@@ -67,12 +67,63 @@ class UpdateLedger:
             self.state: dict[str, Any] = state
         else:
             self.state = {"version": 1, "jobs": {}, "pending": None, "ridge_fits": []}
+        if "prior_campaign" in self.state:
+            self.inherit_closed_campaign(self.state["prior_campaign"]["execution"])
         self._validate_budget()
 
     def _assert_owner(self) -> None:
         record = json.loads((self.owner_root / "ACTIVE_OWNER.json").read_text())
         if record["pid"] != os.getpid() or record["created"] != psutil.Process().create_time():
             raise RuntimeError("optimizer ledger requires the current exclusive campaign owner")
+
+    def inherit_closed_campaign(self, execution: dict[str, Any]) -> None:
+        """Carry forward verified consumed budget without inventing local fits or updates."""
+        source = verify(execution)
+        record = json.loads(source.read_text(encoding="utf-8"))
+        if record.get("status") != "AUTHORIZED_GRAPH_TERMINAL" or set(record.get("stages", {})) != {
+            "S72",
+            "S73",
+            "S74",
+            "S75",
+            "S76",
+        }:
+            raise ValueError("predecessor must cover its complete authorized graph")
+        parent_path = verify(record["update_ledger"])
+        if parent_path.resolve() == self.path.resolve():
+            raise ValueError("a campaign cannot inherit its own ledger")
+        parent = json.loads(parent_path.read_text(encoding="utf-8"))
+        signature = parent.pop("sha256")
+        if object_digest(parent) != signature or parent.get("pending") is not None:
+            raise ValueError("predecessor accounting is changed or unsettled")
+        jobs = list(parent["jobs"].values())
+        audits = list(parent.get("technical_audits", {}).values())
+        if any(item["remaining"] for item in jobs + audits):
+            raise ValueError("predecessor still owns prescribed optimizer reservations")
+        inherited = parent.get("prior_campaign", {})
+        charged = sum(item["charged"] for item in jobs + audits)
+        technical = sum(j["charged"] for j in jobs if j["spec"]["technical"]) + sum(
+            a["charged"] for a in audits
+        )
+        if charged != record["optimizer_totals"]["charged_optimizer_attempts"]:
+            raise ValueError("terminal execution and predecessor ledger disagree")
+        carry = {
+            "execution": execution,
+            "ledger": record["update_ledger"],
+            "charged": charged + inherited.get("charged", 0),
+            "technical_charged": technical + inherited.get("technical_charged", 0),
+        }
+        if "prior_campaign" in self.state:
+            if self.state["prior_campaign"] != carry:
+                raise ValueError("inherited campaign budget changed")
+            return
+        if self.state["jobs"] or self.state.get("technical_audits"):
+            raise ValueError("inherit predecessor budget before any local reservation")
+        self.state["prior_campaign"] = carry
+        try:
+            self._publish()
+        except BaseException:
+            self.state.pop("prior_campaign")
+            raise
 
     def totals(self) -> dict[str, int]:
         """Report confirmed work, uncertain charged attempts and future reservations."""
@@ -100,12 +151,23 @@ class UpdateLedger:
 
     def _validate_budget(self) -> None:
         totals = self.totals()
+        prior = self.state.get("prior_campaign", {})
+        if prior and (
+            any(type(prior.get(key)) is not int for key in ("charged", "technical_charged"))
+            or not 0 <= prior["technical_charged"] <= prior["charged"] <= MAX_UPDATES
+        ):
+            raise ValueError("invalid inherited optimizer accounting")
         if (
-            totals["charged_optimizer_attempts"] + totals["reserved_remaining_updates"]
+            totals["charged_optimizer_attempts"]
+            + totals["reserved_remaining_updates"]
+            + prior.get("charged", 0)
             > MAX_UPDATES
         ):
             raise RuntimeError("UPDATE_BUDGET_BLOCKED: entire remaining job exceeds900000")
-        if totals["technical_charged_and_reserved"] > MAX_TECHNICAL_UPDATES:
+        if (
+            totals["technical_charged_and_reserved"] + prior.get("technical_charged", 0)
+            > MAX_TECHNICAL_UPDATES
+        ):
             raise RuntimeError("UPDATE_BUDGET_BLOCKED: technical budget exceeds3000")
         for job in self.state["jobs"].values():
             if (

@@ -15,7 +15,7 @@ from torch import nn
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned
-from e_jepa_ttc.models.projective_phase_network import ContextEncoder
+from e_jepa_ttc.models.projective_phase_network import Capacity, ContextEncoder
 from e_jepa_ttc.training.correspondence_pretext_v11 import PretextTextures
 from e_jepa_ttc.training.eap_highres_jepa import _capture_rng_state, _restore_rng_state
 
@@ -84,6 +84,7 @@ def diagnose_pretext_checkpoint(
     output: Path,
     check: Callable[[], None],
     device: str = "cuda",
+    capacity: Capacity = "2M",
 ) -> dict[str, Any]:
     """Observe 16 fixed TRAIN and16 fixed held-texture images, never choose a checkpoint.
 
@@ -160,7 +161,7 @@ def diagnose_pretext_checkpoint(
     encoder = None
     started = time.monotonic()
     try:
-        encoder = ContextEncoder().to(device)
+        encoder = ContextEncoder(capacity).to(device)
         encoder.load_state_dict(payload["model"], strict=True)
         with readonly_diagnostic(encoder, generator):
             for held in (False, True):

@@ -219,7 +219,7 @@ def infer_initial_endpoint(
         raise RuntimeError("scientific inference requires the registered CUDA runtime")
     deterministic_runtime(job.plan.seed)
     torch.set_num_threads(2)
-    model = ProjectivePhaseNetwork(checkpoint_sweep=False)
+    model = ProjectivePhaseNetwork(checkpoint_sweep=False, capacity=job.plan.capacity)
     model.load_state_dict(
         torch.load(verify(matches[0]["inference_weights"]), map_location="cpu", weights_only=True),
         strict=True,

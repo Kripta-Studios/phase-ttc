@@ -192,7 +192,7 @@ def freeze_initial_stage(
     """Publish a one-way barrier only after every prescribed endpoint verifies."""
     validate_stage_membership(stage, jobs, availability)
     lock = require_scientific_lock(lock_path, lock_sha256)
-    if lock.get("availability") != asdict(availability) or any(
+    if object_digest(lock.get("availability")) != object_digest(asdict(availability)) or any(
         job.training_lock_sha256 != lock_sha256 for job in jobs
     ):
         raise ValueError("stage availability or job lock identity changed")

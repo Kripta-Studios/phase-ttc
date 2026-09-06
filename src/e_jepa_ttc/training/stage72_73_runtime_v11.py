@@ -195,6 +195,7 @@ class InitialArchitectureRuntime:
                             binding(checkpoint),
                             pool,
                             seed=plan.seed,
+                            capacity=plan.capacity,
                             output=self.paths["endpoint_root"]
                             / plan.job_id
                             / f"pretext_diagnostics_{update:06d}",
@@ -207,6 +208,7 @@ class InitialArchitectureRuntime:
                     loaded.supervision,
                     recipe_sha256=job.identity,
                     endpoint=treatment(plan.treatment_name).supervised_updates,
+                    capacity=plan.capacity,
                     check=self.owner.check,
                 )
                 observe_job_deployment(job, loaded, self.lock, self.owner)

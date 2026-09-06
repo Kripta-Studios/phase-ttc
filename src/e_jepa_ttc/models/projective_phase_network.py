@@ -17,6 +17,15 @@ from .projective_geometry_v11 import scale_between
 from .projective_phase_sweep import marginalize_translation, sweep_scores, translations
 
 Arm = Literal["DIRECT", "PPS-PAIR", "PPS-TRAJ", "PPS-TIMEPERM"]
+Capacity = Literal["2M", "4M", "8M"]
+
+# Prospective width scaling, rounded to GroupNorm-compatible multiples of eight.
+# Geometry, representation, evidence refiner and the108-bin output stay fixed.
+CAPACITY_WIDTHS: dict[Capacity, tuple[int, int, int, int, int, int]] = {
+    "2M": (32, 64, 96, 128, 160, 256),
+    "4M": (48, 88, 136, 184, 224, 360),
+    "8M": (64, 128, 192, 256, 320, 512),
+}
 
 
 class ResidualBlock(nn.Module):
@@ -35,24 +44,28 @@ class ResidualBlock(nn.Module):
 
 
 class ContextEncoder(nn.Module):
-    def __init__(self) -> None:
+    def __init__(self, capacity: Capacity = "2M") -> None:
         super().__init__()
+        if capacity not in CAPACITY_WIDTHS:
+            raise ValueError("unregistered model capacity")
+        c0, c1, c2, _, _, _ = CAPACITY_WIDTHS[capacity]
+        self.capacity = capacity
         self.net = nn.Sequential(
-            nn.Conv2d(8, 32, 5, stride=2, padding=2, bias=False),
-            nn.GroupNorm(8, 32),
+            nn.Conv2d(8, c0, 5, stride=2, padding=2, bias=False),
+            nn.GroupNorm(8, c0),
             nn.SiLU(),
-            ResidualBlock(32),
-            ResidualBlock(32),
-            nn.Conv2d(32, 64, 3, stride=2, padding=1, bias=False),
-            nn.GroupNorm(8, 64),
+            ResidualBlock(c0),
+            ResidualBlock(c0),
+            nn.Conv2d(c0, c1, 3, stride=2, padding=1, bias=False),
+            nn.GroupNorm(8, c1),
             nn.SiLU(),
-            ResidualBlock(64),
-            ResidualBlock(64),
-            nn.Conv2d(64, 96, 1, bias=False),
-            nn.GroupNorm(8, 96),
+            ResidualBlock(c1),
+            ResidualBlock(c1),
+            nn.Conv2d(c1, c2, 1, bias=False),
+            nn.GroupNorm(8, c2),
             nn.SiLU(),
-            ResidualBlock(96),
-            ResidualBlock(96),
+            ResidualBlock(c2),
+            ResidualBlock(c2),
         )
 
     def forward(self, x: Tensor) -> Tensor:
@@ -99,31 +112,37 @@ class ProjectivePhaseNetwork(nn.Module):
         sweep_chunk: int = 8,
         checkpoint_sweep: bool = False,
         edges: Tensor | None = None,
+        capacity: Capacity = "2M",
     ) -> None:
         super().__init__()
         self.register_buffer("edges", phase_edges() if edges is None else edges.detach().clone())
         self.register_buffer("offsets", translations(radius=radius, step=displacement_step))
         self.sweep_chunk = sweep_chunk
         self.checkpoint_sweep = checkpoint_sweep
-        self.encoder = ContextEncoder()
+        if capacity not in CAPACITY_WIDTHS:
+            raise ValueError("unregistered model capacity")
+        _, _, features, head0, head1, hidden = CAPACITY_WIDTHS[capacity]
+        self.capacity = capacity
+        self.feature_channels = features
+        self.encoder = ContextEncoder(capacity)
         bins = len(self.edges) - 1
         self.direct = nn.Sequential(
-            nn.Conv2d(4 * 96, 128, 1, bias=False),
-            nn.GroupNorm(8, 128),
+            nn.Conv2d(4 * features, head0, 1, bias=False),
+            nn.GroupNorm(8, head0),
             nn.SiLU(),
-            ResidualBlock(128),
-            ResidualBlock(128),
-            nn.Conv2d(128, 160, 3, stride=2, padding=1, bias=False),
-            nn.GroupNorm(8, 160),
+            ResidualBlock(head0),
+            ResidualBlock(head0),
+            nn.Conv2d(head0, head1, 3, stride=2, padding=1, bias=False),
+            nn.GroupNorm(8, head1),
             nn.SiLU(),
-            ResidualBlock(160),
+            ResidualBlock(head1),
             QuadrantAveragePool(),
             nn.Flatten(),
-            nn.Linear(640, 256),
+            nn.Linear(head1 * 4, hidden),
             nn.SiLU(),
-            nn.Linear(256, bins),
+            nn.Linear(hidden, bins),
         )
-        self.support = nn.Sequential(nn.Conv2d(96, 16, 1), nn.SiLU(), nn.Conv2d(16, 1, 1))
+        self.support = nn.Sequential(nn.Conv2d(features, 16, 1), nn.SiLU(), nn.Conv2d(16, 1, 1))
         # 4 evidence + 4 validity + 4 gap embeddings + phase coordinate + direct logit.
         self.score_refiner = nn.Sequential(
             nn.Conv1d(14, 48, 3, padding=1),
@@ -144,7 +163,7 @@ class ProjectivePhaseNetwork(nn.Module):
             raise ValueError("common ROI must be square and divisible by four")
         b, _, _, h, w = contexts.shape
         f = self.encoder(contexts.reshape(b * 4, 8, h, w))
-        return f.reshape(b, 4, 96, f.shape[-2], f.shape[-1])
+        return f.reshape(b, 4, self.feature_channels, f.shape[-2], f.shape[-1])
 
     def forward(
         self,

@@ -89,7 +89,10 @@
     "src/e_jepa_ttc/evaluation/deployment_cost_v11.py",
     "scripts/qa_stage72_raw_deployment_gpu.py",
     "src/e_jepa_ttc/training/architecture_loss_diagnostics_v11.py",
-    "src/e_jepa_ttc/evaluation/job_deployment_cost_v11.py"
+    "src/e_jepa_ttc/evaluation/job_deployment_cost_v11.py",
+    "scripts/prepare_stage70_capacity.py",
+    "src/e_jepa_ttc/data/capacity_cohort.py",
+    "src/e_jepa_ttc/training/capacity_campaign.py"
   ],
   "extraPaths": [
     "src",

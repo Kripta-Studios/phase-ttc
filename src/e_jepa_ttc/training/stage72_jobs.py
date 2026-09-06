@@ -290,7 +290,7 @@ def execute_architecture_job(
     if pretext_spec is not None:
         assert pool is not None
         deterministic_runtime(job.plan.seed)
-        encoder = ContextEncoder().cuda()
+        encoder = ContextEncoder(job.plan.capacity).cuda()
         fit = FixedFit(encoder, pretext_spec, ledger, owner, root / "pretext", warmup=150)
         state = ledger.state["jobs"][pretext_spec.job_id]
         if state["status"] != "COMPLETE":
@@ -309,7 +309,9 @@ def execute_architecture_job(
         encoder_state = payload["model"]
         del payload, fit, encoder
         torch.cuda.empty_cache()
-    model = initialize_architecture(job.plan.seed, supervision, encoder_state=encoder_state).cuda()
+    model = initialize_architecture(
+        job.plan.seed, supervision, encoder_state=encoder_state, capacity=job.plan.capacity
+    ).cuda()
     del encoder_state
     fit = FixedFit(
         model, supervised_spec, ledger, owner, root / "supervised", warmup=recipe.supervised_warmup

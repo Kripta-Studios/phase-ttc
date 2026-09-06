@@ -14,7 +14,7 @@ from torch import Tensor
 from e_jepa_ttc.data.event_context128 import RateNormalization
 from e_jepa_ttc.data.event_context128_reader import TrainingView
 from e_jepa_ttc.models.phase_distribution_v11 import weighted_training_loss
-from e_jepa_ttc.models.projective_phase_network import Arm, ProjectivePhaseNetwork
+from e_jepa_ttc.models.projective_phase_network import Arm, Capacity, ProjectivePhaseNetwork
 from e_jepa_ttc.training.architecture_loss_diagnostics_v11 import supervised_loss_diagnostics
 from e_jepa_ttc.training.stage70_fixed_fit import deterministic_runtime
 from e_jepa_ttc.training.stage72_augmentation import (
@@ -30,10 +30,11 @@ def initialize_architecture(
     supervision: Supervision,
     *,
     encoder_state: Mapping[str, Tensor] | None = None,
+    capacity: Capacity = "2M",
 ) -> ProjectivePhaseNetwork:
     """Recreate every task head from the registered seed/prior; transfer only an encoder."""
     deterministic_runtime(seed)
-    model = ProjectivePhaseNetwork(checkpoint_sweep=True)
+    model = ProjectivePhaseNetwork(checkpoint_sweep=True, capacity=capacity)
     initialize_train_prior(model, supervision)
     if encoder_state is not None:
         expected = model.encoder.state_dict()

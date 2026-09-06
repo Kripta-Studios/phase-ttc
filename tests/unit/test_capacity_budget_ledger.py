@@ -1,0 +1,95 @@
+"""Cross-campaign accounting without executing an optimizer or touching real ledgers."""
+
+import json
+
+import pytest
+
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
+from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger
+
+
+def predecessor(tmp_path, *, charged=600000, technical=2000, remaining=0, terminal=True):
+    parent = {
+        "version": 1,
+        "pending": None,
+        "ridge_fits": [],
+        "jobs": {
+            "old": {
+                "spec": {"technical": False},
+                "charged": charged,
+                "confirmed": charged,
+                "uncertain": 0,
+                "remaining": remaining,
+                "update": charged,
+                "status": "COMPLETE",
+            },
+            "qa": {
+                "spec": {"technical": True},
+                "charged": technical,
+                "confirmed": technical,
+                "uncertain": 0,
+                "remaining": 0,
+                "update": technical,
+                "status": "COMPLETE",
+            },
+        },
+    }
+    ledger = tmp_path / "parent.json"
+    atomic_json(ledger, {**parent, "sha256": object_digest(parent)})
+    execution = tmp_path / "terminal.json"
+    atomic_json(
+        execution,
+        {
+            "status": "AUTHORIZED_GRAPH_TERMINAL" if terminal else "RUNNING",
+            "stages": {s: {} for s in ("S72", "S73", "S74", "S75", "S76")},
+            "update_ledger": binding(ledger),
+            "optimizer_totals": {"charged_optimizer_attempts": charged + technical},
+        },
+    )
+    return binding(execution)
+
+
+def local_ledger(tmp_path, monkeypatch):
+    monkeypatch.setattr(UpdateLedger, "_assert_owner", lambda self: None)
+    return UpdateLedger(tmp_path / "local.json", tmp_path / "isolated_owner")
+
+
+def test_shared_ceiling_rejects_whole_reservation_without_faking_old_local_fits(
+    tmp_path, monkeypatch
+):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    ledger.inherit_closed_campaign(predecessor(tmp_path))
+    assert ledger.totals()["charged_optimizer_attempts"] == 0
+    assert ledger.totals()["optimizer_fits_started"] == 0
+    assert ledger.state["prior_campaign"]["charged"] == 602000
+    spec = FitSpec("future", "S72", "DIRECT", 0, 7, 300000, "a" * 64, "b" * 64)
+    with pytest.raises(RuntimeError, match="900000"):
+        ledger.reserve(spec)
+    assert not ledger.state["jobs"]
+
+
+@pytest.mark.parametrize("terminal,remaining", [(False, 0), (True, 1)])
+def test_active_or_reserved_predecessor_is_rejected(tmp_path, monkeypatch, terminal, remaining):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    with pytest.raises(ValueError):
+        ledger.inherit_closed_campaign(
+            predecessor(tmp_path, terminal=terminal, remaining=remaining)
+        )
+
+
+def test_inherited_technical_updates_consume_shared_qa_ceiling(tmp_path, monkeypatch):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    ledger.inherit_closed_campaign(predecessor(tmp_path, technical=2900))
+    with pytest.raises(RuntimeError, match="3000"):
+        ledger.reserve_technical_audit("new_qa", 101, "a" * 64)
+
+
+def test_changed_predecessor_is_rejected_when_local_ledger_reopens(tmp_path, monkeypatch):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    inherited = predecessor(tmp_path)
+    ledger.inherit_closed_campaign(inherited)
+    record = json.loads((tmp_path / "terminal.json").read_text())
+    record["optimizer_totals"]["charged_optimizer_attempts"] -= 1
+    atomic_json(tmp_path / "terminal.json", record)
+    with pytest.raises(ValueError):
+        local_ledger(tmp_path, monkeypatch)

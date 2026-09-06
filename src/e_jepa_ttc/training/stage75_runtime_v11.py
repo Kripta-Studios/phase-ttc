@@ -110,6 +110,7 @@ def run_new_nested_producers(
                     binding(root / "pretext" / f"checkpoint_{update:06d}.pt"),
                     pool,
                     seed=7,
+                    capacity=plan.capacity,
                     output=root / f"pretext_diagnostics_{update:06d}",
                     check=runtime.owner.check,
                 )
@@ -120,6 +121,7 @@ def run_new_nested_producers(
             loaded.supervision,
             recipe_sha256=job.identity,
             endpoint=treatment(plan.treatment_name).supervised_updates,
+            capacity=plan.capacity,
             check=runtime.owner.check,
         )
         observe_job_deployment(job, loaded, runtime.lock, runtime.owner)

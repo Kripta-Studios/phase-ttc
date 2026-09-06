@@ -25,7 +25,7 @@ from e_jepa_ttc.evaluation.architecture_mechanisms_v11 import (
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import readonly_diagnostic
 from e_jepa_ttc.models.phase_distribution_v11 import weighted_training_loss
-from e_jepa_ttc.models.projective_phase_network import ProjectivePhaseNetwork
+from e_jepa_ttc.models.projective_phase_network import Capacity, ProjectivePhaseNetwork
 from e_jepa_ttc.training.eap_highres_jepa import _capture_rng_state, _restore_rng_state
 from e_jepa_ttc.training.stage70_update_ledger import FitSpec
 from e_jepa_ttc.training.stage72_augmentation import time_derangement
@@ -41,6 +41,7 @@ def diagnose_supervised_series(
     recipe_sha256: str,
     endpoint: int,
     check: Callable[[], None],
+    capacity: Capacity = "2M",
 ) -> list[dict[str, Any]]:
     """Observe every prescribed checkpoint before publishing a scientific stage barrier."""
     if endpoint not in (8000, 11000):
@@ -55,6 +56,7 @@ def diagnose_supervised_series(
             recipe_sha256=recipe_sha256,
             output=root / f"supervised_diagnostics_{update:06d}",
             check=check,
+            capacity=capacity,
         )
         for update in updates
     ]
@@ -69,6 +71,7 @@ def diagnose_supervised_series(
                 output=root / "mechanism_diagnostics" / mechanism,
                 check=check,
                 mechanism=mechanism,
+                capacity=capacity,
             )
         )
     return observations
@@ -121,6 +124,7 @@ def diagnose_supervised_checkpoint(
     check: Callable[[], None],
     device: str = "cuda",
     mechanism: str | None = None,
+    capacity: Capacity = "2M",
 ) -> dict[str, Any]:
     """Observe frozen weights, full posterior and descriptor health; never choose an epoch."""
     if mechanism is not None and mechanism not in MECHANISM_NAMES:
@@ -204,7 +208,7 @@ def diagnose_supervised_checkpoint(
     losses = []
     started = time.monotonic()
     try:
-        model = ProjectivePhaseNetwork(checkpoint_sweep=False).to(device)
+        model = ProjectivePhaseNetwork(checkpoint_sweep=False, capacity=capacity).to(device)
         model.load_state_dict(payload["model"], strict=True)
 
         def observe_encoder(

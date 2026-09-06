@@ -108,7 +108,7 @@ def observe_job_deployment(
     state = _capture_rng_state(generator)
     model = None
     try:
-        model = ProjectivePhaseNetwork(checkpoint_sweep=False).cuda()
+        model = ProjectivePhaseNetwork(checkpoint_sweep=False, capacity=job.plan.capacity).cuda()
         model.load_state_dict(
             torch.load(verify(endpoint["inference_weights"]), map_location="cpu", weights_only=True)
         )
