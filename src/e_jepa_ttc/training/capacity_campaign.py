@@ -5,6 +5,9 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Any
 
+from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest
+from e_jepa_ttc.data.capacity_cohort import grouped_folds
+from e_jepa_ttc.data.stage70_roles import stable_rank
 from e_jepa_ttc.training.stage73_factorial import (
     Availability,
     PlannedFit,
@@ -106,3 +109,60 @@ def admit_capacity_budget(
         "technical_updates_reserved": technical_updates_reserved,
         "partial_endpoints_allowed": False,
     }
+
+
+def producer_roles(cohort: dict[str, Any]) -> dict[str, Any]:
+    """Reserve one shared TRAIN diagnostic acquisition and nest only optimizer groups."""
+    unsigned = {k: v for k, v in cohort.items() if k != "artifact_sha256"}
+    if object_digest(unsigned) != cohort.get("artifact_sha256"):
+        raise ValueError("cohort changed before producer roles were resolved")
+    mapping = cohort["sequence_to_group"]
+    prefix = cohort["recipe"]["prefix"]
+    folds = []
+    for source in cohort["folds"]:
+        outer = source["outer_fold"]
+        groups = sorted({mapping[s] for s in source["train_sequences"]})
+        if len(groups) < 2:
+            raise ValueError("TRAIN pool cannot separate optimization and diagnostic acquisitions")
+        diagnostic_group = min(groups, key=lambda g: (stable_rank(f"{prefix}/diag/{outer}", g), g))
+        diagnostic = sorted(s for s in source["train_sequences"] if mapping[s] == diagnostic_group)
+        fit_sequences = sorted(set(source["train_sequences"]) - set(diagnostic))
+        excluded = sorted(set(source["held_sequences"]) | set(diagnostic))
+        inner = (
+            grouped_folds(fit_sequences, mapping, prefix=f"{prefix}/optimizer_inner/{outer}")
+            if len({mapping[s] for s in fit_sequences}) >= 3
+            else None
+        )
+        folds.append(
+            {
+                "outer_fold": outer,
+                "outer_held_sequences": source["held_sequences"],
+                "diagnostic_sequences": diagnostic,
+                "fit_sequences": fit_sequences,
+                "all_fit_ancestor_exclusions": excluded,
+                "normalization_and_pretext_exclusions": excluded,
+                "inner_sequence_to_fold": inner,
+                "inner_roles": []
+                if inner is None
+                else [
+                    {
+                        "inner_fold": i,
+                        "fit_sequences": sorted(s for s in fit_sequences if inner[s] != i),
+                        "prediction_sequences": sorted(s for s in fit_sequences if inner[s] == i),
+                        "all_fit_ancestor_exclusions": sorted(
+                            set(excluded) | {s for s in fit_sequences if inner[s] == i}
+                        ),
+                    }
+                    for i in range(3)
+                ],
+            }
+        )
+    result = {
+        "kind": "CAPACITY_NESTED_PRODUCER_ROLES",
+        "cohort_sha256": cohort["artifact_sha256"],
+        "folds": folds,
+        "shared_across_sizes_arms_seeds_and_comparators": True,
+        "diagnostic_checkpoint_selection_allowed": False,
+        "optimizer_updates": 0,
+    }
+    return {**result, "artifact_sha256": object_digest(result)}

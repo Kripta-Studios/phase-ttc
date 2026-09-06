@@ -35,6 +35,7 @@ def load_architecture_sources(
     expected_expansion: bool,
     source_role_sha256: str,
     nested_recipe: dict[str, Any] | None = None,
+    producer_recipe: dict[str, Any] | None = None,
 ) -> ResolvedArchitectureSources:
     """Validate actual arrays against their signed fold source before reserving any fit."""
     source = json.loads(verify(source_binding).read_text(encoding="utf-8"))
@@ -54,6 +55,27 @@ def load_architecture_sources(
     original = reader.metadata.loc[original_mask]
     held = original.loc[original.outer_fold == expected_fold]
     required_train = set(original.loc[original.outer_fold != expected_fold, "sample_token"])
+    diagnostic_sequences: set[str] = set()
+    if producer_recipe is not None:
+        unsigned = {k: v for k, v in producer_recipe.items() if k != "artifact_sha256"}
+        if (
+            object_digest(unsigned) != producer_recipe.get("artifact_sha256")
+            or producer_recipe.get("kind") != "CAPACITY_NESTED_PRODUCER_ROLES"
+            or source.get("producer_roles_sha256") != producer_recipe["artifact_sha256"]
+        ):
+            raise ValueError("TRAIN source differs from its frozen internal diagnostic roles")
+        matches = [r for r in producer_recipe["folds"] if r["outer_fold"] == expected_fold]
+        if len(matches) != 1:
+            raise ValueError("missing or duplicate outer diagnostic role")
+        diagnostic_sequences = set(matches[0]["diagnostic_sequences"])
+        diagnostic_tokens = set(
+            original.loc[original.sequence_id.isin(diagnostic_sequences), "sample_token"]
+        )
+        if not diagnostic_sequences <= set(excluded) or diagnostic_tokens & set(tokens):
+            raise ValueError("internal diagnostic acquisition leaked into optimization")
+        required_train -= diagnostic_tokens
+    elif source.get("producer_roles_sha256") is not None:
+        raise ValueError("capacity source requires its prospectively frozen diagnostic roles")
     if nested_recipe is not None:
         recipe_unsigned = {
             key: value for key, value in nested_recipe.items() if key != "artifact_sha256"

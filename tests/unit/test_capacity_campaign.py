@@ -8,7 +8,11 @@ import torch
 from e_jepa_ttc.data.capacity_cohort import CohortRecipe, build_cohort
 from e_jepa_ttc.data.stage70_roles import SamplingRow
 from e_jepa_ttc.models.projective_phase_network import ProjectivePhaseNetwork
-from e_jepa_ttc.training.capacity_campaign import admit_capacity_budget, capacity_graph
+from e_jepa_ttc.training.capacity_campaign import (
+    admit_capacity_budget,
+    capacity_graph,
+    producer_roles,
+)
 from e_jepa_ttc.training.stage73_factorial import Availability
 
 
@@ -166,3 +170,25 @@ def test_related_confirmation_alias_is_excluded_before_selection():
     )
     assert "s00" not in result["selected_sequences"]
     assert result["sequence_to_outer_fold"]["s01"] == result["sequence_to_outer_fold"]["s02"]
+
+
+@pytest.mark.parametrize("count", [3, 22, 27])
+def test_producer_roles_exclude_internal_diagnostic_from_all_nested_ancestors(count):
+    mapping, rows = cohort_input(count)
+    cohort = build_cohort(
+        rows,
+        sequence_to_group=mapping,
+        confirmation_sequences=["confirmation"],
+        protected_sequences=["protected"],
+        recipe=CohortRecipe(requested_sequences=max(3, count), sample_limit=256),
+    )
+    roles = producer_roles(cohort)
+    for fold in roles["folds"]:
+        diagnostic = set(fold["diagnostic_sequences"])
+        assert len(diagnostic) == 1
+        assert not diagnostic & set(fold["fit_sequences"])
+        assert diagnostic <= set(fold["normalization_and_pretext_exclusions"])
+        for inner in fold["inner_roles"]:
+            assert diagnostic <= set(inner["all_fit_ancestor_exclusions"])
+            assert not set(inner["fit_sequences"]) & set(inner["prediction_sequences"])
+        assert bool(fold["inner_roles"]) == (count > 3)

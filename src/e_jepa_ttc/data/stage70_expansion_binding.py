@@ -87,6 +87,7 @@ def expansion_bindings(
     if (
         metadata.sample_token.duplicated().any()
         or not set(metadata.sequence_id) <= access.allowed_sequences
+        or ("outer_fold" in metadata and not metadata.outer_fold.isin([-1, 0, 1, 2]).all())
     ):
         raise ValueError("expansion metadata identity or source role mismatch")
     sources = {}
@@ -206,7 +207,7 @@ def expansion_bindings(
                         sample_token=str(row.sample_token),
                         sequence_id=str(sequence),
                         track_id=str(row.track_id),
-                        outer_fold=-1,
+                        outer_fold=int(getattr(row, "outer_fold", -1)),
                         window_id=window_id,
                         parquet_row_identity=f"expansion:{row.sample_token}",
                         events_path_relative=f"{sequence}/events.h5",

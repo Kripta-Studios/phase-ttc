@@ -8,7 +8,8 @@ import pytest
 from e_jepa_ttc.data.stage70_expansion_binding import ExpansionTrainAccess, expansion_bindings
 
 
-def test_expansion_binding_preserves_empty_window_and_reuses_complete_output(tmp_path):
+@pytest.mark.parametrize("outer_fold", [None, 0, 1, 2])
+def test_expansion_binding_preserves_empty_window_and_reuses_complete_output(tmp_path, outer_fold):
     root = tmp_path / "train"
     sequence = root / "extra"
     sequence.mkdir(parents=True)
@@ -22,7 +23,7 @@ def test_expansion_binding_preserves_empty_window_and_reuses_complete_output(tmp
             handle.create_dataset(f"events/{name}", data=values)
         handle.create_dataset("ms_to_idx", data=np.array([0], dtype=np.int64))
     metadata_path = tmp_path / "metadata.parquet"
-    pd.DataFrame(
+    metadata = pd.DataFrame(
         {
             "sample_token": ["unique"],
             "sequence_id": ["extra"],
@@ -33,7 +34,10 @@ def test_expansion_binding_preserves_empty_window_and_reuses_complete_output(tmp
             "boxes_xyxy": [[[10, 10, 20, 20], [10, 10, 20, 20]]],
             "events_path": ["extra/events.h5"],
         }
-    ).to_parquet(metadata_path, index=False)
+    )
+    if outer_fold is not None:
+        metadata["outer_fold"] = outer_fold
+    metadata.to_parquet(metadata_path, index=False)
     access = ExpansionTrainAccess(
         root,
         metadata_path,
@@ -45,6 +49,7 @@ def test_expansion_binding_preserves_empty_window_and_reuses_complete_output(tmp
     result = expansion_bindings(metadata_path, access, output)
     assert result["zero_event_windows_retained"] == 1
     bound = pd.read_csv(output / "RAW_BINDINGS.csv")
+    assert set(bound.outer_fold) == {-1 if outer_fold is None else outer_fold}
     assert bound.start_event_index.tolist() == [0, 32]
     assert bound.stop_event_index.tolist() == [16, 32]
     assert bound.target_anchor_event_clock_us.tolist() == [48, 48]
