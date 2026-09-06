@@ -9,6 +9,7 @@ import os
 import sqlite3
 import subprocess
 import sys
+import sysconfig
 import time
 from pathlib import Path
 
@@ -109,6 +110,8 @@ def main() -> None:
             "threads": 2,
             "uv_project_environment": sys.prefix,
             "subprocess_python_directory": str(Path(sys.executable).parent),
+            "subprocess_source": str(checkout / "src"),
+            "subprocess_site_packages": sysconfig.get_paths()["purelib"],
             "uv_offline": True,
             "uv_no_sync": True,
         },
@@ -165,7 +168,10 @@ def main() -> None:
             "UV_OFFLINE": "1",
             "UV_NO_SYNC": "1",
             "PATH": str(Path(sys.executable).parent) + os.pathsep + os.environ.get("PATH", ""),
-            "PYTHONPATH": str(SUPPORT),
+            "PYTHONPATH": os.pathsep.join(
+                (str(SUPPORT), str(checkout / "src"), sysconfig.get_paths()["purelib"])
+            ),
+            "STAGE70_QA_PYTHON_VERSION": sys.version.split()[0],
             "STAGE70_QA_OPTIMIZER_DB": str(database),
             "STAGE70_QA_IDENTITY": identity,
             "STAGE70_QA_OUTPUT": str(output / "capture"),

@@ -5,6 +5,8 @@ import sys
 
 if os.environ.get("STAGE70_QA_OPTIMIZER_DB"):
     try:
+        if sys.version.split()[0] != os.environ.get("STAGE70_QA_PYTHON_VERSION"):
+            raise RuntimeError("QA child Python version differs from the registered interpreter")
         from stage70_optimizer_audit import install
 
         install()
