@@ -59,7 +59,10 @@
     "scripts/qa_stage73_checkpoint_diagnostics.py",
     "src/e_jepa_ttc/training/resolved_architecture_sources_v11.py",
     "scripts/qa_stage72_resolved_source_graph.py",
-    "src/e_jepa_ttc/training/stage72_73_runtime_v11.py"
+    "src/e_jepa_ttc/training/stage72_73_runtime_v11.py",
+    "src/e_jepa_ttc/data/nested_architecture_recipes_v11.py",
+    "scripts/audit_stage70_train_foreground.py",
+    "scripts/resolve_stage75_nested_recipes.py"
   ],
   "extraPaths": [
     "src",
