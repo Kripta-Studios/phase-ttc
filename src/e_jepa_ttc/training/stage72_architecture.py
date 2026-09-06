@@ -15,6 +15,7 @@ from e_jepa_ttc.data.event_context128 import RateNormalization
 from e_jepa_ttc.data.event_context128_reader import TrainingView
 from e_jepa_ttc.models.phase_distribution_v11 import weighted_training_loss
 from e_jepa_ttc.models.projective_phase_network import Arm, ProjectivePhaseNetwork
+from e_jepa_ttc.training.architecture_loss_diagnostics_v11 import supervised_loss_diagnostics
 from e_jepa_ttc.training.stage70_fixed_fit import deterministic_runtime
 from e_jepa_ttc.training.stage72_augmentation import (
     augment_observation,
@@ -99,6 +100,24 @@ class SupervisedBatches:
         )
         if not bool(torch.isfinite(output["ttc"]).all()):
             raise ValueError("standalone model emitted nonfinite TTC")
+        targets = self.supervision.target_phase[indices].to(self.device)
+        masses = self.supervision.mass[indices].to(self.device)
+        loss = weighted_training_loss(
+            output["logits"],
+            targets,
+            self.model.edges,
+            masses,
+            len(self.view.tokens),
+        )
+        components = supervised_loss_diagnostics(
+            output["logits"],
+            output["ttc"],
+            targets,
+            self.model.edges,
+            masses,
+            len(self.view.tokens),
+            loss,
+        )
         with self.journal.open("a", encoding="utf-8") as stream:
             stream.write(
                 json.dumps(
@@ -106,16 +125,11 @@ class SupervisedBatches:
                         "update": update,
                         "rows": trace,
                         "time_permutation": None if permutation is None else permutation.tolist(),
+                        "loss_components": components,
                     }
                 )
                 + "\n"
             )
             stream.flush()
             os.fsync(stream.fileno())
-        return weighted_training_loss(
-            output["logits"],
-            self.supervision.target_phase[indices].to(self.device),
-            self.model.edges,
-            self.supervision.mass[indices].to(self.device),
-            len(self.view.tokens),
-        )
+        return loss

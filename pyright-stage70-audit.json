@@ -85,7 +85,8 @@
     "src/e_jepa_ttc/evaluation/train_prior_baseline_v11.py",
     "src/e_jepa_ttc/data/raw_deployment_v11.py",
     "src/e_jepa_ttc/evaluation/deployment_cost_v11.py",
-    "scripts/qa_stage72_raw_deployment_gpu.py"
+    "scripts/qa_stage72_raw_deployment_gpu.py",
+    "src/e_jepa_ttc/training/architecture_loss_diagnostics_v11.py"
   ],
   "extraPaths": [
     "src",
