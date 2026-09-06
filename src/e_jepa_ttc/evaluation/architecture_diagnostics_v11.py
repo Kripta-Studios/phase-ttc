@@ -138,7 +138,9 @@ def posterior_diagnostics(output: Mapping[str, np.ndarray], edges: np.ndarray) -
             "failure_rows": int((~valid).sum()),
             "calibration_status": "not_calibrated",
             "reporting_precision": "float64",
-            "geometry_mask_meaning": "physical depth and crop-overlap validity; not foreground truth",
+            "geometry_mask_meaning": (
+                "physical depth and crop-overlap validity; not foreground truth"
+            ),
             "interval_domain": "phase; signed TTC inversion is discontinuous at zero",
         },
     )
