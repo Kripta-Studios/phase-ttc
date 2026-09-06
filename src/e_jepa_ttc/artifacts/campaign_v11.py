@@ -13,9 +13,9 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import CampaignOwner
 
 @dataclass(frozen=True)
 class ResourcePolicy:
-    """User-authorized resource amendment 001, expressed in absolute bytes."""
+    """User-authorized resource amendment 002, expressed in absolute bytes."""
 
-    disk_free_bytes: int = 120_000_000_000
+    disk_free_bytes: int = 40_000_000_000
     host_ram_available_bytes: int = 4 * 1024**3
 
     def __post_init__(self) -> None:
@@ -99,7 +99,7 @@ class ResourceOwner(CampaignOwner):
         if not host_ram_reservation(0).passes:
             raise RuntimeError("RESOURCE_BLOCKED: available host RAM below fixed 4 GiB")
         if not disk_reservation(self.root, self.estimated_remaining_bytes).passes:
-            raise RuntimeError("RESOURCE_BLOCKED: projected free disk below fixed 120 GB")
+            raise RuntimeError("RESOURCE_BLOCKED: projected free disk below fixed 40 GB")
 
     def __enter__(self) -> ResourceOwner:
         """Reserve the full maximum incremental RAM before starting allocations."""

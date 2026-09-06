@@ -1,0 +1,18 @@
+{
+  "amendment_id": "STAGE70_76_RESOURCE_002",
+  "status": "USER_AUTHORIZED_BEFORE_SCIENTIFIC_FITS",
+  "date": "2026-09-06",
+  "authority": "User: elimina esa restriccion, el limite deben ser 40gb libre minimo, no 120gb; continua con la investigacion, implementacion, tests y entrenamientos",
+  "supersedes": "STAGE70_76_RESOURCE_001 disk minimum only",
+  "prior_amendment_sha256": "59253bb10d31e1642f2eaafaf0c99559b1d88a855dd8d481ccb9bb67f0f4e0d2",
+  "disk_minimum_free_bytes_after_reservation": 40000000000,
+  "disk_units": "decimal GB: 40 GB = 40000000000 bytes",
+  "host_ram_minimum_available_bytes_after_reservation": 4294967296,
+  "host_ram_units": "4 GiB fixed available after incremental reservation",
+  "applies_to": "Volumes receiving new writes; reserve the entire remaining prescribed work before each job",
+  "vram": "Existing allocated-memory ceiling below 90 percent unchanged",
+  "scientific_recipe_changed": false,
+  "scientific_optimizer_updates_at_amendment": 0,
+  "confirmed_technical_optimizer_updates_at_amendment": 479,
+  "immutable_handoff_modified": false
+}

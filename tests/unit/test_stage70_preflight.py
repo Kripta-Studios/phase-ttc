@@ -47,7 +47,8 @@ def test_rejects_hash_mismatch():
 
 
 def test_reservation_requires_margin_after_allocation(monkeypatch):
-    minimum = 120_000_000_000
+    minimum = 40_000_000_000
+    assert ResourcePolicy().disk_free_bytes == minimum
     monkeypatch.setattr(
         shutil, "disk_usage", lambda _: shutil._ntuple_diskusage(10**15, 0, minimum + 10)
     )
