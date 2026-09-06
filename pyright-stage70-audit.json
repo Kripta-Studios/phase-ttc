@@ -50,7 +50,9 @@
     "scripts/summarize_stage70_test_audit.py",
     "scripts/prepare_stage72_original_views.py",
     "scripts/prepare_stage73_expanded_views.py",
-    "scripts/compare_stage70_test_evidence.py"
+    "scripts/compare_stage70_test_evidence.py",
+    "src/e_jepa_ttc/artifacts/stage_endpoint_barrier_v11.py",
+    "src/e_jepa_ttc/evaluation/standalone_outer_v11.py"
   ],
   "extraPaths": [
     "src",
