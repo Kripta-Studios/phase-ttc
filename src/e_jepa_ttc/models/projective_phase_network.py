@@ -153,6 +153,8 @@ class ProjectivePhaseNetwork(nn.Module):
         *,
         arm: Arm = "PPS-TRAJ",
         permutation: Tensor | None = None,
+        diagnostic_zero_geometry: bool = False,
+        diagnostic_time_permutation: Tensor | None = None,
     ) -> dict[str, Tensor]:
         if arm not in ("DIRECT", "PPS-PAIR", "PPS-TRAJ", "PPS-TIMEPERM"):
             raise ValueError("unknown arm")
@@ -161,6 +163,18 @@ class ProjectivePhaseNetwork(nn.Module):
             raise ValueError("finite Bx4 relative times required")
         if not bool((times[:, 1:] > times[:, :-1]).all()):
             raise ValueError("context midpoints must be strictly chronological")
+        if self.training and (diagnostic_zero_geometry or diagnostic_time_permutation is not None):
+            raise ValueError("mechanism interventions are evaluation-only, never training recipes")
+        geometry_times = times
+        if diagnostic_time_permutation is not None:
+            reference = torch.arange(4, device=times.device)[None].expand(b, -1)
+            if (
+                diagnostic_time_permutation.shape != (b, 4)
+                or not torch.equal(diagnostic_time_permutation.sort(-1).values, reference)
+                or bool((diagnostic_time_permutation == reference).any())
+            ):
+                raise ValueError("diagnostic time assignment requires a fixed-point-free bijection")
+            geometry_times = times.gather(1, diagnostic_time_permutation)
         if arm == "PPS-TIMEPERM":
             if permutation is None or permutation.shape != (b, 4):
                 raise ValueError("a per-row context permutation is required")
@@ -181,8 +195,8 @@ class ProjectivePhaseNetwork(nn.Module):
             centers = (self.edges[:-1] + self.edges[1:]) / 2
             q = phase_to_inverse_ttc(centers)[None].expand(b, -1)
             for j, (a, c) in enumerate(pairs):
-                gaps[:, j] = (times[:, c, None] - times[:, a, None]) / 0.1
-            if arm != "DIRECT":
+                gaps[:, j] = (geometry_times[:, c, None] - geometry_times[:, a, None]) / 0.1
+            if arm != "DIRECT" and not diagnostic_zero_geometry:
                 for j, (a, c) in enumerate(pairs):
                     f0, f1 = features[:, a].float(), features[:, c].float()
                     h, w = f0.shape[-2:]
@@ -190,7 +204,9 @@ class ProjectivePhaseNetwork(nn.Module):
                     # Fixed uniform floor prevents one-pixel focus from nullifying scale evidence.
                     weights = 0.25 / (h * w) + 0.75 * learned
                     scale, physical = scale_between(
-                        q.float(), times[:, a, None].float(), times[:, c, None].float()
+                        q.float(),
+                        geometry_times[:, a, None].float(),
+                        geometry_times[:, c, None].float(),
                     )
                     scores, overlap = sweep_scores(
                         f0,
@@ -205,7 +221,7 @@ class ProjectivePhaseNetwork(nn.Module):
                     ok = ok & physical
                     evidence[:, j] = torch.where(ok, ev, torch.zeros_like(ev))
                     observable[:, j] = ok
-                    gaps[:, j] = (times[:, c, None] - times[:, a, None]) / 0.1
+                    gaps[:, j] = (geometry_times[:, c, None] - geometry_times[:, a, None]) / 0.1
             coordinate = torch.asinh(centers / 0.03)[None, None].expand(b, 1, -1)
             joined = torch.cat(
                 [

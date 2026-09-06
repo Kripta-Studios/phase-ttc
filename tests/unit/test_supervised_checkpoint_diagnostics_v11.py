@@ -41,8 +41,8 @@ def test_series_observes_all_fixed_updates(tmp_path, monkeypatch, endpoint):
         endpoint=endpoint,
         check=lambda: None,
     )
-    assert seen == expected
-    assert result == [{"recipe": "a" * 64}] * len(expected)
+    assert seen == expected + [endpoint] * 7
+    assert result == [{"recipe": "a" * 64}] * (len(expected) + 7)
 
 
 def test_sampling_is_independent_of_source_order():

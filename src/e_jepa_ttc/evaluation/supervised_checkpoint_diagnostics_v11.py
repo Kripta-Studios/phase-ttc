@@ -17,6 +17,11 @@ from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned
 from e_jepa_ttc.data.event_context128 import RateNormalization
 from e_jepa_ttc.data.event_context128_reader import TrainingView
 from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import posterior_diagnostics
+from e_jepa_ttc.evaluation.architecture_mechanisms_v11 import (
+    MECHANISM_NAMES,
+    MECHANISM_RECIPE,
+    mechanism_input,
+)
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import readonly_diagnostic
 from e_jepa_ttc.models.phase_distribution_v11 import weighted_training_loss
@@ -41,7 +46,7 @@ def diagnose_supervised_series(
     if endpoint not in (8000, 11000):
         raise ValueError("unsupported scientific supervised diagnostic endpoint")
     updates = (0, 1000, 2000, 4000, 8000) + ((11000,) if endpoint == 11000 else ())
-    return [
+    observations = [
         diagnose_supervised_checkpoint(
             binding(root / "supervised" / f"checkpoint_{update:06d}.pt"),
             view,
@@ -53,6 +58,20 @@ def diagnose_supervised_series(
         )
         for update in updates
     ]
+    for mechanism in MECHANISM_NAMES:
+        observations.append(
+            diagnose_supervised_checkpoint(
+                binding(root / "supervised" / f"checkpoint_{endpoint:06d}.pt"),
+                view,
+                normalization,
+                supervision,
+                recipe_sha256=recipe_sha256,
+                output=root / "mechanism_diagnostics" / mechanism,
+                check=check,
+                mechanism=mechanism,
+            )
+        )
+    return observations
 
 
 def diagnostic_tokens(tokens: tuple[str, ...]) -> tuple[str, ...]:
@@ -101,8 +120,12 @@ def diagnose_supervised_checkpoint(
     output: Path,
     check: Callable[[], None],
     device: str = "cuda",
+    mechanism: str | None = None,
 ) -> dict[str, Any]:
     """Observe frozen weights, full posterior and descriptor health; never choose an epoch."""
+    if mechanism is not None and mechanism not in MECHANISM_NAMES:
+        raise ValueError("unknown fixed mechanism observation")
+    scored = mechanism in (None, "zero_geometry", "pair_time_permutation")
     payload = torch.load(verify(checkpoint), map_location="cpu", weights_only=False)
     spec = FitSpec(**payload["spec"])
     update = payload["update"]
@@ -130,6 +153,9 @@ def diagnose_supervised_checkpoint(
         "augmentation": False,
         "optimizer_updates": 0,
         "target_precision_note": "float32 supervised phase target; diagnostic scope only",
+        "mechanism": mechanism,
+        "mechanism_recipe_sha256": object_digest(MECHANISM_RECIPE) if mechanism else None,
+        "target_scoring": scored,
     }
     if output.resolve() != output.absolute():
         raise ValueError("supervised diagnostics output was redirected")
@@ -194,16 +220,28 @@ def diagnose_supervised_checkpoint(
             for token, index in zip(tokens, indices, strict=True):
                 check()
                 sample = view.inputs(token, normalization)
+                contexts, times, mechanism_kwargs = (
+                    (sample.contexts, sample.times, {})
+                    if mechanism is None
+                    else mechanism_input(
+                        sample, normalization, mechanism, token=token, seed=spec.seed
+                    )
+                )
+                mechanism_kwargs = {
+                    key: value.to(device) if isinstance(value, torch.Tensor) else value
+                    for key, value in mechanism_kwargs.items()
+                }
                 permutation = (
                     torch.tensor([time_derangement(token, spec.seed)], device=device)
                     if spec.arm == "PPS-TIMEPERM"
                     else None
                 )
                 result = model(
-                    sample.contexts[None].to(device),
-                    sample.times[None].to(device),
+                    contexts[None].to(device),
+                    times[None].to(device),
                     arm=spec.arm,
                     permutation=permutation,
+                    **mechanism_kwargs,
                 )
                 if (
                     device.startswith("cuda")
@@ -213,24 +251,26 @@ def diagnose_supervised_checkpoint(
                     raise RuntimeError(
                         "RESOURCE_BLOCKED: supervised diagnostic reached90 percent VRAM"
                     )
-                loss = weighted_training_loss(
-                    result["logits"],
-                    supervision.target_phase[index : index + 1].to(device),
-                    model.edges,
-                    supervision.mass[index : index + 1].to(device),
-                    len(view.tokens),
-                )
-                losses.append(float(loss))
+                if scored:
+                    loss = weighted_training_loss(
+                        result["logits"],
+                        supervision.target_phase[index : index + 1].to(device),
+                        model.edges,
+                        supervision.mass[index : index + 1].to(device),
+                        len(view.tokens),
+                    )
+                    losses.append(float(loss))
                 for key, value in result.items():
                     collected.setdefault(key, []).append(value.cpu().numpy().copy())
         arrays = {key: np.concatenate(values) for key, values in collected.items()}
         diagnostic = posterior_diagnostics(arrays, model.edges.detach().cpu().numpy())
         diagnostic.rows.insert(0, "sample_token", tokens)
-        target = supervision.target_phase[indices].cpu().numpy()
-        diagnostic.rows["supervised_target_phase_float32"] = target
-        diagnostic.rows["phase_absolute_error_vs_training_target"] = abs(
-            diagnostic.rows.prediction_phase - target
-        )
+        if scored:
+            target = supervision.target_phase[indices].cpu().numpy()
+            diagnostic.rows["supervised_target_phase_float32"] = target
+            diagnostic.rows["phase_absolute_error_vs_training_target"] = abs(
+                diagnostic.rows.prediction_phase - target
+            )
         descriptor = np.concatenate(embeddings)
         diagnostic.arrays["encoder_global_descriptors"] = descriptor
         row_source, array_source = publish_export_payloads(
@@ -244,7 +284,7 @@ def diagnose_supervised_checkpoint(
             "arrays": array_source,
             "finite_fraction": float(diagnostic.rows.finite.mean()),
             "mean_training_objective_on_fixed_rows": float(finite_losses.mean())
-            if np.isfinite(finite_losses).all()
+            if len(finite_losses) and np.isfinite(finite_losses).all()
             else None,
             "embedding_health": embedding_health(descriptor),
             "last_training_gradient_norm": payload["history"][-1]["gradient_norm"]
