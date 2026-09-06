@@ -103,7 +103,14 @@ def main() -> None:
         "tests": args.tests,
         "allowance": args.update_allowance,
         "files": [binding(path) for path in [Path(__file__), *sorted(SUPPORT.glob("*.py"))]],
-        "runtime": {"python": sys.version, "cuda_visible_devices": "-1", "threads": 2},
+        "runtime": {
+            "python": sys.version,
+            "cuda_visible_devices": "-1",
+            "threads": 2,
+            "uv_project_environment": sys.prefix,
+            "uv_offline": True,
+            "uv_no_sync": True,
+        },
     }
     selection = None
     if args.continue_audit is not None:
@@ -153,6 +160,9 @@ def main() -> None:
             "CUDA_VISIBLE_DEVICES": "-1",
             "OMP_NUM_THREADS": "2",
             "MKL_NUM_THREADS": "2",
+            "UV_PROJECT_ENVIRONMENT": sys.prefix,
+            "UV_OFFLINE": "1",
+            "UV_NO_SYNC": "1",
             "PYTHONPATH": str(SUPPORT),
             "STAGE70_QA_OPTIMIZER_DB": str(database),
             "STAGE70_QA_IDENTITY": identity,

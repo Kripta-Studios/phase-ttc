@@ -27,7 +27,16 @@ from e_jepa_ttc.models.projective_phase_sweep import (
     sweep_scores,
 )
 
-torch.set_num_threads(2)
+
+@pytest.fixture(autouse=True, scope="module")
+def reference_cpu_threads():
+    """Scope reference-test execution settings without changing collection-time globals."""
+    previous = torch.get_num_threads()
+    torch.set_num_threads(2)
+    try:
+        yield
+    finally:
+        torch.set_num_threads(previous)
 
 
 @pytest.mark.parametrize("ttc", [-60.0, -10.0, -1.0, -0.101, 0.101, 0.5, 1.0, 10.0, 60.0])
