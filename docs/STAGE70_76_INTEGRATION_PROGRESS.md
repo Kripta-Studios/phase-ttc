@@ -92,6 +92,22 @@ comprueba los mismos tokens internos de las nueve recetas nuevas. Reproduce los
 tres RISK17 congelados: 8.192 predicciones con diferencia máxima absoluta de
 2,8422e-14 s y selección de experto exacta. No se ajustó ningún ridge nuevo.
 
+El backend nuevo de routing ajusta seis endpoints float64: tres folds por
+FULLCOST/NEWPERM. Congela todos antes de construir los inputs exteriores y
+exporta cada acción, coste verdadero, coste relativo predicho y donante del
+control. Sus inputs proceden de productores internos verificados; el adaptador
+rechaza sustituirlos por outer-OOF, cambiar targets/folds o retirar fallos.
+
+La prueba completa sintética de 8.192 filas pasó. El primer intento detectó
+tracks sintéticos desequilibrados que impedían una permutación biyectiva entre
+tracks distintos; se corrigió el fixture a tres tracks, sin cambiar el algoritmo
+ni los datos reales. Ambos XML se conservan. Esta integración realizó diez
+resoluciones ridge técnicas: tres de publicación/recuperación, una antes del
+fallo del fixture y seis en el intento completo. Hubo cero ajustes ridge
+científicos y cero actualizaciones nuevas de optimizador. La comparación exacta
+de targets reales entre auditoría y tablas exteriores también pasó en los tres
+folds. El análisis estadístico final del router sigue pendiente de sus modelos.
+
 Falta terminar la integración de las ramas condicionales, los diagnósticos TRAIN
 supervisados y las intervenciones de mecanismo, la contabilidad de coste total,
 la recuperación de checkpoints dañados, la CLI/PowerShell y el empaquetado.

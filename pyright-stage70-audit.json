@@ -72,7 +72,10 @@
     "src/e_jepa_ttc/artifacts/nested_architecture_barrier_v11.py",
     "src/e_jepa_ttc/training/stage75_runtime_v11.py",
     "scripts/prepare_stage75_historical_tables.py",
-    "src/e_jepa_ttc/evaluation/nested_treatment_export_v11.py"
+    "src/e_jepa_ttc/evaluation/nested_treatment_export_v11.py",
+    "src/e_jepa_ttc/data/nested_router_inputs_v11.py",
+    "src/e_jepa_ttc/training/nested_full_cost_fit_v11.py",
+    "src/e_jepa_ttc/training/stage75_router_runtime_v11.py"
   ],
   "extraPaths": [
     "src",
