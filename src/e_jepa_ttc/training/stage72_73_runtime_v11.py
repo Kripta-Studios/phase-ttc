@@ -16,6 +16,7 @@ from e_jepa_ttc.data.event_context128_reader import CountReader
 from e_jepa_ttc.data.stage70_roles import TrainRoles
 from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import build_initial_evidence
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import export_initial_treatment
+from e_jepa_ttc.evaluation.job_deployment_cost_v11 import observe_job_deployment
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import diagnose_pretext_checkpoint
 from e_jepa_ttc.evaluation.standalone_outer_v11 import infer_initial_endpoint
 from e_jepa_ttc.evaluation.supervised_checkpoint_diagnostics_v11 import diagnose_supervised_series
@@ -37,7 +38,7 @@ class InitialArchitectureRuntime:
     """Run S72 AND S73 before any outcome can affect their available job matrix.
 
     This is the initial-stage backend of the complete campaign, not a replacement
-    for S74–76. A complete scientific lock and the single GPU owner are mandatory.
+    for S74â€“76. A complete scientific lock and the single GPU owner are mandatory.
     """
 
     def __init__(
@@ -208,6 +209,7 @@ class InitialArchitectureRuntime:
                     endpoint=treatment(plan.treatment_name).supervised_updates,
                     check=self.owner.check,
                 )
+                observe_job_deployment(job, loaded, self.lock, self.owner)
                 jobs.append(job)
                 completed.append(plan.job_id)
                 self._progress("FITTING", None, completed)

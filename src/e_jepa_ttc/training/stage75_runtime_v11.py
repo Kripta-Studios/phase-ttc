@@ -9,6 +9,7 @@ from typing import Any
 from e_jepa_ttc.artifacts.architecture_stage_decisions_v11 import verify_stage_decision
 from e_jepa_ttc.artifacts.nested_architecture_barrier_v11 import freeze_nested_stage
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
+from e_jepa_ttc.evaluation.job_deployment_cost_v11 import observe_job_deployment
 from e_jepa_ttc.evaluation.nested_treatment_export_v11 import export_nested_treatment
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import diagnose_pretext_checkpoint
 from e_jepa_ttc.evaluation.standalone_outer_v11 import infer_initial_endpoint
@@ -121,6 +122,7 @@ def run_new_nested_producers(
             endpoint=treatment(plan.treatment_name).supervised_updates,
             check=runtime.owner.check,
         )
+        observe_job_deployment(job, loaded, runtime.lock, runtime.owner)
         jobs.append(job)
         completed.append(plan.job_id)
         progress("MATERIALIZE_AND_FIT_NEW_INNER", None)

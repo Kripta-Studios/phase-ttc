@@ -14,6 +14,7 @@ def test_s73_all_available_jobs_run_without_reading_or_gating_on_s72_scores(tmp_
     engine.availability = availability
     engine.plans = initial_jobs(availability)
     engine.lock_path = tmp_path / "SYNTHETIC_LOCK.json"
+    engine.lock = {}
     engine.lock_sha256 = "a" * 64
     engine.paths = {
         "endpoint_root": tmp_path / "endpoints",
@@ -45,6 +46,7 @@ def test_s73_all_available_jobs_run_without_reading_or_gating_on_s72_scores(tmp_
                 )
 
     monkeypatch.setattr(runtime, "execute_architecture_job", fit)
+    monkeypatch.setattr(runtime, "observe_job_deployment", lambda *args: {})
     monkeypatch.setattr(
         runtime,
         "diagnose_supervised_series",

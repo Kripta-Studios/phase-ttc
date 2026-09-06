@@ -60,6 +60,7 @@ def test_every_new_encoder_head_and_pretext_finishes_before_any_replication_oute
                 )
 
     monkeypatch.setattr(module, "execute_architecture_job", fit)
+    monkeypatch.setattr(module, "observe_job_deployment", lambda *args: {})
     monkeypatch.setattr(module, "diagnose_supervised_series", lambda *args, **kwargs: None)
     monkeypatch.setattr(module, "PretextTextures", lambda *args: None)
     monkeypatch.setattr(

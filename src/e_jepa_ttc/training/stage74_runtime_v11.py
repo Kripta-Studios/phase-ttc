@@ -10,6 +10,7 @@ from e_jepa_ttc.artifacts.architecture_stage_decisions_v11 import verify_stage_d
 from e_jepa_ttc.artifacts.replication_barrier_v11 import freeze_replication_stage
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import export_initial_treatment
+from e_jepa_ttc.evaluation.job_deployment_cost_v11 import observe_job_deployment
 from e_jepa_ttc.evaluation.pretext_diagnostics_v11 import diagnose_pretext_checkpoint
 from e_jepa_ttc.evaluation.replication_evidence_v11 import build_replication_evidence
 from e_jepa_ttc.evaluation.standalone_outer_v11 import infer_initial_endpoint
@@ -99,6 +100,7 @@ def run_replication(
             endpoint=treatment(plan.treatment_name).supervised_updates,
             check=runtime.owner.check,
         )
+        observe_job_deployment(job, loaded, runtime.lock, runtime.owner)
         jobs.append(job)
         completed.append(plan.job_id)
         progress("FITTING", None)

@@ -65,6 +65,7 @@ def test_all_prescribed_inner_producers_finish_before_prediction(tmp_path, monke
                 )
 
     monkeypatch.setattr(module, "execute_architecture_job", fit)
+    monkeypatch.setattr(module, "observe_job_deployment", lambda *args: {})
     monkeypatch.setattr(module, "diagnose_supervised_series", lambda *args, **kwargs: None)
     monkeypatch.setattr(module, "PretextTextures", lambda *args: None)
     monkeypatch.setattr(
