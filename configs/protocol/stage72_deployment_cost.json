@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "source_pool": "intersection of original raw binding tokens with the exact permitted fit TRAIN view",
+  "rows": 16,
+  "selection": "lowest SHA256(stage72_diag_v1/ + sample_token)",
+  "warmup_rows": 4,
+  "complete_measured_passes": 2,
+  "batch": 1,
+  "roi_pixels": [128, 128],
+  "precision": "float32_TF32_off",
+  "raw_preprocessing": "physical HDF5 event slice, full resolution rasterization, frozen clock and TRAIN normalization",
+  "object_window_memo": "cleared before every token",
+  "filesystem_cache": "warm OS/HDF5 caches; no claim of cold storage or sequential streaming latency",
+  "record": ["raw_preprocessing_ms", "transfer_ms", "network_ms", "end_to_end_ms"],
+  "statistics": ["mean", "median", "p95", "all individual observations"],
+  "cache_parity": "all16 tokens must match contexts, times and sensor support exactly; comparison occurs outside measured interval",
+  "parameter_reporting": "all instantiated parameters plus active parameters; never treat one standalone as the full multi-expert router",
+  "flops_policy": "do not infer FLOPs from parameter count; explicitly identify unmeasured operations",
+  "optimizer_updates": 0,
+  "labels_used": false
+}

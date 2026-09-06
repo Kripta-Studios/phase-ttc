@@ -82,7 +82,10 @@
     "src/e_jepa_ttc/evaluation/replication_evidence_v11.py",
     "src/e_jepa_ttc/evaluation/router_evidence_v11.py",
     "src/e_jepa_ttc/evaluation/architecture_mechanisms_v11.py",
-    "src/e_jepa_ttc/evaluation/train_prior_baseline_v11.py"
+    "src/e_jepa_ttc/evaluation/train_prior_baseline_v11.py",
+    "src/e_jepa_ttc/data/raw_deployment_v11.py",
+    "src/e_jepa_ttc/evaluation/deployment_cost_v11.py",
+    "scripts/qa_stage72_raw_deployment_gpu.py"
   ],
   "extraPaths": [
     "src",
