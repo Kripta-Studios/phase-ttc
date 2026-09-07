@@ -466,3 +466,31 @@ las features faltantes con los bytes locales aprobados y las exclusiones de
 fuentes correspondientes. No se sustituye el teacher, se descarga otro ni se
 elimina su pérdida para eludir esta dependencia. El hallazgo afecta esa rama
 de comparadores; no bloquea el entrenamiento original DIRECT/PPS.
+
+# Pesos locales y carga offline del profesor (2026-09-07)
+
+Se acreditaron en CPU los tensores cargados de la revisión histórica
+`e959efa74c867491dcfe3ec3e4f97382e39025b3`. Su hash por nombres y bytes del
+state_dict es `96ad081d5863ba14707d2e3bb734b7fa8dfbf3248cb67ddfcc74d86dd160d628`,
+idéntico al profesor histórico. Recibo local
+`LOCAL_COMPARATOR_TEACHER_WEIGHTS.json`, SHA256 físico
+`ff40fc572a799c5e134ecb5cd5d84a5ebe9b381e4dc231d00ef3a9d5127d64e2`.
+La primera comparación directa de claves safetensors utilizaba otro namespace;
+el recibo conserva esa discrepancia y su resolución con el procedimiento real
+de carga. No hubo descargas, GPU, optimizer updates ni lectura de scores.
+
+El materializador existente fija ahora esa revisión y local_files_only para
+modelo y procesador, sin código remoto ni fallback de descarga. Comprueba el
+hash de los tensores antes de mover el modelo a GPU. Registra revisión solicitada
+y carga offline en la salida. No cambia el crop, resolución ni normalización.
+
+QA afectado: seis tests CPU, incluidos caché local ausente sin fallback y enlace
+RGB/eventos; `OFFLINE_TEACHER_RGB_ZERO_UPDATES.xml`. Pyright: cero errores y
+advertencias. Ruff conserva exactamente un ANN401 preexistente en el argumento
+model de _find_32x32_feature, comprobado también sobre HEAD anterior; no se oculta
+como un check limpio ni se cambia esa función ajena a este bloque.
+
+Quedan pendientes las features para los tokens ampliados, su metadata de eventos
+y RGB con roles verificados y la integración de tablas de comparadores. La
+identidad de pesos no acredita independencia del preentrenamiento web. Este
+cierre no permite congelar v11 todavía ni altera el entrenamiento original.

@@ -2,11 +2,62 @@
 
 from __future__ import annotations
 
+import sys
+from types import SimpleNamespace
+from unittest.mock import Mock
+
 import numpy as np
 import pytest
 
 from e_jepa_ttc.data.event_v4_geometry import box_in_common_roi
-from scripts.materialize_dinov3_relational_teacher import _resolve_rgb_endpoints
+from scripts.materialize_dinov3_relational_teacher import (
+    _load_offline_teacher,
+    _resolve_rgb_endpoints,
+)
+
+
+def test_teacher_loading_pins_both_local_dependencies(monkeypatch: pytest.MonkeyPatch) -> None:
+    model_loader = Mock(return_value=object())
+    processor_loader = Mock(return_value=object())
+    monkeypatch.setitem(
+        sys.modules,
+        "transformers",
+        SimpleNamespace(
+            AutoModel=SimpleNamespace(from_pretrained=model_loader),
+            AutoImageProcessor=SimpleNamespace(from_pretrained=processor_loader),
+        ),
+    )
+    model, processor = _load_offline_teacher()
+    assert model is model_loader.return_value
+    assert processor is processor_loader.return_value
+    for loader in (model_loader, processor_loader):
+        loader.assert_called_once_with(
+            "facebook/dinov3-convnext-large-pretrain-lvd1689m",
+            revision="e959efa74c867491dcfe3ec3e4f97382e39025b3",
+            local_files_only=True,
+            trust_remote_code=False,
+        )
+
+
+@pytest.mark.parametrize("missing", ["model", "processor"])
+def test_teacher_missing_local_dependency_has_no_remote_fallback(
+    monkeypatch: pytest.MonkeyPatch, missing: str
+) -> None:
+    model_loader, processor_loader = Mock(), Mock()
+    loaders = {"model": model_loader, "processor": processor_loader}
+    loaders[missing].side_effect = OSError("local dependency missing")
+    monkeypatch.setitem(
+        sys.modules,
+        "transformers",
+        SimpleNamespace(
+            AutoModel=SimpleNamespace(from_pretrained=model_loader),
+            AutoImageProcessor=SimpleNamespace(from_pretrained=processor_loader),
+        ),
+    )
+    with pytest.raises(OSError, match="local dependency missing"):
+        _load_offline_teacher()
+    assert model_loader.call_count == 1
+    assert processor_loader.call_count == (0 if missing == "model" else 1)
 
 
 def _record_and_row() -> tuple[dict[str, object], dict[str, object]]:

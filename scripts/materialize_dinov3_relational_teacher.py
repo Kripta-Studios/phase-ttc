@@ -63,6 +63,22 @@ _EXPECTED_GRID = (32, 32)
 _NUM_OFFSETS = len(A4_RELATION_OFFSETS)
 _GPU_INFERENCE_BATCH = 8
 _EXPECTED_MODEL_ID = "facebook/dinov3-convnext-large-pretrain-lvd1689m"
+_EXPECTED_REVISION = "e959efa74c867491dcfe3ec3e4f97382e39025b3"
+_EXPECTED_WEIGHTS_SHA256 = "96ad081d5863ba14707d2e3bb734b7fa8dfbf3248cb67ddfcc74d86dd160d628"
+
+
+def _load_offline_teacher() -> tuple[Any, Any]:
+    """Load the historical teacher revision from local cache without remote fallback."""
+    from transformers import AutoImageProcessor, AutoModel  # type: ignore[import-untyped]
+
+    options = {
+        "revision": _EXPECTED_REVISION,
+        "local_files_only": True,
+        "trust_remote_code": False,
+    }
+    model = AutoModel.from_pretrained(_EXPECTED_MODEL_ID, **options)
+    processor = AutoImageProcessor.from_pretrained(_EXPECTED_MODEL_ID, **options)
+    return model, processor
 
 
 def _sha256_file(path: Path) -> str:
@@ -305,7 +321,6 @@ def run(
     """Materialize the DINO relational teacher cache for an exact train size."""
 
     import pandas as pd
-    from transformers import AutoImageProcessor, AutoModel  # type: ignore[import-untyped]
 
     if expected_rows <= 0:
         raise ValueError("FATAL: expected_rows must be positive")
@@ -383,9 +398,8 @@ def run(
     # --- Load DINO model ---
     print(f"[materialize] Loading DINO model: {model_path}")
     device = torch.device(device_name)
-    model = AutoModel.from_pretrained(model_path, trust_remote_code=False)
-    model = model.to(device).eval()
-    processor = AutoImageProcessor.from_pretrained(model_path)
+    model, processor = _load_offline_teacher()
+    model = model.eval()
 
     # Extract normalization parameters (use these manually, not the processor)
     image_mean = list(processor.image_mean)
@@ -402,6 +416,9 @@ def run(
         weights_sha256.update(name.encode())
         weights_sha256.update(tensor.cpu().numpy().tobytes())
     weights_sha = weights_sha256.hexdigest()
+    if weights_sha != _EXPECTED_WEIGHTS_SHA256:
+        raise ValueError("FATAL: local teacher tensors differ from the historical weight identity")
+    model = model.to(device)
 
     config_dict = model.config.to_dict()
     config_json = json.dumps(config_dict, sort_keys=True)
@@ -556,6 +573,8 @@ def run(
             "source_modality": "rgb",
             "model_path_argument": model_path,
             "resolved_revision": resolved_revision,
+            "requested_revision": _EXPECTED_REVISION,
+            "local_files_only": True,
             "weights_sha256": weights_sha,
             "config_sha256": config_sha,
             "preprocessor_sha256": preprocessor_sha,
