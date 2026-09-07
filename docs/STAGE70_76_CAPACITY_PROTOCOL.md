@@ -279,3 +279,19 @@ inválidas se conservan y bloquean un score parcial, sin cambiar los pesos hist�
 en la ruta original. Seis tests afectados pasan, Ruff y Pyright pasan, cero updates.
 Recibo ROW_DIAGNOSTICS_CAPACITY_ZERO_UPDATES.xml. La procedencia de los comparadores
 de entrada sigue pendiente; este cambio no autoriza la evaluación ampliada.
+# Cierre CPU: identidad de contrastes por capacidad (2026-09-07)
+
+Se corrigió un fallo demostrado de integración: el ensamblador estadístico pasaba
+los nombres históricos sin capacidad, omitiendo los contrastes de 4/8 M. Ahora
+construye los tres contrastes S72 dentro de cada tamaño registrado y mantiene
+los ocho contrastes S73 en el tamaño principal de 4 M. Los tratamientos no
+disponibles conservan su identidad y se reportan como no disponibles. No se
+selecciona tamaño mediante resultados. El protocolo original conserva exactamente
+sus once pares. No se añadieron contrastes entre tamaños ni nuevas hipótesis.
+
+Validación: diez tests del módulo de evidencia, Ruff y Pyright correctos; recibo
+`CAPACITY_CONTRAST_IDENTITIES_ZERO_UPDATES.xml`. Cero updates y ninguna lectura
+de predicciones exteriores. Sigue pendiente conectar la tabla de comparadores
+reproducidos y su procedencia al exportador y ensamblador completos; este cierre
+no declara v11 listo para congelarse. La caché de 30.000 y el entrenamiento
+original siguieron activos, sin modificación de sus productores en ejecución.

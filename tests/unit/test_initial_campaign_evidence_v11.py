@@ -12,10 +12,37 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_
 from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import (
     _export_matches_plan,
     canonical_oracle,
+    initial_contrasts,
 )
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, scientific_ttc
 from e_jepa_ttc.evaluation.stage70_76 import Evidence
 from e_jepa_ttc.training.stage73_factorial import Availability, Family, PlannedFit
+
+
+def test_initial_contrasts_keep_legacy_and_bind_expanded_sizes():
+    from e_jepa_ttc.evaluation.architecture_comparison_v11 import INITIAL_CONTRASTS
+
+    original = Availability(True, True, "a" * 64, "b" * 64)
+    assert initial_contrasts(original) == INITIAL_CONTRASTS
+    expanded = Availability(
+        True,
+        False,
+        "a" * 64,
+        "b" * 64,
+        capacities=("2M", "4M", "8M"),
+        primary_capacity="4M",
+    )
+    pairs = initial_contrasts(expanded)
+    assert len(pairs) == len(set(pairs)) == 17
+    for capacity, suffix in (("2M", ""), ("4M", "-capacity4M"), ("8M", "-capacity8M")):
+        assert (f"S72-PPS-TRAJ{suffix}", f"S72-DIRECT{suffix}") in pairs, capacity
+    treatments = [(left, right) for left, right in pairs if left.startswith("S73")]
+    assert len(treatments) == 8
+    assert all(
+        left.endswith("-capacity4M") and right.endswith("-capacity4M") for left, right in treatments
+    )
+    # Unavailable D remains named and will be reported unavailable, never replaced.
+    assert ("S73-PPS-D-capacity4M", "S72-PPS-TRAJ-capacity4M") in pairs
 
 
 def test_evidence_rejects_capacity_substitution_and_retains_original_export():

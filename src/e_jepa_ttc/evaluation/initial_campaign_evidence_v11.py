@@ -14,6 +14,7 @@ from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned, verify_initial_barrier
 from e_jepa_ttc.evaluation.architecture_comparison_v11 import (
+    INITIAL_CONTRASTS,
     aligned_loss_vectors,
     compare_standalone_rows,
 )
@@ -28,6 +29,22 @@ from e_jepa_ttc.training.stage73_factorial import (
     canonical_evidence_keys,
     initial_jobs,
 )
+
+
+def initial_contrasts(availability: Availability) -> tuple[tuple[str, str], ...]:
+    """Bind mechanism contrasts to registered sizes, never to the best outer result."""
+    pairs = []
+    for left, right in INITIAL_CONTRASTS:
+        capacities = (
+            availability.capacities
+            if left.startswith("S72") and right.startswith("S72")
+            else (availability.primary_capacity,)
+        )
+        pairs.extend(
+            (candidate_key(left, capacity), candidate_key(right, capacity))
+            for capacity in capacities
+        )
+    return tuple(pairs)
 
 
 def _export_matches_plan(export: dict[str, Any], plan: PlannedFit) -> bool:
@@ -282,7 +299,13 @@ def build_initial_evidence(
         number = len(list(comparison_root.glob("attempt_*")))
         directory = comparison_root / f"attempt_{number:04d}"
         compare_standalone_rows(
-            metadata, model_rows, risk, old, output=directory, check=owner.check
+            metadata,
+            model_rows,
+            risk,
+            old,
+            output=directory,
+            check=owner.check,
+            contrasts=initial_contrasts(availability),
         )
         completed_comparison = directory / "COMPARISON.json"
     comparison = json.loads(completed_comparison.read_text(encoding="utf-8"))
