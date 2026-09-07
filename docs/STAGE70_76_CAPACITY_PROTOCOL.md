@@ -313,3 +313,18 @@ repitieron correctamente; Ruff y Pyright quedaron limpios. Recibos:
 de resultados exteriores. La conexión del exportador a comparadores reproducidos
 con linaje válido sigue pendiente y bloquea su uso científico ampliado; no se
 ha sustituido por la tabla histórica ni se ha creado un TRAINING_LOCK de v11.
+# Observación operativa de concurrencia (2026-09-07)
+
+La inspección de procesos y nvidia-smi mostró simultáneamente el entrenamiento
+original (PID 36072) y `build_simplex_t_context_features.py` (PID 26984). La lectura
+del script del companion confirma dispositivo CUDA e inferencia de características
+con cero optimizer_updates. No se leyeron datos ni predicciones del companion,
+ni se modificó o interrumpió su proceso. Un único escritor de entrenamiento no
+equivale en este estado a una GPU sin otra carga. Esta concurrencia puede contribuir
+a la velocidad observada; no cuantifica su efecto. Separar temporalmente esa
+inferencia preservaría los cálculos del entrenamiento, sin cambiar su receta.
+
+La telemetría existente del writer registró 104.906.477.568 bytes libres de disco
+y 14.935.232.512 bytes de RAM disponible. Sus tiempos por update son agregados,
+sin desglose de carga/CPU/GPU; no permiten afirmar un cuello de botella único.
+No se aplicó ninguna optimización ni nueva enmienda de ejecución.
