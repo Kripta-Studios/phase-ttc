@@ -71,6 +71,8 @@ class UpdateLedger:
             self._verify_capacity_envelope(self.state["budget_envelope"])
         if "prior_campaign" in self.state:
             self.inherit_closed_campaign(self.state["prior_campaign"]["execution"])
+        if "preparation_accounting" in self.state:
+            self.carry_preparation_accounting(self.state["preparation_accounting"])
         self._validate_budget()
 
     def _assert_owner(self) -> None:
@@ -157,6 +159,94 @@ class UpdateLedger:
             self._publish()
         except BaseException:
             self.state.pop("prior_campaign")
+            raise
+
+    def carry_preparation_accounting(self, source: dict[str, Any]) -> None:
+        """Debit closed comparator QA once, preserving reconstructed work as unconfirmed."""
+        if "budget_envelope" not in self.state or "prior_campaign" not in self.state:
+            raise ValueError("preparation debit requires the expanded envelope and predecessor")
+        record = json.loads(verify(source).read_text(encoding="utf-8"))
+        unsigned = {k: v for k, v in record.items() if k != "artifact_sha256"}
+        if (
+            record.get("kind") != "COMPARATOR_CPU_INTEGRATION_QA_AND_ACCOUNTING"
+            or object_digest(unsigned) != record.get("artifact_sha256")
+            or record.get("scientific_candidates") != 0
+        ):
+            raise ValueError("invalid closed preparation accounting evidence")
+        entries: dict[str, Any] = {}
+        seen = set()
+        for item in record["audited_optimizer_receipts"]:
+            receipt_source = item["receipt"]
+            receipt = json.loads(verify(receipt_source).read_text(encoding="utf-8"))
+            signature = receipt.pop("sha256")
+            identity = receipt["identity"]
+            if (
+                object_digest(receipt) != signature
+                or receipt.get("all_processes_closed") is not True
+                or identity in seen
+                or any(receipt[k] != item[k] for k in ("charged", "confirmed", "uncertain"))
+            ):
+                raise ValueError("preparation receipt is changed, duplicated or still running")
+            seen.add(identity)
+            entries["preparation_" + identity] = {
+                **{
+                    k: receipt[k]
+                    for k in (
+                        "identity",
+                        "limit",
+                        "charged",
+                        "confirmed",
+                        "uncertain",
+                        "optimizer_instances_started",
+                    )
+                },
+                "status": "CLOSED",
+                "remaining": 0,
+                "receipt": receipt_source,
+                "accounting_method": "closed_optimizer_hook",
+            }
+        reconstructed = record["unhooked_initial_suite"]
+        verify(reconstructed["source"])
+        count = reconstructed["charged_updates"]
+        if type(count) is not int or count <= 0 or not reconstructed.get("incident"):
+            raise ValueError("reconstructed preparation work requires its explicit incident")
+        identity = object_digest(reconstructed)
+        entries["preparation_" + identity] = {
+            "identity": identity,
+            "limit": count,
+            "charged": count,
+            "confirmed": 0,
+            "uncertain": count,
+            "remaining": 0,
+            "optimizer_instances_started": 0,
+            "status": "CLOSED",
+            "receipt": source,
+            "accounting_method": reconstructed["accounting_method"],
+            "optimizer_instances_not_instrumented": True,
+            "incident": reconstructed["incident"],
+        }
+        if (
+            sum(e["charged"] for e in entries.values())
+            != record["total_new_technical_optimizer_updates"]
+        ):
+            raise ValueError("preparation aggregate differs from its actual receipt charges")
+        for evidence in record["qa_sources"]:
+            verify(evidence)
+        audits = self.state.get("technical_audits", {})
+        if "preparation_accounting" in self.state:
+            if self.state["preparation_accounting"] != source or any(
+                audits.get(k) != v for k, v in entries.items()
+            ):
+                raise ValueError("previously carried preparation debit changed")
+            return
+        if self.state["jobs"] or audits:
+            raise ValueError("carry preparation work before any local reservation")
+        before = json.loads(json.dumps(self.state))
+        self.state.update(preparation_accounting=source, technical_audits=entries)
+        try:
+            self._publish()
+        except BaseException:
+            self.state = before
             raise
 
     def totals(self) -> dict[str, int]:

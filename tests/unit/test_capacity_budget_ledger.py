@@ -146,3 +146,73 @@ def test_changed_predecessor_is_rejected_when_local_ledger_reopens(tmp_path, mon
     atomic_json(tmp_path / "terminal.json", record)
     with pytest.raises(ValueError):
         local_ledger(tmp_path, monkeypatch)
+
+
+def preparation_receipt(tmp_path, *, duplicate=False, wrong_total=False):
+    hook = dict(
+        identity="c" * 64,
+        limit=8,
+        charged=8,
+        confirmed=8,
+        uncertain=0,
+        optimizer_instances_started=2,
+        all_processes_closed=True,
+    )
+    hook["sha256"] = object_digest(hook)
+    atomic_json(tmp_path / "hook.json", hook)
+    atomic_json(tmp_path / "qa.json", {"fixture": "closed synthetic QA"})
+    item = dict(receipt=binding(tmp_path / "hook.json"), charged=8, confirmed=8, uncertain=0)
+    record = dict(
+        kind="COMPARATOR_CPU_INTEGRATION_QA_AND_ACCOUNTING",
+        scientific_candidates=0,
+        audited_optimizer_receipts=[item, item] if duplicate else [item],
+        unhooked_initial_suite=dict(
+            charged_updates=4,
+            source=binding(tmp_path / "qa.json"),
+            incident="fixture absent hook",
+            accounting_method="reconstructed, not a hook receipt",
+        ),
+        total_new_technical_optimizer_updates=11 if wrong_total else 12,
+        qa_sources=[binding(tmp_path / "qa.json")],
+    )
+    record["artifact_sha256"] = object_digest(record)
+    atomic_json(tmp_path / "preparation.json", record)
+    return binding(tmp_path / "preparation.json")
+
+
+def test_preparation_debit_is_counted_once_and_keeps_unhooked_uncertainty(tmp_path, monkeypatch):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    ledger.bind_capacity_envelope(envelope(tmp_path))
+    ledger.inherit_closed_campaign(predecessor(tmp_path))
+    source = preparation_receipt(tmp_path)
+    ledger.carry_preparation_accounting(source)
+    ledger.carry_preparation_accounting(source)
+    restored = local_ledger(tmp_path, monkeypatch)
+    assert restored.state == ledger.state
+    assert ledger.totals()["charged_optimizer_attempts"] == 12
+    assert ledger.totals()["confirmed_optimizer_updates"] == 8
+    assert ledger.totals()["uncertain_optimizer_attempts"] == 4
+    assert ledger.totals()["optimizer_endpoints_complete"] == 0
+    with pytest.raises(RuntimeError, match="10000"):
+        ledger.reserve_technical_audit("too_much", 9989, "d" * 64)
+    (tmp_path / "hook.json").write_text("{}")
+    with pytest.raises(ValueError):
+        local_ledger(tmp_path, monkeypatch)
+
+
+@pytest.mark.parametrize("defect", ["duplicate", "wrong_total", "late"])
+def test_preparation_debit_rejects_duplicates_mismatch_and_late_import(
+    tmp_path, monkeypatch, defect
+):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    ledger.bind_capacity_envelope(envelope(tmp_path))
+    ledger.inherit_closed_campaign(predecessor(tmp_path))
+    source = preparation_receipt(
+        tmp_path, duplicate=defect == "duplicate", wrong_total=defect == "wrong_total"
+    )
+    if defect == "late":
+        ledger.reserve(FitSpec("local", "S72", "DIRECT", 0, 7, 8000, "a" * 64, "b" * 64))
+    before = json.loads(json.dumps(ledger.state))
+    with pytest.raises(ValueError):
+        ledger.carry_preparation_accounting(source)
+    assert ledger.state == before

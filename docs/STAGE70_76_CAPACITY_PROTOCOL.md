@@ -881,3 +881,27 @@ completa y teacher ampliado auditado; manifiestos resueltos/QA GPU y débitos
 previos incorporados al lock completo de v11; terminación del grafo original.
 El lanzador PowerShell integral solicitado para reconstruir toda la campaña
 sigue siendo un entregable pendiente; no se presenta el wrapper actual como tal.
+
+
+## 2026-09-07 — Débito técnico previo conectado al arranque v11
+
+El runner ampliado exige ahora `preparation_accounting` en su lock. Después de
+heredar el predecesor terminal y antes de cualquier reserva local importa los
+recibos de comparadores cerrados y vuelve a verificarlos al reanudar. La operación
+es atómica e idempotente; rechaza fuentes duplicadas, totales inconsistentes,
+archivos alterados e importación posterior a reservas locales. El cargo consume
+el presupuesto compartido y los 10000 técnicos adicionales, sin fabricar endpoints.
+
+Los recibos reales importan 120 cargos: 80 confirmados por hook y 40 reconstruidos
+sin hook. Estos últimos se conservan como incertidumbre contable cargada, con su
+incidencia y número de instancias de optimizador no instrumentado; no se convierten
+en confirmaciones medidas. La validación con recibos reales se hizo sólo en memoria:
+`qa/PREPARATION_ACTUAL_RECEIPTS_IMPORT.json` (SHA256
+1eaae6940fc68c85e3f68b1b4d9a2fc3bc1a7151ab1af55e555e46cd87b50c86).
+No acredita un predecesor terminal ni modifica ningún ledger científico.
+
+Cuatro pruebas nuevas verifican idempotencia, reserva del saldo, rechazo de
+alteración/duplicación/descuadre y carga tardía. Ruff, formato y Pyright de los
+módulos afectados pasan. Cero optimizer updates ejecutados en este bloque.
+Queda pendiente incorporar la referencia física al lock completo cuando sus
+prerrequisitos estén cerrados; la integración de importación ya no está pendiente.
