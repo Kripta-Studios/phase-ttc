@@ -383,3 +383,29 @@ en el cwd original; no creó artefactos. El comando correcto terminó en v11.
 Siguen pendientes dependencias adicionales de routing S75, disposición y pilotos
 S76, cobertura de teacher/representación, reservas QA/recuperación y cargos
 originales finales. Este subtotal no congela ni autoriza el grafo completo.
+# Techo compartido prospectivo: 1.900.000 updates (2026-09-07)
+
+Con la autorización expresa del usuario para ampliar el límite, se fija un
+techo de 1.900.000 nuevos optimizer updates. Recibo:
+`artifacts/stage70_76_capacity/SHARED_BUDGET_ENVELOPE_1900000.json`, SHA256 físico
+`30071db05bb40a7807aa62d654d48d079ef5c4e762499a47cb222e98c820a546`.
+
+Reserva conservadora cerrada: 900.000 para todo el original, 639.000 para
+arquitecturas ampliadas (S72 288.000, S73 66.000, S74 114.000, S75 171.000),
+273.456 para comparadores y 10.000 para QA/recuperación ampliada. Total:
+1.822.456; margen no asignado: 77.544. Los cargos originales están incluidos
+en sus 900.000 y no se suman otra vez. Al admitir v11 se sustituirá la reserva
+del original por su cargo terminal real, manteniendo el techo global.
+
+El máximo de arquitecturas presupone A disponible y D no disponible; no resuelve
+por sí mismo el smoke de A. La ruta S75 reutiliza los mismos productores
+históricos interiores y añade seis fits ridge con cero optimizer updates. Sólo
+es válido reutilizarlos si coinciden exactamente tokens, folds y exclusiones.
+
+S76 reserva cero porque su evidencia ligada conserva los bloques de foreground
+Garl e independencia por adquisición. No es un coste estimado de confirmación
+exitosa ni una prohibición permanente: nuevas pruebas que permitan resolverlos
+requieren una enmienda visible con todo el coste de pilotos y fits finales antes
+de ejecutarlos. Se verificaron físicamente los recibos; no se abrieron datos de
+confirmación. Este techo no modifica el lock original ni declara v11 preparado:
+quedan integración, linaje de comparadores, caché/vistas, QA y congelación.
