@@ -22,6 +22,7 @@ from e_jepa_ttc.evaluation.architecture_comparison_v11 import (
 from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import (
     _verify_comparison,
     comparison_metadata,
+    comparison_source_identity,
     verify_initial_evidence,
 )
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
@@ -131,7 +132,10 @@ def build_replication_evidence(
                     or export.get("seed") != seed
                     or export.get("stage") != "S74"
                     or export.get("stage_barrier") != barrier_source
-                    or export.get("historical_audit_rows") != lock["historical_audit_rows"]
+                    or any(
+                        export.get(key) != value
+                        for key, value in comparison_source_identity(lock).items()
+                    )
                 ):
                     raise ValueError(
                         "replication export substituted a seed, target source or barrier"

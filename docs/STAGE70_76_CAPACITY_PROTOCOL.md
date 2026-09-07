@@ -707,3 +707,31 @@ optimizer updates. Ruff y Pyright del script afectado pasan. La repetición usa
 otro directorio vacío, preservando el intento anterior; no se aplica --resume
 porque no existe estado de caché válido que recuperar. La prueba definitiva de
 la admisión corregida será la publicación del primer shard real.
+
+# Contrato de filas ampliadas en evaluación (2026-09-07)
+
+La exportación inicial y la evidencia inicial/replicada distinguen ahora
+`capacity_comparison_rows` de `historical_audit_rows`. La rama ampliada exige
+`capacity_cohort` y `capacity_metadata` en el futuro lock; rechaza la misma ruta
+o hash histórico como comparador ampliado. Comprueba orden exacto de tokens,
+secuencias, tracks contra el CSV físico autorizado y folds contra cohorte/lock.
+La rama original conserva 8192 filas/nueve secuencias. No se han leído scores
+exteriores para este cambio ni se ha creado un TRAINING_LOCK ampliado.
+
+QA afectado: 41 casos. La primera ejecución detectó tres errores de colección
+por una nueva importación circular; se corrigió ubicando el helper compartido
+en el módulo de evidencia ya existente. La segunda ejecución pasó 40 casos y
+falló el fixture de replicación 4M, que aún declaraba la fuente histórica. Se
+actualizó a la identidad ampliada y sólo ese caso se repitió: pasó. Los tres
+XML quedan en qa/EXPANDED_COMPARISON_*. Ruff y Pyright pasan en código afectado.
+Estos fallos nuevos se conservan como corregidos, no como fallos legacy.
+
+Esta integración cierra la suposición de 8192 filas en ese exportador, pero no
+acredita por sí sola la procedencia de los comparadores: siguen pendientes sus
+fits, extracción de features, tablas anidadas y auditoría transitiva. El futuro
+lock no puede emitirse con un CSV arbitrario ni sólo con modelos/cachés.
+
+El reintento CPU de caché queda vinculado en COMPARATOR_CACHE_CPU_JOB_RETRY1.json
+(SHA256 343fd205badfa658c88fca7e983126d918db47dd466c3a6e024fddd4494148c7).
+Usa el directorio nuevo event_v4_30000_gzip1_data y código de admisión 83ecf37.
+Los archivos del productor permanecen intactos durante esta integración.

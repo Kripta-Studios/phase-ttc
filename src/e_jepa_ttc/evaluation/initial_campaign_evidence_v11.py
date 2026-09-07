@@ -31,6 +31,22 @@ from e_jepa_ttc.training.stage73_factorial import (
 )
 
 
+def comparison_source_identity(lock: dict[str, Any]) -> dict[str, Any]:
+    """Keep expanded comparator evidence distinct from immutable historical rows."""
+    expanded = "capacity_cohort" in lock
+    if lock.get("availability", {}).get("primary_capacity") == "4M" and not expanded:
+        raise ValueError("expanded comparison requires its frozen cohort")
+    key = "capacity_comparison_rows" if expanded else "historical_audit_rows"
+    if key not in lock:
+        raise ValueError(f"missing frozen comparison source: {key}")
+    source = lock[key]
+    if expanded and "historical_audit_rows" in lock:
+        historical = lock["historical_audit_rows"]
+        if source["path"] == historical["path"] or source["sha256"] == historical["sha256"]:
+            raise ValueError("expanded comparison cannot reuse the historical universe")
+    return {key: source}
+
+
 def initial_contrasts(availability: Availability) -> tuple[tuple[str, str], ...]:
     """Bind mechanism contrasts to registered sizes, never to the best outer result."""
     pairs = []
@@ -131,7 +147,9 @@ def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
             or export.get("training_lock_sha256") != lock["artifact_sha256"]
             or not _export_matches_plan(export, plans[name])
             or export.get("stage_barrier") != identity["barriers"][stage]
-            or export.get("historical_audit_rows") != lock["historical_audit_rows"]
+            or any(
+                export.get(key) != value for key, value in comparison_source_identity(lock).items()
+            )
             or export["rows"] != record["row_sources"][name]
         ):
             raise ValueError("initial evidence substituted source rows")
@@ -300,7 +318,9 @@ def build_initial_evidence(
             or export.get("training_lock_sha256") != lock_sha256
             or not _export_matches_plan(export, plans[name])
             or export.get("stage_barrier") != barriers[stage]
-            or export.get("historical_audit_rows") != lock["historical_audit_rows"]
+            or any(
+                export.get(key) != value for key, value in comparison_source_identity(lock).items()
+            )
         ):
             raise ValueError("initial comparison export belongs to a different fixed treatment")
         row_path = _owned(export["rows"], export_path.parent, "ROWS.csv")

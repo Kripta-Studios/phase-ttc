@@ -22,6 +22,7 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import (
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
 from e_jepa_ttc.data.stage70_clock import context_clock
 from e_jepa_ttc.evaluation.architecture_diagnostics_v11 import DiagnosticExport, evaluate_rows
+from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import comparison_source_identity
 from e_jepa_ttc.evaluation.standalone_outer_v11 import _publish_arrays, verify_inference_shards
 from e_jepa_ttc.evaluation.train_prior_baseline_v11 import append_prior_baseline, frozen_prior
 from e_jepa_ttc.models.projective_phase_network import Capacity
@@ -32,6 +33,56 @@ from e_jepa_ttc.training.stage73_factorial import (
     candidate_key,
     initial_jobs,
 )
+
+
+def validate_comparison_universe(
+    rows: pd.DataFrame, lock: dict[str, Any], sources: AllowlistedSources
+) -> None:
+    """Validate exact frozen tokens, sequence identities and outer folds before scoring."""
+    comparison_source_identity(lock)
+    if rows.sample_token.duplicated().any():
+        raise ValueError("comparison contains duplicate tokens")
+    if "capacity_cohort" not in lock:
+        if len(rows) != 8192 or rows.sequence_id.nunique() != 9:
+            raise ValueError("historical comparison is not the original8192 universe")
+    else:
+        source = lock["capacity_cohort"]
+        access = AllowlistedSources([source], sources.journal)
+        cohort = json.loads(access.access(Path(source["path"])).read_text(encoding="utf-8"))
+        if (
+            object_digest({k: v for k, v in cohort.items() if k != "artifact_sha256"})
+            != cohort.get("artifact_sha256")
+            or cohort.get("kind") != "CAPACITY_DEVELOPMENT_COHORT"
+            or list(rows.sample_token) != cohort["ordered_tokens"]
+            or set(rows.sequence_id) != set(cohort["selected_sequences"])
+        ):
+            raise ValueError("comparison differs from the frozen expanded cohort")
+        metadata_source = lock["capacity_metadata"]
+        metadata_access = AllowlistedSources([metadata_source], sources.journal)
+        metadata = pd.read_csv(
+            metadata_access.access(Path(metadata_source["path"])),
+            dtype={"sample_token": str, "sequence_id": str, "track_id": str},
+        ).set_index("sample_token")
+        actual = rows.set_index("sample_token")
+        if not np.array_equal(
+            rows.outer_fold, rows.sequence_id.map(cohort["sequence_to_outer_fold"])
+        ):
+            raise ValueError("comparison sequence moved across outer folds")
+        if metadata.index.duplicated().any() or set(metadata.index) != set(actual.index):
+            raise ValueError("comparison metadata token identity differs")
+        for field in ("sequence_id", "track_id"):
+            if not np.array_equal(
+                actual[field].astype(str), metadata.loc[actual.index, field].astype(str)
+            ):
+                raise ValueError(f"comparison metadata {field} differs")
+    if set(rows.outer_fold) != {0, 1, 2}:
+        raise ValueError("comparison omitted an outer fold")
+    for fold in range(3):
+        if (
+            list(rows.loc[rows.outer_fold == fold, "sample_token"])
+            != lock["outer_tokens_by_fold"][str(fold)]
+        ):
+            raise ValueError("comparison differs from frozen outer assignments")
 
 
 def append_physical_metadata(
@@ -334,7 +385,8 @@ def export_initial_treatment(
         raise ValueError("treatment is not in the prospectively available initial stage")
     if output.absolute() != expected_output or output.resolve() != expected_output:
         raise ValueError("treatment export escaped its frozen output directory")
-    source_record = lock["historical_audit_rows"]
+    source_identity = comparison_source_identity(lock)
+    source_record = next(iter(source_identity.values()))
     receipts, roots, inference_bindings = [], [], []
     priors, prior_sources = {}, {}
     for plan in plans:
@@ -365,7 +417,7 @@ def export_initial_treatment(
         "seed": seed,
         "stage_barrier": binding(barrier_path),
         "training_lock_sha256": lock_sha256,
-        "historical_audit_rows": source_record,
+        **source_identity,
         "inference_endpoints": inference_bindings,
         "TRAIN_prior_sources": prior_sources,
     }
@@ -398,18 +450,11 @@ def export_initial_treatment(
     historical = pd.read_csv(
         sources.access(Path(source_record["path"])), dtype={"sample_token": str}
     )
-    if len(historical) != 8192 or historical.sequence_id.nunique() != 9:
-        raise ValueError("historical comparison table is not the original8192 development universe")
+    validate_comparison_universe(historical, lock, sources)
     columns = ["sample_token", "sequence_id", "track_id", "outer_fold", "target_ttc_s"]
     metadata = cast(
         pd.DataFrame, historical.rename(columns={"target_ttc": "target_ttc_s"})[columns]
     )
-    for fold in range(3):
-        if (
-            list(metadata.loc[metadata.outer_fold == fold, "sample_token"])
-            != (lock["outer_tokens_by_fold"][str(fold)])
-        ):
-            raise ValueError("historical targets differ from frozen outer fold assignments")
     arrays, edges = assemble_fold_arrays(receipts, roots, tuple(metadata.sample_token))
     old = cast(pd.DataFrame, historical[["A5_ttc", "C2F_ttc", "PAIR_ttc"]].copy())
     old.columns = ["A5", "C2F", "PAIR"]

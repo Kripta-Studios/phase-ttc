@@ -138,6 +138,8 @@ def test_real_paired_analysis_binds_all_seed_exports_and_recovers_immutably(
     if capacity == "4M":
         rows["acquisition_group"] = rows.sequence_id
         lock["capacity_cohort"] = {"synthetic_source": True}
+        lock.pop("historical_audit_rows")
+        lock["capacity_comparison_rows"] = {"synthetic_expanded_source": True}
         lock["outer_tokens_by_fold"] = {
             str(f): list(rows.loc[rows.outer_fold == f, "sample_token"]) for f in range(3)
         }
@@ -162,7 +164,7 @@ def test_real_paired_analysis_binds_all_seed_exports_and_recovers_immutably(
                 "seed": seed,
                 "training_lock_sha256": "a" * 64,
                 "stage_barrier": barrier,
-                "historical_audit_rows": lock["historical_audit_rows"],
+                **module.comparison_source_identity(lock),
                 "rows": source,
             }
             if capacity == "4M":

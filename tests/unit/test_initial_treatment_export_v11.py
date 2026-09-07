@@ -223,3 +223,77 @@ def test_interrupted_export_reuses_identical_payloads_without_overwriting(tmp_pa
         publish_export_payloads(tmp_path, rows.iloc[::-1], arrays)
     with pytest.raises(ValueError, match="export arrays differ"):
         publish_export_payloads(tmp_path, rows, {"posterior": np.ones((2, 2))})
+
+
+def test_comparison_source_does_not_fallback_to_historical():
+    from e_jepa_ttc.evaluation.initial_treatment_export_v11 import comparison_source_identity
+
+    historical = {"path": "old.csv", "sha256": "old"}
+    lock = {"historical_audit_rows": historical}
+    assert comparison_source_identity(lock) == lock
+    lock["capacity_cohort"] = {}
+    with pytest.raises(ValueError, match="missing frozen comparison"):
+        comparison_source_identity(lock)
+    lock["capacity_comparison_rows"] = historical.copy()
+    with pytest.raises(ValueError, match="cannot reuse"):
+        comparison_source_identity(lock)
+    lock["capacity_comparison_rows"] = {"path": "new.csv", "sha256": "new"}
+    assert comparison_source_identity(lock) == {
+        "capacity_comparison_rows": lock["capacity_comparison_rows"]
+    }
+
+
+@pytest.mark.parametrize(
+    "damage", [None, "order", "duplicate", "sequence", "track", "fold", "cohort"]
+)
+def test_expanded_comparison_checks_physical_cohort_identity(tmp_path, damage):
+    import json
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import AllowlistedSources, binding
+    from e_jepa_ttc.evaluation.initial_treatment_export_v11 import validate_comparison_universe
+
+    rows = pd.DataFrame(
+        {
+            "sample_token": ["a", "b", "c"],
+            "sequence_id": ["s0", "s1", "s2"],
+            "track_id": ["t0", "t1", "t2"],
+            "outer_fold": [0, 1, 2],
+        }
+    )
+    metadata = tmp_path / "METADATA.csv"
+    rows.to_csv(metadata, index=False)
+    cohort = {
+        "kind": "CAPACITY_DEVELOPMENT_COHORT",
+        "ordered_tokens": ["a", "b", "c"],
+        "selected_sequences": ["s0", "s1", "s2"],
+        "sequence_to_group": {"s0": "g0", "s1": "g1", "s2": "g2", "external": "g3"},
+        "sequence_to_outer_fold": {"s0": 0, "s1": 1, "s2": 2},
+    }
+    cohort["artifact_sha256"] = object_digest(cohort)
+    if damage == "cohort":
+        cohort["ordered_tokens"] = ["x", "b", "c"]
+    path = tmp_path / "COHORT.json"
+    path.write_text(json.dumps(cohort), encoding="utf-8")
+    lock = {
+        "capacity_cohort": binding(path),
+        "capacity_metadata": binding(metadata),
+        "capacity_comparison_rows": {"path": "new.csv", "sha256": "new"},
+        "outer_tokens_by_fold": {"0": ["a"], "1": ["b"], "2": ["c"]},
+    }
+    if damage == "order":
+        rows = rows.iloc[::-1]
+    elif damage in ("duplicate", "sequence", "track", "fold"):
+        field, value = {
+            "duplicate": ("sample_token", "b"),
+            "sequence": ("sequence_id", "s1"),
+            "track": ("track_id", "wrong"),
+            "fold": ("outer_fold", 1),
+        }[damage]
+        rows.loc[0, field] = value
+    sources = AllowlistedSources([], tmp_path / "READS.jsonl")
+    if damage:
+        with pytest.raises(ValueError):
+            validate_comparison_universe(rows, lock, sources)
+    else:
+        validate_comparison_universe(rows, lock, sources)
+        assert len((tmp_path / "READS.jsonl").read_text().splitlines()) == 2
