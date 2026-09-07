@@ -191,14 +191,13 @@ class ArchitectureInput:
     sensor_support: Tensor
 
 
-def four_contexts(
+def four_context_metadata(
     counts: np.ndarray,
     durations_s: np.ndarray,
     support: np.ndarray,
     midpoint_twice_relative_us: np.ndarray,
-    normalization: RateNormalization,
-) -> ArchitectureInput:
-    """Materialize a single four-context row without loading a full cache."""
+) -> tuple[Tensor, Tensor]:
+    """Validate a row and return its clock/support without unused rate transforms."""
     if support.shape != (128, 128) or support.dtype != bool:
         raise ValueError("expected boolean common sensor support")
     integer_times = np.asarray(midpoint_twice_relative_us)
@@ -208,6 +207,28 @@ def four_contexts(
         or np.any(np.diff(integer_times) <= 0)
     ):
         raise ValueError("four chronological integer relative midpoints required")
+    if counts.shape != COUNT_SHAPE or counts.dtype.kind != "u":
+        raise ValueError("E128-T8 unsigned count shape mismatch")
+    durations = np.asarray(durations_s, dtype=np.float32)
+    if durations.shape != (2, 8) or not np.isfinite(durations).all() or np.any(durations <= 0):
+        raise ValueError("positive physical duration required for every bin")
+    return (
+        torch.from_numpy((integer_times.astype(np.float64) / 2_000_000).astype(np.float32)),
+        torch.from_numpy(support.copy()),
+    )
+
+
+def four_contexts(
+    counts: np.ndarray,
+    durations_s: np.ndarray,
+    support: np.ndarray,
+    midpoint_twice_relative_us: np.ndarray,
+    normalization: RateNormalization,
+) -> ArchitectureInput:
+    """Materialize a single four-context row without loading a full cache."""
+    times, sensor_support = four_context_metadata(
+        counts, durations_s, support, midpoint_twice_relative_us
+    )
     values = log_rates(counts, durations_s)
     mean = np.asarray(normalization.mean, dtype=np.float32)[None, None, :, None, None]
     std = np.asarray(normalization.std, dtype=np.float32)[None, None, :, None, None]
@@ -215,6 +236,6 @@ def four_contexts(
     normalized *= support[None, None, None]
     return ArchitectureInput(
         torch.from_numpy(normalized.reshape(4, 8, 128, 128)),
-        torch.from_numpy((integer_times.astype(np.float64) / 2_000_000).astype(np.float32)),
-        torch.from_numpy(support.copy()),
+        times,
+        sensor_support,
     )

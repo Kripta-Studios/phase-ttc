@@ -10,7 +10,11 @@ import numpy as np
 import torch
 from torch import Tensor
 
-from e_jepa_ttc.data.event_context128 import ArchitectureInput, RateNormalization, four_contexts
+from e_jepa_ttc.data.event_context128 import (
+    ArchitectureInput,
+    RateNormalization,
+    four_context_metadata,
+)
 from e_jepa_ttc.data.event_context128_reader import CountObservation
 
 DERANGEMENTS = tuple(
@@ -98,12 +102,11 @@ def augment_observation(
     parameters: AugmentationParameters | None = None,
 ) -> tuple[ArchitectureInput, AugmentationParameters]:
     """Thin integer event counts before rate/gain/log normalization; keep all four clocks."""
-    original = four_contexts(
+    times, sensor_support = four_context_metadata(
         observation.counts,
         observation.durations_s,
         observation.support,
         observation.midpoint_twice_relative_us,
-        normalization,
     )
     parameters = sample_parameters(generator) if parameters is None else parameters
     # Float64 represents every uint32 count exactly for independent binomial draws.
@@ -123,5 +126,5 @@ def augment_observation(
     normalized = (values - mean) / std
     normalized *= observation.support[None, None, None]
     contexts = spatial_transform(torch.from_numpy(normalized.reshape(4, 8, 128, 128)), parameters)
-    support = spatial_transform(original.sensor_support, parameters)
-    return ArchitectureInput(contexts, original.times, support), parameters
+    support = spatial_transform(sensor_support, parameters)
+    return ArchitectureInput(contexts, times, support), parameters

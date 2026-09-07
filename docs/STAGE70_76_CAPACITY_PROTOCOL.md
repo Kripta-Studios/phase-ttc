@@ -1039,3 +1039,31 @@ incrementales más el mínimo de 4 GiB disponibles. Los cuatro tests de caché,
 incluido round-trip exacto gzip, pasan. No se ha reducido resolución, ventanas,
 precision ni diversidad. Se corrigió también la publicación del manifiesto del
 teacher cuando su caché reside en E: fuera del repositorio.
+
+### Cola CPU acotada y trabajo redundante durante los fits
+
+La ruta supervisada 4 M prepara como máximo un microbatch futuro en un único
+thread CPU. Usa un clon del generador de muestreo y sólo publica su estado al
+consumir ese microbatch. Las augmentations siguen ligadas a semilla, update,
+posición y token. No prepara más allá del límite de un update; el cierre espera
+al trabajador antes de cerrar lectores o cambiar productor. Las trazas se
+escriben y sincronizan únicamente al consumir muestras, en el orden anterior.
+
+Se elimina la normalización previa sin augmentation que se calculaba sólo para
+obtener tiempos y soporte. Se conservan las mismas validaciones, valores finales
+y RNG. Se consulta RAM/disco una vez por update; la telemetría independiente
+continúa y su fallo se comprueba antes de cada microbatch.
+
+QA CPU: 14 tests pasan; los nuevos casos comparan entradas, pérdidas, gradientes,
+trazas y estados RNG con/sin cola y con reconstrucción a mitad de update para
+microbatch1/2. No hay optimizer updates en estas pruebas. Seis casos sparse/dense
+contra el código anterior producen entradas, parámetros de augmentation y RNG
+idénticos. El ahorro de la transformación redundante es medido por caso en
+`qa/AUGMENTATION_METADATA_PARITY.json`, no extrapolado al fit completo. Ruff pasa
+y Pyright no informa errores en los cinco módulos afectados.
+
+La cola se integra en los fits 4 M y reserva como máximo un microbatch pendiente;
+el lock resuelto debe contemplar 128 MiB adicionales de margen CPU. Estos cambios
+no se han aplicado todavía al código congelado del original. Requieren paridad
+GPU y recuperación exacta antes de admitir la ejecución científica optimizada;
+no se sustituye esa prueba por la evidencia CPU.

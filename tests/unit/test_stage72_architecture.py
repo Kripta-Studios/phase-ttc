@@ -164,3 +164,64 @@ def test_sampler_and_augmentation_are_microbatch_invariant_and_target_isolated(r
     assert records[0] == records[1]
     for first, second in zip(models[0].seen, models[1].seen, strict=True):
         assert all(torch.equal(a, b) for a, b in zip(first, second, strict=True))
+
+
+@pytest.mark.parametrize("batch", [1, 2])
+def test_prefetch_matches_sync_inputs_gradients_trace_and_mid_update_resume(row, tmp_path, batch):
+    class Reader:
+        identity = "c" * 64
+        metadata = pd.DataFrame(dict(sample_token=["a", "b", "c"], sequence_id=["train"] * 3))
+
+        def observation(self, token):
+            return row
+
+    roles = TrainRoles((("train", "train"),), ("train",), ("train",), (), (), (), "fixture")
+    view = TrainingView(
+        Reader(), ("a", "b", "c"), roles, excluded_sequences=(), include_expansion=False
+    )
+    runs = []
+    for prefetch, restart in ((False, False), (True, False), (True, True)):
+        model = InputRecorder()
+        journal = tmp_path / f"trace-{prefetch}-{restart}.jsonl"
+
+        def make(model=model, journal=journal, prefetch=prefetch):
+            return SupervisedBatches(
+                model,
+                view,
+                norm(view.identity),
+                supervision(view.tokens),
+                "PPS-TIMEPERM",
+                7,
+                journal,
+                prefetch=prefetch,
+            )
+
+        callback = make()
+        generator = torch.Generator().manual_seed(7)
+        states, gradients, losses = [], [], []
+        try:
+            for micro in range(16 // batch):
+                if restart and micro == 2:
+                    saved = generator.get_state()
+                    callback.close()
+                    assert torch.equal(saved, generator.get_state())
+                    callback = make()
+                    generator = torch.Generator().set_state(saved)
+                model.zero_grad(set_to_none=True)
+                loss = callback(1, micro, batch, generator)
+                loss.backward()
+                states.append(generator.get_state())
+                gradients.append(model.parameter.grad.clone())
+                losses.append(loss.detach())
+            assert callback.pending is None
+        finally:
+            callback.close()
+        runs.append((model.seen, states, gradients, losses, journal.read_text()))
+    for actual in runs[1:]:
+        assert actual[4] == runs[0][4]
+        for index in (1, 2, 3):
+            assert all(
+                torch.equal(a, b) for a, b in zip(actual[index], runs[0][index], strict=True)
+            )
+        for a, b in zip(actual[0], runs[0][0], strict=True):
+            assert all(torch.equal(x, y) for x, y in zip(a, b, strict=True))

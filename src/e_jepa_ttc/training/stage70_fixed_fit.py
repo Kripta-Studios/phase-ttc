@@ -225,7 +225,10 @@ class FixedFit:
             self.optimizer.zero_grad(set_to_none=True)
             loss_value = 0.0
             for micro_index in range(16 // self.microbatch):
-                self.owner.check()
+                # Physical resources are queried once per update and continuously
+                # by the owner's monitor; observe its failure before every microbatch.
+                if self.owner.failure:
+                    raise RuntimeError(self.owner.failure)
                 loss = microbatch_loss(update, micro_index, self.microbatch, self.generator)
                 if loss.ndim or not bool(torch.isfinite(loss)):
                     raise ValueError("nonfinite/non-scalar microbatch objective")

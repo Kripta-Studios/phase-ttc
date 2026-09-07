@@ -5,7 +5,8 @@ from __future__ import annotations
 import json
 import os
 from collections.abc import Mapping
-from dataclasses import asdict
+from concurrent.futures import Future, ThreadPoolExecutor
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import torch
@@ -49,6 +50,18 @@ def initialize_architecture(
     return model
 
 
+@dataclass
+class PreparedMicrobatch:
+    """One CPU-only batch; speculative sampling state is committed on consumption."""
+
+    indices: Tensor
+    contexts: Tensor
+    times: Tensor
+    tokens: list[str]
+    trace: list[dict[str, object]]
+    sampler_state: Tensor
+
+
 class SupervisedBatches:
     """Uniform TRAIN sampling and fixed augmentation; identities never enter network channels."""
 
@@ -61,6 +74,8 @@ class SupervisedBatches:
         arm: Arm,
         seed: int,
         journal: Path,
+        *,
+        prefetch: bool = False,
     ) -> None:
         if view.tokens != supervision.tokens or normalization.training_view_sha256 != view.identity:
             raise ValueError("sampler, supervision and normalization TRAIN identities differ")
@@ -69,14 +84,29 @@ class SupervisedBatches:
         self.model, self.view, self.normalization = model, view, normalization
         self.supervision, self.arm, self.seed, self.journal = supervision, arm, seed, journal
         self.device = next(model.parameters()).device
+        self.executor = ThreadPoolExecutor(max_workers=1) if prefetch else None
+        self.pending: Future[PreparedMicrobatch] | None = None
+        self.pending_key: tuple[int, int, int] | None = None
+        self.pending_rng: Tensor | None = None
 
-    def __call__(self, update: int, index: int, batch: int, generator: torch.Generator) -> Tensor:
-        """Return the globally weighted microbatch mean; FixedFit applies batch/16 once."""
+    def close(self) -> None:
+        """Join the sole CPU preparer before readers, checkpoints or producers change."""
+        if self.executor is not None:
+            self.executor.shutdown(wait=True, cancel_futures=True)
+            self.executor = None
+        self.pending = None
+        self.pending_key = None
+        self.pending_rng = None
+
+    def _prepare(
+        self, update: int, index: int, batch: int, generator: torch.Generator
+    ) -> PreparedMicrobatch:
         if batch not in (1, 2) or not 0 <= index < 16 // batch:
             raise ValueError("invalid accumulated supervised batch position")
         indices = torch.randint(len(self.view.tokens), (batch,), generator=generator)
         tokens = [self.view.tokens[int(i)] for i in indices]
-        samples, trace = [], []
+        samples = []
+        trace: list[dict[str, object]] = []
         for local, token in enumerate(tokens):
             position = index * batch + local
             sample, parameters = augment_observation(
@@ -86,6 +116,39 @@ class SupervisedBatches:
             )
             samples.append(sample)
             trace.append({"position": position, "token": token, "augmentation": asdict(parameters)})
+        return PreparedMicrobatch(
+            indices,
+            torch.stack([sample.contexts for sample in samples]),
+            torch.stack([sample.times for sample in samples]),
+            tokens,
+            trace,
+            generator.get_state(),
+        )
+
+    def __call__(self, update: int, index: int, batch: int, generator: torch.Generator) -> Tensor:
+        """Return the globally weighted microbatch mean; FixedFit applies batch/16 once."""
+        if batch not in (1, 2) or not 0 <= index < 16 // batch:
+            raise ValueError("invalid accumulated supervised batch position")
+        if self.pending is None:
+            prepared = self._prepare(update, index, batch, generator)
+        else:
+            if (
+                self.pending_key != (update, index, batch)
+                or self.pending_rng is None
+                or not torch.equal(generator.get_state(), self.pending_rng)
+            ):
+                raise ValueError("prefetched batch differs from the consumed sampler position")
+            prepared = self.pending.result()
+            generator.set_state(prepared.sampler_state)
+            self.pending = None
+        # Do not prepare across an optimizer/checkpoint boundary. Only this clone
+        # advances speculatively; the captured training RNG stays at consumption.
+        if self.executor is not None and index + 1 < 16 // batch:
+            self.pending_key = (update, index + 1, batch)
+            self.pending_rng = generator.get_state()
+            clone = torch.Generator(device="cpu").set_state(self.pending_rng)
+            self.pending = self.executor.submit(self._prepare, update, index + 1, batch, clone)
+        indices, tokens, trace = prepared.indices, prepared.tokens, prepared.trace
         permutation = None
         if self.arm == "PPS-TIMEPERM":
             permutation = torch.tensor(
@@ -94,8 +157,8 @@ class SupervisedBatches:
                 dtype=torch.int64,
             )
         output = self.model(
-            torch.stack([sample.contexts for sample in samples]).to(self.device),
-            torch.stack([sample.times for sample in samples]).to(self.device),
+            prepared.contexts.to(self.device),
+            prepared.times.to(self.device),
             arm=self.arm,
             permutation=permutation,
         )

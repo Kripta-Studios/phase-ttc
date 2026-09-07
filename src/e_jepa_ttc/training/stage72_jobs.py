@@ -321,17 +321,20 @@ def execute_architecture_job(
         fit.resume()
         if fit.update == 0 and state["checkpoint"] is None:
             fit.save()
-        fit.run(
-            SupervisedBatches(
-                model,
-                view,
-                normalization,
-                supervision,
-                recipe.architecture,
-                job.plan.seed,
-                root / "supervised/TRAIN_TRACE.jsonl",
-            )
+        batches = SupervisedBatches(
+            model,
+            view,
+            normalization,
+            supervision,
+            recipe.architecture,
+            job.plan.seed,
+            root / "supervised/TRAIN_TRACE.jsonl",
+            prefetch=job.plan.capacity == "4M",
         )
+        try:
+            fit.run(batches)
+        finally:
+            batches.close()
     checkpoint = ledger.state["jobs"][supervised_spec.job_id]["endpoint"]
     payload = torch.load(verify(checkpoint), map_location="cpu", weights_only=False)
     if payload["update"] != recipe.supervised_updates or payload["spec"] != asdict(supervised_spec):
