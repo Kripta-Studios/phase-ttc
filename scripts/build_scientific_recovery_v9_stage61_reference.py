@@ -18,7 +18,7 @@ from e_jepa_ttc.data.collision_clock_cache import (
     CollisionClockTrain8192Cache,
     load_canonical_supervision,
 )
-from e_jepa_ttc.data.stage61_pair_feature_cache import save_feature_cache
+from e_jepa_ttc.data.stage61_pair_feature_cache import pair_inference_features, save_feature_cache
 from e_jepa_ttc.evaluation.scientific_recovery_v8 import load_causal_scale_replay_checkpoint
 from e_jepa_ttc.models.collision_clock_math import ttc_to_benchmark_phase
 from e_jepa_ttc.models.local_temporal_phase_field import build_local_temporal_field_features
@@ -122,16 +122,7 @@ def build(args: argparse.Namespace) -> None:
             index = torch.as_tensor(selected, dtype=torch.long, device=args.device)
             output = producer.model(inputs[index], delta[index], return_dense_features=True)
             support = output.sensor_support
-            dt12 = delta[index, 1]
-            pair = torch.cat(
-                (
-                    output.pair_tokens[:, -1],
-                    torch.stack((dt12, torch.log(dt12 + 1e-8), torch.reciprocal(dt12)), dim=-1),
-                    support[:, -1:],
-                    torch.minimum(support[:, -2], support[:, -1]).unsqueeze(-1),
-                ),
-                dim=-1,
-            )
+            pair = pair_inference_features(output.pair_tokens, support, delta[index])
             phase, valid_phase = ttc_to_benchmark_phase(
                 output.ttc_mean_seconds, metric_delta_t_s=0.1
             )

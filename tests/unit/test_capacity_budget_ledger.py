@@ -54,6 +54,59 @@ def local_ledger(tmp_path, monkeypatch):
     return UpdateLedger(tmp_path / "local.json", tmp_path / "isolated_owner")
 
 
+def envelope(tmp_path):
+    record = {
+        "kind": "PROSPECTIVE_USER_AUTHORIZED_SHARED_BUDGET_ENVELOPE",
+        "maximum_new_optimizer_updates": 1_900_000,
+        "original_campaign_ceiling_reserved": 900_000,
+        "expanded_technical_and_recovery_updates_reserved": 10_000,
+        "predecessor_terminal_required": True,
+        "all_job_remaining_updates_must_be_reserved_before_start": True,
+        "original_frozen_recipe_or_lock_modified": False,
+    }
+    record["artifact_sha256"] = object_digest(record)
+    path = tmp_path / "envelope.json"
+    atomic_json(path, record)
+    return binding(path)
+
+
+def test_expanded_whole_fit_reservation_includes_original_charges(tmp_path, monkeypatch):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    ledger.bind_capacity_envelope(envelope(tmp_path))
+    ledger.inherit_closed_campaign(predecessor(tmp_path))
+    ledger.reserve(FitSpec("first", "S72", "DIRECT", 0, 7, 800000, "a" * 64, "b" * 64))
+    with pytest.raises(RuntimeError, match="1900000"):
+        ledger.reserve(FitSpec("second", "S72", "DIRECT", 1, 7, 500000, "a" * 64, "b" * 64))
+    assert set(ledger.state["jobs"]) == {"first"}
+    assert local_ledger(tmp_path, monkeypatch).state == ledger.state
+
+
+def test_expanded_qa_allowance_is_additional_but_still_bounded(tmp_path, monkeypatch):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    ledger.bind_capacity_envelope(envelope(tmp_path))
+    ledger.inherit_closed_campaign(predecessor(tmp_path, technical=2900))
+    ledger.reserve_technical_audit("expanded", 10000, "a" * 64)
+    with pytest.raises(RuntimeError, match="10000"):
+        ledger.reserve_technical_audit("extra", 1, "b" * 64)
+
+
+def test_expanded_envelope_cannot_be_added_after_reservations_or_changed(tmp_path, monkeypatch):
+    ledger = local_ledger(tmp_path, monkeypatch)
+    source = envelope(tmp_path)
+    ledger.reserve_technical_audit("prior", 1, "a" * 64)
+    with pytest.raises(ValueError, match="before any local"):
+        ledger.bind_capacity_envelope(source)
+    other = tmp_path / "other"
+    other.mkdir()
+    ledger2 = local_ledger(other, monkeypatch)
+    ledger2.bind_capacity_envelope(source)
+    record = json.loads((tmp_path / "envelope.json").read_text())
+    record["maximum_new_optimizer_updates"] += 1
+    atomic_json(tmp_path / "envelope.json", record)
+    with pytest.raises(ValueError):
+        local_ledger(other, monkeypatch)
+
+
 def test_shared_ceiling_rejects_whole_reservation_without_faking_old_local_fits(
     tmp_path, monkeypatch
 ):

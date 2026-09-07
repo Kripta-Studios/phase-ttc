@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import json
+import os
 import random
 import time
+from collections.abc import Callable
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
@@ -15,6 +17,7 @@ from torch import nn
 from torch.nn import functional
 
 from e_jepa_ttc.artifacts.hashing import compute_file_hash, sign_artifact
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.data.stage61_pair_feature_cache import PairFeatureBatch, PairSupervisionBatch
 from e_jepa_ttc.models.collision_clock_math import (
     benchmark_phase_to_inverse_ttc,
@@ -22,6 +25,8 @@ from e_jepa_ttc.models.collision_clock_math import (
     phase_lower_bound,
 )
 from e_jepa_ttc.training.incremental_residual import deterministic_sequence_grouped_schedule
+from e_jepa_ttc.training.stage70_fixed_fit import finish_checkpoint_publication
+from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger
 
 
 @dataclass(frozen=True)
@@ -94,9 +99,29 @@ def train_pair_head(
     device: torch.device,
     identity: dict[str, Any],
     resume: bool = False,
+    accounting: tuple[UpdateLedger, FitSpec] | None = None,
+    technical_update_limit: int | None = None,
+    check: Callable[[], None] = lambda: None,
 ) -> tuple[CachedPairDirectPhase, dict[str, Any]]:
     """Train only the PAIR head; no dev arrays are accepted by this API."""
 
+    check()
+    endpoint = config.update_budget
+    if technical_update_limit is not None:
+        if (
+            accounting is None
+            or not accounting[1].technical
+            or not 1 <= technical_update_limit <= endpoint
+        ):
+            raise ValueError(
+                "partial PAIR work is restricted to explicitly nonselectable technical fits"
+            )
+        endpoint = technical_update_limit
+    if accounting is not None:
+        ledger, spec = accounting
+        if spec.endpoint != endpoint or spec.seed != config.seed:
+            raise ValueError("PAIR reservation differs from the prescribed endpoint")
+        ledger.reserve(spec)
     feature = np.asarray(features, dtype=np.float32)
     target = np.asarray(target_phase, dtype=np.float32).reshape(-1)
     weights = np.asarray(sample_weight, dtype=np.float32).reshape(-1)
@@ -112,6 +137,9 @@ def train_pair_head(
         updates=config.update_budget,
     )
     run_identity = {**identity, "config": asdict(config), "batch_schedule_sha256": schedule_sha}
+    if accounting is not None:
+        run_identity["fit_spec"] = asdict(accounting[1])
+    publication_identity = object_digest(run_identity)
     output_dir.mkdir(parents=True, exist_ok=resume)
     checkpoint = output_dir / "model_last.pt"
     progress = output_dir / "progress.jsonl"
@@ -128,6 +156,14 @@ def train_pair_head(
     )
     start, losses = 0, []
     if resume:
+        if accounting is not None:
+            finish_checkpoint_publication(
+                output_dir, publication_identity, accounting[0], accounting[1].job_id
+            )
+            recovered = accounting[0].recover(accounting[1].job_id)
+            if recovered is None:
+                raise ValueError("PAIR has no valid checkpoint to resume")
+            checkpoint = verify(recovered)
         payload = torch.load(checkpoint, map_location=device, weights_only=False)
         if payload["identity"] != run_identity:
             raise ValueError("PAIR resume identity mismatch")
@@ -149,26 +185,50 @@ def train_pair_head(
 
     def save(update: int, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        torch.save(
-            {
-                "artifact_type": "stage61_pair_head_checkpoint_v1",
-                "identity": run_identity,
-                "completed_updates": update,
-                "model_state_dict": model.state_dict(),
-                "optimizer_state_dict": optimizer.state_dict(),
-                "torch_cpu_rng_state": torch.get_rng_state(),
-                "torch_cuda_rng_state": torch.cuda.get_rng_state_all()
-                if torch.cuda.is_available()
-                else None,
-                "losses": losses,
-            },
-            path,
-        )
+        payload = {
+            "artifact_type": "stage61_pair_head_checkpoint_v1",
+            "identity": run_identity,
+            "completed_updates": update,
+            "model_state_dict": model.state_dict(),
+            "optimizer_state_dict": optimizer.state_dict(),
+            "torch_cpu_rng_state": torch.get_rng_state(),
+            "torch_cuda_rng_state": torch.cuda.get_rng_state_all()
+            if torch.cuda.is_available()
+            else None,
+            "losses": losses,
+        }
+        temporary = path.with_suffix(path.suffix + ".tmp")
+        with temporary.open("wb") as stream:
+            torch.save(payload, stream)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
 
-    if start == 0:
-        save(0, output_dir / "milestones" / "update-000000.pt")
+    def publish(update: int) -> Path:
+        check()
+        path = output_dir / f"checkpoint_{update:06d}.pt"
+        if path.exists():
+            raise ValueError("PAIR checkpoint exists; recover its publication")
+        temporary = path.with_suffix(".pt.tmp")
+        save(update, temporary)
+        intent = {"identity": publication_identity, "update": update, "payload": binding(temporary)}
+        atomic_json(
+            output_dir / "PENDING_CHECKPOINT.json", {**intent, "sha256": object_digest(intent)}
+        )
+        assert accounting is not None
+        finish_checkpoint_publication(
+            output_dir, publication_identity, accounting[0], accounting[1].job_id
+        )
+        return path
+
+    if start == 0 and not resume:
+        if accounting is not None:
+            publish(0)
+        else:
+            save(0, output_dir / "milestones" / "update-000000.pt")
     began = time.perf_counter()
-    for update in range(start, config.update_budget):
+    for update in range(start, endpoint):
+        check()
         indices = torch.as_tensor(schedule[update], dtype=torch.long, device=device)
         model.train()
         optimizer.zero_grad(set_to_none=True)
@@ -178,22 +238,36 @@ def train_pair_head(
         if not bool(torch.isfinite(loss)):
             raise FloatingPointError("PAIR loss became non-finite")
         loss.backward()
+        if accounting is not None:
+            accounting[0].begin_step(accounting[1].job_id)
         optimizer.step()
+        if accounting is not None:
+            if device.type == "cuda":
+                torch.cuda.synchronize(device)
+            accounting[0].confirm_step(accounting[1].job_id)
         losses.append(float(loss.detach().cpu()))
         completed = update + 1
         with progress.open("a", encoding="utf-8", newline="\n") as stream:
             stream.write(json.dumps({"update": completed, "loss": losses[-1]}) + "\n")
-        if completed % 100 == 0 or completed in milestones:
-            save(completed, checkpoint)
-        if completed in milestones:
-            save(completed, output_dir / "milestones" / f"update-{completed:06d}.pt")
+        if accounting is not None:
+            if completed % 100 == 0 or completed in milestones or completed == endpoint:
+                checkpoint = publish(completed)
+        else:
+            if completed % 100 == 0 or completed in milestones:
+                save(completed, checkpoint)
+            if completed in milestones:
+                save(completed, output_dir / "milestones" / f"update-{completed:06d}.pt")
     elapsed = time.perf_counter() - began
+    if accounting is not None:
+        accounting[0].complete(accounting[1].job_id)
     manifest = sign_artifact(
         {
             "artifact_type": "stage61_pair_head_training_v1",
-            "status": "completed",
+            "status": "technical_nonselectable"
+            if technical_update_limit is not None
+            else "completed",
             "identity": run_identity,
-            "completed_updates": config.update_budget,
+            "completed_updates": endpoint,
             "checkpoint_path": str(checkpoint),
             "checkpoint_sha256": compute_file_hash(str(checkpoint)),
             "loss_first": losses[0],

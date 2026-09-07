@@ -131,6 +131,15 @@ def validate_nested_split(
     split = folds[0]
     train_sequences = set(split["train_sequence_ids"])
     dev_sequences = set(split["dev_sequence_ids"])
+    diagnostic_contract = (
+        protocol.get("artifact_type") == "scientific_recovery_v11_capacity_comparator_diagnostic_v1"
+    )
+    if diagnostic_contract:
+        if producer_recipe is None:
+            raise ValueError("comparator diagnostic contract requires frozen expanded roles")
+        # The native trainer's dev pool is diagnostic TRAIN. Its exported OOF
+        # pool has a separate identity and must never be relabeled as trainer dev.
+        dev_sequences = set(protocol["prediction_sequence_ids"])
     outer_dev = set(canonical.loc[canonical.outer_fold == outer_fold, "sequence_id"])
     outer_train = set(canonical.sequence_id) - outer_dev
     if train_sequences & dev_sequences or train_sequences & outer_dev:
@@ -151,6 +160,13 @@ def validate_nested_split(
             raise ValueError("expanded producer requires one exact outer role")
         role = matches[0]
         diagnostic = set(role["diagnostic_sequences"])
+        if diagnostic_contract and (
+            set(split["dev_sequence_ids"]) != diagnostic
+            or protocol.get("dev_role") != "TRAIN_diagnostic_only"
+            or protocol.get("checkpoint_selection_mode") != "last_epoch"
+            or protocol.get("fixed_epochs") != 18
+        ):
+            raise ValueError("comparator diagnostic source or fixed endpoint changed")
         fit = set(role["fit_sequences"])
         excluded = outer_dev | diagnostic
         if (
@@ -214,11 +230,21 @@ def validate_nested_split(
         or len(dev_sequences) != 2
     ):
         raise ValueError("inner split is not the prescribed four-train/two-dev partition")
-    for role, sequences in (("train", train_sequences), ("dev", dev_sequences)):
+    checked_pools = [("train", train_sequences, split), ("dev", dev_sequences, split)]
+    if diagnostic_contract:
+        checked_pools = [
+            ("train", train_sequences, split),
+            ("dev", diagnostic, split),
+            ("prediction", dev_sequences, protocol),
+        ]
+    for role, sequences, pool_contract in checked_pools:
         rows = canonical.loc[canonical.sequence_id.isin(sequences)]
-        if len(rows) != split[f"{role}_rows"]:
+        if len(rows) != pool_contract[f"{role}_rows"]:
             raise ValueError(f"nested {role} row count disagrees")
-        if hash_sorted_token_strings(rows.sample_token) != split[f"{role}_sample_tokens_sha256"]:
+        if (
+            hash_sorted_token_strings(rows.sample_token)
+            != pool_contract[f"{role}_sample_tokens_sha256"]
+        ):
             raise ValueError(f"nested {role} token hash disagrees")
     expected = canonical.loc[canonical.sequence_id.isin(dev_sequences)].set_index("sample_token")
     actual = predictions.rename(columns={"token_id": "sample_token"}).set_index("sample_token")

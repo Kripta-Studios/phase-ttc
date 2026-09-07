@@ -21,6 +21,31 @@ from e_jepa_ttc.training.eap_highres_jepa import _capture_rng_state, _restore_rn
 from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger
 
 
+def finish_checkpoint_publication(
+    output: Path, identity: str, ledger: UpdateLedger, job_id: str
+) -> None:
+    """Finish the existing flushed-payload publication transaction for either trainer."""
+    intent_path = output / "PENDING_CHECKPOINT.json"
+    if not intent_path.exists():
+        return
+    intent = json.loads(intent_path.read_text())
+    signature = intent.pop("sha256")
+    if signature != object_digest(intent) or intent["identity"] != identity:
+        raise ValueError("checkpoint publication intent identity mismatch")
+    update = intent["update"]
+    target = output / f"checkpoint_{update:06d}.pt"
+    temporary = target.with_suffix(".pt.tmp")
+    if intent["payload"]["path"] != str(temporary.resolve()):
+        raise ValueError("checkpoint publication path escaped its owned output")
+    if target.exists():
+        verify({**intent["payload"], "path": str(target.resolve())})
+    else:
+        verify(intent["payload"])
+        os.replace(temporary, target)
+    ledger.checkpoint(job_id, target, update)
+    intent_path.rename(output / f"PUBLISHED_CHECKPOINT_{update:06d}.json")
+
+
 def prescribed_lr(update: int, endpoint: int, warmup: int) -> float:
     """One-based update schedule: warmup3e-5→3e-4, cosine→3e-5 at endpoint."""
     if not 1 <= update <= endpoint or not 2 <= warmup < endpoint:
@@ -150,25 +175,7 @@ class FixedFit:
         _restore_rng_state(payload["rng"], self.generator)
 
     def _finish_publication(self) -> None:
-        intent_path = self.output / "PENDING_CHECKPOINT.json"
-        if not intent_path.exists():
-            return
-        intent = json.loads(intent_path.read_text())
-        signature = intent.pop("sha256")
-        if signature != object_digest(intent) or intent["identity"] != self.identity:
-            raise ValueError("checkpoint publication intent identity mismatch")
-        update = intent["update"]
-        target = self.output / f"checkpoint_{update:06d}.pt"
-        temporary = target.with_suffix(".pt.tmp")
-        if intent["payload"]["path"] != str(temporary.resolve()):
-            raise ValueError("checkpoint publication path escaped its owned output")
-        if target.exists():
-            verify({**intent["payload"], "path": str(target.resolve())})
-        else:
-            verify(intent["payload"])
-            os.replace(temporary, target)
-        self.ledger.checkpoint(self.spec.job_id, target, update)
-        intent_path.rename(self.output / f"PUBLISHED_CHECKPOINT_{update:06d}.json")
+        finish_checkpoint_publication(self.output, self.identity, self.ledger, self.spec.job_id)
 
     def save(self) -> Path:
         """Synchronously flush the complete state before atomically publishing its binding."""

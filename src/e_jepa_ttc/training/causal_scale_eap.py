@@ -9,7 +9,7 @@ import math
 import os
 import random
 import time
-from collections.abc import Iterator, Sized
+from collections.abc import Callable, Iterator, Sized
 from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Any, Literal, cast
@@ -20,6 +20,7 @@ from torch import nn
 from torch.nn import functional
 from torch.utils.data import DataLoader, Dataset, Sampler
 
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.data.object_event_v4 import (
     BoxGeometryTargets,
     ObjectEventV4Batch,
@@ -46,6 +47,9 @@ from e_jepa_ttc.models.causal_scale_ttc import (
     target_log_ratio_from_ttc,
 )
 from e_jepa_ttc.reproducibility import seed_everything
+from e_jepa_ttc.training.eap_highres_jepa import _capture_rng_state, _restore_rng_state
+from e_jepa_ttc.training.stage70_fixed_fit import finish_checkpoint_publication
+from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger
 
 
 def _safe_progress_value(value: object) -> object:
@@ -818,6 +822,9 @@ def train_one_real_epoch(
     config: CausalScaleEAPTrainingConfig,
     loss_config: CausalScaleTTCLossConfig,
     soft_geometry_teacher: CausalScaleTTC | None = None,
+    *,
+    accounting: tuple[UpdateLedger, FitSpec] | None = None,
+    check: Callable[[], None] = lambda: None,
 ) -> dict[str, float]:
     """Train one example-weighted epoch with bounded gradient accumulation."""
 
@@ -848,7 +855,14 @@ def train_one_real_epoch(
         scaled.backward()
         if step % config.gradient_accumulation_steps == 0 or step == steps:
             nn.utils.clip_grad_norm_(model.parameters(), config.grad_clip_norm)
+            check()
+            if accounting is not None:
+                accounting[0].begin_step(accounting[1].job_id)
             optimizer.step()
+            if accounting is not None:
+                if device.type == "cuda":
+                    torch.cuda.synchronize(device)
+                accounting[0].confirm_step(accounting[1].job_id)
             optimizer.zero_grad(set_to_none=True)
         count = int(batch.events.shape[0])
         examples += count
@@ -1500,6 +1514,8 @@ def train_real_causal_scale(
     checkpoint_dir: Path | None = None,
     resume: bool = False,
     stop_after_epoch: int | None = None,
+    accounting: tuple[UpdateLedger, FitSpec] | None = None,
+    check: Callable[[], None] = lambda: None,
 ) -> CausalScaleEAPTrainingResult:
     """Train under a hard wall-clock guard and select on validation only."""
 
@@ -1507,6 +1523,39 @@ def train_real_causal_scale(
         raise TypeError("real causal-scale datasets must expose length")
     if stop_after_epoch is not None and not 1 <= stop_after_epoch <= training_config.epochs:
         raise ValueError("stop_after_epoch must lie within the configured epoch range")
+    check()
+    recovered = None
+    accounting_identity = object_digest(
+        {
+            "model": asdict(model_config),
+            "training": asdict(training_config),
+            "loss": asdict(loss_config),
+            "spec": asdict(accounting[1]) if accounting else None,
+        }
+    )
+    if accounting is not None:
+        ledger, spec = accounting
+        expected_updates = (
+            math.ceil(
+                math.ceil(len(train_dataset) / training_config.batch_size)
+                / training_config.gradient_accumulation_steps
+            )
+            * training_config.epochs
+        )
+        if spec.endpoint != expected_updates or spec.seed != training_config.seed:
+            raise ValueError("comparator reservation differs from prescribed full epochs")
+        if checkpoint_dir is None or training_config.checkpoint_selection_mode != "last_epoch":
+            raise ValueError("accounted comparator requires full checkpoints and fixed last epoch")
+        if stop_after_epoch is not None and not spec.technical:
+            raise ValueError("scientific comparator cannot request a partial endpoint")
+        ledger.reserve(spec)
+        if resume:
+            finish_checkpoint_publication(checkpoint_dir, accounting_identity, ledger, spec.job_id)
+            recovered = ledger.recover(spec.job_id)
+            if recovered is None and ledger.state["jobs"][spec.job_id]["charged"] == 0:
+                resume = False
+        elif ledger.state["jobs"][spec.job_id]["charged"]:
+            raise ValueError("an existing comparator fit must resume its latest valid state")
     seed_everything(training_config.seed, deterministic=True)
     generator = torch.Generator().manual_seed(training_config.seed)
     train_loader = _loader(train_dataset, training_config, train=True, generator=generator)
@@ -1600,6 +1649,8 @@ def train_real_causal_scale(
     last_path = checkpoint_dir / "last.pt" if checkpoint_dir is not None else None
     best_path = checkpoint_dir / "best.pt" if checkpoint_dir is not None else None
     progress_path = checkpoint_dir / "progress.json" if checkpoint_dir is not None else None
+    if accounting is not None and recovered is not None:
+        last_path = verify(recovered)
     if resume:
         if last_path is None or not last_path.is_file():
             raise FileNotFoundError("resume requested but last.pt is unavailable")
@@ -1613,6 +1664,8 @@ def train_real_causal_scale(
             "train_samples": len(train_dataset),
             "validation_samples": len(validation_dataset),
         }
+        if accounting is not None and saved.get("fit_spec") != asdict(accounting[1]):
+            raise ValueError("comparator checkpoint belongs to a different reserved producer")
         actual_contract = {key: saved.get(key) for key in expected_contract}
         if actual_contract != expected_contract:
             raise ValueError("resume state differs from the current config/data contract")
@@ -1635,7 +1688,7 @@ def train_real_causal_scale(
             torch.cuda.set_rng_state_all(saved["cuda_rng_state_all"])
     started = time.perf_counter()
     remaining_seconds = max(0.0, training_config.maximum_runtime_hours * 3600.0 - prior_elapsed)
-    deadline = started + remaining_seconds
+    deadline = math.inf if accounting is not None else started + remaining_seconds
 
     def save_state(path: Path, epoch: int, elapsed: float) -> None:
         payload = {
@@ -1664,8 +1717,14 @@ def train_real_causal_scale(
             "python_random_state": random.getstate(),
             "numpy_random_state": np.random.get_state(),
         }
+        if accounting is not None:
+            payload["fit_spec"] = asdict(accounting[1])
+            payload["wall_clock_policy"] = "user_authorized_no_hour_deadline"
         temporary = path.with_name(f".{path.name}.tmp")
-        torch.save(payload, temporary)
+        with temporary.open("wb") as stream:
+            torch.save(payload, stream)
+            stream.flush()
+            os.fsync(stream.fileno())
         os.replace(temporary, path)
 
     def save_progress(*, status: str, epoch: int, elapsed: float) -> None:
@@ -1692,6 +1751,25 @@ def train_real_causal_scale(
         )
         os.replace(temporary, progress_path)
 
+    def publish_accounted_epoch(epoch: int, elapsed: float) -> None:
+        if accounting is None or checkpoint_dir is None:
+            return
+        check()
+        ledger, spec = accounting
+        update = ledger.state["jobs"][spec.job_id]["update"]
+        path = checkpoint_dir / f"checkpoint_{update:06d}.pt"
+        if path.exists():
+            raise ValueError("immutable comparator checkpoint exists; recover its publication")
+        temporary = path.with_suffix(".pt.tmp")
+        save_state(temporary, epoch, elapsed)
+        intent = {"identity": accounting_identity, "update": update, "payload": binding(temporary)}
+        atomic_json(
+            checkpoint_dir / "PENDING_CHECKPOINT.json", {**intent, "sha256": object_digest(intent)}
+        )
+        finish_checkpoint_publication(checkpoint_dir, accounting_identity, ledger, spec.job_id)
+
+    if accounting is not None and not resume:
+        publish_accounted_epoch(0, prior_elapsed)
     last_completed_epoch = start_epoch - 1
     for epoch in range(start_epoch, training_config.epochs + 1):
         if time.perf_counter() >= deadline:
@@ -1708,10 +1786,13 @@ def train_real_causal_scale(
             training_config,
             active_loss,
             soft_geometry_teacher,
+            accounting=accounting,
+            check=check,
         )
         fixed_last_epoch = training_config.checkpoint_selection_mode == "last_epoch"
         final_requested_epoch = stop_after_epoch or training_config.epochs
         should_evaluate = (not fixed_last_epoch) or epoch == final_requested_epoch
+        diagnostic_rng = _capture_rng_state(generator) if accounting is not None else None
         validation = (
             evaluate_real_causal_scale(
                 model,
@@ -1724,6 +1805,8 @@ def train_real_causal_scale(
             if should_evaluate
             else None
         )
+        if diagnostic_rng is not None:
+            _restore_rng_state(diagnostic_rng, generator)
         selection = _selection(validation) if validation is not None else None
         record = {
             "epoch": epoch,
@@ -1786,9 +1869,11 @@ def train_real_causal_scale(
         scheduler.step()
         last_completed_epoch = epoch
         elapsed = prior_elapsed + time.perf_counter() - started
-        if last_path is not None:
+        if accounting is not None:
+            publish_accounted_epoch(epoch, elapsed)
+        elif last_path is not None:
             save_state(last_path, epoch, elapsed)
-        if best_path is not None and best_epoch == epoch:
+        if accounting is None and best_path is not None and best_epoch == epoch:
             save_state(best_path, epoch, elapsed)
         save_progress(status="running", epoch=epoch, elapsed=elapsed)
         if stop_after_epoch is not None and epoch >= stop_after_epoch:
@@ -1801,6 +1886,8 @@ def train_real_causal_scale(
             break
     if best_state is None or best_selection is None or best_validation is None:
         raise RuntimeError("real causal-scale training produced no selectable checkpoint")
+    if accounting is not None and last_completed_epoch == training_config.epochs:
+        accounting[0].complete(accounting[1].job_id)
     budget_exhausted_before_new_epoch = last_completed_epoch < start_epoch
     if (
         last_path is not None

@@ -10,6 +10,7 @@ import math
 import os
 import subprocess
 import sys
+from collections.abc import Callable
 from dataclasses import asdict, replace
 from datetime import UTC, datetime
 from pathlib import Path
@@ -46,6 +47,7 @@ from e_jepa_ttc.training.causal_scale_eap import (  # noqa: E402
     checkpoint_payload,
     train_real_causal_scale,
 )
+from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger  # noqa: E402
 from scripts.evaluate_causal_scale_v5_operator import (  # noqa: E402
     _classify_worktree_status,
 )
@@ -917,6 +919,8 @@ def run(
     *,
     device_name: str,
     resume: bool,
+    accounting: tuple[UpdateLedger, FitSpec] | None = None,
+    check: Callable[[], None] = lambda: None,
 ) -> dict[str, Any]:
     """Execute a train/validation-only run; no benchmark test labels are opened."""
 
@@ -1035,6 +1039,8 @@ def run(
         and grouped_contract["protocol"].get("artifact_type")
         == "scientific_recovery_v11_capacity_comparator_diagnostic_v1"
     ):
+        if accounting is None:
+            raise ValueError("capacity comparator must use the shared campaign update ledger")
         if (
             training_config.checkpoint_selection_mode != "last_epoch"
             or training_config.epochs != 18
@@ -1238,6 +1244,8 @@ def run(
         device,
         checkpoint_dir=state_dir,
         resume=resume,
+        accounting=accounting,
+        check=check,
     )
     completion_git_commit = _git("rev-parse", "HEAD")
     if completion_git_commit != launch_git_commit:

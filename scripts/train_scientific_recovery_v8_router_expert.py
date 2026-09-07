@@ -10,18 +10,20 @@ import json
 import subprocess
 import sys
 from collections import Counter
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pandas as pd
+import torch
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner  # noqa: E402
 from e_jepa_ttc.artifacts.hashing import sign_artifact, verify_artifact_hash  # noqa: E402
 from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings  # noqa: E402
 from e_jepa_ttc.data.object_event_v4 import GarlTTCObjectEventV4Dataset  # noqa: E402
@@ -31,6 +33,8 @@ from e_jepa_ttc.evaluation.nested_router import (  # noqa: E402
     integral_event_count_from_reconstructed,
     routing_point_ttc,
 )
+from e_jepa_ttc.models.causal_scale_ttc import CausalScaleTTCOutput  # noqa: E402
+from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger  # noqa: E402
 
 
 def _sha(path: Path) -> str:
@@ -258,6 +262,75 @@ def _mid_sample_weights(source: pd.DataFrame) -> list[str]:
     ]
 
 
+def expert_prediction_frame(
+    source: pd.DataFrame,
+    *,
+    expert: str,
+    outer_fold: int,
+    seed: int,
+    config_sha256: str,
+    checkpoint_sha256: str,
+    inner_fold: int | None,
+    expanded: bool = False,
+) -> pd.DataFrame:
+    """Use the same point TTC and PHASE17 observable fields for recovered or new experts."""
+    if expert not in ("A5", "C2F"):
+        raise ValueError("unregistered causal comparator")
+    if expanded:
+        from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
+
+        weights = [
+            str(v)
+            for v in present_bucket_mass(
+                source.target_ttc_s.to_numpy(np.float64), source.sequence_id.to_numpy()
+            )
+        ]
+    else:
+        weights = _mid_sample_weights(source)
+    routing_ttc = routing_point_ttc(source)
+    frame = pd.DataFrame(
+        {
+            "token_id": source.sample_token,
+            "sequence_id": source.sequence_id,
+            "track_id": source.track_id,
+            "outer_fold": outer_fold,
+            "seed": seed,
+            "target_ttc": source.target_ttc_s,
+            "sample_weight": weights,
+            "prediction_ttc": routing_ttc,
+            "prediction_log_variance": source.ttc_log_variance,
+            "finite": np.isfinite(routing_ttc),
+            "failure_reason": "",
+            "event_count": integral_event_count_from_reconstructed(
+                np.expm1(
+                    pd.to_numeric(source.event_count_log1p, errors="raise").to_numpy(
+                        dtype=np.float64
+                    )
+                ),
+                label="event_count",
+            ),
+            "event_rate": source.event_rate_log1p.map(
+                lambda value: float(__import__("math").expm1(value))
+            ),
+            "support_ms": 0.0,
+            "model_name": expert,
+            "config_sha256": config_sha256,
+            "checkpoint_sha256": checkpoint_sha256,
+            "shared_event_count_log1p": source.event_count_log1p,
+            "shared_event_rate_log1p": source.event_rate_log1p,
+            "a5_flow": source.transport_flow_magnitude if expert == "A5" else 0.0,
+            "a5_margin": source.guard_margin if expert == "A5" else 0.0,
+            "a5_log_variance": source.ttc_log_variance if expert == "A5" else 0.0,
+            "c2f_flow": source.transport_flow_magnitude if expert == "C2F" else 0.0,
+            "c2f_margin": source.guard_margin if expert == "C2F" else 0.0,
+            "c2f_log_variance": source.ttc_log_variance if expert == "C2F" else 0.0,
+        }
+    )
+    if inner_fold is not None:
+        frame["inner_fold"] = inner_fold
+    return frame
+
+
 def _run(args: argparse.Namespace) -> None:
     router = yaml.safe_load(args.config.read_text(encoding="utf-8"))
     outer = int(router["outer_fold"])
@@ -340,47 +413,15 @@ def _run(args: argparse.Namespace) -> None:
     source = pd.read_csv(args.output_dir / "train" / summary["predictions"]["path"])
     if "point_prediction_ttc_s" not in source.columns:
         raise NestedRouterIntegrityError("trainer predictions lack point_prediction_ttc_s")
-    routing_ttc = routing_point_ttc(source)
-    frame = pd.DataFrame(
-        {
-            "token_id": source.sample_token,
-            "sequence_id": source.sequence_id,
-            "track_id": source.track_id,
-            "outer_fold": outer,
-            "seed": seed,
-            "target_ttc": source.target_ttc_s,
-            "sample_weight": _mid_sample_weights(source),
-            "prediction_ttc": routing_ttc,
-            "prediction_log_variance": source.ttc_log_variance,
-            "finite": np.isfinite(routing_ttc),
-            "failure_reason": "",
-            "event_count": integral_event_count_from_reconstructed(
-                np.expm1(
-                    pd.to_numeric(source.event_count_log1p, errors="raise").to_numpy(
-                        dtype=np.float64
-                    )
-                ),
-                label="event_count",
-            ),
-            "event_rate": source.event_rate_log1p.map(
-                lambda value: float(__import__("math").expm1(value))
-            ),
-            "support_ms": 0.0,
-            "model_name": args.expert,
-            "config_sha256": _sha(config),
-            "checkpoint_sha256": summary["checkpoint"]["sha256"],
-            "shared_event_count_log1p": source.event_count_log1p,
-            "shared_event_rate_log1p": source.event_rate_log1p,
-            "a5_flow": source.transport_flow_magnitude if args.expert == "A5" else 0.0,
-            "a5_margin": source.guard_margin if args.expert == "A5" else 0.0,
-            "a5_log_variance": source.ttc_log_variance if args.expert == "A5" else 0.0,
-            "c2f_flow": source.transport_flow_magnitude if args.expert == "C2F" else 0.0,
-            "c2f_margin": source.guard_margin if args.expert == "C2F" else 0.0,
-            "c2f_log_variance": source.ttc_log_variance if args.expert == "C2F" else 0.0,
-        }
+    frame = expert_prediction_frame(
+        source,
+        expert=args.expert,
+        outer_fold=outer,
+        seed=seed,
+        config_sha256=_sha(config),
+        checkpoint_sha256=summary["checkpoint"]["sha256"],
+        inner_fold=args.inner_fold if args.role == "inner_oof" else None,
     )
-    if args.role == "inner_oof":
-        frame["inner_fold"] = args.inner_fold
     csv_path = args.output_dir / "expert_oof.csv"
     frame.to_csv(csv_path, index=False, lineterminator="\n")
     artifact = sign_artifact(
@@ -406,6 +447,312 @@ def _run(args: argparse.Namespace) -> None:
     (args.output_dir / "expert_artifact.json").write_text(
         json.dumps(artifact, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
+
+
+def replay_accounted_comparator(
+    ledger: UpdateLedger,
+    spec: FitSpec,
+    dataset: SequenceIndexedView[dict[str, Any]],
+    protocol: dict[str, Any],
+    *,
+    role: str,
+    device: torch.device,
+    check: Callable[[], None],
+    collect_pair: bool = False,
+    lock_path: Path | None = None,
+    lock_sha256: str | None = None,
+) -> tuple[pd.DataFrame, np.ndarray | None]:
+    """Replay one complete reserved producer on its exact TRAIN or excluded pool.
+
+    Scientific prediction requires both architecture endpoint barriers; technical
+    CPU fixtures remain nonselectable. The caller publishes the resulting arrays
+    with this ledger endpoint and the physical data/protocol source bindings.
+    """
+    from dataclasses import asdict
+
+    import torch
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import verify
+    from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
+    from e_jepa_ttc.data.stage61_pair_feature_cache import pair_inference_features
+    from e_jepa_ttc.evaluation.scientific_recovery_v8 import load_causal_scale_replay_checkpoint
+    from e_jepa_ttc.losses.causal_scale_ttc import CausalScaleTTCLossConfig
+    from e_jepa_ttc.training.causal_scale_eap import (
+        CausalScaleEAPTrainingConfig,
+        _loader,
+        evaluate_real_causal_scale,
+    )
+    from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
+
+    check()
+    if role not in ("train", "prediction"):
+        raise ValueError("comparator replay requires an explicit producer source role")
+    if not spec.technical:
+        if lock_path is None or lock_sha256 is None:
+            raise ValueError(
+                "scientific comparator predictions require the complete architecture barriers"
+            )
+        lock = require_scientific_lock(lock_path, lock_sha256)
+        for stage in ("S72", "S73") if role == "prediction" else ():
+            verify_initial_barrier(
+                Path(lock["stage_barrier_root"]) / f"{stage}_ALL_ENDPOINTS_FROZEN.json",
+                expected_stage=stage,
+                expected_lock=lock_sha256,
+            )
+        if spec.job_id not in lock["comparator_jobs"] or lock["comparator_jobs"][spec.job_id][
+            "spec"
+        ] != asdict(spec):
+            raise ValueError("comparator producer absent from frozen job graph")
+        source = lock["comparator_jobs"][spec.job_id]
+        if json.loads(verify(source["protocol"]).read_text(encoding="utf-8")) != protocol:
+            raise ValueError("comparator replay protocol differs from its frozen source")
+        expected_manifest = json.loads(verify(source["cache_manifest"]).read_text(encoding="utf-8"))
+        if (
+            not isinstance(dataset.dataset, GarlTTCObjectEventV4Dataset)
+            or dataset.dataset.manifest != expected_manifest
+        ):
+            raise ValueError("comparator replay inputs are not the frozen native cache")
+
+    job = ledger.state["jobs"][spec.job_id]
+    if job["spec"] != asdict(spec) or job["status"] != "COMPLETE" or job["update"] != spec.endpoint:
+        raise ValueError("partial comparator cannot produce scientific or PAIR input rows")
+    path = verify(job["endpoint"])
+    payload = torch.load(path, map_location="cpu", weights_only=False)
+    training = CausalScaleEAPTrainingConfig(**payload["training_config"])
+    if (
+        payload.get("fit_spec") != asdict(spec)
+        or payload["epoch"] != training.epochs
+        or training.checkpoint_selection_mode != "last_epoch"
+    ):
+        raise ValueError("comparator checkpoint is not its prescribed endpoint")
+    if not spec.technical and training.epochs != 18:
+        raise ValueError("scientific comparator requires epoch18")
+    if (
+        training.initialization_mode != "none"
+        or training.soft_geometry_teacher_checkpoint is not None
+    ):
+        raise ValueError("comparator replay has an unaudited fitted ancestor")
+    if protocol["outer_fold"] != spec.fold or protocol["checkpoint_selection_mode"] != "last_epoch":
+        raise ValueError("comparator protocol does not identify this fixed producer")
+    metadata = dataset.identity_frame()
+    split = protocol["folds"][0]
+    sequences = (
+        split["train_sequence_ids"] if role == "train" else protocol["prediction_sequence_ids"]
+    )
+    token_hash = (
+        split["train_sample_tokens_sha256"]
+        if role == "train"
+        else protocol["prediction_sample_tokens_sha256"]
+    )
+    count = split["train_rows"] if role == "train" else protocol["prediction_rows"]
+    if (
+        len(metadata) != count
+        or set(metadata.sequence_id) != set(sequences)
+        or hash_sorted_token_strings(metadata.sample_token) != token_hash
+    ):
+        raise ValueError("comparator replay source does not match the exact producer pool")
+    model = load_causal_scale_replay_checkpoint(path, device=device)
+    parts = []
+
+    def capture(
+        _module: torch.nn.Module, arguments: tuple[torch.Tensor, ...], output: CausalScaleTTCOutput
+    ) -> None:
+        check()
+        if collect_pair:
+            parts.append(
+                pair_inference_features(output.pair_tokens, output.sensor_support, arguments[1])
+                .float()
+                .cpu()
+                .numpy()
+            )
+
+    hook = model.register_forward_hook(capture)
+    try:
+        result = evaluate_real_causal_scale(
+            model,
+            _loader(dataset, training, train=False),
+            device,
+            training,
+            CausalScaleTTCLossConfig(**payload["loss_config"]),
+            use_auxiliary_dev_metadata=False,
+        )
+    finally:
+        hook.remove()
+        model.cpu()
+    frame = pd.DataFrame(
+        {
+            "sample_token": result["sample_tokens"],
+            "sequence_id": result["sequence_ids"],
+            "track_id": result["track_ids"],
+            "target_ttc_s": result["target_ttc_s"],
+            "prediction_ttc_s": result["prediction_ttc_s"],
+            "point_prediction_ttc_s": result["point_prediction_ttc_s"],
+            "ttc_log_variance": result["ttc_log_variance"],
+            "guard_margin": result["guard_margin"],
+            "event_count_log1p": result["event_count_log1p"],
+            "event_rate_log1p": result["event_rate_log1p"],
+            "transport_flow_magnitude": result["transport_flow_magnitude"],
+        }
+    )
+    if list(frame.sample_token) != list(metadata.sample_token):
+        raise ValueError("comparator replay reordered its frozen source rows")
+    frame["outer_fold"] = spec.fold
+    frame["inner_fold"] = protocol["inner_fold"]
+    frame["prediction_role"] = role
+    frame["scientific_candidate"] = not spec.technical
+    return frame, np.concatenate(parts) if collect_pair else None
+
+
+def execute_capacity_comparator(
+    job_id: str,
+    *,
+    lock_path: Path,
+    lock_sha256: str,
+    ledger: UpdateLedger,
+    owner: ResourceOwner,
+    device: torch.device,
+) -> dict[str, Any]:
+    """Execute one locked native A5/C2F fit and export its excluded prediction pool.
+
+    This entry is called by the campaign owner, never by a second training
+    subprocess. A completed optimizer endpoint is recovered without refitting.
+    Export remains behind the architecture barriers enforced by replay.
+    """
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
+    from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
+    from e_jepa_ttc.data.nested_provenance import validate_frozen_teacher_dependency
+    from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
+    from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
+    from scripts.train_causal_scale_eap_screen import run
+
+    owner.check()
+    lock = require_scientific_lock(lock_path, lock_sha256)
+    if ledger.owner_root != owner.root or "prior_campaign" not in ledger.state:
+        raise ValueError(
+            "expanded comparator requires its owner and terminal predecessor accounting"
+        )
+    job = lock["comparator_jobs"][job_id]
+    spec = FitSpec(**job["spec"])
+    if spec.job_id != job_id or spec.technical or spec.arm not in ("A5", "C2F"):
+        raise ValueError("unregistered scientific encoder comparator")
+    config_path = verify(job["effective_config"])
+    protocol_path = verify(job["protocol"])
+    cache_path = verify(job["cache_manifest"])
+    if (
+        spec.recipe_sha256 != job["effective_config"]["sha256"]
+        or spec.training_view_sha256 != job["protocol"]["sha256"]
+    ):
+        raise ValueError("comparator reservation does not bind its actual native recipe")
+    protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    data = config["data"]
+    if (
+        (ROOT / data["cache_manifest"]).resolve() != cache_path.resolve()
+        or data["cache_manifest_sha256"] != job["cache_manifest"]["sha256"]
+        or (ROOT / data["development_protocol"]["path"]).resolve() != protocol_path.resolve()
+        or data["development_protocol"]["file_sha256"] != job["protocol"]["sha256"]
+        or protocol["outer_fold"] != spec.fold
+    ):
+        raise ValueError("native comparator inputs escaped the frozen job")
+    teacher = config["training"].get("representation_teacher_cache_artifact_sha256")
+    if teacher is not None:
+        audit = json.loads(verify(job["teacher_audit"]).read_text(encoding="utf-8"))
+        validate_frozen_teacher_dependency(
+            {"representation_teacher_artifact_sha256": teacher},
+            audit,
+            required_tokens=lock["ordered_tokens"],
+        )
+    output = Path(job["output_root"])
+    campaign = Path(lock["campaign_root"])
+    if (
+        not output.is_absolute()
+        or output.resolve() != output
+        or not output.is_relative_to(campaign)
+        or output == campaign
+    ):
+        raise ValueError("comparator output escaped the owned campaign")
+    output.mkdir(parents=True, exist_ok=True)
+    identity = {"training_lock_sha256": lock_sha256, "job": job}
+    intent = output / "COMPARATOR_INTENT.json"
+    if intent.exists():
+        if json.loads(intent.read_text(encoding="utf-8")) != identity:
+            raise ValueError("comparator recovery changed its prospective inputs")
+    elif any(output.iterdir()):
+        raise ValueError("comparator output lacks its prospective intent")
+    else:
+        atomic_json(intent, identity)
+    status = ledger.state["jobs"].get(job_id, {}).get("status")
+    if status != "COMPLETE":
+        run(
+            config_path,
+            output / "train",
+            device_name=str(device),
+            resume=status is not None,
+            accounting=(ledger, spec),
+            check=owner.check,
+        )
+    for stage in ("S72", "S73"):
+        verify_initial_barrier(
+            Path(lock["stage_barrier_root"]) / f"{stage}_ALL_ENDPOINTS_FROZEN.json",
+            expected_stage=stage,
+            expected_lock=lock_sha256,
+        )
+    model_path = (ROOT / config["model_config"]).resolve()
+    # Native model/cache channel agreement is checked by run; replay also binds
+    # the manifest and checkpoint to this job before reading excluded records.
+    channels = yaml.safe_load(model_path.read_text(encoding="utf-8"))["in_channels"]
+    source = GarlTTCObjectEventV4Dataset(
+        str(cache_path), splits=("train",), bins_per_polarity=(channels - 2) // 2
+    )
+    view = SequenceIndexedView(source, sequence_ids=set(protocol["prediction_sequence_ids"]))
+    rows, pair = replay_accounted_comparator(
+        ledger,
+        spec,
+        view,
+        protocol,
+        role="prediction",
+        device=device,
+        check=owner.check,
+        collect_pair=spec.arm == "A5",
+        lock_path=lock_path,
+        lock_sha256=lock_sha256,
+    )
+    frame = expert_prediction_frame(
+        rows,
+        expert=spec.arm,
+        outer_fold=spec.fold,
+        seed=spec.seed,
+        config_sha256=spec.recipe_sha256,
+        checkpoint_sha256=ledger.state["jobs"][job_id]["endpoint"]["sha256"],
+        inner_fold=protocol["inner_fold"],
+        expanded=True,
+    )
+    owner.check()
+    export = output / "prediction"
+    export.mkdir(exist_ok=True)
+    csv, arrays = publish_export_payloads(
+        export, frame, {} if pair is None else {"pair_features": pair}
+    )
+    record = {
+        "kind": "CAPACITY_NATIVE_COMPARATOR_EXPORT",
+        "identity": identity,
+        "endpoint": ledger.state["jobs"][job_id]["endpoint"],
+        "rows": csv,
+        "arrays": arrays,
+        "intent": binding(intent),
+        "outer_fold": spec.fold,
+        "inner_fold": protocol["inner_fold"],
+        "role": "outer_dev" if protocol["inner_fold"] is None else "inner_oof",
+        "producer_roles_sha256": protocol["producer_roles_sha256"],
+        "diagnostic_rows_used_as_oof": False,
+        "ancestry_validated": False,
+    }
+    record["artifact_sha256"] = object_digest(record)
+    receipt = export / "COMPARATOR_EXPORT.json"
+    if receipt.exists() and json.loads(receipt.read_text(encoding="utf-8")) != record:
+        raise ValueError("completed comparator export cannot be replaced")
+    atomic_json(receipt, record)
+    return record
 
 
 def main() -> int:

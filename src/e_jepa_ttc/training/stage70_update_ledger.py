@@ -67,6 +67,8 @@ class UpdateLedger:
             self.state: dict[str, Any] = state
         else:
             self.state = {"version": 1, "jobs": {}, "pending": None, "ridge_fits": []}
+        if "budget_envelope" in self.state:
+            self._verify_capacity_envelope(self.state["budget_envelope"])
         if "prior_campaign" in self.state:
             self.inherit_closed_campaign(self.state["prior_campaign"]["execution"])
         self._validate_budget()
@@ -75,6 +77,38 @@ class UpdateLedger:
         record = json.loads((self.owner_root / "ACTIVE_OWNER.json").read_text())
         if record["pid"] != os.getpid() or record["created"] != psutil.Process().create_time():
             raise RuntimeError("optimizer ledger requires the current exclusive campaign owner")
+
+    @staticmethod
+    def _verify_capacity_envelope(source: dict[str, Any]) -> None:
+        record = json.loads(verify(source).read_text(encoding="utf-8"))
+        unsigned = {k: v for k, v in record.items() if k != "artifact_sha256"}
+        if (
+            object_digest(unsigned) != record.get("artifact_sha256")
+            or record.get("kind") != "PROSPECTIVE_USER_AUTHORIZED_SHARED_BUDGET_ENVELOPE"
+            or record.get("maximum_new_optimizer_updates") != 1_900_000
+            or record.get("original_campaign_ceiling_reserved") != MAX_UPDATES
+            or record.get("expanded_technical_and_recovery_updates_reserved") != 10_000
+            or record.get("predecessor_terminal_required") is not True
+            or record.get("all_job_remaining_updates_must_be_reserved_before_start") is not True
+            or record.get("original_frozen_recipe_or_lock_modified") is not False
+        ):
+            raise ValueError("expanded budget differs from the prospective authorized envelope")
+
+    def bind_capacity_envelope(self, source: dict[str, Any]) -> None:
+        """Bind the explicit v11 ceiling before local reservations, preserving v10 limits."""
+        self._verify_capacity_envelope(source)
+        if "budget_envelope" in self.state:
+            if self.state["budget_envelope"] != source:
+                raise ValueError("a campaign budget envelope cannot be substituted")
+            return
+        if self.state["jobs"] or self.state.get("technical_audits") or self.state["pending"]:
+            raise ValueError("bind the expanded envelope before any local reservation")
+        self.state["budget_envelope"] = source
+        try:
+            self._publish()
+        except BaseException:
+            self.state.pop("budget_envelope")
+            raise
 
     def inherit_closed_campaign(self, execution: dict[str, Any]) -> None:
         """Carry forward verified consumed budget without inventing local fits or updates."""
@@ -152,6 +186,9 @@ class UpdateLedger:
     def _validate_budget(self) -> None:
         totals = self.totals()
         prior = self.state.get("prior_campaign", {})
+        expanded = "budget_envelope" in self.state
+        maximum = 1_900_000 if expanded else MAX_UPDATES
+        technical_maximum = 10_000 if expanded else MAX_TECHNICAL_UPDATES
         if prior and (
             any(type(prior.get(key)) is not int for key in ("charged", "technical_charged"))
             or not 0 <= prior["technical_charged"] <= prior["charged"] <= MAX_UPDATES
@@ -161,14 +198,18 @@ class UpdateLedger:
             totals["charged_optimizer_attempts"]
             + totals["reserved_remaining_updates"]
             + prior.get("charged", 0)
-            > MAX_UPDATES
+            > maximum
         ):
-            raise RuntimeError("UPDATE_BUDGET_BLOCKED: entire remaining job exceeds900000")
+            raise RuntimeError(f"UPDATE_BUDGET_BLOCKED: entire remaining job exceeds{maximum}")
         if (
-            totals["technical_charged_and_reserved"] + prior.get("technical_charged", 0)
-            > MAX_TECHNICAL_UPDATES
+            totals["technical_charged_and_reserved"]
+            + (0 if expanded else prior.get("technical_charged", 0))
+            > technical_maximum
+            or prior.get("technical_charged", 0) > MAX_TECHNICAL_UPDATES
         ):
-            raise RuntimeError("UPDATE_BUDGET_BLOCKED: technical budget exceeds3000")
+            raise RuntimeError(
+                f"UPDATE_BUDGET_BLOCKED: technical budget exceeds{technical_maximum}"
+            )
         for job in self.state["jobs"].values():
             if (
                 min(job[k] for k in ("charged", "confirmed", "uncertain", "remaining", "update"))
@@ -189,7 +230,9 @@ class UpdateLedger:
         """Reserve a bounded test suite, without pretending its quota is a model endpoint."""
         if (
             not audit_id
-            or not 1 <= limit <= MAX_TECHNICAL_UPDATES
+            or not 1
+            <= limit
+            <= (10_000 if "budget_envelope" in self.state else MAX_TECHNICAL_UPDATES)
             or (len(identity) != 64 or any(c not in "0123456789abcdef" for c in identity))
         ):
             raise ValueError("invalid technical audit reservation")

@@ -112,6 +112,9 @@ def execute(root: Path, lock_path: Path, lock_sha: str) -> dict[str, Any]:
     ) as owner:
         ledger = UpdateLedger(root / "UPDATE_LEDGER.json", owner.root)
         try:
+            if "capacity_cohort" in lock:
+                ledger.bind_capacity_envelope(lock["shared_budget_envelope"])
+                ledger.inherit_closed_campaign(lock["predecessor_execution"])
             runtime = InitialArchitectureRuntime(lock_path, lock_sha, owner, ledger)
             atomic_json(result_path, result)
             barriers = runtime.fit_initial_stages()

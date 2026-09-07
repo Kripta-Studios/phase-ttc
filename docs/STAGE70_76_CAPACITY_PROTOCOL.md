@@ -773,3 +773,55 @@ archivado en qa/COMPARATOR_DIAGNOSTIC_BASELINE_SOURCE.py. Pyright conserva sus
 12 IDs históricos; se comparan regla, mensaje y línea fuente, no sólo totales.
 Las pruebas de fuente/estado se repitieron únicamente al conectar el diario de
 lecturas. Cero updates, sin resultados exteriores y sin congelación ampliada.
+
+## 2026-09-07 — Comparadores: fit real, replay y diagnóstico anidado
+
+La integración usa el entrenador causal existente y el ledger compartido para
+A5/C2F, con reserva de todas las épocas, checkpoint completo por época,
+publicación atómica recuperable y confirmación de cada optimizer.step. PAIR usa
+el mismo ledger y conserva sus 6840 updates/batch32 científicos. El replay de
+A5 exporta las mismas 133 características históricas; los CSV de diagnóstico
+siguen separados de las predicciones excluidas. La entrada de ejecución conecta
+fit nativo y exportación segura, omite un endpoint ya completo al recuperar y
+comprueba las barreras S72/S73 antes de construir el dataset de predicción.
+Esta entrada todavía requiere conexión al grafo completo de comparadores.
+
+La prueba CPU integrada realizó seis fits no seleccionables (dos encoders y una
+cabeza PAIR para cada productor interior/exterior), 28 updates confirmados y un
+ridge real sobre predicciones interiores, con 32 predicciones exteriores finitas.
+La prueba separada continuo/resume igualó parámetros, optimizador, scheduler y
+RNG con 16 updates. Un fallo real de recuperación mostró que el diagnóstico del
+stop técnico consumía RNG: ahora se captura/restaura ese estado en fits
+contabilizados. Se conservaron dos fallos posteriores del fixture anidado:
+8 filas frente a batch32 (8 updates) y transporte desactivado, que dejaba PHASE17
+con NaN (28 updates). Se corrigió el fixture sin modificar el batch científico
+ni rellenar características ausentes. El segundo retry completo pasó.
+
+El total de este bloque es 120 updates técnicos, incluyendo 40 de la primera
+suite sin hook padre, reconstruidos desde los caminos deterministas ejecutados.
+Es una incidencia de contabilización explícita: esos 40 deben debitarse también;
+no se presentan como cero ni como una medición de hook. Los otros 80 tienen
+recibos SQLite cerrados. No se ejecutó ningún candidato científico ampliado.
+Evidencia: qa/COMPARATOR_EXECUTION_INTEGRATION_QA.json, SHA256 físico
+17078f8ede3e4ac9c7edf91a30d5a2206cc59608b55329bedb029638d63bd447.
+
+El validador de procedencia distingue ahora el dev diagnóstico del trainer del
+pool de predicción, verificando los tres hashes de tokens y las adquisiciones.
+Pasaron 13 casos de procedencia y dos casos del executor (sin nuevos updates).
+Ruff pasó; Pyright conserva los 31 IDs previos en los siete módulos modificados
+originalmente y no añade errores en el executor/validador. La comparación
+archivada conserva los IDs de error, además de sus totales.
+
+También se conectó al ledger la ampliación presupuestaria ya autorizada: sólo
+un manifiesto prospectivo firmado habilita 1900000 compartidos y 10000 updates
+técnicos/de recuperación adicionales; se heredan los consumos reales del
+predecesor terminal. V10 conserva 900000 y 3000 técnicos. Ocho pruebas sin
+optimizador verifican reserva completa, débito heredado, rechazo de exceso,
+mutación y cambio tardío. Pyright de ledger/runner: cero errores. Esta conexión
+no autoriza nuevas ramas ni admite un predecesor activo.
+
+Pendientes concretos, sin declaración de freeze: completar cachés/teacher,
+compilar y despachar los 36 fits registrados, publicar PAIR y las tablas
+anidadas con auditoría transitiva completa, conectar el producto de comparación
+al análisis ampliado y cargar todos los débitos técnicos previos antes de su
+primer fit. El presupuesto prospectivo y la cola original no se modificaron.

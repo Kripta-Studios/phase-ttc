@@ -76,6 +76,24 @@ class LocalTemporalFieldBatch:
             raise ValueError("local-field model inputs must be finite")
 
 
+def pair_inference_features(
+    pair_tokens: torch.Tensor, sensor_support: torch.Tensor, delta: torch.Tensor
+) -> torch.Tensor:
+    """Build the historical 133 event-only PAIR fields without targets or group IDs."""
+    dt12 = delta[:, 1]
+    features = torch.cat(
+        (
+            pair_tokens[:, -1],
+            torch.stack((dt12, torch.log(dt12 + 1e-8), torch.reciprocal(dt12)), dim=-1),
+            sensor_support[:, -1:],
+            torch.minimum(sensor_support[:, -2], sensor_support[:, -1]).unsqueeze(-1),
+        ),
+        dim=-1,
+    )
+    PairFeatureBatch(features)
+    return features
+
+
 def save_feature_cache(
     path: Path,
     *,
