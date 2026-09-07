@@ -14,7 +14,8 @@ from e_jepa_ttc.evaluation.initial_treatment_export_v11 import (
 from e_jepa_ttc.evaluation.standalone_outer_v11 import _publish_arrays
 
 
-def test_physical_metadata_uses_bound_event_clock_and_preserves_empty_roi(tmp_path):
+@pytest.mark.parametrize("capacity", [False, True])
+def test_physical_metadata_uses_bound_event_clock_and_preserves_empty_roi(tmp_path, capacity):
     """A token suffix must never become time; zero-event rows retain their mass."""
     import json
 
@@ -55,6 +56,16 @@ def test_physical_metadata_uses_bound_event_clock_and_preserves_empty_roi(tmp_pa
         "raw_deployment": {"bindings": binding(raw)},
         "count_caches": {"original": binding(manifest)},
     }
+    if capacity:
+        cohort = {
+            "kind": "CAPACITY_DEVELOPMENT_COHORT",
+            "ordered_tokens": [token],
+            "sequence_to_group": {"seq": "related_acquisition"},
+        }
+        cohort["artifact_sha256"] = object_digest(cohort)
+        cohort_path = tmp_path / "COHORT.json"
+        cohort_path.write_text(json.dumps(cohort))
+        lock["capacity_cohort"] = binding(cohort_path)
     receipt = {
         "identity": {
             "ordered_tokens": [token],
@@ -76,6 +87,7 @@ def test_physical_metadata_uses_bound_event_clock_and_preserves_empty_roi(tmp_pa
     assert rows.observation_cutoff_event_us.iloc[0] == 1200000
     assert rows.event_density_per_pixel_second.iloc[0] == 0
     assert rows.global_mass.iloc[0] == 1
+    assert rows.acquisition_group.iloc[0] == ("related_acquisition" if capacity else "seq")
     np.testing.assert_allclose(
         export.arrays["context_relative_times_seconds"], [[-0.175, -0.125, -0.075, -0.025]]
     )
@@ -86,6 +98,16 @@ def test_physical_metadata_uses_bound_event_clock_and_preserves_empty_roi(tmp_pa
         append_physical_metadata(
             export, lock, [damaged], AllowlistedSources([binding(raw), binding(manifest)], journal)
         )
+    if capacity:
+        wrong_rows = rows.copy()
+        wrong_rows["sample_token"] = "substitute"
+        with pytest.raises(ValueError, match="universe differs"):
+            append_physical_metadata(
+                DiagnosticExport(wrong_rows, {}, {}),
+                lock,
+                [receipt],
+                AllowlistedSources([binding(raw), binding(manifest)], journal),
+            )
 
 
 def fixture(root, *, damage=None):

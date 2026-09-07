@@ -42,6 +42,23 @@ def append_physical_metadata(
 ) -> None:
     """Join immutable clock and cache observations; never infer time from token spelling."""
     rows = diagnostic.rows
+    acquisition_mapping = None
+    cohort_source = lock.get("capacity_cohort")
+    if lock.get("availability", {}).get("primary_capacity") == "4M" and cohort_source is None:
+        raise ValueError("capacity diagnostics require the frozen acquisition cohort")
+    if cohort_source is not None:
+        access = AllowlistedSources([cohort_source], sources.journal)
+        cohort = json.loads(access.access(Path(cohort_source["path"])).read_text(encoding="utf-8"))
+        if (
+            object_digest({k: v for k, v in cohort.items() if k != "artifact_sha256"})
+            != cohort.get("artifact_sha256")
+            or cohort.get("kind") != "CAPACITY_DEVELOPMENT_COHORT"
+            or len(rows) != len(cohort["ordered_tokens"])
+            or rows.sample_token.duplicated().any()
+            or set(rows.sample_token) != set(cohort["ordered_tokens"])
+        ):
+            raise ValueError("capacity diagnostic universe differs from frozen cohort")
+        acquisition_mapping = cohort["sequence_to_group"]
     raw_binding = lock["raw_deployment"]["bindings"]
     table = pd.read_csv(sources.access(Path(raw_binding["path"])), dtype={"sample_token": str})
     if table.duplicated(["sample_token", "window_id"]).any():
@@ -74,6 +91,9 @@ def append_physical_metadata(
     clocks, physical_rows = [], []
     for token in rows.sample_token:
         pair = [indexed.loc[(token, window)] for window in (0, 1)]
+        sequence = str(pair[1].sequence_id)
+        if str(pair[0].sequence_id) != sequence:
+            raise ValueError("physical diagnostic windows changed sequence identity")
         bounds = [(int(row.window_start_us), int(row.window_end_us)) for row in pair]
         frames = [int(row.window_end_us) + int(row.frame_to_event_clock_offset_us) for row in pair]
         clock = context_clock(bounds, frames, int(pair[1].target_anchor_us))
@@ -105,8 +125,12 @@ def append_physical_metadata(
                 "source_sha256": identity["count_cache_sha256"],
                 "config_and_job_sha256": identity["job_sha256"],
                 "checkpoint_sha256": identity["weights"]["sha256"],
-                "acquisition_group": str(pair[1].sequence_id),
-                "acquisition_group_basis": "sequence_fallback_acquisition_identity_unverified",
+                "acquisition_group": sequence
+                if acquisition_mapping is None
+                else acquisition_mapping[sequence],
+                "acquisition_group_basis": "sequence_fallback_acquisition_identity_unverified"
+                if acquisition_mapping is None
+                else "frozen_cohort_group_assignment_independence_not_inferred",
             }
         )
     for key in physical_rows[0]:
@@ -116,7 +140,10 @@ def append_physical_metadata(
         "raw_bindings": raw_binding,
         "cache_manifest": lock["count_caches"]["original"],
         "density_definition": "sum ROI events / (common ROI pixels * summed window seconds)",
-        "acquisition_limitation": "sequence fallback; no independent acquisition claim",
+        "acquisition_limitation": "sequence fallback; no independent acquisition claim"
+        if acquisition_mapping is None
+        else "registered cohort groups; independence requires separate evidence",
+        **({"capacity_cohort": cohort_source} if cohort_source is not None else {}),
     }
     cuts = {}
     for column, boundaries in (

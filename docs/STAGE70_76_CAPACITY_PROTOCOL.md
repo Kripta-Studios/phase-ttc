@@ -250,3 +250,11 @@ filas y sustitución por un conjunto diferente de igual tamaño; Ruff y Pyright
 pasan. Recibo TEACHER_TOKEN_UNIVERSE_ZERO_UPDATES.xml, cero updates. El cambio no
 certifica la exposición global del teacher ni crea nuevos targets DINO; ambos
 siguen como requisitos de procedencia antes de admitir comparadores ampliados.
+
+La exportación física de diagnósticos conserva ahora sequence_to_group del
+capacity_cohort firmado, en vez de sustituirlo por sequence_id. Verifica el
+universo completo de tokens antes de leer las ventanas y registra la lectura
+del manifiesto; no infiere independencia científica de la mera asignación.
+La ruta histórica mantiene su fallback declarado. Dos tests afectados pasan
+(grupo compartido, sustitución de tokens, reloj y ROI vacío), Ruff y Pyright
+pasan, cero updates. Recibo PHYSICAL_ACQUISITION_GROUPS_ZERO_UPDATES.xml.
