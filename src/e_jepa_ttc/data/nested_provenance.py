@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from typing import Any
 
 import pandas as pd
@@ -71,18 +72,33 @@ def validate_uninitialized_producer_contract(
 
 
 def validate_frozen_teacher_dependency(
-    initialization: dict[str, Any], teacher_audit: dict[str, Any]
+    initialization: dict[str, Any],
+    teacher_audit: dict[str, Any],
+    *,
+    required_tokens: Sequence[str] | None = None,
 ) -> None:
     """Require the exact independently audited, preexisting teacher dependency."""
     expected = initialization.get("representation_teacher_artifact_sha256")
     if expected is None:
         return
+    expected_count = 8192
+    if required_tokens is not None:
+        tokens = list(required_tokens)
+        if (
+            not tokens
+            or any(not isinstance(t, str) or not t for t in tokens)
+            or len(set(tokens)) != len(tokens)
+        ):
+            raise ValueError("teacher token universe must be nonempty and unique")
+        expected_count = len(tokens)
+        if teacher_audit.get("verified_tokens_sha256") != hash_sorted_token_strings(tokens):
+            raise ValueError("teacher audit does not cover the exact required token universe")
     if (
         teacher_audit.get("status") != "passed"
         or teacher_audit.get("preexisting_frozen_teacher") is not True
         or teacher_audit.get("fold_fitted_teacher") is not False
         or teacher_audit.get("teacher_artifact_sha256") != expected
-        or teacher_audit.get("verified_tokens") != 8192
+        or teacher_audit.get("verified_tokens") != expected_count
         or teacher_audit.get("materializer_ast_no_fit_calls") is not True
     ):
         raise ValueError("producer representation teacher dependency is not verified frozen")

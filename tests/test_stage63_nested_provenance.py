@@ -8,9 +8,42 @@ import pytest
 from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings
 from e_jepa_ttc.data.nested_provenance import (
     validate_exact_oof_union,
+    validate_frozen_teacher_dependency,
     validate_nested_split,
     validate_uninitialized_producer_contract,
 )
+
+
+@pytest.mark.parametrize("count", [8192, 30000])
+def test_teacher_dependency_binds_exact_variable_token_universe(count):
+    tokens = [f"token-{i}" for i in range(count)]
+    initialization = {"representation_teacher_artifact_sha256": "a" * 64}
+    audit = {
+        "status": "passed",
+        "preexisting_frozen_teacher": True,
+        "fold_fitted_teacher": False,
+        "teacher_artifact_sha256": "a" * 64,
+        "verified_tokens": count,
+        "materializer_ast_no_fit_calls": True,
+        "verified_tokens_sha256": hash_sorted_token_strings(tokens),
+    }
+    validate_frozen_teacher_dependency(initialization, audit, required_tokens=tokens)
+    with pytest.raises(ValueError, match="exact required token"):
+        validate_frozen_teacher_dependency(
+            initialization, audit, required_tokens=["other", *tokens[1:]]
+        )
+    with pytest.raises(ValueError, match="unique"):
+        validate_frozen_teacher_dependency(
+            initialization, audit, required_tokens=[*tokens, tokens[0]]
+        )
+    if count == 8192:
+        validate_frozen_teacher_dependency(initialization, audit)
+    else:
+        with pytest.raises(ValueError, match="verified frozen"):
+            validate_frozen_teacher_dependency(initialization, audit)
+    audit["fold_fitted_teacher"] = True
+    with pytest.raises(ValueError, match="verified frozen"):
+        validate_frozen_teacher_dependency(initialization, audit, required_tokens=tokens)
 
 
 def test_aggregate_must_equal_verified_outputs_not_just_share_tokens() -> None:

@@ -241,3 +241,12 @@ Seis pruebas afectadas pasan sobre9/22/27 secuencias; Ruff y Pyright pasan, cero
 updates. Recibo CANONICAL_CAPACITY_RECOVERY_ZERO_UPDATES.xml. Esto cierra la
 compatibilidad de recuperación estadística; la entrada de comparadores/filas del
 ensamblador continúa pendiente y no se habilitó una lectura exterior ampliada.
+
+El validador existente validate_frozen_teacher_dependency admite required_tokens
+explícitos: comprueba unicidad, número y hash del universo exacto frente al audit,
+además de las condiciones anteriores de teacher congelado sin fit local. La ruta
+histórica sin ese argumento mantiene8192. Cinco pruebas pasan, incluidas30.000
+filas y sustitución por un conjunto diferente de igual tamaño; Ruff y Pyright
+pasan. Recibo TEACHER_TOKEN_UNIVERSE_ZERO_UPDATES.xml, cero updates. El cambio no
+certifica la exposición global del teacher ni crea nuevos targets DINO; ambos
+siguen como requisitos de procedencia antes de admitir comparadores ampliados.
