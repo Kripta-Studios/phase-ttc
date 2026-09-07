@@ -1207,6 +1207,7 @@ def materialize_garlttc_lhr_cache(
     resume: bool = False,
     exact_sample_tokens: tuple[str, ...] | None = None,
     resource_check: Callable[[int], None] | None = None,
+    train_index_paths: tuple[Path, Path] | None = None,
 ) -> dict[str, Any]:
     """Build an auditable cache using official public GarlTTC train labels only."""
 
@@ -1221,7 +1222,13 @@ def materialize_garlttc_lhr_cache(
         for role in config.materialize_splits
         for sequence in assignments.get(role, [])
     }
-    index = load_garlttc_train_index(garlttc_root, sorted(sequence_role))
+    index = (
+        load_garlttc_train_index(garlttc_root, sorted(sequence_role))
+        if train_index_paths is None
+        else load_garlttc_train_index(
+            garlttc_root, sorted(sequence_role), train_paths=train_index_paths
+        )
+    )
     validate_garlttc_train_index(
         index,
         expected_rows=config.expected_train_rows,
@@ -1541,8 +1548,10 @@ def materialize_garlttc_lhr_cache(
             f"{split_counts}; discard_reasons={dict(sorted(discard_reasons.items()))}"
         )
 
-    data_path = garlttc_root / "data" / "train.parquet"
-    annotations_path = garlttc_root / "annotations" / "train.parquet"
+    data_path, annotations_path = train_index_paths or (
+        garlttc_root / "data" / "train.parquet",
+        garlttc_root / "annotations" / "train.parquet",
+    )
     provenance = _repository_provenance()
     protocol_path = (
         Path(__file__).resolve().parents[3] / "configs/protocol/garlttc_official_v1.yaml"
@@ -1558,6 +1567,9 @@ def materialize_garlttc_lhr_cache(
         "config": asdict(config),
         "eap_root": eap_root.as_posix(),
         "garlttc_root": garlttc_root.as_posix(),
+        "garlttc_data_path": data_path.as_posix(),
+        "garlttc_annotations_path": annotations_path.as_posix(),
+        "uses_explicit_train_partitions": train_index_paths is not None,
         "split_path": split_path.as_posix(),
         "split_sha256": split_sha256,
         "garlttc_data_sha256": _sha256_file(data_path),

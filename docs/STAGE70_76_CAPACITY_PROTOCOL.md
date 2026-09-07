@@ -638,3 +638,31 @@ de las cinco claves de unión ausente. Por tanto, la acción concreta pendiente
 es permitir al lector sus dos rutas firmadas explícitas y validar ese recuento,
 conservando su unión existente; no hace falta reconstruir otro índice ni copiar
 los parquets completos del dataset.
+
+# Unión real desde las particiones TRAIN aisladas (2026-09-07)
+
+El lector existente admite ahora las dos rutas TRAIN explícitas. La CLI de
+capacidad las obtiene exclusivamente de las particiones firmadas, valida la
+ruta física train_labels.parquet y los hashes de ambas fuentes, y conserva
+su unión de cinco claves. El recuento esperado es el de esa partición aislada,
+sin activar allow_version_change. El manifiesto de caché registra las rutas
+efectivamente leídas y sus hashes; el root histórico no sustituye esa procedencia.
+
+La ejecución CPU real leyó 70.741 filas TRAIN aisladas, obtuvo 61.525 filas de
+las 27 secuencias y conservó exactamente los 30.000 tokens en su orden firmado.
+No se abrieron los parquets nativos completos, medios crudos, confirmación ni
+grupos protegidos. Sí se leyeron las etiquetas de la partición TRAIN autorizada.
+Recibo `SCOPED_COMPARATOR_INDEX_VERIFIED.json`, SHA256 físico
+`56a0c0f6747970d534419f5a801ee4f702067534653b5a92128b79c1d80c60e1`.
+
+Seis tests afectados pasan, incluyendo un caso que inutiliza los parquets nativos
+del fixture y exige idéntica unión/hashes desde las rutas aisladas, sin fallback
+cuando falta una fuente. Recibo `SCOPED_COMPARATOR_INDEX_ZERO_UPDATES.xml`.
+Ruff pasa. Los módulos completos conservan 46 errores de tipos del lector y 33
+del constructor: 79 heredados, cero nuevos o eliminados. Se guardan diagnósticos,
+fuente baseline e IDs en `SCOPED_INDEX_PYRIGHT_COMPARISON.json` y archivos asociados.
+La adición posterior de rutas al manifiesto sólo registra variables ya resueltas.
+
+Queda cerrada esta dependencia de aislamiento del índice. La materialización
+real, su paridad de representación y generación de features siguen pendientes;
+la existencia del índice no acredita todavía los comparadores ni congela v11.

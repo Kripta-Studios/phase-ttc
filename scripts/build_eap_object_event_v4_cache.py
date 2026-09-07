@@ -57,6 +57,8 @@ def main() -> int:
     maximum = args.max_samples_per_split
     exact_tokens = None
     preparation_source = None
+    train_index_paths = None
+    expected_source_rows = 88_744
     if (args.capacity_preparation is None) != (args.capacity_preparation_sha256 is None):
         raise ValueError("Capacity cache requires preparation path and exact SHA256")
     if args.capacity_preparation is not None:
@@ -71,6 +73,16 @@ def main() -> int:
         _, sequences, _ = _capacity_teacher_scope(
             args.capacity_preparation, args.capacity_preparation_sha256, metadata
         )
+        labels_source = partitions["outputs"]["train_labels"]
+        expected_labels = Path(preparation["source_partitions"]["path"]).resolve().parent
+        if Path(labels_source["path"]).resolve() != expected_labels / "train_labels.parquet":
+            raise ValueError("Capacity labels escaped the signed TRAIN partition")
+        train_index_paths = (metadata, verify(labels_source))
+        import pyarrow.parquet as pq
+
+        expected_source_rows = pq.read_metadata(metadata).num_rows
+        if pq.read_metadata(train_index_paths[1]).num_rows != expected_source_rows:
+            raise ValueError("Capacity TRAIN metadata and label counts differ")
         split = json.loads(args.split.read_text(encoding="utf-8"))
         if set(split.get("assignments", {}).get("train", [])) != sequences:
             raise ValueError("Capacity cache TRAIN split differs from the registered cohort")
@@ -121,6 +133,7 @@ def main() -> int:
         preprocessing_device="cpu",
         compression=args.compression,
         compression_level=args.compression_level,
+        expected_train_rows=expected_source_rows,
     )
 
     def build(resource_check: Callable[[int], None] | None = None) -> dict[str, Any]:
@@ -134,6 +147,7 @@ def main() -> int:
             resume=args.resume,
             exact_sample_tokens=exact_tokens,
             resource_check=resource_check,
+            train_index_paths=train_index_paths,
         )
 
     if exact_tokens is None:

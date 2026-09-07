@@ -356,10 +356,14 @@ class GarlTTCEAPIndex:
 def load_garlttc_train_index(
     garlttc_root: Path,
     eap_split_sequences: list[str],
+    *,
+    train_paths: tuple[Path, Path] | None = None,
 ) -> GarlTTCEAPIndex:
     """Load, merge, and filter GarlTTC train parquets for eAP-TTC."""
-    data_path = garlttc_root / "data" / "train.parquet"
-    ann_path = garlttc_root / "annotations" / "train.parquet"
+    data_path, ann_path = train_paths or (
+        garlttc_root / "data" / "train.parquet",
+        garlttc_root / "annotations" / "train.parquet",
+    )
 
     if "test_inputs.parquet" in str(data_path) or "test_inputs.parquet" in str(ann_path):
         raise ValueError("Loading test_inputs.parquet is forbidden in pretraining.")

@@ -177,6 +177,29 @@ def test_load_garlttc_train_index_valid(mock_garlttc_dir: Path):
     assert "ttc" in idx.merged.columns
 
 
+def test_scoped_train_paths_preserve_join_without_native_parquet_access(
+    mock_garlttc_dir: Path, tmp_path: Path
+) -> None:
+    reference = load_garlttc_train_index(mock_garlttc_dir, ["seq1"])
+    scoped = (tmp_path / "train_metadata.parquet", tmp_path / "train_labels.parquet")
+    for source, target in zip(
+        (mock_garlttc_dir / "data/train.parquet", mock_garlttc_dir / "annotations/train.parquet"),
+        scoped,
+        strict=True,
+    ):
+        target.write_bytes(source.read_bytes())
+        source.write_bytes(b"native source must not be opened")
+    actual = load_garlttc_train_index(mock_garlttc_dir, ["seq1"], train_paths=scoped)
+    pd.testing.assert_frame_equal(actual.merged, reference.merged)
+    assert actual.data_sha256 == reference.data_sha256
+    assert actual.annotations_sha256 == reference.annotations_sha256
+    assert actual.join_keys_sha256 == reference.join_keys_sha256
+    with pytest.raises(FileNotFoundError):
+        load_garlttc_train_index(
+            mock_garlttc_dir, ["seq1"], train_paths=(tmp_path / "absent.parquet", scoped[1])
+        )
+
+
 def test_load_garlttc_train_index_duplicate_data(mock_garlttc_dir: Path):
     data_p = mock_garlttc_dir / "data" / "train.parquet"
     df = pd.read_parquet(data_p)
