@@ -990,3 +990,52 @@ Se cierran caché de representación y vistas exteriores compartidas de v11.
 Continúan pendientes la caché nativa de comparadores y su teacher, el resto del
 lock resuelto y los prerrequisitos GPU/ejecución tras el grafo original terminal.
 No se declara v11 congelado ni científicamente evaluado.
+
+## Enmienda prospectiva 2026-09-08: sólo 4 M y reducción del tiempo
+
+El usuario ordenó aplicar v11 sólo con 4 M y optimizar autónomamente tiempos,
+permitiendo detener y reanudar procesos y conservar los artefactos válidos.
+S72 conserva DIRECT, PPS-PAIR, PPS-TRAJ y PPS-TIMEPERM, tres folds, semilla 7,
+8000 updates y batch efectivo 16: 12 endpoints, 96000 updates. Se aplazan 2/8 M.
+Las 30000 ventanas, grupos, roles, ROI, targets y recetas S73–S75 se conservan.
+No se han consultado resultados exteriores para esta decisión.
+
+El grafo reducido ahorra exactamente 192000 updates. Con A disponible y D
+bloqueado, el máximo de arquitecturas pasa a 447000; el total reservado,
+incluyendo el techo original y comparadores, pasa de 1822456 a 1630456.
+El techo compartido sigue siendo 1900000; el saldo no autoriza nuevos barridos.
+Los manifiestos anteriores se conservan como historia. La enmienda física
+`V11_SCOPE_AMENDMENT_4M_ONLY.json` vincula el nuevo presupuesto. El lanzador
+rechaza un grafo ampliado de tres tamaños antes de congelar o ejecutar.
+
+Cinco pruebas de grafo pasan, incluyendo igualdad exacta de los trabajos 4 M
+antes/después, recetas condicionales y candidatos canónicos. Esto no acredita
+fits científicos ni disponibilidad técnica de A.
+
+### Optimización aplicada a la caché nativa
+
+Se detuvo explícitamente el productor CPU original después de 61 shards
+publicados (15616 filas). Se conservaron todos esos shards y sus hashes. Se
+eliminaron únicamente dos temporales sin publicación del shard61: 701528735
+bytes, con rutas, tamaños y hashes registrados antes de borrarlos.
+
+La receta y su fingerprint permanecen idénticos. `execution_workers` separa
+únicamente el paralelismo CPU del contrato de datos y permite reanudar con dos
+procesos sin invalidar los shards existentes. Cada proceso mantiene abierto
+como máximo un HDF5; al cambiar de fuente cierra el anterior. Se conserva el
+orden de filas y un único propietario publica los shards.
+
+La comparación real de 16 registros verificó igualdad exacta de todos los
+campos contra un shard del productor anterior, con uno y dos trabajadores.
+En la medición repetida, uno tardó 21.294 s y dos, ya arrancados, 14.039 s:
+1.52 veces el rendimiento en ese bloque, sin extrapolarlo a toda la campaña.
+El arranque del pool tiene coste y no representa su velocidad sostenida.
+
+El lector gzip descomprime ahora una sola vez en un buffer con acceso aleatorio,
+evita las descompresiones repetidas causadas por los seeks de torch.load y
+conserva los bytes serializados. Un shard real de 256 filas se leyó en 28.770 s.
+El buffer requiere RAM adicional; la ejecución de dos procesos reserva 6 GiB
+incrementales más el mínimo de 4 GiB disponibles. Los cuatro tests de caché,
+incluido round-trip exacto gzip, pasan. No se ha reducido resolución, ventanas,
+precision ni diversidad. Se corrigió también la publicación del manifiesto del
+teacher cuando su caché reside en E: fuera del repositorio.

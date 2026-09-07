@@ -22,7 +22,7 @@ from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Literal, cast
+from typing import Any, Literal
 
 import numpy as np
 import torch
@@ -283,9 +283,14 @@ def _load_torch_records(path: Path) -> list[dict[str, Any]]:
     try:
         if path.suffix == ".gz":
             with gzip.open(path, "rb") as handle:
-                records = torch.load(
-                    cast(Any, handle), map_location="cpu", weights_only=False
-                )
+                # torch's ZIP reader seeks backwards. Seeking directly in gzip
+                # repeatedly decompresses the prefix; inflate once into a seekable
+                # buffer, retaining exactly the same serialized payload.
+                with io.BytesIO() as payload:
+                    while chunk := handle.read(8 * 1024 * 1024):
+                        payload.write(chunk)
+                    payload.seek(0)
+                    records = torch.load(payload, map_location="cpu", weights_only=False)
         else:
             records = torch.load(path, map_location="cpu", weights_only=False)
     except Exception as exc:
@@ -898,7 +903,12 @@ def _materialize_row(
     events_path = resolve_eap_events_path(eap_root, str(row["events_path"]))
     reader = event_readers.get(events_path)
     if reader is None:
+        # Bound persistent HDF5 handles to the current source in each worker.
+        for previous_reader in event_readers.values():
+            previous_reader.close()
+        event_readers.clear()
         reader = EAPEventReader(events_path)
+        reader.open()
         event_readers[events_path] = reader
     event_v4_context_window: tuple[int, int] | None = None
     event_v4_context_box: tuple[float, float, float, float] | None = None
@@ -1208,9 +1218,15 @@ def materialize_garlttc_lhr_cache(
     exact_sample_tokens: tuple[str, ...] | None = None,
     resource_check: Callable[[int], None] | None = None,
     train_index_paths: tuple[Path, Path] | None = None,
+    execution_workers: int | None = None,
 ) -> dict[str, Any]:
     """Build an auditable cache using official public GarlTTC train labels only."""
 
+    worker_count = config.workers if execution_workers is None else execution_workers
+    if type(worker_count) is not int or worker_count < 1:
+        raise ValueError("execution_workers must be a positive integer")
+    if worker_count > 1 and (config.include_rgb or config.preprocessing_device != "cpu"):
+        raise ValueError("parallel execution requires CPU preprocessing without RGB tar readers")
     eap_root = Path(eap_root).resolve()
     garlttc_root = Path(garlttc_root).resolve()
     provenance = _repository_provenance()
@@ -1395,9 +1411,9 @@ def materialize_garlttc_lhr_cache(
         return order, sample, None
 
     try:
-        if config.workers > 1:
+        if worker_count > 1:
             executor = ProcessPoolExecutor(
-                max_workers=config.workers,
+                max_workers=worker_count,
                 initializer=_init_cache_worker,
                 initargs=(eap_root.as_posix(), config),
             )
@@ -1725,7 +1741,8 @@ def materialize_garlttc_lhr_cache(
         ),
         "discard_reasons": dict(sorted(discard_reasons.items())),
         "shards": shard_meta,
-        "materialization_backend": "process_pool" if config.workers > 1 else "single_process",
+        "materialization_backend": "process_pool" if worker_count > 1 else "single_process",
+        "execution_workers": worker_count,
         "workers": config.workers,
         "resumable": True,
     }

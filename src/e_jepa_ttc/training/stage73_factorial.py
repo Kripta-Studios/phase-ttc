@@ -28,6 +28,7 @@ class Availability:
         object.__setattr__(self, "capacities", tuple(self.capacities))
         if (self.capacities, self.primary_capacity) not in (
             (("2M",), "2M"),
+            (("4M",), "4M"),
             (("2M", "4M", "8M"), "4M"),
         ):
             raise ValueError("capacity matrix and primary size must be prospectively registered")

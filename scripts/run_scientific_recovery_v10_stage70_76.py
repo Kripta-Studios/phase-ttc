@@ -319,6 +319,17 @@ def main() -> int:
     )
     if root != expected_root:
         raise ValueError("launcher cannot mutate another campaign or historical output")
+    if args.capacity and not args.package_only:
+        scope = signed(root / "V11_SCOPE_AMENDMENT_4M_ONLY.json")
+        source_graph = signed(root / "resolved_initial_source_graph/INITIAL_SOURCE_GRAPH.json")
+        availability = Availability(**source_graph["availability"])
+        if (
+            scope.get("id") != "V11_20260908_4M_ONLY"
+            or scope.get("capacities") != ["4M"]
+            or availability.capacities != ("4M",)
+            or availability.primary_capacity != "4M"
+        ):
+            raise ValueError("v11 execution requires the user-authorized 4M-only scope")
     campaign, local_paths = (
         args.campaign.resolve(strict=True),
         args.local_paths.resolve(strict=True),

@@ -47,6 +47,13 @@ def main() -> int:
         help="Materialize only public train rows; required by the V7 T20 ablation.",
     )
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument(
+        "--execution-workers",
+        type=int,
+        choices=(1, 2),
+        default=None,
+        help="CPU execution parallelism; preserves the cache recipe and existing shards",
+    )
     parser.add_argument("--shard-size", type=int, default=256)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--capacity-preparation", type=Path)
@@ -148,6 +155,7 @@ def main() -> int:
             exact_sample_tokens=exact_tokens,
             resource_check=resource_check,
             train_index_paths=train_index_paths,
+            execution_workers=args.execution_workers,
         )
 
     if exact_tokens is None:
@@ -164,7 +172,7 @@ def main() -> int:
         with ResourceOwner(
             ownership,
             remaining_bytes=total_budget - allocated + other,
-            planned_ram_bytes=4 * 1024**3,
+            planned_ram_bytes=(2 + 2 * (args.execution_workers or args.workers)) * 1024**3,
         ) as owner:
             atomic_json(
                 ownership / f"RESOURCE_ADMISSION_{time.time_ns()}.json",
@@ -173,7 +181,9 @@ def main() -> int:
                     "total_incremental_budget_bytes": total_budget,
                     "already_allocated_shard_bytes": allocated,
                     "other_reserved_bytes": other,
-                    "planned_ram_bytes": 4 * 1024**3,
+                    "planned_ram_bytes": (2 + 2 * (args.execution_workers or args.workers))
+                    * 1024**3,
+                    "execution_workers": args.execution_workers or args.workers,
                     "minimum_disk_free_bytes": 40_000_000_000,
                     "preparation": preparation_source,
                 },

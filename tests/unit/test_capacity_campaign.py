@@ -91,6 +91,24 @@ def test_secondary_size_cannot_replace_registered_primary():
         Availability(True, False, "a" * 64, "b" * 64, ("2M", "4M", "8M"), "8M")
 
 
+@pytest.mark.parametrize("diversity", [False, True])
+def test_four_m_only_preserves_all_primary_recipes_and_saves_192000(diversity):
+    historical = capacity_graph(availability(diversity))
+    reduced = capacity_graph(Availability(True, diversity, "a" * 64, "b" * 64, ("4M",), "4M"))
+    assert reduced["jobs"]["S72"] == [
+        job for job in historical["jobs"]["S72"] if job["capacity"] == "4M"
+    ]
+    assert len(reduced["jobs"]["S72"]) == 12
+    assert reduced["optimizer_updates"]["S72"] == 96000
+    for stage in ("S73", "S74", "S75"):
+        assert reduced["jobs"][stage] == historical["jobs"][stage]
+    assert (
+        historical["architecture_maximum_updates"] - reduced["architecture_maximum_updates"]
+        == 192000
+    )
+    assert reduced["canonical_candidates"] == historical["canonical_candidates"]
+
+
 def test_original_work_and_unknown_comparator_cost_block_admission():
     result = admit_capacity_budget(
         capacity_graph(availability(False)),

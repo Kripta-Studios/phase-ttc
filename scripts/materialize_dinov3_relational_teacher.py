@@ -679,7 +679,7 @@ def run(
             "dtype": "float16",
         },
         "source_event_cache": {
-            "manifest_path": str(event_cache_manifest.relative_to(ROOT)),
+            "manifest_path": str(event_cache_manifest.resolve()),
             "manifest_sha256": event_manifest_sha,
             "artifact_sha256": event_manifest.get("artifact_sha256"),
         },

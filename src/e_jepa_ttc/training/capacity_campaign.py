@@ -36,9 +36,11 @@ def comparator_epoch_updates(
 
 
 def capacity_graph(availability: Availability) -> dict[str, Any]:
-    """Register all36 S72 endpoints and restrict investigations to prospective4M."""
-    if availability.capacities != ("2M", "4M", "8M") or availability.primary_capacity != "4M":
-        raise ValueError("expanded graph requires all three sizes and the fixed4M primary")
+    """Register the prospective size scope with the fixed4M primary."""
+    if availability.capacities not in (("4M",), ("2M", "4M", "8M")) or (
+        availability.primary_capacity != "4M"
+    ):
+        raise ValueError("expanded graph requires the registered size scope and fixed4M primary")
     initial = initial_jobs(availability)
     canonical = canonical_candidates(availability)
     replication = tuple(
