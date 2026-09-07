@@ -17,7 +17,7 @@ import os
 import subprocess
 import tarfile
 from collections import Counter, OrderedDict
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
@@ -1206,6 +1206,7 @@ def materialize_garlttc_lhr_cache(
     max_samples_per_split: int | None = None,
     resume: bool = False,
     exact_sample_tokens: tuple[str, ...] | None = None,
+    resource_check: Callable[[int], None] | None = None,
 ) -> dict[str, Any]:
     """Build an auditable cache using official public GarlTTC train labels only."""
 
@@ -1395,6 +1396,8 @@ def materialize_garlttc_lhr_cache(
         for role in config.materialize_splits:
             rows_for_role = role_rows[role]
             for shard_index, start in enumerate(range(0, len(rows_for_role), config.shard_size)):
+                if resource_check is not None:
+                    resource_check(sum(int(shard["size_bytes"]) for shard in shard_meta))
                 chunk_rows = rows_for_role[start : start + config.shard_size]
                 chunk_hash = _cache_fingerprint(
                     {
@@ -1484,6 +1487,8 @@ def materialize_garlttc_lhr_cache(
                 _atomic_json(sidecar_path, metadata)
                 consume(role, records, errors)
                 shard_meta.append(metadata)
+        if resource_check is not None:
+            resource_check(sum(int(shard["size_bytes"]) for shard in shard_meta))
         if exact_sample_tokens is not None and (
             sum(split_counts.values()) != len(exact_sample_tokens)
             or sum(discard_reasons.values()) != 0

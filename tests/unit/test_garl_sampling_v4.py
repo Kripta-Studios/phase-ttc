@@ -12,8 +12,9 @@ import pytest
 from e_jepa_ttc.data.garlttc_sampling import select_balanced_cache_rows, signed_ttc_bucket
 
 
+@pytest.mark.parametrize("failure_mode", ["row", "resource"])
 def test_exact_cache_partial_failure_is_durable_and_not_a_complete_manifest(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, failure_mode: str
 ) -> None:
     from e_jepa_ttc.data import garlttc_lhr_cache as cache
 
@@ -29,7 +30,7 @@ def test_exact_cache_partial_failure_is_durable_and_not_a_complete_manifest(
     monkeypatch.setattr(cache, "validate_garlttc_train_index", lambda *_, **__: None)
 
     def materialize(row: dict[str, object], **_: Any) -> dict[str, Any]:
-        if row["sample_token"] == "b":
+        if row["sample_token"] == "b" and failure_mode == "row":
             raise ValueError("synthetic precontext unavailable")
         return {
             "sample_token": "a",
@@ -43,8 +44,16 @@ def test_exact_cache_partial_failure_is_durable_and_not_a_complete_manifest(
     split.write_text(json.dumps({"assignments": {"train": ["s"]}}), encoding="utf-8")
     output = tmp_path / "cache"
     before = None
+
+    def resource_check(published: int) -> None:
+        if failure_mode == "resource" and published:
+            raise RuntimeError("RESOURCE_BLOCKED: synthetic competing reservation")
+
     for resume in (False, True):
-        with pytest.raises(RuntimeError, match="Exact registered cache cannot omit"):
+        message = (
+            "Exact registered cache cannot omit" if failure_mode == "row" else "RESOURCE_BLOCKED"
+        )
+        with pytest.raises(RuntimeError, match=message):
             cache.materialize_garlttc_lhr_cache(
                 eap_root=tmp_path,
                 garlttc_root=tmp_path,
@@ -53,10 +62,12 @@ def test_exact_cache_partial_failure_is_durable_and_not_a_complete_manifest(
                 config=cache.GarlTTCLHRCacheConfig(materialize_splits=("train",)),
                 exact_sample_tokens=("a", "b"),
                 resume=resume,
+                resource_check=resource_check,
             )
         assert not (output / "manifest.json").exists()
         failure = json.loads((output / "FAILURE.json").read_text(encoding="utf-8"))
-        assert failure["status"] == "failed" and failure["shards"][0]["count"] == 1
+        assert failure["status"] == "failed"
+        assert failure["shards"][0]["count"] == (1 if failure_mode == "row" else 2)
         digest = hashlib.sha256((output / "train/shard-00000.pt").read_bytes()).hexdigest()
         if before is not None:
             assert digest == before

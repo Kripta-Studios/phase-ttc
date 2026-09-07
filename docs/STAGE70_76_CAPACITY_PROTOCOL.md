@@ -601,3 +601,40 @@ faltan enlazar el directorio propio y controlar el límite/reserva restante con
 ResourceOwner, además de comprobar RAM y otras reservas al admitir el trabajo.
 El primer intento de escribir esta revisión falló al importar sin PYTHONPATH;
 no produjo archivos y se corrigió usando el src de v11 explícitamente.
+
+# Control de recursos durante la caché ampliada (2026-09-07)
+
+El constructor reutiliza ResourceOwner para reservar 45 GB menos los shards ya
+asignados al reanudar, más las reservas externas del volumen declaradas mediante
+--other-reserved-bytes. Exige el perfil medido float32/128px/5 bins por polaridad,
+margen ROI 0,25, gzip nivel 1, un worker CPU y shards de hasta 256 filas. Reserva
+4 GiB de RAM adicional y conserva el mínimo disponible de 4 GiB. Escribe recibos
+de admisión separados por tiempo y mantiene la telemetría/propietario existentes.
+
+Antes de cada shard y antes de declarar completa la caché, el callback actualiza
+el presupuesto pendiente según los bytes publicados y comprueba el margen de
+40 GB. Superar el límite de 40 GB de shards provoca fallo con evidencia parcial,
+sin publicar un manifiesto completo. Los 5 GB restantes del presupuesto total
+cubren el espacio previsto para temporales y teacher/metadatos. Al reanudar, los
+bytes ya asignados no se vuelven a reservar; su validez se verifica con el
+procedimiento de hashes de shards existente.
+
+Dos tests CPU verifican fallo de una fila y fallo de recursos tras escribir un
+shard, con recuperación que conserva sus bytes y estado fallido. Recibo
+`COMPARATOR_RESOURCE_INTERRUPTION_ZERO_UPDATES.xml`. CLI y Ruff pasan. Pyright
+conserva los 33 errores anteriores y no añade ninguno, con IDs completos en
+`COMPARATOR_RESOURCE_PYRIGHT_COMPARISON.json`. No hay nuevos optimizer updates.
+
+No se lanzó esta materialización. La inspección del lector histórico
+load_garlttc_train_index demuestra que abre data/train.parquet y
+annotations/train.parquet completos antes de filtrar secuencias. La ampliación
+debe conectar ese lector a las particiones TRAIN físicas verificadas antes de
+admitir el trabajo. Es un requisito omitido de aislamiento de fuentes, no una
+mejora opcional ni un bloqueo del entrenador original. Esta inspección no ejecutó
+el lector ni abrió payloads reservados; sólo se inspeccionó su código y el esquema
+de las particiones TRAIN ya autorizadas.
+La comprobación de esquema encontró 70.741 filas en cada partición y ninguna
+de las cinco claves de unión ausente. Por tanto, la acción concreta pendiente
+es permitir al lector sus dos rutas firmadas explícitas y validar ese recuento,
+conservando su unión existente; no hace falta reconstruir otro índice ni copiar
+los parquets completos del dataset.

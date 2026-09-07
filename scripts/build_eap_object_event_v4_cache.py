@@ -7,14 +7,18 @@ import argparse
 import json
 import shutil
 import sys
+import time
+from collections.abc import Callable
 from dataclasses import asdict
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 
-from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, verify  # noqa: E402
+from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner  # noqa: E402
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, verify  # noqa: E402
 from e_jepa_ttc.data.capacity_sources import _signed  # noqa: E402
 from e_jepa_ttc.data.garlttc_lhr_cache import (  # noqa: E402
     GarlTTCLHRCacheConfig,
@@ -47,10 +51,12 @@ def main() -> int:
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--capacity-preparation", type=Path)
     parser.add_argument("--capacity-preparation-sha256")
+    parser.add_argument("--other-reserved-bytes", type=int)
     args = parser.parse_args()
 
     maximum = args.max_samples_per_split
     exact_tokens = None
+    preparation_source = None
     if (args.capacity_preparation is None) != (args.capacity_preparation_sha256 is None):
         raise ValueError("Capacity cache requires preparation path and exact SHA256")
     if args.capacity_preparation is not None:
@@ -69,6 +75,22 @@ def main() -> int:
         if set(split.get("assignments", {}).get("train", [])) != sequences:
             raise ValueError("Capacity cache TRAIN split differs from the registered cohort")
         exact_tokens = tuple(_signed(preparation["cohort"])["ordered_tokens"])
+        if (
+            args.other_reserved_bytes is None
+            or args.other_reserved_bytes < 0
+            or args.roi_size != 128
+            or args.margin_fraction != 0.25
+            or args.bins_per_polarity != 5
+            or args.storage_dtype != "float32"
+            or args.compression != "gzip"
+            or args.compression_level != 1
+            or args.workers != 1
+            or not 1 <= args.shard_size <= 256
+        ):
+            raise ValueError(
+                "Capacity reservation requires historical FP32 geometry, gzip level 1, "
+                "one CPU worker, shards <=256, and explicit nonnegative other-reserved-bytes"
+            )
     if maximum is None and args.profile == "screen" and exact_tokens is None:
         maximum = 2048
     if args.bins_per_polarity == 10:
@@ -100,16 +122,55 @@ def main() -> int:
         compression=args.compression,
         compression_level=args.compression_level,
     )
-    result = materialize_garlttc_lhr_cache(
-        eap_root=args.eap_root.resolve(),
-        garlttc_root=args.garlttc_root.resolve(),
-        split_path=args.split.resolve(),
-        output_dir=args.output_dir.resolve(),
-        config=config,
-        max_samples_per_split=maximum,
-        resume=args.resume,
-        exact_sample_tokens=exact_tokens,
-    )
+
+    def build(resource_check: Callable[[int], None] | None = None) -> dict[str, Any]:
+        return materialize_garlttc_lhr_cache(
+            eap_root=args.eap_root.resolve(),
+            garlttc_root=args.garlttc_root.resolve(),
+            split_path=args.split.resolve(),
+            output_dir=args.output_dir.resolve(),
+            config=config,
+            max_samples_per_split=maximum,
+            resume=args.resume,
+            exact_sample_tokens=exact_tokens,
+            resource_check=resource_check,
+        )
+
+    if exact_tokens is None:
+        result = build()
+    else:
+        output = args.output_dir.resolve()
+        allocated = sum(p.stat().st_size for p in (output / "train").glob("shard-*.pt.gz"))
+        cap = 40_000_000_000
+        total_budget = 45_000_000_000
+        if allocated > cap:
+            raise RuntimeError("RESOURCE_BLOCKED: existing compressed shards exceed 40 GB cap")
+        other = int(args.other_reserved_bytes)
+        with ResourceOwner(
+            output,
+            remaining_bytes=total_budget - allocated + other,
+            planned_ram_bytes=4 * 1024**3,
+        ) as owner:
+            atomic_json(
+                output / f"RESOURCE_ADMISSION_{time.time_ns()}.json",
+                {
+                    "compressed_shards_cap_bytes": cap,
+                    "total_incremental_budget_bytes": total_budget,
+                    "already_allocated_shard_bytes": allocated,
+                    "other_reserved_bytes": other,
+                    "planned_ram_bytes": 4 * 1024**3,
+                    "minimum_disk_free_bytes": 40_000_000_000,
+                    "preparation": preparation_source,
+                },
+            )
+
+            def check(published: int) -> None:
+                if published > cap:
+                    raise RuntimeError("RESOURCE_BLOCKED: compressed cache exceeds 40 GB cap")
+                owner.estimated_remaining_bytes = total_budget - max(allocated, published) + other
+                owner.check()
+
+            result = build(check)
     print(
         json.dumps(
             {
@@ -118,9 +179,7 @@ def main() -> int:
                 "config": asdict(config),
                 "manifest": (args.output_dir.resolve() / "manifest.json").as_posix(),
                 "split_counts": result.get("split_counts"),
-                "precontext_motion_valid_fraction": result.get(
-                    "precontext_motion_valid_fraction"
-                ),
+                "precontext_motion_valid_fraction": result.get("precontext_motion_valid_fraction"),
                 "event_v4_precontext_valid_fraction": result.get(
                     "event_v4_precontext_valid_fraction"
                 ),
