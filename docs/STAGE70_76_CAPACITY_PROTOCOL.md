@@ -361,3 +361,25 @@ Recibo `COMPARATOR_REGISTERED_SPLITS_ZERO_UPDATES.xml`; cuatro casos afectados
 se repiten tras hacer explícito strict en el fixture. Cero updates, ninguna
 lectura de datos o resultados exteriores. Esto no sustituye ejecutar los
 comparadores ampliados ni conectar sus salidas al exportador.
+# Corrección de identidad y presupuesto de comparadores (2026-09-07)
+
+El trazado del runner Stage61 demuestra que PAIR es la cabeza de 133 features
+producidas por el A5 exacto del mismo fold. El presupuesto anterior incluyó
+equivocadamente el encoder TIMEVOL20 PAIR, que corresponde a otro experimento.
+Se conserva el recibo anterior y se sustituye esa suposición antes de cualquier
+fit ampliado mediante `sample_30000_review/COMPARATOR_A5_C2F_PAIR_BUDGET.json`
+(SHA256 físico `7910e00fc59c568e65a3c41da2c5fcc8c8ef666a36340c0fdc2c25a674e8757d`).
+
+Las 24 producciones A5/C2F suman 191.376 updates; las doce cabezas PAIR,
+82.080 (6.840 cada una). Subtotal: 273.456 updates. La referencia RISK17 requiere
+tres ajustes FullRegretRidge PHASE17 de lambda 0,01: cuentan como fits, con cero
+optimizer updates. Total conocido: 39 fits. Los expertos interiores alimentan
+esa referencia inicial y no pueden suponerse aplazables hasta S75.
+
+Se verificaron firmas, bytes de configuraciones, identidades y aritmética por
+fit contra el conteo existente de batches parciales. No se ejecutaron fits ni
+se leyeron scores/targets. Un primer comando de inventario falló por ejecutarse
+en el cwd original; no creó artefactos. El comando correcto terminó en v11.
+Siguen pendientes dependencias adicionales de routing S75, disposición y pilotos
+S76, cobertura de teacher/representación, reservas QA/recuperación y cargos
+originales finales. Este subtotal no congela ni autoriza el grafo completo.
