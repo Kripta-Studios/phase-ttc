@@ -77,6 +77,17 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--campaign", type=Path, required=True)
     parser.add_argument(
+        "--source-campaign",
+        type=Path,
+        help="Read the original TRAIN bindings and acquire its GPU owner/ledger",
+    )
+    parser.add_argument("--capacity", choices=("2M", "4M"), default="2M")
+    parser.add_argument(
+        "--prefetch-parity",
+        action="store_true",
+        help="Compare synchronous continuous fit against prefetched save/resume",
+    )
+    parser.add_argument(
         "--attempt", default="", help="Unique technical QA suffix; preserves earlier evidence"
     )
     parser.add_argument(
@@ -90,6 +101,15 @@ def main() -> None:
     campaign = args.campaign.resolve(strict=True)
     if not campaign.is_relative_to(ROOT / "artifacts"):
         raise ValueError("GPU QA output must remain in this worktree")
+    source_campaign = (
+        campaign if args.source_campaign is None else args.source_campaign.resolve(strict=True)
+    )
+    if args.source_campaign is not None and source_campaign != (
+        ROOT.parent / "e-jepa-ttc-v10-stage70-architecture/artifacts/stage70_76_architecture"
+    ):
+        raise ValueError("cross-worktree GPU QA is restricted to the original TRAIN campaign")
+    if args.prefetch_parity and not args.production_flow:
+        raise ValueError("prefetch parity requires the production supervised flow")
     output = campaign / (
         ("technical_production_train_gpu" if args.production_flow else "technical_real_train_gpu")
         + ("_" + args.attempt if args.attempt else "")
@@ -97,15 +117,17 @@ def main() -> None:
     receipt_path = output / "REAL_TRAIN_GPU_EQUIVALENCE.json"
     if receipt_path.exists():
         raise ValueError("completed GPU QA receipt exists; do not rerun completed fits")
-    parity = json.loads((campaign / "histogram_reference64/HISTOGRAM_PARITY.json").read_text())
+    parity = json.loads(
+        (source_campaign / "histogram_reference64/HISTOGRAM_PARITY.json").read_text()
+    )
     if parity["status"] != "PASS" or parity["samples"] != 64:
         raise ValueError("independent real-count parity prerequisite failed")
     torch.set_num_threads(2)
     deterministic_runtime(7)
     if not torch.cuda.is_available():
         raise RuntimeError("real TRAIN GPU smoke requires CUDA")
-    reader = CountReader(campaign / "counts_original8192")
-    role_record = json.loads((campaign / "data_roles/DATA_ROLES.json").read_text())
+    reader = CountReader(source_campaign / "counts_original8192")
+    role_record = json.loads((source_campaign / "data_roles/DATA_ROLES.json").read_text())
     signature = role_record.pop("artifact_sha256")
     if object_digest(role_record) != signature:
         raise ValueError("fixed TRAIN roles signature changed")
@@ -124,13 +146,15 @@ def main() -> None:
     )
     tokens = tuple(sorted(reader.metadata.loc[reader.metadata.outer_fold != 0, "sample_token"]))
     view = TrainingView(reader, tokens, roles, excluded_sequences=excluded, include_expansion=False)
-    labels_path = campaign / "preflight/HISTORICAL_AUDIT_ROWS.csv"
+    labels_path = source_campaign / "preflight/HISTORICAL_AUDIT_ROWS.csv"
     labels = pd.read_csv(
         labels_path, usecols=["sample_token", "sequence_id", "target_ttc", "bucket"]
     )
     supervision = train_supervision(view, labels, expanded=False)
     with ResourceOwner(
-        campaign / "training_writer", remaining_bytes=2 * 1024**3, planned_ram_bytes=3 * 1024**3
+        source_campaign / "training_writer",
+        remaining_bytes=2 * 1024**3,
+        planned_ram_bytes=3 * 1024**3,
     ) as owner:
         output.mkdir(parents=True, exist_ok=True)
         normalization_path = output / "NORMALIZATION.json"
@@ -139,7 +163,7 @@ def main() -> None:
             if normalization.training_view_sha256 != view.identity:
                 raise ValueError("stored normalization belongs to another TRAIN view")
         else:
-            previous = campaign / "technical_real_train_gpu/NORMALIZATION.json"
+            previous = source_campaign / "technical_real_train_gpu/NORMALIZATION.json"
             if args.production_flow and previous.exists():
                 source = json.loads((previous.parent / "INPUTS.json").read_text())
                 verify(source["normalization"])
@@ -201,27 +225,20 @@ def main() -> None:
                 "effective_batch": 16,
                 "technical_only": True,
                 "full_production_supervised_flow": args.production_flow,
+                "capacity": args.capacity,
+                "prefetch_parity": args.prefetch_parity,
             }
         )
-        ledger = UpdateLedger(campaign / "UPDATE_LEDGER.json", owner.root)
+        ledger = UpdateLedger(source_campaign / "UPDATE_LEDGER.json", owner.root)
         results = []
         arms: tuple[Arm, ...] = (
             ("DIRECT", "PPS-PAIR", "PPS-TRAJ", "PPS-TIMEPERM")
             if args.production_flow
             else ("DIRECT", "PPS-TRAJ")
         )
+        specs = {}
         for arm in arms:
-            endpoints, profiles = [], []
             for mode in ("continuous", "resumed"):
-                deterministic_runtime(7)
-                torch.cuda.empty_cache()
-                torch.cuda.reset_peak_memory_stats()
-                if args.production_flow:
-                    model = initialize_architecture(7, supervision)
-                else:
-                    model = ProjectivePhaseNetwork(checkpoint_sweep=True)
-                    initialize_train_prior(model, supervision)
-                model.cuda()
                 spec = FitSpec(
                     f"technical_{'production_' if args.production_flow else ''}gpu_{arm}_{mode}"
                     + ("_" + args.attempt if args.attempt else ""),
@@ -234,6 +251,21 @@ def main() -> None:
                     view.identity,
                     True,
                 )
+                ledger.reserve(spec)
+                specs[(arm, mode)] = spec
+        for arm in arms:
+            endpoints, profiles = [], []
+            for mode in ("continuous", "resumed"):
+                deterministic_runtime(7)
+                torch.cuda.empty_cache()
+                torch.cuda.reset_peak_memory_stats()
+                if args.production_flow:
+                    model = initialize_architecture(7, supervision, capacity=args.capacity)
+                else:
+                    model = ProjectivePhaseNetwork(checkpoint_sweep=True, capacity=args.capacity)
+                    initialize_train_prior(model, supervision)
+                model.cuda()
+                spec = specs[(arm, mode)]
                 fit = FixedFit(model, spec, ledger, owner, output / arm / mode, warmup=2)
                 if ledger.state["jobs"][spec.job_id]["status"] == "COMPLETE":
                     endpoints.append(ledger.state["jobs"][spec.job_id]["endpoint"])
@@ -246,6 +278,7 @@ def main() -> None:
                     current_model: ProjectivePhaseNetwork,
                     selected_arm: Arm = arm,
                     selected_journal: Path = journal,
+                    selected_prefetch: bool = args.prefetch_parity and mode == "resumed",
                 ) -> Callable[[int, int, int, torch.Generator], torch.Tensor]:
                     if args.production_flow:
                         return SupervisedBatches(
@@ -256,6 +289,7 @@ def main() -> None:
                             selected_arm,
                             7,
                             selected_journal,
+                            prefetch=selected_prefetch,
                         )
                     return loss_callback(
                         current_model,
@@ -267,13 +301,25 @@ def main() -> None:
                     )
 
                 if mode == "resumed" and fit.update < 5:
-                    fit.run(callback(model), stop_after=5)
+                    batches = callback(model)
+                    try:
+                        fit.run(batches, stop_after=5)
+                    finally:
+                        if isinstance(batches, SupervisedBatches):
+                            batches.close()
                     del fit, model
                     deterministic_runtime(123)
-                    model = ProjectivePhaseNetwork(checkpoint_sweep=True).cuda()
+                    model = ProjectivePhaseNetwork(
+                        checkpoint_sweep=True, capacity=args.capacity
+                    ).cuda()
                     fit = FixedFit(model, spec, ledger, owner, output / arm / mode, warmup=2)
                     fit.resume()
-                fit.run(callback(model))
+                batches = callback(model)
+                try:
+                    fit.run(batches)
+                finally:
+                    if isinstance(batches, SupervisedBatches):
+                        batches.close()
                 profiles.append(
                     {
                         "mode": mode,
@@ -311,7 +357,9 @@ def main() -> None:
                     for mode in ("continuous", "resumed")
                 ]
                 equality["sampler_augmentation_timeperm_trace"] = traces[0] == traces[1]
-            model = ProjectivePhaseNetwork(checkpoint_sweep=False).cuda().eval()
+            model = (
+                ProjectivePhaseNetwork(checkpoint_sweep=False, capacity=args.capacity).cuda().eval()
+            )
             model.load_state_dict(states[0]["model"])
             sample = view.inputs(tokens[0], normalization)
             permutation = (
@@ -364,6 +412,9 @@ def main() -> None:
             "nonselectable": True,
             "scientific_candidate": False,
             "real_TRAIN_smoke": True,
+            "capacity": args.capacity,
+            "prefetch_parity": args.prefetch_parity,
+            "charged_to_source_campaign": str(source_campaign),
             "recipe_sha256": recipe,
             "results": results,
             "campaign_totals": ledger.totals(),
