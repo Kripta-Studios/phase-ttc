@@ -1,17 +1,68 @@
 """Six real ridge solves on fully synthetic rows exercise the complete nested routing backend."""
 
+from dataclasses import asdict
 from pathlib import Path
 from types import SimpleNamespace
+from typing import cast
 
 import numpy as np
 import pandas as pd
+import pytest
 
-from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
 from e_jepa_ttc.data.frozen_expert_tables_v10 import create_record, load_table
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, strict_macro_mass
 from e_jepa_ttc.models.full_cost_router_v11 import DIAGNOSTICS
 from e_jepa_ttc.models.three_expert_router import PHASE17_FEATURES
 from e_jepa_ttc.training import stage75_router_runtime_v11 as module
+from e_jepa_ttc.training.stage73_factorial import Availability, candidate_key
+
+
+@pytest.mark.parametrize("capacity", ["2M", "4M"])
+def test_nested_router_reader_binds_capacity_and_rejects_substitution(tmp_path, capacity):
+    avail = Availability(True, True, "a" * 64, "b" * 64)
+    if capacity == "4M":
+        avail = Availability(
+            True, True, "a" * 64, "b" * 64, capacities=("2M", "4M", "8M"), primary_capacity="4M"
+        )
+    name = "S73-PPS-AD"
+    key = candidate_key(name, capacity)
+    root = tmp_path / key / "outer0"
+    root.mkdir(parents=True)
+    pd.DataFrame({"sample_token": ["synthetic"]}).to_csv(root / "ROWS.csv", index=False)
+    lock = {
+        "availability": asdict(avail),
+        "nested_export_root": str(tmp_path),
+        "artifact_sha256": "c" * 64,
+        "historical_nested_tables": {"sha256": "d" * 64},
+    }
+    barrier = {"sha256": "e" * 64}
+    identity = {
+        "stage_barrier": barrier,
+        "training_lock_sha256": lock["artifact_sha256"],
+        "historical_table_manifest": lock["historical_nested_tables"],
+        "treatment": name,
+        "outer_fold": 0,
+        "role": "inner_oof",
+        "seed": 7,
+    }
+    if capacity == "4M":
+        identity.update(capacity=capacity, candidate_key=key)
+    record = {
+        "kind": "COMPLETE_NEW_NESTED_TREATMENT_DIAGNOSTICS",
+        "identity": identity,
+        "rows": binding(root / "ROWS.csv"),
+    }
+    record["artifact_sha256"] = object_digest(record)
+    atomic_json(root / "NESTED_EXPORT.json", record)
+    rows, _ = module._nested_rows(lock, name, 0, barrier)
+    assert list(rows.sample_token) == ["synthetic"]
+    identity["capacity"] = "8M"
+    record.pop("artifact_sha256")
+    record["artifact_sha256"] = object_digest(record)
+    atomic_json(root / "NESTED_EXPORT.json", record)
+    with pytest.raises(ValueError, match="source-bound"):
+        module._nested_rows(lock, name, 0, barrier)
 
 
 def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features(
@@ -104,6 +155,7 @@ def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features
         root=tmp_path,
         lock_sha256="a" * 64,
         lock={
+            "availability": asdict(Availability(True, True, "a" * 64, "b" * 64)),
             "stage_barrier_root": str(barrier.parent),
             "router_root": str(tmp_path / "routers"),
             "initial_evidence_root": str(tmp_path / "evidence"),
@@ -147,7 +199,9 @@ def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features
             {"synthetic_source": name, "outer": outer},
         ),
     )
-    result = module.run_nested_routers(runtime, {"path": "synthetic decision"})
+    result = module.run_nested_routers(
+        cast(module.InitialArchitectureRuntime, runtime), {"path": "synthetic decision"}
+    )
     assert len(fits) == 6 and set(result["exports"]) == set(module.ARMS)
     assert not result["statistical_analysis_pending"]
     assert not result["analysis"]["decision"]["development_utility_pass"]

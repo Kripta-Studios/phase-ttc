@@ -158,7 +158,9 @@ def run_new_nested_producers(
         completed.append(plan.job_id)
         progress("INNER_INFERENCE", None)
     exports = {}
-    for name, outer in dict.fromkeys((plan.treatment_name, plan.outer_fold) for plan in plans):
+    for name, outer, key in dict.fromkeys(
+        (plan.treatment_name, plan.outer_fold, plan.candidate_key) for plan in plans
+    ):
         runtime._reserve_resources("nested_export")
         export_nested_treatment(
             name,
@@ -168,8 +170,8 @@ def run_new_nested_producers(
             lock_sha256=runtime.lock_sha256,
             owner=runtime.owner,
         )
-        path = Path(lock["nested_export_root"]) / name / f"outer{outer}" / "NESTED_EXPORT.json"
-        exports[f"{name}_outer{outer}"] = binding(path)
+        path = Path(lock["nested_export_root"]) / key / f"outer{outer}" / "NESTED_EXPORT.json"
+        exports[f"{key}_outer{outer}"] = binding(path)
     progress("NEW_INNER_ENDPOINTS_AND_EXPORTS_COMPLETE_ROUTER_PENDING", None)
     return {
         "status": "NEW_INNER_PRODUCERS_COMPLETE",

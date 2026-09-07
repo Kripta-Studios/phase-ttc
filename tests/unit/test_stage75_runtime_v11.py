@@ -1,15 +1,19 @@
 """The S75 executor creates all new inner producers before any routing prediction read."""
 
 from types import SimpleNamespace
+from typing import cast
+
+import pytest
 
 from e_jepa_ttc.data.event_context128 import RateNormalization
 from e_jepa_ttc.training import stage75_runtime_v11 as module
-from e_jepa_ttc.training.stage73_factorial import PlannedFit, treatment
+from e_jepa_ttc.training.stage73_factorial import PlannedFit, candidate_key, treatment
 
 
-def test_all_prescribed_inner_producers_finish_before_prediction(tmp_path, monkeypatch):
+@pytest.mark.parametrize("capacity", ["2M", "4M"])
+def test_all_prescribed_inner_producers_finish_before_prediction(tmp_path, monkeypatch, capacity):
     plans = tuple(
-        PlannedFit("S75", name, outer, 7, inner)
+        PlannedFit("S75", name, outer, 7, inner, capacity)
         for name in ("S73-DIRECT-D", "S73-PPS-AD")
         for outer in range(3)
         for inner in range(3)
@@ -101,14 +105,17 @@ def test_all_prescribed_inner_producers_finish_before_prediction(tmp_path, monke
 
     def export(name, outer, **kwargs):
         assert sum(event[0] == "infer" for event in events) == 18
-        root = tmp_path / "exports" / name / f"outer{outer}"
+        root = tmp_path / "exports" / candidate_key(name, capacity) / f"outer{outer}"
         root.mkdir(parents=True)
         (root / "NESTED_EXPORT.json").write_text("synthetic export fixture")
 
     monkeypatch.setattr(module, "export_nested_treatment", export)
-    result = module.run_new_nested_producers(runtime, {"path": "synthetic decision"})
+    result = module.run_new_nested_producers(
+        cast(module.InitialArchitectureRuntime, runtime), {"path": "synthetic decision"}
+    )
     assert len(result["inference"]) == 18
     assert len(result["exports"]) == 6
+    assert set(result["exports"]) == {f"{p.candidate_key}_outer{p.outer_fold}" for p in plans}
     assert not result["router_fit_complete"]
     assert sum(event[0] == "diagnostic" for event in events) == 18
     assert [event[1] for event in events if event[0] == "fit"] == [p.job_id for p in plans]
@@ -122,5 +129,7 @@ def test_gate_not_triggered_cannot_materialize_or_train(tmp_path, monkeypatch):
         lock_sha256="a" * 64,
         ledger=SimpleNamespace(totals=lambda: {}, path=tmp_path / "ledger.json"),
     )
-    result = module.run_new_nested_producers(runtime, {"path": "synthetic decision"})
+    result = module.run_new_nested_producers(
+        cast(module.InitialArchitectureRuntime, runtime), {"path": "synthetic decision"}
+    )
     assert result["status"] == "NOT_TRIGGERED"

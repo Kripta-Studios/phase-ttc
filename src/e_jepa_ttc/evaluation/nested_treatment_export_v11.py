@@ -20,7 +20,7 @@ from e_jepa_ttc.evaluation.initial_treatment_export_v11 import (
 )
 from e_jepa_ttc.training.nested_architecture_sources_v11 import prospective_nested_recipe
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
-from e_jepa_ttc.training.stage73_factorial import PlannedFit
+from e_jepa_ttc.training.stage73_factorial import Availability, PlannedFit, candidate_key
 
 
 def historical_table(
@@ -57,11 +57,13 @@ def export_nested_treatment(
     owner.check()
     barrier = verify_nested_barrier(barrier_path, expected_lock=lock_sha256)
     lock = require_scientific_lock(lock_path, lock_sha256)
-    plans = tuple(PlannedFit("S75", name, outer, 7, inner) for inner in range(3))
+    capacity = Availability(**lock["availability"]).primary_capacity
+    key = candidate_key(name, capacity)
+    plans = tuple(PlannedFit("S75", name, outer, 7, inner, capacity) for inner in range(3))
     rows = {row["job_id"]: row for row in barrier["endpoints"]}
     if any(plan.job_id not in rows for plan in plans):
         raise ValueError("nested export omitted a prescribed canonical inner producer")
-    output = Path(lock["nested_export_root"]) / name / f"outer{outer}"
+    output = Path(lock["nested_export_root"]) / key / f"outer{outer}"
     if output.resolve() != output or not output.is_relative_to(Path(lock["campaign_root"])):
         raise ValueError("nested export escaped the frozen campaign root")
     receipts, roots, sources = [], [], []
@@ -96,6 +98,8 @@ def export_nested_treatment(
         "historical_table_record": table.record,
         "new_inner_inference": sources,
     }
+    if capacity != "2M":
+        identity.update(capacity=capacity, candidate_key=key)
     output.mkdir(parents=True, exist_ok=True)
     intent = output / "EXPORT_INTENT.json"
     if intent.exists():
@@ -128,7 +132,7 @@ def export_nested_treatment(
     old = pd.DataFrame(
         table.inputs.expert_ttc, columns=["A5", "C2F", "PAIR"], index=pd.Index(tokens)
     )
-    diagnostic = evaluate_rows(metadata, arrays, edges, old)
+    diagnostic = evaluate_rows(metadata, arrays, edges, old, expanded_cohort=capacity != "2M")
     diagnostic.rows["inner_fold"] = table.metadata.inner_fold.to_numpy()
     diagnostic.rows["prediction_role"] = "genuinely_nested_inner_oof"
     row_source, array_source = publish_export_payloads(output, diagnostic.rows, diagnostic.arrays)

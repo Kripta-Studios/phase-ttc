@@ -26,6 +26,7 @@ from e_jepa_ttc.training.nested_full_cost_fit_v11 import (
     load_full_cost_endpoint,
 )
 from e_jepa_ttc.training.stage72_73_runtime_v11 import InitialArchitectureRuntime
+from e_jepa_ttc.training.stage73_factorial import Availability, candidate_key
 
 ARMS = ("S75-FULLCOST", "S75-NEWPERM")
 
@@ -33,7 +34,9 @@ ARMS = ("S75-FULLCOST", "S75-NEWPERM")
 def _nested_rows(
     lock: dict[str, Any], name: str, outer: int, barrier: dict[str, Any]
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
-    root = Path(lock["nested_export_root"]) / name / f"outer{outer}"
+    capacity = Availability(**lock["availability"]).primary_capacity
+    key = candidate_key(name, capacity)
+    root = Path(lock["nested_export_root"]) / key / f"outer{outer}"
     path = root / "NESTED_EXPORT.json"
     if path.resolve() != path.absolute():
         raise ValueError("nested router source was redirected")
@@ -50,6 +53,8 @@ def _nested_rows(
         or identity.get("outer_fold") != outer
         or identity.get("role") != "inner_oof"
         or identity.get("seed") != 7
+        or identity.get("capacity", "2M") != capacity
+        or identity.get("candidate_key", identity.get("treatment")) != key
     ):
         raise ValueError("router input lacks its complete source-bound new inner producer")
     rows = pd.read_csv(
@@ -77,6 +82,8 @@ def run_nested_routers(
         for family in ("C_DIRECT", "C_PPS")
         if decision["canonical_technically_valid"][family]
     }
+    capacity = Availability(**lock["availability"]).primary_capacity
+    evidence_names = {expert: candidate_key(name, capacity) for expert, name in active.items()}
     experts = ("A5", "C2F", "PAIR", *active)
     root = Path(lock["router_root"])
     if root.resolve() != root or not root.is_relative_to(runtime.root):
@@ -148,7 +155,7 @@ def run_nested_routers(
             dtype={"sample_token": str},
             float_precision="round_trip",
         )
-        for expert, name in active.items()
+        for expert, name in evidence_names.items()
     }
     exports = {}
     for arm in ARMS:
@@ -239,7 +246,7 @@ def run_nested_routers(
             "new_endpoint_barrier": barrier,
             "stage_authorization": decision_source,
             "standalone_row_sources": {
-                expert: initial["row_sources"][name] for expert, name in active.items()
+                expert: initial["row_sources"][name] for expert, name in evidence_names.items()
             },
         },
         root=root / "analysis",

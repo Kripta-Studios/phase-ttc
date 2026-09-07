@@ -409,3 +409,24 @@ requieren una enmienda visible con todo el coste de pilotos y fits finales antes
 de ejecutarlos. Se verificaron físicamente los recibos; no se abrieron datos de
 confirmación. Este techo no modifica el lock original ni declara v11 preparado:
 quedan integración, linaje de comparadores, caché/vistas, QA y congelación.
+# Cierre de identidad de capacidad en S75 (2026-09-07)
+
+Se corrigió una integración omitida: el exportador interior reconstruía siempre
+PlannedFit con capacidad 2 M aunque el runtime había entrenado productores 4 M.
+Ahora usa la capacidad principal registrada, publica bajo su candidate_key y
+preserva esa identidad al recuperar filas para el ridge y sus referencias
+exteriores. La recuperación rechaza sustituciones por 8 M. Los diagnósticos
+interiores ampliados usan la métrica de buckets presentes. Las barreras siguen
+exigiendo todos los productores antes de inferencia y todos los ridge antes de
+construir características exteriores.
+
+Seis tests afectados pasaron: orquestación de 18 productores en 2/4 M, rama no
+activada, identidad del lector en ambas capacidades y seis ridge reales sobre
+datos completamente sintéticos. Cero optimizer updates. Recibo:
+`NESTED_CAPACITY_EXPORT_ROUTER_ZERO_UPDATES.xml`. Ruff y Pyright quedaron limpios;
+se hicieron explícitos los casts de tres runtimes simulados señalados por
+Pyright, sin alterar su comportamiento. No se repitió QA ajeno al cambio.
+
+Permanece pendiente la construcción y conexión de tablas de comparadores
+ampliadas con procedencia válida; este cambio no convierte las tablas históricas
+en comparadores válidos para v11 ni declara S75 listo para ejecución científica.
