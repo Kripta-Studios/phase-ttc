@@ -185,3 +185,20 @@ de procedencia, no autorización para reutilizar targets en filas nuevas ni prue
 de exclusión de held-out en el preentrenamiento global del teacher. Deben resolverse
 esa exposición y los bindings de nuevas representaciones/targets antes del fit.
 No se eliminó distillation ni se sustituyó por otro comparador sin declararlo.
+
+## Comparación estadística del universo ampliado
+
+compare_standalone_rows admite explícitamente expanded_cohort y contrastes por
+identidad de capacidad. Reutiliza el bootstrap por adquisición de8.192 draws y
+publica arrays y multiplicidades compartidas, scores, diferencias por secuencia,
+signos, oracle y gates prospectivos con N variable. La CI única se transporta en
+los dos campos heredados de Evidence para compatibilidad; el informe declara
+single_acquisition_CI_shared_by_legacy_fields, no dos pruebas independientes ni
+bootstrap exacto. La ruta histórica conserva su estimando y sus dos diagnósticos.
+El guarda crucial ampliado condiciona a la masa realmente presente de ese bucket;
+si está totalmente ausente, conserva el score pero no genera decisión automática.
+Once tests afectados pasan, incluyendo22/27 secuencias, buckets ausentes y caso
+histórico; Ruff y Pyright pasan. Recibo FULL_CAPACITY_COMPARISON_ZERO_UPDATES.xml,
+cero updates y ninguna lectura exterior real. Pendiente: el ensamblador superior
+sigue usando entradas históricas y debe enlazarse a comparadores y filas nuevas
+antes de autorizar cualquier evaluación ampliada.

@@ -139,3 +139,47 @@ def test_expanded_contrasts_keep_acquisitions_and_missing_bucket_estimand(sequen
     assert paired["exact_sequence"] is None
     assert "hierarchical_ci95" not in paired
     assert result["A-8M_minus_EXTRA-4M"]["status"] == "UNAVAILABLE_OR_INVALID_ENDPOINT"
+
+
+@pytest.mark.parametrize("count,target", [(22, 2.0), (27, 2.0), (27, 4.0)])
+def test_expanded_full_comparison_uses_cluster_draws_and_support_guard(count, target, tmp_path):
+    metadata = pd.DataFrame(
+        {
+            "sample_token": [f"r{i}" for i in range(count)],
+            "sequence_id": [f"s{i}" for i in range(count)],
+            "track_id": ["t"] * count,
+            "outer_fold": np.arange(count) % 3,
+            "acquisition_group": [f"a{i % 3}" for i in range(count)],
+            "target_ttc_s": np.full(count, target),
+        }
+    )
+    rows = metadata.assign(prediction_ttc_s=target, finite=True, failure=False, mid_loss=0.0)
+    risk = scientific_ttc(benchmark_phase(metadata.target_ttc_s.to_numpy()) + 0.001)
+    result = compare_standalone_rows(
+        metadata,
+        {"PPS-4M": rows},
+        risk,
+        np.column_stack([risk] * 3),
+        output=tmp_path / "comparison",
+        check=lambda: None,
+        expanded_cohort=True,
+        contrasts=(("PPS-4M", "RISK17"),),
+    )
+    primary = result["comparisons"]["PPS-4M"]
+    assert primary["score"] == 0
+    assert result["bootstrap"]["sequence_count"] == count
+    assert not result["bootstrap"]["exact"]
+    assert result["bootstrap"]["draws"] == 8192
+    assert result["prospective_initial_contrasts"]["PPS-4M_minus_RISK17"]["delta"] == pytest.approx(
+        -10
+    )
+    if target > 3:
+        assert primary["decision"] is None
+        assert "guard support absent" in primary["reason"]
+    else:
+        assert primary["evidence"]["sequence_wins"] == count
+        assert primary["evidence"]["crucial_delta"] == pytest.approx(-10)
+        assert primary["decision"]["replicate_new_architecture"]
+        assert primary["exact_sequence"] is None
+        assert primary["acquisition_ci95"] == pytest.approx([-10, -10])
+        assert "hierarchical_ci95" not in primary

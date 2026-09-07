@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
-from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
+from e_jepa_ttc.evaluation.capacity_metrics import acquisition_bootstrap, present_bucket_mass
 from e_jepa_ttc.evaluation.exact_sequence_v10 import exact_sequence_diagnostic
 from e_jepa_ttc.evaluation.risk_geometry_v10 import hierarchical_losses
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, strict_macro_mass
@@ -133,6 +133,8 @@ def compare_standalone_rows(
     *,
     output: Path,
     check: Callable[[], None],
+    expanded_cohort: bool = False,
+    contrasts: tuple[tuple[str, str], ...] = INITIAL_CONTRASTS,
 ) -> dict[str, Any]:
     """Materialize one shared bootstrap, exact sequence uncertainty and unchanged S74 gates.
 
@@ -144,14 +146,19 @@ def compare_standalone_rows(
         raise ValueError("comparison output already exists; immutable results need verification")
     sequences = metadata.sequence_id.astype(str).to_numpy()
     names = sorted(np.unique(sequences))
-    if len(names) != 9 or metadata.sample_token.duplicated().any() or not model_rows:
-        raise ValueError("standalone development comparison requires nine complete sequences")
+    if (
+        (len(names) < 3 if expanded_cohort else len(names) != 9)
+        or metadata.sample_token.duplicated().any()
+        or not model_rows
+    ):
+        raise ValueError("standalone development comparison requires complete sequence identities")
     target = benchmark_phase(metadata.target_ttc_s.to_numpy(np.float64))
     risk = benchmark_phase(risk17_ttc)
     old = benchmark_phase(old_expert_ttc)
     if risk.shape != target.shape or old.shape != (len(target), 3):
         raise ValueError("RISK17 and three original experts require exact row alignment")
-    mass = strict_macro_mass(metadata.target_ttc_s.to_numpy(np.float64), sequences)
+    mass_fn = present_bucket_mass if expanded_cohort else strict_macro_mass
+    mass = mass_fn(metadata.target_ttc_s.to_numpy(np.float64), sequences)
     risk_loss = 10000 * abs(risk - target)
     risk_sign = (np.sign(risk) != np.sign(target)).astype(np.float64)
     old_oracle = (10000 * abs(old - target[:, None])).min(axis=1)
@@ -159,8 +166,18 @@ def compare_standalone_rows(
     valid = {name: value for name, value in vectors.items() if value is not None}
     model_names = sorted(valid)
     losses = np.column_stack([risk_loss, *(valid[name][0] for name in model_names)])
-    output.mkdir(parents=True)
-    sampled, bootstrap = hierarchical_losses(metadata, losses, output, check)
+    if expanded_cohort:
+        check()
+        sampled, bootstrap = acquisition_bootstrap(metadata, losses)
+        check()
+        output.mkdir(parents=True)
+        np.save(output / "BOOTSTRAP_LOSSES.npy", sampled, allow_pickle=False)
+        atomic_json(output / "ACQUISITION_DRAWS.json", bootstrap)
+        draw_path = output / "ACQUISITION_DRAWS.json"
+    else:
+        output.mkdir(parents=True)
+        sampled, bootstrap = hierarchical_losses(metadata, losses, output, check)
+        draw_path = output / "HIERARCHICAL_DRAWS.jsonl"
     comparisons: dict[str, Any] = {}
     crucial = (metadata.target_ttc_s.to_numpy() > 0) & (metadata.target_ttc_s.to_numpy() <= 3)
     for name in model_rows:
@@ -176,18 +193,32 @@ def compare_standalone_rows(
         loss, wrong_sign = value
         delta = loss - risk_loss
         per_sequence = np.array(
-            [9 * float(mass[sequences == seq] @ delta[sequences == seq]) for seq in names]
+            [len(names) * float(mass[sequences == seq] @ delta[sequences == seq]) for seq in names]
         )
-        exact = exact_sequence_diagnostic(per_sequence)
+        exact = None if expanded_cohort else exact_sequence_diagnostic(per_sequence)
         draws = sampled[:, 1 + model_names.index(name)] - sampled[:, 0]
+        if expanded_cohort and not crucial.any():
+            comparisons[name] = {
+                "technically_valid": True,
+                "score": float(mass @ loss),
+                "evidence": None,
+                "decision": None,
+                "reason": "crucial guard support absent; no automatic gate decision",
+            }
+            continue
+        high = float(np.quantile(draws, 0.975))
         evidence = Evidence(
             delta_vs_risk17=float(mass @ delta),
-            hierarchical_high=float(np.quantile(draws, 0.975)),
-            sequence_high=exact["ci95"][1],
-            sequence_wins=exact["sequence_wins"],
-            sequence_count=9,
+            hierarchical_high=high,
+            sequence_high=high if exact is None else exact["ci95"][1],
+            sequence_wins=int(np.sum(per_sequence < 0))
+            if exact is None
+            else exact["sequence_wins"],
+            sequence_count=len(names),
             sign_error_increase=float(mass @ (wrong_sign - risk_sign)),
-            crucial_delta=float(mass[crucial] @ delta[crucial] / 0.5),
+            crucial_delta=float(
+                mass[crucial] @ delta[crucial] / (mass[crucial].sum() if expanded_cohort else 0.5)
+            ),
             finite_fraction=1.0,
             new_oracle_gain=float(mass @ (old_oracle - np.minimum(old_oracle, loss))),
         )
@@ -195,12 +226,25 @@ def compare_standalone_rows(
             "technically_valid": True,
             "score": float(mass @ loss),
             "evidence": asdict(evidence),
-            "decision": decide(evidence),
+            "decision": decide(evidence, expanded_cohort=expanded_cohort),
             "exact_sequence": exact,
-            "hierarchical_ci95": [float(np.quantile(draws, 0.025)), evidence.hierarchical_high],
-            "hierarchical_fraction_negative": float(np.mean(draws < 0)),
-            "hierarchical_bootstrap_mean": float(draws.mean()),
-            "hierarchical_bootstrap_median": float(np.median(draws)),
+            ("acquisition_ci95" if expanded_cohort else "hierarchical_ci95"): [
+                float(np.quantile(draws, 0.025)),
+                evidence.hierarchical_high,
+            ],
+            (
+                "acquisition_fraction_negative"
+                if expanded_cohort
+                else "hierarchical_fraction_negative"
+            ): float(np.mean(draws < 0)),
+            (
+                "acquisition_bootstrap_mean" if expanded_cohort else "hierarchical_bootstrap_mean"
+            ): float(draws.mean()),
+            (
+                "acquisition_bootstrap_median"
+                if expanded_cohort
+                else "hierarchical_bootstrap_median"
+            ): float(np.median(draws)),
             "sequence_order": names,
             "per_sequence_delta": per_sequence.tolist(),
         }
@@ -217,10 +261,13 @@ def compare_standalone_rows(
         "bootstrap": bootstrap,
         "bootstrap_columns": ["RISK17", *model_names],
         "prospective_initial_contrasts": paired_contrasts(
-            metadata, losses, sampled, ["RISK17", *model_names], INITIAL_CONTRASTS
+            metadata, losses, sampled, ["RISK17", *model_names], contrasts, expanded=expanded_cohort
         ),
         "bootstrap_loss_array": binding(output / "BOOTSTRAP_LOSSES.npy"),
-        "bootstrap_draw_journal": binding(output / "HIERARCHICAL_DRAWS.jsonl"),
+        "bootstrap_draw_journal": binding(draw_path),
+        "uncertainty_gate_contract": "single_acquisition_CI_shared_by_legacy_fields"
+        if expanded_cohort
+        else "historical_hierarchical_and_exact_sequence",
         "independent_confirmation": False,
         "historical_stage67_gate_changed": False,
         "fraction_negative_meaning": "paired bootstrap fraction, not Bayesian posterior",
