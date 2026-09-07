@@ -957,3 +957,36 @@ falló porque faltaba el directorio padre del diario, antes de decodificar etiqu
 se conservó ATTEMPT_001_INCIDENT.json y la segunda terminó. Cero optimizer updates,
 sin scores exteriores. Los normalizadores de 30000 filas siguen pendientes del
 cierre físico de su caché; no se reutilizan los de 8192 filas.
+
+
+## 2026-09-07 — Caché y tres vistas TRAIN de 30000 filas completadas
+
+La caché E128-T8 terminó con 30000 filas/469 shards, exit code0, sin optimizer
+updates. CountReader verificó todos sus componentes antes de normalizar.
+Los tres productores exteriores se materializaron con el compilador existente:
+18889, 18889 y 18888 filas TRAIN respectivamente; cada uno usa 17 secuencias y
+excluye diez (nueve exteriores y una diagnóstica). Se generaron normalización,
+masas, targets de fase y prior de 108 bins propios para cada fold. No se usaron
+normalizadores del conjunto anterior de 8192 filas.
+
+El primer intento se detuvo antes de normalizar por una suposición incorrecta
+sobre el orden físico del cache. Se verificó que los 30000 tokens eran únicos
+y exactamente los mismos; secuencia, track y fold coincidían tras unir por token.
+Se corrigió únicamente esa comprobación operativa: las vistas TRAIN conservan
+el orden del cache inmutable, compartido por todas las capacidades, y las tablas
+de resultados conservan el orden canónico de la cohorte. El incidente está en
+resolved_views_30000/ATTEMPT_001_IDENTITY_ALIGNMENT.json. No cambió ninguna fila,
+partición, fuente ni receta científica y no hubo fit neuronal en el intento.
+
+La segunda ejecución CPU completó los tres folds y cerró con exit code0.
+VIEWS_COMPLETE.json: SHA256
+1a36382ad0f3246db3accfef5c2f41f55e63254a8bcc772ff6ecd789a72bd8c8.
+La verificación final comprobó firmas, bindings, exclusiones, orden de supervisión,
+fases finitas, masas y priors que suman uno:
+resolved_views_30000/VERIFIED_VIEWS.json, SHA256
+3591f6c1096bbf7a9d00b5d61cd793ca44f6cce5617c11727247336b14dc923c.
+
+Se cierran caché de representación y vistas exteriores compartidas de v11.
+Continúan pendientes la caché nativa de comparadores y su teacher, el resto del
+lock resuelto y los prerrequisitos GPU/ejecución tras el grafo original terminal.
+No se declara v11 congelado ni científicamente evaluado.
