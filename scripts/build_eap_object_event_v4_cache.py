@@ -35,6 +35,8 @@ def main() -> int:
     parser.add_argument("--margin-fraction", type=float, default=0.25)
     parser.add_argument("--bins-per-polarity", type=int, default=5)
     parser.add_argument("--storage-dtype", choices=("float16", "float32"), default="float32")
+    parser.add_argument("--compression", choices=("none", "gzip"), default="none")
+    parser.add_argument("--compression-level", type=int, choices=range(1, 10), default=1)
     parser.add_argument(
         "--train-only",
         action="store_true",
@@ -95,7 +97,8 @@ def main() -> int:
         include_masks=False,
         workers=args.workers,
         preprocessing_device="cpu",
-        compression="none",
+        compression=args.compression,
+        compression_level=args.compression_level,
     )
     result = materialize_garlttc_lhr_cache(
         eap_root=args.eap_root.resolve(),

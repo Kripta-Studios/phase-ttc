@@ -572,3 +572,32 @@ de baseline bajo artifacts fue excluido por Pyright y no sirve de comparación;
 se preserva con su sustitución explícita por la medición en el directorio fuente.
 La copia temporal propia se retiró tras la medición. Ruff de los cuatro archivos
 afectados pasa. No se declaran esos 33 errores como un chequeo limpio.
+
+# Medición de compresión sin pérdida (2026-09-07)
+
+Se seleccionó prospectivamente el primer shard TRAIN del manifiesto histórico,
+sin scores: 256 filas, 676.432.813 bytes. Gzip nivel 1 produjo 163.168.594 bytes
+(ratio 0,2412192) y la descompresión recuperó exactamente los 676.432.813 bytes
+y SHA256 `46613ee0dbf746a51d780cef47c932ebd406045a8d1cee4451a05d4af70847e0`.
+Lectura, compresión y descompresión tardaron 73,61 segundos en el host compartido.
+Se procesó en streaming, sin escribir la copia comprimida ni deserializar TTC;
+sí se leyeron los bytes del shard supervisado. Cero GPU y optimizer updates.
+Recibo `COMPARATOR_GZIP_MEASUREMENT.json`, SHA256 físico
+`dbd0c9331426d2ff5d7acbf93dba73ef78594f22e2ff87adf21e1c13a79b4182`.
+
+La extrapolación es 19.121.319.609 bytes para 30.000 filas, no un máximo probado
+para secuencias nuevas. El constructor expone ahora la compresión gzip existente
+y su nivel; permanece float32 y no cambia la geometría. El test existente de
+escritura/lectura gzip sin pérdida pasa, al igual que CLI, Ruff y Pyright del
+script modificado. Recibo `COMPARATOR_GZIP_ROUNDTRIP_ZERO_UPDATES.xml`.
+
+Una revisión conservadora propone un límite de 40 GB para shards comprimidos,
+3 GB para temporales y 2 GB para teacher/metadatos. La observación de E admite
+45 GB adicionales y deja 48.330.894.848 bytes, por encima de 40 GB. Recibo
+`COMPARATOR_COMPRESSED_STORAGE_REVIEW.json`, SHA256 físico
+`251022b2b67207e8e87f5729863a9479b11bd37cae09ecd294bb39a8bbbf0c41`.
+No se adquirió todavía una reserva exclusiva ni se inició materialización:
+faltan enlazar el directorio propio y controlar el límite/reserva restante con
+ResourceOwner, además de comprobar RAM y otras reservas al admitir el trabajo.
+El primer intento de escribir esta revisión falló al importar sin PYTHONPATH;
+no produjo archivos y se corrigió usando el src de v11 explícitamente.
