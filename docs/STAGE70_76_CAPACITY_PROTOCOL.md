@@ -735,3 +735,41 @@ El reintento CPU de caché queda vinculado en COMPARATOR_CACHE_CPU_JOB_RETRY1.js
 (SHA256 343fd205badfa658c88fca7e983126d918db47dd466c3a6e024fddd4494148c7).
 Usa el directorio nuevo event_v4_30000_gzip1_data y código de admisión 83ecf37.
 Los archivos del productor permanecen intactos durante esta integración.
+
+# Contratos del entrenador de comparadores ampliados (2026-09-07)
+
+El entrenador causal existente acepta el contrato explícito v11 de diagnóstico
+TRAIN, reconstruido desde preparación, cohorte, metadatos físicos y roles
+firmados. Usa AllowlistedSources para registrar las lecturas de estos inputs.
+No se reutiliza el identificador de protocolo V5/V8 para las particiones nuevas.
+El optimizador y el diagnóstico tienen conjuntos distintos; los grupos de
+predicción exterior/interior quedan excluidos de ambos. Normalización y pretext
+heredan las exclusiones del productor. La selección se fija en la época 18 y
+se rechazan encoders inicializados desde checkpoints ajustados o soft teachers
+ajustados. La extracción de las predicciones excluidas requiere su propio paso
+posterior al endpoint; los CSV de diagnóstico no son predicciones OOF.
+
+COMPARATOR_DIAGNOSTIC_PROTOCOLS_PREPARED.json (SHA256 físico
+66e4ceccea912d70ae356fe08c16c161d6025ba51b95a069047b0726af32b91f)
+vincula 12 contratos reales preparados: tres exteriores y nueve interiores,
+compartidos por A5/C2F. Todos conservan status prepared_not_authorized. Sus
+24 encoders suman exactamente los 191376 updates ya registrados; no se ha
+ampliado el presupuesto por este cambio. PAIR conserva su dependencia A5 y
+82080 updates; sus fits/exportación y la auditoría transitiva siguen pendientes.
+Los contratos preparados usan la firma object_digest de preparación; el futuro
+protocolo de entrada congelado debe volver a firmarse con sign_artifact del
+trainer después de vincularlo al lock completo, sin alterar las particiones.
+
+El registro de rutas permite inputs verificados fuera del repositorio, incluidos
+los shards en E:, sin fallar al construir el informe tras un entrenamiento.
+Las referencias internas conservan el texto relativo histórico. Esto no cambia
+la autorización de lectura ni evita sus verificaciones físicas.
+
+QA afectado: 12 productores sintéticos admitidos con roles correctos y rechazados
+con sustitución de diagnóstico, metadatos o estado no congelado; una prueba de
+rutas externas/internas. El archivo completo pasó 18 casos y mantuvo dos fallos
+históricos de SHA del protocolo V5. Ambos se reprodujeron con el script anterior
+archivado en qa/COMPARATOR_DIAGNOSTIC_BASELINE_SOURCE.py. Pyright conserva sus
+12 IDs históricos; se comparan regla, mensaje y línea fuente, no sólo totales.
+Las pruebas de fuente/estado se repitieron únicamente al conectar el diario de
+lecturas. Cero updates, sin resultados exteriores y sin congelación ampliada.

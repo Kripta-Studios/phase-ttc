@@ -5,7 +5,10 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Any
 
+import pandas as pd
+
 from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest
+from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings
 from e_jepa_ttc.data.capacity_cohort import grouped_folds
 from e_jepa_ttc.data.stage70_roles import stable_rank
 from e_jepa_ttc.training.stage73_factorial import (
@@ -184,3 +187,103 @@ def producer_roles(cohort: dict[str, Any]) -> dict[str, Any]:
         "optimizer_updates": 0,
     }
     return {**result, "artifact_sha256": object_digest(result)}
+
+
+def comparator_development_contract(
+    cohort: dict[str, Any],
+    metadata: pd.DataFrame,
+    roles: dict[str, Any],
+    *,
+    outer_fold: int,
+    inner_fold: int | None,
+) -> dict[str, Any]:
+    """Compile optimizer/diagnostic pools while keeping prediction groups unread by fits.
+
+    The returned recipe is not a training authorization. The caller must bind
+    the physical inputs and freeze it with the complete campaign before use.
+    """
+    if outer_fold not in (0, 1, 2) or inner_fold not in (None, 0, 1, 2):
+        raise ValueError("unregistered comparator producer fold")
+    forbidden = set(cohort["confirmation_sequences"]) | set(cohort["protected_sequences"])
+    selected = set(cohort["selected_sequences"])
+    mapping = cohort["sequence_to_group"]
+    if selected & forbidden or {mapping[s] for s in selected} & {mapping[s] for s in forbidden}:
+        raise ValueError("comparator cohort contains a protected acquisition")
+    if roles != producer_roles(cohort):
+        raise ValueError("comparator roles differ from prospective acquisition assignment")
+    if (
+        metadata.sample_token.duplicated().any()
+        or list(metadata.sample_token) != cohort["ordered_tokens"]
+        or set(metadata.sequence_id) != set(cohort["selected_sequences"])
+    ):
+        raise ValueError("comparator metadata differs from complete cohort")
+    for fold in cohort["folds"]:
+        actual = metadata.loc[
+            metadata.sequence_id.isin(fold["held_sequences"]), "sample_token"
+        ].tolist()
+        if actual != fold["held_tokens"]:
+            raise ValueError("comparator token sequence identity changed")
+    outer = next(r for r in roles["folds"] if r["outer_fold"] == outer_fold)
+    diagnostic = outer["diagnostic_sequences"]
+    if inner_fold is None:
+        train = outer["fit_sequences"]
+        prediction = outer["outer_held_sequences"]
+        excluded = outer["all_fit_ancestor_exclusions"]
+    else:
+        inner = next(r for r in outer["inner_roles"] if r["inner_fold"] == inner_fold)
+        train = inner["fit_sequences"]
+        prediction = inner["prediction_sequences"]
+        excluded = inner["all_fit_ancestor_exclusions"]
+    assignment = {
+        s: name
+        for name, sequences in (
+            ("train", train),
+            ("diagnostic", diagnostic),
+            ("prediction", prediction),
+            (
+                "excluded",
+                set(cohort["selected_sequences"]) - set(train) - set(diagnostic) - set(prediction),
+            ),
+        )
+        for s in sequences
+    }
+    group_roles: dict[str, set[str]] = {}
+    for sequence, role in assignment.items():
+        group_roles.setdefault(cohort["sequence_to_group"][sequence], set()).add(role)
+    if any(len(values) != 1 for values in group_roles.values()):
+        raise ValueError("comparator acquisition crosses source roles")
+    split: dict[str, Any] = {"fold": outer_fold}
+    for name, sequences in (("train", train), ("dev", diagnostic)):
+        tokens = metadata.loc[metadata.sequence_id.isin(sequences), "sample_token"]
+        split[f"{name}_sequence_ids"] = sorted(sequences)
+        split[f"{name}_rows"] = len(tokens)
+        split[f"{name}_sample_tokens_sha256"] = hash_sorted_token_strings(tokens)
+    prediction_tokens = metadata.loc[metadata.sequence_id.isin(prediction), "sample_token"]
+    return {
+        "artifact_type": "scientific_recovery_v11_capacity_comparator_diagnostic_v1",
+        "status": "prepared_not_authorized",
+        "outer_fold": outer_fold,
+        "inner_fold": inner_fold,
+        "producer_roles_sha256": roles["artifact_sha256"],
+        "cohort_sha256": cohort["artifact_sha256"],
+        "sequence_ids": sorted(set(train) | set(diagnostic)),
+        "sample_count": split["train_rows"] + split["dev_rows"],
+        "cache_universe_rows": len(metadata),
+        "folds": [split],
+        "prediction_sequence_ids": sorted(prediction),
+        "prediction_rows": len(prediction_tokens),
+        "prediction_sample_tokens_sha256": hash_sorted_token_strings(prediction_tokens),
+        "all_fit_ancestor_exclusions": sorted(excluded),
+        "normalization_and_pretext_exclusions": sorted(excluded),
+        "dev_role": "TRAIN_diagnostic_only",
+        "checkpoint_selection_mode": "last_epoch",
+        "fixed_epochs": 18,
+        "checks": {
+            "train_only_grouped_dev": True,
+            "sequence_disjoint_folds": True,
+            "sample_token_unique": True,
+            "same_cache_universe": True,
+            "public_validation_used_for_selection": False,
+            "private_test_opened": False,
+        },
+    }

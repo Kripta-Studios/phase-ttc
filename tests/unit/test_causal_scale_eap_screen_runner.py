@@ -186,3 +186,103 @@ def test_runner_binds_git_revision_before_training() -> None:
 
     assert launch < training < completion
     assert "refusing to publish artifacts" in source
+
+
+@pytest.mark.parametrize("outer", [0, 1, 2])
+@pytest.mark.parametrize("inner", [None, 0, 1, 2])
+def test_capacity_comparator_loader_separates_diagnostic_from_prediction(tmp_path, outer, inner):
+    import pandas as pd
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, object_digest
+    from e_jepa_ttc.data.capacity_cohort import CohortRecipe, build_cohort
+    from e_jepa_ttc.data.stage70_roles import SamplingRow
+    from e_jepa_ttc.training.capacity_campaign import (
+        comparator_development_contract,
+        producer_roles,
+    )
+
+    mapping = {f"s{i}": f"g{i}" for i in range(27)}
+    candidates = [SamplingRow(f"{s}_{i}", s, "track", i * 20000) for s in mapping for i in range(4)]
+    cohort = build_cohort(
+        candidates,
+        sequence_to_group=mapping,
+        confirmation_sequences=[],
+        protected_sequences=[],
+        recipe=CohortRecipe(sample_limit=108),
+    )
+    by_token = {r.token: r for r in candidates}
+    metadata = pd.DataFrame(
+        [
+            {"sample_token": t, "sequence_id": by_token[t].sequence, "track_id": "track"}
+            for t in cohort["ordered_tokens"]
+        ]
+    )
+    roles = producer_roles(cohort)
+    core = comparator_development_contract(
+        cohort, metadata, roles, outer_fold=outer, inner_fold=inner
+    )
+    assert core["status"] == "prepared_not_authorized"
+    split = core["folds"][0]
+    assert not set(split["dev_sequence_ids"]) & set(core["prediction_sequence_ids"])
+    assert not set(split["train_sequence_ids"]) & set(core["all_fit_ancestor_exclusions"])
+    paths = {
+        name: tmp_path / f"{name}.json" for name in ("cohort", "producer_roles", "preparation")
+    }
+    for name, obj in (("cohort", cohort), ("producer_roles", roles)):
+        paths[name].write_text(json.dumps(obj), encoding="utf-8")
+    meta = tmp_path / "metadata.csv"
+    metadata.to_csv(meta, index=False)
+    prep = {"cohort": binding(paths["cohort"]), "selected_metadata": binding(meta)}
+    prep["artifact_sha256"] = object_digest(prep)
+    paths["preparation"].write_text(json.dumps(prep), encoding="utf-8")
+    core["capacity_inputs"] = {name: binding(path) for name, path in paths.items()} | {
+        "metadata": binding(meta)
+    }
+    protocol = tmp_path / "PROTOCOL.json"
+
+    def load(value):
+        signed = sign_artifact(value.copy())
+        protocol.write_text(json.dumps(signed), encoding="utf-8")
+        return _load_grouped_development_contract(
+            {
+                "development_protocol": {
+                    "path": str(protocol),
+                    "file_sha256": hashlib.sha256(protocol.read_bytes()).hexdigest(),
+                    "artifact_sha256": signed["artifact_sha256"],
+                    "fold": outer,
+                }
+            }
+        )
+
+    with pytest.raises(ValueError, match="frozen status"):
+        load(core)
+    core["status"] = "frozen_before_capacity_comparator_training"
+    result = load(core)
+    assert result["cache_universe_rows"] == 108
+    assert result["train_sequences"] == set(split["train_sequence_ids"])
+    assert result["dev_sequences"] == set(split["dev_sequence_ids"])
+    import copy
+
+    damaged = copy.deepcopy(core)
+    damaged["folds"][0]["dev_sequence_ids"] = core["prediction_sequence_ids"]
+    with pytest.raises(ValueError, match="exact optimizer"):
+        load(damaged)
+    damaged = copy.deepcopy(core)
+    damaged["capacity_inputs"]["metadata"] = binding(protocol)
+    with pytest.raises(ValueError, match="physical preparation"):
+        load(damaged)
+
+
+def test_verified_source_paths_support_external_volume_and_preserve_internal_identity(tmp_path):
+    from scripts.train_causal_scale_eap_screen import ROOT, _record_path
+
+    external = tmp_path / "external_cache_manifest.json"
+    external.write_text("{}", encoding="utf-8")
+    assert _record_path(external) == external.resolve().as_posix()
+    internal = ROOT / "configs/protocol/scientific_recovery_v5_train_only_grouped_dev.json"
+    assert (
+        _record_path(internal)
+        == "configs/protocol/scientific_recovery_v5_train_only_grouped_dev.json"
+    )
+    with pytest.raises(FileNotFoundError):
+        _record_path(tmp_path / "missing.json")

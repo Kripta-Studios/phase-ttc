@@ -25,6 +25,7 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 
 from e_jepa_ttc.artifacts.hashing import sign_artifact, verify_artifact_hash  # noqa: E402
+from e_jepa_ttc.artifacts.risk_geometry_v10 import AllowlistedSources, object_digest  # noqa: E402
 from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings  # noqa: E402
 from e_jepa_ttc.data.dinov3_relational_teacher_cache import (  # noqa: E402
     DINOv3RelationalTeacherDataset,
@@ -39,6 +40,7 @@ from e_jepa_ttc.models.causal_scale_ttc import (  # noqa: E402
 )
 from e_jepa_ttc.reproducibility import environment_snapshot, resolve_device  # noqa: E402
 from e_jepa_ttc.scientific_provenance import refuse_scientific_bypass_env  # noqa: E402
+from e_jepa_ttc.training.capacity_campaign import comparator_development_contract  # noqa: E402
 from e_jepa_ttc.training.causal_scale_eap import (  # noqa: E402
     CausalScaleEAPTrainingConfig,
     checkpoint_payload,
@@ -126,6 +128,16 @@ def _resolve(value: object) -> Path:
     return path
 
 
+def _record_path(path: Path) -> str:
+    """Record verified local inputs on another volume without changing their identity."""
+    resolved = path.resolve(strict=True)
+    return (
+        resolved.relative_to(ROOT).as_posix()
+        if resolved.is_relative_to(ROOT)
+        else resolved.as_posix()
+    )
+
+
 def _model_config(path: Path) -> CausalScaleTTCConfig:
     raw = _read_yaml(path)
     model_name = raw.pop("model", None)
@@ -145,8 +157,49 @@ def _model_config(path: Path) -> CausalScaleTTCConfig:
     return CausalScaleTTCConfig(**raw)
 
 
+def _validate_capacity_comparator_contract(protocol: dict[str, Any], journal: Path) -> None:
+    """Reconstruct the diagnostic split from physical prepared inputs, not declared flags."""
+    inputs = protocol["capacity_inputs"]
+    sources = AllowlistedSources(list(inputs.values()), journal)
+    preparation = json.loads(
+        sources.access(Path(inputs["preparation"]["path"])).read_text(encoding="utf-8")
+    )
+    if object_digest(
+        {k: v for k, v in preparation.items() if k != "artifact_sha256"}
+    ) != preparation.get("artifact_sha256"):
+        raise ValueError("capacity preparation signature changed")
+    if (
+        inputs["cohort"] != preparation["cohort"]
+        or inputs["metadata"] != preparation["selected_metadata"]
+    ):
+        raise ValueError("comparator inputs escaped their physical preparation")
+    cohort = json.loads(sources.access(Path(inputs["cohort"]["path"])).read_text(encoding="utf-8"))
+    roles = json.loads(
+        sources.access(Path(inputs["producer_roles"]["path"])).read_text(encoding="utf-8")
+    )
+    metadata = pd.read_csv(
+        sources.access(Path(inputs["metadata"]["path"])),
+        dtype={"sample_token": str, "sequence_id": str, "track_id": str},
+    )
+    expected = comparator_development_contract(
+        cohort,
+        metadata,
+        roles,
+        outer_fold=protocol["outer_fold"],
+        inner_fold=protocol["inner_fold"],
+    )
+    expected["status"] = "frozen_before_capacity_comparator_training"
+    observed = {
+        k: v for k, v in protocol.items() if k not in ("capacity_inputs", "artifact_sha256")
+    }
+    if observed != expected:
+        raise ValueError(
+            "comparator split differs from its exact optimizer/diagnostic/prediction roles"
+        )
+
+
 def _load_grouped_development_contract(data: dict[str, Any]) -> dict[str, Any]:
-    """Load a V5 fold or the explicit signed V8 nested-router contract.
+    """Load historical folds or the physically reconstructed capacity diagnostic contract.
 
     The historical V5 path remains byte-for-byte constrained.  V8's nested 4/2
     and 6/3 fits are accepted only when their own signed artifact type and frozen
@@ -166,17 +219,27 @@ def _load_grouped_development_contract(data: dict[str, Any]) -> dict[str, Any]:
     if protocol.get("artifact_sha256") != reference.get("artifact_sha256"):
         raise ValueError("grouped-development artifact SHA256 differs")
     artifact_type = protocol.get("artifact_type")
+    is_capacity = artifact_type == "scientific_recovery_v11_capacity_comparator_diagnostic_v1"
     is_v8_nested = artifact_type == "scientific_recovery_v8_router_nested_v1"
     if artifact_type not in {
         "scientific_recovery_v5_train_only_grouped_dev_v1",
         "scientific_recovery_v8_router_nested_v1",
+        "scientific_recovery_v11_capacity_comparator_diagnostic_v1",
     }:
         raise ValueError("grouped-development artifact type is incompatible")
     expected_status = (
-        "frozen_before_v8_router_training" if is_v8_nested else "frozen_before_a8_results"
+        "frozen_before_capacity_comparator_training"
+        if is_capacity
+        else "frozen_before_v8_router_training"
+        if is_v8_nested
+        else "frozen_before_a8_results"
     )
     if protocol.get("status") != expected_status:
-        raise ValueError("grouped-development protocol was not frozen before A8")
+        raise ValueError("grouped-development protocol lacks the required frozen status")
+    if is_capacity:
+        _validate_capacity_comparator_contract(
+            protocol, protocol_path.with_suffix(".SOURCE_READS.jsonl")
+        )
     checks = protocol.get("checks")
     if not isinstance(checks, dict):
         raise ValueError("grouped-development checks are missing")
@@ -429,7 +492,7 @@ def _validate_representation_change(
         raise ValueError("A4D temporal-delta weight differs from signed calibration")
 
     return {
-        "path": artifact_path.relative_to(ROOT).as_posix(),
+        "path": _record_path(artifact_path),
         "file_sha256": expected_file_sha,
         "artifact_sha256": expected_signed_sha,
         "selected_weight": selected,
@@ -766,7 +829,7 @@ def _validate_a5_transport_change(
                 raise ValueError("A5 V3 interpretation contract is incomplete")
 
     return {
-        "path": artifact_path.relative_to(ROOT).as_posix(),
+        "path": _record_path(artifact_path),
         "file_sha256": observed_file_sha,
         "artifact_sha256": payload.get("artifact_sha256"),
         "artifact_type": artifact_type,
@@ -967,6 +1030,21 @@ def run(
     if not isinstance(training_raw, dict) or not isinstance(loss_raw, dict):
         raise ValueError("training and loss mappings are required")
     training_config = CausalScaleEAPTrainingConfig(**training_raw)
+    if (
+        grouped_contract is not None
+        and grouped_contract["protocol"].get("artifact_type")
+        == "scientific_recovery_v11_capacity_comparator_diagnostic_v1"
+    ):
+        if (
+            training_config.checkpoint_selection_mode != "last_epoch"
+            or training_config.epochs != 18
+        ):
+            raise ValueError("capacity comparators require the fixed eighteenth epoch")
+        if (
+            training_config.initialization_mode != "none"
+            or training_config.soft_geometry_teacher_checkpoint is not None
+        ):
+            raise ValueError("capacity comparators require new encoders without fitted ancestors")
     loss_config = CausalScaleTTCLossConfig(**loss_raw)
     initialization_metadata: dict[str, Any] | None = None
     if training_config.initialization_mode == "shape_compatible":
@@ -1105,7 +1183,7 @@ def run(
         if training_config.teacher_cache_artifact_sha256 != teacher["artifact_sha256"]:
             raise ValueError("training and data teacher identities differ")
         teacher_metadata = {
-            "manifest": teacher_manifest.relative_to(ROOT).as_posix(),
+            "manifest": _record_path(teacher_manifest),
             "manifest_sha256": str(teacher["manifest_sha256"]),
             "artifact_sha256": str(teacher["artifact_sha256"]),
             "scope": "public_train_only",
@@ -1134,7 +1212,7 @@ def run(
         ):
             raise ValueError("training and data representation teacher identities differ")
         representation_teacher_metadata = {
-            "manifest": dino_manifest.relative_to(ROOT).as_posix(),
+            "manifest": _record_path(dino_manifest),
             "manifest_sha256": str(dino_teacher["manifest_sha256"]),
             "artifact_sha256": str(dino_teacher["artifact_sha256"]),
             "scope": "public_train_only",
@@ -1240,7 +1318,7 @@ def run(
         }
     }
     cache_payload: dict[str, Any] = {
-        "manifest_path": manifest_path.relative_to(ROOT).as_posix(),
+        "manifest_path": _record_path(manifest_path),
         "manifest_sha256": actual_manifest_hash,
         "artifact_sha256": manifest["artifact_sha256"],
         "split_counts": manifest["split_counts"],
@@ -1256,7 +1334,7 @@ def run(
         assert validation_manifest is not None
         cache_payload.update(
             {
-                "validation_manifest_path": (validation_manifest_path.relative_to(ROOT).as_posix()),
+                "validation_manifest_path": (_record_path(validation_manifest_path)),
                 "validation_manifest_sha256": validation_manifest_hash,
                 "validation_artifact_sha256": validation_manifest["artifact_sha256"],
                 "validation_split_counts": validation_manifest["split_counts"],
@@ -1267,7 +1345,7 @@ def run(
     development_protocol_metadata = None
     if grouped_contract is not None:
         development_protocol_metadata = {
-            "path": grouped_contract["path"].relative_to(ROOT).as_posix(),
+            "path": _record_path(grouped_contract["path"]),
             "file_sha256": grouped_contract["file_sha256"],
             "artifact_sha256": grouped_contract["artifact_sha256"],
             "fold_identity": fold_identity,
@@ -1340,11 +1418,11 @@ def run(
         "git_dirty": code_dirty,
         "worktree": worktree,
         "config": {
-            "path": config_path.relative_to(ROOT).as_posix(),
+            "path": _record_path(config_path),
             "sha256": _sha256(config_path),
         },
         "model_config": {
-            "path": model_path.relative_to(ROOT).as_posix(),
+            "path": _record_path(model_path),
             "sha256": _sha256(model_path),
         },
         "model_architecture": asdict(model_config),
