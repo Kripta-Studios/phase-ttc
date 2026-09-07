@@ -202,3 +202,18 @@ histórico; Ruff y Pyright pasan. Recibo FULL_CAPACITY_COMPARISON_ZERO_UPDATES.x
 cero updates y ninguna lectura exterior real. Pendiente: el ensamblador superior
 sigue usando entradas históricas y debe enlazarse a comparadores y filas nuevas
 antes de autorizar cualquier evaluación ampliada.
+
+## Validación real de las 30.000 filas
+
+La ruta validate_capacity_rows terminó con ALL_SELECTED_ROWS_VALID:30.000 filas,
+cero rechazadas, cero sustituciones, gap máximo0µs y deriva máxima entre offsets
+de3µs. Se verificaron la firma y los bindings físicos de metadatos, etiquetas y
+registro de lecturas. Recibo usability_30000/ROW_USABILITY.json, identidad
+a54a931560ba37e87cab1df9ef2c49a0e7b268a5aecdc64801c1e5922ac0d86d.
+Se decodificó la partición administrativa TRAIN permitida y sólo se usaron los
+targets seleccionados para el contrato; ninguna lectura de confirmación ni de
+resultados exteriores. Cero updates. PREPARATION_30000.json enlaza explícitamente
+la preparación anterior y la autorización de30.000, sin sobrescribir sus artefactos.
+La siguiente materialización de bindings en representation_30000/raw_bindings
+está en curso en CPU, con27 identidades de fuente comprobadas. No se declara
+completa hasta RAW_BOUND.json; cache de conteos y normalización siguen pendientes.
