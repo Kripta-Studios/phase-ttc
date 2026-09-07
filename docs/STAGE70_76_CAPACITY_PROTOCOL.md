@@ -270,3 +270,12 @@ proyectados, por encima del mínimo40GB. La admisión se vuelve a medir al comen
 el constructor de conteos existente, ahora en CPU sobre representation_30000/counts.
 RAW_BINDINGS_VERIFIED.json conserva la comprobación; caché y normalización siguen
 pendientes, cero updates y el escritor GPU original permanece separado.
+
+Los diagnósticos por fila y su llamada desde el exportador usan explícitamente
+el estimando de buckets presentes cuando el lock contiene capacity_cohort.
+La métrica se identifica como present_bucket_normalized_sequence_macro_signed_MiD;
+masas, pérdidas, calibración y oracle comparten esa población completa. Las filas
+inválidas se conservan y bloquean un score parcial, sin cambiar los pesos históricos
+en la ruta original. Seis tests afectados pasan, Ruff y Pyright pasan, cero updates.
+Recibo ROW_DIAGNOSTICS_CAPACITY_ZERO_UPDATES.xml. La procedencia de los comparadores
+de entrada sigue pendiente; este cambio no autoriza la evaluación ampliada.

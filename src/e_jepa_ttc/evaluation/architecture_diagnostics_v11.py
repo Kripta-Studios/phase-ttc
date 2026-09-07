@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 import torch
 
+from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
 from e_jepa_ttc.evaluation.stage63_65 import BUCKETS, benchmark_phase, strict_macro_mass
 from e_jepa_ttc.models.phase_distribution_v11 import crps, quantile, validate_edges
 
@@ -166,8 +167,10 @@ def evaluate_rows(
     output: Mapping[str, np.ndarray],
     edges: np.ndarray,
     old_predictions: pd.DataFrame,
+    *,
+    expanded_cohort: bool = False,
 ) -> DiagnosticExport:
-    """Join exact token/target identity, retain failures and score the full original estimand."""
+    """Join exact identities, retain failures and score the registered complete estimand."""
     columns = ("sample_token", "sequence_id", "track_id", "outer_fold", "target_ttc_s")
     if not set(columns) <= set(metadata) or metadata[list(columns)].isna().to_numpy().any():
         raise ValueError("complete canonical target/identity metadata required")
@@ -182,7 +185,8 @@ def evaluate_rows(
         raise ValueError("prediction and target row counts differ")
     rows = pd.concat([metadata[list(columns)].reset_index(drop=True), diagnostics.rows], axis=1)
     target = benchmark_phase(rows.target_ttc_s.to_numpy())
-    mass = strict_macro_mass(rows.target_ttc_s.to_numpy(), rows.sequence_id.to_numpy())
+    mass_fn = present_bucket_mass if expanded_cohort else strict_macro_mass
+    mass = mass_fn(rows.target_ttc_s.to_numpy(), rows.sequence_id.to_numpy())
     old_ttc = old_predictions.to_numpy(dtype=np.float64)
     old_phase = benchmark_phase(old_ttc)
     old_cost = 10000 * abs(old_phase - target[:, None])
@@ -242,7 +246,9 @@ def evaluate_rows(
     summary = dict(diagnostics.summary)
     summary.update(
         {
-            "metric": "strict_sequence_macro_signed_garl_release_MiD",
+            "metric": "present_bucket_normalized_sequence_macro_signed_MiD"
+            if expanded_cohort
+            else "strict_sequence_macro_signed_garl_release_MiD",
             "score": float(mass @ cost) if valid.all() else None,
             "score_status": "complete" if valid.all() else "invalid_model_rows_no_omission",
             "old_selector_oracle": float(mass @ old_cost.min(axis=1)),

@@ -76,6 +76,36 @@ def test_nonfinite_rows_are_retained_and_never_receive_partial_score(fixture):
     json.dumps(result.summary, allow_nan=False)
 
 
+@pytest.mark.parametrize("failed", [False, True])
+def test_expanded_diagnostics_normalize_present_buckets_without_dropping_failures(fixture, failed):
+    from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
+
+    metadata, output, edges, old = fixture
+    positions = [0, 1, 2, 4]
+    metadata = metadata.iloc[positions].copy()
+    old = old.iloc[positions]
+    output = {key: value[positions].copy() for key, value in output.items()}
+    if failed:
+        output["ttc"][0] = np.inf
+    result = evaluate_rows(metadata, output, edges, old, expanded_cohort=True)
+    expected = present_bucket_mass(
+        metadata.target_ttc_s.to_numpy(), metadata.sequence_id.to_numpy()
+    )
+    np.testing.assert_allclose(result.rows.global_mass, expected)
+    assert result.rows.groupby("sequence_id").global_mass.sum().tolist() == pytest.approx(
+        [0.5, 0.5]
+    )
+    assert result.rows.sample_token.tolist() == metadata.sample_token.tolist()
+    assert len(result.arrays["posterior108"]) == 4
+    assert result.summary["metric"] == "present_bucket_normalized_sequence_macro_signed_MiD"
+    if failed:
+        assert result.summary["score"] is None
+        assert result.rows.failure.sum() == 1
+    else:
+        assert result.summary["score"] == pytest.approx(expected @ result.rows.mid_loss.to_numpy())
+    json.dumps(result.summary, allow_nan=False)
+
+
 def test_exact_alignment_and_boolean_geometry_are_required(fixture):
     metadata, output, edges, old = fixture
     with pytest.raises(ValueError, match="token order"):

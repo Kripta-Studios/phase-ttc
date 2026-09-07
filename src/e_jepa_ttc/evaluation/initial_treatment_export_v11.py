@@ -414,7 +414,9 @@ def export_initial_treatment(
     old = cast(pd.DataFrame, historical[["A5_ttc", "C2F_ttc", "PAIR_ttc"]].copy())
     old.columns = ["A5", "C2F", "PAIR"]
     old.index = pd.Index(metadata.sample_token)
-    diagnostic = evaluate_rows(metadata, arrays, edges, old)
+    diagnostic = evaluate_rows(
+        metadata, arrays, edges, old, expanded_cohort="capacity_cohort" in lock
+    )
     append_prior_baseline(diagnostic, metadata, priors)
     append_physical_metadata(diagnostic, lock, receipts, sources)
     for name in historical.columns:
