@@ -1205,6 +1205,7 @@ def materialize_garlttc_lhr_cache(
     config: GarlTTCLHRCacheConfig,
     max_samples_per_split: int | None = None,
     resume: bool = False,
+    exact_sample_tokens: tuple[str, ...] | None = None,
 ) -> dict[str, Any]:
     """Build an auditable cache using official public GarlTTC train labels only."""
 
@@ -1239,6 +1240,7 @@ def materialize_garlttc_lhr_cache(
         sequence_role,
         seed=config.selection_seed,
         max_samples_per_split=max_samples_per_split,
+        exact_sample_tokens=exact_sample_tokens,
     )
     role_rows: dict[str, list[dict[str, object]]] = {"train": [], "validation": []}
     for _, row in selected_rows.iterrows():
@@ -1482,6 +1484,14 @@ def materialize_garlttc_lhr_cache(
                 _atomic_json(sidecar_path, metadata)
                 consume(role, records, errors)
                 shard_meta.append(metadata)
+        if exact_sample_tokens is not None and (
+            sum(split_counts.values()) != len(exact_sample_tokens)
+            or sum(discard_reasons.values()) != 0
+        ):
+            raise RuntimeError(
+                "Exact registered cache cannot omit failed rows: "
+                f"{split_counts}; discard_reasons={dict(sorted(discard_reasons.items()))}"
+            )
     except BaseException as exc:
         failed_state = {
             "artifact_type": "garlttc_lhr_cache_build_state_v1",

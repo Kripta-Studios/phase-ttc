@@ -530,3 +530,45 @@ Pyright final: cero errores y advertencias tras corregir las dos incompatibilida
 de tipos señaladas en el filtro pandas; no se repitieron tests ajenos al cambio.
 Sigue pendiente la representación exacta A5/C2F/PAIR para estos tokens, la
 generación de features y la conexión de tablas con sus productores reales.
+
+# Selección exacta y coste de la representación histórica (2026-09-07)
+
+El constructor existente de Object Event v4 incorpora el universo firmado de
+capacidad y lo pasa al selector sin volver a muestrear estratos TTC. Requiere
+TRAIN-only, sin un segundo límite de muestras y con las secuencias exactas en
+el split. Rechaza tokens ausentes o duplicados y conserva el orden registrado.
+La recuperación mantiene los fingerprints existentes de filas, configuración y
+split. Si alguna fila falla al materializarse, conserva shards/FAILURE y no
+publica manifest.json como completo; tampoco sustituye esa fila.
+
+La comprobación real sobre las columnas sample_token/sequence_id de la partición
+administrativa TRAIN conserva exactamente 30.000 tokens y 27 secuencias. Recibo
+`EXACT_COMPARATOR_INPUT_AND_STORAGE_REVIEW.json`, SHA256 físico
+`803af1cfe276c20431995192ef0eb7065fcccad43150c391dc0edb3d0ba44f4f`.
+Vincula el código de selección medido antes de añadir el rechazo final de
+materialización parcial. No es una reserva ni una evidencia de caché construida.
+
+El tensor histórico [30000,3,12,128,128] float32 requiere 70.778.880.000 bytes.
+En la observación había 98.943.574.016 bytes libres en C y 93.330.894.848 en E.
+Ninguno admite siquiera ese tensor más los 40.000.000.000 bytes de margen;
+faltaría sumar metadatos, teacher, temporales y reservas ajenas pendientes.
+Esta es una limitación de la materialización ampliada sin comprimir, no del
+fit original en marcha. No se inició esa escritura. El siguiente paso permitido
+es medir compresión sin pérdida y reservar el coste completo; no reducir muestras,
+resolución ni precisión para eludir el límite.
+
+QA: ocho tests del selector, incluida la ruta histórica, y un test adicional
+con escritura real de shard sintético, fallo parcial y recuperación inmutable.
+Recibos `EXACT_COMPARATOR_SAMPLING_ZERO_UPDATES.xml` y
+`EXACT_COMPARATOR_PARTIAL_FAILURE_ZERO_UPDATES.xml`; cero optimizer updates.
+La CLI expone la preparación y su hash; el chequeo de tipos y Ruff del selector
+y la CLI pasan. No se ejecutaron fits ni se consultaron scores exteriores.
+
+El chequeo adicional del módulo completo garlttc_lhr_cache conserva 33 errores
+de tipos de HEAD: cero nuevos y cero eliminados por IDs de regla/mensaje/línea
+de código. Se conservan los diagnósticos completos en QA y la comparación
+`EXACT_COMPARATOR_PYRIGHT_FAILURE_COMPARISON_VERIFIED.json`. El primer intento
+de baseline bajo artifacts fue excluido por Pyright y no sirve de comparación;
+se preserva con su sustitución explícita por la medición en el directorio fuente.
+La copia temporal propia se retiró tras la medición. Ruff de los cuatro archivos
+afectados pasa. No se declaran esos 33 errores como un chequeo limpio.

@@ -127,11 +127,34 @@ def select_balanced_cache_rows(
     *,
     seed: int = 7,
     max_samples_per_split: int | None = None,
+    exact_sample_tokens: tuple[str, ...] | None = None,
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
     """Select rows round-robin by split/sequence/track/stratum before reading media."""
 
     if "sequence_id" not in rows.columns:
         raise ValueError("Cache sampling requires a sequence_id column.")
+    if exact_sample_tokens is not None:
+        if max_samples_per_split is not None or set(sequence_roles.values()) != {"train"}:
+            raise ValueError("Exact token selection requires TRAIN-only roles and no sample cap")
+        tokens = list(exact_sample_tokens)
+        if not tokens or len(tokens) != len(set(tokens)):
+            raise ValueError("Exact token selection requires nonempty unique tokens")
+        selected = rows.loc[rows["sample_token"].isin(tokens)].copy()
+        if len(selected) != len(tokens) or set(selected["sample_token"]) != set(tokens):
+            raise ValueError("Exact token selection has missing or duplicate source rows")
+        if not set(selected["sequence_id"].astype(str)) <= set(sequence_roles):
+            raise ValueError("Exact token selection contains a sequence outside TRAIN roles")
+        selected = selected.set_index("sample_token", drop=False).loc[tokens].reset_index(drop=True)
+        return selected, {
+            "selection_mode": "exact_prospectively_registered_tokens",
+            "selection_seed": None,
+            "targets_used_for_selection": False,
+            "candidate_count_by_split_sequence_track_bucket": {},
+            "selected_count_by_split_sequence_track_bucket": {},
+            "candidate_count": int(len(rows)),
+            "selected_count": len(tokens),
+            "discard_count": int(len(rows) - len(tokens)),
+        }
     selected_indices: list[int] = []
     candidate_counts: dict[str, int] = {}
     selected_counts: dict[str, int] = {}
