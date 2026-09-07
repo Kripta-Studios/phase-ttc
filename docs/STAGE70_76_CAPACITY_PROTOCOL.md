@@ -86,3 +86,12 @@ sin ese intérprete encontró cuatro errores de stubs de pandas; no se cambió l
 lectura numérica para eludirlos. Cero updates de optimizador en estas pruebas.
 La conexión de métricas/comparadores ampliados continúa pendiente; esta corrección
 de identidad no autoriza por sí sola la evaluación del conjunto ampliado.
+
+Los contrastes pareados admiten ahora el universo ampliado explícitamente, con
+pesos normalizados sobre buckets presentes y diferencias por secuencia sin el
+factor fijo de nueve. Reciben los draws compartidos del bootstrap por adquisición;
+su salida distingue esa incertidumbre del cálculo histórico exacto. Pruebas con
+3, 22 y 27 secuencias, adquisiciones relacionadas y buckets ausentes pasan junto
+con las pruebas históricas: 16 tests CPU, Ruff y Pyright sin errores, cero updates.
+Recibo: capacity_qa/CONTRASTS_VARIABLE_COHORT_ZERO_UPDATES.xml. Esto cierra la
+primitiva de contrastes; su conexión al evaluador y los comparadores sigue pendiente.

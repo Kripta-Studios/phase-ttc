@@ -107,3 +107,35 @@ def test_mechanism_contrasts_reject_misaligned_draw_columns(fixture):
     metadata, _, _, _ = fixture
     with pytest.raises(ValueError, match="shared paired"):
         paired_contrasts(metadata, np.ones((36, 2)), np.ones((8, 1)), ["A", "D"], (("A", "D"),))
+
+
+@pytest.mark.parametrize("sequence_count", [3, 22, 27])
+def test_expanded_contrasts_keep_acquisitions_and_missing_bucket_estimand(sequence_count):
+    from e_jepa_ttc.evaluation.capacity_metrics import acquisition_bootstrap
+
+    # One present bucket per sequence; related sequences share a complete cluster.
+    metadata = pd.DataFrame(
+        {
+            "sample_token": [f"r{i}" for i in range(sequence_count)],
+            "sequence_id": [f"s{i}" for i in range(sequence_count)],
+            "acquisition_group": [f"a{i % 3}" for i in range(sequence_count)],
+            "target_ttc_s": np.full(sequence_count, 2.0),
+        }
+    )
+    losses = np.column_stack((np.arange(sequence_count), np.arange(sequence_count) + 6.0))
+    draws, _ = acquisition_bootstrap(metadata, losses)
+    result = paired_contrasts(
+        metadata,
+        losses,
+        draws,
+        ["A-4M", "EXTRA-4M"],
+        (("A-4M", "EXTRA-4M"), ("A-8M", "EXTRA-4M")),
+        expanded=True,
+    )
+    paired = result["A-4M_minus_EXTRA-4M"]
+    assert paired["delta"] == pytest.approx(-6)
+    assert paired["per_sequence_delta"] == pytest.approx([-6] * sequence_count)
+    assert paired["acquisition_ci95"] == pytest.approx([-6, -6])
+    assert paired["exact_sequence"] is None
+    assert "hierarchical_ci95" not in paired
+    assert result["A-8M_minus_EXTRA-4M"]["status"] == "UNAVAILABLE_OR_INVALID_ENDPOINT"

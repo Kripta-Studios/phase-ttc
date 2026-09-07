@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
+from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
 from e_jepa_ttc.evaluation.exact_sequence_v10 import exact_sequence_diagnostic
 from e_jepa_ttc.evaluation.risk_geometry_v10 import hierarchical_losses
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, strict_macro_mass
@@ -37,6 +38,8 @@ def paired_contrasts(
     sampled_losses: np.ndarray,
     names: list[str],
     pairs: tuple[tuple[str, str], ...],
+    *,
+    expanded: bool = False,
 ) -> dict[str, Any]:
     """Use the same paired draws for prospectively named mechanism/compute contrasts."""
     losses = np.asarray(losses, dtype=np.float64)
@@ -55,9 +58,12 @@ def paired_contrasts(
         raise ValueError("contrasts require aligned finite losses and shared paired draws")
     sequence = metadata.sequence_id.astype(str).to_numpy()
     sequences = sorted(set(sequence))
-    if len(sequences) != 9:
+    if not expanded and len(sequences) != 9:
         raise ValueError("initial contrasts retain exactly nine original sequences")
-    mass = strict_macro_mass(metadata.target_ttc_s.to_numpy(np.float64), sequence)
+    if expanded and len(sequences) < 3:
+        raise ValueError("expanded contrasts require at least three sequences")
+    mass_fn = present_bucket_mass if expanded else strict_macro_mass
+    mass = mass_fn(metadata.target_ttc_s.to_numpy(np.float64), sequence)
     result = {}
     for left, right in pairs:
         key = f"{left}_minus_{right}"
@@ -75,15 +81,22 @@ def paired_contrasts(
         delta = losses[:, li] - losses[:, ri]
         draws = sampled_losses[:, li] - sampled_losses[:, ri]
         per_sequence = np.array(
-            [9 * float(mass[sequence == seq] @ delta[sequence == seq]) for seq in sequences]
+            [
+                len(sequences) * float(mass[sequence == seq] @ delta[sequence == seq])
+                for seq in sequences
+            ]
         )
         result[key] = {
             **record,
             "status": "COMPLETE",
             "delta": float(mass @ delta),
-            "hierarchical_ci95": np.quantile(draws, [0.025, 0.975]).tolist(),
-            "hierarchical_fraction_negative": float(np.mean(draws < 0)),
-            "exact_sequence": exact_sequence_diagnostic(per_sequence),
+            ("acquisition_ci95" if expanded else "hierarchical_ci95"): np.quantile(
+                draws, [0.025, 0.975]
+            ).tolist(),
+            (
+                "acquisition_fraction_negative" if expanded else "hierarchical_fraction_negative"
+            ): float(np.mean(draws < 0)),
+            "exact_sequence": None if expanded else exact_sequence_diagnostic(per_sequence),
             "sequence_order": sequences,
             "per_sequence_delta": per_sequence.tolist(),
         }
