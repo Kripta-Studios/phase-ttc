@@ -295,3 +295,21 @@ de predicciones exteriores. Sigue pendiente conectar la tabla de comparadores
 reproducidos y su procedencia al exportador y ensamblador completos; este cierre
 no declara v11 listo para congelarse. La caché de 30.000 y el entrenamiento
 original siguieron activos, sin modificación de sus productores en ejecución.
+# Cierre CPU: filas completas del ensamblador estadístico (2026-09-07)
+
+El ensamblador inicial utiliza ahora el universo de tokens congelado por fold
+para v11, conserva acquisition_group y rechaza pérdidas de filas, duplicados,
+orden distinto, adquisiciones compartidas entre folds y diferencias de metadatos
+entre modelos. La comparación y su recuperación usan bootstrap por adquisición
+y masa normalizada sobre buckets presentes; el cálculo conjunto canónico usa
+la misma masa. El modo histórico sigue exigiendo 8.192 filas.
+
+Trece tests pasaron, incluyendo universos sintéticos de 22, 27 y 30.000 filas.
+Pyright detectó una ambigüedad de tipado en la reducción de nulos de pandas;
+se corrigió con la misma reducción sobre ndarray. Los tres tests afectados se
+repitieron correctamente; Ruff y Pyright quedaron limpios. Recibos:
+`EXPANDED_EVIDENCE_ROWS_ZERO_UPDATES.xml` y
+`EXPANDED_EVIDENCE_ROWS_TYPEFIX_ZERO_UPDATES.xml`. Cero updates y ninguna lectura
+de resultados exteriores. La conexión del exportador a comparadores reproducidos
+con linaje válido sigue pendiente y bloquea su uso científico ampliado; no se
+ha sustituido por la tabla histórica ni se ha creado un TRAINING_LOCK de v11.

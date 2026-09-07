@@ -12,11 +12,50 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_
 from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import (
     _export_matches_plan,
     canonical_oracle,
+    comparison_metadata,
     initial_contrasts,
 )
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, scientific_ttc
 from e_jepa_ttc.evaluation.stage70_76 import Evidence
 from e_jepa_ttc.training.stage73_factorial import Availability, Family, PlannedFit
+
+
+@pytest.mark.parametrize("count", [22, 27, 30000])
+def test_expanded_metadata_uses_all_frozen_rows_and_acquisitions(count):
+    availability = Availability(
+        True,
+        False,
+        "a" * 64,
+        "b" * 64,
+        capacities=("2M", "4M", "8M"),
+        primary_capacity="4M",
+    )
+    rows = pd.DataFrame(
+        {
+            "sample_token": [f"t{i}" for i in range(count)],
+            "sequence_id": [f"s{i % 22}" for i in range(count)],
+            "track_id": "track",
+            "outer_fold": [i % 22 % 3 for i in range(count)],
+            "target_ttc_s": 2.0,
+            "acquisition_group": [f"a{i % 22}" for i in range(count)],
+        }
+    )
+    lock = {
+        "availability": asdict(availability),
+        "capacity_cohort": {"sha256": "a" * 64},
+        "outer_tokens_by_fold": {
+            str(fold): list(rows.loc[rows.outer_fold == fold, "sample_token"]) for fold in range(3)
+        },
+    }
+    assert comparison_metadata(rows, lock).equals(rows)
+    with pytest.raises(ValueError, match="complete frozen fold tokens"):
+        comparison_metadata(rows.iloc[:-1], lock)
+    with pytest.raises(ValueError, match="duplicate"):
+        comparison_metadata(pd.concat([rows, rows.iloc[:1]]), lock)
+    with pytest.raises(ValueError, match="crosses frozen partitions"):
+        comparison_metadata(rows.assign(acquisition_group="pooled"), lock)
+    with pytest.raises(ValueError, match="binding"):
+        comparison_metadata(rows, {k: v for k, v in lock.items() if k != "capacity_cohort"})
 
 
 def test_initial_contrasts_keep_legacy_and_bind_expanded_sizes():

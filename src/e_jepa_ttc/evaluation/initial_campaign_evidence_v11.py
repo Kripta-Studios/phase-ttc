@@ -56,6 +56,41 @@ def _export_matches_plan(export: dict[str, Any], plan: PlannedFit) -> bool:
     )
 
 
+def comparison_metadata(base: pd.DataFrame, lock: dict[str, Any]) -> pd.DataFrame:
+    """Keep every frozen row and acquisition cluster in the expanded estimand."""
+    columns = ["sample_token", "sequence_id", "track_id", "outer_fold", "target_ttc_s"]
+    expanded = Availability(**lock["availability"]).primary_capacity == "4M"
+    if not expanded:
+        if len(base) != 8192:
+            raise ValueError("initial evidence does not cover every original development row")
+        return cast(pd.DataFrame, base[columns].copy())
+    if "capacity_cohort" not in lock:
+        raise ValueError("expanded evidence requires its frozen cohort binding")
+    metadata = cast(pd.DataFrame, base[[*columns, "acquisition_group"]].copy())
+    if (
+        metadata.empty
+        or metadata.sample_token.duplicated().any()
+        or np.asarray(
+            metadata[["sample_token", "sequence_id", "acquisition_group", "outer_fold"]].isna()
+        ).any()
+        or (metadata.acquisition_group.astype(str).str.strip() == "").any()
+        or set(metadata.outer_fold) != {0, 1, 2}
+    ):
+        raise ValueError("expanded evidence has missing, duplicate or unassigned rows")
+    for fold in (0, 1, 2):
+        if (
+            list(metadata.loc[metadata.outer_fold == fold, "sample_token"])
+            != lock["outer_tokens_by_fold"][str(fold)]
+        ):
+            raise ValueError("expanded evidence differs from the complete frozen fold tokens")
+    if (
+        metadata.groupby("acquisition_group").outer_fold.nunique().max() != 1
+        or metadata.groupby("sequence_id").acquisition_group.nunique().max() != 1
+    ):
+        raise ValueError("expanded acquisition or sequence crosses frozen partitions")
+    return metadata
+
+
 def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
     """Revalidate immutable source chains before any conditional training authorization."""
     root = Path(lock["initial_evidence_root"])
@@ -117,6 +152,9 @@ def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
         )
     )
     expanded = availability.primary_capacity == "4M"
+    if expanded:
+        for rows in canonical_rows.values():
+            comparison_metadata(rows, lock)
     _verify_comparison(comparison, comparison_path.parent, expected, expanded_cohort=expanded)
     for family, name in names.items():
         item = comparison["comparisons"][name]
@@ -271,8 +309,12 @@ def build_initial_evidence(
         )
         row_sources[name] = export["rows"]
     base = model_rows[expected[0]]
-    columns = ["sample_token", "sequence_id", "track_id", "outer_fold", "target_ttc_s"]
-    metadata = cast(pd.DataFrame, base[columns].copy())
+    expanded = availability.primary_capacity == "4M"
+    metadata = comparison_metadata(base, lock)
+    if expanded:
+        for rows in model_rows.values():
+            if not comparison_metadata(rows, lock).equals(metadata):
+                raise ValueError("expanded models reference different targets or acquisitions")
     old = base[["A5_ttc_s", "C2F_ttc_s", "PAIR_ttc_s"]].to_numpy(np.float64)
     risk = base["S65-RISK17_ttc"].to_numpy(np.float64)
     reference_columns = ["A5_ttc_s", "C2F_ttc_s", "PAIR_ttc_s", "S65-RISK17_ttc"]
@@ -284,8 +326,6 @@ def build_initial_evidence(
         for rows in model_rows.values()
     ):
         raise ValueError("initial models were compared against different historical expert rows")
-    if len(base) != 8192:
-        raise ValueError("initial evidence does not cover every original development row")
     comparison_root = output / "comparison_attempts"
     comparison_root.mkdir(exist_ok=True)
     completed_comparison = None
@@ -306,14 +346,16 @@ def build_initial_evidence(
             output=directory,
             check=owner.check,
             contrasts=initial_contrasts(availability),
+            expanded_cohort=expanded,
         )
         completed_comparison = directory / "COMPARISON.json"
     comparison = json.loads(completed_comparison.read_text(encoding="utf-8"))
-    _verify_comparison(comparison, completed_comparison.parent, set(expected))
-    target = benchmark_phase(metadata.target_ttc_s.to_numpy(np.float64))
-    mass = strict_macro_mass(
-        metadata.target_ttc_s.to_numpy(np.float64), metadata.sequence_id.to_numpy()
+    _verify_comparison(
+        comparison, completed_comparison.parent, set(expected), expanded_cohort=expanded
     )
+    target = benchmark_phase(metadata.target_ttc_s.to_numpy(np.float64))
+    mass_fn = present_bucket_mass if expanded else strict_macro_mass
+    mass = mass_fn(metadata.target_ttc_s.to_numpy(np.float64), metadata.sequence_id.to_numpy())
     old_oracle = (10000 * abs(benchmark_phase(old) - target[:, None])).min(axis=1)
     joint = old_oracle.copy()
     canonical_evidence = {}
