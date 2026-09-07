@@ -317,3 +317,57 @@ def test_capacity_launcher_cannot_write_original_root(launcher, monkeypatch, tmp
     )
     with pytest.raises(ValueError, match="another campaign"):
         launcher.main()
+
+
+def test_powershell_logs_and_resumes_existing_lock_without_hiding_exit_code(tmp_path):
+    import shutil
+    import subprocess
+    import sys
+
+    shell = shutil.which("pwsh") or shutil.which("powershell")
+    if shell is None:
+        pytest.skip("PowerShell unavailable on this host")
+    scripts = tmp_path / "scripts"
+    scripts.mkdir()
+    shutil.copyfile(
+        Path(__file__).resolve().parents[2] / "scripts/run_stage70_76.ps1",
+        scripts / "run_stage70_76.ps1",
+    )
+    (scripts / "run_scientific_recovery_v10_stage70_76.py").write_text(
+        "import sys,json\nfrom pathlib import Path\n"
+        "a=sys.argv\nroot=Path(a[a.index('--output-root')+1])\nroot.mkdir(parents=True,exist_ok=True)\n"
+        "(root/'TRAINING_LOCK.json').write_text('{}')\n"
+        "print('resume='+str('--resume' in a),flush=True)\n"
+        "print('synthetic warning',file=sys.stderr,flush=True)\n"
+        "sys.exit(json.loads(Path(a[a.index('--campaign')+1]).read_text())['exit'])\n",
+        encoding="utf-8",
+    )
+    campaign = tmp_path / "campaign.json"
+    local = tmp_path / "local.json"
+    local.write_text("{}")
+    output = tmp_path / "artifacts/stage70_76_capacity"
+    command = [
+        shell,
+        "-NoProfile",
+        "-File",
+        str(scripts / "run_stage70_76.ps1"),
+        "-Python",
+        sys.executable,
+        "-Campaign",
+        str(campaign),
+        "-LocalPaths",
+        str(local),
+        "-OutputRoot",
+        str(output),
+        "-Capacity",
+    ]
+    for code, resume in ((0, False), (0, True), (17, True)):
+        campaign.write_text(json.dumps({"exit": code}))
+        run = subprocess.run(command, capture_output=True, text=True, timeout=60)
+        assert run.returncode == code, run.stdout + run.stderr
+        log_root = output.with_name(output.name + "_launcher_logs")
+        state = json.loads(sorted(log_root.glob("*.json"))[-1].read_text(encoding="utf-8-sig"))
+        assert state["resume"] is resume and state["exit_code"] == code
+        assert state["status"] == ("COMMAND_FINISHED" if code == 0 else "INTERRUPTED")
+        text = Path(state["log"]).read_text(encoding="utf-8-sig")
+        assert "synthetic warning" in text and f"resume={resume}" in text

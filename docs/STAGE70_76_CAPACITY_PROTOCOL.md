@@ -905,3 +905,27 @@ alteración/duplicación/descuadre y carga tardía. Ruff, formato y Pyright de l
 módulos afectados pasan. Cero optimizer updates ejecutados en este bloque.
 Queda pendiente incorporar la referencia física al lock completo cuando sus
 prerrequisitos estén cerrados; la integración de importación ya no está pendiente.
+
+
+## 2026-09-07 — Lanzador PowerShell: logs y recuperación
+
+Se amplió el único `scripts/run_stage70_76.ps1` existente. `-Capacity` selecciona
+la raíz v11; las rutas de salida deben pertenecer al worktree del script. En modo
+execute-authorized detecta TRAINING_LOCK.json y añade --resume automáticamente.
+Cada invocación guarda argumentos, estado, código de salida y stdout/stderr en
+la carpeta hermana `<campaign>_launcher_logs`, fuera del paquete científico.
+Un handle exclusivo impide dos invocaciones simultáneas del mismo lanzador.
+El owner Python continúa siendo la autoridad de exclusión del escritor GPU.
+
+El script es síncrono: llama al runner existente, que encadena fits, análisis y
+paquete. No relanza indiscriminadamente un error científico o de integridad;
+una nueva invocación recupera el estado validado por el runner. COMMAND_FINISHED
+sólo significa exit code cero, no acredita finalización científica por sí solo.
+La prueba PowerShell real usa un runner sintético: arranque, reanudación tras
+crear lock y fallo con exit code17. Verifica logs de stderr y propagación exacta
+del código. Pasó, sin optimizadores; XML: qa/POWERSHELL_RESUME_LOGGING_QA.xml.
+
+Aún no es el regenerador integral solicitado. La reconstrucción de cachés y los
+manifiestos resueltos desde cero deben conectarse a esta misma entrada cuando
+se cierre su flujo reproducible. No se han añadido scripts duplicados ni se ha
+modificado el lanzador congelado del original.
