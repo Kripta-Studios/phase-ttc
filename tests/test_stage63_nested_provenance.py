@@ -5,6 +5,7 @@ import copy
 import pandas as pd
 import pytest
 
+from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest
 from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings
 from e_jepa_ttc.data.nested_provenance import (
     validate_exact_oof_union,
@@ -12,6 +13,117 @@ from e_jepa_ttc.data.nested_provenance import (
     validate_nested_split,
     validate_uninitialized_producer_contract,
 )
+from e_jepa_ttc.training.capacity_campaign import producer_roles
+
+
+@pytest.mark.parametrize("inner", [None, 0, 1, 2])
+def test_capacity_comparator_split_binds_roles_and_rejects_acquisition_leaks(inner):
+    canonical = pd.DataFrame(
+        {
+            "sample_token": [f"t{i}" for i in range(54)],
+            "sequence_id": [f"s{i // 2}" for i in range(54)],
+            "track_id": "track",
+            "outer_fold": [i // 2 % 3 for i in range(54)],
+            "acquisition_group": [f"a{i // 2}" for i in range(54)],
+        }
+    )
+    cohort = {
+        "recipe": {"prefix": "fixed"},
+        "sequence_to_group": dict(
+            zip(canonical.sequence_id, canonical.acquisition_group, strict=True)
+        ),
+        "folds": [
+            {
+                "outer_fold": f,
+                "train_sequences": sorted(
+                    set(canonical.loc[canonical.outer_fold != f, "sequence_id"])
+                ),
+                "held_sequences": sorted(
+                    set(canonical.loc[canonical.outer_fold == f, "sequence_id"])
+                ),
+            }
+            for f in range(3)
+        ],
+    }
+    cohort["artifact_sha256"] = object_digest(cohort)
+    recipe = producer_roles(cohort)
+    role = recipe["folds"][0]
+    train = role["fit_sequences"] if inner is None else role["inner_roles"][inner]["fit_sequences"]
+    dev = (
+        role["outer_held_sequences"]
+        if inner is None
+        else role["inner_roles"][inner]["prediction_sequences"]
+    )
+    split = {}
+    for name, sequences in (("train", train), ("dev", dev)):
+        selected = canonical.loc[canonical.sequence_id.isin(sequences)]
+        split.update(
+            {
+                f"{name}_sequence_ids": sequences,
+                f"{name}_rows": len(selected),
+                f"{name}_sample_tokens_sha256": hash_sorted_token_strings(selected.sample_token),
+            }
+        )
+    protocol = {
+        "outer_fold": 0,
+        "inner_fold": inner,
+        "folds": [split],
+        "producer_roles_sha256": recipe["artifact_sha256"],
+    }
+    artifact = {
+        "outer_fold": 0,
+        "inner_fold": inner,
+        "role": "outer_dev" if inner is None else "inner_oof",
+        "producer_roles_sha256": recipe["artifact_sha256"],
+    }
+    output = canonical.loc[canonical.sequence_id.isin(dev)].assign(outer_fold=0, inner_fold=inner)
+    result = validate_nested_split(
+        protocol,
+        artifact,
+        canonical,
+        output,
+        outer_fold=0,
+        inner_fold=inner,
+        producer_recipe=recipe,
+    )
+    assert result["excluded_diagnostic_sequence_ids"] == role["diagnostic_sequences"]
+    assert result["ancestry_validated"] is False
+    with pytest.raises(ValueError, match="bound protocol"):
+        validate_nested_split(
+            protocol,
+            {**artifact, "producer_roles_sha256": "0" * 64},
+            canonical,
+            output,
+            outer_fold=0,
+            inner_fold=inner,
+            producer_recipe=recipe,
+        )
+    contaminated = canonical.copy()
+    contaminated.loc[contaminated.sequence_id == train[0], "acquisition_group"] = canonical.loc[
+        canonical.sequence_id == dev[0], "acquisition_group"
+    ].iloc[0]
+    with pytest.raises(ValueError, match="acquisition crosses"):
+        validate_nested_split(
+            protocol,
+            artifact,
+            contaminated,
+            output,
+            outer_fold=0,
+            inner_fold=inner,
+            producer_recipe=recipe,
+        )
+    wrong = copy.deepcopy(protocol)
+    wrong["folds"][0]["train_sequence_ids"] = [*train, *role["diagnostic_sequences"]]
+    with pytest.raises(ValueError, match="exact registered role"):
+        validate_nested_split(
+            wrong,
+            artifact,
+            canonical,
+            output,
+            outer_fold=0,
+            inner_fold=inner,
+            producer_recipe=recipe,
+        )
 
 
 @pytest.mark.parametrize("count", [8192, 30000])

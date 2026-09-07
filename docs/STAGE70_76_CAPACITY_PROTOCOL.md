@@ -342,3 +342,22 @@ fijos de RAM/VRAM. La autorización de concurrencia no declara suficientes los
 recursos por sí sola: los trabajos conservan su admisión medida. V11 mantiene
 su orden autorizado después del grafo original y requiere todavía integración,
 QA técnica pendiente, presupuesto completo y congelación antes de sus fits.
+# Cierre CPU: validación de particiones de comparadores (2026-09-07)
+
+Se amplió el validador existente `validate_nested_split` para recibir el
+manifiesto prospectivo de roles, ligado tanto al protocolo como al artefacto
+del productor. Comprueba el split exterior y los tres interiores, exclusión del
+grupo diagnóstico, conjuntos de exclusión de ancestros/normalización/pretexto,
+tokens completos y ausencia de adquisiciones compartidas entre roles. El modo
+histórico conserva cuatro secuencias de entrenamiento y dos de evaluación
+interior. No se marca ancestry_validated: pesos iniciales y profesor requieren
+todavía comprobación independiente. El llamador histórico no cambia de modo
+automáticamente; la integración ampliada debe aportar el manifiesto ligado.
+
+Nueve tests pasaron, incluidos los cuatro productores de una cohorte sintética
+de 27 secuencias y ataques de contaminación/sustitución. Ruff detectó inicialmente
+formato y zip sin strict en el fixture; se corrigieron. Pyright quedó limpio.
+Recibo `COMPARATOR_REGISTERED_SPLITS_ZERO_UPDATES.xml`; cuatro casos afectados
+se repiten tras hacer explícito strict en el fixture. Cero updates, ninguna
+lectura de datos o resultados exteriores. Esto no sustituye ejecutar los
+comparadores ampliados ni conectar sus salidas al exportador.

@@ -7,6 +7,7 @@ from typing import Any
 
 import pandas as pd
 
+from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest
 from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings
 
 
@@ -112,6 +113,7 @@ def validate_nested_split(
     *,
     outer_fold: int,
     inner_fold: int | None,
+    producer_recipe: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Require exact disjoint producer training/dev sets and row-level fold identity."""
     if canonical["sample_token"].duplicated().any():
@@ -133,7 +135,76 @@ def validate_nested_split(
     outer_train = set(canonical.sequence_id) - outer_dev
     if train_sequences & dev_sequences or train_sequences & outer_dev:
         raise ValueError("nested producer trained on inner-dev or outer-dev")
-    if inner_fold is None:
+    diagnostic: set[str] = set()
+    if producer_recipe is not None:
+        identity = producer_recipe.get("artifact_sha256")
+        if (
+            object_digest({k: v for k, v in producer_recipe.items() if k != "artifact_sha256"})
+            != identity
+            or producer_recipe.get("kind") != "CAPACITY_NESTED_PRODUCER_ROLES"
+            or protocol.get("producer_roles_sha256") != identity
+            or artifact.get("producer_roles_sha256") != identity
+        ):
+            raise ValueError("expanded producer roles differ from bound protocol and artifact")
+        matches = [r for r in producer_recipe["folds"] if r["outer_fold"] == outer_fold]
+        if len(matches) != 1:
+            raise ValueError("expanded producer requires one exact outer role")
+        role = matches[0]
+        diagnostic = set(role["diagnostic_sequences"])
+        fit = set(role["fit_sequences"])
+        excluded = outer_dev | diagnostic
+        if (
+            not diagnostic
+            or not fit
+            or diagnostic & (fit | outer_dev)
+            or fit | diagnostic != outer_train
+            or set(role["outer_held_sequences"]) != outer_dev
+            or set(role["all_fit_ancestor_exclusions"]) != excluded
+            or set(role["normalization_and_pretext_exclusions"]) != excluded
+        ):
+            raise ValueError("expanded outer diagnostic or ancestor exclusions changed")
+        expected_train, expected_dev = fit, outer_dev
+        if inner_fold is not None:
+            inners = [r for r in role["inner_roles"] if r["inner_fold"] == inner_fold]
+            if len(inners) != 1:
+                raise ValueError("expanded producer requires one exact inner role")
+            expected_train = set(inners[0]["fit_sequences"])
+            expected_dev = set(inners[0]["prediction_sequences"])
+            if (
+                not expected_train
+                or not expected_dev
+                or expected_train & expected_dev
+                or expected_train | expected_dev != fit
+                or set(inners[0]["all_fit_ancestor_exclusions"]) != excluded | expected_dev
+            ):
+                raise ValueError("expanded inner partition or ancestor exclusions changed")
+        if train_sequences != expected_train or dev_sequences != expected_dev:
+            raise ValueError("expanded producer differs from its exact registered role")
+        if "acquisition_group" not in canonical or canonical.acquisition_group.isna().any():
+            raise ValueError("expanded producer requires acquisition identities")
+        assigned = canonical.assign(
+            source_role=canonical.sequence_id.map(
+                {
+                    s: role_name
+                    for role_name, members in (
+                        ("train", train_sequences),
+                        ("dev", dev_sequences),
+                        ("diagnostic", diagnostic),
+                        (
+                            "excluded",
+                            set(canonical.sequence_id)
+                            - train_sequences
+                            - dev_sequences
+                            - diagnostic,
+                        ),
+                    )
+                    for s in members
+                }
+            )
+        )
+        if assigned.groupby("acquisition_group").source_role.nunique().max() != 1:
+            raise ValueError("expanded acquisition crosses producer roles")
+    elif inner_fold is None:
         if train_sequences != outer_train or dev_sequences != outer_dev:
             raise ValueError("outer-final split differs from canonical split")
     elif (
@@ -163,7 +234,7 @@ def validate_nested_split(
         raise ValueError("nested output producer outer_fold differs from its contract")
     if inner_fold is not None and not actual["inner_fold"].eq(inner_fold).all():
         raise ValueError("nested output inner_fold differs from producer")
-    return {
+    result = {
         "split_relationships_validated": True,
         "train_sequence_ids": sorted(train_sequences),
         "dev_sequence_ids": sorted(dev_sequences),
@@ -171,3 +242,9 @@ def validate_nested_split(
         "ancestry_validated": False,
         "output_outer_fold_semantics": "producer_outer_experiment",
     }
+    if producer_recipe is not None:
+        result.update(
+            producer_roles_sha256=producer_recipe["artifact_sha256"],
+            excluded_diagnostic_sequence_ids=sorted(diagnostic),
+        )
+    return result
