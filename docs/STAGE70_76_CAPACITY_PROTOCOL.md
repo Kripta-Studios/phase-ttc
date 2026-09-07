@@ -258,3 +258,15 @@ del manifiesto; no infiere independencia científica de la mera asignación.
 La ruta histórica mantiene su fallback declarado. Dos tests afectados pasan
 (grupo compartido, sustitución de tokens, reloj y ROI vacío), Ruff y Pyright
 pasan, cero updates. Recibo PHYSICAL_ACQUISITION_GROUPS_ZERO_UPDATES.xml.
+
+Bindings físicos de30.000 completados:27 fuentes TRAIN,60.000 ventanas, tokens
+únicos y folds iguales al manifiesto. Se verificaron firmas, hashes físicos y
+cobertura exacta de dos ventanas por token. RAW_BOUND.json tiene identidad
+91f89ac5e8371a04c421ff4acf6bf79f659456d8108a221519cee7937b4fa7a6;
+RAW_BINDING_MANIFEST.json, c63188d0d2cf8512a757a79ea5a499fa6a82bca721923404f5e19497c809643e.
+El CSV cerrado tiene SHA25603a3a5a2da5ba20b3126b85a9cc0b8adf7cfd6727061e72427afbfcfcbd57ae0.
+La reserva combinada inicial fue35.017.560.800 bytes y dejó72.854.777.120 bytes
+proyectados, por encima del mínimo40GB. La admisión se vuelve a medir al comenzar
+el constructor de conteos existente, ahora en CPU sobre representation_30000/counts.
+RAW_BINDINGS_VERIFIED.json conserva la comprobación; caché y normalización siguen
+pendientes, cero updates y el escritor GPU original permanece separado.
