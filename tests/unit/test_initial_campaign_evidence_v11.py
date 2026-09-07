@@ -15,7 +15,7 @@ from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import (
 )
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, scientific_ttc
 from e_jepa_ttc.evaluation.stage70_76 import Evidence
-from e_jepa_ttc.training.stage73_factorial import Availability, PlannedFit
+from e_jepa_ttc.training.stage73_factorial import Availability, Family, PlannedFit
 
 
 def test_evidence_rejects_capacity_substitution_and_retains_original_export():
@@ -57,7 +57,7 @@ def test_oracle_ignores_better_control_and_keeps_failed_canonical_identity(count
     failed = rows.assign(finite=False, failure=True)
     control = rows.assign(prediction_ttc_s=targets, mid_loss=0.0)
     values = {"DIRECT": rows, "PPS": failed, "PAIR": control}
-    names = {"C_DIRECT": "DIRECT", "C_PPS": "PPS"}
+    names: dict[Family, str] = {"C_DIRECT": "DIRECT", "C_PPS": "PPS"}
     gain, valid = canonical_oracle(values, names, expanded_cohort=expanded)
     assert gain == pytest.approx(5, abs=1e-10)
     assert valid == {"C_DIRECT": True, "C_PPS": False}
