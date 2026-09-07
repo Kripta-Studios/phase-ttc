@@ -12,6 +12,7 @@ from e_jepa_ttc.models.projective_phase_network import ProjectivePhaseNetwork
 from e_jepa_ttc.training.capacity_campaign import (
     admit_capacity_budget,
     capacity_graph,
+    comparator_epoch_updates,
     producer_roles,
 )
 from e_jepa_ttc.training.stage73_factorial import Availability
@@ -129,6 +130,25 @@ def cohort_input(count):
         SamplingRow(f"{seq}_{i}", seq, "track", i * 20000) for seq in mapping for i in range(20)
     ]
     return mapping, rows
+
+
+@pytest.mark.parametrize(
+    "rows,batch,accumulation,expected",
+    [(32, 32, 1, 18), (33, 32, 1, 36), (65, 32, 2, 36), (1, 32, 8, 18), (18889, 32, 1, 10638)],
+)
+def test_comparator_budget_counts_partial_batches_and_last_accumulation(
+    rows, batch, accumulation, expected
+):
+    assert (
+        comparator_epoch_updates(rows, epochs=18, batch_size=batch, accumulation=accumulation)
+        == expected
+    )
+
+
+@pytest.mark.parametrize("rows", [0, -1, True, 1.5])
+def test_comparator_budget_rejects_unknown_or_invalid_row_counts(rows):
+    with pytest.raises(ValueError, match="positive integers"):
+        comparator_epoch_updates(rows, epochs=18, batch_size=32, accumulation=1)
 
 
 def test_explicit_amended_budget_still_reserves_complete_graph_and_external_costs():

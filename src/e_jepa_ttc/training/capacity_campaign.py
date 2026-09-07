@@ -17,6 +17,21 @@ from e_jepa_ttc.training.stage73_factorial import (
 )
 
 
+def comparator_epoch_updates(
+    training_rows: int, *, epochs: int, batch_size: int, accumulation: int
+) -> int:
+    """Count the existing causal-scale loader's final partial batch and accumulation.
+
+    The loader does not drop rows and train_one_real_epoch steps on the final
+    batch even when the accumulation group is incomplete. This is a reservation
+    for a fixed last-epoch endpoint, never a count inferred from early stopping.
+    """
+    if any(type(n) is not int or n < 1 for n in (training_rows, epochs, batch_size, accumulation)):
+        raise ValueError("comparator row and execution counts must be positive integers")
+    batches = (training_rows + batch_size - 1) // batch_size
+    return epochs * ((batches + accumulation - 1) // accumulation)
+
+
 def capacity_graph(availability: Availability) -> dict[str, Any]:
     """Register all36 S72 endpoints and restrict investigations to prospective4M."""
     if availability.capacities != ("2M", "4M", "8M") or availability.primary_capacity != "4M":

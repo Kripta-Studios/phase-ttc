@@ -157,3 +157,31 @@ NESTED_CAPACITY_MATERIALIZATION_ZERO_UPDATES.xml y
 NESTED_CAPACITY_SUBSET_ZERO_UPDATES.xml. Ruff y Pyright afectados pasan.
 Quedan la generación de recetas reales vinculadas a la nueva caché de30.000,
 su incorporación al lock/ejecutor y los comparadores antiguos con igual linaje.
+
+## Coste de encoders comparadores bajo las 30.000 muestras
+
+La contabilidad deriva las filas de los roles compartidos (incluido diagnóstico)
+y las18 épocas, batch32 y acumulación1 de las recetas A5/C2F/PAIR originales.
+El loader conserva el último batch parcial y el entrenador ejecuta también la
+última acumulación incompleta: coste=épocas×ceil(ceil(filas/batch)/acumulación).
+La reserva presupone endpoint fijo last_epoch, modo que ya admite el entrenador;
+los YAML históricos con dev_best/early stopping no son configuraciones ejecutables
+de v11 sin resolver antes esa adaptación y sus nuevas fuentes.
+
+sample_30000_review/COMPARATOR_ENCODER_BUDGET.json contiene36 productores y bindings
+de sus configuraciones:95.742 updates exteriores y191.322 interiores condicionales,
+total287.064 para encoders. Los6.840 updates de PAIR-INNER son una cabeza separada,
+no sustituyen el coste del encoder PAIR. Quedan cabezas/routing y sus ancestros,
+teacher si exige fits, Garl/S76, QA y recuperación; el presupuesto total sigue
+incompleto y el manifiesto no admite ejecución. Nueve pruebas de contabilidad
+pasan, Ruff y Pyright del módulo pasan, cero updates. Recibo:
+capacity_qa/COMPARATOR_EPOCH_BUDGET_ZERO_UPDATES.xml.
+
+Se leyó únicamente el manifiesto histórico local del teacher DINO, no pesos ni RGB.
+Identifica revisión e959efa74c867491dcfe3ec3e4f97382e39025b3 y pesos SHA256
+96ad081d5863ba14707d2e3bb734b7fa8dfbf3248cb67ddfcc74d86dd160d628,
+pero sus targets están vinculados a la caché antigua de8.192 filas. Es referencia
+de procedencia, no autorización para reutilizar targets en filas nuevas ni prueba
+de exclusión de held-out en el preentrenamiento global del teacher. Deben resolverse
+esa exposición y los bindings de nuevas representaciones/targets antes del fit.
+No se eliminó distillation ni se sustituyó por otro comparador sin declararlo.
