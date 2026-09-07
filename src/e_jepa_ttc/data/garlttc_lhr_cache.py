@@ -1213,6 +1213,7 @@ def materialize_garlttc_lhr_cache(
 
     eap_root = Path(eap_root).resolve()
     garlttc_root = Path(garlttc_root).resolve()
+    provenance = _repository_provenance()
     split_artifact = read_structured(split_path)
     assignments = split_artifact.get("assignments")
     if not isinstance(assignments, dict):
@@ -1552,7 +1553,6 @@ def materialize_garlttc_lhr_cache(
         garlttc_root / "data" / "train.parquet",
         garlttc_root / "annotations" / "train.parquet",
     )
-    provenance = _repository_provenance()
     protocol_path = (
         Path(__file__).resolve().parents[3] / "configs/protocol/garlttc_official_v1.yaml"
     )

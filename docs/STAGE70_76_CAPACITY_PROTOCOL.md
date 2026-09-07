@@ -666,3 +666,25 @@ La adición posterior de rutas al manifiesto sólo registra variables ya resuelt
 Queda cerrada esta dependencia de aislamiento del índice. La materialización
 real, su paridad de representación y generación de features siguen pendientes;
 la existencia del índice no acredita todavía los comparadores ni congela v11.
+
+# Paridad de una consulta TRAIN compartida (2026-09-07)
+
+Se eligió por identidad el primer token lexicográfico compartido con el primer
+shard histórico TRAIN, antes de calcular su representación. El constructor
+actual, sobre las particiones aisladas y eventos crudos autorizados, reproduce
+exactamente los siete campos comprobados: tensor [3,12,128,128], cajas, ROI
+común, intervalo temporal, alturas visibles, movimiento observable y TTC. Todas
+las diferencias máximas son cero. Los handles HDF5 se cerraron al terminar.
+
+Recibo `COMPARATOR_REPRESENTATION_PARITY.json`, SHA256 físico
+`70ae409f69c1932a9eb6660c02b3b40cbbb837224494ce8cb5c68610ae684cd9`.
+Es una comprobación técnica de una consulta, con cero optimizer updates/GPU;
+no acredita todos los tokens ni resultados de los modelos. Se leyeron etiquetas
+y eventos TRAIN de la consulta, sin scores, confirmación ni grupos protegidos.
+
+El constructor captura ahora la procedencia Git al comenzar, antes de cargar
+el índice, para no atribuir sus datos a commits de evaluación hechos mientras
+se materializa. El cambio sólo adelanta esa observación; no altera filas,
+representación ni fingerprints de reanudación existentes. Los archivos del
+productor se vincularán en el manifiesto local del trabajo y se conservarán
+mientras esté activo; antes de reanudar se comprobarán esos hashes.
