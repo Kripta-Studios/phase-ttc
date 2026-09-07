@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any, cast
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
-from e_jepa_ttc.training.stage73_factorial import Family, PlannedFit
+from e_jepa_ttc.training.stage73_factorial import Availability, Family, PlannedFit
 
 
 def publish_blocked_confirmation(
@@ -53,7 +53,13 @@ def publish_blocked_confirmation(
             for seed in (7, 13, 23):
                 for fold in range(3):
                     stage = ("S72" if name.startswith("S72") else "S73") if seed == 7 else "S74"
-                    plan = PlannedFit(stage, name, fold, seed)
+                    plan = PlannedFit(
+                        stage,
+                        name,
+                        fold,
+                        seed,
+                        capacity=Availability(**lock["availability"]).primary_capacity,
+                    )
                     cost_path = (
                         Path(lock["endpoint_root"])
                         / plan.job_id

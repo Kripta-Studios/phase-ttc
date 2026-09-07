@@ -430,3 +430,22 @@ Pyright, sin alterar su comportamiento. No se repitió QA ajeno al cambio.
 Permanece pendiente la construcción y conexión de tablas de comparadores
 ampliadas con procedencia válida; este cambio no convierte las tablas históricas
 en comparadores válidos para v11 ni declara S75 listo para ejecución científica.
+# Cierre de evidencia de replicación por capacidad (2026-09-07)
+
+La evidencia S74 ahora enlaza cada exportación con la capacidad principal y su
+candidate_key, acepta el universo ampliado congelado mediante el mismo validador
+de filas de evidencia inicial y conserva acquisition_group para el bootstrap.
+Comprueba las mismas filas/targets/adquisiciones entre las tres semillas. La
+recuperación mantiene la misma firma estadística ampliada. S76 busca los costes
+de despliegue del endpoint con esa capacidad, en lugar de reconstruirlo como 2 M.
+La falta de soporte de guards devuelve replicación no estable con causa explícita;
+no descarta semillas ni inventa evidencia. El comportamiento histórico mantiene
+sus contrastes y métrica originales.
+
+QA afectado: `REPLICATION_CAPACITY_ROWS_ZERO_UPDATES.xml`; incluye comparación
+real y recuperación inmutable con filas sintéticas en modos original y ampliado,
+retención de semillas, guards y pruebas S76. Ruff y Pyright limpios tras anotar
+el diccionario heterogéneo de argumentos del fixture. Cero optimizer updates;
+no se leyeron resultados científicos exteriores ni confirmación. Sigue pendiente
+la tabla ampliada de comparadores con procedencia válida y su conexión al
+exportador inicial, por lo que v11 todavía no está listo para congelarse.

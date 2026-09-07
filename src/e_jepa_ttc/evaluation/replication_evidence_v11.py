@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import math
 from pathlib import Path
-from typing import Any, cast
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -15,12 +15,17 @@ from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner
 from e_jepa_ttc.artifacts.replication_barrier_v11 import verify_replication_barrier
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned
-from e_jepa_ttc.evaluation.architecture_comparison_v11 import compare_standalone_rows
+from e_jepa_ttc.evaluation.architecture_comparison_v11 import (
+    INITIAL_CONTRASTS,
+    compare_standalone_rows,
+)
 from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import (
     _verify_comparison,
+    comparison_metadata,
     verify_initial_evidence,
 )
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
+from e_jepa_ttc.training.stage73_factorial import Availability, candidate_key
 
 
 def family_replication(comparison: dict[str, Any], family: str) -> dict[str, Any]:
@@ -31,6 +36,12 @@ def family_replication(comparison: dict[str, Any], family: str) -> dict[str, Any
         raise ValueError("replication evidence omitted a fixed seed")
     if not all(records[key]["technically_valid"] for key in keys):
         return {"stable": False, "reason": "FAILED_REPLICATION_ROWS", "seed_order": [7, 13, 23]}
+    if any(records[key]["evidence"] is None for key in keys):
+        return {
+            "stable": False,
+            "reason": "REPLICATION_GUARD_SUPPORT_ABSENT",
+            "seed_order": [7, 13, 23],
+        }
     scores = [records[key]["score"] for key in keys]
     evidence = [records[key]["evidence"] for key in keys]
     mean = math.fsum(scores) / 3
@@ -76,7 +87,9 @@ def build_replication_evidence(
     decision, plans = verify_stage_decision(decision_source, lock, "S74")
     initial_path = Path(lock["initial_evidence_root"]) / "INITIAL_EVIDENCE.json"
     initial = verify_initial_evidence(initial_path, lock)
-    expected = {f"{plan.treatment_name}_seed{plan.seed}" for plan in plans}
+    capacity = Availability(**lock["availability"]).primary_capacity
+    expanded = capacity != "2M"
+    expected = {f"{plan.candidate_key}_seed{plan.seed}" for plan in plans}
     if set(exports) != expected:
         raise ValueError("replication analysis omitted a prescribed endpoint export")
     root = Path(lock["replication_evidence_root"])
@@ -94,16 +107,17 @@ def build_replication_evidence(
     for family, name in names.items():
         if name not in triggered:
             continue
+        evidence_name = candidate_key(name, capacity)
         for seed in (7, 13, 23):
             owner.check()
             if seed == 7:
-                source = initial["row_sources"][name]
-                directory = Path(lock["treatment_export_root"]) / name
+                source = initial["row_sources"][evidence_name]
+                directory = Path(lock["treatment_export_root"]) / evidence_name
             else:
-                directory = Path(lock["replication_export_root"]) / name / f"seed{seed}"
+                directory = Path(lock["replication_export_root"]) / evidence_name / f"seed{seed}"
                 export = json.loads(
                     _owned(
-                        exports[f"{name}_seed{seed}"], directory, "TREATMENT_EXPORT.json"
+                        exports[f"{evidence_name}_seed{seed}"], directory, "TREATMENT_EXPORT.json"
                     ).read_text(encoding="utf-8")
                 )
                 unsigned = {key: value for key, value in export.items() if key != "artifact_sha256"}
@@ -112,6 +126,8 @@ def build_replication_evidence(
                     or export.get("kind") != "COMPLETE_REPLICATION_TREATMENT_DIAGNOSTICS"
                     or export.get("training_lock_sha256") != lock_sha256
                     or export.get("treatment") != name
+                    or export.get("capacity", "2M") != capacity
+                    or export.get("candidate_key", export.get("treatment")) != evidence_name
                     or export.get("seed") != seed
                     or export.get("stage") != "S74"
                     or export.get("stage_barrier") != barrier_source
@@ -153,15 +169,16 @@ def build_replication_evidence(
     if model_rows:
         base = next(iter(model_rows.values()))
         references = ["A5_ttc_s", "C2F_ttc_s", "PAIR_ttc_s", "S65-RISK17_ttc"]
-        if len(base) != 8192 or any(
+        if any(
             not np.array_equal(base[references].to_numpy(), rows[references].to_numpy())
             for rows in model_rows.values()
         ):
             raise ValueError("replication changed the original row universe or historical experts")
-        metadata = cast(
-            pd.DataFrame,
-            base[["sample_token", "sequence_id", "track_id", "outer_fold", "target_ttc_s"]].copy(),
-        )
+        metadata = comparison_metadata(base, lock)
+        if any(
+            not comparison_metadata(rows, lock).equals(metadata) for rows in model_rows.values()
+        ):
+            raise ValueError("replication changed frozen targets, tokens or acquisition identities")
         attempts = root / "comparison_attempts"
         attempts.mkdir(exist_ok=True)
         complete = list(attempts.glob("attempt_*/COMPARISON.json"))
@@ -176,12 +193,16 @@ def build_replication_evidence(
                 base[references[:3]].to_numpy(np.float64),
                 output=directory,
                 check=owner.check,
+                expanded_cohort=expanded,
+                contrasts=() if expanded else INITIAL_CONTRASTS,
             )
             complete = [directory / "COMPARISON.json"]
         if complete[0].resolve() != complete[0].absolute():
             raise ValueError("replication comparison was redirected")
         comparison = json.loads(complete[0].read_text(encoding="utf-8"))
-        _verify_comparison(comparison, complete[0].parent, set(model_rows))
+        _verify_comparison(
+            comparison, complete[0].parent, set(model_rows), expanded_cohort=expanded
+        )
         comparison_source = binding(complete[0])
         for family, name in names.items():
             if name in triggered:
