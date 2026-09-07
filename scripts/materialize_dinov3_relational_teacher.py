@@ -38,6 +38,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 
+from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, verify  # noqa: E402
+from e_jepa_ttc.data.capacity_sources import _signed  # noqa: E402
 from e_jepa_ttc.data.dinov3_relational_teacher_cache import (  # noqa: E402
     write_complete_mmap_cache,
 )
@@ -79,6 +81,42 @@ def _load_offline_teacher() -> tuple[Any, Any]:
     model = AutoModel.from_pretrained(_EXPECTED_MODEL_ID, **options)
     processor = AutoImageProcessor.from_pretrained(_EXPECTED_MODEL_ID, **options)
     return model, processor
+
+
+def _capacity_teacher_scope(
+    preparation_path: Path, expected_sha256: str, train_parquet: Path
+) -> tuple[dict[str, Any], set[str], set[str]]:
+    """Resolve an exact development cohort without assigning or expanding source roles."""
+    source = binding(preparation_path)
+    if source["sha256"] != expected_sha256:
+        raise ValueError("capacity teacher preparation hash changed")
+    preparation = _signed(source)
+    cohort = _signed(preparation["cohort"])
+    roles = _signed(preparation["fixed_original_roles"])["roles"]
+    partitions = _signed(preparation["source_partitions"])
+    metadata = partitions["outputs"]["train_metadata"]
+    expected_path = Path(preparation["source_partitions"]["path"]).resolve().parent
+    if (
+        Path(metadata["path"]).resolve() != expected_path / "train_metadata.parquet"
+        or verify(metadata).resolve() != train_parquet.resolve()
+    ):
+        raise ValueError("capacity teacher metadata escaped the signed TRAIN partition")
+    sequences = set(cohort["selected_sequences"])
+    tokens = set(cohort["ordered_tokens"])
+    mapping = dict(roles["sequence_to_group"])
+    forbidden = set(roles["confirmation"]) | set(roles["protected"])
+    excluded_sequences = set(cohort["confirmation_sequences"]) | set(cohort["protected_sequences"])
+    if (
+        cohort.get("kind") != "CAPACITY_DEVELOPMENT_COHORT"
+        or not sequences
+        or not tokens
+        or len(tokens) != len(cohort["ordered_tokens"])
+        or not sequences <= mapping.keys()
+        or sequences & excluded_sequences
+        or {mapping[s] for s in sequences} & forbidden
+    ):
+        raise ValueError("capacity teacher cohort has duplicate tokens or forbidden source roles")
+    return source, sequences, tokens
 
 
 def _sha256_file(path: Path) -> str:
@@ -317,6 +355,8 @@ def run(
     output_dir: Path,
     device_name: str,
     expected_rows: int = 2048,
+    capacity_preparation: Path | None = None,
+    capacity_preparation_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Materialize the DINO relational teacher cache for an exact train size."""
 
@@ -324,7 +364,18 @@ def run(
 
     if expected_rows <= 0:
         raise ValueError("FATAL: expected_rows must be positive")
-    if train_parquet.name.lower() != "train.parquet":
+    capacity_source = None
+    capacity_sequences: set[str] | None = None
+    capacity_tokens: set[str] | None = None
+    if (capacity_preparation is None) != (capacity_preparation_sha256 is None):
+        raise ValueError("capacity teacher requires both preparation path and exact SHA256")
+    if capacity_preparation is not None and capacity_preparation_sha256 is not None:
+        capacity_source, capacity_sequences, capacity_tokens = _capacity_teacher_scope(
+            capacity_preparation, capacity_preparation_sha256, train_parquet
+        )
+        if len(capacity_tokens) != expected_rows:
+            raise ValueError("capacity teacher row budget differs from the frozen cohort")
+    elif train_parquet.name.lower() != "train.parquet":
         raise ValueError("FATAL: A4 teacher may only read data/train.parquet")
     if any(part.lower() == "test" for part in train_parquet.parts):
         raise ValueError("FATAL: A4 teacher must never read a test parquet")
@@ -367,6 +418,8 @@ def run(
         "qGsgzl4Q8B",
         "t79dBxj1WS",
     }
+    if capacity_sequences is not None:
+        expected_train_sequences = capacity_sequences
 
     # Load train.parquet
     print(f"[materialize] Loading {train_parquet}...")
@@ -383,6 +436,14 @@ def run(
             "boxes_xyxy",
         ],
     )
+    if capacity_tokens is not None:
+        pq_df = pq_df[pq_df["sample_token"].astype(str).isin(sorted(capacity_tokens))].copy()
+        if (
+            len(pq_df) != len(capacity_tokens)
+            or set(pq_df["sample_token"].astype(str)) != capacity_tokens
+            or set(pq_df["sequence_id"].astype(str)) != expected_train_sequences
+        ):
+            raise ValueError("capacity teacher metadata differs from the exact cohort")
     print("[materialize] Building RGB lookup index...")
     rgb_lookup: dict[tuple[str, str], Any] = {}
     for _idx, row in pq_df.iterrows():
@@ -478,6 +539,9 @@ def run(
         track_id = str(record["track_id"])
         sequence = str(record["sequence_id"])
 
+        if capacity_tokens is not None and token not in capacity_tokens:
+            raise ValueError("FATAL: teacher event-cache token is outside the frozen cohort")
+
         if (token, track_id) in seen_pairs:
             raise ValueError(f"FATAL: Duplicate (token, track_id) detected: {token}/{track_id}")
         seen_pairs.add((token, track_id))
@@ -554,17 +618,23 @@ def run(
         "created_at": datetime.now(UTC).isoformat(),
         "status": "passed",
         "scope": {
+            "capacity_preparation": capacity_source,
             "public_train_only": True,
             "expected_row_count": expected_rows,
             "validation_or_test_opened": False,
-            "ttc_labels_read": False,
+            "ttc_labels_read": True,
+            "ttc_labels_used_for_teacher_features": False,
+            "label_read_reason": (
+                "Supervised torch shards deserialize complete records, including TTC."
+            ),
             "row_count": total_rows,
             "endpoint_count_per_row": 2,
         },
         "claim_boundary": {
             "teacher_is_model_input": False,
             "validation_teacher_generation": False,
-            "ttc_labels_read": False,
+            "ttc_labels_read": True,
+            "ttc_labels_used_for_teacher_features": False,
             "teacher_source_modality": "rgb",
             "event_tensor_used_as_teacher_input": False,
         },
@@ -660,6 +730,8 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--expected-rows", type=int, default=2048)
+    parser.add_argument("--capacity-preparation", type=Path)
+    parser.add_argument("--capacity-preparation-sha256")
     args = parser.parse_args()
 
     device = args.device
@@ -675,6 +747,8 @@ def main() -> int:
             args.output_dir.resolve(),
             device,
             args.expected_rows,
+            args.capacity_preparation,
+            args.capacity_preparation_sha256,
         )
     except Exception as e:
         print(f"\n[materialize] FAILED: {type(e).__name__}: {e}", file=sys.stderr)

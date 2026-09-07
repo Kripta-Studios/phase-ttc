@@ -494,3 +494,39 @@ Quedan pendientes las features para los tokens ampliados, su metadata de eventos
 y RGB con roles verificados y la integración de tablas de comparadores. La
 identidad de pesos no acredita independencia del preentrenamiento web. Este
 cierre no permite congelar v11 todavía ni altera el entrenamiento original.
+
+# Entrada ampliada del materializador de comparadores (2026-09-07)
+
+El mismo materializador admite ahora --capacity-preparation y su SHA256 físico.
+Verifica las firmas de preparación, cohorte, roles originales y particiones;
+requiere la ruta exacta de train_metadata.parquet vinculada y rechaza secuencias
+reservadas, aliases de adquisiciones excluidas, tokens duplicados y hashes
+alterados. Filtra los metadatos al universo exacto antes de construir el índice
+RGB, y rechaza cada token ajeno del event cache antes de acceder al RGB. El
+consumo de features por cada productor sigue sujeto a las exclusiones de sus
+folds; producir features con un teacher fijo no autoriza entrenamiento conjunto.
+
+La comprobación CPU sobre los manifiestos reales resolvió 27 secuencias y
+30.000 tokens; no faltan columnas de enlace RGB/eventos. Recibo
+`EXPANDED_TEACHER_SCOPE_INTEGRATION.json`, SHA256 físico
+`cc849d859514dd148ecba2d434f91fa57908614f612c23dd4bc8ed71f28aa142`.
+Ese recibo vincula la revisión medida antes de la posterior corrección de tipos
+del filtro pandas (lista ordenada para isin y comprobación de cardinalidad).
+No es un TRAINING_LOCK ni prueba de generación de features.
+
+Se corrigió además una declaración de acceso: el lector histórico de shards
+torch deserializa registros completos, incluido TTC. Las nuevas salidas lo
+declaran explícitamente como lectura incidental, sin uso de TTC en features.
+No se reescribieron manifiestos históricos. Esa lectura de TRAIN autorizado no
+introduce por sí sola un nuevo bloqueo de la rama, pero impide afirmar que no
+se leyeron targets. La comprobación de alcance de este bloque sólo leyó firmas
+y esquema administrativo, no shards supervisados ni RGB.
+
+Once tests CPU pasan en `EXPANDED_TEACHER_SCOPE_ZERO_UPDATES.xml`, incluyendo
+rechazo de una adquisición de confirmación aunque su secuencia tenga otro ID,
+metadatos cambiados y sustitución de ruta. La CLI muestra los dos argumentos
+nuevos. Ruff conserva el ANN401 histórico; su nuevo E501 quedó corregido.
+Pyright final: cero errores y advertencias tras corregir las dos incompatibilidades
+de tipos señaladas en el filtro pandas; no se repitieron tests ajenos al cambio.
+Sigue pendiente la representación exacta A5/C2F/PAIR para estos tokens, la
+generación de features y la conexión de tablas con sus productores reales.

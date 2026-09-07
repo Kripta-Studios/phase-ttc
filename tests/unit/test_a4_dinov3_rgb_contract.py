@@ -3,17 +3,83 @@
 from __future__ import annotations
 
 import sys
+from pathlib import Path
 from types import SimpleNamespace
+from typing import Any
 from unittest.mock import Mock
 
 import numpy as np
 import pytest
 
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
 from e_jepa_ttc.data.event_v4_geometry import box_in_common_roi
 from scripts.materialize_dinov3_relational_teacher import (
+    _capacity_teacher_scope,
     _load_offline_teacher,
     _resolve_rgb_endpoints,
 )
+
+
+def _teacher_scope_fixture(tmp_path: Path, *, forbidden: bool = False) -> dict[str, Any]:
+    def write(name: str, value: dict[str, Any]) -> dict[str, Any]:
+        path = tmp_path / name
+        atomic_json(path, {**value, "artifact_sha256": object_digest(value)})
+        return binding(path)
+
+    metadata = tmp_path / "train_metadata.parquet"
+    metadata.write_bytes(b"synthetic metadata binding; no reader invoked")
+    cohort = write(
+        "cohort.json",
+        {
+            "kind": "CAPACITY_DEVELOPMENT_COHORT",
+            "selected_sequences": ["extra_sequence"],
+            "ordered_tokens": ["extra_token"],
+            "confirmation_sequences": [],
+            "protected_sequences": [],
+        },
+    )
+    roles = write(
+        "roles.json",
+        {
+            "roles": {
+                "sequence_to_group": [["extra_sequence", "acquisition"]],
+                "confirmation": ["acquisition"] if forbidden else [],
+                "protected": [],
+            }
+        },
+    )
+    partitions = write("partitions.json", {"outputs": {"train_metadata": binding(metadata)}})
+    return write(
+        "preparation.json",
+        {
+            "cohort": cohort,
+            "fixed_original_roles": roles,
+            "source_partitions": partitions,
+        },
+    )
+
+
+def test_expanded_teacher_scope_uses_signed_train_cohort(tmp_path: Path) -> None:
+    source = _teacher_scope_fixture(tmp_path)
+    actual, sequences, tokens = _capacity_teacher_scope(
+        Path(source["path"]), source["sha256"], tmp_path / "train_metadata.parquet"
+    )
+    assert actual == source
+    assert sequences == {"extra_sequence"} and tokens == {"extra_token"}
+
+
+@pytest.mark.parametrize("violation", ["acquisition", "hash", "path", "changed_metadata"])
+def test_expanded_teacher_scope_rejects_invalid_bindings(tmp_path: Path, violation: str) -> None:
+    source = _teacher_scope_fixture(tmp_path, forbidden=violation == "acquisition")
+    metadata = tmp_path / "train_metadata.parquet"
+    if violation == "changed_metadata":
+        metadata.write_bytes(b"changed")
+    if violation == "path":
+        metadata = tmp_path / "confirmation.parquet"
+    with pytest.raises((ValueError, RuntimeError)):
+        _capacity_teacher_scope(
+            Path(source["path"]), "0" * 64 if violation == "hash" else source["sha256"], metadata
+        )
 
 
 def test_teacher_loading_pins_both_local_dependencies(monkeypatch: pytest.MonkeyPatch) -> None:
