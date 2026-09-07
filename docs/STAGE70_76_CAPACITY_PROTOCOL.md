@@ -328,3 +328,17 @@ La telemetría existente del writer registró 104.906.477.568 bytes libres de di
 y 14.935.232.512 bytes de RAM disponible. Sus tiempos por update son agregados,
 sin desglose de carga/CPU/GPU; no permiten afirmar un cuello de botella único.
 No se aplicó ninguna optimización ni nueva enmienda de ejecución.
+# Autorización de concurrencia con SIMPLEX-T (2026-09-07)
+
+El usuario autorizó expresamente mantener entrenamiento Stage70–76 al mismo
+tiempo que el trabajo y entrenamiento de SIMPLEX-T. Esta autorización sustituye
+cualquier expectativa de GPU exclusiva frente a ese companion. Se mantiene un
+solo escritor de entrenamiento para esta campaña; no se duplica el fit activo.
+La inferencia CUDA concurrente observada queda permitida. Se registrará la
+concurrencia al interpretar tiempos y costes, sin alterar recetas numéricas.
+
+Permanecen los márgenes de disco de 40 GB después de reservas y los controles
+fijos de RAM/VRAM. La autorización de concurrencia no declara suficientes los
+recursos por sí sola: los trabajos conservan su admisión medida. V11 mantiene
+su orden autorizado después del grafo original y requiere todavía integración,
+QA técnica pendiente, presupuesto completo y congelación antes de sus fits.
