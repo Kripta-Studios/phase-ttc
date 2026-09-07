@@ -1,6 +1,7 @@
 """Zero-optimizer CPU checks for capacity, cohort isolation and combined budgets."""
 
 import hashlib
+from typing import Any
 
 import pytest
 import torch
@@ -128,6 +129,33 @@ def cohort_input(count):
         SamplingRow(f"{seq}_{i}", seq, "track", i * 20000) for seq in mapping for i in range(20)
     ]
     return mapping, rows
+
+
+def test_explicit_amended_budget_still_reserves_complete_graph_and_external_costs():
+    arguments: dict[str, Any] = dict(
+        predecessor_terminal=True,
+        charged_updates=530257,
+        outstanding_reserved_updates=0,
+        comparator_updates=10000,
+        confirmation_updates=0,
+        technical_updates_reserved=400,
+    )
+    graph = capacity_graph(availability(False))
+    old = admit_capacity_budget(graph, **arguments)
+    assert old["status"] == "PREREQUISITE_BLOCKED"
+    required = old["required_total_updates"]
+    amended = admit_capacity_budget(graph, maximum_updates=required, **arguments)
+    assert amended["status"] == "ADMITTED"
+    assert amended["maximum_updates"] == required
+    assert (
+        admit_capacity_budget(graph, maximum_updates=required - 1, **arguments)["status"]
+        == "PREREQUISITE_BLOCKED"
+    )
+    arguments["comparator_updates"] = None
+    assert (
+        admit_capacity_budget(graph, maximum_updates=required, **arguments)["status"]
+        == "PREREQUISITE_BLOCKED"
+    )
 
 
 @pytest.mark.parametrize("count,expected", [(22, [7, 7, 8]), (27, [9, 9, 9])])

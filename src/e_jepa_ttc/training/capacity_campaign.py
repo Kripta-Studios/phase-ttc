@@ -67,9 +67,12 @@ def admit_capacity_budget(
     comparator_updates: int | None,
     confirmation_updates: int | None,
     technical_updates_reserved: int,
+    maximum_updates: int = 900_000,
 ) -> dict[str, Any]:
     """Never spend the original campaign's future budget or assume unknown fits cost zero."""
     counts = (charged_updates, outstanding_reserved_updates, technical_updates_reserved)
+    if type(maximum_updates) is not int or maximum_updates < 1:
+        raise ValueError("shared maximum must be a positive integer")
     if any(type(n) is not int or n < 0 for n in counts):
         raise ValueError("shared ledger counts must be nonnegative integers")
     for count in (comparator_updates, confirmation_updates):
@@ -94,12 +97,12 @@ def admit_capacity_budget(
             + confirmation_updates
             + technical_updates_reserved
         )
-        if required > 900_000:
-            reasons.append("SHARED_900000_UPDATE_BUDGET_EXCEEDED")
+        if required > maximum_updates:
+            reasons.append("SHARED_UPDATE_BUDGET_EXCEEDED")
     return {
         "status": "ADMITTED" if not reasons else "PREREQUISITE_BLOCKED",
         "reasons": reasons,
-        "maximum_updates": 900_000,
+        "maximum_updates": maximum_updates,
         "required_total_updates": required,
         "charged_updates": charged_updates,
         "outstanding_reserved_updates": outstanding_reserved_updates,

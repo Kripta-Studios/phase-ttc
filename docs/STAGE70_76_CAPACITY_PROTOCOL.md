@@ -2,7 +2,9 @@
 
 Autorización: implementar durante la campaña original y ejecutar después de que
 ésta cubra su grafo autorizado. La autorización posterior del usuario incluye los
-fits ampliados. Un solo escritor GPU; presupuesto conjunto de900.000 updates.
+fits ampliados. Un solo escritor GPU. El usuario autoriza ampliar el presupuesto
+conjunto de900.000 updates; el nuevo techo finito se resolverá con todos los costes
+antes del lock de v11. El límite del entrenamiento original congelado no cambia.
 El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
 
 ## Contrato prospectivo
@@ -11,7 +13,8 @@ El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
   targets ni resultados. Si hay22 u otra cantidad, utilizar esa cantidad viable.
   Mantener juntas las adquisiciones relacionadas. Conservar los seis grupos de
   confirmación y los roles protegidos originales, incluyendo todos sus aliases.
-- Usar un muestreo común de hasta8.192 tokens con separación temporal mínima de
+- Usar, por autorización posterior del usuario, un muestreo común de hasta30.000
+  tokens con separación temporal mínima de
   20ms por track. Utilizar el inventario TRAIN completo, no el antiguo pool de
   8.192 filas. Verificar reloj, ROI y representación de cada token seleccionado.
   Las métricas históricas de las nueve originales conservan su propio universo.
@@ -77,6 +80,50 @@ El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
 
 Estado: PREPARACIÓN EN CURSO. No hay fits ampliados ni TRAINING_LOCK ampliado.
 La existencia de este documento o de un constructor no demuestra readiness.
+
+## Enmienda de preparación: 30.000 muestras y presupuesto ampliable
+
+El usuario autorizó explícitamente 30.000 muestras y aumentar el presupuesto.
+Los artefactos de8.192 filas se conservan como preparación anterior; no son el
+universo definitivo del futuro lock. La revisión de metadatos TRAIN firmada en
+sample_30000_review/SAMPLE_COUNT_REVIEW.json encontró61.525 filas temporalmente
+admisibles en las mismas27 secuencias. Seleccionar30.000 mantiene exactamente
+secuencias, adquisiciones, folds y separación mínima20ms, sin leer targets ni
+resultados exteriores. Son1.111–1.112 filas por secuencia frente a303–304 antes.
+Ambas selecciones cubren los1.288 tracks disponibles: el aumento aporta densidad
+temporal, no nuevos grupos independientes. Quedan validación de reloj/targets/ROI,
+cache y regeneración de normalizadores/priores vinculados a los nuevos tokens.
+
+Los tensores de conteos uint16 requieren31.457.280.000 bytes para30.000 filas,
+frente a8.589.934.592 para8.192. Usar todas las61.525 supondría64.513.638.400 bytes.
+Son tamaños de tensores, no reservas completas: faltan metadatos, temporales,
+checkpoints y outputs. Mantener8000 updates y batch16 conserva128.000 extracciones
+por fit; la exposición media por fila TRAIN disminuye al ampliar el pool. La
+evaluación y preparación escalan aproximadamente3,66 veces en filas, mientras
+que el coste de los updates permanece fijo; comparadores por épocas sí aumentan
+sus updates y deben recalcularse. No se conserva8192 como requisito científico.
+
+La admisión admite ahora un maximum_updates explícito, conserva900.000 por defecto
+y exige presupuesto completo de comparadores/confirmación, predecesor terminal y
+ausencia de reservas pendientes. La autorización de aumento no equivale a coste
+desconocido cero ni a presupuesto infinito. QA afectado: cinco tests de presupuesto
+CPU pasan, cero updates; recibo AMENDED_BUDGET_ZERO_UPDATES.xml.
+Ruff pasa. Pyright del módulo no registra errores; al incluir el archivo de tests
+quedan dos diagnósticos reportArgumentType en las expresiones preexistentes
+torch.isfinite(model.encoder.net[0].weight.grad), de los tests de gradientes
+DIRECT y geometría. Los cinco diagnósticos de tipado introducidos en la nueva
+prueba de presupuesto se corrigieron; no se afirma que todo el archivo esté limpio.
+
+Revisión de velocidad original, sin cambiar su código: el checkpoint cerrado1250
+de DIRECT outer1 conserva250 updates recientes con media2,979s, mediana3,012s,
+p903,988s y rango0,862–4,898s. La telemetría disponible registró alrededor de13–14GB
+de RAM disponible y107,9GB de disco libre; no indica presión de esos recursos.
+Una lectura puntual de nvidia-smi dio4% GPU y3124MiB usados, insuficiente para
+atribuir la limitación. El flujo carga counts/memmap y NPZ por muestra, transforma
+en CPU, transfiere por microbatch y sincroniza diagnósticos/gradientes/ledger.
+La telemetría actual mide el update agregado, no separa esos costes: CPU/I/O y
+sincronizaciones son hipótesis, no un cuello de botella demostrado. No se aplicó
+ningún ajuste de velocidad ni cambio de precisión, batch o checkpoint.
 
 La evidencia inicial ya conserva claves distintas para cada capacidad y rechaza
 un export de otro tamaño aunque comparta tratamiento. PPS-TRAJ de 4M permanece
