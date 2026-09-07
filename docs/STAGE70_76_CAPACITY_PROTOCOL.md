@@ -231,3 +231,13 @@ Con128.000 extracciones por fit, la exposición media esperada es6,776–6,777 p
 fila de optimización; no4,267, cifra que divide por el universo global e incluye
 filas que ese productor nunca debe usar. El aumento de muestras no añade grupos
 independientes y no cambia la semilla ni el presupuesto de updates de arquitectura.
+
+La verificación de evidencia inicial selecciona ahora el estimando ampliado del
+oracle canónico y el archivo ACQUISITION_DRAWS.json cuando la disponibilidad
+congelada identifica la campaña4M. Verifica el contrato de incertidumbre y rechaza
+una comparación refirmada que declare bootstrap exacto. El oracle sigue limitado
+a las dos familias canónicas, incluso con controles mejores o un canónico fallido.
+Seis pruebas afectadas pasan sobre9/22/27 secuencias; Ruff y Pyright pasan, cero
+updates. Recibo CANONICAL_CAPACITY_RECOVERY_ZERO_UPDATES.xml. Esto cierra la
+compatibilidad de recuperación estadística; la entrada de comparadores/filas del
+ensamblador continúa pendiente y no se habilitó una lectura exterior ampliada.

@@ -17,6 +17,7 @@ from e_jepa_ttc.evaluation.architecture_comparison_v11 import (
     aligned_loss_vectors,
     compare_standalone_rows,
 )
+from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, strict_macro_mass
 from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
 from e_jepa_ttc.training.stage73_factorial import (
@@ -98,7 +99,8 @@ def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
             encoding="utf-8"
         )
     )
-    _verify_comparison(comparison, comparison_path.parent, expected)
+    expanded = availability.primary_capacity == "4M"
+    _verify_comparison(comparison, comparison_path.parent, expected, expanded_cohort=expanded)
     for family, name in names.items():
         item = comparison["comparisons"][name]
         if (
@@ -106,7 +108,7 @@ def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
             or record["canonical_technically_valid"][family] != item["technically_valid"]
         ):
             raise ValueError("canonical evidence differs from its paired comparison")
-    gain, validity = canonical_oracle(canonical_rows, names)
+    gain, validity = canonical_oracle(canonical_rows, names, expanded_cohort=expanded)
     if record["canonical_technically_valid"] != validity or not np.isclose(
         record["canonical_joint_oracle_gain"], gain, rtol=0, atol=1e-10
     ):
@@ -115,14 +117,18 @@ def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
 
 
 def canonical_oracle(
-    model_rows: dict[str, pd.DataFrame], names: Mapping[Family, str]
+    model_rows: dict[str, pd.DataFrame],
+    names: Mapping[Family, str],
+    *,
+    expanded_cohort: bool = False,
 ) -> tuple[float, dict[str, bool]]:
     """Compute the selector headroom using only the two prospective canonical architectures."""
     base = model_rows[names["C_DIRECT"]]
     columns = ["sample_token", "sequence_id", "track_id", "outer_fold", "target_ttc_s"]
     metadata = cast(pd.DataFrame, base[columns])
     target = benchmark_phase(base.target_ttc_s.to_numpy(np.float64))
-    mass = strict_macro_mass(base.target_ttc_s.to_numpy(np.float64), base.sequence_id.to_numpy())
+    mass_fn = present_bucket_mass if expanded_cohort else strict_macro_mass
+    mass = mass_fn(base.target_ttc_s.to_numpy(np.float64), base.sequence_id.to_numpy())
     old = base[["A5_ttc_s", "C2F_ttc_s", "PAIR_ttc_s"]].to_numpy(np.float64)
     old_oracle = (10000 * abs(benchmark_phase(old) - target[:, None])).min(axis=1)
     joint = old_oracle.copy()
@@ -140,7 +146,13 @@ def canonical_oracle(
     return float(mass @ (old_oracle - joint)), validity
 
 
-def _verify_comparison(comparison: dict[str, Any], directory: Path, expected: set[str]) -> None:
+def _verify_comparison(
+    comparison: dict[str, Any],
+    directory: Path,
+    expected: set[str],
+    *,
+    expanded_cohort: bool = False,
+) -> None:
     unsigned = {key: value for key, value in comparison.items() if key != "artifact_sha256"}
     if (
         object_digest(unsigned) != comparison.get("artifact_sha256")
@@ -149,7 +161,18 @@ def _verify_comparison(comparison: dict[str, Any], directory: Path, expected: se
     ):
         raise ValueError("initial paired comparison content changed")
     _owned(comparison["bootstrap_loss_array"], directory, "BOOTSTRAP_LOSSES.npy")
-    _owned(comparison["bootstrap_draw_journal"], directory, "HIERARCHICAL_DRAWS.jsonl")
+    if expanded_cohort:
+        if (
+            comparison.get("uncertainty_gate_contract")
+            != "single_acquisition_CI_shared_by_legacy_fields"
+            or comparison.get("bootstrap", {}).get("method")
+            != "paired_acquisition_cluster_bootstrap_of_fixed_sequence_estimands"
+            or comparison["bootstrap"].get("exact") is not False
+        ):
+            raise ValueError("expanded comparison changed its registered acquisition uncertainty")
+        _owned(comparison["bootstrap_draw_journal"], directory, "ACQUISITION_DRAWS.json")
+    else:
+        _owned(comparison["bootstrap_draw_journal"], directory, "HIERARCHICAL_DRAWS.jsonl")
 
 
 def build_initial_evidence(

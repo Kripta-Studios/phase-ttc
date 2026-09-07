@@ -31,16 +31,19 @@ def test_evidence_rejects_capacity_substitution_and_retains_original_export():
     assert not _export_matches_plan({**correct, "candidate_key": original.candidate_key}, expanded)
 
 
-def test_oracle_ignores_better_control_and_keeps_failed_canonical_identity():
-    targets = np.tile([2.0, 4.0, 8.0, -2.0], 9)
+@pytest.mark.parametrize("count,expanded", [(9, False), (22, True), (27, True)])
+def test_oracle_ignores_better_control_and_keeps_failed_canonical_identity(count, expanded):
+    targets = np.tile([2.0, 4.0, 8.0, -2.0], count)
+    if expanded:
+        targets[:] = 2.0
     old = scientific_ttc(benchmark_phase(targets) + 0.002)
     prediction = scientific_ttc(benchmark_phase(targets) + 0.0015)
     rows = pd.DataFrame(
         {
-            "sample_token": [str(i) for i in range(36)],
-            "sequence_id": np.repeat([str(i) for i in range(9)], 4),
+            "sample_token": [str(i) for i in range(len(targets))],
+            "sequence_id": np.repeat([str(i) for i in range(count)], 4),
             "track_id": "track",
-            "outer_fold": np.repeat(np.arange(9) % 3, 4),
+            "outer_fold": np.repeat(np.arange(count) % 3, 4),
             "target_ttc_s": targets,
             "prediction_ttc_s": prediction,
             "finite": True,
@@ -55,12 +58,12 @@ def test_oracle_ignores_better_control_and_keeps_failed_canonical_identity():
     control = rows.assign(prediction_ttc_s=targets, mid_loss=0.0)
     values = {"DIRECT": rows, "PPS": failed, "PAIR": control}
     names = {"C_DIRECT": "DIRECT", "C_PPS": "PPS"}
-    gain, valid = canonical_oracle(values, names)
+    gain, valid = canonical_oracle(values, names, expanded_cohort=expanded)
     assert gain == pytest.approx(5, abs=1e-10)
     assert valid == {"C_DIRECT": True, "C_PPS": False}
     values["PPS"] = rows.iloc[::-1]
     with pytest.raises(ValueError):
-        canonical_oracle(values, names)
+        canonical_oracle(values, names, expanded_cohort=expanded)
 
 
 @pytest.fixture

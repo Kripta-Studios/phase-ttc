@@ -143,6 +143,9 @@ def test_expanded_contrasts_keep_acquisitions_and_missing_bucket_estimand(sequen
 
 @pytest.mark.parametrize("count,target", [(22, 2.0), (27, 2.0), (27, 4.0)])
 def test_expanded_full_comparison_uses_cluster_draws_and_support_guard(count, target, tmp_path):
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest
+    from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import _verify_comparison
+
     metadata = pd.DataFrame(
         {
             "sample_token": [f"r{i}" for i in range(count)],
@@ -166,6 +169,12 @@ def test_expanded_full_comparison_uses_cluster_draws_and_support_guard(count, ta
         contrasts=(("PPS-4M", "RISK17"),),
     )
     primary = result["comparisons"]["PPS-4M"]
+    _verify_comparison(result, tmp_path / "comparison", {"PPS-4M"}, expanded_cohort=True)
+    changed = {**result, "bootstrap": {**result["bootstrap"], "exact": True}}
+    changed.pop("artifact_sha256")
+    changed["artifact_sha256"] = object_digest(changed)
+    with pytest.raises(ValueError, match="registered acquisition"):
+        _verify_comparison(changed, tmp_path / "comparison", {"PPS-4M"}, expanded_cohort=True)
     assert primary["score"] == 0
     assert result["bootstrap"]["sequence_count"] == count
     assert not result["bootstrap"]["exact"]
