@@ -217,3 +217,17 @@ la preparación anterior y la autorización de30.000, sin sobrescribir sus artef
 La siguiente materialización de bindings en representation_30000/raw_bindings
 está en curso en CPU, con27 identidades de fuente comprobadas. No se declara
 completa hasta RAW_BOUND.json; cache de conteos y normalización siguen pendientes.
+
+Los roles y el soporte se resolvieron sobre las30.000 filas validadas en
+roles_support_30000/PRODUCER_ROLES.json y SUPPORT.json, con registro de lecturas.
+Las27 secuencias tienen los cuatro buckets. Los pools de optimización por fold
+son18.889,18.889 y18.888 filas; diagnóstico1.111,1.112 y1.111; exteriores10.000,
+9.999 y10.001. Los nueve productores interiores entrenan con12.221–13.334 filas
+y predicen5.555–6.667, siempre dentro del pool de optimización exterior.
+Se verificó igualdad de asignaciones con los roles anteriores, unión completa y
+disjunción de tokens para cada partición exterior/interior. Cero updates,
+normalización aún no ajustada y ninguna predicción exterior leída.
+Con128.000 extracciones por fit, la exposición media esperada es6,776–6,777 por
+fila de optimización; no4,267, cifra que divide por el universo global e incluye
+filas que ese productor nunca debe usar. El aumento de muestras no añade grupos
+independientes y no cambia la semilla ni el presupuesto de updates de arquitectura.
