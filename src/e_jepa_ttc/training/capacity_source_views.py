@@ -7,6 +7,7 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import pandas as pd
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
@@ -14,6 +15,46 @@ from e_jepa_ttc.data.event_context128_reader import CountSource, TrainingView
 from e_jepa_ttc.data.stage70_roles import TrainRoles
 from e_jepa_ttc.training.resolved_architecture_sources_v11 import load_architecture_sources
 from e_jepa_ttc.training.stage72_supervision import train_supervision
+
+
+def capacity_target_rows(
+    cohort: dict[str, Any], metadata: pd.DataFrame, labels: pd.DataFrame
+) -> pd.DataFrame:
+    """Join only the selected, clock-validated TRAIN rows for all capacity consumers."""
+    unsigned = {k: v for k, v in cohort.items() if k != "artifact_sha256"}
+    if object_digest(unsigned) != cohort.get("artifact_sha256"):
+        raise ValueError("capacity target cohort signature changed")
+    tokens = cohort["ordered_tokens"]
+    for frame in (metadata, labels):
+        if frame.sample_token.duplicated().any() or set(frame.sample_token) != set(tokens):
+            raise ValueError("capacity target inputs must match every selected token exactly")
+    rows = metadata.set_index("sample_token").loc[tokens].reset_index()
+    truth = labels.set_index("sample_token").loc[tokens].reset_index()
+    for name in ("sequence_id", "timestamp_us"):
+        if not np.array_equal(rows[name].to_numpy(), truth[name].to_numpy()):
+            raise ValueError("capacity target identity or time anchor changed")
+    if set(rows.sequence_id) != set(cohort["selected_sequences"]):
+        raise ValueError("capacity target rows contain a different acquisition pool")
+    target = truth.ttc.to_numpy(dtype=np.float64)
+    if not np.all(np.isfinite(target) & ((target < 0) | (target > 0.1))):
+        raise ValueError("capacity targets contain invalid signed TTC")
+    if any(
+        np.asarray(pair).shape != (2,) or float(pair[1]) != target[i]
+        for i, pair in enumerate(truth.frame_ttc)
+    ):
+        raise ValueError("capacity target is not attached to the later annotation")
+    result = rows[["sample_token", "sequence_id", "track_id", "timestamp_us"]].copy()
+    result["outer_fold"] = result.sequence_id.map(cohort["sequence_to_outer_fold"])
+    result["acquisition_group"] = result.sequence_id.map(cohort["sequence_to_group"])
+    if result[["outer_fold", "acquisition_group"]].isna().any().any():
+        raise ValueError("capacity target acquisition or fold is unresolved")
+    if "outer_fold" in rows and not np.array_equal(rows.outer_fold, result.outer_fold):
+        raise ValueError("capacity target metadata changed its shared fold")
+    result["target_ttc"] = target
+    result["bucket"] = np.select(
+        [target < 0, target <= 3, target <= 6], ["negative", "crucial", "small"], "large"
+    )
+    return result
 
 
 def compile_capacity_outer_view(

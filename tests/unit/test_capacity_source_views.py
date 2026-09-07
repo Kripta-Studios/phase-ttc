@@ -102,3 +102,52 @@ def test_diagnostic_in_fit_manifest_is_rejected_before_count_read(tmp_path):
             check=lambda: None,
         )
     assert not observed
+
+
+@pytest.mark.parametrize("defect", [None, "time", "extra", "fold", "anchor"])
+def test_capacity_targets_preserve_signed_values_order_and_clock_contract(defect):
+    from e_jepa_ttc.training.capacity_source_views import capacity_target_rows
+
+    cohort = dict(
+        ordered_tokens=["a", "b"],
+        selected_sequences=["s0", "s1"],
+        sequence_to_outer_fold={"s0": 0, "s1": 1},
+        sequence_to_group={"s0": "g0", "s1": "g1"},
+    )
+    cohort["artifact_sha256"] = object_digest(cohort)
+    meta = pd.DataFrame(
+        dict(
+            sample_token=["b", "a"],
+            sequence_id=["s1", "s0"],
+            track_id=["track_b", "track_a"],
+            timestamp_us=[200, 100],
+            outer_fold=[1, 0],
+        )
+    )
+    labels = pd.DataFrame(
+        dict(
+            sample_token=["a", "b"],
+            sequence_id=["s0", "s1"],
+            timestamp_us=[100, 200],
+            ttc=[1.25, -2.75],
+            frame_ttc=[[1.35, 1.25], [-2.65, -2.75]],
+        )
+    )
+    if defect == "time":
+        labels.loc[0, "timestamp_us"] = 101
+    elif defect == "extra":
+        labels.loc[0, "sample_token"] = "outside"
+    elif defect == "fold":
+        meta.loc[0, "outer_fold"] = 2
+    elif defect == "anchor":
+        labels.at[0, "frame_ttc"] = [1.25, 1.35]
+    if defect:
+        with pytest.raises(ValueError):
+            capacity_target_rows(cohort, meta, labels)
+    else:
+        result = capacity_target_rows(cohort, meta, labels)
+        assert result.sample_token.tolist() == ["a", "b"]
+        assert result.target_ttc.dtype == np.float64
+        assert result.target_ttc.tolist() == [1.25, -2.75]
+        assert result.bucket.tolist() == ["crucial", "negative"]
+        assert result.acquisition_group.tolist() == ["g0", "g1"]

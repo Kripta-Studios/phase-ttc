@@ -929,3 +929,31 @@ Aún no es el regenerador integral solicitado. La reconstrucción de cachés y l
 manifiestos resueltos desde cero deben conectarse a esta misma entrada cuando
 se cierre su flujo reproducible. No se han añadido scripts duplicados ni se ha
 modificado el lanzador congelado del original.
+
+
+## 2026-09-07 — Targets canónicos reales para 30000 muestras
+
+`capacity_target_rows` conecta los metadatos y las etiquetas seleccionadas ya
+validados por el reloj. Exige universo exacto, identidad secuencia/timestamp,
+fold compartido y target asociado a la segunda anotación. Conserva TTC firmado
+en float64, orden canónico, track, adquisición y bucket. No normaliza usando
+el conjunto completo ni entrega etiquetas como entrada del modelo.
+
+La materialización real contiene 30000 filas/27 secuencias. Se verificaron los
+bindings de preparación, usabilidad, roles y ambos parquet TRAIN; se comprobó
+la autorización del conjunto con los roles existentes. El diario registra las
+lecturas de las 30000 etiquetas seleccionadas. El CSV recupera exactamente sus
+valores con lectura float_precision=round_trip.
+
+Manifiesto: `resolved_inputs_30000/TARGET_ROWS.json`, SHA256
+87e55d5b837b6722c1fc9e4d335fab7597548ecd79d8365e8f269c2df34b9b76.
+Su binding `target_rows` será la entrada `capacity_target_rows` del lock y de
+la publicación conjunta de comparadores. La función también proporciona el
+esquema de supervisión requerido por los normalizadores/vistas TRAIN existentes.
+
+Cinco pruebas nuevas pasan (orden/valores y rechazo de tiempo, token, fold o
+anclaje alterados); Ruff/formato y Pyright pasan. La primera invocación operativa
+falló porque faltaba el directorio padre del diario, antes de decodificar etiquetas;
+se conservó ATTEMPT_001_INCIDENT.json y la segunda terminó. Cero optimizer updates,
+sin scores exteriores. Los normalizadores de 30000 filas siguen pendientes del
+cierre físico de su caché; no se reutilizan los de 8192 filas.
