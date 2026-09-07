@@ -142,3 +142,18 @@ su salida distingue esa incertidumbre del cálculo histórico exacto. Pruebas co
 con las pruebas históricas: 16 tests CPU, Ruff y Pyright sin errores, cero updates.
 Recibo: capacity_qa/CONTRASTS_VARIABLE_COHORT_ZERO_UPDATES.xml. Esto cierra la
 primitiva de contrastes; su conexión al evaluador y los comparadores sigue pendiente.
+
+La ruta existente de recetas y materialización anidadas admite ahora los roles
+de capacidad: el grupo diagnóstico queda excluido junto con el exterior y el
+interior de todos los ancestros. La receta hereda los roles firmados del productor
+padre, verifica particiones/tokens y conserva la barrera de autorización S75 antes
+de observar eventos. La carga final verifica también esa procedencia y usa el
+estimando de buckets presentes para la rama de capacidad sin D. No se ha creado
+otro materializador ni se han ejecutado fits anidados anticipados.
+QA afectado:12 tests de recetas/vistas,6 de materialización histórica/capacidad
+con expansión y3 de capacidad sin D pasan, cero updates. Recibos:
+NESTED_CAPACITY_EXCLUSIONS_ZERO_UPDATES.xml,
+NESTED_CAPACITY_MATERIALIZATION_ZERO_UPDATES.xml y
+NESTED_CAPACITY_SUBSET_ZERO_UPDATES.xml. Ruff y Pyright afectados pasan.
+Quedan la generación de recetas reales vinculadas a la nueva caché de30.000,
+su incorporación al lock/ejecutor y los comparadores antiguos con igual linaje.

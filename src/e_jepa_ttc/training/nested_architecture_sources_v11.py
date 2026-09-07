@@ -124,6 +124,7 @@ def materialize_nested_sources(
             expected_expansion=recipe["include_expansion"],
             source_role_sha256=lock["source_role_sha256"],
             nested_recipe=recipe,
+            producer_recipe=recipe.get("capacity_producer_roles"),
         )
     view = TrainingView(
         reader,
@@ -176,7 +177,10 @@ def materialize_nested_sources(
             [target < 0, target <= 3, target <= 6], ["negative", "crucial", "small"], "large"
         )
         labels = pd.concat((labels, extra), ignore_index=True)
-    supervision = train_supervision(view, labels, expanded=recipe["include_expansion"])
+    present_buckets = (
+        recipe["include_expansion"] or recipe.get("capacity_producer_roles") is not None
+    )
+    supervision = train_supervision(view, labels, expanded=present_buckets)
     payloads = {
         "NORMALIZATION.json": asdict(normalization),
         "SUPERVISION.json": {
@@ -188,7 +192,7 @@ def materialize_nested_sources(
             "prior_bin_mass": supervision.prior_bin_mass.tolist(),
             "outside_support_mass": supervision.outside_support_mass,
             "estimand": "present_bucket_normalized_TRAIN"
-            if recipe["include_expansion"]
+            if present_buckets
             else "strict_original_TRAIN",
         },
     }
@@ -216,6 +220,11 @@ def materialize_nested_sources(
         "source_role_sha256",
     )
     source = {
+        **(
+            {"producer_roles_sha256": recipe["capacity_producer_roles"]["artifact_sha256"]}
+            if recipe.get("capacity_producer_roles") is not None
+            else {}
+        ),
         **{key: recipe[key] for key in fields},
         "kind": "RESOLVED_ARCHITECTURE_TRAIN_SOURCE_VIEW",
         "training_lock_sha256": lock["artifact_sha256"],
@@ -240,4 +249,5 @@ def materialize_nested_sources(
         expected_expansion=recipe["include_expansion"],
         source_role_sha256=lock["source_role_sha256"],
         nested_recipe=recipe,
+        producer_recipe=recipe.get("capacity_producer_roles"),
     )

@@ -92,3 +92,79 @@ def test_catalog_does_not_smuggle_targets_into_the_recipe_interface():
     catalog, *_ = fixture()
     with pytest.raises(ValueError, match="target-free"):
         CountMetadataCatalog(catalog.metadata.assign(target_ttc_s=2), catalog.identity)
+
+
+@pytest.mark.parametrize("damage", [None, "diagnostic", "inner_exclusion", "parent"])
+def test_capacity_nested_recipe_excludes_diagnostic_and_all_held_ancestors(damage):
+    catalog, original, parent, protocol, roles = fixture()
+    split = protocol["folds"][0]
+    split.update(
+        train_sequence_ids=["s6", "s7", "s8"],
+        dev_sequence_ids=["s4", "s5"],
+        train_rows=3,
+        dev_rows=2,
+        train_sample_tokens_sha256=hash_sorted_token_strings(["r6", "r7", "r8"]),
+        dev_sample_tokens_sha256=hash_sorted_token_strings(["r4", "r5"]),
+    )
+    producer = {
+        "kind": "CAPACITY_NESTED_PRODUCER_ROLES",
+        "folds": [
+            {
+                "outer_fold": 0,
+                "diagnostic_sequences": ["s3"],
+                "outer_held_sequences": ["s0", "s1", "s2"],
+                "fit_sequences": ["s4", "s5", "s6", "s7", "s8"],
+                "all_fit_ancestor_exclusions": ["s0", "s1", "s2", "s3"],
+                "normalization_and_pretext_exclusions": ["s0", "s1", "s2", "s3"],
+                "inner_roles": [
+                    {
+                        "inner_fold": 0,
+                        "fit_sequences": ["s6", "s7", "s8"],
+                        "prediction_sequences": ["s4", "s5"],
+                        "all_fit_ancestor_exclusions": [f"s{i}" for i in range(6)],
+                    }
+                ],
+            }
+        ],
+    }
+    if damage == "diagnostic":
+        producer["folds"][0]["diagnostic_sequences"] = ["s6"]
+    elif damage == "inner_exclusion":
+        producer["folds"][0]["inner_roles"][0]["all_fit_ancestor_exclusions"].remove("s3")
+    producer["artifact_sha256"] = object_digest(producer)
+    parent.pop("artifact_sha256")
+    parent["ordered_tokens"].remove("r3")
+    if damage == "parent":
+        parent["ordered_tokens"].append("r3")
+    parent["producer_roles_sha256"] = producer["artifact_sha256"]
+    parent["artifact_sha256"] = object_digest(parent)
+    if damage:
+        with pytest.raises(ValueError, match="capacity"):
+            nested_source_recipe(
+                catalog,
+                original,
+                parent,
+                protocol,
+                roles,
+                outer=0,
+                inner=0,
+                expanded=True,
+                producer_recipe=producer,
+            )
+        return
+    recipe = nested_source_recipe(
+        catalog,
+        original,
+        parent,
+        protocol,
+        roles,
+        outer=0,
+        inner=0,
+        expanded=True,
+        producer_recipe=producer,
+    )
+    assert recipe["ordered_tokens"] == ["d1", "r6", "r7", "r8", "d0"]
+    assert recipe["excluded_groups"] == [f"g{i}" for i in range(6)]
+    assert recipe["inner_prediction_tokens"] == ["r4", "r5"]
+    assert recipe["capacity_producer_roles"] == producer
+    assert recipe["optimizer_updates"] == 0

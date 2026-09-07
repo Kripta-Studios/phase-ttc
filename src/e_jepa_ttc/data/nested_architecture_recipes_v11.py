@@ -44,6 +44,7 @@ def nested_source_recipe(
     outer: int,
     inner: int,
     expanded: bool,
+    producer_recipe: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Preserve each historical four-train/two-dev split and safe fixed expansion additions."""
     if object_digest({k: v for k, v in parent.items() if k != "artifact_sha256"}) != parent.get(
@@ -59,12 +60,43 @@ def nested_source_recipe(
     train, dev = set(split["train_sequence_ids"]), set(split["dev_sequence_ids"])
     outer_dev = set(original.loc[original.outer_fold == outer, "sequence_id"])
     original_sequences = set(original.sequence_id)
+    diagnostic: set[str] = set()
+    if producer_recipe is not None:
+        unsigned = {k: v for k, v in producer_recipe.items() if k != "artifact_sha256"}
+        if (
+            object_digest(unsigned) != producer_recipe.get("artifact_sha256")
+            or producer_recipe.get("kind") != "CAPACITY_NESTED_PRODUCER_ROLES"
+            or parent.get("producer_roles_sha256") != producer_recipe["artifact_sha256"]
+        ):
+            raise ValueError("capacity nested producer ancestry changed")
+        matches = [r for r in producer_recipe["folds"] if r["outer_fold"] == outer]
+        if len(matches) != 1:
+            raise ValueError("one capacity outer role required")
+        role = matches[0]
+        inners = [r for r in role["inner_roles"] if r["inner_fold"] == inner]
+        if len(inners) != 1:
+            raise ValueError("one capacity inner role required")
+        diagnostic = set(role["diagnostic_sequences"])
+        exclusions = outer_dev | diagnostic | dev
+        if (
+            not diagnostic
+            or not train
+            or not dev
+            or diagnostic & (train | dev | outer_dev)
+            or set(role["outer_held_sequences"]) != outer_dev
+            or set(role["fit_sequences"]) != train | dev
+            or set(inners[0]["fit_sequences"]) != train
+            or set(inners[0]["prediction_sequences"]) != dev
+            or set(inners[0]["all_fit_ancestor_exclusions"]) != exclusions
+            or set(role["all_fit_ancestor_exclusions"]) != outer_dev | diagnostic
+            or set(role["normalization_and_pretext_exclusions"]) != outer_dev | diagnostic
+        ):
+            raise ValueError("capacity nested partition or transitive exclusions changed")
     if (
-        len(train) != 4
-        or len(dev) != 2
+        (producer_recipe is None and (len(train) != 4 or len(dev) != 2))
         or train & dev
         or (train | dev) & outer_dev
-        or train | dev | outer_dev != original_sequences
+        or train | dev | outer_dev | diagnostic != original_sequences
     ):
         raise ValueError("nested recipe changed the original four/two/outer sequence partition")
     for role, sequences in (("train", train), ("dev", dev)):
@@ -82,8 +114,12 @@ def nested_source_recipe(
         raise ValueError("parent TRAIN rows are duplicated or absent from the fixed cache")
     mapping = dict(roles.sequence_to_group)
     parent_sequences = set(index.loc[list(parent_tokens), "sequence_id"].astype(str))
+    if producer_recipe is not None and parent_sequences & (outer_dev | diagnostic):
+        raise ValueError("capacity parent exposed diagnostic or outer sequences")
     roles.check_fit_sequences(
-        tuple(parent_sequences), excluded_sequences=tuple(outer_dev), include_expansion=expanded
+        tuple(parent_sequences),
+        excluded_sequences=tuple(outer_dev | diagnostic),
+        include_expansion=expanded,
     )
     allowed = set(train)
     if expanded:
@@ -95,11 +131,12 @@ def nested_source_recipe(
     )
     if not set(original.loc[original.sequence_id.isin(train), "sample_token"]) <= set(tokens):
         raise ValueError("nested source omitted prescribed original TRAIN rows")
-    excluded = tuple(sorted(outer_dev | dev))
+    excluded = tuple(sorted(outer_dev | dev | diagnostic))
     view = TrainingView(
         catalog, tokens, roles, excluded_sequences=excluded, include_expansion=expanded
     )
     return {
+        **({"capacity_producer_roles": producer_recipe} if producer_recipe is not None else {}),
         "kind": "PROSPECTIVE_NESTED_NEW_ARCHITECTURE_SOURCE_RECIPE",
         "outer_fold": outer,
         "inner_fold": inner,

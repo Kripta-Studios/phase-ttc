@@ -18,8 +18,8 @@ from e_jepa_ttc.training import nested_architecture_sources_v11 as module
 from e_jepa_ttc.training.stage73_factorial import PlannedFit
 
 
-@pytest.fixture
-def fixture(tmp_path, monkeypatch):
+@pytest.fixture(params=["historical", "capacity", "capacity_subset"])
+def fixture(tmp_path, monkeypatch, request):
     metadata = pd.DataFrame(
         {
             "sample_token": [f"r{i}" for i in range(10)],
@@ -53,6 +53,42 @@ def fixture(tmp_path, monkeypatch):
         "train_sample_tokens_sha256": hash_sorted_token_strings([f"r{i}" for i in range(5, 9)]),
         "dev_sample_tokens_sha256": hash_sorted_token_strings(["r3", "r4"]),
     }
+    producer = None
+    if request.param != "historical":
+        producer = {
+            "kind": "CAPACITY_NESTED_PRODUCER_ROLES",
+            "folds": [
+                {
+                    "outer_fold": 0,
+                    "diagnostic_sequences": ["s5"],
+                    "outer_held_sequences": ["s0", "s1", "s2"],
+                    "fit_sequences": ["s3", "s4", "s6", "s7", "s8"],
+                    "all_fit_ancestor_exclusions": ["s0", "s1", "s2", "s5"],
+                    "normalization_and_pretext_exclusions": ["s0", "s1", "s2", "s5"],
+                    "inner_roles": [
+                        {
+                            "inner_fold": 0,
+                            "fit_sequences": ["s6", "s7", "s8"],
+                            "prediction_sequences": ["s3", "s4"],
+                            "all_fit_ancestor_exclusions": [f"s{i}" for i in range(6)],
+                        }
+                    ],
+                }
+            ],
+        }
+        producer["artifact_sha256"] = object_digest(producer)
+        parent.pop("artifact_sha256")
+        parent["ordered_tokens"].remove("r5")
+        if request.param == "capacity_subset":
+            parent["ordered_tokens"].remove("r9")
+            parent["include_expansion"] = False
+        parent["producer_roles_sha256"] = producer["artifact_sha256"]
+        parent["artifact_sha256"] = object_digest(parent)
+        split.update(
+            train_sequence_ids=["s6", "s7", "s8"],
+            train_rows=3,
+            train_sample_tokens_sha256=hash_sorted_token_strings(["r6", "r7", "r8"]),
+        )
     recipe = nested_source_recipe(
         catalog,
         original,
@@ -61,7 +97,8 @@ def fixture(tmp_path, monkeypatch):
         roles,
         outer=0,
         inner=0,
-        expanded=True,
+        expanded=request.param != "capacity_subset",
+        producer_recipe=producer,
     )
     recipe["source_role_sha256"] = "e" * 64
     recipe["artifact_sha256"] = object_digest(recipe)
@@ -72,7 +109,9 @@ def fixture(tmp_path, monkeypatch):
     pd.DataFrame({"sample_token": ["r9"], "sequence_id": ["s9"], "ttc": [4.0]}).to_parquet(
         tmp_path / "extra.parquet"
     )
-    plan = PlannedFit("S75", "S73-PPS-AD", 0, 7, 0)
+    plan = PlannedFit(
+        "S75", "S73-PPS-A" if request.param == "capacity_subset" else "S73-PPS-AD", 0, 7, 0
+    )
     lock = {
         "artifact_sha256": "b" * 64,
         "source_role_sha256": "e" * 64,
@@ -119,7 +158,11 @@ def test_fresh_inner_statistics_and_prior_use_only_prescribed_rows_and_resume_wi
     assert loaded.view.tokens == tuple(recipe["ordered_tokens"])
     assert loaded.normalization.training_view_sha256 == loaded.view.identity
     assert loaded.supervision.mass.sum().item() == pytest.approx(1.0)
-    assert loaded.source["normalization_fit_rows"] == loaded.source["prior_fit_rows"] == 5
+    assert (
+        loaded.source["normalization_fit_rows"]
+        == loaded.source["prior_fit_rows"]
+        == len(recipe["ordered_tokens"])
+    )
     again = module.materialize_nested_sources(plan, **kwargs)
     assert again.source_sha256 == loaded.source_sha256
     assert reads == recipe["ordered_tokens"]
