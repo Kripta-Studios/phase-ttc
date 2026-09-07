@@ -449,3 +449,20 @@ el diccionario heterogéneo de argumentos del fixture. Cero optimizer updates;
 no se leyeron resultados científicos exteriores ni confirmación. Sigue pendiente
 la tabla ampliada de comparadores con procedencia válida y su conexión al
 exportador inicial, por lo que v11 todavía no está listo para congelarse.
+# Cobertura real del profesor para 30.000 tokens (2026-09-07)
+
+Se verificaron los hashes físicos de los 128 shards del profesor histórico y
+se decodificaron sólo sample_tokens y sequence_ids. De las 30.000 consultas
+ampliadas, 4.775 coinciden con su universo y 25.225 no tienen features en esa
+caché. Por fold, las faltas en el TRAIN efectivo son 15.919, 17.319 y 15.208
+sobre 18.889, 18.889 y 18.888 tokens, respectivamente. No se leyeron targets ni
+scores; cero optimizer updates.
+
+Recibo `COMPARATOR_TEACHER_COVERAGE_30000.json`, SHA256 físico
+`266ab9896bd2847188a55ebe1d902f9282faa574c245f0a7eb35e49bca679114`.
+La coincidencia de token no acredita reutilización de features: también deben
+coincidir ROI, RGB y preprocessing. Los comparadores A5/C2F requieren resolver
+las features faltantes con los bytes locales aprobados y las exclusiones de
+fuentes correspondientes. No se sustituye el teacher, se descarga otro ni se
+elimina su pérdida para eludir esta dependencia. El hallazgo afecta esa rama
+de comparadores; no bloquea el entrenamiento original DIRECT/PPS.
