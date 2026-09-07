@@ -64,8 +64,11 @@ El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
    27secuencias/8.192tokens y cuatro externas; D bloqueado por su mínimo de grupos.
    Reloj/targets:8.192 válidas, cero sustituciones, deriva máxima2µs y gap0.
    Bindings/cache completos: 128 shards y 8.192 filas verificadas. Roles interiores
-   congelados; primer fold con normalización/prior TRAIN verificados (5.159 filas,
-   17 secuencias). Los otros dos folds siguen en preparación CPU.
+   congelados; los tres folds tienen normalización/prior TRAIN verificados:
+   5.159, 5.156 y 5.158 filas, con 17 secuencias por fold. El proceso CPU terminó
+   con código cero y sin updates de optimizador. SOURCES_COMPLETE.json tiene
+   identidad cdd5c836a192ffb0be1898442a4d1ec1fdb91a939008ad1aa6bd7ea317318ccd;
+   se comprobaron sus bindings físicos y las exclusiones antes de registrar cierre.
 3. Evaluación/procedencia: pendientes universo variable, exportación por tamaño,
    bootstrap, comparadores reproducidos y productores anidados del nuevo universo.
 4. Ejecución/entrega: grafo y admisión aritmética implementados; contador heredado
