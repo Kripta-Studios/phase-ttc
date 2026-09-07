@@ -22,9 +22,20 @@ from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
 from e_jepa_ttc.training.stage73_factorial import (
     Availability,
     Family,
-    canonical_candidates,
+    PlannedFit,
+    candidate_key,
+    canonical_evidence_keys,
     initial_jobs,
 )
+
+
+def _export_matches_plan(export: dict[str, Any], plan: PlannedFit) -> bool:
+    """Reject a different capacity even when its base treatment name is identical."""
+    return (
+        export.get("treatment") == plan.treatment_name
+        and export.get("capacity", "2M") == plan.capacity
+        and export.get("candidate_key", export.get("treatment")) == plan.candidate_key
+    )
 
 
 def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
@@ -36,8 +47,9 @@ def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
     unsigned = {key: value for key, value in record.items() if key != "artifact_sha256"}
     identity = record.get("identity", {})
     availability = Availability(**lock["availability"])
-    names = canonical_candidates(availability)
-    expected = {plan.treatment_name for plan in initial_jobs(availability)}
+    names = canonical_evidence_keys(availability)
+    plans = {plan.candidate_key: plan for plan in initial_jobs(availability)}
+    expected = set(plans)
     if (
         object_digest(unsigned) != record.get("artifact_sha256")
         or record.get("kind") != "SOURCE_BOUND_INITIAL_ARCHITECTURE_EVIDENCE"
@@ -64,7 +76,7 @@ def verify_initial_evidence(path: Path, lock: dict[str, Any]) -> dict[str, Any]:
         if (
             object_digest(export_unsigned) != export.get("artifact_sha256")
             or export.get("training_lock_sha256") != lock["artifact_sha256"]
-            or export.get("treatment") != name
+            or not _export_matches_plan(export, plans[name])
             or export.get("stage_barrier") != identity["barriers"][stage]
             or export.get("historical_audit_rows") != lock["historical_audit_rows"]
             or export["rows"] != record["row_sources"][name]
@@ -152,7 +164,8 @@ def build_initial_evidence(
     """Compare all fixed initial arms, with separate canonical-only S75 oracle headroom."""
     lock = require_scientific_lock(lock_path, lock_sha256)
     availability = Availability(**lock["availability"])
-    expected = list(dict.fromkeys(plan.treatment_name for plan in initial_jobs(availability)))
+    plans = {plan.candidate_key: plan for plan in initial_jobs(availability)}
+    expected = list(plans)
     if set(exports) != set(expected) or set(barriers) != {"S72", "S73"}:
         raise ValueError("initial comparison omitted an available treatment or complete stage")
     if (
@@ -174,7 +187,7 @@ def build_initial_evidence(
         "training_lock_sha256": lock_sha256,
         "exports": exports,
         "barriers": barriers,
-        "canonical_candidates": canonical_candidates(availability),
+        "canonical_candidates": canonical_evidence_keys(availability),
     }
     output.mkdir(parents=True, exist_ok=True)
     intent = output / "INITIAL_EVIDENCE_INTENT.json"
@@ -207,7 +220,7 @@ def build_initial_evidence(
             object_digest(unsigned) != export.get("artifact_sha256")
             or export.get("kind") != "COMPLETE_INITIAL_TREATMENT_DIAGNOSTICS"
             or export.get("training_lock_sha256") != lock_sha256
-            or export.get("treatment") != name
+            or not _export_matches_plan(export, plans[name])
             or export.get("stage_barrier") != barriers[stage]
             or export.get("historical_audit_rows") != lock["historical_audit_rows"]
         ):
@@ -259,7 +272,7 @@ def build_initial_evidence(
     joint = old_oracle.copy()
     canonical_evidence = {}
     canonical_validity = {}
-    for family, name in canonical_candidates(availability).items():
+    for family, name in canonical_evidence_keys(availability).items():
         vectors = aligned_loss_vectors(metadata, model_rows[name])
         canonical_validity[family] = vectors is not None
         if vectors is not None:
@@ -275,7 +288,7 @@ def build_initial_evidence(
         "canonical_evidence": canonical_evidence,
         "canonical_technically_valid": canonical_validity,
         "canonical_joint_oracle_gain": float(mass @ (old_oracle - joint)),
-        "primary_hypothesis": "S72-PPS-TRAJ",
+        "primary_hypothesis": candidate_key("S72-PPS-TRAJ", availability.primary_capacity),
         "canonical_names_selected_by_results": False,
         "bootstrap_attempt_directories": [
             str(path) for path in sorted(comparison_root.glob("attempt_*"))

@@ -63,7 +63,9 @@ El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
 2. Datos: selección y folds por adquisición implementados. La selección real dio
    27secuencias/8.192tokens y cuatro externas; D bloqueado por su mínimo de grupos.
    Reloj/targets:8.192 válidas, cero sustituciones, deriva máxima2µs y gap0.
-   Bindings/cache en ejecución CPU; pendientes validación interna y normalización.
+   Bindings/cache completos: 128 shards y 8.192 filas verificadas. Roles interiores
+   congelados; primer fold con normalización/prior TRAIN verificados (5.159 filas,
+   17 secuencias). Los otros dos folds siguen en preparación CPU.
 3. Evaluación/procedencia: pendientes universo variable, exportación por tamaño,
    bootstrap, comparadores reproducidos y productores anidados del nuevo universo.
 4. Ejecución/entrega: grafo y admisión aritmética implementados; contador heredado
@@ -72,3 +74,12 @@ El worktree original, su TRAINING_LOCK y sus resultados permanecen intactos.
 
 Estado: PREPARACIÓN EN CURSO. No hay fits ampliados ni TRAINING_LOCK ampliado.
 La existencia de este documento o de un constructor no demuestra readiness.
+
+La evidencia inicial ya conserva claves distintas para cada capacidad y rechaza
+un export de otro tamaño aunque comparta tratamiento. PPS-TRAJ de 4M permanece
+como hipótesis principal. QA afectado: 16 tests CPU pasan, Ruff pasa y Pyright con
+el intérprete compartido registra cero errores. La primera invocación de Pyright
+sin ese intérprete encontró cuatro errores de stubs de pandas; no se cambió la
+lectura numérica para eludirlos. Cero updates de optimizador en estas pruebas.
+La conexión de métricas/comparadores ampliados continúa pendiente; esta corrección
+de identidad no autoriza por sí sola la evaluación del conjunto ampliado.

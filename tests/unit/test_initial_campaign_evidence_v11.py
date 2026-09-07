@@ -9,10 +9,26 @@ import pytest
 
 from e_jepa_ttc.artifacts import architecture_stage_decisions_v11 as decisions
 from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
-from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import canonical_oracle
+from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import (
+    _export_matches_plan,
+    canonical_oracle,
+)
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, scientific_ttc
 from e_jepa_ttc.evaluation.stage70_76 import Evidence
-from e_jepa_ttc.training.stage73_factorial import Availability
+from e_jepa_ttc.training.stage73_factorial import Availability, PlannedFit
+
+
+def test_evidence_rejects_capacity_substitution_and_retains_original_export():
+    original = PlannedFit("S72", "S72-PPS-TRAJ", 0, 7)
+    expanded = PlannedFit("S72", "S72-PPS-TRAJ", 0, 7, capacity="4M")
+    legacy_export = {"treatment": "S72-PPS-TRAJ"}
+    assert _export_matches_plan(legacy_export, original)
+    assert not _export_matches_plan(legacy_export, expanded)
+    correct = {**legacy_export, "capacity": "4M", "candidate_key": expanded.candidate_key}
+    assert _export_matches_plan(correct, expanded)
+    assert not _export_matches_plan(correct, original)
+    assert not _export_matches_plan({**correct, "capacity": "8M"}, expanded)
+    assert not _export_matches_plan({**correct, "candidate_key": original.candidate_key}, expanded)
 
 
 def test_oracle_ignores_better_control_and_keeps_failed_canonical_identity():
