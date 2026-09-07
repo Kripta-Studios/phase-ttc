@@ -105,6 +105,94 @@ def validate_frozen_teacher_dependency(
         raise ValueError("producer representation teacher dependency is not verified frozen")
 
 
+def validate_accounted_comparator_ancestry(
+    checkpoint: dict[str, Any],
+    effective: dict[str, Any],
+    protocol: dict[str, Any],
+    artifact: dict[str, Any],
+    canonical: pd.DataFrame,
+    predictions: pd.DataFrame,
+    producer_recipe: dict[str, Any],
+    *,
+    teacher_audit: dict[str, Any] | None,
+) -> dict[str, Any]:
+    """Audit native full-state producers, including their separately frozen teacher.
+
+    Physical source hashes and the full endpoint are verified by the caller.
+    Initialization evidence here is the saved training contract and the frozen
+    native constructor, rather than a fabricated legacy checkpoint field.
+    """
+    from e_jepa_ttc.training.capacity_campaign import comparator_epoch_updates
+
+    job = artifact["identity"]["job"]
+    spec = job["spec"]
+    training = checkpoint["training_config"]
+    split = protocol["folds"][0]
+    if (
+        checkpoint.get("artifact_type") != "causal_scale_eap_resume_state_v1"
+        or checkpoint.get("fit_spec") != spec
+        or spec["technical"]
+        or spec["arm"] not in ("A5", "C2F")
+        or checkpoint.get("epoch") != 18
+        or training.get("epochs") != 18
+        or training.get("checkpoint_selection_mode") != "last_epoch"
+        or training.get("seed") != spec["seed"]
+        or checkpoint.get("train_samples") != split["train_rows"]
+        or checkpoint.get("validation_samples") != split["dev_rows"]
+        or spec["endpoint"]
+        != comparator_epoch_updates(
+            split["train_rows"],
+            epochs=18,
+            batch_size=training["batch_size"],
+            accumulation=training["gradient_accumulation_steps"],
+        )
+    ):
+        raise ValueError("comparator ancestry lacks its complete prescribed native endpoint")
+    if training.get("initialization_mode") != "none" or any(
+        training.get(key) is not None
+        for key in (
+            "initialization_checkpoint",
+            "initialization_checkpoint_sha256",
+            "soft_geometry_teacher_checkpoint",
+            "soft_geometry_teacher_checkpoint_sha256",
+        )
+    ):
+        raise ValueError("comparator contains a fitted initialization or teacher ancestor")
+    for role in ("train", "dev"):
+        if set(effective["data"][f"{role}_sequence_ids"]) != set(split[f"{role}_sequence_ids"]):
+            raise ValueError("actual native source pool differs from producer provenance")
+    for key, value in effective["training"].items():
+        if key not in training or training[key] != value:
+            raise ValueError(f"actual comparator training recipe differs: {key}")
+    teacher = training.get("representation_teacher_cache_artifact_sha256")
+    if teacher is not None:
+        if teacher_audit is None:
+            raise ValueError("comparator is missing its separately verified frozen teacher")
+        validate_frozen_teacher_dependency(
+            {"representation_teacher_artifact_sha256": teacher},
+            teacher_audit,
+            required_tokens=canonical.sample_token.tolist(),
+        )
+    proof = validate_nested_split(
+        protocol,
+        artifact,
+        canonical,
+        predictions,
+        outer_fold=spec["fold"],
+        inner_fold=protocol["inner_fold"],
+        producer_recipe=producer_recipe,
+    )
+    proof.update(
+        ancestry_validated=True,
+        initialization_ancestors=[],
+        initialization_evidence="saved_full_state_recipe_and_frozen_native_constructor",
+        representation_teacher_artifact_sha256=teacher,
+        teacher_pretraining_exposure_limitations_preserved=teacher is not None,
+        diagnostic_rows_used_as_oof=False,
+    )
+    return proof
+
+
 def validate_nested_split(
     protocol: dict[str, Any],
     artifact: dict[str, Any],

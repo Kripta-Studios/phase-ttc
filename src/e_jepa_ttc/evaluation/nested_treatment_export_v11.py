@@ -29,6 +29,14 @@ def historical_table(
     """Reuse the proven physical-role table validator for the exact recovered historical package."""
     if outer not in (0, 1, 2) or role not in ("inner_oof", "outer_dev"):
         raise ValueError("unregistered historical expert table role")
+    if "capacity_cohort" in lock:
+        from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import capacity_comparison_receipt
+
+        manifest, source = capacity_comparison_receipt(lock)
+        record = manifest["tables"][f"outer{outer}_{role}"]
+        if record["outer_fold"] != outer or record.get("mass_rule") != "present_bucket_macro":
+            raise ValueError("expanded nested table differs from its fold or metric contract")
+        return load_table(record, role=role), source
     source = lock["historical_nested_tables"]
     manifest = json.loads(verify(source).read_text(encoding="utf-8"))
     unsigned = {key: value for key, value in manifest.items() if key != "artifact_sha256"}

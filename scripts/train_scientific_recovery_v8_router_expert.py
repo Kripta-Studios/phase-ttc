@@ -611,6 +611,7 @@ def execute_capacity_comparator(
     ledger: UpdateLedger,
     owner: ResourceOwner,
     device: torch.device,
+    fit_only: bool = False,
 ) -> dict[str, Any]:
     """Execute one locked native A5/C2F fit and export its excluded prediction pool.
 
@@ -620,7 +621,10 @@ def execute_capacity_comparator(
     """
     from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
     from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
-    from e_jepa_ttc.data.nested_provenance import validate_frozen_teacher_dependency
+    from e_jepa_ttc.data.nested_provenance import (
+        validate_accounted_comparator_ancestry,
+        validate_frozen_teacher_dependency,
+    )
     from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
     from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
     from scripts.train_causal_scale_eap_screen import run
@@ -655,6 +659,7 @@ def execute_capacity_comparator(
     ):
         raise ValueError("native comparator inputs escaped the frozen job")
     teacher = config["training"].get("representation_teacher_cache_artifact_sha256")
+    audit = None
     if teacher is not None:
         audit = json.loads(verify(job["teacher_audit"]).read_text(encoding="utf-8"))
         validate_frozen_teacher_dependency(
@@ -691,6 +696,12 @@ def execute_capacity_comparator(
             accounting=(ledger, spec),
             check=owner.check,
         )
+    if fit_only:
+        state = ledger.state["jobs"][job_id]
+        if state["status"] != "COMPLETE" or state["spec"] != job["spec"]:
+            raise ValueError("comparator fit did not reach its prescribed endpoint")
+        verify(state["endpoint"])
+        return {"job_id": job_id, "endpoint": state["endpoint"], "identity": identity}
     for stage in ("S72", "S73"):
         verify_initial_barrier(
             Path(lock["stage_barrier_root"]) / f"{stage}_ALL_ENDPOINTS_FROZEN.json",
@@ -727,6 +738,43 @@ def execute_capacity_comparator(
         inner_fold=protocol["inner_fold"],
         expanded=True,
     )
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import AllowlistedSources
+
+    inputs = protocol["capacity_inputs"]
+    access = AllowlistedSources(list(inputs.values()), owner.root / "COMPARATOR_SOURCE_READS.jsonl")
+    cohort = json.loads(access.access(Path(inputs["cohort"]["path"])).read_text(encoding="utf-8"))
+    roles = json.loads(
+        access.access(Path(inputs["producer_roles"]["path"])).read_text(encoding="utf-8")
+    )
+    canonical = pd.read_csv(
+        access.access(Path(inputs["metadata"]["path"])),
+        dtype={"sample_token": str, "sequence_id": str, "track_id": str},
+    )
+    canonical["outer_fold"] = canonical.sequence_id.map(
+        {
+            sequence: fold["outer_fold"]
+            for fold in cohort["folds"]
+            for sequence in fold["held_sequences"]
+        }
+    )
+    canonical["acquisition_group"] = canonical.sequence_id.map(cohort["sequence_to_group"])
+    artifact_role = {
+        "identity": identity,
+        "outer_fold": spec.fold,
+        "inner_fold": protocol["inner_fold"],
+        "role": "outer_dev" if protocol["inner_fold"] is None else "inner_oof",
+        "producer_roles_sha256": protocol["producer_roles_sha256"],
+    }
+    endpoint = ledger.state["jobs"][job_id]["endpoint"]
+    endpoint_access = AllowlistedSources([endpoint], owner.root / "COMPARATOR_SOURCE_READS.jsonl")
+    owner.check()
+    payload = torch.load(
+        endpoint_access.access(Path(endpoint["path"])), map_location="cpu", weights_only=False
+    )
+    ancestry = validate_accounted_comparator_ancestry(
+        payload, config, protocol, artifact_role, canonical, frame, roles, teacher_audit=audit
+    )
+    del payload
     owner.check()
     export = output / "prediction"
     export.mkdir(exist_ok=True)
@@ -745,7 +793,8 @@ def execute_capacity_comparator(
         "role": "outer_dev" if protocol["inner_fold"] is None else "inner_oof",
         "producer_roles_sha256": protocol["producer_roles_sha256"],
         "diagnostic_rows_used_as_oof": False,
-        "ancestry_validated": False,
+        "ancestry_validated": True,
+        "ancestry": ancestry,
     }
     record["artifact_sha256"] = object_digest(record)
     receipt = export / "COMPARATOR_EXPORT.json"

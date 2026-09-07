@@ -19,6 +19,90 @@ def launcher():
     return module
 
 
+@pytest.mark.parametrize("corruption", [None, "missing", "cross_fold_parent"])
+def test_capacity_comparator_graph_freezes_every_head_before_export(
+    launcher, tmp_path, monkeypatch, corruption
+):
+    from dataclasses import asdict
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
+    from e_jepa_ttc.training.stage70_update_ledger import FitSpec
+
+    jobs = {}
+    for fold in range(3):
+        for inner in (None, 0, 1, 2):
+            protocol = tmp_path / f"protocol_{fold}_{inner}.json"
+            atomic_json(protocol, {"inner_fold": inner})
+            for arm in ("A5", "C2F", "PAIR"):
+                name = f"{arm}_{fold}_{inner}"
+                spec = FitSpec(
+                    name,
+                    "COMPARATOR",
+                    arm,
+                    fold,
+                    7,
+                    6840 if arm == "PAIR" else 18,
+                    "a" * 64,
+                    "b" * 64,
+                )
+                jobs[name] = {"spec": asdict(spec), "protocol": binding(protocol)}
+                if arm == "PAIR":
+                    jobs[name]["a5_job_id"] = f"A5_{fold}_{inner}"
+    if corruption == "missing":
+        jobs.pop("PAIR_2_2")
+    elif corruption:
+        jobs["PAIR_2_2"]["a5_job_id"] = "A5_1_2"
+    lock = {
+        "comparator_jobs": jobs,
+        "campaign_root": str(tmp_path),
+        "capacity_comparison_output": str(tmp_path / "comparison"),
+    }
+    monkeypatch.setattr(launcher, "require_scientific_lock", lambda *args: lock)
+    calls = []
+    state = {"jobs": {}}
+
+    def reserve(spec):
+        state["jobs"].setdefault(spec.job_id, {"status": "RESERVED"})
+
+    ledger = SimpleNamespace(state=state, reserve=reserve, totals=lambda: {})
+
+    def runner(job_id, *, fit_only, **kwargs):
+        if fit_only:
+            state["jobs"][job_id]["status"] = "COMPLETE"
+        else:
+            assert len(state["jobs"]) == 36
+            assert all(j["status"] == "COMPLETE" for j in state["jobs"].values())
+        calls.append((fit_only, job_id))
+
+    def publish(*args):
+        assert len(calls) == 72
+        atomic_json(tmp_path / "comparison/COMPARISON_COMPLETE.json", {"fixture": True})
+        return {"fixture": True}
+
+    monkeypatch.setattr(
+        "scripts.train_scientific_recovery_v8_router_expert.execute_capacity_comparator", runner
+    )
+    monkeypatch.setattr(
+        "scripts.build_scientific_recovery_v9_stage61_reference.execute_capacity_pair", runner
+    )
+    monkeypatch.setattr(
+        "scripts.run_scientific_recovery_v9_stage65.publish_capacity_risk17", publish
+    )
+    owner = SimpleNamespace()
+    if corruption:
+        with pytest.raises(ValueError):
+            launcher.execute_capacity_comparator_graph(
+                tmp_path / "lock", "a" * 64, owner, ledger, lambda _: None
+            )
+        assert not calls and not state["jobs"]
+    else:
+        launcher.execute_capacity_comparator_graph(
+            tmp_path / "lock", "a" * 64, owner, ledger, lambda _: None
+        )
+        assert all(fit for fit, _ in calls[:36])
+        assert all(not fit for fit, _ in calls[36:])
+
+
 @pytest.mark.parametrize("interrupt", [False, True])
 def test_launcher_executes_all_independent_and_conditional_backends(
     launcher, monkeypatch, tmp_path, interrupt
@@ -121,7 +205,10 @@ def test_cli_modes_are_mutually_exclusive(launcher):
         )
 
 
-def test_interruption_bundle_is_verified_without_claiming_completed_science(tmp_path, monkeypatch):
+@pytest.mark.parametrize("capacity", [False, True])
+def test_interruption_bundle_is_verified_without_claiming_completed_science(
+    tmp_path, monkeypatch, capacity
+):
     import zipfile
 
     from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
@@ -134,7 +221,9 @@ def test_interruption_bundle_is_verified_without_claiming_completed_science(tmp_
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     project = tmp_path / "project"
-    root = project / "artifacts/stage70_76_architecture"
+    root = project / (
+        "artifacts/stage70_76_capacity" if capacity else "artifacts/stage70_76_architecture"
+    )
     root.mkdir(parents=True)
     monkeypatch.setattr(module, "ROOT", project)
     monkeypatch.setattr(module, "require_scientific_lock", lambda *args: {})
@@ -167,6 +256,16 @@ def test_interruption_bundle_is_verified_without_claiming_completed_science(tmp_
         "router_root",
     ):
         lock[field] = str(root / field)
+    if capacity:
+        lock.update(
+            capacity_cohort=binding(cache),
+            capacity_comparison_output=str(root / "comparison"),
+            comparator_jobs={"PAIR": {"output_root": str(root / "comparators/PAIR")}},
+        )
+        atomic_json(root / "comparators/PAIR/prediction/PAIR_EXPORT.json", {"synthetic": True})
+        atomic_json(
+            root / "comparators/PAIR/training_inputs/PRIVATE_LOCAL_CACHE.json", {"synthetic": True}
+        )
     atomic_json(root / "TRAINING_LOCK.json", lock)
     ledger = {"jobs": {}, "pending": None}
     ledger["sha256"] = object_digest(ledger)
@@ -188,7 +287,33 @@ def test_interruption_bundle_is_verified_without_claiming_completed_science(tmp_
         assert "BUNDLE_VERIFICATION.json" in archive.namelist()
         assert "CODEX_STAGE70_76_FINAL_REPORT.md" in archive.namelist()
         assert not any(name.endswith(".zip") for name in archive.namelist())
+        if capacity:
+            assert "run/comparators/PAIR/prediction/PAIR_EXPORT.json" in archive.namelist()
+            assert not any("PRIVATE_LOCAL_CACHE" in name for name in archive.namelist())
     execution["status"] = "AUTHORIZED_GRAPH_TERMINAL"
     atomic_json(root / "CAMPAIGN_EXECUTION.json", execution)
     with pytest.raises(ValueError, match="omitted"):
         module.package(root)
+
+
+def test_capacity_launcher_cannot_write_original_root(launcher, monkeypatch, tmp_path):
+    original = tmp_path / "artifacts/stage70_76_architecture"
+    original.mkdir(parents=True)
+    monkeypatch.setattr(launcher, "ROOT", tmp_path)
+    monkeypatch.setattr(
+        launcher.sys,
+        "argv",
+        [
+            "runner",
+            "--capacity",
+            "--campaign",
+            "unused",
+            "--local-paths",
+            "unused",
+            "--output-root",
+            str(original),
+            "--execute-authorized",
+        ],
+    )
+    with pytest.raises(ValueError, match="another campaign"):
+        launcher.main()

@@ -825,3 +825,59 @@ compilar y despachar los 36 fits registrados, publicar PAIR y las tablas
 anidadas con auditoría transitiva completa, conectar el producto de comparación
 al análisis ampliado y cargar todos los débitos técnicos previos antes de su
 primer fit. El presupuesto prospectivo y la cola original no se modificaron.
+
+
+## 2026-09-07 — Cierre de integración conjunta PAIR/RISK17
+
+Quedan cerrados seis pendientes de implementación de esta cadena:
+
+1. El compilador de `prepare_stage70_capacity.py --comparator-inputs` produce
+   los 36 trabajos usando las plantillas nativas y los 12 contratos de exclusión.
+   Exige caché TRAIN completa y auditoría del teacher sobre el universo ampliado.
+   No ejecuta fits ni consulta scores; los manifiestos físicos todavía pendientes
+   no se sustituyen por fixtures ni por el teacher histórico de 8192 consultas.
+2. PAIR aprende sus 133 características del A5 exacto de su productor y utiliza
+   únicamente su pool TRAIN. Verifica configuración fija, checkpoint completo,
+   tokens y dependencia transitiva. Una carpeta creada antes del checkpoint cero
+   puede recuperarse sólo cuando no existe trabajo de optimizador cargado.
+3. El coordinador reserva los 36 endpoints completos y ejecuta 24 encoders y
+   12 cabezas antes de exportar. Ninguna predicción de comparación se publica antes
+   de las barreras S72/S73. `--capacity` usa exclusivamente la raíz separada de v11;
+   siguen vigentes el cierre de QA, lock y predecesor terminal.
+4. La publicación audita nuevamente los checkpoints reales y construye tres
+   tablas inner-OOF y tres outer-dev. Los tres RISK17 se ajustan sólo con sus
+   tablas interiores; todos quedan congelados antes del routing exterior.
+   Sus intentos y finalizaciones se contabilizan como fits sin optimizer updates.
+5. Evaluación y productores posteriores consumen el producto ampliado firmado,
+   con targets canónicos float64 y masa normalizada sobre buckets presentes.
+   Se ha eliminado la circularidad de exigir predicciones físicas en el lock
+   anterior a los fits: éste fija el destino; el consumidor verifica el producto.
+6. El empaquetador admite la campaña separada e incluye tablas, predicciones y
+   procedencia de los comparadores. Sus cachés TRAIN y estados pesados permanecen
+   locales. Una interrupción sigue etiquetada como interrupción, no como resultado.
+
+QA afectado, sin repetir la suite general: coordinador/consumidores 25 casos;
+ancestría nativa cuatro; compilador con plantillas reales dos; publicación inicial
+PAIR dos; CLI/entrega tres; publicación física conjunta un caso, repetido sólo
+al añadir la comprobación independiente de la receta PAIR. Esta última usa 36
+contratos neuronales sintéticos, no 36 entrenamientos reales. Cada ejecución
+positiva hace tres solves reales de ridge, y la reanudación ninguno. El bloque
+conjunto suma seis solves de QA y cero nuevos optimizer updates. Los seis fits
+neuronales CPU anteriores y sus 120 updates totales conservan su recibo separado;
+no deben omitirse del débito técnico de v11. La prueba física emite el aviso
+existente de NumPy no escribible al convertir fases; la conversión no escribe.
+
+Se conservan los IDs y XML de fallos corregidos: columnas del fixture de
+compilación (token/sequence/track frente al esquema de metadatos), importación
+pytest ausente en la prueba nueva y la anotación de tipo de DataFrame en PAIR.
+Ruff y formato pasan. Pyright conserva seis errores previos del builder y once
+previos del executor, comparados por archivo/regla/mensaje; cero nuevos.
+Runner, empaquetador y publicador final: cero errores de tipos.
+
+`qa/PAIR_RISK17_CHAIN_CLOSURE.json` vincula código, QA, incidencias y dependencias.
+Esto cierra la integración CPU de la cadena, no declara v11 congelado ni sus
+36 endpoints científicos completos. Para materializarlos faltan: caché nativa
+completa y teacher ampliado auditado; manifiestos resueltos/QA GPU y débitos
+previos incorporados al lock completo de v11; terminación del grafo original.
+El lanzador PowerShell integral solicitado para reconstruir toda la campaña
+sigue siendo un entregable pendiente; no se presenta el wrapper actual como tal.

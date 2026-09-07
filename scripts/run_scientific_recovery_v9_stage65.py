@@ -19,6 +19,7 @@ _REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_REPOSITORY_ROOT / "src"))
 
 from e_jepa_ttc.artifacts.campaign_session import CampaignLock, append_transition  # noqa: E402
+from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner  # noqa: E402
 from e_jepa_ttc.artifacts.hashing import compute_file_hash, verify_artifact_hash  # noqa: E402
 from e_jepa_ttc.artifacts.stage63_65 import sign_stage63_65_artifact  # noqa: E402
 from e_jepa_ttc.artifacts.training_authorization import (  # noqa: E402
@@ -60,6 +61,323 @@ from e_jepa_ttc.training.campaign_budget import (  # noqa: E402
 from e_jepa_ttc.training.incremental_residual import (  # noqa: E402
     deterministic_sequence_grouped_schedule,
 )
+from e_jepa_ttc.training.stage70_update_ledger import UpdateLedger  # noqa: E402
+
+
+def publish_capacity_risk17(
+    lock_path: Path,
+    lock_sha256: str,
+    ledger: UpdateLedger,
+    owner: ResourceOwner,
+) -> dict[str, Any]:
+    """Publish exact new nested tables and fit three fixed RISK17 producers."""
+    from dataclasses import asdict
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import (
+        AllowlistedSources,
+        atomic_json,
+        binding,
+        object_digest,
+        verify,
+    )
+    from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import verify_initial_barrier
+    from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings
+    from e_jepa_ttc.data.frozen_expert_tables_v10 import create_record, load_table
+    from e_jepa_ttc.data.nested_provenance import validate_accounted_comparator_ancestry
+    from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
+    from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
+    from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase
+    from e_jepa_ttc.training.capacity_campaign import producer_roles
+    from e_jepa_ttc.training.stage61_pair_head import PairHeadTrainingConfig
+    from e_jepa_ttc.training.stage70_update_ledger import FitSpec
+    from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
+
+    owner.check()
+    lock = require_scientific_lock(lock_path, lock_sha256)
+    if ledger.owner_root != owner.root or "prior_campaign" not in ledger.state:
+        raise ValueError("capacity routing requires its owner and terminal predecessor")
+    for stage in ("S72", "S73"):
+        verify_initial_barrier(
+            Path(lock["stage_barrier_root"]) / f"{stage}_ALL_ENDPOINTS_FROZEN.json",
+            expected_stage=stage,
+            expected_lock=lock_sha256,
+        )
+    output = Path(lock["capacity_comparison_output"])
+    if (
+        output.resolve() != output
+        or not output.is_relative_to(Path(lock["campaign_root"]))
+        or output == Path(lock["campaign_root"])
+    ):
+        raise ValueError("capacity comparison output escaped its campaign")
+    output.mkdir(parents=True, exist_ok=True)
+    journal = owner.root / "COMPARATOR_SOURCE_READS.jsonl"
+    sources = AllowlistedSources([lock["capacity_cohort"], lock["capacity_target_rows"]], journal)
+    cohort = json.loads(
+        sources.access(Path(lock["capacity_cohort"]["path"])).read_text(encoding="utf-8")
+    )
+    target_path = sources.access(Path(lock["capacity_target_rows"]["path"]))
+    canonical = (
+        pd.read_parquet(target_path)
+        if target_path.suffix == ".parquet"
+        else pd.read_csv(target_path)
+    )
+    canonical = canonical.rename(columns={"target_ttc_s": "target_ttc"})
+    if canonical.sample_token.duplicated().any() or set(canonical.sample_token) != set(
+        cohort["ordered_tokens"]
+    ):
+        raise ValueError("capacity comparison target pool differs from its frozen cohort")
+    canonical = canonical.set_index("sample_token").loc[cohort["ordered_tokens"]].reset_index()
+    canonical["outer_fold"] = canonical.sequence_id.map(cohort["sequence_to_outer_fold"])
+    canonical["acquisition_group"] = canonical.sequence_id.map(cohort["sequence_to_group"])
+    roles = producer_roles(cohort)
+    registry, exports, dependencies = {}, {}, []
+    expected = {(f, i, a) for f in range(3) for i in (None, 0, 1, 2) for a in ("A5", "C2F", "PAIR")}
+    for job_id, job in lock["comparator_jobs"].items():
+        spec = FitSpec(**job["spec"])
+        protocol = json.loads(verify(job["protocol"]).read_text(encoding="utf-8"))
+        key = (spec.fold, protocol["inner_fold"], spec.arm)
+        state = ledger.state["jobs"].get(job_id, {})
+        if (
+            key not in expected
+            or key in registry
+            or spec.job_id != job_id
+            or spec.technical
+            or spec.stage != "COMPARATOR"
+            or spec.seed != 7
+            or state.get("status") != "COMPLETE"
+            or state.get("spec") != asdict(spec)
+        ):
+            raise ValueError("capacity comparison requires all36 exact completed neural producers")
+        verify(state["endpoint"])
+        registry[key] = (job_id, job)
+    if set(registry) != expected:
+        raise ValueError("capacity comparison omitted a prescribed inner or outer producer")
+    for key, (job_id, job) in registry.items():
+        owner.check()
+        name = "PAIR_EXPORT.json" if key[2] == "PAIR" else "COMPARATOR_EXPORT.json"
+        path = Path(job["output_root"]) / "prediction" / name
+        receipt = json.loads(path.read_text(encoding="utf-8"))
+        identity = receipt["identity"]
+        if (
+            object_digest({k: v for k, v in receipt.items() if k != "artifact_sha256"})
+            != receipt.get("artifact_sha256")
+            or receipt.get("ancestry_validated") is not True
+            or identity["training_lock_sha256"] != lock_sha256
+            or identity["job"] != job
+            or receipt["endpoint"] != ledger.state["jobs"][job_id]["endpoint"]
+            or receipt["outer_fold"] != key[0]
+            or receipt["inner_fold"] != key[1]
+            or receipt["role"] != ("outer_dev" if key[1] is None else "inner_oof")
+        ):
+            raise ValueError("capacity comparator export lost its exact producer ancestry")
+        if key[2] == "PAIR":
+            a5_id, a5_job = registry[(key[0], key[1], "A5")]
+            if (
+                job["a5_job_id"] != a5_id
+                or identity["a5_job"] != a5_job
+                or identity["a5_endpoint"] != ledger.state["jobs"][a5_id]["endpoint"]
+            ):
+                raise ValueError("PAIR used an A5 encoder from a different nested producer")
+            verify(receipt["a5_export"])
+        access = AllowlistedSources([receipt["rows"]], journal)
+        frame = pd.read_csv(access.access(Path(receipt["rows"]["path"])))
+        protocol = json.loads(verify(job["protocol"]).read_text(encoding="utf-8"))
+        wanted = canonical.loc[canonical.sequence_id.isin(protocol["prediction_sequence_ids"])]
+        if frame.token_id.duplicated().any() or set(frame.token_id) != set(wanted.sample_token):
+            raise ValueError("comparator export is not its exact excluded prediction universe")
+        frame = frame.set_index("token_id").loc[wanted.sample_token].reset_index()
+        for column in ("sequence_id", "track_id"):
+            if frame[column].astype(str).tolist() != wanted[column].astype(str).tolist():
+                raise ValueError("comparator source row identity changed")
+        if not np.array_equal(
+            frame.target_ttc.to_numpy(np.float32), wanted.target_ttc.to_numpy(np.float32)
+        ):
+            raise ValueError("native labels are not the exact float32 cast of canonical targets")
+        frame["target_ttc"] = wanted.target_ttc.to_numpy(np.float64)
+        payload = torch.load(verify(receipt["endpoint"]), map_location="cpu", weights_only=False)
+        if key[2] != "PAIR":
+            effective = yaml.safe_load(verify(job["effective_config"]).read_text(encoding="utf-8"))
+            if (
+                job["spec"]["recipe_sha256"] != job["effective_config"]["sha256"]
+                or job["spec"]["training_view_sha256"] != job["protocol"]["sha256"]
+            ):
+                raise ValueError("native comparator recipe is not physically bound")
+            teacher = None
+            if payload["training_config"].get("representation_teacher_cache_artifact_sha256"):
+                teacher = json.loads(verify(job["teacher_audit"]).read_text(encoding="utf-8"))
+            validate_accounted_comparator_ancestry(
+                payload,
+                effective,
+                protocol,
+                receipt,
+                canonical,
+                frame,
+                roles,
+                teacher_audit=teacher,
+            )
+        else:
+            config = PairHeadTrainingConfig(
+                **json.loads(verify(job["pair_config"]).read_text(encoding="utf-8"))
+            )
+            if (
+                job["spec"]["recipe_sha256"] != job["pair_config"]["sha256"]
+                or job["spec"]["training_view_sha256"] != job["protocol"]["sha256"]
+                or job["spec"]["endpoint"] != config.update_budget
+                or job["spec"]["seed"] != config.seed
+                or payload["identity"].get("config") != asdict(config)
+            ):
+                raise ValueError("PAIR full state is not its exact frozen head recipe")
+            if (
+                payload.get("completed_updates") != 6840
+                or payload["identity"].get("fit_spec") != job["spec"]
+                or any(payload["identity"].get(k) != v for k, v in identity.items())
+            ):
+                raise ValueError("PAIR full state differs from its asserted parent ancestry")
+            if job["protocol"] != registry[(key[0], key[1], "A5")][1]["protocol"]:
+                raise ValueError("PAIR training protocol differs from its parent encoder")
+            train = pd.read_csv(verify(payload["identity"]["training_rows"]))
+            verify(payload["identity"]["training_features"])
+            split = protocol["folds"][0]
+            if (
+                train.sample_token.duplicated().any()
+                or len(train) != split["train_rows"]
+                or set(train.sequence_id) != set(split["train_sequence_ids"])
+                or hash_sorted_token_strings(train.sample_token)
+                != split["train_sample_tokens_sha256"]
+            ):
+                raise ValueError("PAIR head trained outside its exact ancestor-safe pool")
+        del payload
+        exports[key] = frame
+        dependencies.append(binding(path))
+    tables = {}
+    for outer in range(3):
+        for role, inners in (("inner_oof", (0, 1, 2)), ("outer_dev", (None,))):
+            aligned = {}
+            for arm in ("A5", "C2F", "PAIR"):
+                parts = [exports[(outer, inner, arm)] for inner in inners]
+                union = pd.concat(parts, ignore_index=True)
+                validate_exact_oof_union(union, parts)
+                token_set = set(union.token_id)
+                order = [t for t in cohort["ordered_tokens"] if t in token_set]
+                aligned[arm] = union.set_index("token_id").loc[order].reset_index()
+            a5, c2f, pair = (aligned[a] for a in ("A5", "C2F", "PAIR"))
+            if a5.token_id.tolist() != pair.token_id.tolist():
+                raise ValueError("PAIR and native experts have different nested unions")
+            _, features = build_router_features(a5, c2f, pair.prediction_ttc.to_numpy(np.float64))
+            expert = np.column_stack(
+                [aligned[a].prediction_ttc.to_numpy(np.float64) for a in ("A5", "C2F", "PAIR")]
+            )
+            meta = (
+                a5[["token_id", "sequence_id", "track_id", "target_ttc"]]
+                .rename(columns={"token_id": "sample_token"})
+                .copy()
+            )
+            meta["outer_fold"], meta["role"] = outer, role
+            meta["inner_fold"] = a5["inner_fold"].to_numpy() if "inner_fold" in a5 else np.nan
+            arrays = {
+                "features17": features.to_numpy(np.float64),
+                "expert_ttc": expert,
+                "expert_phase": benchmark_phase(expert),
+                "target_phase": benchmark_phase(meta.target_ttc.to_numpy(np.float64)),
+                "global_mass": present_bucket_mass(
+                    meta.target_ttc.to_numpy(np.float64), meta.sequence_id.to_numpy()
+                ),
+            }
+            directory = output / f"outer{outer}_{role}"
+            directory.mkdir(exist_ok=True)
+            row_source, array_source = publish_export_payloads(directory, meta, arrays)
+            record = create_record(
+                Path(array_source["path"]),
+                Path(row_source["path"]),
+                outer,
+                role,
+                expanded_cohort=True,
+            )
+            load_table(record, role=role)
+            tables[f"outer{outer}_{role}"] = record
+    ridge_records = []
+    for outer in range(3):
+        owner.check()
+        table = load_table(tables[f"outer{outer}_inner_oof"], role="inner_oof")
+        directory = output / f"risk17_outer{outer}"
+        directory.mkdir(exist_ok=True)
+        identity = {
+            "training_lock_sha256": lock_sha256,
+            "outer_fold": outer,
+            "inner_table": table.record,
+            "ridge": 0.01,
+            "feature_order": list(PHASE17_FEATURES),
+        }
+        complete_path = directory / "RIDGE_COMPLETE.json"
+        if complete_path.exists():
+            complete = json.loads(complete_path.read_text(encoding="utf-8"))
+            if (
+                object_digest({k: v for k, v in complete.items() if k != "artifact_sha256"})
+                != complete.get("artifact_sha256")
+                or complete["identity"] != identity
+            ):
+                raise ValueError("RISK17 recovery changed its inner producer inputs")
+            verify(complete["fit"])
+        else:
+            attempt_index = len(list(directory.glob("ATTEMPT_*.json")))
+            attempt_path = directory / f"ATTEMPT_{attempt_index:04d}.json"
+            attempt = {"identity": identity, "optimizer_updates": 0}
+            attempt["artifact_sha256"] = object_digest(attempt)
+            atomic_json(attempt_path, attempt)
+            ledger.record_ridge_attempt(binding(attempt_path), None)
+            costs = 10000 * abs(table.inputs.phases - table.supervision.target_phase[:, None])
+            fit = FullRegretRidge.fit(table.inputs.features, costs, table.supervision.global_mass)
+            fit_path = directory / f"FIT_{attempt_index:04d}.npz"
+            _save_fit(fit_path, fit, feature_order=PHASE17_FEATURES)
+            complete = {
+                "identity": identity,
+                "fit_attempt": binding(attempt_path),
+                "completed_ridge_solves": 1,
+                "optimizer_updates": 0,
+                "fit": binding(fit_path),
+            }
+            complete["artifact_sha256"] = object_digest(complete)
+            atomic_json(complete_path, complete)
+        ledger.record_ridge_attempt(complete["fit_attempt"], binding(complete_path))
+        ridge_records.append(binding(complete_path))
+    # All three ridge endpoints are immutable before any outer routing/scoring.
+    rows = []
+    for outer, source in enumerate(ridge_records):
+        complete = json.loads(verify(source).read_text(encoding="utf-8"))
+        fit = _load_fit(verify(complete["fit"]))
+        table = load_table(tables[f"outer{outer}_outer_dev"], role="outer_dev")
+        selected = fit.select(table.inputs.features)
+        frame = table.metadata.drop(columns=["role", "inner_fold"]).copy()
+        for i, name in enumerate(("A5_ttc", "C2F_ttc", "PAIR_ttc")):
+            frame[name] = table.inputs.expert_ttc[:, i]
+        frame["S65-RISK17_ttc"] = table.inputs.expert_ttc[np.arange(len(selected)), selected]
+        frame["RISK17_selected_expert"] = selected
+        rows.append(frame)
+    comparison = (
+        pd.concat(rows, ignore_index=True)
+        .set_index("sample_token")
+        .loc[cohort["ordered_tokens"]]
+        .reset_index()
+    )
+    csv, _ = publish_export_payloads(output, comparison, {})
+    record = {
+        "kind": "VERIFIED_CAPACITY_NESTED_TABLES_AND_RISK17_REPLAY",
+        "training_lock_sha256": lock_sha256,
+        "cohort": lock["capacity_cohort"],
+        "canonical_targets": lock["capacity_target_rows"],
+        "producer_exports": dependencies,
+        "tables": tables,
+        "ridge_endpoints": ridge_records,
+        "comparison_rows": csv,
+        "ancestry_status": "passed",
+        "pooled_outer_oof_used_for_router_training": False,
+    }
+    record["artifact_sha256"] = object_digest(record)
+    path = output / "COMPARISON_COMPLETE.json"
+    if path.exists() and json.loads(path.read_text(encoding="utf-8")) != record:
+        raise ValueError("completed capacity comparison cannot be overwritten")
+    atomic_json(path, record)
+    return record
 
 
 def _atomic_json(path: Path, value: object) -> None:

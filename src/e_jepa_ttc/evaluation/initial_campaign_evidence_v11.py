@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 from e_jepa_ttc.artifacts.campaign_v11 import ResourceOwner
-from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned, verify_initial_barrier
 from e_jepa_ttc.evaluation.architecture_comparison_v11 import (
     INITIAL_CONTRASTS,
@@ -31,12 +31,76 @@ from e_jepa_ttc.training.stage73_factorial import (
 )
 
 
+def capacity_comparison_receipt(lock: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Resolve a post-fit product without requiring future predictions in the pre-fit lock."""
+    output = Path(lock["capacity_comparison_output"])
+    if output.resolve() != output or not output.is_relative_to(Path(lock["campaign_root"])):
+        raise ValueError("capacity comparison product was redirected")
+    path = output / "COMPARISON_COMPLETE.json"
+    record = json.loads(path.read_text(encoding="utf-8"))
+    expected_lock = object_digest({k: v for k, v in lock.items() if k != "artifact_sha256"})
+    if (
+        object_digest({k: v for k, v in record.items() if k != "artifact_sha256"})
+        != record.get("artifact_sha256")
+        or record.get("kind") != "VERIFIED_CAPACITY_NESTED_TABLES_AND_RISK17_REPLAY"
+        or record.get("training_lock_sha256") != expected_lock
+        or record.get("cohort") != lock["capacity_cohort"]
+        or record.get("canonical_targets") != lock["capacity_target_rows"]
+        or record.get("ancestry_status") != "passed"
+        or record.get("pooled_outer_oof_used_for_router_training") is not False
+        or set(record.get("tables", {}))
+        != {f"outer{f}_{r}" for f in range(3) for r in ("inner_oof", "outer_dev")}
+    ):
+        raise ValueError("expanded comparison lacks its own complete nested provenance")
+    seen = set()
+    for source in record["producer_exports"]:
+        producer = json.loads(verify(source).read_text(encoding="utf-8"))
+        job = producer["identity"]["job"]
+        job_id = job["spec"]["job_id"]
+        if (
+            job_id in seen
+            or lock["comparator_jobs"].get(job_id) != job
+            or producer["identity"]["training_lock_sha256"] != expected_lock
+            or object_digest({k: v for k, v in producer.items() if k != "artifact_sha256"})
+            != producer.get("artifact_sha256")
+            or producer.get("ancestry_validated") is not True
+        ):
+            raise ValueError("expanded comparison substituted a comparator producer")
+        seen.add(job_id)
+    if len(seen) != 36 or seen != set(lock["comparator_jobs"]):
+        raise ValueError("expanded comparison requires all36 prescribed neural producers")
+    if len(record["ridge_endpoints"]) != 3:
+        raise ValueError("expanded comparison omitted a fixed RISK17 fit")
+    for fold, source in enumerate(record["ridge_endpoints"]):
+        ridge = json.loads(verify(source).read_text(encoding="utf-8"))
+        if (
+            ridge["identity"]["training_lock_sha256"] != expected_lock
+            or ridge["identity"]["outer_fold"] != fold
+            or ridge["identity"]["inner_table"] != record["tables"][f"outer{fold}_inner_oof"]
+            or ridge.get("completed_ridge_solves") != 1
+            or ridge.get("optimizer_updates") != 0
+            or object_digest({k: v for k, v in ridge.items() if k != "artifact_sha256"})
+            != ridge.get("artifact_sha256")
+        ):
+            raise ValueError("RISK17 endpoint differs from its genuinely nested source table")
+        verify(ridge["fit"])
+    _owned(record["comparison_rows"], output, "ROWS.csv")
+    return record, binding(path)
+
+
 def comparison_source_identity(lock: dict[str, Any]) -> dict[str, Any]:
     """Keep expanded comparator evidence distinct from immutable historical rows."""
     expanded = "capacity_cohort" in lock
     if lock.get("availability", {}).get("primary_capacity") == "4M" and not expanded:
         raise ValueError("expanded comparison requires its frozen cohort")
     key = "capacity_comparison_rows" if expanded else "historical_audit_rows"
+    if expanded and "capacity_comparison_output" in lock:
+        receipt, source = capacity_comparison_receipt(lock)
+        if key in lock:
+            raise ValueError(
+                "capacity comparison cannot have both pre-fit rows and a post-fit product"
+            )
+        return {key: receipt["comparison_rows"], "capacity_comparison_manifest": source}
     if key not in lock:
         raise ValueError(f"missing frozen comparison source: {key}")
     source = lock[key]

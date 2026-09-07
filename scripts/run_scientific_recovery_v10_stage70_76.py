@@ -8,8 +8,11 @@ import json
 import subprocess
 import sys
 import traceback
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
+
+import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -94,6 +97,97 @@ def freeze(root: Path, campaign: Path, local_paths: Path) -> tuple[Path, str]:
     return path, record["artifact_sha256"]
 
 
+def execute_capacity_comparator_graph(
+    lock_path: Path,
+    lock_sha: str,
+    owner: ResourceOwner,
+    ledger: UpdateLedger,
+    reserve_resources: Callable[[str], None],
+) -> dict[str, Any]:
+    """Finish all encoder/head fits before exporting the shared nested comparison."""
+    from e_jepa_ttc.training.stage70_update_ledger import FitSpec
+    from scripts.build_scientific_recovery_v9_stage61_reference import execute_capacity_pair
+    from scripts.run_scientific_recovery_v9_stage65 import publish_capacity_risk17
+    from scripts.train_scientific_recovery_v8_router_expert import execute_capacity_comparator
+
+    lock = require_scientific_lock(lock_path, lock_sha)
+    registry = {}
+    expected = {(f, i, a) for f in range(3) for i in (None, 0, 1, 2) for a in ("A5", "C2F", "PAIR")}
+    for job_id, job in lock["comparator_jobs"].items():
+        spec = FitSpec(**job["spec"])
+        protocol = json.loads(verify(job["protocol"]).read_text(encoding="utf-8"))
+        key = (spec.fold, protocol["inner_fold"], spec.arm)
+        if (
+            spec.job_id != job_id
+            or spec.technical
+            or spec.seed != 7
+            or spec.stage != "COMPARATOR"
+            or key not in expected
+            or key in registry
+        ):
+            raise ValueError("expanded comparator graph has a substituted or duplicate producer")
+        registry[key] = job_id
+    if set(registry) != expected:
+        raise ValueError("expanded comparator graph requires24 encoders and12 PAIR heads")
+    for (fold, inner, arm), job_id in registry.items():
+        if (
+            arm == "PAIR"
+            and lock["comparator_jobs"][job_id]["a5_job_id"] != registry[(fold, inner, "A5")]
+        ):
+            raise ValueError("PAIR graph crosses parent encoder producers")
+    for job in lock["comparator_jobs"].values():
+        ledger.reserve(FitSpec(**job["spec"]))
+    progress_path = Path(lock["campaign_root"]) / "COMPARATOR_GRAPH_PROGRESS.json"
+    for fit_only in (True, False):
+        for arms, runner in (
+            (("A5", "C2F"), execute_capacity_comparator),
+            (("PAIR",), execute_capacity_pair),
+        ):
+            for key, job_id in registry.items():
+                if key[2] not in arms:
+                    continue
+                reserve_resources(job_id if fit_only else job_id + "_export")
+                atomic_json(
+                    progress_path,
+                    {
+                        "training_lock_sha256": lock_sha,
+                        "active_job": job_id,
+                        "operation": "FIT" if fit_only else "EXPORT",
+                        "prescribed_jobs": list(registry.values()),
+                        "pending_endpoints": [
+                            j
+                            for j in registry.values()
+                            if ledger.state["jobs"][j]["status"] != "COMPLETE"
+                        ],
+                        "optimizer_totals": ledger.totals(),
+                    },
+                )
+                runner(
+                    job_id,
+                    lock_path=lock_path,
+                    lock_sha256=lock_sha,
+                    ledger=ledger,
+                    owner=owner,
+                    device=torch.device("cuda"),
+                    fit_only=fit_only,
+                )
+    reserve_resources("CAPACITY_RISK17_PUBLICATION")
+    result = publish_capacity_risk17(lock_path, lock_sha, ledger, owner)
+    atomic_json(
+        progress_path,
+        {
+            "training_lock_sha256": lock_sha,
+            "operation": "COMPLETE",
+            "pending_endpoints": [],
+            "optimizer_totals": ledger.totals(),
+            "comparison": binding(
+                Path(lock["capacity_comparison_output"]) / "COMPARISON_COMPLETE.json"
+            ),
+        },
+    )
+    return result
+
+
 def execute(root: Path, lock_path: Path, lock_sha: str) -> dict[str, Any]:
     """Run every independent stage and each triggered branch synchronously."""
     lock = {**require_scientific_lock(lock_path, lock_sha), "artifact_sha256": lock_sha}
@@ -124,6 +218,15 @@ def execute(root: Path, lock_path: Path, lock_sha: str) -> dict[str, Any]:
                     for stage, source in barriers.items()
                 }
             )
+            if "capacity_cohort" in lock:
+                result["active_operation"] = "CAPACITY_COMPARATORS"
+                atomic_json(result_path, result)
+                execute_capacity_comparator_graph(
+                    lock_path, lock_sha, owner, ledger, runtime._reserve_resources
+                )
+                result["capacity_comparators"] = binding(
+                    Path(lock["capacity_comparison_output"]) / "COMPARISON_COMPLETE.json"
+                )
             result["active_operation"] = "INITIAL_INFERENCE_AND_ANALYSIS"
             atomic_json(result_path, result)
             exports = runtime.infer_and_export(barriers)
@@ -171,6 +274,11 @@ def parser() -> argparse.ArgumentParser:
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--campaign", type=Path, required=True, help="Immutable handoff protocol JSON")
     cli.add_argument(
+        "--capacity",
+        action="store_true",
+        help="Use the separate v11 capacity campaign; all freeze and predecessor gates still apply",
+    )
+    cli.add_argument(
         "--local-paths", type=Path, required=True, help="Resolved local operational path map"
     )
     cli.add_argument(
@@ -205,7 +313,10 @@ def main() -> int:
     if args.stage != "ALL" and not args.validate_plan:
         cli.error("--stage is a plan inspection filter; execute the full authorized graph")
     root = args.output_root.resolve(strict=True)
-    if root != ROOT / "artifacts/stage70_76_architecture":
+    expected_root = ROOT / (
+        "artifacts/stage70_76_capacity" if args.capacity else "artifacts/stage70_76_architecture"
+    )
+    if root != expected_root:
         raise ValueError("launcher cannot mutate another campaign or historical output")
     campaign, local_paths = (
         args.campaign.resolve(strict=True),
@@ -240,6 +351,9 @@ def main() -> int:
         if (root / "TRAINING_LOCK.json").exists() and not args.resume:
             cli.error("existing scientific lock requires explicit --resume")
         lock_path, lock_sha = freeze(root, campaign, local_paths)
+        locked = require_scientific_lock(lock_path, lock_sha)
+        if ("capacity_cohort" in locked) != args.capacity:
+            raise ValueError("launcher mode differs from the frozen campaign identity")
         execute(root, lock_path, lock_sha)
     from package_scientific_recovery_v10_stage70_76 import package
 

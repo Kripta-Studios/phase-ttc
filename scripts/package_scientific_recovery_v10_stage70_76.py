@@ -24,7 +24,10 @@ from e_jepa_ttc.training.stage72_jobs import require_scientific_lock
 def package(root: Path) -> dict[str, Any]:
     """Build reports from actual stage receipts, preserving missing and failed evidence."""
     root = root.resolve(strict=True)
-    if root != ROOT / "artifacts/stage70_76_architecture":
+    if root not in {
+        ROOT / "artifacts/stage70_76_architecture",
+        ROOT / "artifacts/stage70_76_capacity",
+    }:
         raise ValueError("package root must be this owned campaign")
     owner_path = root / "training_writer/ACTIVE_OWNER.json"
     if owner_path.exists():
@@ -39,6 +42,8 @@ def package(root: Path) -> dict[str, Any]:
         raise ValueError("running or unexecuted graph cannot be packaged as final evidence")
     lock = json.loads((root / "TRAINING_LOCK.json").read_text(encoding="utf-8"))
     require_scientific_lock(root / "TRAINING_LOCK.json", lock["artifact_sha256"])
+    if ("capacity_cohort" in lock) != (root.name == "stage70_76_capacity"):
+        raise ValueError("package root differs from the frozen cohort identity")
     if execution["training_lock_sha256"] != lock["artifact_sha256"]:
         raise ValueError("execution belongs to a different scientific lock")
     if execution["status"] == "AUTHORIZED_GRAPH_TERMINAL":
@@ -52,6 +57,11 @@ def package(root: Path) -> dict[str, Any]:
                 expected_stage=stage,
                 expected_lock=lock["artifact_sha256"],
             )
+    comparison = None
+    if "capacity_cohort" in lock and execution["status"] == "AUTHORIZED_GRAPH_TERMINAL":
+        from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import capacity_comparison_receipt
+
+        _, comparison = capacity_comparison_receipt(lock)
     ledger = json.loads((root / "UPDATE_LEDGER.json").read_text(encoding="utf-8"))
     ledger_signature = ledger.pop("sha256")
     if object_digest(ledger) != ledger_signature:
@@ -72,6 +82,7 @@ def package(root: Path) -> dict[str, Any]:
         ),
         "total_accounting": execution["optimizer_totals"],
         "stages": execution["stages"],
+        "expanded_comparison": comparison,
         "independent_confirmation": False,
         "protected_evaluations": "CLOSED",
         "active_training_writer": False,
@@ -169,6 +180,18 @@ def package(root: Path) -> dict[str, Any]:
             "historical_simplex_replay",
         )
     )
+    if "capacity_cohort" in lock:
+        directories.add(Path(lock["capacity_comparison_output"]))
+        # Keep the closed prediction products and lineage; native TRAIN caches stay local.
+        for job in lock["comparator_jobs"].values():
+            producer = Path(job["output_root"])
+            if producer.resolve() != producer or not producer.is_relative_to(root):
+                raise ValueError("comparator package source escaped its owned campaign")
+            for path in sorted((producer / "prediction").glob("*")):
+                if path.is_symlink() or path.resolve() != path.absolute():
+                    raise ValueError("comparator package source was redirected")
+                if path.is_file() and path.suffix in allowed:
+                    files["run/" + path.relative_to(root).as_posix()] = path
     for directory in sorted(directories):
         if directory.resolve().parent != root:
             raise ValueError("bundle directory escaped the owned campaign")

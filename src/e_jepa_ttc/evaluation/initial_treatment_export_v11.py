@@ -386,7 +386,9 @@ def export_initial_treatment(
     if output.absolute() != expected_output or output.resolve() != expected_output:
         raise ValueError("treatment export escaped its frozen output directory")
     source_identity = comparison_source_identity(lock)
-    source_record = next(iter(source_identity.values()))
+    source_record = source_identity[
+        "capacity_comparison_rows" if "capacity_cohort" in lock else "historical_audit_rows"
+    ]
     receipts, roots, inference_bindings = [], [], []
     priors, prior_sources = {}, {}
     for plan in plans:

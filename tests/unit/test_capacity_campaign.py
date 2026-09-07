@@ -132,6 +132,98 @@ def cohort_input(count):
     return mapping, rows
 
 
+@pytest.mark.parametrize("wrong_teacher", [False, True])
+def test_compile_native_comparator_jobs_uses_real_templates_and_scoped_protocols(
+    tmp_path, monkeypatch, wrong_teacher
+):
+    import json
+    from dataclasses import asdict
+
+    import pandas as pd
+
+    from e_jepa_ttc.artifacts.hashing import sign_artifact
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
+    from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings
+    from scripts import prepare_stage70_capacity as compiler
+
+    mapping, rows = cohort_input(27)
+    cohort = build_cohort(
+        rows,
+        sequence_to_group=mapping,
+        confirmation_sequences=["confirmation"],
+        protected_sequences=["protected"],
+        recipe=CohortRecipe(requested_sequences=27, sample_limit=256),
+    )
+    meta = (
+        pd.DataFrame([asdict(row) for row in rows])
+        .rename(
+            columns={
+                "token": "sample_token",
+                "sequence": "sequence_id",
+                "track": "track_id",
+                "anchor_us": "timestamp_us",
+            }
+        )
+        .set_index("sample_token")
+        .loc[cohort["ordered_tokens"]]
+        .reset_index()
+    )
+    meta.to_csv(tmp_path / "metadata.csv", index=False)
+    atomic_json(tmp_path / "cohort.json", cohort)
+    atomic_json(tmp_path / "roles.json", producer_roles(cohort))
+    preparation = {
+        "cohort": binding(tmp_path / "cohort.json"),
+        "selected_metadata": binding(tmp_path / "metadata.csv"),
+    }
+    preparation["artifact_sha256"] = object_digest(preparation)
+    atomic_json(tmp_path / "preparation.json", preparation)
+    atomic_json(tmp_path / "cache.json", sign_artifact({"split_counts": {"train": len(meta)}}))
+    teacher = sign_artifact({"fixture": "frozen_features"})
+    atomic_json(tmp_path / "teacher.json", teacher)
+    audit = {
+        "status": "passed",
+        "preexisting_frozen_teacher": True,
+        "fold_fitted_teacher": False,
+        "teacher_artifact_sha256": teacher["artifact_sha256"],
+        "verified_tokens": 8192 if wrong_teacher else len(meta),
+        "verified_tokens_sha256": hash_sorted_token_strings(cohort["ordered_tokens"]),
+        "materializer_ast_no_fit_calls": True,
+        "teacher_manifest_path": str(tmp_path / "teacher.json"),
+        "teacher_manifest_sha256": binding(tmp_path / "teacher.json")["sha256"],
+    }
+    atomic_json(tmp_path / "teacher_audit.json", audit)
+    monkeypatch.setattr(compiler, "ROOT", tmp_path)
+    output = tmp_path / "artifacts/stage70_76_capacity/compiled"
+
+    def compile_graph():
+        return compiler.compile_capacity_comparators(
+            tmp_path / "preparation.json",
+            tmp_path / "roles.json",
+            tmp_path / "cache.json",
+            tmp_path / "teacher.json",
+            tmp_path / "teacher_audit.json",
+            output,
+        )
+
+    if wrong_teacher:
+        with pytest.raises(ValueError, match="verified frozen"):
+            compile_graph()
+        assert not (output / "COMPARATOR_JOBS.json").exists()
+    else:
+        graph = compile_graph()
+        assert graph["neural_fits"] == 36 and graph["ridge_fits"] == 3
+        assert graph["scientific_execution_admitted"] is False
+        assert compile_graph() == graph
+        for job in graph["jobs"].values():
+            if job["spec"]["arm"] != "PAIR":
+                config = json.loads(open(job["effective_config"]["path"], encoding="utf-8").read())
+                assert config["training"]["epochs"] == 18
+                assert config["training"]["checkpoint_selection_mode"] == "last_epoch"
+                assert config["data"]["opened_splits"] == ["train"]
+            else:
+                assert graph["jobs"][job["a5_job_id"]]["protocol"] == job["protocol"]
+
+
 @pytest.mark.parametrize(
     "rows,batch,accumulation,expected",
     [(32, 32, 1, 18), (33, 32, 1, 36), (65, 32, 2, 36), (1, 32, 8, 18), (18889, 32, 1, 10638)],

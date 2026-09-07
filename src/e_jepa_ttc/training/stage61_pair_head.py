@@ -155,15 +155,20 @@ def train_pair_head(
         model.parameters(), lr=config.learning_rate, weight_decay=config.weight_decay
     )
     start, losses = 0, []
-    if resume:
-        if accounting is not None:
-            finish_checkpoint_publication(
-                output_dir, publication_identity, accounting[0], accounting[1].job_id
-            )
-            recovered = accounting[0].recover(accounting[1].job_id)
-            if recovered is None:
-                raise ValueError("PAIR has no valid checkpoint to resume")
+    restore_checkpoint = resume
+    if resume and accounting is not None:
+        finish_checkpoint_publication(
+            output_dir, publication_identity, accounting[0], accounting[1].job_id
+        )
+        recovered = accounting[0].recover(accounting[1].job_id)
+        if recovered is None:
+            if accounting[0].state["jobs"][accounting[1].job_id]["charged"] != 0:
+                raise ValueError("PAIR has charged work but no valid checkpoint to resume")
+            # An interruption may create the directory before publishing update zero.
+            restore_checkpoint = False
+        else:
             checkpoint = verify(recovered)
+    if restore_checkpoint:
         payload = torch.load(checkpoint, map_location=device, weights_only=False)
         if payload["identity"] != run_identity:
             raise ValueError("PAIR resume identity mismatch")
@@ -175,7 +180,7 @@ def train_pair_head(
         if torch.cuda.is_available() and payload["torch_cuda_rng_state"] is not None:
             torch.cuda.set_rng_state_all(payload["torch_cuda_rng_state"])
     elif checkpoint.exists() or progress.exists():
-        raise FileExistsError("PAIR output exists; pass resume explicitly")
+        raise FileExistsError("PAIR output exists without a recoverable checkpoint")
     tensors = (
         torch.from_numpy(feature).to(device),
         torch.from_numpy(target).to(device),
@@ -221,7 +226,7 @@ def train_pair_head(
         )
         return path
 
-    if start == 0 and not resume:
+    if start == 0 and not restore_checkpoint:
         if accounting is not None:
             publish(0)
         else:

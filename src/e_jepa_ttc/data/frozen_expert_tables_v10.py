@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 
 from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest, verify
+from e_jepa_ttc.evaluation.capacity_metrics import present_bucket_mass
 from e_jepa_ttc.evaluation.stage63_65 import benchmark_phase, strict_macro_mass
 from e_jepa_ttc.training.stage62_local_field import cross_track_derangement_indices
 
@@ -87,9 +88,13 @@ def load_table(record: dict[str, Any], *, role: str) -> FrozenTable:
         target, benchmark_phase(metadata.target_ttc.to_numpy()), rtol=0, atol=1e-14
     ):
         raise ValueError("phase/expert/target identity mismatch")
+    mass_rule = record.get("mass_rule", "strict_macro")
+    if mass_rule not in ("strict_macro", "present_bucket_macro"):
+        raise ValueError("unregistered frozen table mass rule")
+    mass_fn = present_bucket_mass if mass_rule == "present_bucket_macro" else strict_macro_mass
     if not np.allclose(
         mass,
-        strict_macro_mass(metadata.target_ttc.to_numpy(), metadata.sequence_id.to_numpy()),
+        mass_fn(metadata.target_ttc.to_numpy(), metadata.sequence_id.to_numpy()),
         rtol=0,
         atol=1e-14,
     ):
@@ -105,7 +110,9 @@ def load_table(record: dict[str, Any], *, role: str) -> FrozenTable:
     return table
 
 
-def create_record(arrays_path: Path, metadata_path: Path, outer: int, role: str) -> dict[str, Any]:
+def create_record(
+    arrays_path: Path, metadata_path: Path, outer: int, role: str, *, expanded_cohort: bool = False
+) -> dict[str, Any]:
     """Freeze a verified forensic export as a consumer record; no fit here."""
     from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
 
@@ -121,7 +128,7 @@ def create_record(arrays_path: Path, metadata_path: Path, outer: int, role: str)
             ).items()
         }
     meta = pd.read_csv(metadata_path)
-    return dict(
+    record = dict(
         outer_fold=outer,
         role=role,
         sources=[binding(arrays_path), binding(metadata_path)],
@@ -129,6 +136,9 @@ def create_record(arrays_path: Path, metadata_path: Path, outer: int, role: str)
         metadata_hash=object_digest(meta.to_json(orient="split", double_precision=15)),
         sequences=sorted(meta.sequence_id.unique().tolist()),
     )
+    if expanded_cohort:
+        record["mass_rule"] = "present_bucket_macro"
+    return record
 
 
 def pair_permutation(table: FrozenTable, seed: int) -> np.ndarray:

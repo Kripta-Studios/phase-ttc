@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+import pytest
 import torch
 from torch.utils.data import Dataset
 
@@ -569,3 +570,59 @@ def test_nested_comparator_pipeline_real_cpu_fits_to_risk17(tmp_path):
         assert all(job["status"] == "COMPLETE" for job in ledger.state["jobs"].values())
     finally:
         torch.set_num_threads(previous_threads)
+
+
+@pytest.mark.parametrize("interrupted_directory", [False, True])
+def test_pair_initial_publication_recovers_without_optimizer_work(
+    tmp_path, monkeypatch, interrupted_directory
+):
+    import os
+
+    import psutil
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, verify
+    from e_jepa_ttc.training.stage61_pair_head import PairHeadTrainingConfig, train_pair_head
+    from e_jepa_ttc.training.stage70_update_ledger import FitSpec, UpdateLedger
+
+    atomic_json(
+        tmp_path / "ACTIVE_OWNER.json",
+        {"pid": os.getpid(), "created": psutil.Process().create_time()},
+    )
+    ledger = UpdateLedger(tmp_path / "ledger.json", tmp_path)
+    spec = FitSpec("pair_initial", "QA", "PAIR", 0, 7, 1, "a" * 64, "b" * 64, technical=True)
+    output = tmp_path / "head"
+    if interrupted_directory:
+        output.mkdir()
+    checks = 0
+
+    def check():
+        nonlocal checks
+        checks += 1
+        if checks == 3:
+            raise RuntimeError("injected before first optimizer step")
+
+    def forbidden_step(*args, **kwargs):
+        raise AssertionError("this fault test must execute zero optimizer updates")
+
+    monkeypatch.setattr(torch.optim.AdamW, "step", forbidden_step)
+    with pytest.raises(RuntimeError, match="injected before first"):
+        train_pair_head(
+            features=np.zeros((32, 133), dtype=np.float32),
+            target_phase=np.ones(32, dtype=np.float32),
+            sample_weight=np.ones(32, dtype=np.float32),
+            sequence_ids=["train"] * 32,
+            sample_tokens=[str(i) for i in range(32)],
+            config=PairHeadTrainingConfig(seed=7),
+            output_dir=output,
+            device=torch.device("cpu"),
+            identity={"scope": "synthetic_nonselectable"},
+            resume=interrupted_directory,
+            accounting=(ledger, spec),
+            technical_update_limit=1,
+            check=check,
+        )
+    state = ledger.state["jobs"][spec.job_id]
+    assert state["charged"] == 0 and state["checkpoint_update"] == 0
+    checkpoint = torch.load(verify(state["checkpoint"]), weights_only=False)
+    assert checkpoint["completed_updates"] == 0
+    assert checkpoint["optimizer_state_dict"]["state"] == {}
