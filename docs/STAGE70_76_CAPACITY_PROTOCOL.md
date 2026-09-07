@@ -688,3 +688,22 @@ se materializa. El cambio sólo adelanta esa observación; no altera filas,
 representación ni fingerprints de reanudación existentes. Los archivos del
 productor se vincularán en el manifiesto local del trabajo y se conservarán
 mientras esté activo; antes de reanudar se comprobarán esos hashes.
+
+# Primera admisión de la caché y corrección técnica (2026-09-07)
+
+Se resolvió `COMPARATOR_CACHE_CPU_JOB.json`, con código/productores, split de
+inclusión física, rutas y reservas; SHA256 físico
+`5c66a068d6aa7d7655164ab92c2ae9d9b5e97d2731ecf82b346cd600febc6681`.
+El intento terminó con FileExistsError antes del primer shard: ResourceOwner
+había escrito telemetría y admisión dentro del directorio que el constructor
+exige vacío. Se conservaron esos archivos, sin build_state, manifiesto ni filas
+materializadas. Recibo `COMPARATOR_CACHE_TECHNICAL_FAILURE_001.json`, SHA256
+`f68ec21274d320e67d67d5339c9d62af9c545e5608f788b4ad1951798dbe9cfb`.
+
+La corrección técnica 1 de esta materialización coloca propietario/telemetría
+en un directorio hermano y mantiene el directorio de datos vacío al admitirlo.
+No cambia tokens, representación, pérdidas ni presupuesto científico; cero
+optimizer updates. Ruff y Pyright del script afectado pasan. La repetición usa
+otro directorio vacío, preservando el intento anterior; no se aplica --resume
+porque no existe estado de caché válido que recuperar. La prueba definitiva de
+la admisión corregida será la publicación del primer shard real.

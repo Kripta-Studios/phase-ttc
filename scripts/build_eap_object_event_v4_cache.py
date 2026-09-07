@@ -160,13 +160,14 @@ def main() -> int:
         if allocated > cap:
             raise RuntimeError("RESOURCE_BLOCKED: existing compressed shards exceed 40 GB cap")
         other = int(args.other_reserved_bytes)
+        ownership = output.parent / f"{output.name}_ownership"
         with ResourceOwner(
-            output,
+            ownership,
             remaining_bytes=total_budget - allocated + other,
             planned_ram_bytes=4 * 1024**3,
         ) as owner:
             atomic_json(
-                output / f"RESOURCE_ADMISSION_{time.time_ns()}.json",
+                ownership / f"RESOURCE_ADMISSION_{time.time_ns()}.json",
                 {
                     "compressed_shards_cap_bytes": cap,
                     "total_incremental_budget_bytes": total_budget,
