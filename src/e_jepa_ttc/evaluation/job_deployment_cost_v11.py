@@ -14,6 +14,7 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned, verify_fit_endpoint
 from e_jepa_ttc.data.raw_deployment_v11 import RawDeploymentInputs
 from e_jepa_ttc.data.raw_event_binding import ReadOnlyTrainAccess
+from e_jepa_ttc.data.stage70_expansion_binding import ExpansionTrainAccess
 from e_jepa_ttc.evaluation.deployment_cost_v11 import benchmark_raw_deployment
 from e_jepa_ttc.models.projective_phase_network import ProjectivePhaseNetwork
 from e_jepa_ttc.training.eap_highres_jepa import _capture_rng_state, _restore_rng_state
@@ -95,12 +96,21 @@ def observe_job_deployment(
     attempt = root / f"attempt_{len(list(root.glob('attempt_*'))):04d}"
     attempt.mkdir()
     atomic_json(attempt / "STARTED.json", identity)
-    access = ReadOnlyTrainAccess(
-        Path(raw_sources["raw_train_root"]),
-        Path(raw_sources["train_metadata"]),
-        journal_path=attempt / "RAW_SOURCE_READS.jsonl",
-        resource_check=owner.check,
-    )
+    if "capacity_cohort" in lock:
+        access = ExpansionTrainAccess(
+            Path(raw_sources["raw_train_root"]),
+            Path(raw_sources["train_metadata"]),
+            allowed_sequences=frozenset(loaded.source["train_sequences"]),
+            journal_path=attempt / "RAW_SOURCE_READS.jsonl",
+            resource_check=owner.check,
+        )
+    else:
+        access = ReadOnlyTrainAccess(
+            Path(raw_sources["raw_train_root"]),
+            Path(raw_sources["train_metadata"]),
+            journal_path=attempt / "RAW_SOURCE_READS.jsonl",
+            resource_check=owner.check,
+        )
     raw = RawDeploymentInputs(
         raw_sources["bindings"], raw_sources["clock_charter"], access, loaded.view
     )

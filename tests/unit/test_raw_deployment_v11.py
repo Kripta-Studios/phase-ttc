@@ -7,7 +7,7 @@ import pandas as pd
 import pytest
 import torch
 
-from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest
 from e_jepa_ttc.data import raw_deployment_v11 as module
 from e_jepa_ttc.data.event_context128 import RateNormalization
 
@@ -95,3 +95,38 @@ def test_changed_window_hash_rejected_even_if_hdf5_handle_is_already_open(tmp_pa
     with pytest.raises(ValueError, match="physical source hash"):
         raw.inputs("train", norm)
     assert not seen
+
+
+@pytest.mark.parametrize("damage", [None, "signature", "binding", "identity"])
+def test_expanded_raw_manifest_keeps_native_clock_and_input_contract(tmp_path, monkeypatch, damage):
+    original, norm, seen = fixture(tmp_path, monkeypatch)
+    source = original.sources["bindings"]
+    identity = {"sources": {"sequence": {"sha256": "c" * 64}}}
+    manifest = {
+        "status": "EXPANSION_RAW_BOUND",
+        "identity": identity,
+        "identity_sha256": object_digest(identity),
+        "binding": source,
+        "samples": 1,
+        "source_groups": 1,
+    }
+    if damage == "binding":
+        manifest["binding"] = {**source, "sha256": "d" * 64}
+    if damage == "identity":
+        manifest["identity_sha256"] = "d" * 64
+    manifest["artifact_sha256"] = object_digest(manifest)
+    if damage == "signature":
+        manifest["artifact_sha256"] = "d" * 64
+    path = tmp_path / "expanded.json"
+    atomic_json(path, manifest)
+    if damage:
+        with pytest.raises(ValueError, match="expanded raw"):
+            module.RawDeploymentInputs(source, binding(path), None, original.view)
+        assert not seen
+    else:
+        expanded = module.RawDeploymentInputs(source, binding(path), None, original.view)
+        expected = original.inputs("train", norm)
+        actual = expanded.inputs("train", norm)
+        assert torch.equal(expected.contexts, actual.contexts)
+        assert torch.equal(expected.times, actual.times)
+        expanded.close()

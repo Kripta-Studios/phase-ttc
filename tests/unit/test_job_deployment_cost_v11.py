@@ -13,12 +13,13 @@ from e_jepa_ttc.training.stage72_jobs import FitJob
 from e_jepa_ttc.training.stage73_factorial import PlannedFit
 
 
+@pytest.mark.parametrize("capacity", [False, True])
 def test_completed_timing_survives_index_publication_failure_without_rebenchmark(
-    tmp_path, monkeypatch
+    tmp_path, monkeypatch, capacity
 ):
     norm = RateNormalization((0.0, 0.0), (1.0, 1.0), "a" * 64, 10)
     job = FitJob(
-        PlannedFit("S72", "S72-DIRECT", 0, 7),
+        PlannedFit("S72", "S72-DIRECT", 0, 7, capacity="4M" if capacity else "2M"),
         "b" * 64,
         "a" * 64,
         object_digest(asdict(norm)),
@@ -29,7 +30,10 @@ def test_completed_timing_survives_index_publication_failure_without_rebenchmark
         "e" * 64,
     )
     loaded = SimpleNamespace(
-        view=SimpleNamespace(identity="a" * 64), normalization=norm, source_sha256="e" * 64
+        view=SimpleNamespace(identity="a" * 64),
+        normalization=norm,
+        source_sha256="e" * 64,
+        source={"train_sequences": ["extra_train"]},
     )
     recipe = tmp_path / "recipe.json"
     atomic_json(
@@ -57,6 +61,8 @@ def test_completed_timing_survives_index_publication_failure_without_rebenchmark
             "clock_charter": {},
         },
     }
+    if capacity:
+        lock["capacity_cohort"] = {"synthetic": True}
     monkeypatch.setattr(
         module, "verify_fit_endpoint", lambda *args: {"inference_weights": binding(weights)}
     )
@@ -71,9 +77,11 @@ def test_completed_timing_survives_index_publication_failure_without_rebenchmark
     monkeypatch.setattr(module, "ProjectivePhaseNetwork", Model)
 
     def access(*args, **kwargs):
+        assert kwargs.get("allowed_sequences") == (frozenset({"extra_train"}) if capacity else None)
         kwargs["journal_path"].write_text("synthetic physical read ledger")
 
     monkeypatch.setattr(module, "ReadOnlyTrainAccess", access)
+    monkeypatch.setattr(module, "ExpansionTrainAccess", access)
     monkeypatch.setattr(
         module, "RawDeploymentInputs", lambda *args: SimpleNamespace(close=lambda: None)
     )

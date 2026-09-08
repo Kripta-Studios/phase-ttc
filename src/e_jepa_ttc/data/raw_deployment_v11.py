@@ -8,7 +8,7 @@ from typing import Any, cast
 import numpy as np
 import pandas as pd
 
-from e_jepa_ttc.artifacts.risk_geometry_v10 import verify
+from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest, verify
 from e_jepa_ttc.data.eap import EAP_IMAGE_SIZE
 from e_jepa_ttc.data.event_context128 import (
     ArchitectureInput,
@@ -35,7 +35,23 @@ class RawDeploymentInputs:
     ) -> None:
         table = pd.read_csv(verify(bindings), dtype={"sample_token": str, "sequence_id": str})
         charter = json.loads(verify(charter_binding).read_text(encoding="utf-8"))
-        if charter.get("status") != "ORIGINAL_8192_CLOCK_AND_ROI_VERIFIED":
+        if charter.get("status") == "EXPANSION_RAW_BOUND":
+            identity = charter.get("identity", {})
+            source_hashes = identity.get("sources", {})
+            if (
+                object_digest({k: v for k, v in charter.items() if k != "artifact_sha256"})
+                != charter.get("artifact_sha256")
+                or object_digest(identity) != charter.get("identity_sha256")
+                or charter.get("binding") != bindings
+                or charter.get("samples") != table.sample_token.nunique()
+                or charter.get("source_groups") != len(source_hashes)
+                or set(table.sequence_id) != set(source_hashes)
+                or not set(view.tokens) <= set(table.sample_token)
+            ):
+                raise ValueError("expanded raw deployment manifest or TRAIN bindings changed")
+        elif charter.get("status") == "ORIGINAL_8192_CLOCK_AND_ROI_VERIFIED":
+            source_hashes = charter["raw_files"]
+        else:
             raise ValueError("raw deployment requires the verified original clock charter")
         if table.duplicated(["sample_token", "window_id"]).any():
             raise ValueError("raw deployment bindings duplicate physical windows")
@@ -44,7 +60,7 @@ class RawDeploymentInputs:
         self.sequence_by_token = (
             view.reader.metadata.set_index("sample_token")["sequence_id"].astype(str).to_dict()
         )
-        self.reader = WindowReader(access, charter["raw_files"])
+        self.reader = WindowReader(access, source_hashes)
         self.sources = {"bindings": bindings, "clock_charter": charter_binding}
 
     def close(self) -> None:
