@@ -173,6 +173,50 @@ def build(args: argparse.Namespace) -> None:
     print(json.dumps({"status": "completed", "producer_count": len(producers)}))
 
 
+def load_prepared_capacity_pair_inputs(
+    inputs: Path, identity: dict[str, Any]
+) -> tuple[pd.DataFrame, np.ndarray, dict[str, Any], dict[str, Any]] | None:
+    """Reuse closed TRAIN features only for the exact same transitive A5 producer."""
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import object_digest, verify
+
+    receipt = inputs / "PREPARED_INPUTS.json"
+    if not receipt.exists():
+        return None
+    record = json.loads(receipt.read_text(encoding="utf-8"))
+    unsigned = {key: value for key, value in record.items() if key != "artifact_sha256"}
+    if (
+        object_digest(unsigned) != record.get("artifact_sha256")
+        or record.get("kind") != "CAPACITY_PAIR_PREPARED_TRAIN_INPUTS"
+        or record.get("identity") != identity
+    ):
+        raise ValueError("prepared PAIR inputs changed their A5 producer or fold")
+    paths = []
+    for key, name in (("rows", "ROWS.csv"), ("arrays", "DIAGNOSTIC_ARRAYS.npz")):
+        path = Path(record[key]["path"])
+        if path != inputs.resolve() / name or path.resolve() != path or path.is_symlink():
+            raise ValueError("prepared PAIR input path escaped its producer")
+        paths.append(verify(record[key]))
+    # Installed pandas supports round_trip; its installed stubs omit that option.
+    csv_options: dict[str, Any] = {
+        "dtype": {"sample_token": str, "sequence_id": str, "track_id": str},
+        "float_precision": "round_trip",
+    }
+    rows = pd.read_csv(paths[0], **csv_options)
+    with np.load(paths[1], allow_pickle=False) as saved:
+        if set(saved.files) != {"pair_features"}:
+            raise ValueError("prepared PAIR archive has unexpected fields")
+        features = saved["pair_features"].copy()
+    if (
+        features.shape != (len(rows), 133)
+        or len(rows) == 0
+        or rows.sample_token.duplicated().any()
+        or not np.isfinite(features).all()
+        or not np.isfinite(rows.target_ttc_s.to_numpy(np.float64)).all()
+    ):
+        raise ValueError("prepared PAIR rows/features are invalid or misaligned")
+    return rows, features, record["rows"], record["arrays"]
+
+
 def execute_capacity_pair(
     job_id: str,
     *,
@@ -261,36 +305,57 @@ def execute_capacity_pair(
     status = ledger.state["jobs"].get(job_id, {}).get("status")
     if status != "COMPLETE":
         ledger.reserve(spec)
-        payload = torch.load(verify(parent["endpoint"]), map_location="cpu", weights_only=False)
-        channels = payload["model_config"]["in_channels"]
-        del payload
-        source = GarlTTCObjectEventV4Dataset(
-            str(verify(parent_job["cache_manifest"])),
-            splits=("train",),
-            bins_per_polarity=(channels - 2) // 2,
-        )
-        train = SequenceIndexedView(
-            source, sequence_ids=set(protocol["folds"][0]["train_sequence_ids"])
-        )
-        rows, features = replay_accounted_comparator(
-            ledger,
-            parent_spec,
-            train,
-            protocol,
-            role="train",
-            device=device,
-            check=owner.check,
-            collect_pair=True,
-            lock_path=lock_path,
-            lock_sha256=lock_sha256,
-        )
-        if features is None:
-            raise ValueError("A5 replay omitted PAIR training features")
         inputs = output / "training_inputs"
         inputs.mkdir(exist_ok=True)
-        row_source, array_source = publish_export_payloads(
-            inputs, rows, {"pair_features": features}
-        )
+        prepared = load_prepared_capacity_pair_inputs(inputs, identity)
+        if prepared is None:
+            payload = torch.load(verify(parent["endpoint"]), map_location="cpu", weights_only=False)
+            channels = payload["model_config"]["in_channels"]
+            del payload
+            source = GarlTTCObjectEventV4Dataset(
+                str(verify(parent_job["cache_manifest"])),
+                splits=("train",),
+                bins_per_polarity=(channels - 2) // 2,
+            )
+            train = SequenceIndexedView(
+                source, sequence_ids=set(protocol["folds"][0]["train_sequence_ids"])
+            )
+            rows, features = replay_accounted_comparator(
+                ledger,
+                parent_spec,
+                train,
+                protocol,
+                role="train",
+                device=device,
+                check=owner.check,
+                collect_pair=True,
+                lock_path=lock_path,
+                lock_sha256=lock_sha256,
+            )
+            if features is None:
+                raise ValueError("A5 replay omitted PAIR training features")
+            # Serialize the exact float64 values consumed by phase conversion,
+            # including when the replay frame originally stores float32 TTC.
+            rows = rows.copy()
+            rows["target_ttc_s"] = rows.target_ttc_s.to_numpy(np.float64)
+            row_source, array_source = publish_export_payloads(
+                inputs, rows, {"pair_features": features}
+            )
+            prepared_record = {
+                "kind": "CAPACITY_PAIR_PREPARED_TRAIN_INPUTS",
+                "identity": identity,
+                "rows": row_source,
+                "arrays": array_source,
+            }
+            atomic_json(
+                inputs / "PREPARED_INPUTS.json",
+                {**prepared_record, "artifact_sha256": object_digest(prepared_record)},
+            )
+            del features, train, source
+            prepared = load_prepared_capacity_pair_inputs(inputs, identity)
+        if prepared is None:
+            raise RuntimeError("PAIR input publication did not complete")
+        rows, features, row_source, array_source = prepared
         train_pair_head(
             features=features,
             target_phase=phase_from_ttc(rows.target_ttc_s.to_numpy(np.float64)),
@@ -307,7 +372,7 @@ def execute_capacity_pair(
             accounting=(ledger, spec),
             check=owner.check,
         )
-        del features, train, source
+        del features, prepared
     endpoint = ledger.state["jobs"][job_id]["endpoint"]
     payload = torch.load(verify(endpoint), map_location="cpu", weights_only=False)
     if (
