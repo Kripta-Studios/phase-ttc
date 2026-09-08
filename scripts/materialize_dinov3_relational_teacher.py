@@ -301,6 +301,30 @@ def _extract_features(
         return result[0]
 
 
+def _extract_prefix_features(
+    model: torch.nn.Module,
+    rgb_tensor: torch.Tensor,
+    selection_id: int | str,
+    selection_method: str,
+) -> torch.Tensor:
+    """Execute the exact two-stage prefix that produces the frozen32x32 feature."""
+    stages = getattr(getattr(model, "model", None), "stages", None)
+    if (
+        model.training
+        or selection_id != 2
+        or selection_method != "hidden_states"
+        or not isinstance(stages, torch.nn.ModuleList)
+        or len(stages) != 4
+        or getattr(getattr(model, "config", None), "model_type", None) != "dinov3_convnext"
+    ):
+        raise ValueError("prefix execution requires the verified frozen ConvNeXt feature contract")
+    with torch.no_grad():
+        features = stages[1](stages[0](rgb_tensor))
+    if tuple(features.shape[1:]) != (384, 32, 32):
+        raise ValueError("prefix output differs from the fixed384x32x32 feature")
+    return features
+
+
 def _load_and_crop_rgb(
     tar_path: Path,
     member_path: str,
@@ -357,6 +381,7 @@ def run(
     expected_rows: int = 2048,
     capacity_preparation: Path | None = None,
     capacity_preparation_sha256: str | None = None,
+    feature_execution: str = "full",
 ) -> dict[str, Any]:
     """Materialize the DINO relational teacher cache for an exact train size."""
 
@@ -364,6 +389,8 @@ def run(
 
     if expected_rows <= 0:
         raise ValueError("FATAL: expected_rows must be positive")
+    if feature_execution not in ("full", "prefix"):
+        raise ValueError("feature execution must be full or prefix")
     capacity_source = None
     capacity_sequences: set[str] | None = None
     capacity_tokens: set[str] | None = None
@@ -491,6 +518,12 @@ def run(
     dummy = torch.randn(1, 3, _INPUT_SIZE, _INPUT_SIZE, device=device)
     selection_id, selection_method = _find_32x32_feature(model, dummy)
     feat = _extract_features(model, dummy, selection_id, selection_method)
+    extract = _extract_features
+    if feature_execution == "prefix":
+        prefix = _extract_prefix_features(model, dummy, selection_id, selection_method)
+        if not torch.equal(feat, prefix):
+            raise ValueError("prefix features differ from the historical full-forward output")
+        extract = _extract_prefix_features
     feat_channels = feat.shape[1]
     print(
         f"[materialize] Feature: channels={feat_channels}, "
@@ -520,7 +553,7 @@ def run(
         if not pending_rgb:
             return
         stacked = torch.cat(pending_rgb, dim=0)
-        features = _extract_features(model, stacked, selection_id, selection_method)
+        features = extract(model, stacked, selection_id, selection_method)
         relations = local_cosine_relation_maps(features)
         values = relations.values.cpu().numpy().astype(np.float16)
         valid = relations.valid.cpu().numpy().astype(np.uint8)
@@ -645,6 +678,8 @@ def run(
             "resolved_revision": resolved_revision,
             "requested_revision": _EXPECTED_REVISION,
             "local_files_only": True,
+            "feature_execution": feature_execution,
+            "prefix_dummy_exact_parity": feature_execution == "prefix",
             "weights_sha256": weights_sha,
             "config_sha256": config_sha,
             "preprocessor_sha256": preprocessor_sha,
@@ -732,6 +767,7 @@ def main() -> int:
     parser.add_argument("--expected-rows", type=int, default=2048)
     parser.add_argument("--capacity-preparation", type=Path)
     parser.add_argument("--capacity-preparation-sha256")
+    parser.add_argument("--feature-execution", choices=("full", "prefix"), default="full")
     args = parser.parse_args()
 
     device = args.device
@@ -749,6 +785,7 @@ def main() -> int:
             args.expected_rows,
             args.capacity_preparation,
             args.capacity_preparation_sha256,
+            args.feature_execution,
         )
     except Exception as e:
         print(f"\n[materialize] FAILED: {type(e).__name__}: {e}", file=sys.stderr)

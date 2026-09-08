@@ -20,6 +20,40 @@ from scripts.materialize_dinov3_relational_teacher import (
 )
 
 
+@pytest.mark.parametrize("damage", [None, "training", "selection", "method", "shape"])
+def test_prefix_feature_execution_skips_unused_stages_and_checks_contract(damage):
+    import torch
+
+    from scripts.materialize_dinov3_relational_teacher import _extract_prefix_features
+
+    class Forbidden(torch.nn.Module):
+        def forward(self, value):
+            raise AssertionError("unused later stage executed")
+
+    model = torch.nn.Module()
+    model.add_module("model", torch.nn.Module())
+    model.model.add_module(
+        "stages",
+        torch.nn.ModuleList([torch.nn.Identity(), torch.nn.Identity(), Forbidden(), Forbidden()]),
+    )
+    model.config = SimpleNamespace(model_type="dinov3_convnext")
+    model.eval()
+    if damage == "training":
+        model.train()
+    value = torch.randn(1, 384, 32, 31 if damage == "shape" else 32)
+    arguments = (
+        model,
+        value,
+        1 if damage == "selection" else 2,
+        "forward_hook" if damage == "method" else "hidden_states",
+    )
+    if damage:
+        with pytest.raises(ValueError, match="prefix"):
+            _extract_prefix_features(*arguments)
+    else:
+        assert torch.equal(_extract_prefix_features(*arguments), value)
+
+
 def _teacher_scope_fixture(tmp_path: Path, *, forbidden: bool = False) -> dict[str, Any]:
     def write(name: str, value: dict[str, Any]) -> dict[str, Any]:
         path = tmp_path / name
