@@ -439,3 +439,76 @@ def test_capacity_auditor_to_fold_train_dataset(tmp_path: Path, monkeypatch) -> 
     assert wrapped[0]["sample_token"] == "tok-a"
     with pytest.raises(FileExistsError):
         auditor.main()
+
+
+@pytest.mark.parametrize("corruption", [None, "unknown_parent", "wrong_prefix", "omitted"])
+def test_capacity_indexed_producer_preserves_prefix_lineage(tmp_path: Path, corruption) -> None:
+    import subprocess
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, object_digest
+    from e_jepa_ttc.data.dinov3_relational_teacher_cache import capacity_teacher_read_contract
+
+    path, old_contract, _ = _capacity_cache(tmp_path)
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    producer = "5c0981d3a355a38f18de17fd5e91c53848b51761"
+    manifest["code_identity"]["git_commit"] = producer
+
+    def signed(name, value):
+        value["artifact_sha256"] = object_digest(value)
+        target = tmp_path / name
+        target.write_text(json.dumps(value), encoding="utf-8")
+        return binding(target)
+
+    receipt = signed(
+        "prefix.json",
+        {
+            "kind": "NONSELECTABLE_DINO_RECOVERY_BLOCK",
+            "start": 0,
+            "rows": 1,
+            "identity": "synthetic-inference-identity",
+        },
+    )
+    lineage = {
+        "kind": "DINO_EQUIVALENT_EXECUTION_TRANSITION",
+        "from_producer_commit": "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3",
+        "to_producer_commit": producer,
+        "previous_durable_rows": 1,
+        "previous_last_block_receipt": receipt,
+        "inference_identity": "synthetic-inference-identity",
+    }
+    if corruption == "unknown_parent":
+        lineage["from_producer_commit"] = "unreviewed"
+    if corruption == "wrong_prefix":
+        lineage["previous_durable_rows"] = 2
+    manifest["execution_recovery"] = {
+        "resumed_rows": 1,
+        "TAR_header_index_enabled": True,
+        "prior_producer_lineage": None
+        if corruption == "omitted"
+        else signed("lineage.json", lineage),
+    }
+    sign_artifact(manifest)
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+    source = subprocess.check_output(
+        ["git", "show", f"{producer}:scripts/materialize_dinov3_relational_teacher.py"],
+        cwd=Path(__file__).resolve().parents[2],
+    )
+
+    def build():
+        return capacity_teacher_read_contract(
+            manifest,
+            manifest_sha256=binding(path)["sha256"],
+            preparation=old_contract["preparation"],
+            materializer_source=source,
+        )
+
+    if corruption:
+        with pytest.raises(ValueError, match="lineage"):
+            build()
+    else:
+        contract = build()
+        assert (
+            contract["execution_lineage"]
+            == manifest["execution_recovery"]["prior_producer_lineage"]
+        )
+        assert _open_capacity(path, contract, {"tok-a"}).tokens() == frozenset({"tok-a"})

@@ -44,8 +44,14 @@ _NUM_OFFSETS = len(A4_RELATION_OFFSETS)
 
 # Reviewed RGB-only materializer. A different producer requires a visible source
 # review; an assertion that labels were unused is not sufficient authorization.
-_CAPACITY_RGB_PRODUCER = "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3"
-_CAPACITY_RGB_SOURCE_SHA256 = "43f58ac67f5cc39eee5e59dc5d3f6360a37402558e17a148908760e31b699564"
+_CAPACITY_RGB_PRODUCERS = {
+    "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3": (
+        "43f58ac67f5cc39eee5e59dc5d3f6360a37402558e17a148908760e31b699564"
+    ),
+    "5c0981d3a355a38f18de17fd5e91c53848b51761": (
+        "6376615b2211ee9fd36ef7585436bd8a287ee9ecb22e43ecdeee5e27ee5274d4"
+    ),
+}
 
 
 def capacity_teacher_read_contract(
@@ -56,7 +62,9 @@ def capacity_teacher_read_contract(
     materializer_source: bytes,
 ) -> dict[str, Any]:
     """Bind a reviewed incidental TRAIN read without claiming that no read occurred."""
-    if hashlib.sha256(materializer_source).hexdigest() != _CAPACITY_RGB_SOURCE_SHA256:
+    commit = manifest.get("code_identity", {}).get("git_commit")
+    source_sha256 = hashlib.sha256(materializer_source).hexdigest()
+    if source_sha256 != _CAPACITY_RGB_PRODUCERS.get(commit):
         raise ValueError("capacity teacher materializer requires a new source review")
     result = sign_artifact(
         {
@@ -65,7 +73,10 @@ def capacity_teacher_read_contract(
             "teacher_artifact_sha256": manifest["artifact_sha256"],
             "teacher_manifest_sha256": manifest_sha256,
             "materializer_commit": manifest["code_identity"]["git_commit"],
-            "materializer_source_sha256": _CAPACITY_RGB_SOURCE_SHA256,
+            "materializer_source_sha256": source_sha256,
+            "execution_lineage": manifest.get("execution_recovery", {}).get(
+                "prior_producer_lineage"
+            ),
             "ttc_labels_read": True,
             "ttc_labels_used_for_teacher_features": False,
             "read_reason": "native supervised TRAIN shards deserialize complete records",
@@ -89,13 +100,36 @@ def _capacity_read_rows(
         or contract.get("kind") != "CAPACITY_FROZEN_RGB_TEACHER_INCIDENTAL_TRAIN_READ_V1"
         or contract.get("teacher_artifact_sha256") != manifest.get("artifact_sha256")
         or contract.get("teacher_manifest_sha256") != manifest_sha256
-        or contract.get("materializer_commit") != _CAPACITY_RGB_PRODUCER
-        or manifest.get("code_identity", {}).get("git_commit") != _CAPACITY_RGB_PRODUCER
-        or contract.get("materializer_source_sha256") != _CAPACITY_RGB_SOURCE_SHA256
+        or contract.get("materializer_commit") not in _CAPACITY_RGB_PRODUCERS
+        or manifest.get("code_identity", {}).get("git_commit")
+        != contract.get("materializer_commit")
+        or contract.get("materializer_source_sha256")
+        != _CAPACITY_RGB_PRODUCERS.get(contract.get("materializer_commit", ""))
         or contract.get("ttc_labels_read") is not True
         or contract.get("ttc_labels_used_for_teacher_features") is not False
     ):
         raise ValueError("capacity teacher read contract identity/source review invalid")
+    recovery = manifest.get("execution_recovery", {})
+    lineage_binding = recovery.get("prior_producer_lineage")
+    if contract.get("execution_lineage") != lineage_binding:
+        raise ValueError("capacity teacher execution lineage differs from read contract")
+    if recovery.get("resumed_rows", 0) and recovery.get("TAR_header_index_enabled"):
+        if not lineage_binding:
+            raise ValueError("capacity indexed continuation omitted prior producer lineage")
+    if lineage_binding:
+        lineage = _signed(lineage_binding)
+        previous = _signed(lineage["previous_last_block_receipt"])
+        if (
+            lineage.get("kind") != "DINO_EQUIVALENT_EXECUTION_TRANSITION"
+            or lineage.get("from_producer_commit") not in _CAPACITY_RGB_PRODUCERS
+            or lineage.get("to_producer_commit") != contract["materializer_commit"]
+            or not 0 < lineage["previous_durable_rows"] <= recovery.get("resumed_rows", 0)
+            or recovery["resumed_rows"] > manifest["scope"]["expected_row_count"]
+            or previous.get("kind") != "NONSELECTABLE_DINO_RECOVERY_BLOCK"
+            or previous["start"] + previous["rows"] != lineage["previous_durable_rows"]
+            or previous["identity"] != lineage["inference_identity"]
+        ):
+            raise ValueError("capacity teacher mixed producer lineage invalid")
     for section in ("scope", "claim_boundary"):
         if (
             manifest.get(section, {}).get("ttc_labels_read") is not True

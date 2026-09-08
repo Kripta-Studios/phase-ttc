@@ -51,3 +51,18 @@ capacity acceptance, malicious lineage, audit publication, exact token hashing,
 fold-only training consumption and comparator recipe propagation. No scientific
 optimizer updates or outer scores are needed for these checks. Completion of this
 integration does not mean the 30,000-row production cache or v11 campaign is ready.
+
+The reviewed equivalent producer `5c0981d3a355a38f18de17fd5e91c53848b51761`
+adds persistent TAR header indices. Its materializer source SHA256 is
+`6376615b2211ee9fd36ef7585436bd8a287ee9ecb22e43ecdeee5e27ee5274d4`.
+The read contract accepts this exact source alongside the original producer.
+Indexed continuation binds the signed prior producer lineage, its final complete
+block receipt, inference identity and prefix row count. Both identities remain
+visible: resumed rows are not attributed to the later producer. Unknown producers,
+an omitted indexed continuation lineage, and mismatched prefix counts are refused.
+
+Execution amendment 004 records exact TRAIN RGB tensor parity, bounded header
+storage and a production continuation pilot. It changes archive lookup only;
+weights, pixels, normalization, 108-bin targets and scientific budgets are unchanged.
+Header indices contain no feature tensors and are bounded to 32 MiB of cached
+payload across at most eight archives. Inference still publishes every 256 rows.
