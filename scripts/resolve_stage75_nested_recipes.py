@@ -8,6 +8,7 @@ import json
 import sys
 import zipfile
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -22,6 +23,7 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import (
     object_digest,
     verify,
 )
+from e_jepa_ttc.data.canonical_token_identity import hash_sorted_token_strings
 from e_jepa_ttc.data.nested_architecture_recipes_v11 import (
     CountMetadataCatalog,
     nested_source_recipe,
@@ -30,12 +32,146 @@ from e_jepa_ttc.data.stage70_roles import TrainRoles
 from e_jepa_ttc.training.stage73_factorial import treatment
 
 
+def resolve_capacity_recipes(campaign: Path) -> dict[str, Any]:
+    """Bind new inner producers to the fixed expanded roles using metadata only."""
+    output = campaign / "prospective_nested_source_recipes"
+    output.mkdir(exist_ok=True)
+    journal = output / "SOURCE_READS.jsonl"
+
+    def read_signed(path: Path) -> dict[str, Any]:
+        access = AllowlistedSources([binding(path)], journal)
+        record = json.loads(access.access(path).read_text(encoding="utf-8"))
+        unsigned = {k: v for k, v in record.items() if k != "artifact_sha256"}
+        if object_digest(unsigned) != record.get("artifact_sha256"):
+            raise ValueError("capacity nested input signature changed")
+        return record
+
+    graph_path = campaign / "resolved_initial_source_graph/INITIAL_SOURCE_GRAPH.json"
+    graph = read_signed(graph_path)
+    if graph["availability"]["capacities"] != ["4M"] or graph["availability"]["diversity"]:
+        raise ValueError("capacity nested source resolver requires fixed4M subset-only pools")
+    roles_record = read_signed(verify(graph["roles"]))
+    producers = read_signed(verify(graph["producer_roles"]))
+    values = roles_record["roles"]
+    roles = TrainRoles(
+        tuple(tuple(pair) for pair in values["sequence_to_group"]),
+        tuple(values["original"]),
+        tuple(values["historical_exposed"]),
+        tuple(values["protected"]),
+        tuple(values["confirmation"]),
+        tuple(values["expansion"]),
+        values["role_prefix"],
+    )
+    first = read_signed(verify(graph["views"]["original_outer0"]["source_manifest"]))
+    cache_binding = first["source_bindings"]["count_cache"]
+    cache_path = verify(cache_binding)
+    manifest = read_signed(cache_path)
+    cohort = read_signed(verify(first["source_bindings"]["cohort"]))
+    if (
+        manifest["status"] != "COMPLETE_COUNTS_ONLY"
+        or manifest["identity"]["targets_present"] is not False
+        or object_digest(manifest["identity"]) != manifest["identity_sha256"]
+        or producers["cohort_sha256"] != cohort["artifact_sha256"]
+    ):
+        raise ValueError("capacity nested cache or cohort identity changed")
+    verify_components(cache_path.parent, {"metadata.csv": manifest["metadata"]}, {"metadata.csv"})
+    metadata_path = cache_path.parent / "metadata.csv"
+    access = AllowlistedSources([binding(metadata_path)], journal)
+    metadata = pd.read_csv(
+        access.access(metadata_path),
+        dtype={"sample_token": str, "sequence_id": str, "track_id": str},
+    )
+    if set(metadata.sample_token) != set(cohort["ordered_tokens"]) or any(
+            int(fold) != cohort["sequence_to_outer_fold"][sequence]
+            for fold, sequence in zip(metadata.outer_fold, metadata.sequence_id, strict=True)
+    ):
+        raise ValueError("capacity nested metadata differs from prospective folds")
+    catalog = CountMetadataCatalog(metadata, manifest["artifact_sha256"])
+    recipes = []
+    for outer in range(3):
+        parent = read_signed(verify(graph["views"][f"original_outer{outer}"]["source_manifest"]))
+        role = next(p for p in producers["folds"] if p["outer_fold"] == outer)
+        for inner in range(3):
+            inner_role = next(p for p in role["inner_roles"] if p["inner_fold"] == inner)
+            split: dict[str, Any] = {}
+            for name, key in (("train", "fit_sequences"), ("dev", "prediction_sequences")):
+                sequences = inner_role[key]
+                tokens = metadata.loc[metadata.sequence_id.isin(sequences), "sample_token"]
+                split.update(
+                    {
+                        f"{name}_sequence_ids": sequences,
+                        f"{name}_rows": len(tokens),
+                        f"{name}_sample_tokens_sha256": hash_sorted_token_strings(tokens),
+                    }
+                )
+            protocol = {"outer_fold": outer, "inner_fold": inner, "folds": [split]}
+            recipe = nested_source_recipe(
+                catalog,
+                metadata,
+                parent,
+                protocol,
+                roles,
+                outer=outer,
+                inner=inner,
+                expanded=False,
+                producer_recipe=producers,
+            )
+            recipe.update(
+                source_role_sha256=roles_record["artifact_sha256"],
+                capacity_split_protocol=protocol,
+                capacity_producer_roles_binding=graph["producer_roles"],
+            )
+            recipe["artifact_sha256"] = object_digest(recipe)
+            path = output / f"outer{outer}_inner{inner}.json"
+            if path.exists() and read_signed(path) != recipe:
+                raise ValueError("existing prospective inner source has another identity")
+            atomic_json(path, recipe)
+            recipes.append(binding(path))
+            print(
+                f"Bound outer{outer}/inner{inner}: "
+                f"{len(recipe['ordered_tokens'])} TRAIN rows; no fit",
+                flush=True,
+            )
+    record = {
+        "kind": "STAGE75_PROSPECTIVE_NESTED_ROLE_RECIPES",
+        "recipes": recipes,
+        "canonical_candidates": graph["canonical_candidates"],
+        "source_graph": binding(graph_path),
+        "roles": graph["roles"],
+        "producer_roles": graph["producer_roles"],
+        "metadata_inputs": [binding(metadata_path)],
+        "cache_manifest": cache_binding,
+        "source_read_journal": str(journal.resolve()),
+        "code": binding(Path(__file__)),
+        "recipe_code": binding(ROOT / "src/e_jepa_ttc/data/nested_architecture_recipes_v11.py"),
+        "normalization_fits": 0,
+        "prior_fits": 0,
+        "optimizer_updates": 0,
+        "S75_fit_authorized": False,
+        "actual_inner_fits_require_oracle_headroom_gate": True,
+        "historical_predictions_reused": False,
+        "raw_event_arrays_read": False,
+    }
+    record["artifact_sha256"] = object_digest(record)
+    target = output / "NESTED_ROLE_RECIPES.json"
+    if target.exists() and read_signed(target) != record:
+        raise ValueError("prospective nested manifest already exists with another identity")
+    atomic_json(target, record)
+    return record
+
+
 def main() -> None:
     """Read verified historical protocols and target-free TRAIN metadata; no count observations."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--campaign", type=Path, required=True)
+    parser.add_argument("--capacity", action="store_true")
     args = parser.parse_args()
     campaign = args.campaign.resolve(strict=True)
+    if args.capacity:
+        if campaign != ROOT / "artifacts/stage70_76_capacity":
+            raise ValueError("capacity nested recipes must stay in this worktree campaign")
+        resolve_capacity_recipes(campaign)
+        return
     if campaign != ROOT / "artifacts/stage70_76_architecture":
         raise ValueError("nested source recipes must stay in this campaign")
     output = campaign / "prospective_nested_source_recipes"
