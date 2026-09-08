@@ -26,6 +26,7 @@ import hashlib
 import json
 import sys
 import tarfile
+from contextlib import ExitStack, nullcontext
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -333,12 +334,13 @@ def _load_and_crop_rgb(
     image_mean: list[float],
     image_std: list[float],
     device: torch.device,
+    archive: tarfile.TarFile | None = None,
 ) -> tuple[torch.Tensor, str]:
     """Load RGB from TAR, crop to object-specific ROI, resize to 256×256.
 
     Returns (tensor [1,3,256,256], sha256 of raw RGB bytes).
     """
-    with tarfile.open(tar_path, "r") as tar:
+    with nullcontext(archive) if archive is not None else tarfile.open(tar_path, "r") as tar:
         member = tar.getmember(member_path)
         f = tar.extractfile(member)
         if f is None:
@@ -667,17 +669,23 @@ def run(
 
         square = np.asarray(record["event_v4_common_square_xyxy"], dtype=np.float32)
         endpoint_rgb_shas: list[str] = []
-        for ep in range(2):
-            ep_input, rgb_sha = _load_and_crop_rgb(
-                tar_path=eap_root / rgb_shards[ep],
-                member_path=rgb_members[ep],
-                common_square_xyxy=square,
-                image_mean=image_mean,
-                image_std=image_std,
-                device=device,
-            )
-            pending_rgb.append(ep_input)
-            endpoint_rgb_shas.append(rgb_sha)
+        with ExitStack() as handles:
+            archives: dict[Path, tarfile.TarFile] = {}
+            for ep in range(2):
+                tar_path = eap_root / rgb_shards[ep]
+                if tar_path not in archives:
+                    archives[tar_path] = handles.enter_context(tarfile.open(tar_path, "r"))
+                ep_input, rgb_sha = _load_and_crop_rgb(
+                    tar_path=tar_path,
+                    member_path=rgb_members[ep],
+                    common_square_xyxy=square,
+                    image_mean=image_mean,
+                    image_std=image_std,
+                    device=device,
+                    archive=archives[tar_path],
+                )
+                pending_rgb.append(ep_input)
+                endpoint_rgb_shas.append(rgb_sha)
 
         all_tokens.append(token)
         all_track_ids.append(track_id)

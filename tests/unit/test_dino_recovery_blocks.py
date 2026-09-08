@@ -138,6 +138,9 @@ def test_materializer_recovers_without_recomputing_rgb(tmp_path: Path, monkeypat
         return torch.zeros(1, 3, 256, 256), "a" * 64
 
     monkeypatch.setattr(m, "_load_and_crop_rgb", crop)
+    from contextlib import nullcontext
+
+    monkeypatch.setattr(m.tarfile, "open", lambda *a, **kw: nullcontext(object()))
     actual_writer = m.write_complete_mmap_cache
 
     def interrupted(*a, **kw):
