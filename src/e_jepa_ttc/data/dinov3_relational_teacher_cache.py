@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from collections.abc import Sized
 from pathlib import Path
 from typing import Any, cast
@@ -25,6 +26,7 @@ import torch
 from torch.utils.data import Dataset
 
 from e_jepa_ttc.artifacts.hashing import sign_artifact, verify_artifact_hash
+from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_digest, verify
 from e_jepa_ttc.data.canonical_token_identity import (
     hash_ordered_token_ids,
     hash_sorted_token_strings,
@@ -38,6 +40,104 @@ _EXPECTED_GRID = (32, 32)
 _EXPECTED_ENDPOINTS = 2
 _EXPECTED_OFFSETS = [[dy, dx] for dy, dx in A4_RELATION_OFFSETS]
 _NUM_OFFSETS = len(A4_RELATION_OFFSETS)
+
+
+class DinoRecoveryBlocks:
+    """Durable complete inference blocks; never a selectable or complete teacher cache."""
+
+    def __init__(self, root: Path, identity: dict[str, Any]) -> None:
+        self.root = root
+        root.mkdir(parents=True, exist_ok=True)
+        self.identity = object_digest(identity)
+        self.blocks: list[dict[str, Any]] = []
+        self.rows = 0
+        self.tokens: set[str] = set()
+        for receipt_path in sorted(root.glob("block_*.json")):
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+            signature = receipt.pop("artifact_sha256", None)
+            if object_digest(receipt) != signature or receipt["identity"] != self.identity:
+                raise ValueError("DINO recovery block identity/signature changed")
+            expected = root / f"block_{self.rows:06d}.npz"
+            if (
+                expected.is_symlink()
+                or receipt_path.is_symlink()
+                or Path(receipt["payload"]["path"]).resolve() != expected.resolve()
+            ):
+                raise ValueError("DINO recovery payload escaped contiguous local blocks")
+            if receipt["start"] != self.rows or receipt_path.stem != expected.stem:
+                raise ValueError("DINO recovery block gap or reordered receipt")
+            verify(receipt["payload"])
+            with np.load(expected, allow_pickle=False) as data:
+                tokens = data["tokens"].tolist()
+                self._validate(data, tokens)
+            if object_digest(tokens) != receipt["tokens_sha256"]:
+                raise ValueError("DINO recovery tokens changed")
+            if len(tokens) != receipt["rows"]:
+                raise ValueError("DINO recovery row count changed")
+            self.tokens.update(tokens)
+            self.rows += len(tokens)
+            self.blocks.append(receipt)
+
+    def _validate(self, arrays: Any, tokens: list[str]) -> None:  # noqa: ANN401
+        count = len(tokens)
+        if not 0 < count <= 256 or len(set(tokens)) != count or self.tokens.intersection(tokens):
+            raise ValueError("DINO recovery block empty, oversized or duplicate tokens")
+        if any(len(arrays[key]) != count for key in arrays.keys()):
+            raise ValueError("DINO recovery arrays are not row aligned")
+        if any(arrays[key].dtype.hasobject for key in arrays.keys()):
+            raise ValueError("DINO recovery forbids pickle/object payloads")
+        for field, dtype in (("targets", np.float16), ("valid", np.uint8)):
+            if arrays[field].shape != (count, 2, _NUM_OFFSETS, 32, 32):
+                raise ValueError("DINO recovery relation shape changed")
+            if arrays[field].dtype != dtype:
+                raise ValueError("DINO recovery relation dtype changed")
+        if not np.isfinite(arrays["targets"]).all() or not np.isin(arrays["valid"], [0, 1]).all():
+            raise ValueError("DINO recovery nonfinite relations or invalid mask")
+
+    def publish(self, arrays: dict[str, np.ndarray]) -> None:
+        """Flush immutable payload before publishing its signed receipt, once per block."""
+        tokens = arrays["tokens"].tolist()
+        self._validate(arrays, tokens)
+        path = self.root / f"block_{self.rows:06d}.npz"
+        temporary = path.with_suffix(".npz.tmp")
+        with temporary.open("wb") as stream:
+            np.savez(stream, **cast(Any, arrays))
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+        receipt = {
+            "kind": "NONSELECTABLE_DINO_RECOVERY_BLOCK",
+            "identity": self.identity,
+            "start": self.rows,
+            "rows": len(tokens),
+            "tokens_sha256": object_digest(tokens),
+            "payload": binding(path),
+        }
+        atomic_json(
+            path.with_suffix(".json"), {**receipt, "artifact_sha256": object_digest(receipt)}
+        )
+        self.blocks.append(receipt)
+        self.rows += len(tokens)
+        self.tokens.update(tokens)
+
+    def assemble(self, field: str, expected_rows: int) -> np.memmap:
+        """Assemble one bounded block at a time into disk-backed finalization scratch."""
+        if self.rows != expected_rows:
+            raise ValueError("DINO recovery is incomplete; cannot assemble final cache")
+        with np.load(verify(self.blocks[0]["payload"]), allow_pickle=False) as first:
+            shape, dtype = first[field].shape[1:], first[field].dtype
+        output = np.lib.format.open_memmap(
+            self.root / f"assembled_{field}.npy",
+            mode="w+",
+            dtype=dtype,
+            shape=(expected_rows, *shape),
+        )
+        for receipt in self.blocks:
+            with np.load(verify(receipt["payload"]), allow_pickle=False) as data:
+                start = receipt["start"]
+                output[start : start + receipt["rows"]] = data[field]
+        output.flush()
+        return output
 
 
 def _integer_pixel_xyxy(square: np.ndarray) -> np.ndarray:

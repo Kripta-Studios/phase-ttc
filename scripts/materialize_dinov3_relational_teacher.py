@@ -2,9 +2,9 @@
 """Materialize one complete DINOv3 relational teacher cache (train-only).
 
 Processes the requested train rows, computing per-object DINO features
-and six local cosine relation maps.  Writes one indivisible mmap cache
-and a signed manifest.  GPU inference may batch internally; there is no
-scientific chunk/partial-cache mode.
+and six local cosine relation maps. Publishes recovery blocks every256 rows,
+then one complete mmap cache and signed manifest. Recovery blocks are never
+scientific candidates or a substitute for complete requested coverage.
 
 Each sample_token corresponds to a specific object/track within a frame.
 The RGB is cropped using that object's exact common_square_xyxy.
@@ -41,6 +41,7 @@ sys.path.insert(0, str(ROOT))
 from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, verify  # noqa: E402
 from e_jepa_ttc.data.capacity_sources import _signed  # noqa: E402
 from e_jepa_ttc.data.dinov3_relational_teacher_cache import (  # noqa: E402
+    DinoRecoveryBlocks,
     write_complete_mmap_cache,
 )
 from e_jepa_ttc.data.event_v4_geometry import box_in_common_roi  # noqa: E402
@@ -387,6 +388,14 @@ def run(
 
     import pandas as pd
 
+    if (output_dir / "manifest.json").exists():
+        raise FileExistsError("Complete DINO cache exists; verify and reuse without overwriting")
+    if device_name.startswith("cuda"):
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+        torch.use_deterministic_algorithms(True)
     if expected_rows <= 0:
         raise ValueError("FATAL: expected_rows must be positive")
     if feature_execution not in ("full", "prefix"):
@@ -548,6 +557,49 @@ def run(
     pending_rgb: list[torch.Tensor] = []
     pending_rows: list[int] = []
     seen_pairs: set[tuple[str, str]] = set()
+    recovery = DinoRecoveryBlocks(
+        output_dir / "recovery",
+        {
+            "event_manifest_sha256": event_manifest_sha,
+            "metadata_sha256": train_parquet_sha,
+            "capacity_source": capacity_source,
+            "weights_sha256": weights_sha,
+            "preprocessor_sha256": preprocessor_sha,
+            "feature_execution": feature_execution,
+            "device": str(device),
+            "precision": "float32",
+            "expected_rows": expected_rows,
+        },
+    )
+    metadata_lists = {
+        "tokens": all_tokens,
+        "tracks": all_track_ids,
+        "sequences": all_sequences,
+        "squares": all_squares,
+        "rgb_shas": all_rgb_shas,
+        "rgb_indices": all_rgb_indices,
+        "rgb_timestamps": all_rgb_timestamps,
+        "event_windows": all_event_windows,
+        "rgb_shards": all_rgb_shards,
+        "rgb_members": all_rgb_members,
+    }
+    for block in recovery.blocks:
+        with np.load(verify(block["payload"]), allow_pickle=False) as saved:
+            for name, values_list in metadata_lists.items():
+                values_list.extend(list(saved[name]))
+    resumed_rows = recovery.rows
+    print(f"[materialize] Recovered {resumed_rows}/{total_rows} durable rows", flush=True)
+
+    def _publish_block() -> None:
+        if not all_targets:
+            return
+        start = recovery.rows
+        arrays = {name: np.asarray(values[start:]) for name, values in metadata_lists.items()}
+        arrays.update(targets=np.stack(all_targets), valid=np.stack(all_valid))
+        recovery.publish(arrays)
+        all_targets.clear()
+        all_valid.clear()
+        print(f"[materialize] Durable {recovery.rows}/{total_rows}", flush=True)
 
     def _flush_gpu_batch() -> None:
         if not pending_rgb:
@@ -571,6 +623,20 @@ def run(
         token = str(record["sample_token"])
         track_id = str(record["track_id"])
         sequence = str(record["sequence_id"])
+
+        if row_idx < resumed_rows:
+            if (
+                token != all_tokens[row_idx]
+                or track_id != all_track_ids[row_idx]
+                or sequence != all_sequences[row_idx]
+                or not np.array_equal(record["event_v4_common_square_xyxy"], all_squares[row_idx])
+                or token
+                not in (capacity_tokens if capacity_tokens is not None else recovery.tokens)
+                or sequence not in expected_train_sequences
+            ):
+                raise ValueError("DINO recovery token/track/sequence/ROI differs from source")
+            seen_pairs.add((token, track_id))
+            continue
 
         if capacity_tokens is not None and token not in capacity_tokens:
             raise ValueError("FATAL: teacher event-cache token is outside the frozen cohort")
@@ -626,10 +692,13 @@ def run(
         pending_rows.append(row_idx)
         if len(pending_rows) >= _GPU_INFERENCE_BATCH:
             _flush_gpu_batch()
+        if len(all_targets) == 256:
+            _publish_block()
         if (row_idx + 1) % 100 == 0:
             print(f"  processed {row_idx + 1}/{total_rows}")
 
     _flush_gpu_batch()
+    _publish_block()
 
     observed_sequences = {str(rgb_lookup[key]["sequence_id"]) for key in seen_pairs}
     if len(seen_pairs) != expected_rows:
@@ -637,13 +706,13 @@ def run(
             f"FATAL: Expected exactly {expected_rows} unique "
             f"(token, track_id) pairs, got {len(seen_pairs)}"
         )
-    if len(all_tokens) != expected_rows or len(all_targets) != expected_rows:
+    if len(all_tokens) != expected_rows or recovery.rows != expected_rows:
         raise ValueError("FATAL: complete DINO cache row count mismatch after GPU flush")
     if observed_sequences != expected_train_sequences:
         raise ValueError("FATAL: Observed sequences mismatch with expected train sequences")
 
-    relation_targets = np.stack(all_targets, axis=0)
-    relation_valid = np.stack(all_valid, axis=0)
+    relation_targets = recovery.assemble("targets", expected_rows)
+    relation_valid = recovery.assemble("valid", expected_rows)
     crops = np.stack(all_squares, axis=0)
 
     manifest_payload: dict[str, Any] = {
@@ -745,6 +814,7 @@ def run(
         rgb_shard_paths=np.stack(all_rgb_shards),
         rgb_member_paths=np.stack(all_rgb_members),
     )
+    del relation_targets, relation_valid
     written = json.loads((output_dir / "manifest.json").read_text(encoding="utf-8"))
     print(f"\n[materialize] DONE: {total_rows} rows, complete mmap cache")
     print(f"  manifest: {output_dir / 'manifest.json'}")
