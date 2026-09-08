@@ -65,6 +65,58 @@ def test_nested_router_reader_binds_capacity_and_rejects_substitution(tmp_path, 
         module._nested_rows(lock, name, 0, barrier)
 
 
+@pytest.mark.parametrize("substitute_historical", [False, True])
+def test_expanded_router_reader_requires_own_comparison_product(
+    tmp_path, monkeypatch, substitute_historical
+):
+    name = "S73-PPS-A"
+    key = candidate_key(name, "4M")
+    root = tmp_path / key / "outer0"
+    root.mkdir(parents=True)
+    pd.DataFrame({"sample_token": ["00001"]}).to_csv(root / "ROWS.csv", index=False)
+    availability = Availability(True, False, "a" * 64, "b" * 64, ("4M",), "4M")
+    lock = {
+        "availability": asdict(availability),
+        "nested_export_root": str(tmp_path),
+        "artifact_sha256": "c" * 64,
+        "capacity_cohort": {"sha256": "d" * 64},
+    }
+    source = {"sha256": "e" * 64, "path": "own post-fit comparison manifest"}
+    calls = []
+
+    def resolve(actual):
+        assert actual is lock
+        calls.append(actual)
+        return {}, source
+
+    monkeypatch.setattr(module, "capacity_comparison_receipt", resolve, raising=False)
+    barrier = {"sha256": "f" * 64}
+    record = {
+        "kind": "COMPLETE_NEW_NESTED_TREATMENT_DIAGNOSTICS",
+        "identity": {
+            "stage_barrier": barrier,
+            "training_lock_sha256": lock["artifact_sha256"],
+            "historical_table_manifest": {"sha256": "0" * 64} if substitute_historical else source,
+            "treatment": name,
+            "outer_fold": 0,
+            "role": "inner_oof",
+            "seed": 7,
+            "capacity": "4M",
+            "candidate_key": key,
+        },
+        "rows": binding(root / "ROWS.csv"),
+    }
+    record["artifact_sha256"] = object_digest(record)
+    atomic_json(root / "NESTED_EXPORT.json", record)
+    if substitute_historical:
+        with pytest.raises(ValueError, match="source-bound"):
+            module._nested_rows(lock, name, 0, barrier)
+    else:
+        rows, _ = module._nested_rows(lock, name, 0, barrier)
+        assert rows.sample_token.tolist() == ["00001"]
+    assert len(calls) == 1
+
+
 def test_complete_synthetic_router_backend_freezes_all_six_before_outer_features(
     tmp_path, monkeypatch
 ):

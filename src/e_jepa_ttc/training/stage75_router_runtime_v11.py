@@ -15,7 +15,10 @@ from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, binding, object_
 from e_jepa_ttc.artifacts.stage_endpoint_barrier_v11 import _owned
 from e_jepa_ttc.data.nested_router_inputs_v11 import assemble_router_inputs
 from e_jepa_ttc.data.new_expert_tables_v11 import full_cost_targets
-from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import verify_initial_evidence
+from e_jepa_ttc.evaluation.initial_campaign_evidence_v11 import (
+    capacity_comparison_receipt,
+    verify_initial_evidence,
+)
 from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
 from e_jepa_ttc.evaluation.nested_treatment_export_v11 import historical_table
 from e_jepa_ttc.evaluation.risk_geometry_v10 import loss_frame
@@ -43,12 +46,17 @@ def _nested_rows(
     record = json.loads(path.read_text(encoding="utf-8"))
     unsigned = {key: value for key, value in record.items() if key != "artifact_sha256"}
     identity = record["identity"]
+    table_source = (
+        capacity_comparison_receipt(lock)[1]
+        if "capacity_cohort" in lock
+        else lock["historical_nested_tables"]
+    )
     if (
         object_digest(unsigned) != record.get("artifact_sha256")
         or record.get("kind") != "COMPLETE_NEW_NESTED_TREATMENT_DIAGNOSTICS"
         or identity.get("stage_barrier") != barrier
         or identity.get("training_lock_sha256") != lock["artifact_sha256"]
-        or identity.get("historical_table_manifest") != lock["historical_nested_tables"]
+        or identity.get("historical_table_manifest") != table_source
         or identity.get("treatment") != name
         or identity.get("outer_fold") != outer
         or identity.get("role") != "inner_oof"
