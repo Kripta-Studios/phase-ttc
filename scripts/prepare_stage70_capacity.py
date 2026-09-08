@@ -241,11 +241,45 @@ def main() -> None:
     cli.add_argument("--local-paths", type=Path)
     cli.add_argument("--output-root", type=Path, required=True)
     cli.add_argument(
+        "--count-usability",
+        type=Path,
+        help="Rebuild/resume count representations from the fixed signed ROW_USABILITY manifest",
+    )
+    cli.add_argument(
+        "--count-usability-sha256", help="Required physical SHA256 for --count-usability"
+    )
+    cli.add_argument(
         "--comparator-inputs",
         type=Path,
         help="Completed native cache and frozen teacher bindings; compile all 36 jobs",
     )
     args = cli.parse_args()
+    if args.count_usability is not None:
+        if (
+            args.comparator_inputs is not None
+            or args.predecessor_root is not None
+            or args.local_paths is not None
+            or args.count_usability_sha256 is None
+        ):
+            cli.error(
+                "count reconstruction requires its SHA256 "
+                "and cannot select a cohort or compile comparators"
+            )
+        source = binding(args.count_usability.resolve(strict=True))
+        if source["sha256"] != args.count_usability_sha256:
+            raise ValueError("count usability physical SHA256 changed")
+        expected = ROOT / "artifacts/stage70_76_capacity/representation_30000"
+        if args.output_root.resolve() != expected.resolve():
+            raise ValueError(
+                "count reconstruction must use this worktree representation_30000 directory"
+            )
+        from e_jepa_ttc.data.capacity_sources import materialize_capacity_counts
+
+        result = materialize_capacity_counts(source, args.output_root.resolve(), build_cache=True)
+        print(json.dumps({key: result[key] for key in ("status", "optimizer_updates")}))
+        return
+    if args.count_usability_sha256 is not None:
+        cli.error("--count-usability-sha256 requires --count-usability")
     if args.comparator_inputs is not None:
         if args.predecessor_root is not None or args.local_paths is not None:
             cli.error("comparator compilation and cohort selection are separate operations")

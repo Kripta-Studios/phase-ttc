@@ -15,6 +15,46 @@ def signed(path, value):
     return binding(path)
 
 
+@pytest.mark.parametrize("failure", [None, "hash", "output", "mixed_mode"])
+def test_count_reconstruction_cli_preserves_fixed_source(tmp_path, monkeypatch, failure):
+    import sys
+
+    from e_jepa_ttc.data import capacity_sources
+    from scripts import prepare_stage70_capacity as compiler
+
+    source_path = tmp_path / "ROW_USABILITY.json"
+    source_path.write_text("{}", encoding="utf-8")
+    source = binding(source_path)
+    output = tmp_path / "artifacts/stage70_76_capacity/representation_30000"
+    arguments = [
+        "prepare_stage70_capacity.py",
+        "--count-usability",
+        str(source_path),
+        "--count-usability-sha256",
+        source["sha256"] if failure != "hash" else "0" * 64,
+        "--output-root",
+        str(output if failure != "output" else tmp_path / "historical"),
+    ]
+    if failure == "mixed_mode":
+        arguments += ["--comparator-inputs", "unused.json"]
+    calls = []
+
+    def materialize(actual_source, actual_output, *, build_cache):
+        calls.append((actual_source, actual_output, build_cache))
+        return {"status": "COUNTS_COMPLETE", "optimizer_updates": 0}
+
+    monkeypatch.setattr(compiler, "ROOT", tmp_path)
+    monkeypatch.setattr(sys, "argv", arguments)
+    monkeypatch.setattr(capacity_sources, "materialize_capacity_counts", materialize)
+    if failure:
+        with pytest.raises(SystemExit if failure == "mixed_mode" else ValueError):
+            compiler.main()
+        assert calls == []
+    else:
+        compiler.main()
+        assert calls == [(source, output, True)]
+
+
 def inputs(tmp_path, *, bad_target=False, protected=False, bad_path=False):
     seqs = ["s0", "s1", "s2"]
     tokens = ["t0", "t1", "t2"]
