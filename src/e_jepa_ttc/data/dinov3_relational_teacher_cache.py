@@ -155,7 +155,7 @@ def _capacity_read_rows(
     ):
         raise ValueError("capacity teacher metadata escaped signed TRAIN partition")
     sequences, tokens = set(cohort["selected_sequences"]), list(cohort["ordered_tokens"])
-    mapping = roles["sequence_to_group"]
+    mapping = dict(roles["sequence_to_group"])
     if (
         cohort.get("kind") != "CAPACITY_DEVELOPMENT_COHORT"
         or not tokens

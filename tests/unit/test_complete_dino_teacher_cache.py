@@ -215,7 +215,8 @@ def _capacity_cache(tmp_path: Path) -> tuple[Path, dict[str, object], bytes]:
         "roles.json",
         {
             "roles": {
-                "sequence_to_group": {"seq-a": "g-a", "seq-b": "g-b"},
+                # Match the immutable Stage70 role manifest's serialized pair list.
+                "sequence_to_group": [["seq-a", "g-a"], ["seq-b", "g-b"]],
                 "confirmation": ["g-c"],
                 "protected": ["g-p"],
             }
