@@ -449,6 +449,103 @@ def _run(args: argparse.Namespace) -> None:
     )
 
 
+def _recoverable_replay_blocks(
+    root: Path,
+    metadata: pd.DataFrame,
+    identity: dict[str, Any],
+    batch_size: int,
+    evaluate: Callable[[int, int], tuple[pd.DataFrame, np.ndarray | None]],
+    check: Callable[[], None],
+) -> tuple[pd.DataFrame, np.ndarray | None]:
+    """Publish bounded replay blocks with the existing export writer before advancing."""
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import atomic_json, object_digest, verify
+    from e_jepa_ttc.evaluation.initial_treatment_export_v11 import publish_export_payloads
+
+    if not 1 <= batch_size <= 256 or metadata.empty or metadata.sample_token.duplicated().any():
+        raise ValueError("comparator replay requires bounded batches and unique source tokens")
+    block_rows = (256 // batch_size) * batch_size
+    identity_sha = object_digest(identity)
+    frames, features = [], []
+    if root.resolve() != root.absolute() or root.is_symlink():
+        raise ValueError("comparator replay root is redirected")
+    for first in range(0, len(metadata), block_rows):
+        check()
+        last = min(len(metadata), first + block_rows)
+        expected = metadata.iloc[first:last].sample_token.astype(str).tolist()
+        output = root / f"block_{first:06d}"
+        if output.resolve() != output.absolute() or output.is_symlink():
+            raise ValueError("comparator replay block directory is redirected")
+        output.mkdir(parents=True, exist_ok=True)
+        receipt_path = output / "BLOCK.json"
+        if receipt_path.is_symlink():
+            raise ValueError("comparator replay receipt is redirected")
+        if receipt_path.exists():
+            record = json.loads(receipt_path.read_text(encoding="utf-8"))
+            signature = record.pop("artifact_sha256", None)
+            if (
+                object_digest(record) != signature
+                or record["identity"] != identity_sha
+                or record["tokens"] != expected
+                or record["first"] != first
+            ):
+                raise ValueError("comparator replay block producer/role/tokens changed")
+            for key, filename in (("rows", "ROWS.csv"), ("arrays", "DIAGNOSTIC_ARRAYS.npz")):
+                path = Path(record[key]["path"])
+                if (
+                    path != (output / filename).absolute()
+                    or path.resolve() != path
+                    or path.is_symlink()
+                ):
+                    raise ValueError("comparator replay block payload escaped its producer")
+                verify(record[key])
+            options: dict[str, Any] = {"dtype": record["dtypes"], "float_precision": "round_trip"}
+            frame = pd.read_csv(record["rows"]["path"], **options)
+            with np.load(record["arrays"]["path"], allow_pickle=False) as arrays:
+                if set(arrays.files) != ({"pair_features"} if record["collect_pair"] else set()):
+                    raise ValueError("comparator replay block array fields changed")
+                pair = arrays["pair_features"].copy() if record["collect_pair"] else None
+        else:
+            frame, pair = evaluate(first, last)
+            if frame.sample_token.astype(str).tolist() != expected:
+                raise ValueError("comparator replay reordered its source block")
+            if pair is not None and (
+                pair.shape != (last - first, 133) or not np.isfinite(pair).all()
+            ):
+                raise ValueError("comparator replay PAIR features are nonfinite or misaligned")
+            if "collect_pair" in identity and (pair is not None) != identity["collect_pair"]:
+                raise ValueError("comparator replay changed its requested feature contract")
+            rows, arrays = publish_export_payloads(
+                output, frame, {"pair_features": pair} if pair is not None else {}
+            )
+            record = {
+                "kind": "COMPARATOR_REPLAY_RECOVERY_BLOCK",
+                "identity": identity_sha,
+                "first": first,
+                "tokens": expected,
+                "rows": rows,
+                "arrays": arrays,
+                "collect_pair": pair is not None,
+                "dtypes": {name: str(dtype) for name, dtype in frame.dtypes.items()},
+            }
+            atomic_json(receipt_path, {**record, "artifact_sha256": object_digest(record)})
+        if frame.sample_token.astype(str).tolist() != expected:
+            raise ValueError("comparator replay saved rows differ from source tokens")
+        if "collect_pair" in identity and (pair is not None) != identity["collect_pair"]:
+            raise ValueError("comparator replay changed its requested feature contract")
+        if pair is not None and (pair.shape != (last - first, 133) or not np.isfinite(pair).all()):
+            raise ValueError("comparator replay PAIR features are nonfinite or misaligned")
+        frames.append(frame)
+        if pair is not None:
+            features.append(pair)
+        atomic_json(
+            root / "PROGRESS.json",
+            {"identity": identity_sha, "rows": last, "required_rows": len(metadata)},
+        )
+    if features and len(features) != len(frames):
+        raise ValueError("comparator replay mixed feature and non-feature blocks")
+    return pd.concat(frames, ignore_index=True), np.concatenate(features) if features else None
+
+
 def replay_accounted_comparator(
     ledger: UpdateLedger,
     spec: FitSpec,
@@ -566,41 +663,61 @@ def replay_accounted_comparator(
                 .numpy()
             )
 
-    hook = model.register_forward_hook(capture)
-    try:
+    def evaluate_block(first: int, last: int) -> tuple[pd.DataFrame, np.ndarray | None]:
+        parts.clear()
         result = evaluate_real_causal_scale(
             model,
-            _loader(dataset, training, train=False),
+            _loader(torch.utils.data.Subset(dataset, range(first, last)), training, train=False),
             device,
             training,
             CausalScaleTTCLossConfig(**payload["loss_config"]),
             use_auxiliary_dev_metadata=False,
         )
+        frame = pd.DataFrame(
+            {
+                "sample_token": result["sample_tokens"],
+                "sequence_id": result["sequence_ids"],
+                "track_id": result["track_ids"],
+                "target_ttc_s": result["target_ttc_s"],
+                "prediction_ttc_s": result["prediction_ttc_s"],
+                "point_prediction_ttc_s": result["point_prediction_ttc_s"],
+                "ttc_log_variance": result["ttc_log_variance"],
+                "guard_margin": result["guard_margin"],
+                "event_count_log1p": result["event_count_log1p"],
+                "event_rate_log1p": result["event_rate_log1p"],
+                "transport_flow_magnitude": result["transport_flow_magnitude"],
+            }
+        )
+        return frame, np.concatenate(parts) if collect_pair else None
+
+    hook = model.register_forward_hook(capture)
+    try:
+        frame, pair = _recoverable_replay_blocks(
+            path.parent / f"replay_{role}_{'pair' if collect_pair else 'predictions'}",
+            metadata,
+            {
+                "producer": asdict(spec),
+                "endpoint": job["endpoint"],
+                "protocol": protocol,
+                "role": role,
+                "collect_pair": collect_pair,
+                "lock_sha256": lock_sha256,
+                "batch_size": training.batch_size,
+            },
+            training.batch_size,
+            evaluate_block,
+            check,
+        )
     finally:
         hook.remove()
         model.cpu()
-    frame = pd.DataFrame(
-        {
-            "sample_token": result["sample_tokens"],
-            "sequence_id": result["sequence_ids"],
-            "track_id": result["track_ids"],
-            "target_ttc_s": result["target_ttc_s"],
-            "prediction_ttc_s": result["prediction_ttc_s"],
-            "point_prediction_ttc_s": result["point_prediction_ttc_s"],
-            "ttc_log_variance": result["ttc_log_variance"],
-            "guard_margin": result["guard_margin"],
-            "event_count_log1p": result["event_count_log1p"],
-            "event_rate_log1p": result["event_rate_log1p"],
-            "transport_flow_magnitude": result["transport_flow_magnitude"],
-        }
-    )
     if list(frame.sample_token) != list(metadata.sample_token):
         raise ValueError("comparator replay reordered its frozen source rows")
     frame["outer_fold"] = spec.fold
     frame["inner_fold"] = protocol["inner_fold"]
     frame["prediction_role"] = role
     frame["scientific_candidate"] = not spec.technical
-    return frame, np.concatenate(parts) if collect_pair else None
+    return frame, pair
 
 
 def execute_capacity_comparator(
