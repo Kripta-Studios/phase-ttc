@@ -14,6 +14,9 @@ Set-StrictMode -Version Latest
 foreach ($inputFile in @($Python,$Campaign,$LocalPaths)) {
     if (!(Test-Path -LiteralPath $inputFile -PathType Leaf)) { throw "Missing input: $inputFile" }
 }
+$Python = (Resolve-Path -LiteralPath $Python).ProviderPath
+$Campaign = (Resolve-Path -LiteralPath $Campaign).ProviderPath
+$LocalPaths = (Resolve-Path -LiteralPath $LocalPaths).ProviderPath
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $resolvedOutput = [System.IO.Path]::GetFullPath($OutputRoot)
 $campaignDirectory = if ($Capacity) { 'stage70_76_capacity' } else { 'stage70_76_architecture' }
@@ -44,8 +47,11 @@ try {
     $record | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $statePath -Encoding UTF8
     # Native stderr warnings must not turn a successful Python run into a PowerShell failure.
     $ErrorActionPreference = 'Continue'
-    & $Python @runnerArgs 2>&1 | Tee-Object -FilePath $logPath -ErrorAction Stop
-    $exitCode = $LASTEXITCODE
+    Push-Location -LiteralPath $projectRoot
+    try {
+        & $Python @runnerArgs 2>&1 | Tee-Object -FilePath $logPath -ErrorAction Stop
+        $exitCode = $LASTEXITCODE
+    } finally { Pop-Location }
     $ErrorActionPreference = 'Stop'
     $record['status'] = if ($exitCode -eq 0) { 'COMMAND_FINISHED' } else { 'INTERRUPTED' }
 } catch {

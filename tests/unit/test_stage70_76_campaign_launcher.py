@@ -338,6 +338,7 @@ def test_powershell_logs_and_resumes_existing_lock_without_hiding_exit_code(tmp_
         "a=sys.argv\nroot=Path(a[a.index('--output-root')+1])\nroot.mkdir(parents=True,exist_ok=True)\n"
         "(root/'TRAINING_LOCK.json').write_text('{}')\n"
         "print('resume='+str('--resume' in a),flush=True)\n"
+        "print('cwd_valid='+str(Path.cwd()==Path(__file__).resolve().parents[1]),flush=True)\n"
         "print('synthetic warning',file=sys.stderr,flush=True)\n"
         "sys.exit(json.loads(Path(a[a.index('--campaign')+1]).read_text())['exit'])\n",
         encoding="utf-8",
@@ -371,3 +372,4 @@ def test_powershell_logs_and_resumes_existing_lock_without_hiding_exit_code(tmp_
         assert state["status"] == ("COMMAND_FINISHED" if code == 0 else "INTERRUPTED")
         text = Path(state["log"]).read_text(encoding="utf-8-sig")
         assert "synthetic warning" in text and f"resume={resume}" in text
+        assert "cwd_valid=True" in text
