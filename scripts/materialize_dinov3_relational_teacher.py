@@ -26,6 +26,7 @@ import hashlib
 import json
 import sys
 import tarfile
+from collections import OrderedDict
 from contextlib import ExitStack, nullcontext
 from datetime import UTC, datetime
 from pathlib import Path
@@ -39,7 +40,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 
-from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, verify  # noqa: E402
+from e_jepa_ttc.artifacts.risk_geometry_v10 import (  # noqa: E402
+    atomic_json,
+    binding,
+    object_digest,
+    verify,
+)
 from e_jepa_ttc.data.capacity_sources import _signed  # noqa: E402
 from e_jepa_ttc.data.dinov3_relational_teacher_cache import (  # noqa: E402
     DinoRecoveryBlocks,
@@ -327,6 +333,104 @@ def _extract_prefix_features(
     return features
 
 
+class TarHeaderIndex:
+    """Persist header metadata only; verify the requested header before reading RGB bytes."""
+
+    def __init__(self, root: Path) -> None:
+        self.root = root
+        root.mkdir(parents=True, exist_ok=True)
+        self.cached: OrderedDict[str, dict[str, list[int]]] = OrderedDict()
+        self.cached_bytes = 0
+        self.sizes: dict[str, int] = {}
+
+    @staticmethod
+    def _memory(index: dict[str, list[int]]) -> int:
+        return sys.getsizeof(index) + sum(
+            sys.getsizeof(name)
+            + sys.getsizeof(offsets)
+            + sum(sys.getsizeof(value) for value in offsets)
+            for name, offsets in index.items()
+        )
+
+    def member(self, archive: tarfile.TarFile, source: Path, name: str) -> tarfile.TarInfo:
+        """Use the same last-occurrence member semantics as TarFile.getmember."""
+        source = source.resolve(strict=True)
+        stat = source.stat()
+        identity = {"path": str(source), "bytes": stat.st_size, "mtime_ns": stat.st_mtime_ns}
+        key = object_digest(identity)
+        path = self.root / (object_digest(str(source)) + ".json")
+        if key in self.cached:
+            index = self.cached[key]
+            self.cached.move_to_end(key)
+        else:
+            if path.exists():
+                if path.is_symlink() or path.stat().st_size > 4 * 1024**2:
+                    raise ValueError("TAR header index escaped its metadata size/path contract")
+                record = json.loads(path.read_text(encoding="utf-8"))
+                signature = record.pop("artifact_sha256", None)
+                if object_digest(record) != signature or record["source"] != identity:
+                    raise ValueError("TAR source or persisted header index changed")
+                index = record["entries"]
+            else:
+                index = {}
+                while (entry := archive.next()) is not None:
+                    if len(entry.name) > 1024 or len(index) >= 16384:
+                        raise ValueError(
+                            "TAR index metadata limit; retain blocks and use scan mode"
+                        )
+                    index[entry.name] = (
+                        [entry.offset, entry.offset_data, entry.size] if entry.isfile() else []
+                    )
+                    getattr(archive, "members").clear()
+                record = {"source": identity, "entries": index}
+                record["artifact_sha256"] = object_digest(record)
+                serialized_bytes = len((json.dumps(record, indent=2) + "\n").encode())
+                if serialized_bytes > 4 * 1024**2:
+                    raise ValueError("TAR index metadata limit; retain blocks and use scan mode")
+                if (
+                    sum(p.stat().st_size for p in self.root.glob("*.json")) + serialized_bytes
+                    > 256 * 1024**2
+                ):
+                    raise ValueError("TAR index disk metadata budget exhausted; retain recovery")
+                atomic_json(path, record)
+            size = self._memory(index)
+            if size > 32 * 1024**2:
+                raise ValueError("TAR header index exceeds bounded RAM allowance")
+            while self.cached and (
+                len(self.cached) >= 8 or self.cached_bytes + size > 32 * 1024**2
+            ):
+                old, _ = self.cached.popitem(last=False)
+                self.cached_bytes -= self.sizes.pop(old)
+            self.cached[key] = index
+            self.sizes[key] = size
+            self.cached_bytes += size
+        offsets = index.get(name)
+        if (
+            not isinstance(offsets, list)
+            or len(offsets) != 3
+            or any(type(v) is not int for v in offsets)
+            or not 0 <= offsets[0] < offsets[1] <= stat.st_size
+            or offsets[2] < 0
+            or offsets[1] + offsets[2] > stat.st_size
+            or offsets[0] % 512
+            or offsets[1] % 512
+        ):
+            raise ValueError("requested RGB member lacks a valid bounded TAR file entry")
+        archive.fileobj.seek(offsets[0])
+        archive.offset = offsets[0]
+        setattr(archive, "firstmember", None)
+        actual = archive.next()
+        getattr(archive, "members").clear()
+        if (
+            actual is None
+            or not actual.isfile()
+            or actual.name != name
+            or [actual.offset, actual.offset_data, actual.size] != offsets
+        ):
+            raise ValueError("TAR header differs from indexed requested RGB identity")
+        return actual
+
+
 def _load_and_crop_rgb(
     tar_path: Path,
     member_path: str,
@@ -335,13 +439,16 @@ def _load_and_crop_rgb(
     image_std: list[float],
     device: torch.device,
     archive: tarfile.TarFile | None = None,
+    indexed_member: tarfile.TarInfo | None = None,
 ) -> tuple[torch.Tensor, str]:
     """Load RGB from TAR, crop to object-specific ROI, resize to 256×256.
 
     Returns (tensor [1,3,256,256], sha256 of raw RGB bytes).
     """
     with nullcontext(archive) if archive is not None else tarfile.open(tar_path, "r") as tar:
-        member = tar.getmember(member_path)
+        member = tar.getmember(member_path) if indexed_member is None else indexed_member
+        if member.name != member_path:
+            raise ValueError("indexed RGB member differs from the requested source")
         f = tar.extractfile(member)
         if f is None:
             raise FileNotFoundError(f"Cannot extract {member_path}")
@@ -385,6 +492,8 @@ def run(
     capacity_preparation: Path | None = None,
     capacity_preparation_sha256: str | None = None,
     feature_execution: str = "full",
+    reuse_tar_index: bool = False,
+    execution_lineage: Path | None = None,
 ) -> dict[str, Any]:
     """Materialize the DINO relational teacher cache for an exact train size."""
 
@@ -590,6 +699,40 @@ def run(
             for name, values_list in metadata_lists.items():
                 values_list.extend(list(saved[name]))
     resumed_rows = recovery.rows
+    lineage_source = None
+    if execution_lineage is not None:
+        lineage_source = binding(execution_lineage)
+        lineage = _signed(lineage_source)
+        if (
+            lineage.get("kind") != "DINO_EQUIVALENT_EXECUTION_TRANSITION"
+            or lineage["to_producer_commit"] != git_head
+            or lineage["inference_identity"] != recovery.identity
+            or not 0 < lineage["previous_durable_rows"] <= resumed_rows
+        ):
+            raise ValueError("DINO execution transition does not bind the recovered prefix")
+        prefix = [
+            block
+            for block in recovery.blocks
+            if block["start"] + block["rows"] == lineage["previous_durable_rows"]
+        ]
+        if len(prefix) != 1:
+            raise ValueError("DINO lineage prefix is not a complete published block")
+        expected_receipt = output_dir / "recovery" / f"block_{prefix[0]['start']:06d}.json"
+        if (
+            expected_receipt.is_symlink()
+            or Path(lineage["previous_last_block_receipt"]["path"]).resolve()
+            != expected_receipt.resolve()
+        ):
+            raise ValueError("DINO lineage prefix receipt escaped the owned recovery directory")
+        previous = _signed(lineage["previous_last_block_receipt"])
+        if (
+            previous["start"] + previous["rows"] != lineage["previous_durable_rows"]
+            or previous["identity"] != recovery.identity
+        ):
+            raise ValueError("DINO lineage prefix differs from actual durable recovery")
+    if reuse_tar_index and resumed_rows and lineage_source is None:
+        raise ValueError("indexed continuation requires explicit producer execution lineage")
+    tar_index = TarHeaderIndex(output_dir / "tar_header_indices") if reuse_tar_index else None
     print(f"[materialize] Recovered {resumed_rows}/{total_rows} durable rows", flush=True)
 
     def _publish_block() -> None:
@@ -683,6 +826,11 @@ def run(
                     image_std=image_std,
                     device=device,
                     archive=archives[tar_path],
+                    indexed_member=(
+                        tar_index.member(archives[tar_path], tar_path, rgb_members[ep])
+                        if tar_index is not None
+                        else None
+                    ),
                 )
                 pending_rgb.append(ep_input)
                 endpoint_rgb_shas.append(rgb_sha)
@@ -799,6 +947,13 @@ def run(
             "git_commit": git_head,
             "git_dirty": git_dirty,
         },
+        "execution_recovery": {
+            "resumed_rows": resumed_rows,
+            "prior_producer_lineage": lineage_source,
+            "TAR_header_index_enabled": reuse_tar_index,
+            "TAR_header_cache_payload_maximum_bytes": 32 * 1024**2,
+            "RGB_feature_recipe_changed": False,
+        },
         "multi_object_contract": {
             "teacher_keyed_by_sample_token": True,
             "track_id_stored_per_row": True,
@@ -846,6 +1001,8 @@ def main() -> int:
     parser.add_argument("--capacity-preparation", type=Path)
     parser.add_argument("--capacity-preparation-sha256")
     parser.add_argument("--feature-execution", choices=("full", "prefix"), default="full")
+    parser.add_argument("--reuse-tar-index", action="store_true")
+    parser.add_argument("--execution-lineage", type=Path)
     args = parser.parse_args()
 
     device = args.device
@@ -864,6 +1021,8 @@ def main() -> int:
             args.capacity_preparation,
             args.capacity_preparation_sha256,
             args.feature_execution,
+            args.reuse_tar_index,
+            args.execution_lineage,
         )
     except Exception as e:
         print(f"\n[materialize] FAILED: {type(e).__name__}: {e}", file=sys.stderr)

@@ -69,7 +69,8 @@ def test_resigned_path_escape_rejected_before_read(tmp_path: Path):
         DinoRecoveryBlocks(tmp_path, {})
 
 
-def test_materializer_recovers_without_recomputing_rgb(tmp_path: Path, monkeypatch):
+@pytest.mark.parametrize("indexed", [False, True])
+def test_materializer_recovers_without_recomputing_rgb(tmp_path: Path, monkeypatch, indexed):
     """Interrupt final publication after durable inference, then resume production flow."""
     import hashlib
     from types import SimpleNamespace
@@ -141,6 +142,10 @@ def test_materializer_recovers_without_recomputing_rgb(tmp_path: Path, monkeypat
     from contextlib import nullcontext
 
     monkeypatch.setattr(m.tarfile, "open", lambda *a, **kw: nullcontext(object()))
+    if indexed:
+        monkeypatch.setattr(
+            m, "TarHeaderIndex", lambda root: SimpleNamespace(member=lambda *a: None)
+        )
     actual_writer = m.write_complete_mmap_cache
 
     def interrupted(*a, **kw):
@@ -149,12 +154,30 @@ def test_materializer_recovers_without_recomputing_rgb(tmp_path: Path, monkeypat
     monkeypatch.setattr(m, "write_complete_mmap_cache", interrupted)
     arguments = (manifest, metadata, tmp_path, m._EXPECTED_MODEL_ID, tmp_path / "output", "cpu", 9)
     with pytest.raises(OSError, match="simulated interruption"):
-        m.run(*arguments)
+        m.run(*arguments, reuse_tar_index=indexed)
     assert len(calls) == 18
     assert not (tmp_path / "output/manifest.json").exists()
     monkeypatch.setattr(m, "write_complete_mmap_cache", actual_writer)
-    result = m.run(*arguments)
+    lineage_path = None
+    if indexed:
+        from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
+
+        with pytest.raises(ValueError, match="explicit producer execution lineage"):
+            m.run(*arguments, reuse_tar_index=True)
+        receipt = tmp_path / "output/recovery/block_000000.json"
+        block = json.loads(receipt.read_text())
+        lineage = {
+            "kind": "DINO_EQUIVALENT_EXECUTION_TRANSITION",
+            "to_producer_commit": "synthetic",
+            "previous_durable_rows": 9,
+            "inference_identity": block["identity"],
+            "previous_last_block_receipt": binding(receipt),
+        }
+        lineage_path = tmp_path / "lineage.json"
+        atomic_json(lineage_path, {**lineage, "artifact_sha256": object_digest(lineage)})
+    result = m.run(*arguments, reuse_tar_index=indexed, execution_lineage=lineage_path)
     assert len(calls) == 18
     assert result["row_count_observed"] == 9
+    assert result["execution_recovery"]["resumed_rows"] == 9
     with pytest.raises(FileExistsError, match="Complete DINO cache"):
         m.run(*arguments)
