@@ -103,6 +103,19 @@ def compile_capacity_comparators(
             or audit["teacher_manifest_sha256"] != inputs["teacher_manifest"]["sha256"]
         ):
             raise ValueError("teacher audit refers to another physical feature manifest")
+        if teacher.get("scope", {}).get("ttc_labels_read") is True:
+            from e_jepa_ttc.data.dinov3_relational_teacher_cache import _capacity_read_rows
+
+            contract = audit.get("capacity_read_contract")
+            if not isinstance(contract, dict) or not verify_artifact_hash(audit):
+                raise ValueError("capacity comparator requires signed incidental-read audit")
+            audited_rows = _capacity_read_rows(
+                teacher, contract, inputs["teacher_manifest"]["sha256"]
+            )
+            if contract["preparation"] != inputs["preparation"] or set(audited_rows) != set(
+                cohort["ordered_tokens"]
+            ):
+                raise ValueError("comparator teacher read authority differs from preparation")
 
         def publish(path: Path, value: dict[str, Any]) -> dict[str, Any]:
             if path.exists():
@@ -178,6 +191,7 @@ def compile_capacity_comparators(
                                 "manifest": str(teacher_manifest_path.resolve()),
                                 "manifest_sha256": inputs["teacher_manifest"]["sha256"],
                                 "artifact_sha256": teacher["artifact_sha256"],
+                                "capacity_read_contract": audit.get("capacity_read_contract"),
                             },
                         )
                         _load_grouped_development_contract(raw["data"])

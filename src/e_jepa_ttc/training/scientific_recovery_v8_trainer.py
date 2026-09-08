@@ -402,6 +402,7 @@ def run_v8_temporal_training(
             manifest_path=manifest_path,
             expected_artifact_sha256=str(dino["artifact_sha256"]),
             expected_manifest_sha256=str(dino["manifest_sha256"]),
+            capacity_read_contract=dino.get("capacity_read_contract"),
             allowed_sample_tokens={
                 str(train[index]["sample_token"]) for index in range(len(train))
             },

@@ -193,3 +193,249 @@ def test_training_modules_do_not_invoke_dino_materializer() -> None:
         text = (root / relative).read_text(encoding="utf-8")
         for needle in forbidden:
             assert needle not in text
+
+
+def _capacity_cache(tmp_path: Path) -> tuple[Path, dict[str, object], bytes]:
+    import subprocess
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, object_digest
+    from e_jepa_ttc.data.dinov3_relational_teacher_cache import capacity_teacher_read_contract
+
+    def signed(name, value):
+        value["artifact_sha256"] = object_digest(value)
+        path = tmp_path / name
+        path.write_text(json.dumps(value), encoding="utf-8")
+        return binding(path)
+
+    metadata = tmp_path / "train_metadata.parquet"
+    metadata.write_bytes(b"synthetic TRAIN metadata, no real targets")
+    selected = tmp_path / "selected.csv"
+    selected.write_text("sample_token,track_id,sequence_id\ntok-a,trk-a,seq-a\ntok-b,trk-b,seq-b\n")
+    roles = signed(
+        "roles.json",
+        {
+            "roles": {
+                "sequence_to_group": {"seq-a": "g-a", "seq-b": "g-b"},
+                "confirmation": ["g-c"],
+                "protected": ["g-p"],
+            }
+        },
+    )
+    cohort = signed(
+        "cohort.json",
+        {
+            "kind": "CAPACITY_DEVELOPMENT_COHORT",
+            "ordered_tokens": ["tok-a", "tok-b"],
+            "selected_sequences": ["seq-a", "seq-b"],
+            "confirmation_sequences": ["seq-c"],
+            "protected_sequences": ["seq-p"],
+        },
+    )
+    partitions = signed("partitions.json", {"outputs": {"train_metadata": binding(metadata)}})
+    prep = signed(
+        "prep.json",
+        {
+            "cohort": cohort,
+            "fixed_original_roles": roles,
+            "source_partitions": partitions,
+            "source_metadata": binding(metadata),
+            "selected_metadata": binding(selected),
+        },
+    )
+    path = _write_cache(tmp_path / "cache")
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest["code_identity"]["git_commit"] = "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3"
+    for section in ("scope", "claim_boundary"):
+        manifest[section].update(ttc_labels_read=True, ttc_labels_used_for_teacher_features=False)
+    manifest["scope"].update(capacity_preparation=prep, expected_row_count=2)
+    manifest["source_rgb"].update(
+        metadata_parquet=str(metadata), metadata_parquet_sha256=binding(metadata)["sha256"]
+    )
+    sign_artifact(manifest)
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+    source = subprocess.check_output(
+        [
+            "git",
+            "show",
+            "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3:scripts/materialize_dinov3_relational_teacher.py",
+        ],
+        cwd=Path(__file__).resolve().parents[2],
+    )
+    contract = capacity_teacher_read_contract(
+        manifest,
+        manifest_sha256=binding(path)["sha256"],
+        preparation=prep,
+        materializer_source=source,
+    )
+    return path, contract, source
+
+
+def _open_capacity(path, contract, allowed=None):
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return CompleteDinoTeacherCache.open_verified(
+        path,
+        expected_artifact_sha256=payload["artifact_sha256"],
+        expected_manifest_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+        allowed_sample_tokens=allowed,
+        capacity_read_contract=contract,
+    )
+
+
+def test_capacity_incidental_read_requires_explicit_contract(tmp_path: Path) -> None:
+    path, contract, _ = _capacity_cache(tmp_path)
+    with pytest.raises(ValueError, match="must not read TTC"):
+        _open(path)
+    cache = _open_capacity(path, contract, {"tok-a"})
+    assert cache.tokens() == frozenset({"tok-a"})
+    assert cache.source_teacher_row_count == 2
+    assert json.loads(path.read_text())["scope"]["ttc_labels_read"] is True
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        "source",
+        "labels_used",
+        "manifest",
+        "contract_signature",
+        "forbidden_role",
+        "metadata_path",
+        "index_identity",
+    ],
+)
+def test_capacity_read_contract_rejects_contamination(tmp_path: Path, change: str) -> None:
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding, object_digest
+
+    path, contract, _ = _capacity_cache(tmp_path)
+    manifest = json.loads(path.read_text())
+    if change == "source":
+        contract["materializer_source_sha256"] = "0" * 64
+    elif change == "labels_used":
+        manifest["claim_boundary"]["ttc_labels_used_for_teacher_features"] = True
+    elif change == "manifest":
+        contract["teacher_manifest_sha256"] = "0" * 64
+    elif change == "contract_signature":
+        contract["read_reason"] = "changed unsigned"
+        with pytest.raises(ValueError, match="contract"):
+            _open_capacity(path, contract)
+        return
+    elif change in {"forbidden_role", "metadata_path"}:
+        prep_path = Path(contract["preparation"]["path"])
+        prep = json.loads(prep_path.read_text())
+        if change == "forbidden_role":
+            roles_path = Path(prep["fixed_original_roles"]["path"])
+            roles = json.loads(roles_path.read_text())
+            roles["roles"]["confirmation"].append("g-a")
+            roles.pop("artifact_sha256")
+            roles["artifact_sha256"] = object_digest(roles)
+            roles_path.write_text(json.dumps(roles))
+            prep["fixed_original_roles"] = binding(roles_path)
+        else:
+            manifest["source_rgb"]["metadata_parquet"] = str(tmp_path / "protected.parquet")
+        prep.pop("artifact_sha256")
+        prep["artifact_sha256"] = object_digest(prep)
+        prep_path.write_text(json.dumps(prep))
+        contract["preparation"] = binding(prep_path)
+        manifest["scope"]["capacity_preparation"] = contract["preparation"]
+    else:
+        index_path = path.parent / "index.json"
+        index = json.loads(index_path.read_text())
+        index["rows"][1]["sequence_id"] = "protected"
+        index_path.write_text(json.dumps(index))
+        manifest["index_sha256"] = binding(index_path)["sha256"]
+    sign_artifact(manifest)
+    path.write_text(json.dumps(manifest))
+    contract["teacher_artifact_sha256"] = manifest["artifact_sha256"]
+    if change != "manifest":
+        contract["teacher_manifest_sha256"] = binding(path)["sha256"]
+    sign_artifact(contract)
+    with pytest.raises(ValueError):
+        _open_capacity(path, contract)
+
+
+def test_capacity_source_change_requires_new_review(tmp_path: Path) -> None:
+    from e_jepa_ttc.data.dinov3_relational_teacher_cache import capacity_teacher_read_contract
+
+    path, contract, source = _capacity_cache(tmp_path)
+    with pytest.raises(ValueError, match="new source review"):
+        capacity_teacher_read_contract(
+            json.loads(path.read_text()),
+            manifest_sha256=contract["teacher_manifest_sha256"],
+            preparation=contract["preparation"],
+            materializer_source=source + b"\n",
+        )
+
+
+def test_capacity_auditor_to_fold_train_dataset(tmp_path: Path, monkeypatch) -> None:
+    """Exercise actual audit publication and the training wrapper, with no GPU or fit."""
+    import sys
+
+    import torch
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
+    from e_jepa_ttc.data.dinov3_relational_teacher_cache import DINOv3RelationalTeacherDataset
+    from e_jepa_ttc.data.nested_provenance import validate_frozen_teacher_dependency
+    from scripts import audit_stage63_frozen_teacher as auditor
+
+    path, contract, _ = _capacity_cache(tmp_path)
+    manifest = json.loads(path.read_text())
+    manifest["teacher"]["weights_sha256"] = hashlib.sha256().hexdigest()
+    sign_artifact(manifest)
+    path.write_text(json.dumps(manifest))
+
+    def local_model(path, **kwargs):
+        assert kwargs == {"local_files_only": True, "trust_remote_code": False}
+        return torch.nn.Identity()
+
+    monkeypatch.setattr(auditor.AutoModel, "from_pretrained", local_model)
+    output = tmp_path / "audit.json"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "audit",
+            "--model-root",
+            str(tmp_path),
+            "--reference-root",
+            str(Path(__file__).resolve().parents[2]),
+            "--teacher-manifest",
+            str(path),
+            "--canonical-metadata",
+            str(tmp_path / "selected.csv"),
+            "--output",
+            str(output),
+            "--capacity-preparation",
+            contract["preparation"]["path"],
+            "--capacity-preparation-sha256",
+            contract["preparation"]["sha256"],
+        ],
+    )
+    auditor.main()
+    audit = json.loads(output.read_text())
+    validate_frozen_teacher_dependency(
+        {"representation_teacher_artifact_sha256": manifest["artifact_sha256"]},
+        audit,
+        required_tokens=["tok-a", "tok-b"],
+    )
+    assert audit["ttc_labels_read_during_materialization"] is True
+    # Only this fold's training token is exposed by the normal training wrapper.
+    records = [
+        {
+            "sample_token": "tok-a",
+            "track_id": "trk-a",
+            "sequence_id": "seq-a",
+            "event_v4_common_square_xyxy": np.zeros(4, dtype=np.float32),
+        }
+    ]
+    wrapped = DINOv3RelationalTeacherDataset(
+        records,
+        manifest_path=path,
+        expected_artifact_sha256=manifest["artifact_sha256"],
+        expected_manifest_sha256=binding(path)["sha256"],
+        allowed_sample_tokens={"tok-a"},
+        capacity_read_contract=audit["capacity_read_contract"],
+    )
+    assert wrapped.teacher_sample_tokens() == frozenset({"tok-a"})
+    assert wrapped[0]["sample_token"] == "tok-a"
+    with pytest.raises(FileExistsError):
+        auditor.main()

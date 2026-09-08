@@ -151,8 +151,9 @@ def cohort_input(count):
 
 
 @pytest.mark.parametrize("wrong_teacher", [False, True])
+@pytest.mark.parametrize("read_contract_case", ["legacy", "capacity", "missing_contract"])
 def test_compile_native_comparator_jobs_uses_real_templates_and_scoped_protocols(
-    tmp_path, monkeypatch, wrong_teacher
+    tmp_path, monkeypatch, wrong_teacher, read_contract_case
 ):
     import json
     from dataclasses import asdict
@@ -209,6 +210,68 @@ def test_compile_native_comparator_jobs_uses_real_templates_and_scoped_protocols
         "teacher_manifest_path": str(tmp_path / "teacher.json"),
         "teacher_manifest_sha256": binding(tmp_path / "teacher.json")["sha256"],
     }
+    if read_contract_case != "legacy":
+        import subprocess
+
+        from e_jepa_ttc.data.dinov3_relational_teacher_cache import capacity_teacher_read_contract
+
+        train_metadata = tmp_path / "train_metadata.parquet"
+        train_metadata.write_bytes(b"synthetic TRAIN input")
+        partitions = {"outputs": {"train_metadata": binding(train_metadata)}}
+        fixed_roles = {
+            "roles": {
+                "sequence_to_group": mapping,
+                "confirmation": [mapping["confirmation"]],
+                "protected": [mapping["protected"]],
+            }
+        }
+        for name, value in (("partitions.json", partitions), ("fixed_roles.json", fixed_roles)):
+            value["artifact_sha256"] = object_digest(value)
+            atomic_json(tmp_path / name, value)
+        preparation.pop("artifact_sha256")
+        preparation.update(
+            source_partitions=binding(tmp_path / "partitions.json"),
+            fixed_original_roles=binding(tmp_path / "fixed_roles.json"),
+            source_metadata=binding(train_metadata),
+        )
+        preparation["artifact_sha256"] = object_digest(preparation)
+        atomic_json(tmp_path / "preparation.json", preparation)
+        teacher.update(
+            scope={
+                "capacity_preparation": binding(tmp_path / "preparation.json"),
+                "expected_row_count": len(meta),
+                "ttc_labels_read": True,
+                "ttc_labels_used_for_teacher_features": False,
+            },
+            claim_boundary={"ttc_labels_read": True, "ttc_labels_used_for_teacher_features": False},
+            code_identity={"git_commit": "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3"},
+            source_rgb={
+                "metadata_parquet": str(train_metadata),
+                "metadata_parquet_sha256": binding(train_metadata)["sha256"],
+            },
+        )
+        sign_artifact(teacher)
+        atomic_json(tmp_path / "teacher.json", teacher)
+        audit.update(
+            teacher_artifact_sha256=teacher["artifact_sha256"],
+            teacher_manifest_sha256=binding(tmp_path / "teacher.json")["sha256"],
+        )
+        if read_contract_case == "capacity":
+            source = subprocess.check_output(
+                [
+                    "git",
+                    "show",
+                    "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3:scripts/materialize_dinov3_relational_teacher.py",
+                ],
+                cwd=compiler.ROOT,
+            )
+            audit["capacity_read_contract"] = capacity_teacher_read_contract(
+                teacher,
+                manifest_sha256=audit["teacher_manifest_sha256"],
+                preparation=binding(tmp_path / "preparation.json"),
+                materializer_source=source,
+            )
+        sign_artifact(audit)
     atomic_json(tmp_path / "teacher_audit.json", audit)
     monkeypatch.setattr(compiler, "ROOT", tmp_path)
     output = tmp_path / "artifacts/stage70_76_capacity/compiled"
@@ -227,6 +290,10 @@ def test_compile_native_comparator_jobs_uses_real_templates_and_scoped_protocols
         with pytest.raises(ValueError, match="verified frozen"):
             compile_graph()
         assert not (output / "COMPARATOR_JOBS.json").exists()
+    elif read_contract_case == "missing_contract":
+        with pytest.raises(ValueError, match="signed incidental-read audit"):
+            compile_graph()
+        assert not (output / "COMPARATOR_JOBS.json").exists()
     else:
         graph = compile_graph()
         assert graph["neural_fits"] == 36 and graph["ridge_fits"] == 3
@@ -238,6 +305,9 @@ def test_compile_native_comparator_jobs_uses_real_templates_and_scoped_protocols
                 assert config["training"]["epochs"] == 18
                 assert config["training"]["checkpoint_selection_mode"] == "last_epoch"
                 assert config["data"]["opened_splits"] == ["train"]
+                assert config["data"]["dinov3_relational_teacher"][
+                    "capacity_read_contract"
+                ] == audit.get("capacity_read_contract")
             else:
                 assert graph["jobs"][job["a5_job_id"]]["protocol"] == job["protocol"]
 

@@ -14,6 +14,7 @@ the pre-computed six local cosine relation maps for endpoints t1/t2.
 
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 import os
@@ -40,6 +41,108 @@ _EXPECTED_GRID = (32, 32)
 _EXPECTED_ENDPOINTS = 2
 _EXPECTED_OFFSETS = [[dy, dx] for dy, dx in A4_RELATION_OFFSETS]
 _NUM_OFFSETS = len(A4_RELATION_OFFSETS)
+
+# Reviewed RGB-only materializer. A different producer requires a visible source
+# review; an assertion that labels were unused is not sufficient authorization.
+_CAPACITY_RGB_PRODUCER = "d1eda4d4f9a7b6aa53db9704a71b1e931ee00ac3"
+_CAPACITY_RGB_SOURCE_SHA256 = "43f58ac67f5cc39eee5e59dc5d3f6360a37402558e17a148908760e31b699564"
+
+
+def capacity_teacher_read_contract(
+    manifest: dict[str, Any],
+    *,
+    manifest_sha256: str,
+    preparation: dict[str, Any],
+    materializer_source: bytes,
+) -> dict[str, Any]:
+    """Bind a reviewed incidental TRAIN read without claiming that no read occurred."""
+    if hashlib.sha256(materializer_source).hexdigest() != _CAPACITY_RGB_SOURCE_SHA256:
+        raise ValueError("capacity teacher materializer requires a new source review")
+    result = sign_artifact(
+        {
+            "kind": "CAPACITY_FROZEN_RGB_TEACHER_INCIDENTAL_TRAIN_READ_V1",
+            "preparation": preparation,
+            "teacher_artifact_sha256": manifest["artifact_sha256"],
+            "teacher_manifest_sha256": manifest_sha256,
+            "materializer_commit": manifest["code_identity"]["git_commit"],
+            "materializer_source_sha256": _CAPACITY_RGB_SOURCE_SHA256,
+            "ttc_labels_read": True,
+            "ttc_labels_used_for_teacher_features": False,
+            "read_reason": "native supervised TRAIN shards deserialize complete records",
+            "claim": "fixed RGB inference; no label-conditioned fitting or feature computation",
+        }
+    )
+    _capacity_read_rows(manifest, result, manifest_sha256)
+    return result
+
+
+def _capacity_read_rows(
+    manifest: dict[str, Any],
+    contract: dict[str, Any],
+    manifest_sha256: str,
+) -> dict[str, tuple[str, str]]:
+    """Verify explicit capacity authority and exact TRAIN token/track/sequence lineage."""
+    from e_jepa_ttc.data.capacity_sources import _signed
+
+    if (
+        not verify_artifact_hash(contract)
+        or contract.get("kind") != "CAPACITY_FROZEN_RGB_TEACHER_INCIDENTAL_TRAIN_READ_V1"
+        or contract.get("teacher_artifact_sha256") != manifest.get("artifact_sha256")
+        or contract.get("teacher_manifest_sha256") != manifest_sha256
+        or contract.get("materializer_commit") != _CAPACITY_RGB_PRODUCER
+        or manifest.get("code_identity", {}).get("git_commit") != _CAPACITY_RGB_PRODUCER
+        or contract.get("materializer_source_sha256") != _CAPACITY_RGB_SOURCE_SHA256
+        or contract.get("ttc_labels_read") is not True
+        or contract.get("ttc_labels_used_for_teacher_features") is not False
+    ):
+        raise ValueError("capacity teacher read contract identity/source review invalid")
+    for section in ("scope", "claim_boundary"):
+        if (
+            manifest.get(section, {}).get("ttc_labels_read") is not True
+            or manifest.get(section, {}).get("ttc_labels_used_for_teacher_features") is not False
+        ):
+            raise ValueError(
+                "capacity teacher must disclose incidental reads and exclude label use"
+            )
+    if manifest["scope"].get("capacity_preparation") != contract["preparation"]:
+        raise ValueError("capacity teacher preparation differs from read authority")
+    prep = _signed(contract["preparation"])
+    cohort = _signed(prep["cohort"])
+    roles = _signed(prep["fixed_original_roles"])["roles"]
+    partitions = _signed(prep["source_partitions"])
+    metadata = partitions["outputs"]["train_metadata"]
+    parent = Path(prep["source_partitions"]["path"]).resolve().parent
+    rgb = manifest["source_rgb"]
+    if (
+        Path(metadata["path"]).resolve() != parent / "train_metadata.parquet"
+        or metadata != prep["source_metadata"]
+        or Path(rgb["metadata_parquet"]).resolve() != verify(metadata)
+        or rgb["metadata_parquet_sha256"] != metadata["sha256"]
+    ):
+        raise ValueError("capacity teacher metadata escaped signed TRAIN partition")
+    sequences, tokens = set(cohort["selected_sequences"]), list(cohort["ordered_tokens"])
+    mapping = roles["sequence_to_group"]
+    if (
+        cohort.get("kind") != "CAPACITY_DEVELOPMENT_COHORT"
+        or not tokens
+        or len(tokens) != len(set(tokens))
+        or not sequences
+        or not sequences <= mapping.keys()
+        or {mapping[s] for s in sequences} & (set(roles["confirmation"]) | set(roles["protected"]))
+        or sequences & (set(cohort["confirmation_sequences"]) | set(cohort["protected_sequences"]))
+        or manifest["scope"].get("expected_row_count") != len(tokens)
+    ):
+        raise ValueError("capacity teacher token universe or source roles invalid")
+    with verify(prep["selected_metadata"]).open(encoding="utf-8", newline="") as handle:
+        selected = list(csv.DictReader(handle))
+    rows = {r["sample_token"]: (r["track_id"], r["sequence_id"]) for r in selected}
+    if (
+        len(rows) != len(selected)
+        or set(rows) != set(tokens)
+        or {row[1] for row in rows.values()} != sequences
+    ):
+        raise ValueError("capacity teacher selected metadata differs from cohort")
+    return rows
 
 
 class DinoRecoveryBlocks:
@@ -207,6 +310,7 @@ class CompleteDinoTeacherCache:
         expected_artifact_sha256: str,
         expected_manifest_sha256: str,
         allowed_sample_tokens: set[str] | frozenset[str] | None = None,
+        capacity_read_contract: dict[str, Any] | None = None,
     ) -> CompleteDinoTeacherCache:
         refuse_scientific_bypass_env()
         path = Path(manifest_path).resolve(strict=True)
@@ -217,15 +321,26 @@ class CompleteDinoTeacherCache:
             raise ValueError("DINO teacher manifest signature is invalid")
         if manifest.get("artifact_sha256") != expected_artifact_sha256:
             raise ValueError("DINO teacher artifact identity differs from protocol")
-        _assert_teacher_scientific_contract(manifest)
+        capacity_rows = (
+            _capacity_read_rows(manifest, capacity_read_contract, expected_manifest_sha256)
+            if capacity_read_contract is not None
+            else None
+        )
+        _assert_teacher_scientific_contract(
+            manifest, incidental_train_read_verified=capacity_rows is not None
+        )
         if (path.parent / "teacher.npy").is_file():
-            teacher, count = _load_mmap_teacher(path.parent, manifest, allowed_sample_tokens)
+            teacher, count = _load_mmap_teacher(
+                path.parent, manifest, allowed_sample_tokens, capacity_rows=capacity_rows
+            )
             return cls(
                 teacher,
                 artifact_sha256=expected_artifact_sha256,
                 manifest_sha256=expected_manifest_sha256,
                 source_row_count=count,
             )
+        if capacity_rows is not None:
+            raise ValueError("capacity teacher read contract requires the complete mmap format")
         wrapped = DINOv3RelationalTeacherDataset(
             _TokenProbeDataset(allowed_sample_tokens, manifest),
             manifest_path=path,
@@ -402,7 +517,11 @@ def write_complete_mmap_cache(
     return payload
 
 
-def _assert_teacher_scientific_contract(manifest: dict[str, Any]) -> None:
+def _assert_teacher_scientific_contract(
+    manifest: dict[str, Any],
+    *,
+    incidental_train_read_verified: bool = False,
+) -> None:
     """Fail-closed checks shared by complete mmap caches and legacy NPZ shards."""
 
     scope = manifest.get("scope", {})
@@ -411,13 +530,13 @@ def _assert_teacher_scientific_contract(manifest: dict[str, Any]) -> None:
         raise ValueError("DINO teacher cache must be public_train_only")
     if scope.get("validation_or_test_opened") is not False:
         raise ValueError("DINO teacher cache must not open validation/test")
-    if scope.get("ttc_labels_read") is not False:
+    if not incidental_train_read_verified and scope.get("ttc_labels_read") is not False:
         raise ValueError("DINO teacher cache must not read TTC labels")
     if claim.get("teacher_is_model_input") is not False:
         raise ValueError("DINO teacher must not be a model input")
     if claim.get("validation_teacher_generation") is not False:
         raise ValueError("DINO teacher must not be generated for validation")
-    if claim.get("ttc_labels_read") is not False:
+    if not incidental_train_read_verified and claim.get("ttc_labels_read") is not False:
         raise ValueError("DINO teacher claim_boundary violates no-TTC constraint")
     if claim.get("teacher_source_modality") != "rgb":
         raise ValueError("DINO teacher must explicitly declare RGB source modality")
@@ -461,6 +580,8 @@ def _load_mmap_teacher(
     root: Path,
     manifest: dict[str, Any],
     allowed_sample_tokens: set[str] | frozenset[str] | None,
+    *,
+    capacity_rows: dict[str, tuple[str, str]] | None = None,
 ) -> tuple[dict[str, tuple[str, str, np.ndarray, np.ndarray, np.ndarray]], int]:
     if manifest.get("status") not in {"passed", "completed"}:
         raise ValueError("DINO teacher cache did not pass its preregistered gates")
@@ -510,6 +631,13 @@ def _load_mmap_teacher(
     expected_rows = int(manifest.get("row_count_observed", -1))
     if len(tokens) != expected_rows:
         raise ValueError(f"DINO complete cache has {len(tokens)} tokens, expected {expected_rows}")
+    if capacity_rows is not None:
+        actual = {
+            str(row["token_id"]): (str(row["track_id"]), str(row["sequence_id"]))
+            for row in index["rows"]
+        }
+        if actual != capacity_rows:
+            raise ValueError("capacity teacher cache index differs from authorized TRAIN cohort")
     teacher = np.load(root / "teacher.npy", mmap_mode="r")
     valid = np.load(root / "valid.npy", mmap_mode="r")
     crops = np.load(root / "crops.npy", mmap_mode="r")
@@ -572,6 +700,7 @@ class DINOv3RelationalTeacherDataset(Dataset[dict[str, Any]]):
         expected_artifact_sha256: str,
         expected_manifest_sha256: str,
         allowed_sample_tokens: set[str] | None = None,
+        capacity_read_contract: dict[str, Any] | None = None,
     ) -> None:
         self.dataset = dataset
         self._dataset_size = len(cast(Sized, dataset))
@@ -590,6 +719,7 @@ class DINOv3RelationalTeacherDataset(Dataset[dict[str, Any]]):
                 expected_artifact_sha256=expected_artifact_sha256,
                 expected_manifest_sha256=expected_manifest_sha256,
                 allowed_sample_tokens=allowed,
+                capacity_read_contract=capacity_read_contract,
             )
             self._teacher = cache._teacher
             self.artifact_sha256 = cache.artifact_sha256
@@ -602,6 +732,8 @@ class DINOv3RelationalTeacherDataset(Dataset[dict[str, Any]]):
                 )
             return
 
+        if capacity_read_contract is not None:
+            raise ValueError("capacity teacher read contract requires the complete mmap format")
         # --- Manifest file hash ---
         if _sha256(path) != expected_manifest_sha256:
             raise ValueError("DINO teacher manifest file hash differs from protocol")

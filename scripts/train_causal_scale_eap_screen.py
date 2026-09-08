@@ -1211,6 +1211,7 @@ def run(
             expected_artifact_sha256=str(dino_teacher["artifact_sha256"]),
             expected_manifest_sha256=str(dino_teacher["manifest_sha256"]),
             allowed_sample_tokens=selected_train_tokens,
+            capacity_read_contract=dino_teacher.get("capacity_read_contract"),
         )
         if (
             training_config.representation_teacher_cache_artifact_sha256
@@ -1224,6 +1225,7 @@ def run(
             "scope": "public_train_only",
             "validation_teacher_loaded": False,
             "teacher_type": "dinov3_local_relational",
+            "capacity_read_contract": dino_teacher.get("capacity_read_contract"),
             "teacher_tokens_loaded": len(train_dataset.teacher_sample_tokens()),
             "teacher_tokens_sha256": _sorted_values_sha256(
                 list(train_dataset.teacher_sample_tokens())
