@@ -10,6 +10,7 @@ import sys
 from collections.abc import Callable
 from dataclasses import asdict
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -72,6 +73,49 @@ def loss_callback(
     return loss
 
 
+def open_qa_ledger(
+    campaign: Path,
+    source_campaign: Path,
+    owner: ResourceOwner,
+    accounting_source: dict[str, Any] | None,
+) -> UpdateLedger:
+    """Keep a terminal predecessor immutable and inherit its charges before v11 QA."""
+    if accounting_source is None:
+        execution = source_campaign / "CAMPAIGN_EXECUTION.json"
+        if execution.exists() and json.loads(execution.read_text()).get("status") == (
+            "AUTHORIZED_GRAPH_TERMINAL"
+        ):
+            raise ValueError("terminal source ledger is read-only; use capacity accounting")
+        if owner.root.resolve() != (source_campaign / "training_writer").resolve():
+            raise ValueError("QA ledger and publication owner differ")
+        return UpdateLedger(source_campaign / "UPDATE_LEDGER.json", owner.root)
+    record = json.loads(verify(accounting_source).read_text(encoding="utf-8"))
+    unsigned = {k: v for k, v in record.items() if k != "artifact_sha256"}
+    if (
+        object_digest(unsigned) != record.get("artifact_sha256")
+        or record.get("kind") != "V11_GPU_QA_ACCOUNTING_INPUTS"
+        or record.get("capacity") != "4M"
+        or record.get("maximum_optimizer_updates") != 80
+        or campaign.resolve() == source_campaign.resolve()
+        or owner.root.resolve() != (campaign / "training_writer").resolve()
+    ):
+        raise ValueError("invalid isolated capacity QA accounting")
+    parent = verify(record["predecessor_execution"])
+    if parent.resolve() != (source_campaign / "CAMPAIGN_EXECUTION.json").resolve():
+        raise ValueError("capacity QA accounting refers to another predecessor")
+    execution = json.loads(parent.read_text(encoding="utf-8"))
+    if (
+        Path(execution["update_ledger"]["path"]).resolve()
+        != (source_campaign / "UPDATE_LEDGER.json").resolve()
+    ):
+        raise ValueError("predecessor execution refers to another ledger")
+    ledger = UpdateLedger(campaign / "UPDATE_LEDGER.json", owner.root)
+    ledger.bind_capacity_envelope(record["budget_envelope"])
+    ledger.inherit_closed_campaign(record["predecessor_execution"])
+    ledger.carry_preparation_accounting(record["preparation_accounting"])
+    return ledger
+
+
 def main() -> None:
     """Run40 adapter or80 full production updates, without outer prediction or selection."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -79,9 +123,15 @@ def main() -> None:
     parser.add_argument(
         "--source-campaign",
         type=Path,
-        help="Read the original TRAIN bindings and acquire its GPU owner/ledger",
+        help="Read original TRAIN bindings; --capacity-accounting keeps its ledger read-only",
     )
     parser.add_argument("--capacity", choices=("2M", "4M"), default="2M")
+    parser.add_argument(
+        "--capacity-accounting",
+        type=Path,
+        help="Signed terminal predecessor/budget/preparation bindings; charge QA to v11",
+    )
+    parser.add_argument("--capacity-accounting-sha256")
     parser.add_argument(
         "--prefetch-parity",
         action="store_true",
@@ -110,6 +160,32 @@ def main() -> None:
         raise ValueError("cross-worktree GPU QA is restricted to the original TRAIN campaign")
     if args.prefetch_parity and not args.production_flow:
         raise ValueError("prefetch parity requires the production supervised flow")
+    accounting_source = None
+    if args.capacity_accounting is not None:
+        if (
+            args.capacity != "4M"
+            or not args.production_flow
+            or not args.prefetch_parity
+            or args.source_campaign is None
+            or args.capacity_accounting_sha256 is None
+            or campaign != ROOT / "artifacts/stage70_76_capacity"
+        ):
+            parser.error("capacity accounting requires 4M production/prefetch QA and its SHA256")
+        accounting_source = binding(args.capacity_accounting.resolve(strict=True))
+        if accounting_source["sha256"] != args.capacity_accounting_sha256:
+            raise ValueError("capacity QA accounting physical SHA256 changed")
+    elif args.capacity_accounting_sha256 is not None:
+        parser.error("accounting SHA256 requires --capacity-accounting")
+    if args.capacity == "4M" and args.source_campaign is not None and accounting_source is None:
+        parser.error("cross-campaign 4M QA requires isolated capacity accounting")
+    accounting_campaign = campaign if accounting_source is not None else source_campaign
+    prior_execution = source_campaign / "CAMPAIGN_EXECUTION.json"
+    if (
+        accounting_source is None
+        and prior_execution.exists()
+        and json.loads(prior_execution.read_text()).get("status") == "AUTHORIZED_GRAPH_TERMINAL"
+    ):
+        raise ValueError("terminal source campaign is read-only; use capacity accounting")
     output = campaign / (
         ("technical_production_train_gpu" if args.production_flow else "technical_real_train_gpu")
         + ("_" + args.attempt if args.attempt else "")
@@ -152,7 +228,7 @@ def main() -> None:
     )
     supervision = train_supervision(view, labels, expanded=False)
     with ResourceOwner(
-        source_campaign / "training_writer",
+        accounting_campaign / "training_writer",
         remaining_bytes=2 * 1024**3,
         planned_ram_bytes=3 * 1024**3,
     ) as owner:
@@ -229,7 +305,7 @@ def main() -> None:
                 "prefetch_parity": args.prefetch_parity,
             }
         )
-        ledger = UpdateLedger(source_campaign / "UPDATE_LEDGER.json", owner.root)
+        ledger = open_qa_ledger(campaign, source_campaign, owner, accounting_source)
         results = []
         arms: tuple[Arm, ...] = (
             ("DIRECT", "PPS-PAIR", "PPS-TRAJ", "PPS-TIMEPERM")
@@ -414,7 +490,12 @@ def main() -> None:
             "real_TRAIN_smoke": True,
             "capacity": args.capacity,
             "prefetch_parity": args.prefetch_parity,
-            "charged_to_source_campaign": str(source_campaign),
+            "charged_to_source_campaign": (
+                str(source_campaign) if accounting_source is None else None
+            ),
+            "accounting_campaign": str(accounting_campaign),
+            "source_campaign": str(source_campaign),
+            "capacity_accounting": accounting_source,
             "recipe_sha256": recipe,
             "results": results,
             "campaign_totals": ledger.totals(),

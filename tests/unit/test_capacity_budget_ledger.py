@@ -54,6 +54,68 @@ def local_ledger(tmp_path, monkeypatch):
     return UpdateLedger(tmp_path / "local.json", tmp_path / "isolated_owner")
 
 
+@pytest.mark.parametrize(
+    "failure",
+    [None, "active_parent", "foreign_parent", "wrong_owner", "missing_accounting", "legacy_active"],
+)
+def test_gpu_qa_uses_local_accounting_without_mutating_parent(tmp_path, monkeypatch, failure):
+    from pathlib import Path
+    from types import SimpleNamespace
+
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[2] / "scripts"))
+    import qa_stage71_real_train_gpu as qa
+
+    parent_root = tmp_path / "original"
+    parent_root.mkdir()
+    source = predecessor(parent_root, terminal=failure not in ("active_parent", "legacy_active"))
+    execution = json.loads(Path(source["path"]).read_text())
+    parent_ledger = parent_root / "UPDATE_LEDGER.json"
+    parent_ledger.write_bytes((parent_root / "parent.json").read_bytes())
+    execution["update_ledger"] = binding(parent_ledger)
+    execution_path = parent_root / "CAMPAIGN_EXECUTION.json"
+    atomic_json(execution_path, execution)
+    source = binding(execution_path)
+    before = {p.name: p.read_bytes() for p in parent_root.iterdir()}
+    if failure == "foreign_parent":
+        other = tmp_path / "foreign.json"
+        atomic_json(other, execution)
+        source = binding(other)
+    local = tmp_path / "capacity"
+    local.mkdir()
+    record = {
+        "kind": "V11_GPU_QA_ACCOUNTING_INPUTS",
+        "capacity": "4M",
+        "maximum_optimizer_updates": 80,
+        "predecessor_execution": source,
+        "budget_envelope": envelope(tmp_path),
+        "preparation_accounting": preparation_receipt(tmp_path),
+    }
+    path = tmp_path / "accounting.json"
+    atomic_json(path, {**record, "artifact_sha256": object_digest(record)})
+    owner = SimpleNamespace(root=local / "training_writer")
+    if failure in ("wrong_owner", "missing_accounting", "legacy_active"):
+        owner.root = parent_root / "training_writer"
+    monkeypatch.setattr(UpdateLedger, "_assert_owner", lambda self: None)
+    accounting = None if failure in ("missing_accounting", "legacy_active") else binding(path)
+    if failure == "legacy_active":
+        ledger = qa.open_qa_ledger(local, parent_root, owner, accounting)
+        assert ledger.path == parent_ledger and "budget_envelope" not in ledger.state
+    elif failure:
+        with pytest.raises(ValueError):
+            qa.open_qa_ledger(local, parent_root, owner, accounting)
+    else:
+        ledger = qa.open_qa_ledger(local, parent_root, owner, accounting)
+        ledger.reserve(
+            FitSpec("qa4m", "S71_TECHNICAL", "DIRECT", 0, 7, 80, "a" * 64, "b" * 64, True)
+        )
+        resumed = qa.open_qa_ledger(local, parent_root, owner, accounting)
+        assert resumed.state == ledger.state
+        assert resumed.state["prior_campaign"]["charged"] == 602000
+        assert resumed.totals()["charged_optimizer_attempts"] == 12
+        assert resumed.totals()["reserved_remaining_updates"] == 80
+    assert {p.name: p.read_bytes() for p in parent_root.iterdir()} == before
+
+
 def envelope(tmp_path):
     record = {
         "kind": "PROSPECTIVE_USER_AUTHORIZED_SHARED_BUDGET_ENVELOPE",
