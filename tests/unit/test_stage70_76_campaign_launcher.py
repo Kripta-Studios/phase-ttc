@@ -376,8 +376,9 @@ def test_powershell_logs_and_resumes_existing_lock_without_hiding_exit_code(tmp_
 
 
 @pytest.mark.parametrize("preparation_exit,bad_hash", [(0, False), (17, False), (0, True)])
+@pytest.mark.parametrize("preparation_kind", ["counts", "comparators"])
 def test_powershell_count_preparation_precedes_training_and_failure_stops_chain(
-    tmp_path, preparation_exit, bad_hash
+    tmp_path, preparation_exit, bad_hash, preparation_kind
 ):
     import hashlib
     import shutil
@@ -387,6 +388,10 @@ def test_powershell_count_preparation_precedes_training_and_failure_stops_chain(
     shell = shutil.which("pwsh") or shutil.which("powershell")
     if shell is None:
         pytest.skip("PowerShell unavailable on this host")
+    count = preparation_kind == "counts"
+    argument = "--count-usability" if count else "--comparator-inputs"
+    parameter = "CountUsability" if count else "ComparatorInputs"
+    directory = "representation_30000" if count else "compiled_comparators_30000"
     scripts = tmp_path / "scripts"
     scripts.mkdir()
     shutil.copyfile(
@@ -399,7 +404,7 @@ def test_powershell_count_preparation_precedes_training_and_failure_stops_chain(
         "assert Path.cwd()==root\n"
         "a=sys.argv\n"
         "assert Path(a[a.index('--output-root')+1])=="
-        "root/'artifacts/stage70_76_capacity/representation_30000'\n"
+        f"root/'artifacts/stage70_76_capacity/{directory}'\n"
         "(root/'PREPARED.json').write_text(json.dumps(a))\n"
         "print('synthetic preparation',flush=True)\n"
         f"sys.exit({preparation_exit})\n",
@@ -434,15 +439,15 @@ def test_powershell_count_preparation_precedes_training_and_failure_stops_chain(
         "-OutputRoot",
         str(output),
         "-Capacity",
-        "-CountUsability",
+        "-" + parameter,
         str(usability),
-        "-CountUsabilitySha256",
+        "-" + parameter + "Sha256",
         "0" * 64 if bad_hash else digest,
     ]
     result = subprocess.run(command, capture_output=True, encoding="utf-8", timeout=60)
     if bad_hash:
         assert result.returncode != 0
-        assert "Count usability physical SHA256 changed" in result.stderr
+        assert "physical SHA256 changed" in result.stderr
         assert not (tmp_path / "PREPARED.json").exists()
         assert not (tmp_path / "TRAINING_CALLED").exists()
         assert not output.with_name(output.name + "_launcher_logs").exists()
@@ -450,8 +455,9 @@ def test_powershell_count_preparation_precedes_training_and_failure_stops_chain(
     assert result.returncode == preparation_exit, result.stdout + result.stderr
     assert (tmp_path / "TRAINING_CALLED").exists() == (preparation_exit == 0)
     prepared = json.loads((tmp_path / "PREPARED.json").read_text())
-    assert prepared[prepared.index("--count-usability") + 1] == str(usability)
-    assert prepared[prepared.index("--count-usability-sha256") + 1] == digest
+    assert prepared[prepared.index(argument) + 1] == str(usability)
+    if count:
+        assert prepared[prepared.index("--count-usability-sha256") + 1] == digest
     log_root = output.with_name(output.name + "_launcher_logs")
     state = json.loads(next(log_root.glob("*.json")).read_text(encoding="utf-8-sig"))
     assert state["exit_code"] == preparation_exit

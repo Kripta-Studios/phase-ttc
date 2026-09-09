@@ -6,12 +6,18 @@ The Python runner enforces scientific freeze, source roles, budget and stage gat
 then performs analysis and packaging. An existing training lock enables resume.
 CountUsability optionally runs the existing fixed-cohort count reconstruction first;
 a preparation failure stops the chain and preserves its exit code and log.
-Native comparator and DINO preparation are not yet connected by this launcher.
+ComparatorInputs optionally verifies the completed native/DINO input bindings and
+compiles the existing comparator recipes before training. Native/DINO generation
+is not yet connected by this launcher.
 .PARAMETER CountUsability
 The fixed signed ROW_USABILITY.json for v11 count reconstruction or recovery.
 Omit it when using the existing complete count cache.
 .PARAMETER CountUsabilitySha256
 Exact physical SHA256 of CountUsability. Required together with CountUsability.
+.PARAMETER ComparatorInputs
+Signed CAPACITY_COMPARATOR_INPUT_BINDINGS for the completed native/DINO caches.
+.PARAMETER ComparatorInputsSha256
+Exact physical SHA256 of ComparatorInputs. Required together with ComparatorInputs.
 #>
 param(
     [Parameter(Mandatory=$true)][string]$Python,
@@ -24,7 +30,9 @@ param(
     [switch]$Resume,
     [switch]$Capacity,
     [string]$CountUsability,
-    [string]$CountUsabilitySha256
+    [string]$CountUsabilitySha256,
+    [string]$ComparatorInputs,
+    [string]$ComparatorInputsSha256
 )
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
@@ -41,6 +49,21 @@ if ($CountUsability) {
     $CountUsability = (Resolve-Path -LiteralPath $CountUsability).ProviderPath
     if ((Get-FileHash -LiteralPath $CountUsability -Algorithm SHA256).Hash -ne $CountUsabilitySha256) {
         throw 'Count usability physical SHA256 changed'
+    }
+}
+if ([bool]$ComparatorInputs -ne [bool]$ComparatorInputsSha256) {
+    throw 'Comparator compilation requires ComparatorInputs and ComparatorInputsSha256 together'
+}
+if ($ComparatorInputs) {
+    if (!$Capacity -or $Mode -ne 'execute-authorized' -or $Stage -ne 'ALL') {
+        throw 'Comparator compilation requires Capacity, execute-authorized and Stage ALL'
+    }
+    if ($ComparatorInputsSha256 -notmatch '^[a-fA-F0-9]{64}$') {
+        throw 'ComparatorInputsSha256 must be a physical SHA256'
+    }
+    $ComparatorInputs = (Resolve-Path -LiteralPath $ComparatorInputs).ProviderPath
+    if ((Get-FileHash -LiteralPath $ComparatorInputs -Algorithm SHA256).Hash -ne $ComparatorInputsSha256) {
+        throw 'Comparator inputs physical SHA256 changed'
     }
 }
 foreach ($inputFile in @($Python,$Campaign,$LocalPaths)) {
@@ -67,15 +90,26 @@ $record = [ordered]@{ started_utc=[DateTime]::UtcNow.ToString('o'); mode=$Mode;
     capacity=[bool]$Capacity; output_root=$resolvedOutput; status='STARTING'; log=$logPath;
     preparation_steps=@() }
 try {
+    $preparation = @()
     if ($CountUsability) {
-        $prepareArgs = @('-B',(Join-Path $PSScriptRoot 'prepare_stage70_capacity.py'),
+        $preparation += [ordered]@{ name='capacity_counts'; arguments=@(
+            '-B',(Join-Path $PSScriptRoot 'prepare_stage70_capacity.py'),
             '--count-usability',$CountUsability,
             '--count-usability-sha256',$CountUsabilitySha256.ToLowerInvariant(),
-            '--output-root',(Join-Path $resolvedOutput 'representation_30000'))
-        $step = [ordered]@{ name='capacity_counts'; arguments=$prepareArgs;
+            '--output-root',(Join-Path $resolvedOutput 'representation_30000')) }
+    }
+    if ($ComparatorInputs) {
+        $preparation += [ordered]@{ name='capacity_comparators'; arguments=@(
+            '-B',(Join-Path $PSScriptRoot 'prepare_stage70_capacity.py'),
+            '--comparator-inputs',$ComparatorInputs,
+            '--output-root',(Join-Path $resolvedOutput 'compiled_comparators_30000')) }
+    }
+    foreach ($operation in $preparation) {
+        $prepareArgs = $operation['arguments']
+        $step = [ordered]@{ name=$operation['name']; arguments=$prepareArgs;
             status='RUNNING'; started_utc=[DateTime]::UtcNow.ToString('o') }
         $record['preparation_steps'] += $step
-        $record['status'] = 'PREPARING_COUNTS'
+        $record['status'] = 'PREPARING_INPUTS'
         $record | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $statePath -Encoding UTF8
         $ErrorActionPreference = 'Continue'
         Push-Location -LiteralPath $projectRoot
