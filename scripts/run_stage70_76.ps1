@@ -7,8 +7,9 @@ then performs analysis and packaging. An existing training lock enables resume.
 CountUsability optionally runs the existing fixed-cohort count reconstruction first;
 a preparation failure stops the chain and preserves its exit code and log.
 ComparatorInputs optionally verifies the completed native/DINO input bindings and
-compiles the existing comparator recipes before training. Native/DINO generation
-is not yet connected by this launcher.
+compiles the existing comparator recipes before training. NativeCacheJob connects
+native generation/recovery, reusing its pinned complete manifest when available.
+DINO generation is not yet connected by this launcher.
 .PARAMETER CountUsability
 The fixed signed ROW_USABILITY.json for v11 count reconstruction or recovery.
 Omit it when using the existing complete count cache.
@@ -18,6 +19,13 @@ Exact physical SHA256 of CountUsability. Required together with CountUsability.
 Signed CAPACITY_COMPARATOR_INPUT_BINDINGS for the completed native/DINO caches.
 .PARAMETER ComparatorInputsSha256
 Exact physical SHA256 of ComparatorInputs. Required together with ComparatorInputs.
+.PARAMETER NativeCacheJob
+Physically pinned RESOLVED_COMPARATOR_CACHE_REPRODUCTION_JOB for native input generation.
+.PARAMETER NativeCacheJobSha256
+Exact physical SHA256 of NativeCacheJob.
+.PARAMETER NativeOtherReservedBytes
+Current other reservations on the native output volume. Required for generation;
+historical job resource snapshots are never used as present admission.
 #>
 param(
     [Parameter(Mandatory=$true)][string]$Python,
@@ -32,10 +40,49 @@ param(
     [string]$CountUsability,
     [string]$CountUsabilitySha256,
     [string]$ComparatorInputs,
-    [string]$ComparatorInputsSha256
+    [string]$ComparatorInputsSha256,
+    [string]$NativeCacheJob,
+    [string]$NativeCacheJobSha256,
+    [long]$NativeOtherReservedBytes=-1
 )
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
+function Confirm-PhysicalBinding($source) {
+    $file = Get-Item -LiteralPath $source.path -ErrorAction Stop
+    if ($file.PSIsContainer -or $file.Length -ne $source.bytes -or
+        (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash -ne $source.sha256) {
+        throw "Physical source binding changed: $($source.path)"
+    }
+}
+if ([bool]$NativeCacheJob -ne [bool]$NativeCacheJobSha256) {
+    throw 'Native generation requires NativeCacheJob and NativeCacheJobSha256 together'
+}
+$nativeJob = $null
+if ($NativeCacheJob) {
+    if (!$Capacity -or $Mode -ne 'execute-authorized' -or $Stage -ne 'ALL') {
+        throw 'Native generation requires Capacity, execute-authorized and Stage ALL'
+    }
+    $NativeCacheJob = (Resolve-Path -LiteralPath $NativeCacheJob).ProviderPath
+    if ($NativeCacheJobSha256 -notmatch '^[a-fA-F0-9]{64}$' -or
+        (Get-FileHash -LiteralPath $NativeCacheJob -Algorithm SHA256).Hash -ne $NativeCacheJobSha256) {
+        throw 'Native cache job physical SHA256 changed'
+    }
+    $nativeJob = Get-Content -LiteralPath $NativeCacheJob -Raw | ConvertFrom-Json
+    if ($nativeJob.kind -ne 'RESOLVED_COMPARATOR_CACHE_REPRODUCTION_JOB' -or
+        $nativeJob.dtype -ne 'float32' -or $nativeJob.compression -ne 'gzip' -or
+        $nativeJob.compression_level -ne 1 -or $nativeJob.cpu_workers -ne 1 -or
+        $nativeJob.execution_workers -notin @(1,2) -or $nativeJob.shard_size -ne 256 -or
+        $nativeJob.planned_total_bytes -ne 45000000000 -or
+        $nativeJob.minimum_disk_free_after_reservations_bytes -ne 40000000000) {
+        throw 'Native cache job differs from the registered representation/resource contract'
+    }
+    if ([System.IO.Path]::GetFullPath($nativeJob.existing_manifest.path) -ne
+        [System.IO.Path]::GetFullPath((Join-Path $nativeJob.output 'manifest.json'))) {
+        throw 'Native completion manifest escaped the registered output'
+    }
+    Confirm-PhysicalBinding $nativeJob.preparation
+    Confirm-PhysicalBinding $nativeJob.split
+}
 if ([bool]$CountUsability -ne [bool]$CountUsabilitySha256) {
     throw 'Count reconstruction requires CountUsability and CountUsabilitySha256 together'
 }
@@ -97,6 +144,33 @@ try {
             '--count-usability',$CountUsability,
             '--count-usability-sha256',$CountUsabilitySha256.ToLowerInvariant(),
             '--output-root',(Join-Path $resolvedOutput 'representation_30000')) }
+    }
+    if ($null -ne $nativeJob) {
+        if (Test-Path -LiteralPath $nativeJob.existing_manifest.path) {
+            Confirm-PhysicalBinding $nativeJob.existing_manifest
+            $record['preparation_steps'] += [ordered]@{ name='capacity_native_cache';
+                status='PINNED_MANIFEST_REUSED'; manifest=$nativeJob.existing_manifest;
+                payload_validation='Existing consumers verify payloads before use' }
+        } else {
+            if ($NativeOtherReservedBytes -lt 0) {
+                throw 'Native generation requires current nonnegative NativeOtherReservedBytes'
+            }
+            foreach ($source in $nativeJob.producer_files) { Confirm-PhysicalBinding $source }
+            $nativeArgs = @('-B',(Join-Path $PSScriptRoot 'build_eap_object_event_v4_cache.py'),
+                '--eap-root',$nativeJob.eap_root,'--garlttc-root',$nativeJob.garlttc_root,
+                '--split',$nativeJob.split.path,'--output-dir',$nativeJob.output,
+                '--profile','full','--roi-size','128','--margin-fraction','0.25',
+                '--bins-per-polarity','5','--storage-dtype','float32',
+                '--compression','gzip','--compression-level','1','--train-only',
+                '--workers','1','--execution-workers',([string]$nativeJob.execution_workers),
+                '--shard-size','256','--capacity-preparation',$nativeJob.preparation.path,
+                '--capacity-preparation-sha256',$nativeJob.preparation.sha256,
+                '--other-reserved-bytes',([string]$NativeOtherReservedBytes))
+            if (Test-Path -LiteralPath (Join-Path $nativeJob.output 'build_state.json')) {
+                $nativeArgs += '--resume'
+            }
+            $preparation += [ordered]@{ name='capacity_native_cache'; arguments=$nativeArgs }
+        }
     }
     if ($ComparatorInputs) {
         $preparation += [ordered]@{ name='capacity_comparators'; arguments=@(

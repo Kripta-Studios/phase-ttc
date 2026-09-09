@@ -468,3 +468,109 @@ def test_powershell_count_preparation_precedes_training_and_failure_stops_chain(
     assert "synthetic preparation" in text
     if preparation_exit == 0:
         assert text.index("synthetic preparation") < text.index("synthetic training")
+
+
+@pytest.mark.parametrize("state", ["complete", "fresh", "partial", "corrupt", "unreserved"])
+def test_powershell_native_cache_reuses_or_resumes_without_overwriting(tmp_path, state):
+    import shutil
+    import subprocess
+    import sys
+
+    from e_jepa_ttc.artifacts.risk_geometry_v10 import binding
+
+    shell = shutil.which("pwsh") or shutil.which("powershell")
+    if shell is None:
+        pytest.skip("PowerShell unavailable on this host")
+    scripts = tmp_path / "scripts"
+    scripts.mkdir()
+    shutil.copyfile(
+        Path(__file__).resolve().parents[2] / "scripts/run_stage70_76.ps1",
+        scripts / "run_stage70_76.ps1",
+    )
+    builder = scripts / "build_eap_object_event_v4_cache.py"
+    builder.write_text(
+        "import json,sys\nfrom pathlib import Path\n"
+        "root=Path(__file__).resolve().parents[1]\n"
+        "assert Path.cwd()==root\n"
+        "(root/'BUILDER_ARGS.json').write_text(json.dumps(sys.argv))\n",
+        encoding="utf-8",
+    )
+    (scripts / "run_scientific_recovery_v10_stage70_76.py").write_text(
+        "from pathlib import Path\n"
+        "(Path(__file__).resolve().parents[1]/'RUNNER_CALLED').write_text('synthetic only')\n",
+        encoding="utf-8",
+    )
+    source = tmp_path / "source.json"
+    source.write_text("{}", encoding="utf-8")
+    native = tmp_path / "native"
+    native.mkdir()
+    manifest = native / "manifest.json"
+    manifest.write_text("{}", encoding="utf-8")
+    manifest_binding = binding(manifest)
+    if state == "corrupt":
+        manifest.write_text('{"changed":true}', encoding="utf-8")
+    elif state != "complete":
+        manifest.unlink()
+    if state == "partial":
+        (native / "build_state.json").write_text("{}")
+    job = tmp_path / "job.json"
+    atomic_json(
+        job,
+        {
+            "kind": "RESOLVED_COMPARATOR_CACHE_REPRODUCTION_JOB",
+            "dtype": "float32",
+            "compression": "gzip",
+            "compression_level": 1,
+            "cpu_workers": 1,
+            "execution_workers": 2,
+            "shard_size": 256,
+            "planned_total_bytes": 45_000_000_000,
+            "minimum_disk_free_after_reservations_bytes": 40_000_000_000,
+            "preparation": binding(source),
+            "split": binding(source),
+            "producer_files": [binding(builder)],
+            "output": str(native),
+            "existing_manifest": manifest_binding,
+            "eap_root": str(tmp_path / "raw"),
+            "garlttc_root": str(tmp_path / "annotations"),
+        },
+    )
+    output = tmp_path / "artifacts/stage70_76_capacity"
+    command = [
+        shell,
+        "-NoProfile",
+        "-File",
+        str(scripts / "run_stage70_76.ps1"),
+        "-Python",
+        sys.executable,
+        "-Campaign",
+        str(source),
+        "-LocalPaths",
+        str(source),
+        "-OutputRoot",
+        str(output),
+        "-Capacity",
+        "-NativeCacheJob",
+        str(job),
+        "-NativeCacheJobSha256",
+        binding(job)["sha256"],
+    ]
+    if state != "unreserved":
+        command += ["-NativeOtherReservedBytes", "12345"]
+    result = subprocess.run(command, capture_output=True, encoding="utf-8", timeout=60)
+    succeeds = state in {"complete", "fresh", "partial"}
+    assert (result.returncode == 0) == succeeds, result.stdout + result.stderr
+    assert (tmp_path / "RUNNER_CALLED").exists() == succeeds
+    called = tmp_path / "BUILDER_ARGS.json"
+    assert called.exists() == (state in {"fresh", "partial"})
+    if called.exists():
+        args = json.loads(called.read_text())
+        assert ("--resume" in args) == (state == "partial")
+        assert "--train-only" in args
+        assert args[args.index("--other-reserved-bytes") + 1] == "12345"
+        assert args[args.index("--capacity-preparation-sha256") + 1] == binding(source)["sha256"]
+    if state == "complete":
+        assert binding(manifest) == manifest_binding
+        records = output.with_name(output.name + "_launcher_logs")
+        receipt = json.loads(next(records.glob("*.json")).read_text(encoding="utf-8-sig"))
+        assert receipt["preparation_steps"][0]["status"] == "PINNED_MANIFEST_REUSED"
