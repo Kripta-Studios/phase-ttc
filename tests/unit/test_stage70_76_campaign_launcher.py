@@ -373,3 +373,92 @@ def test_powershell_logs_and_resumes_existing_lock_without_hiding_exit_code(tmp_
         text = Path(state["log"]).read_text(encoding="utf-8-sig")
         assert "synthetic warning" in text and f"resume={resume}" in text
         assert "cwd_valid=True" in text
+
+
+@pytest.mark.parametrize("preparation_exit,bad_hash", [(0, False), (17, False), (0, True)])
+def test_powershell_count_preparation_precedes_training_and_failure_stops_chain(
+    tmp_path, preparation_exit, bad_hash
+):
+    import hashlib
+    import shutil
+    import subprocess
+    import sys
+
+    shell = shutil.which("pwsh") or shutil.which("powershell")
+    if shell is None:
+        pytest.skip("PowerShell unavailable on this host")
+    scripts = tmp_path / "scripts"
+    scripts.mkdir()
+    shutil.copyfile(
+        Path(__file__).resolve().parents[2] / "scripts/run_stage70_76.ps1",
+        scripts / "run_stage70_76.ps1",
+    )
+    (scripts / "prepare_stage70_capacity.py").write_text(
+        "import json,sys\nfrom pathlib import Path\n"
+        "root=Path(__file__).resolve().parents[1]\n"
+        "assert Path.cwd()==root\n"
+        "a=sys.argv\n"
+        "assert Path(a[a.index('--output-root')+1])=="
+        "root/'artifacts/stage70_76_capacity/representation_30000'\n"
+        "(root/'PREPARED.json').write_text(json.dumps(a))\n"
+        "print('synthetic preparation',flush=True)\n"
+        f"sys.exit({preparation_exit})\n",
+        encoding="utf-8",
+    )
+    (scripts / "run_scientific_recovery_v10_stage70_76.py").write_text(
+        "from pathlib import Path\n"
+        "root=Path(__file__).resolve().parents[1]\n"
+        "assert (root/'PREPARED.json').is_file()\n"
+        "(root/'TRAINING_CALLED').write_text('synthetic only')\n"
+        "print('synthetic training',flush=True)\n",
+        encoding="utf-8",
+    )
+    campaign = tmp_path / "campaign.json"
+    local = tmp_path / "local.json"
+    usability = tmp_path / "usability.json"
+    for path in (campaign, local, usability):
+        path.write_text("{}", encoding="utf-8")
+    digest = hashlib.sha256(usability.read_bytes()).hexdigest()
+    output = tmp_path / "artifacts/stage70_76_capacity"
+    command = [
+        shell,
+        "-NoProfile",
+        "-File",
+        str(scripts / "run_stage70_76.ps1"),
+        "-Python",
+        sys.executable,
+        "-Campaign",
+        str(campaign),
+        "-LocalPaths",
+        str(local),
+        "-OutputRoot",
+        str(output),
+        "-Capacity",
+        "-CountUsability",
+        str(usability),
+        "-CountUsabilitySha256",
+        "0" * 64 if bad_hash else digest,
+    ]
+    result = subprocess.run(command, capture_output=True, encoding="utf-8", timeout=60)
+    if bad_hash:
+        assert result.returncode != 0
+        assert "Count usability physical SHA256 changed" in result.stderr
+        assert not (tmp_path / "PREPARED.json").exists()
+        assert not (tmp_path / "TRAINING_CALLED").exists()
+        assert not output.with_name(output.name + "_launcher_logs").exists()
+        return
+    assert result.returncode == preparation_exit, result.stdout + result.stderr
+    assert (tmp_path / "TRAINING_CALLED").exists() == (preparation_exit == 0)
+    prepared = json.loads((tmp_path / "PREPARED.json").read_text())
+    assert prepared[prepared.index("--count-usability") + 1] == str(usability)
+    assert prepared[prepared.index("--count-usability-sha256") + 1] == digest
+    log_root = output.with_name(output.name + "_launcher_logs")
+    state = json.loads(next(log_root.glob("*.json")).read_text(encoding="utf-8-sig"))
+    assert state["exit_code"] == preparation_exit
+    step = state["preparation_steps"][0]
+    assert step["exit_code"] == preparation_exit
+    assert step["status"] == ("COMMAND_FINISHED" if preparation_exit == 0 else "INTERRUPTED")
+    text = Path(state["log"]).read_text(encoding="utf-8-sig")
+    assert "synthetic preparation" in text
+    if preparation_exit == 0:
+        assert text.index("synthetic preparation") < text.index("synthetic training")

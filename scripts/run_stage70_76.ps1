@@ -1,3 +1,18 @@
+<#
+.SYNOPSIS
+Run the authorized Stage70-76 graph with durable invocation logs and exact resume.
+.DESCRIPTION
+The Python runner enforces scientific freeze, source roles, budget and stage gates,
+then performs analysis and packaging. An existing training lock enables resume.
+CountUsability optionally runs the existing fixed-cohort count reconstruction first;
+a preparation failure stops the chain and preserves its exit code and log.
+Native comparator and DINO preparation are not yet connected by this launcher.
+.PARAMETER CountUsability
+The fixed signed ROW_USABILITY.json for v11 count reconstruction or recovery.
+Omit it when using the existing complete count cache.
+.PARAMETER CountUsabilitySha256
+Exact physical SHA256 of CountUsability. Required together with CountUsability.
+#>
 param(
     [Parameter(Mandatory=$true)][string]$Python,
     [Parameter(Mandatory=$true)][string]$Campaign,
@@ -7,10 +22,27 @@ param(
     [string]$Mode='execute-authorized',
     [ValidateSet('ALL','S72','S73','S74','S75','S76')][string]$Stage='ALL',
     [switch]$Resume,
-    [switch]$Capacity
+    [switch]$Capacity,
+    [string]$CountUsability,
+    [string]$CountUsabilitySha256
 )
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
+if ([bool]$CountUsability -ne [bool]$CountUsabilitySha256) {
+    throw 'Count reconstruction requires CountUsability and CountUsabilitySha256 together'
+}
+if ($CountUsability) {
+    if (!$Capacity -or $Mode -ne 'execute-authorized' -or $Stage -ne 'ALL') {
+        throw 'Count reconstruction requires Capacity, execute-authorized and Stage ALL'
+    }
+    if ($CountUsabilitySha256 -notmatch '^[a-fA-F0-9]{64}$') {
+        throw 'CountUsabilitySha256 must be a physical SHA256'
+    }
+    $CountUsability = (Resolve-Path -LiteralPath $CountUsability).ProviderPath
+    if ((Get-FileHash -LiteralPath $CountUsability -Algorithm SHA256).Hash -ne $CountUsabilitySha256) {
+        throw 'Count usability physical SHA256 changed'
+    }
+}
 foreach ($inputFile in @($Python,$Campaign,$LocalPaths)) {
     if (!(Test-Path -LiteralPath $inputFile -PathType Leaf)) { throw "Missing input: $inputFile" }
 }
@@ -32,8 +64,36 @@ $logPath = Join-Path $logRoot ($runId + '.log')
 $statePath = Join-Path $logRoot ($runId + '.json')
 $exitCode = 1
 $record = [ordered]@{ started_utc=[DateTime]::UtcNow.ToString('o'); mode=$Mode;
-    capacity=[bool]$Capacity; output_root=$resolvedOutput; status='STARTING'; log=$logPath }
+    capacity=[bool]$Capacity; output_root=$resolvedOutput; status='STARTING'; log=$logPath;
+    preparation_steps=@() }
 try {
+    if ($CountUsability) {
+        $prepareArgs = @('-B',(Join-Path $PSScriptRoot 'prepare_stage70_capacity.py'),
+            '--count-usability',$CountUsability,
+            '--count-usability-sha256',$CountUsabilitySha256.ToLowerInvariant(),
+            '--output-root',(Join-Path $resolvedOutput 'representation_30000'))
+        $step = [ordered]@{ name='capacity_counts'; arguments=$prepareArgs;
+            status='RUNNING'; started_utc=[DateTime]::UtcNow.ToString('o') }
+        $record['preparation_steps'] += $step
+        $record['status'] = 'PREPARING_COUNTS'
+        $record | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $statePath -Encoding UTF8
+        $ErrorActionPreference = 'Continue'
+        Push-Location -LiteralPath $projectRoot
+        try {
+            & $Python @prepareArgs 2>&1 | Tee-Object -FilePath $logPath -Append -ErrorAction Stop
+            $exitCode = $LASTEXITCODE
+        } finally { Pop-Location }
+        $ErrorActionPreference = 'Stop'
+        $step['exit_code'] = $exitCode
+        $step['ended_utc'] = [DateTime]::UtcNow.ToString('o')
+        $step['status'] = if ($exitCode -eq 0) { 'COMMAND_FINISHED' } else { 'INTERRUPTED' }
+        if ($exitCode -ne 0) {
+            $record['status'] = 'INTERRUPTED'
+            exit $exitCode
+        }
+        # Subsequent launcher errors must not inherit the successful preparation exit code.
+        $exitCode = 1
+    }
     $runnerArgs=@('-B',(Join-Path $PSScriptRoot 'run_scientific_recovery_v10_stage70_76.py'),
         '--campaign',$Campaign,'--local-paths',$LocalPaths,'--output-root',$resolvedOutput,
         "--$Mode",'--stage',$Stage)
@@ -44,12 +104,12 @@ try {
     $record['resume'] = [bool]($Resume -or $resumeExisting)
     $record['arguments'] = $runnerArgs
     $record['status'] = 'RUNNING'
-    $record | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $statePath -Encoding UTF8
+    $record | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $statePath -Encoding UTF8
     # Native stderr warnings must not turn a successful Python run into a PowerShell failure.
     $ErrorActionPreference = 'Continue'
     Push-Location -LiteralPath $projectRoot
     try {
-        & $Python @runnerArgs 2>&1 | Tee-Object -FilePath $logPath -ErrorAction Stop
+        & $Python @runnerArgs 2>&1 | Tee-Object -FilePath $logPath -Append -ErrorAction Stop
         $exitCode = $LASTEXITCODE
     } finally { Pop-Location }
     $ErrorActionPreference = 'Stop'
@@ -62,7 +122,7 @@ try {
     $ErrorActionPreference = 'Stop'
     $record['exit_code'] = $exitCode
     $record['ended_utc'] = [DateTime]::UtcNow.ToString('o')
-    try { $record | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $statePath -Encoding UTF8 }
+    try { $record | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $statePath -Encoding UTF8 }
     finally { $guard.Dispose() }
 }
 # A successful command is not a claim that scientific endpoints or the campaign are complete.
