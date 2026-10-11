@@ -9,10 +9,11 @@ import numpy as np
 import pandas as pd
 import torch
 
-from e_jepa_ttc.simplex_t.phase import phase_to_ttc
+from e_jepa_ttc.rgb_port.features import EVENT_PHASE17_SHA256
+from e_jepa_ttc.simplex_t.phase import MAX_PHASE, MIN_PHASE, phase_to_ttc
 from operational.rgb_port.evaluate import score_signed_ttc
 
-from .common import freeze, read, sha, write
+from .common import digest, freeze, read, sha, write
 from .train_heads import initialize
 
 
@@ -129,6 +130,160 @@ def predict(endpoint: Path, values: dict[str, np.ndarray]) -> tuple[np.ndarray, 
     return np.concatenate(output), time.perf_counter() - start
 
 
+def _validate_v_cache(owner: Path) -> tuple[Path, dict[str, Any], dict[str, str]]:
+    """Validate the complete V cache ancestry before exposing labels or cached scores."""
+    cache = owner / "features/V/E_HISTORY.npz"
+    receipt_path = cache.with_suffix(".json")
+    receipt = read(receipt_path)
+    normalizer = owner / "features/H/E_NORMALIZER.json"
+    parent = owner / "rounds/PRODUCERS_PAIR_ENDPOINT_FREEZE.json"
+    required = (cache, normalizer, parent)
+    if not all(path.is_file() for path in required):
+        raise ValueError("V cache provenance is incomplete")
+
+    cache_sha = sha(cache)
+    normalizer_sha = sha(normalizer)
+    parent_sha = sha(parent)
+    parent_endpoints = read(parent).get("endpoints")
+    if not isinstance(parent_endpoints, dict) or not parent_endpoints:
+        raise ValueError("Frozen V parent endpoint matrix is missing")
+    expected_endpoint_hashes = {
+        name: item.get("checkpoint_sha256")
+        for name, item in parent_endpoints.items()
+        if isinstance(item, dict)
+    }
+    if set(expected_endpoint_hashes) != set(parent_endpoints) or not all(
+        isinstance(value, str) and value for value in expected_endpoint_hashes.values()
+    ):
+        raise ValueError("Frozen V parent endpoint provenance is incomplete")
+    source_sha = receipt.get("source_sha256")
+    candidates: list[tuple[Path, Path, dict[str, Any]]] = []
+    if isinstance(source_sha, str):
+        for candidate_receipt_path in cache.parent.glob("*.json"):
+            candidate = read(candidate_receipt_path)
+            candidate_path = candidate_receipt_path.with_suffix(".npz")
+            if (
+                candidate.get("schema") == "rgb_port_observation_features_v1"
+                and candidate.get("output_sha256") == source_sha
+                and candidate_path.is_file()
+                and sha(candidate_path) == source_sha
+            ):
+                candidates.append((candidate_path, candidate_receipt_path, candidate))
+    if len(candidates) != 1:
+        raise ValueError("V cache observation source provenance is missing or ambiguous")
+    observations, observation_receipt_path, observation_receipt = candidates[0]
+    observations_sha = sha(observations)
+    if (
+        receipt.get("schema") != "rgb_port_history_features_v1"
+        or receipt.get("status") != "COMPLETE"
+        or receipt.get("role") != "V"
+        or receipt.get("modality") != "event"
+        or receipt.get("output_sha256") != cache_sha
+        or receipt.get("source_sha256") != observations_sha
+        or receipt.get("normalizer_sha256") != normalizer_sha
+    ):
+        raise ValueError("V cache receipt/source/normalizer mismatch")
+
+    if (
+        observation_receipt.get("schema") != "rgb_port_observation_features_v1"
+        or observation_receipt.get("status") != "COMPLETE"
+        or observation_receipt.get("role") != "V"
+        or observation_receipt.get("modality") != "event"
+        or observation_receipt.get("schema_sha256") != EVENT_PHASE17_SHA256
+        or observation_receipt.get("output_sha256") != observations_sha
+        or observation_receipt.get("endpoint_hashes") != expected_endpoint_hashes
+    ):
+        raise ValueError("V observation receipt mismatch")
+
+    with np.load(observations, allow_pickle=False) as archive:
+        if "endpoint_freeze_sha256" not in archive or "schema_sha256" not in archive:
+            raise ValueError("V observation provenance is missing")
+        observation_parent = str(archive["endpoint_freeze_sha256"])
+        observation_schema = str(archive["schema_sha256"])
+        observation_roles = set(archive["role"].astype(str)) if "role" in archive else set()
+    normalizer_value = read(normalizer)
+    if (
+        observation_parent != parent_sha
+        or observation_schema != EVENT_PHASE17_SHA256
+        or observation_roles != {"V"}
+        or normalizer_value.get("fit_role") != "H"
+        or normalizer_value.get("modality") != "event"
+        or normalizer_value.get("schema_sha256") != EVENT_PHASE17_SHA256
+        or normalizer_value.get("producer_sha256") != parent_sha
+    ):
+        raise ValueError("V observation/normalizer parent ancestry mismatch")
+    return (
+        cache,
+        receipt,
+        {
+            "cache_sha256": cache_sha,
+            "cache_receipt_sha256": sha(receipt_path),
+            "observations_sha256": observations_sha,
+            "observation_receipt_sha256": sha(observation_receipt_path),
+            "normalizer_sha256": normalizer_sha,
+            "parent_freeze_sha256": parent_sha,
+        },
+    )
+
+
+def _cached_metrics(out: Path, binding: dict[str, str], expected: pd.DataFrame) -> dict[str, Any]:
+    """Return cached metrics only when their receipt and exact cohort remain bound."""
+    required = {
+        "PREDICTIONS.csv",
+        "PREDICTIONS_RECEIPT.json",
+        "METRICS.json",
+        "GROUP_METRICS.json",
+        "COST.json",
+        "EVALUATION_RECEIPT.json",
+    }
+    if not required.issubset({path.name for path in out.iterdir()}):
+        raise ValueError("Cached V evaluation provenance is incomplete")
+    predictions_receipt = read(out / "PREDICTIONS_RECEIPT.json")
+    evaluation_receipt = read(out / "EVALUATION_RECEIPT.json")
+    predictions_sha = sha(out / "PREDICTIONS.csv")
+    expected_receipt = {
+        "schema": "range_transfer_v_evaluation_v2",
+        "binding_sha256": sha(out / "BINDING.json"),
+        "predictions_sha256": predictions_sha,
+        "metrics_sha256": sha(out / "METRICS.json"),
+        "group_metrics_sha256": sha(out / "GROUP_METRICS.json"),
+        "cost_sha256": sha(out / "COST.json"),
+        "cohort_sha256": digest(expected.to_dict(orient="list")),
+    }
+    if predictions_receipt != {"sha256": predictions_sha} or evaluation_receipt != expected_receipt:
+        raise ValueError("Cached V metrics binding mismatch")
+    persisted = pd.read_csv(out / "PREDICTIONS.csv")
+    columns = ["sample_token", "group_id", "target_ttc"]
+    if (
+        len(persisted) != len(expected)
+        or not all(
+            np.array_equal(persisted[name].to_numpy(), expected[name].to_numpy())
+            for name in columns[:2]
+        )
+        or not np.allclose(
+            persisted[columns[2]].to_numpy(), expected[columns[2]].to_numpy(), rtol=0, atol=1e-12
+        )
+    ):
+        raise ValueError("Cached V prediction cohort differs")
+    if read(out / "BINDING.json") != binding:
+        raise ValueError("Cached V endpoint/provenance binding differs")
+    return read(out / "METRICS.json")
+
+
+def _validated_target_phase(values: np.ndarray) -> torch.Tensor:
+    """Preserve frozen labels while enforcing the canonical decoder's support."""
+    phase = np.asarray(values)
+    if (
+        phase.ndim != 1
+        or phase.dtype != np.float32
+        or not np.isfinite(phase).all()
+        or np.any(phase < MIN_PHASE)
+        or np.any(phase > MAX_PHASE)
+    ):
+        raise ValueError("V target phase violates the canonical finite support")
+    return torch.from_numpy(np.array(phase, dtype=np.float64, copy=True))
+
+
 def evaluate_v(owner: Path, run: Path, endpoints: dict[str, Any], *, stage: str) -> dict[str, Any]:
     """Open V labels only after every relevant endpoint has been frozen."""
     freeze_path = run / (
@@ -136,22 +291,12 @@ def evaluate_v(owner: Path, run: Path, endpoints: dict[str, Any], *, stage: str)
     )
     if read(freeze_path) != endpoints:
         raise ValueError("Endpoint matrix is not frozen")
-    cache = owner / "features/V/E_HISTORY.npz"
-    receipt = read(cache.with_suffix(".json"))
-    normalizer_sha = sha(owner / "features/H/E_NORMALIZER.json")
-    if (
-        receipt.get("status") != "COMPLETE"
-        or receipt.get("role") != "V"
-        or receipt.get("modality") != "event"
-        or receipt.get("output_sha256") != sha(cache)
-        or receipt.get("normalizer_sha256") != normalizer_sha
-    ):
-        raise ValueError("V cache receipt/normalizer mismatch")
+    cache, _, provenance = _validate_v_cache(owner)
     with np.load(cache, allow_pickle=False) as archive:
         values = {name: archive[name] for name in archive.files}
     if set(values["role"].astype(str)) != {"V"}:
         raise ValueError("V role mismatch")
-    targets = -0.1 / np.expm1(-values["target_phase"].astype(np.float64))
+    target_phase = _validated_target_phase(values["target_phase"])
     groups = values["group_id"].astype(str)
     tokens = values["sample_token"].astype(str)
     manifest = read(owner / "V_MANIFEST.json")
@@ -163,14 +308,22 @@ def evaluate_v(owner: Path, run: Path, endpoints: dict[str, Any], *, stage: str)
     original = pd.read_parquet(
         source_rows, columns=["sample_token", "group_id", "target_phase", "rgb_available"]
     )
-    original = original.loc[original.rgb_available].set_index("sample_token", verify_integrity=True)
+    original = original.loc[original.rgb_available].set_index("sample_token")
+    if not original.index.is_unique:
+        raise ValueError("Native V manifest contains duplicate sample tokens")
     if set(tokens) != set(original.index):
         raise ValueError("Incomplete V cohort")
     if not np.array_equal(
         original.loc[tokens].target_phase.to_numpy(np.float32), values["target_phase"]
     ):
         raise ValueError("V targets differ from native manifest")
+    if not np.array_equal(original.loc[tokens].group_id.astype(str).to_numpy(), groups):
+        raise ValueError("V groups differ from native manifest per sample token")
+    targets = phase_to_ttc(target_phase).numpy()
+    if not np.isfinite(targets).all() or not np.all((targets < 0) | (targets > 0.1)):
+        raise ValueError("Canonical V target TTC contract failed")
     inputs = {k: values[k] for k in ("features", "timing", "valid", "expert_phase")}
+    cohort = pd.DataFrame({"sample_token": tokens, "group_id": groups, "target_ttc": targets})
     results = {}
     for name, item in endpoints.items():
         endpoint = Path(item["checkpoint_path"])
@@ -178,12 +331,10 @@ def evaluate_v(owner: Path, run: Path, endpoints: dict[str, Any], *, stage: str)
             raise ValueError("Frozen endpoint changed before V evaluation")
         out = run / "evaluation" / stage / name
         out.mkdir(parents=True, exist_ok=True)
-        binding = {"endpoint_sha256": item["checkpoint_sha256"], "cache_sha256": sha(cache)}
+        binding = {"endpoint_sha256": item["checkpoint_sha256"], **provenance}
         freeze(out / "BINDING.json", binding)
         if (out / "METRICS.json").exists():
-            if sha(out / "PREDICTIONS.csv") != read(out / "PREDICTIONS_RECEIPT.json")["sha256"]:
-                raise ValueError("Persisted predictions changed")
-            results[name] = read(out / "METRICS.json")
+            results[name] = _cached_metrics(out, binding, cohort)
             continue
         predictions, elapsed = predict(endpoint, inputs)
         frame = pd.DataFrame(
@@ -212,6 +363,18 @@ def evaluate_v(owner: Path, run: Path, endpoints: dict[str, Any], *, stage: str)
                 "seconds": elapsed,
                 "rows": len(targets),
                 "raw_E2E": False,
+            },
+        )
+        write(
+            out / "EVALUATION_RECEIPT.json",
+            {
+                "schema": "range_transfer_v_evaluation_v2",
+                "binding_sha256": sha(out / "BINDING.json"),
+                "predictions_sha256": sha(out / "PREDICTIONS.csv"),
+                "metrics_sha256": sha(out / "METRICS.json"),
+                "group_metrics_sha256": sha(out / "GROUP_METRICS.json"),
+                "cost_sha256": sha(out / "COST.json"),
+                "cohort_sha256": digest(cohort.to_dict(orient="list")),
             },
         )
         results[name] = score

@@ -52,8 +52,7 @@ def test_signed_metrics_match_manual_known_solution() -> None:
         assert metrics["bins"][bucket]["mid"] == pytest.approx(expected)
         assert metrics["bins"][bucket]["rte_pct"] == pytest.approx(50.0)
     expected_weighted = sum(
-        {"negative": 0.1, "crucial": 0.5, "small": 0.3, "large": 0.1}[key]
-        * value
+        {"negative": 0.1, "crucial": 0.5, "small": 0.3, "large": 0.1}[key] * value
         for key, value in expected_per_bucket.items()
     )
     assert metrics["paper_MiD_overall"] == pytest.approx(expected_weighted)
@@ -82,8 +81,38 @@ def test_sequence_macro_and_checkpoint_selection_are_validation_only() -> None:
     assert macro["sequence_macro_paper_MiD_overall"] == pytest.approx(0.0)
     selected = select_checkpoint(
         [
-            {"protocol": "garl_signed_v1", "paper_MiD_overall": 2.0, "failure_rate_pct": 0.0},
-            {"protocol": "garl_signed_v1", "paper_MiD_overall": 1.0, "failure_rate_pct": 0.0},
+            {
+                "protocol": "garl_signed_v1",
+                "paper_MiD_overall": 2.0,
+                "failure_rate_pct": 0.0,
+                "failure_count": 0,
+                "num_samples": 4,
+                "assigned_sample_count": 4,
+                "out_of_domain_count": 0,
+                "missing_bucket_count": 0,
+                "complete_bucket_coverage": True,
+                "complete_cohort_accounting": True,
+                "invalid_mid_count": 0,
+                "invalid_row_count": 0,
+                "invalid_row_rate_pct": 0.0,
+                "strict_metric_coverage": True,
+            },
+            {
+                "protocol": "garl_signed_v1",
+                "paper_MiD_overall": 1.0,
+                "failure_rate_pct": 0.0,
+                "failure_count": 0,
+                "num_samples": 4,
+                "assigned_sample_count": 4,
+                "out_of_domain_count": 0,
+                "missing_bucket_count": 0,
+                "complete_bucket_coverage": True,
+                "complete_cohort_accounting": True,
+                "invalid_mid_count": 0,
+                "invalid_row_count": 0,
+                "invalid_row_rate_pct": 0.0,
+                "strict_metric_coverage": True,
+            },
         ]
     )
     assert selected["selected_index"] == 1
@@ -100,14 +129,25 @@ def test_checkpoint_selection_excludes_nan_metrics() -> None:
             {
                 "protocol": "garl_signed_v1",
                 "paper_MiD_overall": 2.0,
-                "failure_rate_pct": 1.0,
+                "failure_rate_pct": 0.0,
+                "failure_count": 0,
+                "num_samples": 4,
+                "assigned_sample_count": 4,
+                "out_of_domain_count": 0,
+                "missing_bucket_count": 0,
+                "complete_bucket_coverage": True,
+                "complete_cohort_accounting": True,
+                "invalid_mid_count": 0,
+                "invalid_row_count": 0,
+                "invalid_row_rate_pct": 0.0,
+                "strict_metric_coverage": True,
             },
         ]
     )
     assert selected["selected_index"] == 1
     assert selected["excluded_non_finite_indices"] == [0]
 
-    with pytest.raises(ValueError, match="no finite validation metrics"):
+    with pytest.raises(ValueError, match="no completely accounted validation metrics"):
         select_checkpoint(
             [
                 {

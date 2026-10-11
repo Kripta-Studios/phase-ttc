@@ -642,7 +642,63 @@ def _selection(metrics: dict[str, Any]) -> dict[str, float]:
         if isinstance(value, dict)
     )
     complete_sequence_coverage = float(finite_sequence_count == len(per_sequence))
-    if not math.isfinite(macro) or not math.isfinite(failure):
+    invalid_mid_count = sum(
+        int(value.get("invalid_mid_count", 0))
+        for value in per_sequence.values()
+        if isinstance(value, dict)
+    )
+    invalid_row_count = sum(
+        int(value.get("invalid_row_count", 0))
+        for value in per_sequence.values()
+        if isinstance(value, dict)
+    )
+    sample_count = sum(
+        int(value.get("num_samples", 0))
+        for value in per_sequence.values()
+        if isinstance(value, dict)
+    )
+    out_of_domain_count = sum(
+        int(value.get("out_of_domain_count", 0))
+        for value in per_sequence.values()
+        if isinstance(value, dict)
+    )
+    unknown_validity_sequence_count = sum(
+        not isinstance(value, dict)
+        or "invalid_mid_count" not in value
+        or "invalid_row_count" not in value
+        or "num_samples" not in value
+        or "out_of_domain_count" not in value
+        or "complete_cohort_accounting" not in value
+        or "strict_metric_coverage" not in value
+        for value in per_sequence.values()
+    )
+    strict_metric_coverage = float(
+        complete_sequence_coverage == 1.0
+        and invalid_mid_count == 0
+        and unknown_validity_sequence_count == 0
+        and all(
+            value.get("strict_metric_coverage") is True
+            for value in per_sequence.values()
+            if isinstance(value, dict)
+        )
+        and len(per_sequence) == sum(isinstance(value, dict) for value in per_sequence.values())
+    )
+    invalid_row_rate = float(invalid_row_count / sample_count * 100.0) if sample_count else math.nan
+    complete_selection_accounting = float(
+        complete_sequence_coverage == 1.0
+        and unknown_validity_sequence_count == 0
+        and out_of_domain_count == 0
+        and all(
+            value.get("complete_cohort_accounting") is True
+            for value in per_sequence.values()
+            if isinstance(value, dict)
+        )
+    )
+    if (
+        not math.isfinite(macro)
+        or not math.isfinite(failure)
+        or not math.isfinite(invalid_row_rate)
+    ):
         raise FloatingPointError("validation selection metrics are non-finite")
     return {
         "sequence_macro_MiD": macro,
@@ -650,17 +706,33 @@ def _selection(metrics: dict[str, Any]) -> dict[str, float]:
         "finite_sequence_count": float(finite_sequence_count),
         "sequence_count": float(len(per_sequence)),
         "complete_sequence_coverage": complete_sequence_coverage,
+        "invalid_mid_count": float(invalid_mid_count),
+        "invalid_row_count": float(invalid_row_count),
+        "invalid_row_rate_pct": invalid_row_rate,
+        "out_of_domain_count": float(out_of_domain_count),
+        "unknown_validity_sequence_count": float(unknown_validity_sequence_count),
+        "complete_selection_accounting": complete_selection_accounting,
+        "strict_metric_coverage": strict_metric_coverage,
     }
 
 
+def _selection_accounting_complete(selection: dict[str, float]) -> bool:
+    return (
+        selection.get("complete_sequence_coverage") == 1.0
+        and selection.get("complete_selection_accounting") == 1.0
+        and selection.get("out_of_domain_count") == 0.0
+        and math.isfinite(selection.get("invalid_row_rate_pct", math.nan))
+    )
+
+
 def _is_better(candidate: dict[str, float], incumbent: dict[str, float] | None) -> bool:
-    if candidate.get("complete_sequence_coverage", 1.0) != 1.0:
+    if not _selection_accounting_complete(candidate):
         return False
-    if incumbent is None:
+    if incumbent is None or not _selection_accounting_complete(incumbent):
         return True
-    return (candidate["sequence_macro_MiD"], candidate["failure_rate_pct"]) < (
+    return (candidate["invalid_row_rate_pct"], candidate["sequence_macro_MiD"]) < (
+        incumbent["invalid_row_rate_pct"],
         incumbent["sequence_macro_MiD"],
-        incumbent["failure_rate_pct"],
     )
 
 
@@ -1761,8 +1833,8 @@ def train_real_causal_scale(
         history.append(record)
         if fixed_last_epoch:
             if validation is not None:
-                if selection is None or selection["complete_sequence_coverage"] != 1.0:
-                    raise RuntimeError("fixed-last-epoch outer fit has incomplete dev coverage")
+                if selection is None or not _selection_accounting_complete(selection):
+                    raise RuntimeError("fixed-last-epoch outer fit lacks complete dev accounting")
                 best_state = copy.deepcopy(model.state_dict())
                 best_selection = selection
                 best_validation = validation
@@ -1771,11 +1843,9 @@ def train_real_causal_scale(
         else:
             eligible = epoch > training_config.foreground_warmup_epochs
             selectable = bool(
-                selection is not None
-                and eligible
-                and selection["complete_sequence_coverage"] == 1.0
+                selection is not None and eligible and _selection_accounting_complete(selection)
             )
-            if selectable and _is_better(selection, best_selection):
+            if selection is not None and selectable and _is_better(selection, best_selection):
                 best_state = copy.deepcopy(model.state_dict())
                 best_selection = selection
                 best_validation = validation

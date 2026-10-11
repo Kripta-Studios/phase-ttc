@@ -15,6 +15,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from e_jepa_ttc.data.evttc_author_protocol import protocol_intervals
 from e_jepa_ttc.data.evttc_garl_adapter import reject_labels_from_predict_payload
 from e_jepa_ttc.evaluation.garl_evttc_zero_shot import score_zero_shot_predictions
 from e_jepa_ttc.utils.io import write_structured
@@ -65,56 +66,135 @@ def _prediction_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return output
 
 
-def _target_rows(path: Path) -> dict[tuple[str, str, str, int], float]:
+Identity = tuple[str, str, str, int]
+
+
+def _identity(raw: dict[str, Any]) -> Identity:
+    return (
+        str(raw.get("sequence_id", "")),
+        str(raw.get("sample_token", "")),
+        str(raw.get("track_id", "")),
+        int(raw.get("timestamp_us", 0)),
+    )
+
+
+def _target_rows(path: Path) -> dict[Identity, dict[str, Any]]:
     payload = _read(path)
     rows = payload.get("targets")
     if not isinstance(rows, list) or not rows:
         raise ValueError("Target payload must contain a non-empty targets list.")
-    output: dict[tuple[str, str, str, int], float] = {}
+    output: dict[Identity, dict[str, Any]] = {}
     for index, raw in enumerate(rows):
         if not isinstance(raw, dict):
             raise ValueError(f"Target row {index} is not an object.")
-        identity = (
-            str(raw.get("sequence_id", "")),
-            str(raw.get("sample_token", "")),
-            str(raw.get("track_id", "")),
-            int(raw.get("timestamp_us", 0)),
-        )
+        identity = _identity(raw)
         if identity in output:
             raise ValueError(f"Duplicate target identity: {identity}")
-        output[identity] = float(raw["target_ttc_s"])
+        row = dict(raw)
+        row["target_ttc_s"] = float(raw["target_ttc_s"])
+        output[identity] = row
     return output
 
 
-def score(predictions_path: Path, targets_path: Path, output_path: Path) -> dict[str, Any]:
+def _scenario_groups(
+    identities: Sequence[Identity],
+    targets: dict[Identity, dict[str, Any]],
+    protocol: dict[str, Any] | None,
+) -> dict[str, list[int]]:
+    if protocol is None or protocol.get("protocol_id") != "evttc_author_20261011":
+        return {}
+    intervals = protocol_intervals(protocol)
+    by_scenario = {interval.scenario_id: interval for interval in intervals}
+    by_canonical_sequence = {
+        interval.canonical_sequence_id: interval.scenario_id
+        for interval in intervals
+        if interval.canonical_sequence_id is not None
+    }
+    groups: dict[str, list[int]] = {interval.scenario_id: [] for interval in intervals}
+    sequence_scenarios: dict[str, str] = {}
+    for index, identity in enumerate(identities):
+        declared = targets[identity].get("scenario_id")
+        canonical_scenario = by_canonical_sequence.get(identity[0])
+        if declared is None and canonical_scenario is None:
+            raise ValueError(
+                "Target must declare scenario_id when sequence_id is not a canonical protocol "
+                f"sequence: {identity}"
+            )
+        scenario_id = canonical_scenario if declared is None else str(declared)
+        if scenario_id not in by_scenario:
+            raise ValueError(f"Unknown target scenario_id {scenario_id!r}: {identity}")
+        if canonical_scenario is not None and scenario_id != canonical_scenario:
+            raise ValueError(
+                f"Canonical sequence {identity[0]!r} cannot declare scenario {scenario_id!r}."
+            )
+        prior = sequence_scenarios.setdefault(identity[0], scenario_id)
+        if prior != scenario_id:
+            raise ValueError(
+                f"Sequence {identity[0]!r} maps to multiple scenarios: {prior!r}, {scenario_id!r}."
+            )
+        interval = by_scenario[scenario_id]
+        timestamp_s = identity[3] / 1_000_000.0
+        if not interval.contains(timestamp_s):
+            raise ValueError(
+                f"Target timestamp {timestamp_s} is outside scenario {scenario_id!r} interval "
+                f"[{interval.start_s}, {interval.end_s}]: {identity}"
+            )
+        groups[scenario_id].append(index)
+    missing_scenarios = [scenario_id for scenario_id, indices in groups.items() if not indices]
+    if missing_scenarios:
+        raise ValueError(
+            "Author-protocol score requires non-empty coverage for every registered scenario; "
+            f"missing {missing_scenarios}."
+        )
+    return groups
+
+
+def score(
+    predictions_path: Path,
+    targets_path: Path,
+    output_path: Path,
+    *,
+    protocol: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Score predictions after independently validating the predict payload."""
 
     prediction_payload = _read(predictions_path)
     rows = _prediction_rows(prediction_payload)
     targets = _target_rows(targets_path)
-    identities = [
-        (
-            str(row.get("sequence_id", "")),
-            str(row.get("sample_token", "")),
-            str(row.get("track_id", "")),
-            int(row.get("timestamp_us", 0)),
-        )
-        for row in rows
-    ]
+    identities = [_identity(row) for row in rows]
     if len(set(identities)) != len(identities):
         raise ValueError("Prediction payload contains duplicate sample identities.")
     missing = [identity for identity in identities if identity not in targets]
     if missing:
         raise ValueError(f"Target payload is missing {len(missing)} prediction identities.")
-    truth = [targets[identity] for identity in identities]
+    absent_predictions = sorted(set(targets).difference(identities))
+    if absent_predictions:
+        raise ValueError(
+            "Prediction payload is missing "
+            f"{len(absent_predictions)} target identities; strict coverage is required."
+        )
+    truth = [float(targets[identity]["target_ttc_s"]) for identity in identities]
     predicted = [float(row["predicted_ttc_s"]) for row in rows]
     metrics = score_zero_shot_predictions(truth, predicted)
+    scenario_groups = _scenario_groups(identities, targets, protocol)
+    scenario_metrics = {
+        scenario_id: score_zero_shot_predictions(
+            (truth[index] for index in indices),
+            (predicted[index] for index in indices),
+        )
+        for scenario_id, indices in scenario_groups.items()
+    }
     result: dict[str, Any] = {
-        "artifact_type": "garl_evttc_table_vi_score_v1",
-        "schema_version": "v1",
+        "artifact_type": "garl_evttc_table_vi_score_v2",
+        "schema_version": "v2",
         "evidence_type": "separate_predict_and_score_payloads",
         "created_at": datetime.now(UTC).isoformat(),
-        "protocol": "garl_signed_v1",
+        "protocol": metrics["protocol"],
+        "protocol_id": protocol.get("protocol_id") if protocol else None,
+        "protocol_version": protocol.get("protocol_version") if protocol else None,
+        "official_query_population_verified": (
+            protocol.get("official_query_population_verified") if protocol else None
+        ),
         "predictions_path": predictions_path.as_posix(),
         "predictions_sha256": _sha256(predictions_path),
         "targets_path": targets_path.as_posix(),
@@ -123,6 +203,13 @@ def score(predictions_path: Path, targets_path: Path, output_path: Path) -> dict
         "training_updates_on_target_dataset": 0,
         "benchmark10_opened": False,
         "metrics": metrics,
+        "scenario_metrics": scenario_metrics,
+        "coverage": {
+            "prediction_count": len(rows),
+            "target_count": len(targets),
+            "matched_count": len(rows),
+            "complete": True,
+        },
     }
     write_structured(output_path, result)
     return result
@@ -198,7 +285,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         raise AssertionError("predict_preflight must not return")
     if args.command == "score":
         try:
-            _validate_protocol_preflight(args.protocol)
+            protocol = _validate_protocol_preflight(args.protocol)
         except (FileNotFoundError, ValueError) as error:
             parser.error(str(error))
         if args.targets is None:
@@ -206,7 +293,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 "The PLAN.md 'score' alias requires explicit --targets; the portable "
                 "protocol intentionally contains no target path. No score was computed."
             )
-        result = score(args.predictions, args.targets, args.output)
+        result = score(args.predictions, args.targets, args.output, protocol=protocol)
     else:
         missing = [
             option

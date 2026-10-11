@@ -27,16 +27,16 @@ import torch
 
 torch.set_num_threads(1)
 torch.set_num_interop_threads(1)
-from operational.range_transfer.common import write
+from operational.range_transfer.trace_status import begin_trace, fail_trace, finish_trace
 
+trace_root = run / "v12_raw_attribution"
+attempt_id = begin_trace(trace_root)
 try:
     from operational.range_transfer.raw_traces import trace_raw
 
     result = trace_raw(v12, run)
+    finish_trace(trace_root, attempt_id, result)
     print(result, flush=True)
 except Exception as error:
-    write(
-        run / "v12_raw_attribution/FAILURE.json",
-        {"type": type(error).__name__, "message": str(error), "optimizer_updates": 0},
-    )
+    fail_trace(trace_root, attempt_id, error)
     raise

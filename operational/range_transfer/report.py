@@ -10,17 +10,21 @@ from typing import Any
 
 from .common import HANDOFF, ROOT, read, sha, utc, write
 from .ledger import accounting
+from .trace_status import read_trace
 
 
 def publish(run: Path, decision: dict[str, Any], command: str) -> Path:
     """Deliver actual evidence plus explicit unresolved dependencies."""
     ledger = accounting(run)
+    transfer = decision.get("transfer", {})
+    transfer_executed = int(transfer.get("inference_endpoints_executed_this_call", 0))
     decision = {
         **decision,
         "utc": utc(),
         "resume_command": command,
         "v13_promoted_or_modified": False,
-        "transfer_is_fresh_test": False,
+        "transfer_is_fresh_test": bool(transfer.get("labels_available") and transfer_executed),
+        "transfer_inference_executed_this_call": transfer_executed,
     }
     write(run / "NEXT_DECISION.json", decision)
     public = (
@@ -31,16 +35,41 @@ def publish(run: Path, decision: dict[str, Any], command: str) -> Path:
     qa = read(run / "qa/RESUME_TEST.json") if (run / "qa/RESUME_TEST.json").exists() else {}
     dependencies = read(run / "PENDING_DEPENDENCIES.json")
     cached_path = run / "v12_cached_attribution/RESULT.json"
-    raw_path = run / "v12_raw_attribution/RESULT.json"
     cached = read(cached_path) if cached_path.exists() else {}
-    raw = read(raw_path) if raw_path.exists() else {}
+    raw = read_trace(run / "v12_raw_attribution")
     attribution_path = run / "v12_raw_attribution/STAGE_ATTRIBUTION.json"
-    attribution = read(attribution_path) if attribution_path.exists() else {}
+    attribution = (
+        read(attribution_path)
+        if raw.get("status") == "COMPLETE" and attribution_path.exists()
+        else {}
+    )
     bias_path = run / "v12_cached_attribution/STAGE_BIAS.csv"
     bias = {}
     if bias_path.exists():
         with bias_path.open(encoding="utf-8") as stream:
             bias = next(csv.DictReader(stream), {})
+    if transfer.get("status") in {"TRANSFER_COMPLETE", "TEST12_PREDICTIONS_COMPLETE"}:
+        execution_limits = (
+            "La transferencia registrada está completa y sus predicciones están ligadas "
+            "a seis endpoints, cohorte, código y recibos. "
+            + (
+                f"Esta invocación ejecutó {transfer_executed} forwards de endpoint. "
+                if transfer_executed
+                else "Esta invocación reutilizó artefactos verificados; no es un test fresco. "
+            )
+            + "Test12 continúa sin métricas offline ni submission.\n\n"
+        )
+    elif ledger["scientific"]:
+        execution_limits = (
+            "Hay endpoints científicos V14 contabilizados, pero la transferencia permanece "
+            "pendiente de una cohorte externa registrada y admitida. No se fabrican "
+            "predicciones ni scores para sustituirla.\n\n"
+        )
+    else:
+        execution_limits = (
+            "No hay endpoints científicos V14 mientras falten padres finales y H admitida. "
+            "Los checkpoints disponibles en esta fase son exclusivamente de QA sintética.\n\n"
+        )
     report = (
         "# RANGE-TRANSFER — ejecución separada V14\n\n"
         f"Estado: **{decision['status']}**. Fecha UTC: {decision['utc']}.\n\n"
@@ -84,6 +113,12 @@ def publish(run: Path, decision: dict[str, Any], command: str) -> Path:
         "M1/M2 cambian pesos, no exposición. L1 añade sólo el coeficiente 0,25 fijado. "
         "Todos los endpoints seed7 se congelan antes de abrir V para evaluarlos. "
         "No hay reutilización automática del endpoint nativo CUDA como control CPU.\n\n"
+        f"Transferencia nueva: {transfer.get('status', 'PENDING')}; cohorte "
+        f"{transfer.get('cohort_id', 'no registrada')}; "
+        f"{transfer.get('endpoint_count', 0)} endpoints. Las pérdidas se promedian "
+        "por consulta entre seeds y las predicciones TTC no se promedian. "
+        "Test12, si se registra sin etiquetas, produce sólo predicciones locales y "
+        "ninguna métrica offline o submission.\n\n"
         "Se conserva la frontera de aviso urgente de 1 segundo de la revisión nativa; "
         "denominadores insuficientes impiden promover un ganador. No implica seguridad vehicular. "
         "Costes separados en COST_SCOPE y recibos de cada etapa: CPU de diagnóstico, "
@@ -91,14 +126,8 @@ def publish(run: Path, decision: dict[str, Any], command: str) -> Path:
         "La captura de trazas incluye instrumentación; no es un benchmark aislado "
         "de latencia raw E2E ni demuestra superioridad frente a Garl.\n\n"
         "## Límites de ejecución\n\n"
-        "No hay pesos, predicciones ni curvas científicas V14 mientras falten padres "
-        "finales y H admitida. Los checkpoints entregados son sólo los de QA sintética. "
-        "Los gradientes H y controles internos matched permanecen pendientes de H nativa. "
-        "El camino de entrenamiento real y evaluación V está implementado, pero aún no "
-        "validado con datos finales. La transferencia de nuevos endpoints requiere "
-        "integrar/admitir sus features matched tras la selección; "
-        "no reutiliza features TRAIN40.\n\n"
-        "## Atribución cruda histórica por productor\n\n"
+        + execution_limits
+        + "## Atribución cruda histórica por productor\n\n"
         "Resumen descriptivo de consultas seleccionadas; no demuestra causalidad "
         "ni una mejora de V14.\n\n```json\n"
         + json.dumps(
@@ -128,6 +157,9 @@ def publish(run: Path, decision: dict[str, Any], command: str) -> Path:
     paths = {f"artifacts/{p.relative_to(run).as_posix()}": p for p in files}
     for folder in (ROOT / "operational/range_transfer", ROOT / "src/e_jepa_ttc/range_transfer"):
         paths.update({p.relative_to(ROOT).as_posix(): p for p in folder.glob("*.py")})
+    for name in ("TRANSFER_MANIFEST.example.json", "TRANSFER_MANIFEST.md"):
+        path = ROOT / "operational/range_transfer" / name
+        paths[path.relative_to(ROOT).as_posix()] = path
     for p in (ROOT / "tests").glob("test_range_transfer*.py"):
         paths[p.relative_to(ROOT).as_posix()] = p
     for p in HANDOFF.rglob("*"):

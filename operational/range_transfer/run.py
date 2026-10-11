@@ -18,7 +18,7 @@ import time
 
 import torch
 
-from . import admission, analyze, diagnose
+from . import admission, analyze, diagnose, transfer
 from .cache import HeadCache, verify_h_population
 from .cached_traces import trace_v12
 from .common import (
@@ -28,7 +28,6 @@ from .common import (
     fit_id,
     freeze,
     ownership,
-    read,
     resources,
     sha,
     write,
@@ -36,6 +35,7 @@ from .common import (
 from .figures import build
 from .qa import run_qa
 from .report import publish
+from .trace_status import read_trace
 from .train_heads import accounting, fit
 
 
@@ -50,6 +50,11 @@ def main() -> int:
     )
     parser.add_argument("--v12-root", type=Path, required=True, help="Pinned V12 evidence worktree")
     parser.add_argument("--run", type=Path, default=Path("artifacts/range_transfer_20261010"))
+    parser.add_argument(
+        "--transfer-manifest",
+        type=Path,
+        help="Frozen registration manifest for an existing matched Event transfer cache",
+    )
     parser.add_argument(
         "--self-test",
         action="store_true",
@@ -78,6 +83,12 @@ def main() -> int:
     if run.is_relative_to(owner.parent.parent) or run.is_relative_to(v12):
         raise ValueError("V14 outputs must be outside immutable V12/V13 worktrees")
     command = "& pwsh -NoProfile -File scripts/Resume-RangeTransfer.ps1"
+    if args.transfer_manifest is not None:
+        command = (
+            f"& '{sys.executable}' -B -m operational.range_transfer.run "
+            f"--owner-run '{owner}' --v12-root '{v12}' --run '{run}' "
+            f"--transfer-manifest '{args.transfer_manifest.resolve()}'"
+        )
     with ownership(run):
         started = time.perf_counter()
         active = resources(run, starting=True)
@@ -151,8 +162,7 @@ def main() -> int:
                 stderr=subprocess.STDOUT,
                 check=False,
             )
-        raw_path = run / "v12_raw_attribution/RESULT.json"
-        raw_status = read(raw_path) if raw_path.exists() else {}
+        raw_status = read_trace(run / "v12_raw_attribution")
         write(
             run / "N1_STATUS.json",
             {
@@ -279,7 +289,27 @@ def main() -> int:
                                         run, tuple(selection["candidate_recipe"])
                                     )
                                     phases["REPLICATION"] = "COMPLETE"
-                                    decision["status"] = "REPLICATION_COMPLETE_TRANSFER_PENDING"
+                                    transfer_dependencies = transfer.dependencies(
+                                        run,
+                                        args.transfer_manifest.resolve()
+                                        if args.transfer_manifest is not None
+                                        else None,
+                                    )
+                                    if transfer_dependencies:
+                                        write(
+                                            run / "PENDING_DEPENDENCIES.json",
+                                            {"dependencies": transfer_dependencies},
+                                        )
+                                        phases["TRANSFER"] = "WAITING_FROZEN_COHORT"
+                                        decision["status"] = "WAITING_TRANSFER_DEPENDENCIES"
+                                    else:
+                                        assert args.transfer_manifest is not None
+                                        transfer_result = transfer.evaluate(
+                                            owner, run, args.transfer_manifest, binding
+                                        )
+                                        phases["TRANSFER"] = transfer_result["status"]
+                                        decision["status"] = transfer_result["status"]
+                                        decision["transfer"] = transfer_result
                                 else:
                                     decision["status"] = "REPLICATION_PARTIAL_DURABLE"
         write(

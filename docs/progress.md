@@ -298,3 +298,13 @@ centradas en productores/regresiones (134 casos únicos). Ruff y Pyright pasan.
 Restauración exacta de ambos checkpoints y paridad CPU de pérdida/componentes/
 gradientes event contra el código archivado: PASS. Resultado:
 `artifacts/rgb_port_20261008/audit_fixes_20261009/RESULT.json`.
+
+## 2026-10-11 — Correcciones swarm en revisión aislada
+
+Implementadas correcciones de RTE EvTTC, contabilidad de métricas y selección,
+y revisión explícita de incertidumbre temporal sin alterar el núcleo histórico.
+V14 añade validación de ascendencia/grupos, estados de traza y transferencia
+congelada. Véase `docs/swarm_fixes_20261011.md` para contratos, validación y
+limitaciones. Evidencia y runner CPU en la carpeta superior `swarm-fixes-20261011`.
+Los originales siguen congelados; la optimización RGB pertenece a otra sesión.
+No se ha demostrado todavía una nueva mejora de precisión del modelo.

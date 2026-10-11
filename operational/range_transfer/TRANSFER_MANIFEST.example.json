@@ -1,0 +1,18 @@
+{
+  "schema": "range_transfer_cohort_v1",
+  "cohort_id": "replace-with-stable-cohort-id",
+  "benchmark": "Dev32",
+  "source_kind": "native_matched_event_history",
+  "selection_uses_cohort": false,
+  "labels_available": true,
+  "cache_path": "C:/absolute/path/E_HISTORY.npz",
+  "cache_sha256": "replace-with-sha256",
+  "receipt_path": "C:/absolute/path/E_HISTORY.json",
+  "receipt_sha256": "replace-with-sha256",
+  "normalizer_path": "C:/absolute/path/E_NORMALIZER.json",
+  "normalizer_sha256": "replace-with-sha256",
+  "parent_freeze_path": "C:/absolute/path/PRODUCERS_PAIR_ENDPOINT_FREEZE.json",
+  "parent_freeze_sha256": "replace-with-sha256",
+  "cohort_manifest_path": "C:/absolute/path/COHORT_MANIFEST.json",
+  "cohort_manifest_sha256": "replace-with-sha256"
+}
