@@ -274,3 +274,13 @@ No implementar R²/HSIC/CMI ni INTACT antes de ese gate: el primero fue rechazad
 y el segundo requiere acciones expertas ausentes en este problema.
 
 No existe claim SOTA.
+
+## 2026-10-11 — Correcciones swarm en revisión aislada
+
+Implementadas correcciones de RTE EvTTC, contabilidad de métricas y selección,
+y revisión explícita de incertidumbre temporal sin alterar el núcleo histórico.
+V14 añade validación de ascendencia/grupos, estados de traza y transferencia
+congelada. Véase `docs/swarm_fixes_20261011.md` para contratos, validación y
+limitaciones. Evidencia y runner CPU en la carpeta superior `swarm-fixes-20261011`.
+Los originales siguen congelados; la optimización RGB pertenece a otra sesión.
+No se ha demostrado todavía una nueva mejora de precisión del modelo.

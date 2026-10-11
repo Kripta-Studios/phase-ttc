@@ -1,0 +1,78 @@
+{
+  "protocol_id": "evttc_author_20261011",
+  "protocol_version": 1,
+  "evidence": "author_correspondence_received_2026-10-11",
+  "status": "author_informed_reproduction_not_official_population",
+  "zero_shot_completed": false,
+  "predict_score_separation": true,
+  "labels_used_by_predict": false,
+  "selection_uses_evttc": false,
+  "token_schema": ["sequence_id", "sample_token", "track_id", "timestamp_us"],
+  "official_query_population_verified": false,
+  "official_table_vi_checkpoint_sha256_verified": false,
+  "public_checkpoint_candidate": "paper_ours_full.pth",
+  "configured_intervals": [
+    {
+      "scenario_id": "CCRs2-medium",
+      "canonical_sequence_id": "CCRs2-medium",
+      "start_s": 9.4,
+      "end_s": 11.6
+    },
+    {
+      "scenario_id": "CCRs2-high",
+      "canonical_sequence_id": "CCRs2-high",
+      "start_s": 15.5,
+      "end_s": 17.4
+    },
+    {
+      "scenario_id": "CCRm-medium",
+      "canonical_sequence_id": "CCRm-medium",
+      "start_s": 21.4,
+      "end_s": 22.2
+    }
+  ],
+  "cameras": {
+    "rgb": "/blackflys/left/data",
+    "events": "/prophesee/event_cam_left"
+  },
+  "annotations": {
+    "source": "leftlabel/*.json",
+    "target_continuity": "nearest_previous_bbox_center",
+    "initial_target_when_multiple": "unresolved"
+  },
+  "roi": {
+    "mapping": "validated_calibration_mapper_required",
+    "mapped_points": "four_rgb_bbox_corners",
+    "enclosure": "axis_aligned_rectangle_then_square_max_dimension",
+    "expansion_factor": 1.0,
+    "depth_or_translation_inference": "forbidden_unresolved"
+  },
+  "temporal_sampling": {
+    "rgb_interval_s_approx": 0.1,
+    "window": "sliding_three_rgb_frames",
+    "model_inputs": "last_two_rgb_observations_and_two_corresponding_event_segments"
+  },
+  "ttc_ground_truth": {
+    "source": "ttc.csv",
+    "matching": "nearest_timestamp",
+    "maximum_difference_s": 0.05,
+    "maximum_difference_inclusive": true
+  },
+  "skip_reasons": [
+    "missing_annotation",
+    "missing_ttc_ground_truth",
+    "empty_event_data",
+    "ttc_timestamp_mismatch",
+    "preprocessing_error"
+  ],
+  "metric": {
+    "name": "RTE",
+    "formula": "abs(predicted_ttc_s-target_ttc_s)/abs(target_ttc_s)*100",
+    "aggregation": "plain_mean_per_scenario_and_overall",
+    "invalid_predictions": "retain_as_failures_and_invalidate_mean"
+  },
+  "test12": {
+    "ground_truth": "private",
+    "official_evaluation": "CodaBench competition 17289"
+  }
+}
