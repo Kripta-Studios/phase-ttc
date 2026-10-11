@@ -12,8 +12,24 @@ def _metrics(first_mid: float, second_mid: float) -> dict[str, object]:
         "sequence_macro": {
             "sequence_macro_paper_MiD_overall": sum(finite) / len(finite),
             "per_sequence": {
-                "seq-a": {"paper_MiD_overall": first_mid},
-                "seq-b": {"paper_MiD_overall": second_mid},
+                "seq-a": {
+                    "paper_MiD_overall": first_mid,
+                    "num_samples": 4,
+                    "invalid_mid_count": 0,
+                    "invalid_row_count": 0,
+                    "out_of_domain_count": 0,
+                    "complete_cohort_accounting": math.isfinite(first_mid),
+                    "strict_metric_coverage": math.isfinite(first_mid),
+                },
+                "seq-b": {
+                    "paper_MiD_overall": second_mid,
+                    "num_samples": 4,
+                    "invalid_mid_count": 0,
+                    "invalid_row_count": 0,
+                    "out_of_domain_count": 0,
+                    "complete_cohort_accounting": math.isfinite(second_mid),
+                    "strict_metric_coverage": math.isfinite(second_mid),
+                },
             },
         },
     }
@@ -33,6 +49,7 @@ def test_complete_sequence_candidate_remains_lexicographic() -> None:
     improved = _selection(_metrics(180.0, 200.0))
 
     assert incumbent["complete_sequence_coverage"] == 1.0
+    assert incumbent["strict_metric_coverage"] == 1.0
     assert improved["complete_sequence_coverage"] == 1.0
     assert _is_better(improved, incumbent) is True
     assert _is_better(incumbent, improved) is False
