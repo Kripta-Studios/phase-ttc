@@ -1,0 +1,17 @@
+{
+  "schema": "phase_range_candidate_diagnostics_v1",
+  "sources": {
+    "scripts/diagnose_detection_range_candidate.py": "0f827d810895bc80fe078ea646a3ef8dadb6111f9417e2b10b1a0c8096d77532",
+    "src/e_jepa_ttc/detection/raw_diagnostics.py": "bb57b4575cd8f58a57ffd30e5f33b91220a50779752c56060a37e60e03795316",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea"
+  },
+  "evaluation_intake_sha256": "8f9aa14c6d1e6b116a9598326d2bc59d0d4687395f40957ed63ef1d6b573b9ce",
+  "reference_complete_sha256": "96f1c426af66a9d17b2cdbf826d3bff08f5920459562387bd1ab6a57e059e716",
+  "control_reuse_sha256": "4202ab69e19025338b82d3ea6223f0ddcde687174463dd1daf2544e926c400cb",
+  "rule": "Full mAP gain>=0.005 over control and positive over incumbent; inspect class drops>0.01 and 60-150m recall",
+  "range_recall": "Greedy and maximum-cardinality at 0.5/1/2/4m; max recall ignores score ordering",
+  "promotion": false,
+  "test_labels_read": false
+}

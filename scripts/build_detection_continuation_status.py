@@ -114,6 +114,27 @@ def main() -> None:
             "",
         ]
     )
+    for arm in ("linear_16_to_8", "mlp_16_to_64_gelu_to_8"):
+        result_path = args.query_root / f"campaign/evaluation_{arm}/RESULTS.json"
+        if result_path.is_file():
+            result = read(result_path)
+            lines.append(
+                f"Ranking `{arm}`: mAP completa **{result['metrics']['mAP']:.8f}**, "
+                "sin promoción. Ver informe por clase en "
+                "`evidence/query_quality_20261101/REPORT.md`."
+            )
+    lines.append("")
+    for label, path in (
+        (
+            "Confirmación 150 m",
+            args.range_root / "range150_confirmation_v1/full_selection/STATUS.json",
+        ),
+        ("Diagnóstico por rango", args.range_root / "range150_diagnostics_v1/STATUS.json"),
+    ):
+        if path.is_file():
+            value = read(path)
+            lines.append(f"{label}: `{json.dumps(value, ensure_ascii=False)}`.")
+    lines.append("")
     audit = read(args.pretrained_root / "cpu_transfer_v2/TRANSFER_AUDIT.json")
     conversion = read(args.pretrained_root / "monodgp_kitti_plain_v1/CONVERSION.json")
     weights_path = args.pretrained_root / "monodgp_kitti_plain_v1/model_state.pt"

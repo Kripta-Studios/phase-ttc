@@ -81,3 +81,12 @@ los shards históricos. Se reutiliza por ello su evaluación completa ya guardad
 mAP 0,05701726 en 23.958 imágenes. Esta equivalencia solo cubre las detecciones:
 los logits auxiliares y el entrenamiento sí difieren. Recibo:
 `evidence/range_campaign_20261101/CONTROL_REUSE.json`.
+
+`diagnose_detection_range_candidate.py` consume en CPU únicamente shards completos
+de la confirmación. Comprueba igualdad de la población y el GT raw con la referencia,
+reconstruye las métricas completas y calcula recall por rango, clase y tamaño.
+El recall de cardinalidad máxima permite comparar cobertura sin depender del
+orden del ranker. También conserva el greedy. Su estado parcial no constituye
+confirmación: el resultado final requiere paridad exacta con `RESULTS.json` y
+las 23.958 imágenes. Evidencia local: `range150_diagnostics_v1` bajo el directorio
+de la campaña de rango. No promueve automáticamente el candidato.
