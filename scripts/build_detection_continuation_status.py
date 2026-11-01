@@ -80,6 +80,10 @@ def main() -> None:
             args.range_root / "range150_confirmation_v1/QUEUE.json",
         ),
         ("Rango de 300 m", args.range_root / "long_range_campaign_v1/QUEUE.json"),
+        (
+            "Inicialización KITTI",
+            args.pretrained_root / "comparison_campaign_v1/QUEUE.json",
+        ),
     ):
         state = read(queue.with_suffix(".status.json"))
         contract = read(queue)
@@ -100,7 +104,9 @@ def main() -> None:
             "postergación registrada en DEFERRED_FOR_CONFIRMATION.json; su runner puede "
             "mostrar FAILED/Stop requested before next stage mientras está postergado. "
             "El runner de confirmación retira solo su propio marcador intacto y reinicia "
-            "la cola de 300 m tras terminar. No añadir otro proceso GPU competidor.",
+            "la cola de 300 m tras terminar. Después espera la comparación KITTI, "
+            "con smoke de 32 actualizaciones, replay exacto y gate de aprendizaje. "
+            "No añadir otro proceso GPU competidor.",
             "No editar las fuentes enumeradas en los contratos activos. "
             "Un cambio exige otro productor/contrato; nunca relajar hashes.",
             "",
@@ -127,8 +133,8 @@ def main() -> None:
             "incluidas las caídas. Confirmar en selección completa solo un candidato justificado.",
             "3. Verificar la paridad GPU y los resultados de ranking por clase; "
             "seguir el smoke/gate de 300 m y su comparación controlada.",
-            "4. Si las mejoras son insuficientes, usar la admisión técnica del checkpoint "
-            "KITTI para preparar el siguiente ensayo, sin atribuirle rendimiento no medido.",
+            "4. Seguir la comparación KITTI ya preparada, sin atribuirle rendimiento "
+            "no medido ni ampliar automáticamente su presupuesto de 2.048 actualizaciones.",
             "5. Mantener ocho clases, raw GT, particiones, recibos y artefactos negativos. "
             "No tocar etiquetas privadas ni usar score test para hiperparámetros.",
             "6. Todo gasto cloud nuevo requiere un límite explícito. "

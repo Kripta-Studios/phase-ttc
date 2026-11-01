@@ -1,0 +1,22 @@
+{
+  "sources": {
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\COMPARISON.json": "f91f48b20b1d8773a076b6dc76c51f6c0f1d60b7b84be3cd8da1056c2007f1a1",
+    "D:\\PHASE_TTC_QUERY_QUALITY_20261101\\panel\\PANEL.json": "7032c1fc01274f6722ffadb8363a623cef41d8fd1b91377a0ed8bb801217329f",
+    "D:\\PHASE_TTC_QUERY_QUALITY_20261101\\campaign\\heads\\CONTRACT.json": "f7ec0731a3039111113159afec42f641d34ae6be28a1c9e8cdf8b8cc76305a65",
+    "D:\\PHASE_TTC_QUERY_QUALITY_20261101\\campaign\\QUEUE.status.json": "7a8945dbd8a8cff726940bfff9098d255d21e841c95310aec779cdbebccc44f9",
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\baseline.json": "5072353eee41ddcbd64d264654e691bdf4de3aa7e729241129393c7ebaded677",
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\ranked.json": "086ea40ec97548877f282716391b9eee178e0500b26db80a2661568989ccc603",
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\scalar_uncertainty.json": "0a538f2f46a27b5ffc2dabb51fa19cf1a29dd3bdef91317c5ef6264987454567",
+    "D:\\PHASE_TTC_QUERY_QUALITY_20261101\\campaign\\evaluation_linear_16_to_8\\RESULTS.json": "25f0805872e83352c14e64f47fa2acd4ea7ef234dbb0f62306c5332dfb2e95ba",
+    "D:\\PHASE_TTC_QUERY_QUALITY_20261101\\campaign\\evaluation_linear_16_to_8\\INTAKE.json": "ab4f0e2105f3d6c4a5b1656697fcc73c628cce99e91adc9399cc1ec36df74301",
+    "D:\\PHASE_TTC_QUERY_QUALITY_20261101\\campaign\\evaluation_mlp_16_to_64_gelu_to_8\\RESULTS.json": "aa922d10fc9c22c453d157759a095290af8ab6f19232c53b6e021fc4eed77394",
+    "D:\\PHASE_TTC_QUERY_QUALITY_20261101\\campaign\\evaluation_mlp_16_to_64_gelu_to_8\\INTAKE.json": "fac401f2936896f76c913fbd4c6aea4bc3a1cf450f9a0828f6209a40af94ede1"
+  },
+  "generator_sha256": "e845e5eeebf821370f304eb50a9cafc486d6191c67d72f742096b2e3478e779b",
+  "report_sha256": "63b57752fb39b830d0fabf9b041cf4f19e351fd26039070e9b528df1cb007919",
+  "states": {
+    "evaluation_linear_16_to_8": "BELOW_INCUMBENT_NOT_PROMOTED",
+    "evaluation_mlp_16_to_64_gelu_to_8": "BELOW_INCUMBENT_NOT_PROMOTED"
+  },
+  "promotion": false
+}
