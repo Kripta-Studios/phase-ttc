@@ -1,5 +1,12 @@
 # Viabilidad de MonoCoP para una comparación posterior
 
+Actualización posterior a la revisión estática: el [port CPU v2](evidence/monocop_cpu_port_20261101/report/REPORT.md)
+pasó construcción, atención, forward/backward, calibración y replay en 56,126 s.
+El intento v1 falló por dimensiones de la pirámide y se conserva con su corrección.
+Estas pruebas usan pesos aleatorios y cero pasos de optimizador; no miden mAP
+ni admiten otro entrenamiento GPU. El texto siguiente documenta la inspección
+estática anterior, cuyo recibo permanece intacto.
+
 MonoCoP queda como un competidor condicional. Esta revisión estática no admite
 otro entrenamiento: primero deben terminar los ensayos de rango e inicialización
 KITTI ya registrados. No hay una métrica eAP de MonoCoP ni evidencia de que vaya

@@ -302,10 +302,31 @@ def main() -> None:
         lines.extend(
             [
                 f"MonoCoP: {competitor_audit['verified_source_files']} archivos verificados, "
-                "revisión estática únicamente. No se ejecutó su código ni se midió eAP. "
+                "en la revisión estática inicial. Ese recibo no incluye ejecución ni eAP. "
                 "Ver `docs/detection_sota_20261029/MONOCOP_FEASIBILITY_20261101.md` "
                 "para adaptaciones de rango, calibración, clases, pesos y atención. "
                 "No hay otro entrenamiento GPU admitido por esta revisión.",
+                "",
+            ]
+        )
+    cpu_archive = ROOT / "docs/detection_sota_20261029/evidence/monocop_cpu_port_20261101"
+    if (cpu_archive / "ARCHIVE.json").is_file():
+        archived = read(cpu_archive / "ARCHIVE.json")
+        cpu_result = read(cpu_archive / "v2/RESULTS.json")
+        if (
+            inputs[str(cpu_archive / "v2/RESULTS.json")]
+            != archived["files"]["v2/RESULTS.json"]["sha256"]
+        ):
+            raise ValueError("MonoCoP CPU result changed")
+        lines.extend(
+            [
+                f"Port MonoCoP CPU posterior: **{cpu_result['status']}**, "
+                f"{cpu_result['elapsed_seconds']:.3f} s, pesos aleatorios y cero "
+                "pasos de optimizador. Pasaron atención, forward/backward de ocho "
+                "clases y targets vacíos, focales, rango y replay. Incluye un frame "
+                "TRAIN real con target a 249,153 m. No mide mAP ni autoriza GPU. "
+                "El fallo de la pirámide v1 y el parche v2 se conservan. "
+                "Informe: `evidence/monocop_cpu_port_20261101/report/REPORT.md`.",
                 "",
             ]
         )

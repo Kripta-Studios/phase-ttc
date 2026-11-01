@@ -1,0 +1,80 @@
+{
+  "schema": "phase_monocop_cpu_evidence_archive_v1",
+  "base_git_commit": "c76c5501bcd4b4a40545a7aaf055adfc78fa6a48",
+  "execution_tree_note": "CPU scripts were untracked at execution; exact executed bytes are archived and bound by receipts.",
+  "files": {
+    "v1/RESULTS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_smoke_v1\\RESULTS.json",
+      "sha256": "f83f6657d050ed7b8a4965687ea34315ce1c9faa0d505bfa63aa221a52d8a3c8",
+      "bytes": 5394
+    },
+    "v1/STATUS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_smoke_v1\\STATUS.json",
+      "sha256": "bcd3863fc3e97b2118177e41f73b4d272f0e6e2da1ea3410c6c405593e789f9f",
+      "bytes": 22
+    },
+    "v1/executed_runner.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_smoke_v1\\executed_runner.py",
+      "sha256": "82fa526af3e23d97245b21d34580fe9209bcb670099daf163c3b58a14f3c9174",
+      "bytes": 14415
+    },
+    "v1/executed_prepare.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_port_v1\\executed_prepare.py",
+      "sha256": "bb10ac09dbafd9b35656475497e87177c41d3b461b02e833baf968c3914aeea5",
+      "bytes": 10142
+    },
+    "v1/PORT.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_port_v1\\source\\PORT.json",
+      "sha256": "67d8fc1d3b0b638512a32f9394dbc3c645df30e433a5d439ed46b0f7a00756dd",
+      "bytes": 17863
+    },
+    "v1/PORT.patch": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_port_v1\\source\\PORT.patch",
+      "sha256": "9952010b72352699e080acd489109f1a50b0b65434bb584d1cbb0f2571d45e35",
+      "bytes": 9785
+    },
+    "v2/RESULTS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_smoke_v2\\RESULTS.json",
+      "sha256": "3e9ce2b85c42470aa5863ba5b70843c8610ff865f244aeecd4fc83bfa92815ce",
+      "bytes": 8580
+    },
+    "v2/STATUS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_smoke_v2\\STATUS.json",
+      "sha256": "181c2ed3edf342b65e4cf958fb6d33426d93f9cfa2a93efc583b6c5d84f7da0c",
+      "bytes": 34
+    },
+    "v2/executed_runner.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_smoke_v2\\executed_runner.py",
+      "sha256": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+      "bytes": 15703
+    },
+    "v2/executed_prepare.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_smoke_v2\\executed_prepare.py",
+      "sha256": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+      "bytes": 10593
+    },
+    "v2/PORT.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_port_v2\\source\\PORT.json",
+      "sha256": "9ba3647ece606feb68e9aea9332b6a6a5745db4788c5ec2f7271e37996f2deec",
+      "bytes": 18029
+    },
+    "v2/PORT.patch": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_port_v2\\source\\PORT.patch",
+      "sha256": "ddcca05417d0cbbe8762f9a69bb1621c7835069d8f78afe8f799cf76f3f400d1",
+      "bytes": 10321
+    },
+    "report/REPORT.md": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_report_v2\\REPORT.md",
+      "sha256": "6e0271d34a8e48653db7c1341172f79360437eb223d67a018bb06b0733671bd4",
+      "bytes": 2657
+    },
+    "report/MANIFEST.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_cpu_report_v2\\MANIFEST.json",
+      "sha256": "fe560d373be0ff6d6ed3f720669ad0311e96ff30cdc99bd642963edfecb143eb",
+      "bytes": 524
+    }
+  },
+  "raw_data_included": false,
+  "weights_included": false,
+  "quality_evaluation": false
+}
