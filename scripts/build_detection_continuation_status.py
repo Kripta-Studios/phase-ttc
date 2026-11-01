@@ -132,6 +132,11 @@ def main() -> None:
             args.range_root / "range150_confirmation_v1/full_selection/STATUS.json",
         ),
         ("Diagnóstico por rango", args.range_root / "range150_diagnostics_v1/STATUS.json"),
+        ("Entrenamiento 300 m", args.range_root / "long_range_campaign_v1/screen/STATUS.json"),
+        (
+            "Entrenamiento desde KITTI",
+            args.pretrained_root / "comparison_campaign_v1/screen/STATUS.json",
+        ),
     ):
         if path.is_file():
             value = read(path)
