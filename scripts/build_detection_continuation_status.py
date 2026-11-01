@@ -212,6 +212,35 @@ def main() -> None:
                 "",
             ]
         )
+    train_diagnostic = args.query_root / "train_diagnostics_v1"
+    if (train_diagnostic / "COMPLETE.json").is_file():
+        receipt = read(train_diagnostic / "COMPLETE.json")
+        comparison_path = train_diagnostic / "COMPARISON.json"
+        if (
+            receipt["status"] != "VERIFIED"
+            or receipt["frames"] != 4096
+            or receipt["cuda_initialized"]
+            or hashlib.sha256(comparison_path.read_bytes()).hexdigest()
+            != receipt["files"]["COMPARISON.json"]
+        ):
+            raise ValueError("TRAIN diagnostic evidence differs")
+        comparison = read(comparison_path)
+        key = "class_depth/bicycle/[0,20)"
+        train_recall = comparison["train"]["groups"][key]["recall"]["same_class_maximum_2m"]
+        selection_recall = comparison["selection"]["groups"][key]["recall"]["same_class_maximum_2m"]
+        lines.extend(
+            [
+                "Diagnóstico TRAIN verificado, sin nueva inferencia: bicicletas a 0–20 m, "
+                f"recall máximo con clase correcta a 2 m {train_recall:.6f} en TRAIN "
+                f"y {selection_recall:.6f} en selección. Las poblaciones difieren; "
+                "no prueba una brecha causal de generalización ni sustituye la mAP.",
+                "Prioridad: terminar rango e inicialización externa. No repetir R2-rare "
+                "o las cabezas de logits sin una hipótesis nueva. Informe: "
+                "`docs/detection_sota_20261029/evidence/"
+                "train_query_diagnostics_20261101/report/REPORT.md`.",
+                "",
+            ]
+        )
     audit = read(args.pretrained_root / "cpu_transfer_v2/TRANSFER_AUDIT.json")
     conversion = read(args.pretrained_root / "monodgp_kitti_plain_v1/CONVERSION.json")
     weights_path = args.pretrained_root / "monodgp_kitti_plain_v1/model_state.pt"
