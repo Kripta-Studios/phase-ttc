@@ -1,0 +1,7 @@
+{
+  "status": "SUPERSEDED_BEFORE_GPU_EXECUTION",
+  "replacement_plan": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v2\\PLAN.json",
+  "replacement_plan_sha256": "9b79ee0900c0e164ecef53eaabf62ff1540289e7df593b626f6d5896cd6c24d1",
+  "reason": "Bind admission to preregistered predecessor identities and reviewed checkpoint; explicitly disable TF32 for full-model CPU/CUDA parity.",
+  "gpu_run_started_from_v1": false
+}
