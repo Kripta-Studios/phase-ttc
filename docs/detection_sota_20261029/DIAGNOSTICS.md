@@ -48,9 +48,11 @@ por separado. La secuencia `2Y46OkK3ff` alcanza recall class-agnostic 0,4784 y
 El output congelado no contiene logits completos, query ID, box2D, incertidumbre de
 profundidad ni la descomposición entre prior y residuo. El análisis los marca como no
 disponibles. El observador externo posterior sí expuso logits, índice de query implícito
-por orden del decoder y la segunda componente de profundidad, entrenada como
-log-varianza, manteniendo paridad exacta de predicciones. En 447 correspondencias, la
-correlación de esa log-varianza con el error real de profundidad óptica es `-0,1170` y
+por orden del decoder y la segunda componente de profundidad, manteniendo paridad
+exacta de predicciones. El nombre histórico es `depth_log_variance`, pero la pérdida
+implementada corresponde a una escala de Laplace; véase la
+[precisión de semántica](DEPTH_SCALE_SEMANTICS_20261101.md). En 447 correspondencias, la
+correlación de ese segundo componente con el error real de profundidad óptica es `-0,1170` y
 los errores medios por cuartil aproximado son 1,0612/1,1332/1,0572/0,8807 m. No hay una
 relación monótona ni evidencia de calibración de incertidumbre de profundidad. La
 correlación `0,3953` observada antes corresponde al error vertical ego Z-up, otra

@@ -16,10 +16,14 @@ nueva calidad para evaluación y operación.
 El candidato único es una regresión logística compartida por las ocho clases. No se porta
 RARE ni otro framework. Las 16 features observables son los ocho logits en el orden exacto
 `car, bicycle, truck, pedestrian, motorcycle, bus, tricycle, other_vehicle`, score de clase,
-margen top1–top2, entropía de clase, profundidad predicha, log-varianza de profundidad y
+margen top1–top2, entropía de clase, profundidad predicha, segundo componente de profundidad y
 logaritmos de las dimensiones L/W/H decodificadas. Media y desviación se estiman solo en
 TRAIN. Una clase sin positivos queda declarada con soporte cero; no se inventa un modelo
 por clase.
+
+El campo histórico `depth_log_variance` conserva su nombre y sus valores. Su
+[semántica en la pérdida implementada](DEPTH_SCALE_SEMANTICS_20261101.md) es una
+escala logarítmica de Laplace; no acredita una varianza gaussiana calibrada.
 
 ## Target TRAIN y máscaras
 
