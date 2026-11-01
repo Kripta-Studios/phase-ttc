@@ -1,0 +1,20 @@
+{
+  "status": "COMPLETE",
+  "queue_sha256": "b6002d707e1457b9e5fdf17b8cf00933d39310bde9c9963245a0fc343fb3679c",
+  "completed": {
+    "smoke": {
+      "receipt_sha256": "47779ad653a93964a02f8239baab45321ec7621dbe9e57569c82695d5253c5f8",
+      "returncode": 0
+    },
+    "smoke_gate": {
+      "receipt_sha256": "13c2f940152a75ee5ed7befde2095353f37e30b2421bed5830d674991b729183",
+      "returncode": 0
+    },
+    "screen": {
+      "receipt_sha256": "d2c0748209f4a2bda014c23d66342853b1087807773720a3a786a82738b09fb0",
+      "returncode": 0
+    }
+  },
+  "active_job": null,
+  "pid": null
+}

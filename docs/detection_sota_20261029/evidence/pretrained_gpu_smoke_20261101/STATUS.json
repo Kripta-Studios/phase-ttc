@@ -1,0 +1,21 @@
+{
+  "status": "COMPLETE",
+  "update": 32,
+  "exposures": 64,
+  "best_aligned_mAP": 0.018613423060623992,
+  "elapsed_seconds": 35.06578050000826,
+  "cache": {
+    "schema": "phase_lossless_compact_training_cache_v1",
+    "device": "cuda",
+    "capacity": 2,
+    "resident_samples": 2,
+    "gpu_image_bytes": 0,
+    "cpu_image_bytes": 1474560,
+    "target_metadata_payload_bytes": 67885,
+    "hits": 62,
+    "misses": 2,
+    "raw_images_retained": 0,
+    "pending_cpu_preparations": 0
+  },
+  "peak_cuda_bytes": 2547197440
+}

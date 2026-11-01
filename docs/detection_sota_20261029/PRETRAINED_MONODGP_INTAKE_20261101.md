@@ -63,9 +63,11 @@ conservó. La segunda copia aislada cambia únicamente ese atributo sin uso y
 oculta CUDA mediante `CUDA_VISIBLE_DEVICES=-1`; completó la prueba sin
 inicializar CUDA. No se modificó el productor GPU en ejecución.
 
-Falta el smoke GPU y una comparación de aprendizaje registrada con población,
-presupuesto, evaluación periódica y control comunes. Esta admisión técnica
-no autoriza promoción ni demuestra una mejora sobre el incumbente.
+Tras esta admisión CPU se registró la [comparación de aprendizaje](PRETRAINED_COMPARISON_20261101.md)
+con población, presupuesto, evaluación periódica y control comunes. El smoke GPU,
+su replay y el gate de aprendizaje ya pasaron; los recibos están en
+`evidence/pretrained_gpu_smoke_20261101/`. El screening principal ha comenzado.
+La admisión técnica no autoriza promoción ni demuestra una mejora sobre el incumbente.
 
 ## Artefactos y reproducción
 

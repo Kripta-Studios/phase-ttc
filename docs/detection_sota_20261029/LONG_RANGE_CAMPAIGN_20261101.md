@@ -90,3 +90,25 @@ orden del ranker. También conserva el greedy. Su estado parcial no constituye
 confirmación: el resultado final requiere paridad exacta con `RESULTS.json` y
 las 23.958 imágenes. Evidencia local: `range150_diagnostics_v1` bajo el directorio
 de la campaña de rango. No promueve automáticamente el candidato.
+
+## Cierre del screening de 300 m
+
+Los tres brazos completaron sus 2.048 actualizaciones. El
+[informe regenerado desde los JSON](evidence/range300_screen_20261101/REPORT.md)
+compara todas las evaluaciones y las AP por clase del checkpoint seleccionado.
+La carga CPU del checkpoint, su contrato y la paridad inicial de predicciones
+y métricas están verificados. Se conservan pesos y resultados negativos.
+
+El mejor 300 m no supera en el panel al incumbente ni al control de 150 m.
+Se decide no asignarle confirmación completa ni semillas adicionales. Esta
+decisión de recursos posterior al screening no equivale a ejecutar la regla
+de promoción en selección completa ni descarta cualquier receta de mayor rango.
+La comparación KITTI ya registrada continúa con la GPU liberada.
+
+Reproducción, usando un directorio de salida nuevo:
+
+```powershell
+python scripts/build_detection_long_range_result.py `
+  --campaign D:/PHASE_TTC_RANGE_20261101 `
+  --output D:/PHASE_TTC_RANGE_20261101/range300_screen_report_replay
+```

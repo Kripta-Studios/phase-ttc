@@ -1,0 +1,34 @@
+{
+  "schema": "phase_eap_long_range_campaign_v1",
+  "experiment_id": "range300-seed7-screen-v1",
+  "seed": 7,
+  "dataset_root": "E:\\eAP_dataset",
+  "release_root": "D:\\PHASE_TTC_RELEASE_20261101\\dfull-rgb-ranked-seed7",
+  "release_manifest_sha256": "61fc1023d67cf63aec8409023ddbdc44d02041c7413c3c2f83361e69a9ab2fbc",
+  "population": "D:\\PHASE_TTC_RANGE_20261101\\screen_config_v1\\population.json",
+  "population_sha256": "481ac9c0adc9f31a8555928a6fed4dc5784b38485e170833ac3e510bd01e645b",
+  "depth_max_m": 300.0,
+  "evaluation_profile": "phase_ttc_eap_observed_reference_v1",
+  "evaluation_profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+  "initialization": "dfull_reset_depth_classifier_keep_physical_embeddings_v1",
+  "model": {
+    "width": 640,
+    "height": 384
+  },
+  "batch_size": 2,
+  "updates": 2048,
+  "evaluation_updates": [
+    0,
+    512,
+    1024,
+    1536,
+    2048
+  ],
+  "checkpoint_interval": 128,
+  "learning_rate": 5e-05,
+  "backbone_lr_multiplier": 0.1,
+  "weight_decay": 0.0001,
+  "maximum_seconds": 7200.0,
+  "cpu_threads": 4,
+  "cache_cpu_gib": 8.0
+}

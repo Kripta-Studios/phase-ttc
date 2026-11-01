@@ -1,0 +1,26 @@
+{
+  "schema": "phase_pretrained_smoke_gate_v1",
+  "status": "PASS",
+  "saved_model_exact_parity_tokens": 16,
+  "early_mean_loss": 83.23742771148682,
+  "late_mean_loss": 48.086700439453125,
+  "completed_updates": 32,
+  "maximum_admitted_depth_m": 249.15318298339844,
+  "far_frame_seen_by_training": true,
+  "lid_bins_for_probe_depths": [
+    35,
+    56,
+    72,
+    79
+  ],
+  "probe_depths_m": [
+    60.0,
+    150.0,
+    249.15318298339844,
+    299.0
+  ],
+  "checkpoint_sha256": "fa47a5a75f6b93cac28b4ac682097f16466d8308024d1e9d5465327c9d1b6098",
+  "contract_sha256": "c1799c93849904b4e39c45c7627a546ac19f4fcf4bfc79696b87d2c7c3c040b8",
+  "reference_sha256": "47b3fda6a97abe6d04e7239d6ed24db51939e5fa5ea446f2367784c923ac4d0f",
+  "source_sha256": "0221e0c677284ed596aef7feaabebb4205101567dcbed4cb2b8fee8170016845"
+}

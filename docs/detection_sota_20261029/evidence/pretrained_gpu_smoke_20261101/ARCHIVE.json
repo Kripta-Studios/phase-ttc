@@ -1,0 +1,52 @@
+{
+  "schema": "phase_ttc_pretrained_smoke_archive_v1",
+  "source_root": "D:\\PHASE_TTC_PRETRAINED_20261101\\comparison_campaign_v1",
+  "files": {
+    "SMOKE_GATE.json": {
+      "source": "SMOKE_GATE.json",
+      "sha256": "901f96eda48d68aa52c7d4037bd6de139fd9b15fda071aa3b5a87d74c6c5db9e"
+    },
+    "STATUS.json": {
+      "source": "smoke/STATUS.json",
+      "sha256": "105367cb7654e44ed938fd296c82ff675b4aca218aabb651d423bbd72d7ab770"
+    },
+    "CONTRACT.json": {
+      "source": "smoke/CONTRACT.json",
+      "sha256": "c1799c93849904b4e39c45c7627a546ac19f4fcf4bfc79696b87d2c7c3c040b8"
+    },
+    "ENVIRONMENT.json": {
+      "source": "smoke/ENVIRONMENT.json",
+      "sha256": "fe505224d3337467007eba8fcae19a76d56697457e3b9115253ecb58177db864"
+    },
+    "REPLAY_STATUS.json": {
+      "source": "smoke_replay/STATUS.json",
+      "sha256": "d281b6253522fd5ed5805138fd0cec37fee956e58c3fcd403c401170bcc2281e"
+    },
+    "REPLAY_RESULTS.json": {
+      "source": "smoke_replay/RESULTS.json",
+      "sha256": "47b3fda6a97abe6d04e7239d6ed24db51939e5fa5ea446f2367784c923ac4d0f"
+    },
+    "REPLAY_INTAKE.json": {
+      "source": "smoke_replay/INTAKE.json",
+      "sha256": "83ab3fa20dccf7be6cfc588862462f7fef649cf2da68e804ce95b7562f4c74c8"
+    }
+  },
+  "completed_queue_receipts": {
+    "smoke": {
+      "receipt_sha256": "105367cb7654e44ed938fd296c82ff675b4aca218aabb651d423bbd72d7ab770",
+      "returncode": 0
+    },
+    "smoke_replay": {
+      "receipt_sha256": "d281b6253522fd5ed5805138fd0cec37fee956e58c3fcd403c401170bcc2281e",
+      "returncode": 0
+    },
+    "smoke_gate": {
+      "receipt_sha256": "901f96eda48d68aa52c7d4037bd6de139fd9b15fda071aa3b5a87d74c6c5db9e",
+      "returncode": 0
+    }
+  },
+  "queue_contract_sha256": "e639911788f2a43a9930a2bff33493d8e47ee7adb38eb4590ada5191c1bafe40",
+  "learning_gate_passed": true,
+  "eap_quality_confirmed": false,
+  "promotion": false
+}

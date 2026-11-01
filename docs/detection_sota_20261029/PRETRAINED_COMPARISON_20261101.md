@@ -37,7 +37,8 @@ La regla registrada exige +0,005 mAP de ocho clases frente al control y al
 incumbente comparable en el panel antes de confirmar el checkpoint en selección
 completa. La confirmación debe mantener esa ganancia y revisar caídas por clase
 superiores a 0,01. No es test independiente, no hay promoción automática y no se
-usan etiquetas privadas. No se ha medido todavía rendimiento de esta variante.
+usan etiquetas privadas. Las métricas del screening se conservan en los JSON
+de evaluación; no constituyen confirmación completa de esta variante.
 
 Artefactos locales:
 
@@ -49,3 +50,19 @@ La cola admite un único proceso GPU. Los tests verifican mapeo de clases,
 reproducibilidad de los nuevos pesos, conservación de bins físicos y rechazo de
 contratos o artefactos alterados. El ensayo está autorizado únicamente en recursos
 locales; no abre trabajos cloud ni realiza envíos oficiales.
+
+## Inicio verificado tras cerrar 300 m
+
+El control 300 m completó su presupuesto y no mejoró a las referencias del panel;
+véase el [cierre de rango](evidence/range300_screen_20261101/REPORT.md).
+La cola KITTI pasó las 32 actualizaciones del smoke, el replay exacto del último
+checkpoint en 16 imágenes y el gate de aprendizaje. Se verificó una reducción
+de la pérdida media, valores finitos y presencia efectiva del target lejano.
+Los valores originales y los hashes están en
+[SMOKE_GATE.json](evidence/pretrained_gpu_smoke_20261101/SMOKE_GATE.json).
+
+El screening de 2.048 actualizaciones ha comenzado con su presupuesto original.
+`build_detection_continuation_status.py` incorpora las evaluaciones terminadas
+en el documento de continuidad de Descargas. Distingue las 16 imágenes del smoke
+de las 512 del panel principal. Los recibos del smoke no acreditan calidad de
+detección ni autorizan épocas o semillas adicionales.
