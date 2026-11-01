@@ -61,8 +61,22 @@ de la pérdida media, valores finitos y presencia efectiva del target lejano.
 Los valores originales y los hashes están en
 [SMOKE_GATE.json](evidence/pretrained_gpu_smoke_20261101/SMOKE_GATE.json).
 
-El screening de 2.048 actualizaciones ha comenzado con su presupuesto original.
+El screening completó las 2.048 actualizaciones con su presupuesto original.
 `build_detection_continuation_status.py` incorpora las evaluaciones terminadas
 en el documento de continuidad de Descargas. Distingue las 16 imágenes del smoke
 de las 512 del panel principal. Los recibos del smoke no acreditan calidad de
 detección ni autorizan épocas o semillas adicionales.
+
+## Cierre negativo
+
+El [informe regenerado](evidence/kitti_screen_20261101/REPORT.md) conserva todas
+las evaluaciones y la comparación con las referencias del mismo panel. No se
+cumplió la regla de avance a selección completa. No se añaden épocas ni semillas.
+El checkpoint seleccionado, su estado de entrenamiento y la evidencia tienen
+una copia local adicional verificada por SHA-256 y carga CPU.
+
+La AP cero de una clase no implica ausencia de aciertos. El informe incluye
+TP, FP, recall y precisión usada por la fórmula alineada: algunas clases
+producen aciertos, pero acompañados de demasiados falsos positivos. Estos datos
+motivan estudiar la arquitectura y la inicialización multiclase de MonoCoP;
+no demuestran por sí solos que el cambio vaya a mejorar eAP.

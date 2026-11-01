@@ -1,0 +1,290 @@
+{
+  "status": "COPY_HASHES_VERIFIED",
+  "files": {
+    "monocop_gpu_smoke_v2/ADMISSION.json": {
+      "sha256": "56b6e615b924912a271ea51da509e188f421a84effb51d5e243bff9d43010a3d",
+      "bytes": 2039,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/ADMISSION.json"
+    },
+    "monocop_gpu_smoke_v2/CONTRACT.json": {
+      "sha256": "3feff186835a33f1797a406ca9e1f7ae50022a159c7fe97ab2272521c7db85d8",
+      "bytes": 5301,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/CONTRACT.json"
+    },
+    "monocop_gpu_smoke_v2/ENVIRONMENT.json": {
+      "sha256": "8cc1faed539a58f29db5061830be83d6bfde2fe5680cae6c72d0f7e0cbe0ddff",
+      "bytes": 257,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/ENVIRONMENT.json"
+    },
+    "monocop_gpu_smoke_v2/metrics.jsonl": {
+      "sha256": "533174babc2f7e8bf3da3f360b856f6f360bc75b833baae65055baf376c513e0",
+      "bytes": 12917,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/metrics.jsonl"
+    },
+    "monocop_gpu_smoke_v2/PARITY.json": {
+      "sha256": "9f5a81cb4708ea0159d6c246c5d3f49e107023e3ecf1551bf127eabf38267730",
+      "bytes": 3580,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/PARITY.json"
+    },
+    "monocop_gpu_smoke_v2/REPLAY.json": {
+      "sha256": "861e3195eadbb2ad6ae024635b834b28bda4c48b2134e3a8aee8f543286039d9",
+      "bytes": 519265,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/REPLAY.json"
+    },
+    "monocop_gpu_smoke_v2/STATUS.json": {
+      "sha256": "d411b30db20a0739e1b36c24162d6a193c82347962e91c79cdd95843f67a6670",
+      "bytes": 327,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/STATUS.json"
+    },
+    "monocop_gpu_smoke_v2/TIMINGS.json": {
+      "sha256": "0aca351a984b0372def0dee62f031b67fac809e1105c584ae8b59bb6296e109d",
+      "bytes": 784,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/TIMINGS.json"
+    },
+    "monocop_gpu_smoke_v2/checkpoints/initial.pt": {
+      "sha256": "14c5c0e12bc1be5ef196b75c8a45ec254450e910119997300338dc6ae491fe8e",
+      "bytes": 171125019,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/checkpoints/initial.pt"
+    },
+    "monocop_gpu_smoke_v2/checkpoints/last.pt": {
+      "sha256": "b56174f72b5bb60b967bcf126007ba4d756228fc5ba250b3bcee5ec7026857bc",
+      "bytes": 502577055,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/checkpoints/last.pt"
+    },
+    "monocop_gpu_smoke_v2/checkpoints/update000016.pt": {
+      "sha256": "e02924370df8759437b84d85676277ce1c453692dc8c52eec33d328edc0119a9",
+      "bytes": 502592567,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/checkpoints/update000016.pt"
+    },
+    "monocop_gpu_smoke_v2/code/scripts/audit_monocop_cpu_port.py": {
+      "sha256": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+      "bytes": 15703,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/scripts/audit_monocop_cpu_port.py"
+    },
+    "monocop_gpu_smoke_v2/code/scripts/prepare_monocop_gpu_smoke.py": {
+      "sha256": "34900df032a98d946747b6013fd6785cb44895fbaf7cbc715500890dcbf07649",
+      "bytes": 5884,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/scripts/prepare_monocop_gpu_smoke.py"
+    },
+    "monocop_gpu_smoke_v2/code/scripts/prepare_monocop_portable.py": {
+      "sha256": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+      "bytes": 10593,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/scripts/prepare_monocop_portable.py"
+    },
+    "monocop_gpu_smoke_v2/code/scripts/run_monocop_gpu_smoke.py": {
+      "sha256": "88ccbc0b737f983e5e12c6dde6385a1ed11f7b956df4bd38066c0bd5d8873f21",
+      "bytes": 26109,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/scripts/run_monocop_gpu_smoke.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/benchmark_evaluation.py": {
+      "sha256": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+      "bytes": 9420,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/benchmark_evaluation.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/campaign_training.py": {
+      "sha256": "2ff58dda8f4c46ea4c9f71ae0508a636789a7f6bd8d2bbedea1e5a72efc2b999",
+      "bytes": 51662,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/campaign_training.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/development_metrics.py": {
+      "sha256": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a",
+      "bytes": 8324,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/development_metrics.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/eap_rgb_data.py": {
+      "sha256": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+      "bytes": 11636,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/eap_rgb_data.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/evaluation_protocol.py": {
+      "sha256": "44710d70540f2f114c6b9fccd7b7317fe50328630c01f9a07d0a3c56dca8c9b6",
+      "bytes": 6745,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/evaluation_protocol.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/geometry_contract.py": {
+      "sha256": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+      "bytes": 7304,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/geometry_contract.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/indexed_rgb_data.py": {
+      "sha256": "c6aace6e78635c109a1c159d5586dc147ec06722f8caca15c1ec777b55fc2ec7",
+      "bytes": 10190,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/indexed_rgb_data.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/monocop_initialization.py": {
+      "sha256": "98a0ebe2e21688a84abb589f217d253425a4805cef90f29508bfcdfe9e9cb64a",
+      "bytes": 6701,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/monocop_initialization.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/monocop_smoke.py": {
+      "sha256": "ad51a1286d7658af32f9ecac6dd22f28a51754f62019547259c70dc9b5989503",
+      "bytes": 10108,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/monocop_smoke.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py": {
+      "sha256": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+      "bytes": 13842,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/portable_attention.py": {
+      "sha256": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+      "bytes": 4262,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/portable_attention.py"
+    },
+    "monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/range_campaign.py": {
+      "sha256": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+      "bytes": 14787,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/code/src/e_jepa_ttc/detection/range_campaign.py"
+    },
+    "monocop_gpu_smoke_v2/evaluation/000000.json": {
+      "sha256": "c4ff3fa48f28ee421a4739f97360213c76bd21e664927d52b4b02a33a09c9d78",
+      "bytes": 517167,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/evaluation/000000.json"
+    },
+    "monocop_gpu_smoke_v2/evaluation/000016.json": {
+      "sha256": "41a636b2526ec027b2d3905f51a43accb88e769a522d6ef1dc92ac68c3d25ac6",
+      "bytes": 519237,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/evaluation/000016.json"
+    },
+    "monocop_gpu_smoke_v2/evaluation/000032.json": {
+      "sha256": "360010cc49eceb9fa52e6ae55d16dbfb0cb1610fa242996dd97bdf1d4220a85e",
+      "bytes": 519266,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v2/evaluation/000032.json"
+    },
+    "monocop_gpu_smoke_recovery_v1/GATE.json": {
+      "sha256": "6f7531bf4259ce447b789b3aafd07b6868874966add927a54ac8c2d5a64494ac",
+      "bytes": 6560,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_recovery_v1/GATE.json"
+    },
+    "monocop_gpu_smoke_recovery_v1/REPLAY.json": {
+      "sha256": "745741035fbc48bc5cf23a5196edda9f04ebb0388d55eeae4e2255fed854916c",
+      "bytes": 519266,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_recovery_v1/REPLAY.json"
+    },
+    "monocop_gpu_smoke_recovery_v1/code/scripts/audit_monocop_gpu_smoke.py": {
+      "sha256": "d30be3b36f449b0202eec2687f275f3718b61f42bf25bf7f94453c20adb4e287",
+      "bytes": 6174,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_recovery_v1/code/scripts/audit_monocop_gpu_smoke.py"
+    },
+    "monocop_gpu_smoke_recovery_v1/code/scripts/run_monocop_gpu_smoke.py": {
+      "sha256": "ffea35bcdff7bb74b860a1c84ff3528ec1d789a19bd1f4459095bb8248db8630",
+      "bytes": 25943,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_recovery_v1/code/scripts/run_monocop_gpu_smoke.py"
+    },
+    "monocop_gpu_smoke_recovery_v1/code/src/e_jepa_ttc/detection/monocop_smoke.py": {
+      "sha256": "609e8135ad054521f3d1cbb19ed4bd421ee9862bc19450326b836b8e4bb3ebe1",
+      "bytes": 10495,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_recovery_v1/code/src/e_jepa_ttc/detection/monocop_smoke.py"
+    },
+    "monocop_gpu_smoke_plan_v4/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "sha256": "8d9d9cc6f5ae22b7faf94b97934a85c499cd0010af0c9efdff3c4bdb8c99b6d2",
+      "bytes": 4346,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/MONOCOP_GPU_SMOKE_PLAN_20261101.md"
+    },
+    "monocop_gpu_smoke_plan_v4/PLAN.json": {
+      "sha256": "f4ab2ce5c5f3a1b6e867bfb286900b7de1ff298786ebf3018ae3c28c7907a1f4",
+      "bytes": 4480,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/PLAN.json"
+    },
+    "monocop_gpu_smoke_plan_v4/smoke.json": {
+      "sha256": "d62b6c4ed7e2fe2ffb3418aa25d6dc159f15876821ef08c19ee0a014ee73b30d",
+      "bytes": 1369,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/smoke.json"
+    },
+    "monocop_gpu_smoke_plan_v4/VALIDATION.json": {
+      "sha256": "7cfdc4f31195d57b5b844e11c5e01969eb7453d22e28bf4101b3f2b8a1564a18",
+      "bytes": 159,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/VALIDATION.json"
+    },
+    "monocop_gpu_smoke_plan_v4/code/scripts/audit_monocop_cpu_port.py": {
+      "sha256": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+      "bytes": 15703,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/scripts/audit_monocop_cpu_port.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/scripts/prepare_monocop_gpu_smoke.py": {
+      "sha256": "34900df032a98d946747b6013fd6785cb44895fbaf7cbc715500890dcbf07649",
+      "bytes": 5884,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/scripts/prepare_monocop_gpu_smoke.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/scripts/prepare_monocop_portable.py": {
+      "sha256": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+      "bytes": 10593,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/scripts/prepare_monocop_portable.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/scripts/run_monocop_gpu_smoke.py": {
+      "sha256": "88ccbc0b737f983e5e12c6dde6385a1ed11f7b956df4bd38066c0bd5d8873f21",
+      "bytes": 26109,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/scripts/run_monocop_gpu_smoke.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/benchmark_evaluation.py": {
+      "sha256": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+      "bytes": 9420,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/benchmark_evaluation.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/campaign_training.py": {
+      "sha256": "2ff58dda8f4c46ea4c9f71ae0508a636789a7f6bd8d2bbedea1e5a72efc2b999",
+      "bytes": 51662,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/campaign_training.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/development_metrics.py": {
+      "sha256": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a",
+      "bytes": 8324,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/development_metrics.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/eap_rgb_data.py": {
+      "sha256": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+      "bytes": 11636,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/eap_rgb_data.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/evaluation_protocol.py": {
+      "sha256": "44710d70540f2f114c6b9fccd7b7317fe50328630c01f9a07d0a3c56dca8c9b6",
+      "bytes": 6745,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/evaluation_protocol.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/geometry_contract.py": {
+      "sha256": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+      "bytes": 7304,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/geometry_contract.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/indexed_rgb_data.py": {
+      "sha256": "c6aace6e78635c109a1c159d5586dc147ec06722f8caca15c1ec777b55fc2ec7",
+      "bytes": 10190,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/indexed_rgb_data.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/monocop_initialization.py": {
+      "sha256": "98a0ebe2e21688a84abb589f217d253425a4805cef90f29508bfcdfe9e9cb64a",
+      "bytes": 6701,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/monocop_initialization.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/monocop_smoke.py": {
+      "sha256": "ad51a1286d7658af32f9ecac6dd22f28a51754f62019547259c70dc9b5989503",
+      "bytes": 10108,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/monocop_smoke.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py": {
+      "sha256": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+      "bytes": 13842,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/portable_attention.py": {
+      "sha256": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+      "bytes": 4262,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/portable_attention.py"
+    },
+    "monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/range_campaign.py": {
+      "sha256": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+      "bytes": 14787,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/code/src/e_jepa_ttc/detection/range_campaign.py"
+    },
+    "monocop_gpu_admission_v3/ADMISSION.json": {
+      "sha256": "56b6e615b924912a271ea51da509e188f421a84effb51d5e243bff9d43010a3d",
+      "bytes": 2039,
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_admission_v3/ADMISSION.json"
+    }
+  },
+  "restore_verified": {
+    "update": 32,
+    "contract_exact": true,
+    "cuda_initialized": false
+  }
+}

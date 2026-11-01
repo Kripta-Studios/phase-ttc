@@ -1,0 +1,35 @@
+{
+  "schema": "phase_monocop_gpu_smoke_admission_v1",
+  "decision": "GPU_TECHNICAL_SMOKE_ONLY",
+  "reviewed_utc": "2026-11-01T22:45:42.165550+00:00",
+  "plan_sha256": "f4ab2ce5c5f3a1b6e867bfb286900b7de1ff298786ebf3018ae3c28c7907a1f4",
+  "config_sha256": "92f682bdc1e248519d8b0383d9d592e568d6eccceb557a6d01ac5779bb8d5287",
+  "maximum_seconds": 600.0,
+  "new_cloud_spend": false,
+  "predecessor_processes": [
+    {
+      "pid": 6988,
+      "created_epoch": 1793560288.1108077,
+      "lock_source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/QUEUE.lock"
+    },
+    {
+      "pid": 30196,
+      "created_epoch": 1793568156.3466852,
+      "lock_source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/WRITER.lock"
+    }
+  ],
+  "predecessor_queue": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/QUEUE.json",
+  "predecessor_queue_sha256": "e639911788f2a43a9930a2bff33493d8e47ee7adb38eb4590ada5191c1bafe40",
+  "predecessor_status_sha256": "bcbb22c086f288a261935b5165c565ceac934e2efce3c983a6befe228e8cd59d",
+  "review_result": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/RESULTS.json",
+  "review_result_sha256": "64406c665fa64f0093da5477b20a679e4f9e0b2457fed96bcfd6ae6f0a5f0ebf",
+  "scientific_reason": "KITTI Car-only initialization did not meet the registered panel gate. MonoCoP supplies a distinct architecture and published Car/Pedestrian/Cyclist supervision; verify numerical behavior, repeated-batch learning and cost before considering a quality screen.",
+  "quality_screen_admitted": false,
+  "promotion": false,
+  "gpu_observation": "1 %, 2480 MiB, 9465 MiB",
+  "amendment": {
+    "previous_admission_sha256": "5bd0e475752d8da3168cb5f414437ba7db9b77c0f720bdbee9de0d260d9dad91",
+    "failed_technical_execution_sha256": "1699269a53180efae8c044dfe23002484bf4b2329e53fb41f5be903015be6aae",
+    "reason": "Repeat the short technical check after checkpoint naming bug. Failed execution consumed 19.01 seconds; no quality extension or cloud spend."
+  }
+}

@@ -29,7 +29,12 @@ from prepare_monocop_portable import build_detector
 from e_jepa_ttc.detection.benchmark_evaluation import BenchmarkEvaluator
 from e_jepa_ttc.detection.campaign_training import ResumablePermutationSampler, UpdateLRScheduler
 from e_jepa_ttc.detection.eap_rgb_data import EAPRGBDataset
-from e_jepa_ttc.detection.monocop_smoke import MonoCoPSmokeConfig, verify_admission, verify_inputs
+from e_jepa_ttc.detection.monocop_smoke import (
+    MonoCoPSmokeConfig,
+    verify_admission,
+    verify_inputs,
+    verify_replay,
+)
 from e_jepa_ttc.detection.monodgp_eap_adapter import decode_eap, prepare_sample
 from e_jepa_ttc.detection.portable_attention import deformable_attention_pytorch
 from e_jepa_ttc.detection.range_campaign import (
@@ -148,6 +153,11 @@ def run(args: argparse.Namespace) -> None:
         if digest(ROOT / name) != expected:
             raise ValueError(f"Frozen smoke source differs: {name}")
     population = verify_inputs(cfg)
+    if args.output is not None:
+        if args.output.exists():
+            raise ValueError("A new output directory is required")
+        if psutil.disk_usage(str(args.output.parent)).free < 4 * 2**30:
+            raise ValueError("At least 4 GiB of free output space is required")
     if args.validate_only:
         print(
             json.dumps(
@@ -162,10 +172,8 @@ def run(args: argparse.Namespace) -> None:
     if args.admission is None:
         raise ValueError("The GPU smoke needs a separate admission after KITTI review")
     admission = verify_admission(args.admission, args.plan, cfg)
-    if args.output is None or args.output.exists():
+    if args.output is None:
         raise ValueError("A new output directory is required")
-    if psutil.disk_usage(args.output.parent).free < 4 * 2**30:
-        raise ValueError("At least 4 GiB of free output space is required")
     if args.resume is not None:
         prior_lock = args.resume.parent.parent / "WRITER.lock"
         if prior_lock.is_file():
@@ -375,7 +383,7 @@ def run(args: argparse.Namespace) -> None:
                         target.parent.mkdir(parents=True, exist_ok=True)
                         shutil.copyfile(path, target)
 
-            def save(name: str) -> None:
+            def save(checkpoint_name: str) -> None:
                 nonlocal checkpoint_update
                 before = time.perf_counter()
                 if (
@@ -393,7 +401,7 @@ def run(args: argparse.Namespace) -> None:
                     if digest(port / name) != expected:
                         raise ValueError(f"Portable source changed: {name}")
                 save_state(
-                    args.output / "checkpoints" / name,
+                    args.output / "checkpoints" / checkpoint_name,
                     model=model,
                     optimizer=optimizer,
                     scheduler=scheduler,
@@ -404,8 +412,15 @@ def run(args: argparse.Namespace) -> None:
                     elapsed=consumed + time.perf_counter() - start,
                 )
                 checkpoint_update = update
+                checkpoint_path = args.output / "checkpoints" / checkpoint_name
+                if not checkpoint_path.is_file():
+                    raise RuntimeError(f"Checkpoint was not saved at {checkpoint_path}")
                 times["checkpoints"].append(
-                    {"update": update, "name": name, "seconds": time.perf_counter() - before}
+                    {
+                        "update": update,
+                        "name": checkpoint_name,
+                        "seconds": time.perf_counter() - before,
+                    }
                 )
 
             if args.resume is None:
@@ -506,11 +521,7 @@ def run(args: argparse.Namespace) -> None:
             replay = evaluate(model, selection, cfg, population["media"])
             write_json(args.output / "REPLAY.json", replay)
             final = json.loads((args.output / "evaluation/000032.json").read_text())
-            if (
-                replay["predictions"] != final["predictions"]
-                or replay["metrics"] != final["metrics"]
-            ):
-                raise ValueError("Saved-model predictions or metrics differ after restore")
+            verify_replay(replay, final)
             early = sum(row["loss"] for row in history[:8]) / 8
             late = sum(row["loss"] for row in history[-8:]) / 8
             if len(history) != 32 or late >= early:

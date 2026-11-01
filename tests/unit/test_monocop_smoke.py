@@ -9,15 +9,33 @@ from pathlib import Path
 import psutil
 import pytest
 
-from e_jepa_ttc.detection.benchmark_evaluation import PROFILE_SHA256
+from e_jepa_ttc.detection.benchmark_evaluation import PROFILE_SHA256, BenchmarkEvaluator
 from e_jepa_ttc.detection.monocop_smoke import (
     INITIAL_SHA256,
     POPULATION_SHA256,
     PORT_SHA256,
     MonoCoPSmokeConfig,
     verify_admission,
+    verify_replay,
 )
 from e_jepa_ttc.detection.range_campaign import digest
+
+
+def test_exact_replay_accepts_actual_profile_json_roundtrip() -> None:
+    evaluator = BenchmarkEvaluator()
+    evaluator.add_frame("fixture:001", [], [])
+    replay = {"predictions": {"fixture:001": []}, "metrics": evaluator.summarize()}
+    verify_replay(replay, json.loads(json.dumps(replay)))
+
+
+def test_exact_replay_rejects_even_a_small_numeric_change() -> None:
+    evaluator = BenchmarkEvaluator()
+    evaluator.add_frame("fixture:001", [], [])
+    replay = {"predictions": {"fixture:001": []}, "metrics": evaluator.summarize()}
+    expected = json.loads(json.dumps(replay))
+    expected["metrics"]["mAP"] += 1e-15
+    with pytest.raises(ValueError, match="metrics differ"):
+        verify_replay(replay, expected)
 
 
 def config() -> MonoCoPSmokeConfig:

@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "update": 0,
+      "name": "utils/misc.py",
+      "seconds": 0.18299780000234023
+    },
+    {
+      "update": 0,
+      "name": "utils/misc.py",
+      "seconds": 0.17929509999521542
+    },
+    {
+      "update": 16,
+      "name": "utils/misc.py",
+      "seconds": 0.43406169999798294
+    },
+    {
+      "update": 16,
+      "name": "utils/misc.py",
+      "seconds": 0.435875399998622
+    },
+    {
+      "update": 32,
+      "name": "utils/misc.py",
+      "seconds": 0.45615329999418464
+    },
+    {
+      "update": 32,
+      "name": "utils/misc.py",
+      "seconds": 0.44528209998679813
+    }
+  ],
+  "construction_and_initialization": 4.014743099993211,
+  "cold_train_preparation": 0.3169376000005286,
+  "numerical_parity": 1.3933570999943186
+}

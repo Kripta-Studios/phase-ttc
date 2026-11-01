@@ -10,6 +10,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+import psutil
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -22,6 +24,7 @@ def main() -> None:
     parser.add_argument("--aligned-root", required=True, type=Path)
     parser.add_argument("--semantic-root", type=Path)
     parser.add_argument("--ensemble-root", type=Path)
+    parser.add_argument("--competitor-root", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     inputs: dict[str, str] = {}
@@ -293,6 +296,23 @@ def main() -> None:
             value = read(path)["metrics"]
             lines.append(f"| {int(path.stem)} | {value['samples']} | {value['mAP']:.8f} |")
         lines.append("")
+    kitti_result = args.pretrained_root / "kitti_screen_report_v1/RESULTS.json"
+    if kitti_result.is_file():
+        manifest = read(kitti_result.parent / "MANIFEST.json")
+        result = read(kitti_result)
+        if inputs[str(kitti_result)] != manifest["files"]["RESULTS.json"]:
+            raise ValueError("Completed KITTI report changed")
+        lines.extend(
+            [
+                f"KITTI cerrado: mejor mAP panel **{result['runs']['kitti']['best']:.8f}**, "
+                f"delta incumbente {result['delta_incumbent']:+.8f}; "
+                f"decisión `{result['decision']}`. No hay confirmación completa de esta "
+                "variante. El informe incluye TP/FP/recall por clase: una AP cero no "
+                "equivale necesariamente a cero aciertos. "
+                f"Informe: `{(kitti_result.parent / 'REPORT.md').as_posix()}`.",
+                "",
+            ]
+        )
     competitor = ROOT / "docs/detection_sota_20261029/evidence/monocop_static_feasibility_20261101"
     if (competitor / "AUDIT.json").is_file():
         competitor_manifest = read(competitor / "ARCHIVE.json")
@@ -346,12 +366,90 @@ def main() -> None:
                 "Car, Pedestrian y Cyclist mapeados, otras cinco filas nuevas. "
                 "Pasaron ocho clases, targets vacíos, un frame TRAIN real y replay "
                 "exacto. v2 corrige una API sin cambiar pesos ni resultados numéricos. "
-                "Cero pasos de optimizador, ninguna mAP eAP de MonoCoP. No confundir "
-                "con el ensayo KITTI MonoDGP activo. Informe: "
+                "Esta transferencia CPU no hizo pasos de optimizador ni midió mAP. "
+                "No confundir con el ensayo KITTI MonoDGP de las tablas anteriores. Informe: "
                 "`evidence/monocop_transfer_20261101/report/REPORT.md`.",
                 "",
             ]
         )
+    if args.competitor_root is not None:
+        smoke_root = args.competitor_root / "monocop_gpu_smoke_v2"
+        plan_path = args.competitor_root / "monocop_gpu_smoke_plan_v4/PLAN.json"
+        if plan_path.is_file():
+            smoke_plan = read(plan_path)
+            lines.extend(
+                [
+                    "MonoCoP GPU: plan técnico separado de 32 updates, 2 TRAIN/16 "
+                    "selección, 600 s y 9 GiB. El plan v1 se sustituyó antes de ejecutar "
+                    "GPU; v2 liga admisión a procesos, revisión y checkpoint de KITTI, "
+                    "y desactiva TF32 explícitamente. v3 corrige una ruta Windows; "
+                    "v4 corrige el nombre del checkpoint. Los fallos quedan conservados. "
+                    f"Plan actual: `{plan_path.as_posix()}`, "
+                    f"SHA-256 `{inputs[str(plan_path)]}`. "
+                    "Screening de calidad admitido por ese plan: "
+                    f"{smoke_plan['quality_screen_admitted']}.",
+                    "",
+                ]
+            )
+        status_path = smoke_root / "STATUS.json"
+        if status_path.is_file():
+            live_status = read(status_path)
+            live: bool | None = False
+            lock_path = smoke_root / "WRITER.lock"
+            if lock_path.is_file():
+                identity = read(lock_path)
+                try:
+                    live = (
+                        abs(
+                            psutil.Process(identity["pid"]).create_time()
+                            - identity["created_epoch"]
+                        )
+                        < 1
+                    )
+                except psutil.NoSuchProcess:
+                    live = False
+                except psutil.AccessDenied:
+                    live = None
+            lines.extend(
+                [
+                    "Estado comunicado por el smoke GPU: "
+                    f"`{json.dumps(live_status, ensure_ascii=False)}`. "
+                    f"Proceso escritor con identidad coincidente vivo al snapshot: {live}. "
+                    "Un timeout de observación no autoriza reiniciar ni ampliar el presupuesto.",
+                    "",
+                ]
+            )
+            recovery_path = args.competitor_root / "monocop_gpu_smoke_recovery_v1/GATE.json"
+            if live_status["status"] == "COMPLETE" or recovery_path.is_file():
+                gate_path = recovery_path if recovery_path.is_file() else smoke_root / "GATE.json"
+                gate = read(gate_path)
+                if recovery_path.is_file():
+                    if gate["original_status"] != live_status:
+                        raise ValueError("Recovery audit does not describe this run")
+                    for name, expected in gate["inputs"].items():
+                        with Path(name).open("rb") as stream:
+                            actual = hashlib.file_digest(stream, "sha256").hexdigest()
+                        if actual != expected:
+                            raise ValueError("Recovered smoke input changed")
+                elif inputs[str(gate_path)] != live_status["gate_sha256"]:
+                    raise ValueError("MonoCoP completed smoke gate changed")
+                lines.extend(
+                    [
+                        f"Gate técnico MonoCoP: **{gate['status']}**; "
+                        f"loss media {gate['early_mean_loss']:.6f} → {gate['late_mean_loss']:.6f}; "
+                        f"replay exacto en {gate['replay_exact_frames']} imágenes. "
+                        "La auditoría en un proceso nuevo recuperó el gate tras un falso "
+                        "fallo al comparar tuplas del perfil con listas JSON, sin nuevos "
+                        "updates de entrenamiento ni tolerancia numérica. Catorce tests pasaron. "
+                        "No acredita generalización ni un modelo excelente; requiere "
+                        "revisar tiempos antes de registrar un screening de calidad.",
+                        "",
+                    ]
+                )
+        else:
+            lines.extend(
+                ["MonoCoP GPU: no hay todavía un STATUS de ejecución en el destino registrado.", ""]
+            )
     lines.extend(
         [
             "",
@@ -361,9 +459,10 @@ def main() -> None:
             "2. Conservar el resultado negativo confirmado de 150 m y sus diagnósticos "
             "por clase y distancia; no repetir esa inferencia completa.",
             "3. Conservar los resultados negativos del ranking por clase; "
-            "cerrar 300 m desde sus JSON completos y comparar con su control.",
-            "4. Seguir la comparación KITTI ya preparada, sin atribuirle rendimiento "
-            "no medido ni ampliar automáticamente su presupuesto de 2.048 actualizaciones.",
+            "consultar el cierre 300 m y los JSON originales sin repetir inferencia.",
+            "4. Usar el cierre KITTI sin ampliar automáticamente sus 2.048 updates. "
+            "MonoCoP ha pasado el smoke técnico de 32 updates; cualquier "
+            "screening de calidad requiere revisar su gate, coste y registrar otra receta.",
             "5. Mantener ocho clases, raw GT, particiones, recibos y artefactos negativos. "
             "No tocar etiquetas privadas ni usar score test para hiperparámetros.",
             "6. Todo gasto cloud nuevo requiere un límite explícito. "

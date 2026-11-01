@@ -167,6 +167,14 @@ def verify_inputs(cfg: MonoCoPSmokeConfig) -> dict[str, Any]:
     return population
 
 
+def verify_replay(replay: dict, expected_json: dict) -> None:
+    """Compare exact saved values, normalizing only JSON tuple/list representation."""
+    for name in ("predictions", "metrics"):
+        persisted = json.loads(json.dumps(replay[name], allow_nan=False))
+        if persisted != expected_json[name]:
+            raise ValueError(f"Saved-model {name} differ after restore")
+
+
 def verify_admission(path: Path, plan_path: Path, cfg: MonoCoPSmokeConfig) -> dict[str, Any]:
     """Require a reviewed, completed predecessor and no still-live writer process."""
     admission = json.loads(path.read_text(encoding="utf-8"))

@@ -1,0 +1,11 @@
+{
+  "status": "FAILED",
+  "update": 32,
+  "checkpoint_update": 32,
+  "exposures": 64,
+  "elapsed_seconds": 18.72083289999864,
+  "timestamp_utc": "2026-11-01T22:46:07.246029+00:00",
+  "last_loss": 32.78878402709961,
+  "error_type": "ValueError",
+  "error": "Saved-model predictions or metrics differ after restore"
+}

@@ -1,0 +1,31 @@
+{
+  "input_sha256": {
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/QUEUE.json": "e639911788f2a43a9930a2bff33493d8e47ee7adb38eb4590ada5191c1bafe40",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/QUEUE.status.json": "bcbb22c086f288a261935b5165c565ceac934e2efce3c983a6befe228e8cd59d",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_config_v1/PLAN.json": "0529ffc5b10763e7913d837abd973df03eba122e4a29c72e9d3cee12896a6cf3",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_config_v1/screen.json": "c0ea01b8083de7063ee2135762ce4b68831b5221c44ca3440cc8922c01fbf920",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/smoke/STATUS.json": "105367cb7654e44ed938fd296c82ff675b4aca218aabb651d423bbd72d7ab770",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/SMOKE_GATE.json": "901f96eda48d68aa52c7d4037bd6de139fd9b15fda071aa3b5a87d74c6c5db9e",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/STATUS.json": "bdcbaf31e3c5cc7e158253ea68c13baeb602bc1db710f982f6b8b086bbe06b57",
+    "D:/PHASE_TTC_RANGE_20261101/PANEL_COMPARISON.json": "157bf5c6402fc2d1c8c32db355b88f8e29d2c31b79fda450bcee62f94e33f48a",
+    "D:/PHASE_TTC_RANGE_20261101/screen_config_v1/population.json": "481ac9c0adc9f31a8555928a6fed4dc5784b38485e170833ac3e510bd01e645b",
+    "D:/PHASE_TTC_RANGE_20261101/long_range_campaign_v1/screen/STATUS.json": "d2c0748209f4a2bda014c23d66342853b1087807773720a3a786a82738b09fb0",
+    "D:/PHASE_TTC_RANGE_20261101/long_range_campaign_v1/screen/CONTRACT.json": "e85b2dc854b3ad63d195cf6bc02d2edc8c8cf17095e13064e90b2ae0a697439b",
+    "D:/PHASE_TTC_RANGE_20261101/long_range_campaign_v1/screen/evaluation/000000.json": "a53b28e0a6d2228aebfaa7e34e80ce29c592778c0e72b3811496b26d611299d8",
+    "D:/PHASE_TTC_RANGE_20261101/long_range_campaign_v1/screen/evaluation/000512.json": "8c1c96035cf93b7024097275e8c89606ceca3401976691f32bf025d173a61201",
+    "D:/PHASE_TTC_RANGE_20261101/long_range_campaign_v1/screen/evaluation/001024.json": "9f97f0f69e886f376315b150f1e3bdac7a36c9e7e859553644e754e40e60af5d",
+    "D:/PHASE_TTC_RANGE_20261101/long_range_campaign_v1/screen/evaluation/001536.json": "a80b5975fdab2d6790989bc2de9e25e1a1827b4bf9120d5716b7ab236bcaed78",
+    "D:/PHASE_TTC_RANGE_20261101/long_range_campaign_v1/screen/evaluation/002048.json": "1fc3de81b5d3c1ed41d2761a9886e5c26e30ab096a1124507337eb377795f440",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/CONTRACT.json": "3903b3daa84d627e8af1c86a90ada2453ef8e43b9eb6e8bf352c39f0c5ac9117",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/000000.json": "4fb83b036184b439563fa8565725a49828fae8231bc3c09e410a7edfd05715af",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/000512.json": "f9e93c5467a8b29eb54b4854ff43b7d368176aaa6b9fbdce78f45150507de9af",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/001024.json": "9d34b9d2842ab2140fb05a921cc8a2800cfca2a612c50f372430d6f16183cf6d",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/001536.json": "b23a00ebb2803539286bf2b41fca9407a7b1b71ed0c2f49cd13c0713cfce8e69",
+    "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/002048.json": "4ad023554fa94b0178c51e1977b4203dcbbbaa973cdd3a8184ad821cfebe82f6"
+  },
+  "generator_sha256": "d04336e4abf1c52ff746e13c66530e77d6cf185ff206a1977a1b28bc5df6e156",
+  "files": {
+    "RESULTS.json": "64406c665fa64f0093da5477b20a679e4f9e0b2457fed96bcfd6ae6f0a5f0ebf",
+    "REPORT.md": "ebb171685aefdbe4358495e910cdaed5e82871fb0b05f58e14ed0bb9480db715"
+  }
+}

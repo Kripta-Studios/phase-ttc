@@ -1,0 +1,8 @@
+{
+  "status": "VALIDATED_CPU_ONLY_NOT_ADMITTED",
+  "config_sha256": "92f682bdc1e248519d8b0383d9d592e568d6eccceb557a6d01ac5779bb8d5287",
+  "cuda_initialized": false,
+  "exit_code": 0,
+  "output_path_checked": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_v1",
+  "tool_output_chunk": "2561e2"
+}

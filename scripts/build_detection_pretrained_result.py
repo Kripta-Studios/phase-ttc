@@ -235,9 +235,11 @@ def main() -> None:
     ]
     for cls, row in selected_metric["classes"].items():
         two, four = row["thresholds"]["2.0"], row["thresholds"]["4.0"]
+        recall_two = "n/a" if two["recall"] is None else f"{two['recall']:.4f}"
+        recall_four = "n/a" if four["recall"] is None else f"{four['recall']:.4f}"
         lines.append(
             f"| {cls} | {row['pred_count']} | {two['TP']} | {two['FP']} | "
-            f"{two['recall']:.4f} | {four['recall']:.4f} |"
+            f"{recall_two} | {recall_four} |"
         )
     lines += [
         "",

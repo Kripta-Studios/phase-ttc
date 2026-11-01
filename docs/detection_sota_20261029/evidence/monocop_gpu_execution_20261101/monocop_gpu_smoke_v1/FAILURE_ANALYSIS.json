@@ -1,0 +1,10 @@
+{
+  "status": "CHECKPOINT_NAME_SHADOWING_CONFIRMED",
+  "checkpoint": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_v1\\checkpoints\\utils\\misc.py",
+  "checkpoint_sha256": "8ce5f62debd4d3fcb196080887e6804ec6411ebd41d9efd39cd174d45e02bde8",
+  "checkpoint_update": 32,
+  "status_sha256": "8f35eb4fe8ad915e368d6bab9bf65ad8a26b3ea6c59f8e900662e8b5e765af46",
+  "cause": "The portable-source verification loop shadowed the save(name) parameter. All atomic writes used the final portable relative source path; intermediate states were overwritten, while the final state survived. No source file outside checkpoints was overwritten.",
+  "promotion": false,
+  "recorded_utc": "2026-11-01T22:45:39.893025+00:00"
+}

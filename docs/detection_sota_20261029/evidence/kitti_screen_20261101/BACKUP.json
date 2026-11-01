@@ -1,0 +1,159 @@
+{
+  "schema": "phase_verified_kitti_screen_backup_v1",
+  "files": {
+    "selected.pt": {
+      "sha256": "36efe9f80274616f51ab7d8e6a34afbec9cc393b1156ad5ab43a1dd84861fe8d",
+      "bytes": 498865023,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/checkpoints/selected.pt"
+    },
+    "CONTRACT.json": {
+      "sha256": "3903b3daa84d627e8af1c86a90ada2453ef8e43b9eb6e8bf352c39f0c5ac9117",
+      "bytes": 19191,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/CONTRACT.json"
+    },
+    "STATUS.json": {
+      "sha256": "bdcbaf31e3c5cc7e158253ea68c13baeb602bc1db710f982f6b8b086bbe06b57",
+      "bytes": 562,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/STATUS.json"
+    },
+    "INITIALIZATION.json": {
+      "sha256": "fa0ab7c55a162106955f85b3ebb5452bacab6513038f3aaf0c838d701cf1ce36",
+      "bytes": 37446,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/INITIALIZATION.json"
+    },
+    "ENVIRONMENT.json": {
+      "sha256": "fdedd0f9798de4a1422c7fad64302708017829d781c04395037647d473d3ce49",
+      "bytes": 181,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/ENVIRONMENT.json"
+    },
+    "metrics.jsonl": {
+      "sha256": "c45b566bd71aeccc97e32727ff9eb9e61d7b4581845bc218376c8f0b015a4393",
+      "bytes": 545562,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/metrics.jsonl"
+    },
+    "code/scripts/smoke_monodgp_portable.py": {
+      "sha256": "db00914930f02d9c4551a5d97fabb9b7ff4b9a5fcd7d34e353efaea7fc8f6fe5",
+      "bytes": 24024,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/scripts/smoke_monodgp_portable.py"
+    },
+    "code/scripts/train_detection_pretrained.py": {
+      "sha256": "17a9b38977237378d5b8f4e443d6d15a8edba05b3e98be1acfc08d659ae05f54",
+      "bytes": 17112,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/scripts/train_detection_pretrained.py"
+    },
+    "code/src/e_jepa_ttc/detection/benchmark_evaluation.py": {
+      "sha256": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+      "bytes": 9420,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/benchmark_evaluation.py"
+    },
+    "code/src/e_jepa_ttc/detection/campaign_training.py": {
+      "sha256": "2ff58dda8f4c46ea4c9f71ae0508a636789a7f6bd8d2bbedea1e5a72efc2b999",
+      "bytes": 51662,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/campaign_training.py"
+    },
+    "code/src/e_jepa_ttc/detection/compact_training_cache.py": {
+      "sha256": "4483e7cc12502046feb3563b2e4784735c85f9be7b88d68bff6c3554fda2e820",
+      "bytes": 10163,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/compact_training_cache.py"
+    },
+    "code/src/e_jepa_ttc/detection/development_metrics.py": {
+      "sha256": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a",
+      "bytes": 8324,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/development_metrics.py"
+    },
+    "code/src/e_jepa_ttc/detection/eap_rgb_data.py": {
+      "sha256": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+      "bytes": 11636,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/eap_rgb_data.py"
+    },
+    "code/src/e_jepa_ttc/detection/evaluation_protocol.py": {
+      "sha256": "44710d70540f2f114c6b9fccd7b7317fe50328630c01f9a07d0a3c56dca8c9b6",
+      "bytes": 6745,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/evaluation_protocol.py"
+    },
+    "code/src/e_jepa_ttc/detection/geometry_contract.py": {
+      "sha256": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+      "bytes": 7304,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/geometry_contract.py"
+    },
+    "code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py": {
+      "sha256": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+      "bytes": 13842,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py"
+    },
+    "code/src/e_jepa_ttc/detection/portable_attention.py": {
+      "sha256": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+      "bytes": 4262,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/portable_attention.py"
+    },
+    "code/src/e_jepa_ttc/detection/pretrained_campaign.py": {
+      "sha256": "083a34dc78cad525744c33fa9ec700b0d40bdcf59d1253a78a689d2b0eb85f49",
+      "bytes": 4122,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/pretrained_campaign.py"
+    },
+    "code/src/e_jepa_ttc/detection/pretrained_initialization.py": {
+      "sha256": "91cd4045f5b446d674fa8b6bb2759091a3082d965df0fb215036a49d62bfa496",
+      "bytes": 4918,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/pretrained_initialization.py"
+    },
+    "code/src/e_jepa_ttc/detection/range_campaign.py": {
+      "sha256": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+      "bytes": 14787,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/range_campaign.py"
+    },
+    "code/src/e_jepa_ttc/detection/resident_input_cache.py": {
+      "sha256": "24fd9fa828bd784d5adeef2f12110282079d3969572e03d3852ec20518a4eff8",
+      "bytes": 4049,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/resident_input_cache.py"
+    },
+    "code/src/e_jepa_ttc/detection/velocity_extension.py": {
+      "sha256": "08881d0ec2ea90b98cb1e8b17e2635b4b05cc648d6705610c856e9373f850c90",
+      "bytes": 10259,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/code/src/e_jepa_ttc/detection/velocity_extension.py"
+    },
+    "evaluation/000000.json": {
+      "sha256": "4fb83b036184b439563fa8565725a49828fae8231bc3c09e410a7edfd05715af",
+      "bytes": 12830504,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/000000.json"
+    },
+    "evaluation/000512.json": {
+      "sha256": "f9e93c5467a8b29eb54b4854ff43b7d368176aaa6b9fbdce78f45150507de9af",
+      "bytes": 12772526,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/000512.json"
+    },
+    "evaluation/001024.json": {
+      "sha256": "9d34b9d2842ab2140fb05a921cc8a2800cfca2a612c50f372430d6f16183cf6d",
+      "bytes": 12822744,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/001024.json"
+    },
+    "evaluation/001536.json": {
+      "sha256": "b23a00ebb2803539286bf2b41fca9407a7b1b71ed0c2f49cd13c0713cfce8e69",
+      "bytes": 12814209,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/001536.json"
+    },
+    "evaluation/002048.json": {
+      "sha256": "4ad023554fa94b0178c51e1977b4203dcbbbaa973cdd3a8184ad821cfebe82f6",
+      "bytes": 12821487,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/evaluation/002048.json"
+    },
+    "report/RESULTS.json": {
+      "sha256": "64406c665fa64f0093da5477b20a679e4f9e0b2457fed96bcfd6ae6f0a5f0ebf",
+      "bytes": 115380,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/RESULTS.json"
+    },
+    "report/REPORT.md": {
+      "sha256": "ebb171685aefdbe4358495e910cdaed5e82871fb0b05f58e14ed0bb9480db715",
+      "bytes": 3121,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/REPORT.md"
+    },
+    "report/MANIFEST.json": {
+      "sha256": "0f5acf76d0ebac1c6f5e3e5a5b7788475f152e9bf8ac1013eef69be174fad0da",
+      "bytes": 3645,
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/MANIFEST.json"
+    }
+  },
+  "checkpoint_cpu_restore_verified": true,
+  "update": 2048,
+  "promotion": false,
+  "raw_data_or_cache_copied": false
+}
