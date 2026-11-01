@@ -1,0 +1,49 @@
+{
+  "schema": "eap_depth_contract_probe_v1",
+  "source_sha256": "f641a264ae8c0c44810749e254bc50c5016658925c22d64934668faffb06a551",
+  "script_sha256": "5164e50838a9660ba00723c94bc305716ca5c8d7b930dc7e8202b04912ae9147",
+  "depths_m": [
+    0.0,
+    0.10000000149011612,
+    20.0,
+    40.0,
+    59.0,
+    60.0,
+    80.0,
+    100.0,
+    149.0,
+    150.0,
+    200.0
+  ],
+  "historical_default_target_bins": [
+    80,
+    2,
+    45,
+    65,
+    79,
+    80,
+    80,
+    80,
+    80,
+    80,
+    80
+  ],
+  "explicit_150m_target_bins": [
+    80,
+    1,
+    28,
+    41,
+    49,
+    50,
+    58,
+    65,
+    79,
+    80,
+    80
+  ],
+  "overflow_bin": 80,
+  "historical_loss_forward_uses_defaults": true,
+  "interpretation": "Changing YAML or target admission alone leaves the DDN loss at 60m. Expanded targets require an explicit shared contract for predictor and loss.",
+  "model_changed": false,
+  "new_training": false
+}

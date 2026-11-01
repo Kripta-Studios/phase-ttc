@@ -1,0 +1,31 @@
+{
+  "checked_utc": "2026-11-01",
+  "sources": [
+    {
+      "repository": "NAIL-HNU/eAP_dataset",
+      "commit": "553a1084dcc1a71800ae1d2ffb68f339ecec8a20",
+      "readme_sha256": "89566ba824f6902b2fafc5495cf3db6b004da5bfc6dbe7d1048e28176bd34bc7",
+      "url": "https://github.com/NAIL-HNU/eAP_dataset/tree/553a1084dcc1a71800ae1d2ffb68f339ecec8a20"
+    },
+    {
+      "repository": "WYFDUT/SPAN",
+      "commit": "2ce32c260c9cedd748505b448db87d709d670718",
+      "readme_sha256": "01b8492937eafcbf5b1bb1b859ffb10f132871756840e292629dd964168c5b10",
+      "url": "https://github.com/WYFDUT/SPAN/tree/2ce32c260c9cedd748505b448db87d709d670718"
+    },
+    {
+      "repository": "alanzhangcs/MonoCoP",
+      "commit": "7d3932444f7ea94be564ae61a0b334fc6673213b",
+      "readme_sha256": "54426c42667725f62c60cdf029e255cd0691d9675214d94c2f993636efca8b3e",
+      "url": "https://github.com/alanzhangcs/MonoCoP/tree/7d3932444f7ea94be564ae61a0b334fc6673213b"
+    },
+    {
+      "repository": "HyeonjeongPark37/RARE",
+      "commit": "8f8cf40d1a7f39762845dedf8b554b5f82b49b46",
+      "readme_sha256": "b58de0cdbcf7768fa367c52d839e4362c0155acc39929a172b75115308c0c047",
+      "url": "https://github.com/HyeonjeongPark37/RARE/tree/8f8cf40d1a7f39762845dedf8b554b5f82b49b46"
+    }
+  ],
+  "codabench_status": "Web retrieval of both 17291 and 16717 returned unrelated text; rules and leaderboard NOT verified. Official repository README links 16717, historical submission receipt names 17291. Resolve before any new submission.",
+  "private_scorer_equivalence": false
+}
