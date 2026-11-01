@@ -499,6 +499,32 @@ def main() -> None:
                     "no son selección completa ni score oficial.",
                     "",
                 ]
+        for label, folder in (
+            ("MonoCoP inicial", "monocop_screen_diagnostics_update0_v1"),
+            ("MonoCoP update512", "monocop_screen_diagnostics_update512_v1"),
+            ("Control Dfull300 update512", "control300_screen_diagnostics_update512_v1"),
+        ):
+            diagnostic = args.competitor_root / folder
+            if not (diagnostic / "COMPLETE.json").is_file():
+                continue
+            receipt = read(diagnostic / "COMPLETE.json")
+            if receipt["status"] != "VERIFIED" or not receipt["raw_gt_external_report_parity"]:
+                raise ValueError("Incomplete independent panel diagnostics")
+            values = {}
+            for variant in ("candidate", "oracle_class", "oracle_depth"):
+                path = diagnostic / f"{variant}.json"
+                values[variant] = read(path)["mAP"]
+                if inputs[str(path)] != receipt["files"][path.name]:
+                    raise ValueError("Panel diagnostic values changed")
+            lines += [
+                f"Diagnóstico {label}: mAP real **{values['candidate']:.8f}**; "
+                f"sustitución oracle de clase {values['oracle_class']:.8f}, "
+                f"de profundidad {values['oracle_depth']:.8f}. "
+                "Los oracles usan GT: son contrafactuales diagnósticos, no mejoras "
+                "entrenadas ni cotas generales. Paridad externa raw-GT exacta, "
+                f"sin nueva inferencia. Originales: `{diagnostic.as_posix()}`.",
+                "",
+            ]
     lines.extend(
         [
             "",

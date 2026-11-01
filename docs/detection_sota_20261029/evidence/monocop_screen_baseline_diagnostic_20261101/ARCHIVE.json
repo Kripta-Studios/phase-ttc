@@ -1,0 +1,54 @@
+{
+  "files": {
+    "candidate.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/candidate.json",
+      "sha256": "fd37bf6387c7f5c913900180d18ec317b95f7a475f06fd893f0e242439556aae",
+      "expanded_sha256": "b44178c33b77a81d4a1bb9e5576bcabd1622aef8fe8a0f1911ea8099f0eff3cd"
+    },
+    "candidate_diagnostics.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/candidate_diagnostics.json",
+      "sha256": "48fd8e8157a2de9c9e389476159361a6b82ae80d7174716c54523f47057bf376",
+      "expanded_sha256": "3621ac6c41722d606dea734051a8e01419e5de768a58611d8d4a37020b09fead"
+    },
+    "incumbent.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/incumbent.json",
+      "sha256": "41855e971fa9de4c1b917709479c8bdbc499f1fcffbf3a2fad8fa4c59c7c892b",
+      "expanded_sha256": "ab4cc7a965f7382266985f63732e026e3f0af87e7a0c579a2b53c33d7b4f1aec"
+    },
+    "incumbent_diagnostics.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/incumbent_diagnostics.json",
+      "sha256": "fc240d450664d53978bb71000627609791ddf2df390fdadb46de8cec2453d198",
+      "expanded_sha256": "61f8a911c958c5fa88f65373e132f318bff163f3673dcda5ae95e602a1ea8157"
+    },
+    "oracle_class.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/oracle_class.json",
+      "sha256": "1619285f5b241a31922f57093569eb281ea554bc3a77ec9a69043c716e5d3ec2",
+      "expanded_sha256": "764f6cb8dc914a6dc385355b0758370228a0d8e26789a9c15c5a0cecec7f2702"
+    },
+    "oracle_depth.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/oracle_depth.json",
+      "sha256": "19316536627b6a950222e1c248b844dc1a094a14b15816f4d94f8e06b4112160",
+      "expanded_sha256": "874555faf0eadd1ada1668e18e35e79d40779e179de8dee99161c42e03e25cb3"
+    },
+    "oracle_rank.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/oracle_rank.json",
+      "sha256": "b2999db945e7815c6ff87f0cc182e7706d67999ff0199bbd9187f2bba60b9b31",
+      "expanded_sha256": "bb3e70c58b8d70b121d15a11b11bffeb6983a57c7c1f25cc22b2b1c1ae7d8a1d"
+    },
+    "oracle_size.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/oracle_size.json",
+      "sha256": "d3db6077d891c4fc1d20c96006c307749d136890e7c6da86d18fc7ee87c91ff9",
+      "expanded_sha256": "9e2250c7c851aef09c77247d8d6a54b7d2355fcbd10b55eeda86d2157537f36a"
+    },
+    "COMPLETE.json": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update0_v1/COMPLETE.json",
+      "sha256": "ef1d051290fe77b8ba5671b52d43c3a76e65a007d0593929ff8639adfb98b505"
+    },
+    "REPORT.md": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostic_report_update0_v1/REPORT.md",
+      "sha256": "58c8725d62a3dae4ae671ea8fbce6f40375e684b64316153236858db0f0a8f43"
+    }
+  },
+  "compressed_json_is_lossless": true,
+  "generator_supports_gzip": true
+}

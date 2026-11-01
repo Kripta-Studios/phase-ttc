@@ -1,0 +1,30 @@
+{
+  "schema": "phase_fixed_screen_diagnostics_v1",
+  "status": "VERIFIED",
+  "frames": 512,
+  "evaluation": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/evaluation/000512.json",
+  "evaluation_sha256": "d9357e7639c92e6c230f1b3eea9a60f833e37c998646cee987b952e6570b398b",
+  "cache_receipt_sha256": "c7d8a7857ba20f1c077351d5788be0d9b8de51ffa15352323652b6ef5a3b5794",
+  "raw_gt_external_report_parity": true,
+  "new_inference": false,
+  "training": false,
+  "cuda_initialized": false,
+  "elapsed_seconds": 40.024285899999086,
+  "sources": {
+    "scripts/diagnose_detection_screen.py": "2bac7d928aaa7236671ab0560a978a546fc2def80e118a99287307fb812d6711",
+    "src/e_jepa_ttc/detection/raw_diagnostics.py": "bb57b4575cd8f58a57ffd30e5f33b91220a50779752c56060a37e60e03795316",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f"
+  },
+  "files": {
+    "candidate.json": "014daa37794094145d3ffb79ee5ae8b12c4dffdfbfc4c4aff95468e3d4830cf2",
+    "candidate_diagnostics.json": "5c959889bad3ad5b702a0776e5f8eb177dfede73813fe06b05ef256c9ac8e9ef",
+    "incumbent.json": "ab4cc7a965f7382266985f63732e026e3f0af87e7a0c579a2b53c33d7b4f1aec",
+    "incumbent_diagnostics.json": "61f8a911c958c5fa88f65373e132f318bff163f3673dcda5ae95e602a1ea8157",
+    "oracle_class.json": "f733eb14f9adb5ef1ddb63945895981a67ab570969ed3af0abedb6782f5887df",
+    "oracle_depth.json": "a95f96f46bf485b6fcea8a425d7ceafe582ca2cf07d99e5a8a21781af5967d6e",
+    "oracle_rank.json": "030e358b304133c015a949748e83b70b4aac8b32ade9ceada8a0f558b9d00f42",
+    "oracle_size.json": "811ee2b3b2bf0a2d47615c7b2963d6105503363a895ca839e4975911bfe19dfd"
+  },
+  "oracle_warning": "GT substitutions are diagnostics, not learned results or general upper bounds."
+}

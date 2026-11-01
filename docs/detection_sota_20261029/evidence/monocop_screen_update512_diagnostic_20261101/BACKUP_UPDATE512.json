@@ -1,0 +1,124 @@
+{
+  "status": "VERIFIED_COPY_AND_CPU_LOAD",
+  "selected_update": 512,
+  "checkpoint_sha256": "cd9c24a060b40dc25bce2bd0c14c66a342a2c7c9ce377aba249c938fc48840e2",
+  "live_status_and_metrics_are_snapshots": true,
+  "files": {
+    "checkpoints/selected.pt": {
+      "sha256": "cd9c24a060b40dc25bce2bd0c14c66a342a2c7c9ce377aba249c938fc48840e2",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/checkpoints/selected.pt"
+    },
+    "CONTRACT.json": {
+      "sha256": "c0ab817f97072295833b8921193f9a25cbe520dfec73a49a26b095b56202a9b4",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/CONTRACT.json"
+    },
+    "ENVIRONMENT.json": {
+      "sha256": "3796d4bfa62bf8fc29dbc339c03bcdfa1126eebce301aaa32c590d0bae9f36cc",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/ENVIRONMENT.json"
+    },
+    "STATUS.json": {
+      "sha256": "09464791938f2e20a3a6db5de72b2ee5e7fc3f2665565d54f51072daa69fb204",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/STATUS.json"
+    },
+    "metrics.jsonl": {
+      "sha256": "54b5548b21a44e97d205d11edd8bf64134803a48a5780c33a3382c25800d46b7",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/metrics.jsonl"
+    },
+    "evaluation/000000.json": {
+      "sha256": "f95590a728f869b22a903e4611bdeb9e73d2ad9c2b62564d2604a69a865b1173",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/evaluation/000000.json"
+    },
+    "evaluation/000512.json": {
+      "sha256": "d9357e7639c92e6c230f1b3eea9a60f833e37c998646cee987b952e6570b398b",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/evaluation/000512.json"
+    },
+    "code/scripts/audit_monocop_cpu_port.py": {
+      "sha256": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/scripts/audit_monocop_cpu_port.py"
+    },
+    "code/scripts/prepare_monocop_portable.py": {
+      "sha256": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/scripts/prepare_monocop_portable.py"
+    },
+    "code/scripts/prepare_monocop_screen.py": {
+      "sha256": "3b6f3e494210d9c3884f1f2ae7ed0eb67da9371c4916933188e5e3ccf873df69",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/scripts/prepare_monocop_screen.py"
+    },
+    "code/scripts/run_monocop_gpu_smoke.py": {
+      "sha256": "ffea35bcdff7bb74b860a1c84ff3528ec1d789a19bd1f4459095bb8248db8630",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/scripts/run_monocop_gpu_smoke.py"
+    },
+    "code/scripts/train_detection_monocop.py": {
+      "sha256": "e12ddff09f70c138c50b727a10af1627239a9268ab870d64c9825e8fa21ac415",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/scripts/train_detection_monocop.py"
+    },
+    "code/src/e_jepa_ttc/detection/benchmark_evaluation.py": {
+      "sha256": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/benchmark_evaluation.py"
+    },
+    "code/src/e_jepa_ttc/detection/campaign_training.py": {
+      "sha256": "2ff58dda8f4c46ea4c9f71ae0508a636789a7f6bd8d2bbedea1e5a72efc2b999",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/campaign_training.py"
+    },
+    "code/src/e_jepa_ttc/detection/compact_training_cache.py": {
+      "sha256": "4483e7cc12502046feb3563b2e4784735c85f9be7b88d68bff6c3554fda2e820",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/compact_training_cache.py"
+    },
+    "code/src/e_jepa_ttc/detection/development_metrics.py": {
+      "sha256": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/development_metrics.py"
+    },
+    "code/src/e_jepa_ttc/detection/eap_rgb_data.py": {
+      "sha256": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/eap_rgb_data.py"
+    },
+    "code/src/e_jepa_ttc/detection/evaluation_protocol.py": {
+      "sha256": "44710d70540f2f114c6b9fccd7b7317fe50328630c01f9a07d0a3c56dca8c9b6",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/evaluation_protocol.py"
+    },
+    "code/src/e_jepa_ttc/detection/geometry_contract.py": {
+      "sha256": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/geometry_contract.py"
+    },
+    "code/src/e_jepa_ttc/detection/indexed_rgb_data.py": {
+      "sha256": "c6aace6e78635c109a1c159d5586dc147ec06722f8caca15c1ec777b55fc2ec7",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/indexed_rgb_data.py"
+    },
+    "code/src/e_jepa_ttc/detection/monocop_campaign.py": {
+      "sha256": "00982dbe8a02547fefec268146e90edd15b2827127e76304a3c5884f35e714fa",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/monocop_campaign.py"
+    },
+    "code/src/e_jepa_ttc/detection/monocop_initialization.py": {
+      "sha256": "98a0ebe2e21688a84abb589f217d253425a4805cef90f29508bfcdfe9e9cb64a",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/monocop_initialization.py"
+    },
+    "code/src/e_jepa_ttc/detection/monocop_smoke.py": {
+      "sha256": "609e8135ad054521f3d1cbb19ed4bd421ee9862bc19450326b836b8e4bb3ebe1",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/monocop_smoke.py"
+    },
+    "code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py": {
+      "sha256": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py"
+    },
+    "code/src/e_jepa_ttc/detection/portable_attention.py": {
+      "sha256": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/portable_attention.py"
+    },
+    "code/src/e_jepa_ttc/detection/range_campaign.py": {
+      "sha256": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/range_campaign.py"
+    },
+    "code/src/e_jepa_ttc/detection/resident_input_cache.py": {
+      "sha256": "24fd9fa828bd784d5adeef2f12110282079d3969572e03d3852ec20518a4eff8",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1/code/src/e_jepa_ttc/detection/resident_input_cache.py"
+    },
+    "plan/PLAN.json": {
+      "sha256": "0de2cecd5306dd9f6317dc5494da3aa7436c1dd1564e70d2e97ab64177a22806",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v2/PLAN.json"
+    },
+    "plan/screen.json": {
+      "sha256": "4f1924fb10a8102c34cb7abe77549588fed3999c9159234e16dc99bd3453cf97",
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v2/screen.json"
+    }
+  }
+}

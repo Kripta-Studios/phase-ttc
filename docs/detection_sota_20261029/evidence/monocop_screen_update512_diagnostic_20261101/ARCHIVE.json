@@ -1,0 +1,58 @@
+{
+  "files": {
+    "candidate.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/candidate.json",
+      "sha256": "b5e50cbed42eee6a2084cec82575b9c00b50d2a490b5815bdc9241159bee9194",
+      "expanded_sha256": "014daa37794094145d3ffb79ee5ae8b12c4dffdfbfc4c4aff95468e3d4830cf2"
+    },
+    "candidate_diagnostics.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/candidate_diagnostics.json",
+      "sha256": "99bde6684e4315bbfd8537286b6762bcc76780b95a8d8daf85f5b7bd2b1f286f",
+      "expanded_sha256": "5c959889bad3ad5b702a0776e5f8eb177dfede73813fe06b05ef256c9ac8e9ef"
+    },
+    "incumbent.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/incumbent.json",
+      "sha256": "41855e971fa9de4c1b917709479c8bdbc499f1fcffbf3a2fad8fa4c59c7c892b",
+      "expanded_sha256": "ab4cc7a965f7382266985f63732e026e3f0af87e7a0c579a2b53c33d7b4f1aec"
+    },
+    "incumbent_diagnostics.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/incumbent_diagnostics.json",
+      "sha256": "fc240d450664d53978bb71000627609791ddf2df390fdadb46de8cec2453d198",
+      "expanded_sha256": "61f8a911c958c5fa88f65373e132f318bff163f3673dcda5ae95e602a1ea8157"
+    },
+    "oracle_class.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/oracle_class.json",
+      "sha256": "3c5c179d5a339cc3f4336bbe9a577fc0afe96d534847f3cb6db39a4f66407fe0",
+      "expanded_sha256": "f733eb14f9adb5ef1ddb63945895981a67ab570969ed3af0abedb6782f5887df"
+    },
+    "oracle_depth.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/oracle_depth.json",
+      "sha256": "04929cd3093310aabde31c3240fb9c793a8ad781770bca7de71a85ec94daedc0",
+      "expanded_sha256": "a95f96f46bf485b6fcea8a425d7ceafe582ca2cf07d99e5a8a21781af5967d6e"
+    },
+    "oracle_rank.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/oracle_rank.json",
+      "sha256": "bdcc334b0ae84331b0b299aad0282a39cb5383725f69ab2fe8a4996ce53810a9",
+      "expanded_sha256": "030e358b304133c015a949748e83b70b4aac8b32ade9ceada8a0f558b9d00f42"
+    },
+    "oracle_size.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/oracle_size.json",
+      "sha256": "5000af6667642783f575226d2405e6d84ecc4e67d31ec52c531faf9aa934debc",
+      "expanded_sha256": "811ee2b3b2bf0a2d47615c7b2963d6105503363a895ca839e4975911bfe19dfd"
+    },
+    "COMPLETE.json": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostics_update512_v1/COMPLETE.json",
+      "sha256": "0c504b48f65f6e81fcf24229e5918bd57d7038b32f37185db44be3f1d48b7fc6"
+    },
+    "REPORT.md": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_diagnostic_report_update512_v1/REPORT.md",
+      "sha256": "c7d832ba28072fe310797c0c95c700b588e14d6e1f49f8a97ae356754ebb85cf"
+    },
+    "BACKUP_UPDATE512.json": {
+      "source": "C:/Users/\u00c1lvaro Schwiedop/Downloads/PHASE_TTC_BACKUP_20261101/monocop_screen_update512/BACKUP.json",
+      "sha256": "be1721b0b16473b7bf8ede3068f80aae2c0232cbf9e5ff2d6034f25060dcb255"
+    }
+  },
+  "compressed_json_is_lossless": true,
+  "generator_supports_gzip": true
+}
