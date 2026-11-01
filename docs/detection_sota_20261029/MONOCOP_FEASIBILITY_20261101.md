@@ -35,6 +35,17 @@ SSLD convertidos de Paddle. Nuestro release construye el ResNet de torchvision y
 carga los pesos del checkpoint propio. Una comparación de ambos sistemas no
 aislaría el efecto del encadenamiento: arquitectura e inicialización cambiarían.
 
+El [inventario oficial de pesos](https://huggingface.co/zhihao406/MonoCoP/tree/91e1119b4463a83a9f64b7c2838be4bc5314834f)
+contiene `MonoCoP_All.pth` y `MonoCoP_Car.pth`, aproximadamente 502 MB cada uno.
+El model zoo del código anuncia versiones KITTI Car/Pedestrian/Cyclist y Car.
+La primera es una candidata más pertinente para investigar clases pequeñas que
+otra inicialización exclusivamente Car. Es una hipótesis: no se descargaron ni
+inspeccionaron los tensores de esos checkpoints. Se descargó únicamente el README
+fijado y se verificó su Git blob; véase el
+[recibo de catálogo](evidence/monocop_static_feasibility_20261101/HF_INTAKE.json).
+La ficha muestra un distintivo MIT, pero el inventario del repositorio de pesos
+no incluye un archivo LICENSE; no se certifica por ello la licencia de los pesos.
+
 ## Adaptaciones necesarias
 
 - La configuración nuScenes incluida usa tres clases, evaluación KITTI y lista

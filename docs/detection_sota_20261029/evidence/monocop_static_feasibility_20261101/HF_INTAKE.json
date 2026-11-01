@@ -1,0 +1,43 @@
+{
+  "schema": "phase_ttc_monocop_weight_catalog_intake_v1",
+  "repository": "zhihao406/MonoCoP",
+  "revision": "91e1119b4463a83a9f64b7c2838be4bc5314834f",
+  "source_link": "https://huggingface.co/zhihao406/MonoCoP/tree/91e1119b4463a83a9f64b7c2838be4bc5314834f",
+  "discovery": "Linked from the pinned official GitHub README",
+  "commands": [
+    "hf models info zhihao406/MonoCoP --format json",
+    "hf download zhihao406/MonoCoP --revision 91e1119b4463a83a9f64b7c2838be4bc5314834f --dry-run --format json",
+    "hf download zhihao406/MonoCoP --revision 91e1119b4463a83a9f64b7c2838be4bc5314834f --include README.md --local-dir D:/PHASE_TTC_COMPETITOR_20261101/monocop_hf_metadata_v1 --format json"
+  ],
+  "files_from_dry_run": [
+    {
+      "file": ".gitattributes",
+      "display_size": "1.5K"
+    },
+    {
+      "file": "MonoCoP_All.pth",
+      "display_size": "501.7M"
+    },
+    {
+      "file": "MonoCoP_Car.pth",
+      "display_size": "501.7M"
+    },
+    {
+      "file": "README.md",
+      "display_size": "1.6K"
+    }
+  ],
+  "readme": {
+    "bytes": 1648,
+    "sha256": "df5914cd46cdcd9c74f11675e708d1a4f9767916472ce1823555a553df415726",
+    "git_blob_sha1": "b8b700c1084b0708762a5de6bd28c165f83fca0d",
+    "metadata_sha256": "0b2e4dea549bd33f0cd81d1fae220b9ad50b59934f8d71a7f5e93b44bf0de430"
+  },
+  "advertised_training": "Official GitHub model zoo lists KITTI Car/Pedestrian/Cyclist and Car-only variants; checkpoint tensors not inspected",
+  "license_evidence": "README has an MIT badge with a relative LICENSE link; no LICENSE file in the HF inventory and no license metadata returned by models info",
+  "weight_license_certified": false,
+  "benchmark_external_data_admission_certified": false,
+  "weight_files_downloaded": false,
+  "checkpoint_loaded": false,
+  "gpu_experiment_started": false
+}
