@@ -20,6 +20,7 @@ def main() -> None:
     parser.add_argument("--query-root", required=True, type=Path)
     parser.add_argument("--pretrained-root", required=True, type=Path)
     parser.add_argument("--aligned-root", required=True, type=Path)
+    parser.add_argument("--semantic-root", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     inputs: dict[str, str] = {}
@@ -110,7 +111,7 @@ def main() -> None:
             "No editar las fuentes enumeradas en los contratos activos. "
             "Un cambio exige otro productor/contrato; nunca relajar hashes.",
             "",
-            "## Inicialización externa",
+            "## Resultados y comprobaciones",
             "",
         ]
     )
@@ -135,6 +136,47 @@ def main() -> None:
             value = read(path)
             lines.append(f"{label}: `{json.dumps(value, ensure_ascii=False)}`.")
     lines.append("")
+    comparison_path = args.range_root / "range150_diagnostics_v1/COMPARISON.json"
+    receipt_path = comparison_path.parent / "COMPLETE.json"
+    if receipt_path.is_file():
+        receipt = read(receipt_path)
+        if receipt["status"] != "VERIFIED" or receipt["full_metric_exact_parity"] is not True:
+            raise ValueError("Full range diagnostic verification is missing")
+        for name, expected in receipt["files"].items():
+            path = comparison_path.parent / name
+            if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+                raise ValueError("Full range diagnostic changed")
+        comparison = read(comparison_path)
+        lines.extend(
+            [
+                f"150 m confirmado en {receipt['frames']} imágenes: "
+                f"mAP **{comparison['metrics']['mAP']:.8f}**, "
+                f"delta control {comparison['delta_control']:+.8f}, "
+                f"delta incumbente {comparison['delta_incumbent']:+.8f}. "
+                f"Criterio macro: **{comparison['macro_gate_pass']}**. "
+                "No implica promoción automática.",
+                "Informe regenerable: "
+                f"`{(args.range_root / 'range150_confirmation_report_v1/REPORT.md').as_posix()}`.",
+                "",
+            ]
+        )
+    if args.semantic_root is not None:
+        probe = read(args.semantic_root / "cpu_probe_v1/RESULTS.json")
+        if probe["status"] != "COMPLETE_CPU_PROBE" or probe["cuda_initialized"]:
+            raise ValueError("Semantic CPU probe is not complete")
+        lines.extend(
+            [
+                "Prueba semántica RGB en 16 imágenes TRAIN, solo CPU: "
+                f"**{probe['matched_bicycle_targets']}/{probe['projectable_bicycle_targets']}** "
+                "coincidencias bicycle con score ≥ 0,5 e IoU ≥ 0,3 contra cuboides "
+                "proyectados. No es mAP eAP ni recall general. No ampliar esta receta "
+                "a inferencia GPU completa con esta evidencia. Conservar los umbrales "
+                "y las observaciones sobre oclusión y cajas visibles/amodales.",
+                "Informe: `docs/detection_sota_20261029/evidence/"
+                "semantic_probe_20261101/REPORT.md`.",
+                "",
+            ]
+        )
     audit = read(args.pretrained_root / "cpu_transfer_v2/TRANSFER_AUDIT.json")
     conversion = read(args.pretrained_root / "monodgp_kitti_plain_v1/CONVERSION.json")
     weights_path = args.pretrained_root / "monodgp_kitti_plain_v1/model_state.pt"
@@ -150,9 +192,9 @@ def main() -> None:
             "## Siguiente trabajo",
             "",
             "1. Verificar procesos, locks y estados reales antes de intervenir.",
-            "2. Cerrar 150 m con sus evaluaciones previstas y registrar el resultado, "
-            "incluidas las caídas. Confirmar en selección completa solo un candidato justificado.",
-            "3. Verificar la paridad GPU y los resultados de ranking por clase; "
+            "2. Revisar la confirmación completa de 150 m y registrar la decisión, "
+            "incluidas las caídas por clase y los resultados por distancia.",
+            "3. Conservar los resultados negativos del ranking por clase; "
             "seguir el smoke/gate de 300 m y su comparación controlada.",
             "4. Seguir la comparación KITTI ya preparada, sin atribuirle rendimiento "
             "no medido ni ampliar automáticamente su presupuesto de 2.048 actualizaciones.",
