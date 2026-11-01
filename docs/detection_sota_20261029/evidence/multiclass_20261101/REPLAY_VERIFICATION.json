@@ -1,0 +1,44 @@
+{
+  "v1": {
+    "first_observed_results_sha256": "355d9522d101af60df41c96f627bd85fa5f775c78ee9eb1d7ee31bbfec3f2d02",
+    "replayed_results_sha256": "355d9522d101af60df41c96f627bd85fa5f775c78ee9eb1d7ee31bbfec3f2d02",
+    "exact_result_bytes": true,
+    "archived_sources_verified": {
+      "scripts\\evaluate_detection_multiclass.py": true,
+      "scripts\\evaluate_detection_benchmark_local.py": true,
+      "src\\e_jepa_ttc\\detection\\multiclass_proposals.py": true,
+      "src\\e_jepa_ttc\\detection\\quality_ranking.py": true,
+      "src\\e_jepa_ttc\\detection\\benchmark_evaluation.py": true,
+      "src\\e_jepa_ttc\\detection\\range_campaign.py": true
+    },
+    "plan_archive_verified": true,
+    "replay_status": {
+      "status": "COMPLETE",
+      "frames": 23958,
+      "mAP": 0.05797162046440123,
+      "elapsed_seconds_this_invocation": 40.30110860000423,
+      "results_sha256": "355d9522d101af60df41c96f627bd85fa5f775c78ee9eb1d7ee31bbfec3f2d02"
+    }
+  },
+  "top50_v1": {
+    "first_observed_results_sha256": "817e63e9d8c8181015ef1a7cbd159b21019cb5812509e93adc32bb73fc64cfe3",
+    "replayed_results_sha256": "817e63e9d8c8181015ef1a7cbd159b21019cb5812509e93adc32bb73fc64cfe3",
+    "exact_result_bytes": true,
+    "archived_sources_verified": {
+      "scripts\\evaluate_detection_multiclass.py": true,
+      "scripts\\evaluate_detection_benchmark_local.py": true,
+      "src\\e_jepa_ttc\\detection\\multiclass_proposals.py": true,
+      "src\\e_jepa_ttc\\detection\\quality_ranking.py": true,
+      "src\\e_jepa_ttc\\detection\\benchmark_evaluation.py": true,
+      "src\\e_jepa_ttc\\detection\\range_campaign.py": true
+    },
+    "plan_archive_verified": true,
+    "replay_status": {
+      "status": "COMPLETE",
+      "frames": 23958,
+      "mAP": 0.05783289150567153,
+      "elapsed_seconds_this_invocation": 16.670098499998858,
+      "results_sha256": "817e63e9d8c8181015ef1a7cbd159b21019cb5812509e93adc32bb73fc64cfe3"
+    }
+  }
+}

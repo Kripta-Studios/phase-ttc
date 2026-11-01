@@ -45,11 +45,17 @@ def main() -> None:
         folder = args.campaign / name
         status = folder / "STATUS.json"
         if not status.exists():
-            runs[name] = {"status": {"status": "NOT_STARTED"}, "evaluations": {}}
-            continue
-        status_bytes = status.read_bytes()
-        inputs[f"{name}/STATUS.json"] = hashlib.sha256(status_bytes).hexdigest()
-        row = {"status": json.loads(status_bytes), "evaluations": {}}
+            row = {
+                "status": {
+                    "status": "NO_STATUS_YET" if folder.exists() else "NOT_STARTED",
+                    "writer_lock_present": (folder / "WRITER.lock").exists(),
+                },
+                "evaluations": {},
+            }
+        else:
+            status_bytes = status.read_bytes()
+            inputs[f"{name}/STATUS.json"] = hashlib.sha256(status_bytes).hexdigest()
+            row = {"status": json.loads(status_bytes), "evaluations": {}}
         for path in sorted((folder / "evaluation").glob("*.json")):
             value = json.loads(path.read_text())
             inputs[f"{name}/evaluation/{path.name}"] = digest(path)

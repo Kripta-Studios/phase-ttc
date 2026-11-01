@@ -6,10 +6,12 @@ Generado desde JSON original. Screening de una semilla en selección ya expuesta
 
 | Brazo | Estado del run | Update evaluado | mAP raw | Segundos de validación |
 |---|---|---:|---:|---:|
-| screen_range60_v1 | TRAINING | 0 | 0.06035564 | 257.64 |
-| screen_range60_v1 | TRAINING | 512 | 0.05824806 | 359.55 |
-| screen_range60_v1 | TRAINING | 1024 | 0.05238365 | 372.96 |
-| screen_range150_v1 | NOT_STARTED | — | — | — |
+| screen_range60_v1 | COMPLETE | 0 | 0.06035564 | 257.64 |
+| screen_range60_v1 | COMPLETE | 512 | 0.05824806 | 359.55 |
+| screen_range60_v1 | COMPLETE | 1024 | 0.05238365 | 372.96 |
+| screen_range60_v1 | COMPLETE | 1536 | 0.05331721 | 343.91 |
+| screen_range60_v1 | COMPLETE | 2048 | 0.05707034 | 347.98 |
+| screen_range150_v1 | NO_STATUS_YET | — | — | — |
 
 ## Soporte del panel de selección
 
