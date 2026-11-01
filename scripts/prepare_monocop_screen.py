@@ -54,6 +54,10 @@ def main() -> None:
         or control["runs"]["kitti"]["status"]["status"] != "COMPLETE"
     ):
         raise ValueError("Control profile or population differs")
+    references = {
+        "incumbent_ranked": float(control["incumbent_panel"]["mAP"]),
+        "dfull300_best": float(control["runs"]["dfull300"]["best"]),
+    }
     # Freeze the full original result; numerical comparisons are rebuilt from it.
     args.output.mkdir(parents=True)
     write_json(args.output / "screen.json", asdict(cfg))
@@ -106,10 +110,7 @@ def main() -> None:
             "report_sha256": digest(args.control_report),
         },
         "primary": "Eight-class aligned raw-GT mAP on the fixed 512-frame selection panel",
-        "reference_panel_mAP": {
-            "incumbent_ranked": control["incumbent_panel"]["mAP"],
-            "dfull300_best": control["runs"]["dfull300"]["best"]["mAP"],
-        },
+        "reference_panel_mAP": references,
         "promotion": "After 2048 updates, gain >=0.005 over both incumbent and best "
         "Dfull300 panel before full selection confirmation. Full gain >=0.005 over "
         "incumbent and review any per-class AP drop >0.01. No automatic promotion.",
