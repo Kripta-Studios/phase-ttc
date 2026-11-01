@@ -1,0 +1,12 @@
+{
+  "diagnostic_complete_sha256": "8f3b23f05c48dfd110391238423bc8b2e5e61ad1fb55ded9c414f55b3788a0a6",
+  "comparison_sha256": "049058e76a97b79aa0d2db52a7c0f6bb73052bf6abef6dd8bed84568f0de6971",
+  "ranked_metrics_sha256": "086ea40ec97548877f282716391b9eee178e0500b26db80a2661568989ccc603",
+  "generator_sha256": "3125c7fcadbbcd3c1b3b107fdb74bec58d1aa3b7bfa14fbe5ba904c6c5e5c392",
+  "files": {
+    "class_ap_delta.png": "74f28a57977a472edfa6818ef4ce7e929a0b0347f6504af19db3f7987cbcad8e",
+    "REPORT.md": "de58a3d657cebc8b0cfabf4fa072c8e779dfe9a3b4ca47ba869d821ee5e5890c",
+    "SEQUENCE_BOOTSTRAP.json": "4b506d2828067c18946ca01a4170d8f7789b885cd97100ecabef9f8619d6c798"
+  },
+  "promotion": false
+}

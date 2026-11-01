@@ -1,0 +1,14 @@
+{
+  "decision": "RETAIN_INCUMBENT_NO_RANGE150_PROMOTION",
+  "macro_gate_pass": false,
+  "candidate_mAP": 0.061052417657287306,
+  "incumbent_mAP": 0.062042288605807405,
+  "delta_control": 0.004035159857233635,
+  "delta_incumbent": -0.0009898709485200996,
+  "class_declines_over_0_01": {
+    "car": -0.011478611727870625
+  },
+  "reason": "Full selection fails both the minimum gain over control and improvement over incumbent; car also declines beyond the review threshold.",
+  "next_registered_experiment": "range300 then KITTI initialization; no additional seeds for this candidate",
+  "goal_complete": false
+}

@@ -1,0 +1,58 @@
+{
+  "git_commit": "cf0ccd113268392ceed0c951f673d355b39e68ca",
+  "files": {
+    "class_ap_delta.png": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_report_v1/class_ap_delta.png",
+      "sha256": "74f28a57977a472edfa6818ef4ce7e929a0b0347f6504af19db3f7987cbcad8e"
+    },
+    "REPORT.md": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_report_v1/REPORT.md",
+      "sha256": "de58a3d657cebc8b0cfabf4fa072c8e779dfe9a3b4ca47ba869d821ee5e5890c"
+    },
+    "SEQUENCE_BOOTSTRAP.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_report_v1/SEQUENCE_BOOTSTRAP.json",
+      "sha256": "4b506d2828067c18946ca01a4170d8f7789b885cd97100ecabef9f8619d6c798"
+    },
+    "MANIFEST.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_report_v1/MANIFEST.json",
+      "sha256": "438c830f30fd4b192769612be7c64e9686297b56ca4d8fcc773bc821064fb283"
+    },
+    "COMPLETE.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_diagnostics_v1/COMPLETE.json",
+      "sha256": "8f3b23f05c48dfd110391238423bc8b2e5e61ad1fb55ded9c414f55b3788a0a6"
+    },
+    "COMPARISON.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_diagnostics_v1/COMPARISON.json",
+      "sha256": "049058e76a97b79aa0d2db52a7c0f6bb73052bf6abef6dd8bed84568f0de6971"
+    },
+    "ERROR_DIAGNOSTICS.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_diagnostics_v1/ERROR_DIAGNOSTICS.json",
+      "sha256": "aeb8ce43d52f92edc14ca8ef593bedaadd3d8f89ccb39882ba76c9265a79faeb"
+    },
+    "RESULTS.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_v1/full_selection/RESULTS.json",
+      "sha256": "f1eb7539d416fb85c7871901a18b3f78753c1226986207a2ade31ff1c25f4692"
+    },
+    "INTAKE.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_v1/full_selection/INTAKE.json",
+      "sha256": "8f9aa14c6d1e6b116a9598326d2bc59d0d4687395f40957ed63ef1d6b573b9ce"
+    },
+    "QUEUE.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_v1/QUEUE.json",
+      "sha256": "7b50662b4d9bf9fe3e3d15330b0c1567a5925f0352be29b46f51aa350115274e"
+    },
+    "QUEUE.status.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_v1/QUEUE.status.json",
+      "sha256": "892c7512e115923573a8281ae4ce6a61cedbe96427cdbcd47f95eed65791ad6e"
+    },
+    "PANEL_PARITY.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_v1/PANEL_PARITY.json",
+      "sha256": "cea8179c1701be61f98cd99497f49cd6ea41799f4161eeb381a2884bcb4ebaa6"
+    },
+    "CONTROL_REUSE.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/CONTROL_REUSE.json",
+      "sha256": "4202ab69e19025338b82d3ea6223f0ddcde687174463dd1daf2544e926c400cb"
+    }
+  },
+  "decision_sha256": "c6bf7fd5013025eac5d59d3171cd566f44da969c6b66517f32e0b025e650819c"
+}
