@@ -1,0 +1,2031 @@
+{
+  "schema": "phase_train_long_range_census_v1",
+  "status": "VERIFIED",
+  "frames": 70279,
+  "sequences": {
+    "2cyv0Oedzg": {
+      "raw": {
+        "truck": 4908,
+        "car": 12314,
+        "motorcycle": 191,
+        "pedestrian": 16,
+        "tricycle": 10,
+        "bus": 172
+      },
+      "admitted60": {
+        "truck": 2494,
+        "car": 9533,
+        "motorcycle": 84,
+        "pedestrian": 15,
+        "bus": 8
+      },
+      "admitted150": {
+        "truck": 4444,
+        "car": 11186,
+        "motorcycle": 182,
+        "pedestrian": 15,
+        "tricycle": 10,
+        "bus": 116
+      },
+      "admitted400": {
+        "truck": 4591,
+        "car": 11186,
+        "motorcycle": 182,
+        "pedestrian": 15,
+        "tricycle": 10,
+        "bus": 125
+      }
+    },
+    "34K84TaN11": {
+      "raw": {
+        "car": 13481,
+        "truck": 2176,
+        "pedestrian": 235,
+        "bus": 82,
+        "motorcycle": 220,
+        "bicycle": 98
+      },
+      "admitted60": {
+        "car": 7713,
+        "truck": 467,
+        "motorcycle": 68,
+        "pedestrian": 110,
+        "bicycle": 88
+      },
+      "admitted150": {
+        "car": 13035,
+        "truck": 1939,
+        "pedestrian": 234,
+        "bus": 70,
+        "motorcycle": 168,
+        "bicycle": 88
+      },
+      "admitted400": {
+        "car": 13059,
+        "truck": 2141,
+        "pedestrian": 234,
+        "bus": 73,
+        "motorcycle": 216,
+        "bicycle": 88
+      }
+    },
+    "5ilM1PX2vz": {
+      "raw": {
+        "truck": 3663,
+        "car": 9519,
+        "pedestrian": 99,
+        "tricycle": 519,
+        "motorcycle": 370,
+        "other_vehicle": 35,
+        "bus": 27
+      },
+      "admitted60": {
+        "truck": 714,
+        "car": 5413,
+        "pedestrian": 52,
+        "tricycle": 429,
+        "bus": 5,
+        "motorcycle": 151
+      },
+      "admitted150": {
+        "truck": 2480,
+        "car": 9129,
+        "pedestrian": 98,
+        "tricycle": 518,
+        "motorcycle": 359,
+        "other_vehicle": 35,
+        "bus": 23
+      },
+      "admitted400": {
+        "truck": 3568,
+        "car": 9169,
+        "pedestrian": 98,
+        "tricycle": 518,
+        "motorcycle": 361,
+        "other_vehicle": 35,
+        "bus": 23
+      }
+    },
+    "6WCDpro5rE": {
+      "raw": {
+        "car": 15659,
+        "truck": 687,
+        "motorcycle": 2173,
+        "pedestrian": 1432,
+        "tricycle": 227,
+        "bicycle": 124,
+        "bus": 294
+      },
+      "admitted60": {
+        "car": 8700,
+        "truck": 103,
+        "pedestrian": 454,
+        "motorcycle": 915,
+        "tricycle": 90,
+        "bicycle": 84,
+        "bus": 41
+      },
+      "admitted150": {
+        "car": 14274,
+        "truck": 501,
+        "motorcycle": 2035,
+        "pedestrian": 1406,
+        "tricycle": 206,
+        "bicycle": 108,
+        "bus": 264
+      },
+      "admitted400": {
+        "car": 14426,
+        "truck": 658,
+        "motorcycle": 2104,
+        "pedestrian": 1407,
+        "tricycle": 220,
+        "bicycle": 108,
+        "bus": 264
+      }
+    },
+    "8SdieOgbva": {
+      "raw": {
+        "car": 13973,
+        "truck": 6932,
+        "motorcycle": 2143,
+        "bus": 519,
+        "pedestrian": 1002,
+        "tricycle": 70,
+        "bicycle": 56,
+        "other_vehicle": 20
+      },
+      "admitted60": {
+        "car": 9032,
+        "truck": 2891,
+        "motorcycle": 1643,
+        "bus": 298,
+        "pedestrian": 721,
+        "tricycle": 66,
+        "other_vehicle": 12,
+        "bicycle": 46
+      },
+      "admitted150": {
+        "car": 13041,
+        "truck": 5778,
+        "motorcycle": 1949,
+        "bus": 441,
+        "pedestrian": 973,
+        "tricycle": 66,
+        "other_vehicle": 19,
+        "bicycle": 49
+      },
+      "admitted400": {
+        "car": 13127,
+        "truck": 6403,
+        "motorcycle": 2003,
+        "bus": 495,
+        "pedestrian": 973,
+        "tricycle": 66,
+        "other_vehicle": 19,
+        "bicycle": 49
+      }
+    },
+    "9ITOs4twfk": {
+      "raw": {
+        "car": 24939,
+        "truck": 6406,
+        "bus": 234,
+        "motorcycle": 414,
+        "pedestrian": 117,
+        "other_vehicle": 13,
+        "bicycle": 8
+      },
+      "admitted60": {
+        "car": 14542,
+        "truck": 1166,
+        "bus": 197,
+        "motorcycle": 5,
+        "pedestrian": 35,
+        "other_vehicle": 4
+      },
+      "admitted150": {
+        "car": 23661,
+        "truck": 4861,
+        "bus": 210,
+        "motorcycle": 338,
+        "pedestrian": 116,
+        "other_vehicle": 13,
+        "bicycle": 8
+      },
+      "admitted400": {
+        "car": 23690,
+        "truck": 6120,
+        "bus": 218,
+        "motorcycle": 414,
+        "pedestrian": 116,
+        "other_vehicle": 13,
+        "bicycle": 8
+      }
+    },
+    "A1Nhv0KtmL": {
+      "raw": {
+        "car": 10002,
+        "truck": 3860,
+        "bus": 9,
+        "motorcycle": 1,
+        "pedestrian": 11,
+        "other_vehicle": 13
+      },
+      "admitted60": {
+        "car": 5928,
+        "truck": 1100
+      },
+      "admitted150": {
+        "car": 9616,
+        "truck": 2352,
+        "bus": 9,
+        "pedestrian": 11,
+        "other_vehicle": 13
+      },
+      "admitted400": {
+        "car": 9658,
+        "truck": 3724,
+        "bus": 9,
+        "motorcycle": 1,
+        "pedestrian": 11,
+        "other_vehicle": 13
+      }
+    },
+    "ClXqVoZOFu": {
+      "raw": {
+        "car": 13240,
+        "truck": 6692,
+        "motorcycle": 102,
+        "bus": 26
+      },
+      "admitted60": {
+        "car": 8033,
+        "truck": 1401
+      },
+      "admitted150": {
+        "car": 12811,
+        "truck": 5085,
+        "motorcycle": 84,
+        "bus": 24
+      },
+      "admitted400": {
+        "car": 12846,
+        "truck": 6486,
+        "motorcycle": 102,
+        "bus": 24
+      }
+    },
+    "DGqicHUGWb": {
+      "raw": {
+        "truck": 447,
+        "motorcycle": 1090,
+        "car": 2750,
+        "bicycle": 125,
+        "pedestrian": 39,
+        "tricycle": 130
+      },
+      "admitted60": {
+        "truck": 129,
+        "motorcycle": 430,
+        "car": 1498,
+        "bicycle": 77,
+        "pedestrian": 36,
+        "tricycle": 28
+      },
+      "admitted150": {
+        "truck": 292,
+        "motorcycle": 1079,
+        "car": 2242,
+        "bicycle": 120,
+        "pedestrian": 38,
+        "tricycle": 121
+      },
+      "admitted400": {
+        "truck": 430,
+        "motorcycle": 1088,
+        "car": 2252,
+        "bicycle": 120,
+        "pedestrian": 38,
+        "tricycle": 126
+      }
+    },
+    "GjMYZjmSQb": {
+      "raw": {
+        "car": 12285,
+        "truck": 2475,
+        "motorcycle": 484
+      },
+      "admitted60": {
+        "car": 6145,
+        "truck": 1058
+      },
+      "admitted150": {
+        "car": 12184,
+        "truck": 2052,
+        "motorcycle": 441
+      },
+      "admitted400": {
+        "car": 12210,
+        "truck": 2325,
+        "motorcycle": 484
+      }
+    },
+    "L36QTEoVkB": {
+      "raw": {
+        "car": 8262,
+        "truck": 7899,
+        "motorcycle": 79,
+        "pedestrian": 82
+      },
+      "admitted60": {
+        "car": 5334,
+        "truck": 2362,
+        "pedestrian": 45
+      },
+      "admitted150": {
+        "car": 7873,
+        "truck": 6805,
+        "motorcycle": 71,
+        "pedestrian": 81
+      },
+      "admitted400": {
+        "car": 7874,
+        "truck": 7763,
+        "motorcycle": 79,
+        "pedestrian": 81
+      }
+    },
+    "LMHPShQkaU": {
+      "raw": {
+        "car": 13510,
+        "truck": 9454,
+        "motorcycle": 151,
+        "bus": 1014,
+        "tricycle": 121
+      },
+      "admitted60": {
+        "car": 10495,
+        "truck": 2920,
+        "bus": 286,
+        "motorcycle": 14
+      },
+      "admitted150": {
+        "car": 13139,
+        "truck": 8008,
+        "motorcycle": 143,
+        "bus": 1011,
+        "tricycle": 121
+      },
+      "admitted400": {
+        "car": 13139,
+        "truck": 8927,
+        "motorcycle": 150,
+        "bus": 1011,
+        "tricycle": 121
+      }
+    },
+    "OYgB6RGWcq": {
+      "raw": {
+        "car": 9720,
+        "truck": 5467,
+        "motorcycle": 22
+      },
+      "admitted60": {
+        "car": 6584,
+        "truck": 1763,
+        "motorcycle": 8
+      },
+      "admitted150": {
+        "car": 9485,
+        "truck": 4259,
+        "motorcycle": 22
+      },
+      "admitted400": {
+        "car": 9485,
+        "truck": 5321,
+        "motorcycle": 22
+      }
+    },
+    "Po6ePjWYAz": {
+      "raw": {
+        "car": 9368,
+        "truck": 3979,
+        "tricycle": 253,
+        "pedestrian": 1100,
+        "motorcycle": 1737,
+        "other_vehicle": 26,
+        "bicycle": 215,
+        "bus": 134
+      },
+      "admitted60": {
+        "car": 5337,
+        "truck": 1441,
+        "tricycle": 162,
+        "pedestrian": 778,
+        "motorcycle": 1118,
+        "other_vehicle": 19,
+        "bicycle": 187,
+        "bus": 35
+      },
+      "admitted150": {
+        "car": 8928,
+        "truck": 3105,
+        "tricycle": 230,
+        "pedestrian": 1070,
+        "motorcycle": 1599,
+        "other_vehicle": 24,
+        "bicycle": 191,
+        "bus": 119
+      },
+      "admitted400": {
+        "car": 8949,
+        "truck": 3876,
+        "tricycle": 230,
+        "pedestrian": 1070,
+        "motorcycle": 1675,
+        "other_vehicle": 24,
+        "bicycle": 191,
+        "bus": 119
+      }
+    },
+    "eX8t2nGd6O": {
+      "raw": {
+        "car": 13763,
+        "truck": 3651,
+        "motorcycle": 494,
+        "tricycle": 4,
+        "bus": 8,
+        "pedestrian": 6,
+        "bicycle": 4
+      },
+      "admitted60": {
+        "car": 9261,
+        "truck": 1193,
+        "motorcycle": 1,
+        "pedestrian": 4,
+        "bicycle": 4
+      },
+      "admitted150": {
+        "car": 13345,
+        "truck": 3018,
+        "motorcycle": 429,
+        "tricycle": 4,
+        "bus": 7,
+        "pedestrian": 4,
+        "bicycle": 4
+      },
+      "admitted400": {
+        "car": 13367,
+        "truck": 3456,
+        "motorcycle": 494,
+        "tricycle": 4,
+        "bus": 7,
+        "pedestrian": 4,
+        "bicycle": 4
+      }
+    },
+    "mHGFBekt7X": {
+      "raw": {
+        "car": 27606,
+        "truck": 7025,
+        "motorcycle": 1465,
+        "bus": 356,
+        "pedestrian": 32
+      },
+      "admitted60": {
+        "car": 16048,
+        "motorcycle": 18,
+        "truck": 1064,
+        "bus": 79
+      },
+      "admitted150": {
+        "car": 26789,
+        "truck": 4845,
+        "motorcycle": 1280,
+        "bus": 325,
+        "pedestrian": 32
+      },
+      "admitted400": {
+        "car": 26801,
+        "truck": 6837,
+        "motorcycle": 1465,
+        "bus": 325,
+        "pedestrian": 32
+      }
+    },
+    "nRcwUlHyAd": {
+      "raw": {
+        "car": 14532,
+        "motorcycle": 3534,
+        "truck": 4800,
+        "tricycle": 485,
+        "pedestrian": 1354,
+        "other_vehicle": 70,
+        "bicycle": 57,
+        "bus": 521
+      },
+      "admitted60": {
+        "car": 8016,
+        "motorcycle": 2093,
+        "truck": 1545,
+        "tricycle": 265,
+        "pedestrian": 348,
+        "other_vehicle": 15,
+        "bicycle": 46,
+        "bus": 369
+      },
+      "admitted150": {
+        "car": 13516,
+        "motorcycle": 3130,
+        "truck": 3616,
+        "tricycle": 450,
+        "pedestrian": 1342,
+        "other_vehicle": 68,
+        "bicycle": 48,
+        "bus": 475
+      },
+      "admitted400": {
+        "car": 13566,
+        "motorcycle": 3187,
+        "truck": 4471,
+        "tricycle": 450,
+        "pedestrian": 1346,
+        "other_vehicle": 68,
+        "bicycle": 48,
+        "bus": 484
+      }
+    },
+    "pzJcg1OCfc": {
+      "raw": {
+        "car": 11499,
+        "truck": 1966,
+        "motorcycle": 654,
+        "bus": 16,
+        "pedestrian": 126,
+        "tricycle": 13
+      },
+      "admitted60": {
+        "car": 5646,
+        "truck": 789,
+        "pedestrian": 40,
+        "motorcycle": 86
+      },
+      "admitted150": {
+        "car": 11011,
+        "truck": 1514,
+        "motorcycle": 584,
+        "bus": 12,
+        "pedestrian": 125,
+        "tricycle": 11
+      },
+      "admitted400": {
+        "car": 11158,
+        "truck": 1888,
+        "motorcycle": 643,
+        "bus": 12,
+        "pedestrian": 125,
+        "tricycle": 11
+      }
+    },
+    "q2k6O0X6JY": {
+      "raw": {
+        "car": 5044,
+        "truck": 2171,
+        "bus": 135,
+        "pedestrian": 48,
+        "motorcycle": 89,
+        "tricycle": 114,
+        "bicycle": 2,
+        "other_vehicle": 31
+      },
+      "admitted60": {
+        "car": 2599,
+        "truck": 434,
+        "pedestrian": 7,
+        "motorcycle": 21,
+        "bicycle": 1,
+        "bus": 18
+      },
+      "admitted150": {
+        "car": 4865,
+        "truck": 1489,
+        "bus": 81,
+        "pedestrian": 47,
+        "motorcycle": 80,
+        "tricycle": 114,
+        "bicycle": 1,
+        "other_vehicle": 31
+      },
+      "admitted400": {
+        "car": 4882,
+        "truck": 2007,
+        "bus": 122,
+        "pedestrian": 47,
+        "motorcycle": 84,
+        "tricycle": 114,
+        "bicycle": 1,
+        "other_vehicle": 31
+      }
+    },
+    "qGsgzl4Q8B": {
+      "raw": {
+        "car": 9172,
+        "truck": 1606,
+        "motorcycle": 243,
+        "pedestrian": 173,
+        "other_vehicle": 7,
+        "bus": 131
+      },
+      "admitted60": {
+        "car": 5908,
+        "truck": 434,
+        "motorcycle": 60,
+        "pedestrian": 35,
+        "bus": 40
+      },
+      "admitted150": {
+        "car": 8482,
+        "truck": 1192,
+        "motorcycle": 222,
+        "pedestrian": 171,
+        "other_vehicle": 7,
+        "bus": 131
+      },
+      "admitted400": {
+        "car": 8505,
+        "truck": 1469,
+        "motorcycle": 238,
+        "pedestrian": 171,
+        "other_vehicle": 7,
+        "bus": 131
+      }
+    },
+    "qoohcdtLDH": {
+      "raw": {
+        "car": 11553,
+        "truck": 8935,
+        "pedestrian": 536,
+        "bus": 84,
+        "motorcycle": 2293,
+        "bicycle": 124,
+        "tricycle": 203
+      },
+      "admitted60": {
+        "car": 7884,
+        "truck": 5242,
+        "pedestrian": 325,
+        "motorcycle": 1152,
+        "bus": 16,
+        "bicycle": 110,
+        "tricycle": 89
+      },
+      "admitted150": {
+        "car": 11176,
+        "truck": 8339,
+        "pedestrian": 523,
+        "bus": 68,
+        "motorcycle": 2154,
+        "bicycle": 113,
+        "tricycle": 190
+      },
+      "admitted400": {
+        "car": 11182,
+        "truck": 8594,
+        "pedestrian": 523,
+        "bus": 75,
+        "motorcycle": 2191,
+        "bicycle": 113,
+        "tricycle": 190
+      }
+    },
+    "t79dBxj1WS": {
+      "raw": {
+        "bus": 1071,
+        "car": 8453,
+        "truck": 2704,
+        "motorcycle": 676,
+        "tricycle": 40,
+        "pedestrian": 170,
+        "other_vehicle": 12
+      },
+      "admitted60": {
+        "bus": 545,
+        "car": 4214,
+        "truck": 729,
+        "motorcycle": 333,
+        "pedestrian": 38,
+        "tricycle": 10,
+        "other_vehicle": 3
+      },
+      "admitted150": {
+        "bus": 977,
+        "car": 8036,
+        "motorcycle": 657,
+        "truck": 2087,
+        "tricycle": 40,
+        "pedestrian": 169,
+        "other_vehicle": 9
+      },
+      "admitted400": {
+        "bus": 994,
+        "car": 8164,
+        "truck": 2651,
+        "motorcycle": 672,
+        "tricycle": 40,
+        "pedestrian": 169,
+        "other_vehicle": 9
+      }
+    },
+    "wE9MZUmiJP": {
+      "raw": {
+        "car": 18166,
+        "truck": 4036,
+        "bicycle": 8,
+        "motorcycle": 818,
+        "pedestrian": 175,
+        "bus": 253,
+        "tricycle": 12
+      },
+      "admitted60": {
+        "car": 7945,
+        "truck": 524,
+        "motorcycle": 240,
+        "pedestrian": 13,
+        "bicycle": 2,
+        "bus": 21
+      },
+      "admitted150": {
+        "car": 17418,
+        "truck": 2147,
+        "bicycle": 8,
+        "motorcycle": 723,
+        "pedestrian": 173,
+        "bus": 193,
+        "tricycle": 10
+      },
+      "admitted400": {
+        "car": 17530,
+        "truck": 3966,
+        "bicycle": 8,
+        "motorcycle": 811,
+        "pedestrian": 173,
+        "bus": 223,
+        "tricycle": 10
+      }
+    },
+    "xkiVthsGwf": {
+      "raw": {
+        "motorcycle": 3289,
+        "car": 15390,
+        "truck": 5747,
+        "bus": 51,
+        "pedestrian": 1055,
+        "tricycle": 67,
+        "bicycle": 13,
+        "other_vehicle": 10
+      },
+      "admitted60": {
+        "motorcycle": 1898,
+        "car": 10146,
+        "truck": 2454,
+        "pedestrian": 800,
+        "tricycle": 61,
+        "bicycle": 10
+      },
+      "admitted150": {
+        "motorcycle": 3067,
+        "car": 14423,
+        "truck": 4837,
+        "bus": 47,
+        "pedestrian": 1043,
+        "tricycle": 62,
+        "bicycle": 13,
+        "other_vehicle": 10
+      },
+      "admitted400": {
+        "motorcycle": 3162,
+        "car": 14477,
+        "truck": 5628,
+        "bus": 48,
+        "pedestrian": 1043,
+        "tricycle": 62,
+        "bicycle": 13,
+        "other_vehicle": 10
+      }
+    }
+  },
+  "counts": {
+    "raw": {
+      "truck": 107686,
+      "car": 304200,
+      "motorcycle": 22732,
+      "pedestrian": 7808,
+      "tricycle": 2268,
+      "bus": 5137,
+      "bicycle": 834,
+      "other_vehicle": 237
+    },
+    "admitted60": {
+      "truck": 34417,
+      "car": 181954,
+      "motorcycle": 10338,
+      "pedestrian": 3856,
+      "bus": 1958,
+      "bicycle": 655,
+      "tricycle": 1200,
+      "other_vehicle": 53
+    },
+    "admitted150": {
+      "truck": 85045,
+      "car": 289665,
+      "motorcycle": 20796,
+      "pedestrian": 7671,
+      "tricycle": 2153,
+      "bus": 4603,
+      "bicycle": 751,
+      "other_vehicle": 229
+    },
+    "admitted400": {
+      "truck": 103300,
+      "car": 290702,
+      "motorcycle": 21828,
+      "pedestrian": 7676,
+      "tricycle": 2172,
+      "bus": 4782,
+      "bicycle": 751,
+      "other_vehicle": 229
+    }
+  },
+  "sequence_instance_id_counts": {
+    "raw": {
+      "truck": 1974,
+      "car": 4622,
+      "motorcycle": 1453,
+      "pedestrian": 469,
+      "tricycle": 87,
+      "bus": 134,
+      "bicycle": 86,
+      "other_vehicle": 16
+    },
+    "admitted60": {
+      "truck": 612,
+      "car": 2235,
+      "motorcycle": 682,
+      "pedestrian": 255,
+      "bus": 35,
+      "bicycle": 69,
+      "tricycle": 51,
+      "other_vehicle": 6
+    },
+    "admitted150": {
+      "truck": 1566,
+      "car": 4395,
+      "motorcycle": 1277,
+      "pedestrian": 464,
+      "tricycle": 81,
+      "bus": 123,
+      "bicycle": 77,
+      "other_vehicle": 16
+    },
+    "admitted400": {
+      "truck": 1928,
+      "car": 4451,
+      "motorcycle": 1397,
+      "pedestrian": 464,
+      "tricycle": 81,
+      "bus": 130,
+      "bicycle": 77,
+      "other_vehicle": 16
+    }
+  },
+  "ignored_reasons": {
+    "admitted60": {
+      "projected_center_outside_image": 17186,
+      "center_depth_outside_profile": 198483,
+      "corner_behind_or_near_camera": 631,
+      "projected_center_outside_clipped_box": 171
+    },
+    "admitted150": {
+      "projected_center_outside_image": 18627,
+      "corner_behind_or_near_camera": 631,
+      "center_depth_outside_profile": 20538,
+      "projected_center_outside_clipped_box": 193
+    },
+    "admitted400": {
+      "projected_center_outside_image": 18638,
+      "corner_behind_or_near_camera": 631,
+      "projected_center_outside_clipped_box": 193
+    }
+  },
+  "capacity": {
+    "admitted60": {
+      "max": 24,
+      "over_50": []
+    },
+    "admitted150": {
+      "max": 37,
+      "over_50": []
+    },
+    "admitted400": {
+      "max": 38,
+      "over_50": []
+    }
+  },
+  "optical_depth_bins_m": {
+    "0.1_60": {
+      "raw_counts": {
+        "truck": 38133,
+        "car": 194772,
+        "motorcycle": 11218,
+        "pedestrian": 3986,
+        "bus": 2216,
+        "bicycle": 738,
+        "tricycle": 1295,
+        "other_vehicle": 61
+      },
+      "geometry_admissible_counts": {
+        "truck": 34417,
+        "car": 181954,
+        "motorcycle": 10338,
+        "pedestrian": 3856,
+        "bus": 1958,
+        "bicycle": 655,
+        "tricycle": 1200,
+        "other_vehicle": 53
+      },
+      "pixel_size_by_class": {
+        "bicycle": {
+          "width_px": {
+            "count": 655,
+            "quantiles_min_p10_p50_p90_max": [
+              11.635651870139213,
+              21.410714908944122,
+              42.05654459364848,
+              102.86822918445122,
+              172.2199159831368
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 32
+          },
+          "height_px": {
+            "count": 655,
+            "quantiles_min_p10_p50_p90_max": [
+              17.1169387663449,
+              25.076758674887127,
+              41.03574143618408,
+              81.28444588872227,
+              139.97336087876928
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "bus": {
+          "width_px": {
+            "count": 1958,
+            "quantiles_min_p10_p50_p90_max": [
+              37.49053717683625,
+              69.35579728945005,
+              111.39911087426341,
+              205.18595801113347,
+              288.80690978414094
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          },
+          "height_px": {
+            "count": 1958,
+            "quantiles_min_p10_p50_p90_max": [
+              48.67386635007648,
+              62.59635970834709,
+              102.97583209187958,
+              224.58307416341307,
+              383.0
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "car": {
+          "width_px": {
+            "count": 181954,
+            "quantiles_min_p10_p50_p90_max": [
+              19.42138436810569,
+              36.249095148984004,
+              71.1338115603379,
+              182.39754436855594,
+              507.0176400772513
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          },
+          "height_px": {
+            "count": 181954,
+            "quantiles_min_p10_p50_p90_max": [
+              23.445725362328858,
+              30.35788485055407,
+              57.79901509566153,
+              135.8958428256275,
+              383.0
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "motorcycle": {
+          "width_px": {
+            "count": 10338,
+            "quantiles_min_p10_p50_p90_max": [
+              11.388959967987603,
+              20.543168212997152,
+              36.69056014797442,
+              70.63756935898897,
+              226.2675729441541
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 304
+          },
+          "height_px": {
+            "count": 10338,
+            "quantiles_min_p10_p50_p90_max": [
+              17.346548317058193,
+              25.4521548393919,
+              39.43194629735872,
+              82.06192931148226,
+              199.1023458937844
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "other_vehicle": {
+          "width_px": {
+            "count": 53,
+            "quantiles_min_p10_p50_p90_max": [
+              28.16189967673705,
+              32.735108615301314,
+              53.98650911337904,
+              89.64019943114612,
+              109.07683665407978
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          },
+          "height_px": {
+            "count": 53,
+            "quantiles_min_p10_p50_p90_max": [
+              33.66392969368937,
+              36.330946565890684,
+              54.95430485667774,
+              79.82613557495142,
+              103.04364709904121
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "pedestrian": {
+          "width_px": {
+            "count": 3856,
+            "quantiles_min_p10_p50_p90_max": [
+              9.54482000348753,
+              13.697308350625633,
+              23.557021154052705,
+              35.11082192279861,
+              99.98532219961118
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 788
+          },
+          "height_px": {
+            "count": 3856,
+            "quantiles_min_p10_p50_p90_max": [
+              16.65368260162279,
+              27.844310385379885,
+              45.57817045184473,
+              70.52179118324828,
+              200.67179145009194
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "tricycle": {
+          "width_px": {
+            "count": 1200,
+            "quantiles_min_p10_p50_p90_max": [
+              17.040520677025484,
+              31.016980438516153,
+              75.95175931472409,
+              179.8929469129427,
+              266.3588541571962
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          },
+          "height_px": {
+            "count": 1200,
+            "quantiles_min_p10_p50_p90_max": [
+              19.531186076470817,
+              31.47795805133435,
+              64.18073257002672,
+              182.9911604516126,
+              249.18238551229243
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "truck": {
+          "width_px": {
+            "count": 34417,
+            "quantiles_min_p10_p50_p90_max": [
+              20.510514706797867,
+              47.5574069866008,
+              92.30025260869925,
+              245.49119513583565,
+              483.7662966980996
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          },
+          "height_px": {
+            "count": 34417,
+            "quantiles_min_p10_p50_p90_max": [
+              29.401612477722153,
+              54.302920948492805,
+              103.56851302212044,
+              330.4070346096729,
+              383.0
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        }
+      }
+    },
+    "60_100": {
+      "raw_counts": {
+        "car": 68901,
+        "truck": 27650,
+        "motorcycle": 5113,
+        "bus": 1739,
+        "pedestrian": 2497,
+        "tricycle": 684,
+        "bicycle": 80,
+        "other_vehicle": 83
+      },
+      "geometry_admissible_counts": {
+        "car": 68296,
+        "truck": 27052,
+        "motorcycle": 5090,
+        "bus": 1660,
+        "pedestrian": 2495,
+        "tricycle": 683,
+        "bicycle": 80,
+        "other_vehicle": 83
+      },
+      "pixel_size_by_class": {
+        "bicycle": {
+          "width_px": {
+            "count": 80,
+            "quantiles_min_p10_p50_p90_max": [
+              9.56889792578147,
+              10.978220920483357,
+              13.187292844620458,
+              18.022598585852922,
+              23.390280069667654
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 64
+          },
+          "height_px": {
+            "count": 80,
+            "quantiles_min_p10_p50_p90_max": [
+              10.864908968426391,
+              11.967003599951052,
+              22.323954015204464,
+              24.55587754050955,
+              25.47298124924606
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 23
+          }
+        },
+        "bus": {
+          "width_px": {
+            "count": 1660,
+            "quantiles_min_p10_p50_p90_max": [
+              18.715994941187684,
+              31.182930183505853,
+              41.06188564456224,
+              70.23516410146402,
+              120.35504048466385
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          },
+          "height_px": {
+            "count": 1660,
+            "quantiles_min_p10_p50_p90_max": [
+              23.416984977747347,
+              33.56207751783519,
+              38.97934277459005,
+              50.19222025690833,
+              62.66451525074547
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "car": {
+          "width_px": {
+            "count": 68296,
+            "quantiles_min_p10_p50_p90_max": [
+              11.301846080618215,
+              18.466075623603615,
+              24.632259686765003,
+              34.349261565752045,
+              74.48459315470029
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 283
+          },
+          "height_px": {
+            "count": 68296,
+            "quantiles_min_p10_p50_p90_max": [
+              14.23546932676419,
+              16.38927468460207,
+              20.778400217709105,
+              25.74090993715936,
+              38.556703817588925
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 4521
+          }
+        },
+        "motorcycle": {
+          "width_px": {
+            "count": 5090,
+            "quantiles_min_p10_p50_p90_max": [
+              5.216115363944718,
+              8.530265959139339,
+              12.301441148706488,
+              21.127292797824257,
+              29.672001026831254
+            ],
+            "count_le_4": 0,
+            "count_le_8": 246,
+            "count_le_16": 3418
+          },
+          "height_px": {
+            "count": 5090,
+            "quantiles_min_p10_p50_p90_max": [
+              10.477230557090422,
+              13.633466889734008,
+              16.63932183881377,
+              21.83531745336654,
+              26.68383662157555
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 2107
+          }
+        },
+        "other_vehicle": {
+          "width_px": {
+            "count": 83,
+            "quantiles_min_p10_p50_p90_max": [
+              13.435888808523998,
+              15.653757255659924,
+              24.872588525256504,
+              44.64021444536231,
+              98.83649176583299
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 10
+          },
+          "height_px": {
+            "count": 83,
+            "quantiles_min_p10_p50_p90_max": [
+              19.7363658136382,
+              20.785511427150425,
+              26.69148696664135,
+              45.622710801146155,
+              57.51676474563641
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "pedestrian": {
+          "width_px": {
+            "count": 2495,
+            "quantiles_min_p10_p50_p90_max": [
+              5.365944903279967,
+              7.238172209594609,
+              8.94717918755532,
+              11.44681634097494,
+              14.64263584839
+            ],
+            "count_le_4": 0,
+            "count_le_8": 673,
+            "count_le_16": 2495
+          },
+          "height_px": {
+            "count": 2495,
+            "quantiles_min_p10_p50_p90_max": [
+              11.573674138348736,
+              15.790058478702303,
+              18.460211865252063,
+              23.596961675756425,
+              26.70361793323889
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 326
+          }
+        },
+        "tricycle": {
+          "width_px": {
+            "count": 683,
+            "quantiles_min_p10_p50_p90_max": [
+              9.924897188437,
+              12.83187515435576,
+              16.799892810410313,
+              29.976928422794636,
+              53.74339409373442
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 301
+          },
+          "height_px": {
+            "count": 683,
+            "quantiles_min_p10_p50_p90_max": [
+              12.727856378118304,
+              16.136437937289962,
+              19.913655297039043,
+              26.468014512919776,
+              33.36394606057061
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 60
+          }
+        },
+        "truck": {
+          "width_px": {
+            "count": 27052,
+            "quantiles_min_p10_p50_p90_max": [
+              15.073989973102234,
+              24.014757329672957,
+              35.28151472159864,
+              57.578159081997505,
+              242.90655794282088
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 21
+          },
+          "height_px": {
+            "count": 27052,
+            "quantiles_min_p10_p50_p90_max": [
+              17.878378499221014,
+              27.189724286069072,
+              38.66444420510183,
+              56.00197245897767,
+              84.2049543223456
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        }
+      }
+    },
+    "100_150": {
+      "raw_counts": {
+        "motorcycle": 5369,
+        "truck": 23643,
+        "car": 39489,
+        "tricycle": 270,
+        "bus": 998,
+        "pedestrian": 1320,
+        "other_vehicle": 93,
+        "bicycle": 16
+      },
+      "geometry_admissible_counts": {
+        "motorcycle": 5368,
+        "truck": 23576,
+        "car": 39415,
+        "tricycle": 270,
+        "bus": 985,
+        "pedestrian": 1320,
+        "other_vehicle": 93,
+        "bicycle": 16
+      },
+      "pixel_size_by_class": {
+        "bicycle": {
+          "width_px": {
+            "count": 16,
+            "quantiles_min_p10_p50_p90_max": [
+              7.432473925392458,
+              7.854765936443016,
+              9.157680469990318,
+              13.04928242872964,
+              14.716925242428715
+            ],
+            "count_le_4": 0,
+            "count_le_8": 2,
+            "count_le_16": 16
+          },
+          "height_px": {
+            "count": 16,
+            "quantiles_min_p10_p50_p90_max": [
+              7.950977013961335,
+              8.217995303226246,
+              13.293269778611773,
+              14.168545687828214,
+              14.560526009010175
+            ],
+            "count_le_4": 0,
+            "count_le_8": 1,
+            "count_le_16": 16
+          }
+        },
+        "bus": {
+          "width_px": {
+            "count": 985,
+            "quantiles_min_p10_p50_p90_max": [
+              14.957834693839573,
+              21.030895216424163,
+              27.517838493229192,
+              43.97677167016109,
+              85.07808590626013
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 1
+          },
+          "height_px": {
+            "count": 985,
+            "quantiles_min_p10_p50_p90_max": [
+              18.846201081007052,
+              21.948602468222123,
+              27.459123714809834,
+              31.137075013282413,
+              36.242458139139075
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "car": {
+          "width_px": {
+            "count": 39415,
+            "quantiles_min_p10_p50_p90_max": [
+              7.3247049102823345,
+              12.391218415960997,
+              15.165479227279064,
+              19.508011700471773,
+              41.8068210930453
+            ],
+            "count_le_4": 0,
+            "count_le_8": 2,
+            "count_le_16": 24808
+          },
+          "height_px": {
+            "count": 39415,
+            "quantiles_min_p10_p50_p90_max": [
+              10.162415699509097,
+              11.105532171543302,
+              13.137184904814887,
+              15.242566424754234,
+              25.157207985698335
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 37456
+          }
+        },
+        "motorcycle": {
+          "width_px": {
+            "count": 5368,
+            "quantiles_min_p10_p50_p90_max": [
+              4.634315723979569,
+              5.436744473205158,
+              6.735390826667469,
+              9.86693066834036,
+              17.61097855491994
+            ],
+            "count_le_4": 0,
+            "count_le_8": 4201,
+            "count_le_16": 5323
+          },
+          "height_px": {
+            "count": 5368,
+            "quantiles_min_p10_p50_p90_max": [
+              7.3253994954776545,
+              9.876240657065802,
+              11.504610532227701,
+              13.604297407256377,
+              15.508870935896027
+            ],
+            "count_le_4": 0,
+            "count_le_8": 7,
+            "count_le_16": 5368
+          }
+        },
+        "other_vehicle": {
+          "width_px": {
+            "count": 93,
+            "quantiles_min_p10_p50_p90_max": [
+              11.611794994262425,
+              13.249889249404953,
+              35.20995745503424,
+              40.5460644442615,
+              44.459259469204994
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 16
+          },
+          "height_px": {
+            "count": 93,
+            "quantiles_min_p10_p50_p90_max": [
+              15.267992604962728,
+              17.57611106949337,
+              28.32204257331506,
+              30.935691572547316,
+              32.91918919582423
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 2
+          }
+        },
+        "pedestrian": {
+          "width_px": {
+            "count": 1320,
+            "quantiles_min_p10_p50_p90_max": [
+              4.515041445111137,
+              5.107346381291353,
+              6.256626959587571,
+              7.450170842827213,
+              8.864855938320602
+            ],
+            "count_le_4": 0,
+            "count_le_8": 1288,
+            "count_le_16": 1320
+          },
+          "height_px": {
+            "count": 1320,
+            "quantiles_min_p10_p50_p90_max": [
+              10.265615450229006,
+              11.385419331231839,
+              13.54008218124602,
+              14.971153991482295,
+              15.927322940559407
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 1320
+          }
+        },
+        "tricycle": {
+          "width_px": {
+            "count": 270,
+            "quantiles_min_p10_p50_p90_max": [
+              7.115288998666813,
+              8.509931525719884,
+              10.712703174839902,
+              22.695800014139493,
+              34.72875326724994
+            ],
+            "count_le_4": 0,
+            "count_le_8": 8,
+            "count_le_16": 238
+          },
+          "height_px": {
+            "count": 270,
+            "quantiles_min_p10_p50_p90_max": [
+              9.04444644686157,
+              10.517363170810114,
+              13.342319043938346,
+              17.42854125136173,
+              21.016061145803803
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 198
+          }
+        },
+        "truck": {
+          "width_px": {
+            "count": 23576,
+            "quantiles_min_p10_p50_p90_max": [
+              9.719800140818364,
+              16.940706369776365,
+              22.151558775107844,
+              35.12693599718868,
+              131.82579068080398
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 1370
+          },
+          "height_px": {
+            "count": 23576,
+            "quantiles_min_p10_p50_p90_max": [
+              12.813978506231535,
+              19.153627498211392,
+              25.25979415719705,
+              33.36204886379382,
+              44.43998668961274
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 445
+          }
+        }
+      }
+    },
+    "150_200": {
+      "raw_counts": {
+        "truck": 14233,
+        "bus": 168,
+        "car": 1038,
+        "motorcycle": 1018,
+        "tricycle": 19,
+        "pedestrian": 5
+      },
+      "geometry_admissible_counts": {
+        "truck": 14228,
+        "bus": 163,
+        "car": 1037,
+        "motorcycle": 1018,
+        "tricycle": 19,
+        "pedestrian": 5
+      },
+      "pixel_size_by_class": {
+        "bus": {
+          "width_px": {
+            "count": 163,
+            "quantiles_min_p10_p50_p90_max": [
+              13.148248351854136,
+              15.351531457570422,
+              20.077959783545566,
+              25.58250197504664,
+              37.98366214965681
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 22
+          },
+          "height_px": {
+            "count": 163,
+            "quantiles_min_p10_p50_p90_max": [
+              16.07481847246987,
+              17.48886175450597,
+              19.334589533653457,
+              21.31387581576096,
+              22.783797989839968
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 0
+          }
+        },
+        "car": {
+          "width_px": {
+            "count": 1037,
+            "quantiles_min_p10_p50_p90_max": [
+              8.510679652657814,
+              10.30628203893325,
+              11.595040645156814,
+              13.713511140022069,
+              27.671881076302725
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 987
+          },
+          "height_px": {
+            "count": 1037,
+            "quantiles_min_p10_p50_p90_max": [
+              10.141822761275648,
+              10.346833172575668,
+              10.843569564079246,
+              11.750871106522471,
+              13.066133537392034
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 1037
+          }
+        },
+        "motorcycle": {
+          "width_px": {
+            "count": 1018,
+            "quantiles_min_p10_p50_p90_max": [
+              4.50793209946869,
+              4.745891393354208,
+              5.230882514013132,
+              6.189096450714704,
+              11.394472859395421
+            ],
+            "count_le_4": 0,
+            "count_le_8": 973,
+            "count_le_16": 1018
+          },
+          "height_px": {
+            "count": 1018,
+            "quantiles_min_p10_p50_p90_max": [
+              7.001698626909501,
+              7.829354573933779,
+              8.745421147754655,
+              9.389672557318368,
+              10.558199389765377
+            ],
+            "count_le_4": 0,
+            "count_le_8": 137,
+            "count_le_16": 1018
+          }
+        },
+        "pedestrian": {
+          "width_px": {
+            "count": 5,
+            "quantiles_min_p10_p50_p90_max": [
+              4.732211388414669,
+              4.848116374527547,
+              5.112515726692834,
+              5.515795017511527,
+              5.537817451203637
+            ],
+            "count_le_4": 0,
+            "count_le_8": 5,
+            "count_le_16": 5
+          },
+          "height_px": {
+            "count": 5,
+            "quantiles_min_p10_p50_p90_max": [
+              10.21797568407601,
+              10.243605993636834,
+              10.285107379139731,
+              10.356795387088244,
+              10.368552691215484
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 5
+          }
+        },
+        "tricycle": {
+          "width_px": {
+            "count": 19,
+            "quantiles_min_p10_p50_p90_max": [
+              7.3390842467346715,
+              7.8331033794100335,
+              8.4799087535348,
+              9.125732694277634,
+              9.228455978165584
+            ],
+            "count_le_4": 0,
+            "count_le_8": 5,
+            "count_le_16": 19
+          },
+          "height_px": {
+            "count": 19,
+            "quantiles_min_p10_p50_p90_max": [
+              8.598310726437376,
+              8.839852758798623,
+              10.721126147823213,
+              11.056320330688106,
+              11.071992146784112
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 19
+          }
+        },
+        "truck": {
+          "width_px": {
+            "count": 14228,
+            "quantiles_min_p10_p50_p90_max": [
+              8.163540027235797,
+              12.70398534219668,
+              16.02118178669049,
+              22.257090586985086,
+              51.36866108759344
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 7079
+          },
+          "height_px": {
+            "count": 14228,
+            "quantiles_min_p10_p50_p90_max": [
+              10.248856481383882,
+              14.3076222619132,
+              18.410559163904225,
+              23.061762469771775,
+              28.911033702506245
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 3123
+          }
+        }
+      }
+    },
+    "200_300": {
+      "raw_counts": {
+        "truck": 4027,
+        "bus": 16,
+        "motorcycle": 14
+      },
+      "geometry_admissible_counts": {
+        "truck": 4027,
+        "bus": 16,
+        "motorcycle": 14
+      },
+      "pixel_size_by_class": {
+        "bus": {
+          "width_px": {
+            "count": 16,
+            "quantiles_min_p10_p50_p90_max": [
+              10.072748682444768,
+              10.166803171129061,
+              14.475451886918592,
+              16.4744056809175,
+              18.559483058337776
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 14
+          },
+          "height_px": {
+            "count": 16,
+            "quantiles_min_p10_p50_p90_max": [
+              13.340808363548717,
+              13.490794920140303,
+              13.859622463066131,
+              14.040589968728113,
+              14.270850133608633
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 16
+          }
+        },
+        "motorcycle": {
+          "width_px": {
+            "count": 14,
+            "quantiles_min_p10_p50_p90_max": [
+              4.533951155306852,
+              4.678937080029977,
+              4.760801546057195,
+              5.107886214762556,
+              5.188904203029921
+            ],
+            "count_le_4": 0,
+            "count_le_8": 14,
+            "count_le_16": 14
+          },
+          "height_px": {
+            "count": 14,
+            "quantiles_min_p10_p50_p90_max": [
+              6.403473338022309,
+              6.429889264513241,
+              6.613394525561972,
+              6.82792242792097,
+              7.017843498731622
+            ],
+            "count_le_4": 0,
+            "count_le_8": 14,
+            "count_le_16": 14
+          }
+        },
+        "truck": {
+          "width_px": {
+            "count": 4027,
+            "quantiles_min_p10_p50_p90_max": [
+              7.984929138203427,
+              10.346976715895858,
+              12.965850089109637,
+              17.538763594694636,
+              35.62177727329532
+            ],
+            "count_le_4": 0,
+            "count_le_8": 1,
+            "count_le_16": 3334
+          },
+          "height_px": {
+            "count": 4027,
+            "quantiles_min_p10_p50_p90_max": [
+              10.214794617314965,
+              11.739474573677057,
+              14.863132260825466,
+              17.66599335804757,
+              20.74767203833872
+            ],
+            "count_le_4": 0,
+            "count_le_8": 0,
+            "count_le_16": 2672
+          }
+        }
+      }
+    },
+    "300_400": {
+      "raw_counts": {},
+      "geometry_admissible_counts": {},
+      "pixel_size_by_class": {}
+    },
+    "400_inf": {
+      "raw_counts": {},
+      "geometry_admissible_counts": {},
+      "pixel_size_by_class": {}
+    }
+  },
+  "raw_center_depth_extrema_m": [
+    1.5631184950160577,
+    249.89297114871124
+  ],
+  "raw_horizontal_range_extrema_m": [
+    4.773950777497483,
+    253.5956157748697
+  ],
+  "image_wh": [
+    640,
+    384
+  ],
+  "geometry_scope": "Frozen pinhole approximation; no occlusion/visual detectability certification",
+  "range_scope": "Optical camera Z, maximum exclusive, not Euclidean distance",
+  "track_scope": "Sequence plus instance_id; correlated appearances, not independent scenes",
+  "parity": "Exact raw/60/150 per-sequence counts, aggregate reasons and track counts",
+  "reference_census_sha256": "ed335b701d0ea1ee723547b86538f9292a90169416064f5a6a01171083924156",
+  "label_sha256": {
+    "data/train/2cyv0Oedzg/labels.parquet": "e1fc19e222d4a5b98cfdeea98b5e27c621758766c7b269514229a9a2e21ab08d",
+    "data/train/34K84TaN11/labels.parquet": "76b40d6a848322acd10606c85d5ae4173b4df024bca7729a6c1dd812ee2f7c84",
+    "data/train/5ilM1PX2vz/labels.parquet": "67abaaf4948bb7a815d69847659889d7b84687edcc7f1ec9b31fb4f21e68ee74",
+    "data/train/6WCDpro5rE/labels.parquet": "6a588547774a2eb0005fb152886d2604f2825cf7e050abe822f00d9ff8698a5a",
+    "data/train/8SdieOgbva/labels.parquet": "2bf43a9a5fe3170ec2dd5c96a59d97f50d0a1b4e8140d5279b2492dba1f734bc",
+    "data/train/9ITOs4twfk/labels.parquet": "4e7da8f7b8f348b534a4e40c10d0ac84bf6f1ece7950d6ca3f0d816b9af0ccad",
+    "data/train/A1Nhv0KtmL/labels.parquet": "4d8848844bad6945fa67ed30c229f0c143040f975f5e6dc4d8b7739d79a2eb93",
+    "data/train/ClXqVoZOFu/labels.parquet": "f55e8e35e5a8d08f72abc2045378d3d12c06133d443a9a7157dbbf6694ee5bac",
+    "data/train/DGqicHUGWb/labels.parquet": "908244488914a000b5448c9ffd69f0a49b869c2815fc398badb3a60b0908846f",
+    "data/train/GjMYZjmSQb/labels.parquet": "d1da779468834eb3ce723f80bf3e41b2e88ce73738817cbe852d8b15b4296f98",
+    "data/train/L36QTEoVkB/labels.parquet": "3e48675ad8d15887f8e40241412aab66c50a884084087c8b1061848080af91e6",
+    "data/train/LMHPShQkaU/labels.parquet": "c3035d5eb7b549b73d5e53f4861889c288a8a35eb5e39093f63a71e96defe9eb",
+    "data/train/OYgB6RGWcq/labels.parquet": "53bab51c8a1ff99fbfb9586f6df1430865f76a7ed2e36e6fe57e082d0e634c89",
+    "data/train/Po6ePjWYAz/labels.parquet": "72861dfb52c6d3bec01666514a6244aa0faeceb7fceb62ab4d1f7d7ccafc9f06",
+    "data/train/eX8t2nGd6O/labels.parquet": "97564157856a379ec6adddd1d16404c45cefd4f3cca2558dba0eebdf3e1b3142",
+    "data/train/mHGFBekt7X/labels.parquet": "1892b201c114990bd8a9f77acf188d0cfff20a105fb4720a926c223536412686",
+    "data/train/nRcwUlHyAd/labels.parquet": "b8d14b5f4f3aaa892b679883212f12447c6418c8c5df605d413b91a3355b5f10",
+    "data/train/pzJcg1OCfc/labels.parquet": "0c80ddccb4d99b4b25f38a6df6c1a34e39d984fab1dfbc32a7a5565c7c58d690",
+    "data/train/q2k6O0X6JY/labels.parquet": "2dc66c48829d1275faac1c3ccfed3233738b992edc82907e14ce5904042056a5",
+    "data/train/qGsgzl4Q8B/labels.parquet": "ed4989281b7e398c276e1b966ee0d4db9dbb1e7b3374e7a41c3838a8a23b37e2",
+    "data/train/qoohcdtLDH/labels.parquet": "a512a2f2228afe433bd34e63bc00ea1d656ba2591fde19f42b6bc0ecbe85295a",
+    "data/train/t79dBxj1WS/labels.parquet": "0c41ede5398ff9182c2b64a72aaa5be4ea4ac421d08daccc5d2cba352eafbd73",
+    "data/train/wE9MZUmiJP/labels.parquet": "c9afcbdac7e27e06f8f2cfc73c00cf68e03c00d6555ae1e6e652afe31311d6ab",
+    "data/train/xkiVthsGwf/labels.parquet": "8a1106b3eab269525475e70b3b261cf5293dae88e7cf9b72a77a51718460e38e"
+  },
+  "source_sha256": {
+    "scripts\\audit_detection_long_range.py": "3fce7200288fbf6c7d4ab3c9695eb332d2c980c3ec872bf451262c70d35b3f6c",
+    "src\\e_jepa_ttc\\detection\\target_range_audit.py": "73ab677396778e0925b34d0b5ec786e8d868c7d896c7a810af3664a13eaf5584",
+    "src\\e_jepa_ttc\\detection\\monodgp_eap_adapter.py": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+    "src\\e_jepa_ttc\\detection\\geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "src\\e_jepa_ttc\\detection\\eap_rgb_data.py": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+    "src\\e_jepa_ttc\\detection\\range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea"
+  },
+  "media_admission_sha256": "cccfb3a1889101a7caed698c0c89d33f64e73f57039667072cc23f1bd9491ac6",
+  "test_labels_read": false,
+  "elapsed_seconds": 25.107187100002193
+}
