@@ -1,0 +1,194 @@
+{
+  "status": "COMPLETE_CPU_PROBE",
+  "plan_sha256": "b3c4f5497f17ac3e22c3e850d743659b07355552a48c7d0df1722c39d41346dc",
+  "model_intake_sha256": "ffa4d31bcf9c52a86628a05863afa26b3014d1ad45cb7c5cb18400f1357674c8",
+  "rows": [
+    {
+      "token": "34K84TaN11:000000878_000358229",
+      "positive_frame": true,
+      "raw_bicycle_gt": 1,
+      "projectable_bicycle_gt": 1,
+      "bicycle_detections": 3,
+      "matches": 1,
+      "inference_seconds": 8.71989300000132,
+      "matched_ious": [
+        0.6565179824829102
+      ]
+    },
+    {
+      "token": "6WCDpro5rE:000000312_000747392",
+      "positive_frame": true,
+      "raw_bicycle_gt": 1,
+      "projectable_bicycle_gt": 1,
+      "bicycle_detections": 1,
+      "matches": 0,
+      "inference_seconds": 5.678637999997591,
+      "matched_ious": []
+    },
+    {
+      "token": "8SdieOgbva:000000752_000555784",
+      "positive_frame": true,
+      "raw_bicycle_gt": 1,
+      "projectable_bicycle_gt": 1,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 6.724635099992156,
+      "matched_ious": []
+    },
+    {
+      "token": "DGqicHUGWb:000001065_000398961",
+      "positive_frame": true,
+      "raw_bicycle_gt": 1,
+      "projectable_bicycle_gt": 1,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 5.4855010000028415,
+      "matched_ious": []
+    },
+    {
+      "token": "Po6ePjWYAz:000000680_000727627",
+      "positive_frame": true,
+      "raw_bicycle_gt": 3,
+      "projectable_bicycle_gt": 3,
+      "bicycle_detections": 1,
+      "matches": 0,
+      "inference_seconds": 8.171773599999142,
+      "matched_ious": []
+    },
+    {
+      "token": "nRcwUlHyAd:000000670_000138327",
+      "positive_frame": true,
+      "raw_bicycle_gt": 1,
+      "projectable_bicycle_gt": 1,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 6.01963350000733,
+      "matched_ious": []
+    },
+    {
+      "token": "qoohcdtLDH:000000723_000181251",
+      "positive_frame": true,
+      "raw_bicycle_gt": 1,
+      "projectable_bicycle_gt": 1,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 5.620477399992524,
+      "matched_ious": []
+    },
+    {
+      "token": "xkiVthsGwf:000001054_000633300",
+      "positive_frame": true,
+      "raw_bicycle_gt": 1,
+      "projectable_bicycle_gt": 1,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 6.042316700011725,
+      "matched_ious": []
+    },
+    {
+      "token": "GjMYZjmSQb:000000177_000701646",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 5.81350650000968,
+      "matched_ious": []
+    },
+    {
+      "token": "8SdieOgbva:000000525_000252372",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 5.292699499987066,
+      "matched_ious": []
+    },
+    {
+      "token": "LMHPShQkaU:000000299_000880776",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 4.5206349000072805,
+      "matched_ious": []
+    },
+    {
+      "token": "pzJcg1OCfc:000001141_000484370",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 4.3136985000019195,
+      "matched_ious": []
+    },
+    {
+      "token": "34K84TaN11:000000748_000156269",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 4.574028300005011,
+      "matched_ious": []
+    },
+    {
+      "token": "5ilM1PX2vz:000000495_000031899",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 5.9876296000002185,
+      "matched_ious": []
+    },
+    {
+      "token": "wE9MZUmiJP:000000607_000854160",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 5.135513100001845,
+      "matched_ious": []
+    },
+    {
+      "token": "mHGFBekt7X:000000488_000202685",
+      "positive_frame": false,
+      "raw_bicycle_gt": 0,
+      "projectable_bicycle_gt": 0,
+      "bicycle_detections": 0,
+      "matches": 0,
+      "inference_seconds": 5.688241800002288,
+      "matched_ious": []
+    }
+  ],
+  "matched_bicycle_targets": 1,
+  "projectable_bicycle_targets": 10,
+  "bicycle_detections_on_negative_frames": 0,
+  "predictions": {
+    "00.json": "f614cff19a0d46cc7cb3b6481684fa496c9db78ab65a63adfdb2a30f7b3eef58",
+    "01.json": "0db1a63a224ff62180ff346db21203deb242f36a11fe05596498d30258cbd710",
+    "02.json": "9430efa0c344085261cc48a4db0de9f56e01f5c63e87f93f0a138fb2ca6de381",
+    "03.json": "f174e8c9e9c64296bb98c2833b91760feecacf1963a525c48ee89a5d7ffdf2fb",
+    "04.json": "b71312b1861dca0b9e600bee84b4dd447c141181b18d30ebb7e0e1e657f6b820",
+    "05.json": "ea0500c590c3ef5c89aa26a71cbc5fc8d0c70ec373313574db7defafa8fd5e15",
+    "06.json": "c447558a2b5f95c17fd5ef607d872a63f9076075aee00e5c25b855bc78f317cf",
+    "07.json": "8bb891301b2027c40b41695581d5d8634b0cea1760324b3eca1e44df9531a946",
+    "08.json": "1c73032917b8e64d9aefc972282321c96c22aab0a2c9c22fa779affb1caafd1f",
+    "09.json": "3bd4ac9bc462e60c2b7472481126a49cdb7df56ec8a49df812484fb7a0869396",
+    "10.json": "7d8a3da34ab0950dfd885a2ad62de441125b4946fc10c61b3d66e37fd69ee0d9",
+    "11.json": "e0565bb0220ecc0b6b317b5eed0a694c2bf9dadedd0a19d78af6b4a8e6ab7813",
+    "12.json": "875f64db6543fdc8dbc1039d342d815df815555ef38f40c967d2ef92737a7e1b",
+    "13.json": "115e8078499cd9575cbd1810aa5349df5f526000382f09d7fc354e33c104e7cd",
+    "14.json": "e1b7cca622b034a269c83cb683cdd57d55f9df110c4e057fc585e30c6a52a89f",
+    "15.json": "2fd8e87ffb407dadf09c54cc773a9871662e7db4099de966f0e69b1c91e7726c"
+  },
+  "cuda_initialized": false,
+  "mAP_measured": false,
+  "promotion": false,
+  "limitations": "Sixteen enriched TRAIN frames, not held out; projected 3D cuboids are not visible 2D labels. No native tricycle or other_vehicle class in COCO."
+}

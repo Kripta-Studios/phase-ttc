@@ -1,0 +1,33 @@
+{
+  "schema": "phase_semantic_cpu_probe_v1",
+  "panel_sha256": "7032c1fc01274f6722ffadb8363a623cef41d8fd1b91377a0ed8bb801217329f",
+  "positive_tokens": [
+    "34K84TaN11:000000878_000358229",
+    "6WCDpro5rE:000000312_000747392",
+    "8SdieOgbva:000000752_000555784",
+    "DGqicHUGWb:000001065_000398961",
+    "Po6ePjWYAz:000000680_000727627",
+    "nRcwUlHyAd:000000670_000138327",
+    "qoohcdtLDH:000000723_000181251",
+    "xkiVthsGwf:000001054_000633300"
+  ],
+  "negative_tokens": [
+    "GjMYZjmSQb:000000177_000701646",
+    "8SdieOgbva:000000525_000252372",
+    "LMHPShQkaU:000000299_000880776",
+    "pzJcg1OCfc:000001141_000484370",
+    "34K84TaN11:000000748_000156269",
+    "5ilM1PX2vz:000000495_000031899",
+    "wE9MZUmiJP:000000607_000854160",
+    "mHGFBekt7X:000000488_000202685"
+  ],
+  "sampling": "Eight evenly spaced sorted bicycle TRAIN tokens; eight random non-bicycle tokens, seed 7",
+  "confidence": 0.5,
+  "projected_cuboid_iou": 0.3,
+  "maximum_inference_seconds": 600,
+  "model": "torchvision fasterrcnn_resnet50_fpn_v2 COCO_V1",
+  "purpose": "Check semantic signal feasibility only; no eAP mAP or generalization estimate",
+  "selection_labels_read": false,
+  "test_labels_read": false,
+  "source_sha256": "9f526db46f9608dfd00120f0206633901aec05de48e6158452f7a3e733de5abc"
+}

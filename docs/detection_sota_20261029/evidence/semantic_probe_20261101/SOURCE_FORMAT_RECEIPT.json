@@ -1,0 +1,6 @@
+{
+  "executed_sha256": "9f526db46f9608dfd00120f0206633901aec05de48e6158452f7a3e733de5abc",
+  "formatted_sha256": "a256c472506490143ea6a6213054854968daf0e5a85a6d72c2db20c2ef4dc478",
+  "ast_exact": true,
+  "reason": "Split one long constant string to satisfy Ruff; executable syntax tree unchanged"
+}
