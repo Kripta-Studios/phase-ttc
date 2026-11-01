@@ -74,6 +74,23 @@ def main() -> None:
     for path in sorted((args.range_root / "screen_range150_v1/evaluation").glob("*.json")):
         value = read(path)
         lines.append(f"| {int(path.stem)} | {value['metrics']['mAP']:.8f} |")
+    range_result = args.range_root / "range300_screen_report_v1/RESULTS.json"
+    if range_result.is_file():
+        result_manifest = read(range_result.parent / "MANIFEST.json")
+        result = read(range_result)
+        if inputs[str(range_result)] != result_manifest["files"]["RESULTS.json"]:
+            raise ValueError("Completed 300m screen report differs")
+        lines.extend(
+            [
+                "",
+                f"300 m terminado: mejor mAP panel **{result['runs']['300']['best']:.8f}**, "
+                f"delta incumbente {result['delta_incumbent']:+.8f}, "
+                f"delta control 150 m {result['delta_paired_150m_control']:+.8f}. "
+                f"Decisión de recursos: `{result['decision']}`. "
+                "No equivale a haber evaluado 300 m en selección completa.",
+                f"Informe: `{(range_result.parent / 'REPORT.md').as_posix()}`.",
+            ]
+        )
     lines.extend(["", "## Colas posteriores", ""])
     for name, queue in (
         ("Ranking por clase", args.query_root / "campaign/QUEUE.json"),
@@ -101,12 +118,11 @@ def main() -> None:
     lines.extend(
         [
             "",
-            "Orden GPU: inferencia TRAIN del ranker, paridad y confirmación completa "
-            "de 150 m, después smoke y screening de 300 m. El STOP de 300 m es una "
-            "postergación registrada en DEFERRED_FOR_CONFIRMATION.json; su runner puede "
-            "mostrar FAILED/Stop requested before next stage mientras está postergado. "
-            "El runner de confirmación retira solo su propio marcador intacto y reinicia "
-            "la cola de 300 m tras terminar. Después espera la comparación KITTI, "
+            "Orden GPU registrado: inferencia TRAIN del ranker, confirmación completa "
+            "de 150 m, smoke y screening de 300 m, comparación KITTI. La postergación "
+            "histórica de 300 m está en DEFERRED_FOR_CONFIRMATION.json; no confundir "
+            "su antiguo FAILED/Stop requested con el estado actual mostrado arriba. "
+            "El runner de confirmación retiró su propio STOP al terminar. KITTI empieza "
             "con smoke de 32 actualizaciones, replay exacto y gate de aprendizaje. "
             "No añadir otro proceso GPU competidor.",
             "No editar las fuentes enumeradas en los contratos activos. "
@@ -133,6 +149,10 @@ def main() -> None:
         ),
         ("Diagnóstico por rango", args.range_root / "range150_diagnostics_v1/STATUS.json"),
         ("Entrenamiento 300 m", args.range_root / "long_range_campaign_v1/screen/STATUS.json"),
+        (
+            "Smoke GPU KITTI",
+            args.pretrained_root / "comparison_campaign_v1/smoke/STATUS.json",
+        ),
         (
             "Entrenamiento desde KITTI",
             args.pretrained_root / "comparison_campaign_v1/screen/STATUS.json",
@@ -244,22 +264,61 @@ def main() -> None:
     audit = read(args.pretrained_root / "cpu_transfer_v2/TRANSFER_AUDIT.json")
     conversion = read(args.pretrained_root / "monodgp_kitti_plain_v1/CONVERSION.json")
     weights_path = args.pretrained_root / "monodgp_kitti_plain_v1/model_state.pt"
+    pretrained_run = args.pretrained_root / "comparison_campaign_v1"
     lines.extend(
         [
-            f"Transferencia KITTI: **{audit['status']}**, "
-            f"CUDA inicializada: {audit['cuda_initialized']}. "
-            "No se ha medido mAP del modelo transferido.",
+            f"Prueba CPU de transferencia KITTI: **{audit['status']}**, "
+            f"CUDA inicializada en esa prueba: {audit['cuda_initialized']}.",
             f"Pesos puros: `{weights_path.as_posix()}`, "
             f"SHA-256 `{conversion['model_state_sha256']}`.",
-            "Falta smoke GPU y comparación de aprendizaje; conservar el fallo CPU v1.",
+            "Conservar el fallo CPU v1. El estado del smoke y screening GPU se muestra "
+            "por separado; un smoke no demuestra calidad de detección.",
+            "",
+        ]
+    )
+    for stage in ("smoke", "screen"):
+        evaluations = sorted((pretrained_run / stage / "evaluation").glob("*.json"))
+        if not evaluations:
+            lines.append(f"KITTI {stage}: aún no hay evaluaciones terminadas.")
+            continue
+        lines.extend(
+            [
+                f"Evaluaciones KITTI terminadas, etapa `{stage}`:",
+                "",
+                "| Update | Imágenes | mAP raw |",
+                "|---:|---:|---:|",
+            ]
+        )
+        for path in evaluations:
+            value = read(path)["metrics"]
+            lines.append(f"| {int(path.stem)} | {value['samples']} | {value['mAP']:.8f} |")
+        lines.append("")
+    competitor = ROOT / "docs/detection_sota_20261029/evidence/monocop_static_feasibility_20261101"
+    if (competitor / "AUDIT.json").is_file():
+        competitor_manifest = read(competitor / "ARCHIVE.json")
+        competitor_audit = read(competitor / "AUDIT.json")
+        if inputs[str(competitor / "AUDIT.json")] != competitor_manifest["files"]["AUDIT.json"]:
+            raise ValueError("Competitor static audit changed")
+        lines.extend(
+            [
+                f"MonoCoP: {competitor_audit['verified_source_files']} archivos verificados, "
+                "revisión estática únicamente. No se ejecutó su código ni se midió eAP. "
+                "Ver `docs/detection_sota_20261029/MONOCOP_FEASIBILITY_20261101.md` "
+                "para adaptaciones de rango, calibración, clases, pesos y atención. "
+                "No hay otro entrenamiento GPU admitido por esta revisión.",
+                "",
+            ]
+        )
+    lines.extend(
+        [
             "",
             "## Siguiente trabajo",
             "",
             "1. Verificar procesos, locks y estados reales antes de intervenir.",
-            "2. Revisar la confirmación completa de 150 m y registrar la decisión, "
-            "incluidas las caídas por clase y los resultados por distancia.",
+            "2. Conservar el resultado negativo confirmado de 150 m y sus diagnósticos "
+            "por clase y distancia; no repetir esa inferencia completa.",
             "3. Conservar los resultados negativos del ranking por clase; "
-            "seguir el smoke/gate de 300 m y su comparación controlada.",
+            "cerrar 300 m desde sus JSON completos y comparar con su control.",
             "4. Seguir la comparación KITTI ya preparada, sin atribuirle rendimiento "
             "no medido ni ampliar automáticamente su presupuesto de 2.048 actualizaciones.",
             "5. Mantener ocho clases, raw GT, particiones, recibos y artefactos negativos. "
