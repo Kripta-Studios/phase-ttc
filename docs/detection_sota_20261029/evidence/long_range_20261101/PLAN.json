@@ -1,0 +1,27 @@
+{
+  "schema": "phase_eap_long_range_plan_v1",
+  "status": "PREPARED_PENDING_GPU_SMOKE",
+  "hypothesis": "Supervise all geometrically admissible TRAIN objects instead of cutting at 150m",
+  "range_m": 300,
+  "why_300": "Census maximum below 250m; 300m provides declared margin",
+  "control": "D:\\PHASE_TTC_RANGE_20261101\\screen_config_v1\\range150.json",
+  "control_config_sha256": "c4fa84afb33b5f7c3e076c0f08f536df0123777bb2295b5e6303f44fd8b66362",
+  "census": "D:\\PHASE_TTC_RANGE_20261101\\train_long_range_v2\\CENSUS.json",
+  "census_sha256": "8f10a2c416526cf5a895245e558b152aded0fef164c61395495d794b537c0094",
+  "screen_config_sha256": "e224515ae795dee87d370c09741be04dfe8239c1eb85320bafb11e784e5210ca",
+  "smoke_config_sha256": "8303066e34cd635ae38dd988f27e678b45d0a1720d88e9d9e252ad831d4427de",
+  "paired_settings": "Same Dfull initialization policy, 4096 TRAIN/512 selection panel, seed7, 2048 updates, batch2, FP32, LR/scheduler, validation schedule",
+  "smoke_far_target": {
+    "token": "xkiVthsGwf:000001113_000434196",
+    "optical_depth_m": 249.15318359334796
+  },
+  "screen_maximum_seconds": 7200.0,
+  "resource_scope": "Local GPU only, one GPU process at a time, no cloud spending",
+  "primary": "Eight-class aligned raw-GT mAP",
+  "promotion": "Full-selection improvement >=0.005 over incumbent and valid control; review every class decline >0.01; no promotion from this panel alone",
+  "selection_exposure": "Exploratory extension after seeing partial 60/150 panel curves; not independent confirmation",
+  "smoke_gate": "Finite loss/gradient/checkpoint, far target admitted, exact initial label-free predictions versus same frozen reference tokens",
+  "test_labels_read": false,
+  "producer_source_sha256": "31d3733897ea659c08d209f8041be195e41e6a5d3298eba4111fd35aafb58c62",
+  "config_source_sha256": "d55eee718ba836dbf17b747660665766a5d4879bd11ee5f71229561c25ad4981"
+}
