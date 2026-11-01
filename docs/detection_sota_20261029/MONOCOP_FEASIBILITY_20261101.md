@@ -7,6 +7,12 @@ Estas pruebas usan pesos aleatorios y cero pasos de optimizador; no miden mAP
 ni admiten otro entrenamiento GPU. El texto siguiente documenta la inspección
 estática anterior, cuyo recibo permanece intacto.
 
+También se completó posteriormente la [transferencia CPU de los pesos multiclase](evidence/monocop_transfer_20261101/report/REPORT.md).
+La descarga quedó fijada por revisión y SHA-256, y las tres clases se mapearon
+explícitamente a eAP. Pasaron gradientes, datos TRAIN reales y replay exacto,
+incluida una corrección de API con igualdad del checkpoint y todos los resultados
+numéricos. Sigue sin haber una métrica eAP de MonoCoP ni admisión de otra cola GPU.
+
 MonoCoP queda como un competidor condicional. Esta revisión estática no admite
 otro entrenamiento: primero deben terminar los ensayos de rango e inicialización
 KITTI ya registrados. No hay una métrica eAP de MonoCoP ni evidencia de que vaya

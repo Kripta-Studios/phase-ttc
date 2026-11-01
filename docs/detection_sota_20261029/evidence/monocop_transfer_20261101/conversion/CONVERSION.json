@@ -1,0 +1,2540 @@
+{
+  "schema": "phase_monocop_pretrained_conversion_v1",
+  "status": "PASS_TENSOR_CONVERSION_ONLY",
+  "repo": "zhihao406/MonoCoP",
+  "revision": "91e1119b4463a83a9f64b7c2838be4bc5314834f",
+  "filename": "MonoCoP_All.pth",
+  "upstream_checkpoint_sha256": "f574a65bfd22ebcbb80b77fd18a09b4812d89ae5cdc21e6a556a081b7b755321",
+  "upstream_checkpoint_bytes": 501659516,
+  "hf_metadata_sha256": "b8b7eafaf9beafac35028c312ab7635304347bc9d2104dfcff529740066f2441",
+  "source_revision": "7d3932444f7ea94be564ae61a0b334fc6673213b",
+  "source_receipt_sha256": "90f69f32b8e2f63ea56cc168afdb1fe571f106ac1c8f54dd1b43b3e3a8a342c8",
+  "semantic_source_files": {
+    "config/monocop.yaml": "0fcdbade6b1a75419aa053b35a46280c207a7045402275be5a121bdc6b8c9bde",
+    "lib/datasets/kitti/kitti_dataset.py": "8617c3bce3aa25532bd2fb8a462d4f7d4653e6f9c116ab0f3cc97489762c1714"
+  },
+  "training_log_sha256": "85d7060452afec56f78eb7a20f6c28d6faa5f104c1b3fa2b4257b4ffb662e311",
+  "epoch": 229,
+  "best_epoch": 229,
+  "author_reported_kitti_car_moderate_3d_AP_R40_percent": 23.72006716762535,
+  "author_metric_is_our_eap_metric": false,
+  "tensor_count": 694,
+  "tensor_elements_with_state_aliases": 43238873,
+  "tensor_shapes": {
+    "depthaware_transformer.level_embed": [
+      4,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.sampling_offsets.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.sampling_offsets.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.attention_weights.weight": [
+      128,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.attention_weights.bias": [
+      128
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.value_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.value_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.output_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.self_attn.output_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.norm1.weight": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.norm1.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.linear1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.linear1.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.linear2.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.linear2.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.norm2.weight": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.0.norm2.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.sampling_offsets.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.sampling_offsets.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.attention_weights.weight": [
+      128,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.attention_weights.bias": [
+      128
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.value_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.value_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.output_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.self_attn.output_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.norm1.weight": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.norm1.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.linear1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.linear1.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.linear2.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.linear2.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.norm2.weight": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.1.norm2.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.sampling_offsets.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.sampling_offsets.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.attention_weights.weight": [
+      128,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.attention_weights.bias": [
+      128
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.value_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.value_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.output_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.self_attn.output_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.norm1.weight": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.norm1.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.linear1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.linear1.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.linear2.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.linear2.bias": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.norm2.weight": [
+      256
+    ],
+    "depthaware_transformer.encoder.layers.2.norm2.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.sampling_offsets.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.sampling_offsets.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.attention_weights.weight": [
+      128,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.attention_weights.bias": [
+      128
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.value_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.value_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.output_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn.output_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm1.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn_depth.in_proj_weight": [
+      768,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn_depth.in_proj_bias": [
+      768
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn_depth.out_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.cross_attn_depth.out_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm_depth.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm_depth.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.self_attn.in_proj_weight": [
+      768,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.self_attn.in_proj_bias": [
+      768
+    ],
+    "depthaware_transformer.decoder.layers.0.self_attn.out_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.self_attn.out_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm2.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm2.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.linear1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.linear1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.linear2.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.linear2.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm3.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.norm3.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_qcontent_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_qcontent_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_qpos_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_qpos_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_kcontent_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_kcontent_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_kpos_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_kpos_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_v_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.0.sa_v_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.sampling_offsets.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.sampling_offsets.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.attention_weights.weight": [
+      128,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.attention_weights.bias": [
+      128
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.value_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.value_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.output_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn.output_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm1.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn_depth.in_proj_weight": [
+      768,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn_depth.in_proj_bias": [
+      768
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn_depth.out_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.cross_attn_depth.out_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm_depth.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm_depth.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.self_attn.in_proj_weight": [
+      768,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.self_attn.in_proj_bias": [
+      768
+    ],
+    "depthaware_transformer.decoder.layers.1.self_attn.out_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.self_attn.out_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm2.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm2.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.linear1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.linear1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.linear2.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.linear2.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm3.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.norm3.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_qcontent_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_qcontent_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_qpos_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_qpos_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_kcontent_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_kcontent_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_kpos_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_kpos_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_v_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.1.sa_v_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.sampling_offsets.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.sampling_offsets.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.attention_weights.weight": [
+      128,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.attention_weights.bias": [
+      128
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.value_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.value_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.output_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn.output_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm1.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn_depth.in_proj_weight": [
+      768,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn_depth.in_proj_bias": [
+      768
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn_depth.out_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.cross_attn_depth.out_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm_depth.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm_depth.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.self_attn.in_proj_weight": [
+      768,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.self_attn.in_proj_bias": [
+      768
+    ],
+    "depthaware_transformer.decoder.layers.2.self_attn.out_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.self_attn.out_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm2.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm2.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.linear1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.linear1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.linear2.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.linear2.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm3.weight": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.norm3.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_qcontent_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_qcontent_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_qpos_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_qpos_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_kcontent_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_kcontent_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_kpos_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_kpos_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_v_proj.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.layers.2.sa_v_proj.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.query_scale.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.query_scale.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.query_scale.layers.1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.query_scale.layers.1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.ref_point_head.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.ref_point_head.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.ref_point_head.layers.1.weight": [
+      2,
+      256
+    ],
+    "depthaware_transformer.decoder.ref_point_head.layers.1.bias": [
+      2
+    ],
+    "depthaware_transformer.decoder.bbox_embed.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.0.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.0.layers.1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.0.layers.1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.0.layers.2.weight": [
+      6,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.0.layers.2.bias": [
+      6
+    ],
+    "depthaware_transformer.decoder.bbox_embed.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.1.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.1.layers.1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.1.layers.1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.1.layers.2.weight": [
+      6,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.1.layers.2.bias": [
+      6
+    ],
+    "depthaware_transformer.decoder.bbox_embed.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.2.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.2.layers.1.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.2.layers.1.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.2.layers.2.weight": [
+      6,
+      256
+    ],
+    "depthaware_transformer.decoder.bbox_embed.2.layers.2.bias": [
+      6
+    ],
+    "depthaware_transformer.decoder.dim_embed.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.0.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.0.layers.1.weight": [
+      3,
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.0.layers.1.bias": [
+      3
+    ],
+    "depthaware_transformer.decoder.dim_embed.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.1.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.1.layers.1.weight": [
+      3,
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.1.layers.1.bias": [
+      3
+    ],
+    "depthaware_transformer.decoder.dim_embed.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.2.layers.0.bias": [
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.2.layers.1.weight": [
+      3,
+      256
+    ],
+    "depthaware_transformer.decoder.dim_embed.2.layers.1.bias": [
+      3
+    ],
+    "depthaware_transformer.reference_points.weight": [
+      2,
+      256
+    ],
+    "depthaware_transformer.reference_points.bias": [
+      2
+    ],
+    "depth_predictor.depth_bin_values": [
+      81
+    ],
+    "depth_predictor.downsample.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "depth_predictor.downsample.0.bias": [
+      256
+    ],
+    "depth_predictor.downsample.1.weight": [
+      256
+    ],
+    "depth_predictor.downsample.1.bias": [
+      256
+    ],
+    "depth_predictor.proj.0.weight": [
+      256,
+      256,
+      1,
+      1
+    ],
+    "depth_predictor.proj.0.bias": [
+      256
+    ],
+    "depth_predictor.proj.1.weight": [
+      256
+    ],
+    "depth_predictor.proj.1.bias": [
+      256
+    ],
+    "depth_predictor.upsample.0.weight": [
+      256,
+      256,
+      1,
+      1
+    ],
+    "depth_predictor.upsample.0.bias": [
+      256
+    ],
+    "depth_predictor.upsample.1.weight": [
+      256
+    ],
+    "depth_predictor.upsample.1.bias": [
+      256
+    ],
+    "depth_predictor.depth_head.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "depth_predictor.depth_head.0.bias": [
+      256
+    ],
+    "depth_predictor.depth_head.1.weight": [
+      256
+    ],
+    "depth_predictor.depth_head.1.bias": [
+      256
+    ],
+    "depth_predictor.depth_head.3.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "depth_predictor.depth_head.3.bias": [
+      256
+    ],
+    "depth_predictor.depth_head.4.weight": [
+      256
+    ],
+    "depth_predictor.depth_head.4.bias": [
+      256
+    ],
+    "depth_predictor.depth_classifier.weight": [
+      81,
+      256,
+      1,
+      1
+    ],
+    "depth_predictor.depth_classifier.bias": [
+      81
+    ],
+    "depth_predictor.depth_encoder.layers.0.self_attn.in_proj_weight": [
+      768,
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.self_attn.in_proj_bias": [
+      768
+    ],
+    "depth_predictor.depth_encoder.layers.0.self_attn.out_proj.weight": [
+      256,
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.self_attn.out_proj.bias": [
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.linear1.weight": [
+      256,
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.linear1.bias": [
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.linear2.weight": [
+      256,
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.linear2.bias": [
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.norm1.weight": [
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.norm1.bias": [
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.norm2.weight": [
+      256
+    ],
+    "depth_predictor.depth_encoder.layers.0.norm2.bias": [
+      256
+    ],
+    "depth_predictor.depth_pos_embed.weight": [
+      61,
+      256
+    ],
+    "label_enc.weight": [
+      4,
+      255
+    ],
+    "class_embed.0.weight": [
+      3,
+      256
+    ],
+    "class_embed.0.bias": [
+      3
+    ],
+    "class_embed.1.weight": [
+      3,
+      256
+    ],
+    "class_embed.1.bias": [
+      3
+    ],
+    "class_embed.2.weight": [
+      3,
+      256
+    ],
+    "class_embed.2.bias": [
+      3
+    ],
+    "bbox_embed.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "bbox_embed.0.layers.0.bias": [
+      256
+    ],
+    "bbox_embed.0.layers.1.weight": [
+      256,
+      256
+    ],
+    "bbox_embed.0.layers.1.bias": [
+      256
+    ],
+    "bbox_embed.0.layers.2.weight": [
+      6,
+      256
+    ],
+    "bbox_embed.0.layers.2.bias": [
+      6
+    ],
+    "bbox_embed.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "bbox_embed.1.layers.0.bias": [
+      256
+    ],
+    "bbox_embed.1.layers.1.weight": [
+      256,
+      256
+    ],
+    "bbox_embed.1.layers.1.bias": [
+      256
+    ],
+    "bbox_embed.1.layers.2.weight": [
+      6,
+      256
+    ],
+    "bbox_embed.1.layers.2.bias": [
+      6
+    ],
+    "bbox_embed.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "bbox_embed.2.layers.0.bias": [
+      256
+    ],
+    "bbox_embed.2.layers.1.weight": [
+      256,
+      256
+    ],
+    "bbox_embed.2.layers.1.bias": [
+      256
+    ],
+    "bbox_embed.2.layers.2.weight": [
+      6,
+      256
+    ],
+    "bbox_embed.2.layers.2.bias": [
+      6
+    ],
+    "dim_embed_3d.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "dim_embed_3d.0.layers.0.bias": [
+      256
+    ],
+    "dim_embed_3d.0.layers.1.weight": [
+      3,
+      256
+    ],
+    "dim_embed_3d.0.layers.1.bias": [
+      3
+    ],
+    "dim_embed_3d.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "dim_embed_3d.1.layers.0.bias": [
+      256
+    ],
+    "dim_embed_3d.1.layers.1.weight": [
+      3,
+      256
+    ],
+    "dim_embed_3d.1.layers.1.bias": [
+      3
+    ],
+    "dim_embed_3d.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "dim_embed_3d.2.layers.0.bias": [
+      256
+    ],
+    "dim_embed_3d.2.layers.1.weight": [
+      3,
+      256
+    ],
+    "dim_embed_3d.2.layers.1.bias": [
+      3
+    ],
+    "angle_embed.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "angle_embed.0.layers.0.bias": [
+      256
+    ],
+    "angle_embed.0.layers.1.weight": [
+      24,
+      256
+    ],
+    "angle_embed.0.layers.1.bias": [
+      24
+    ],
+    "angle_embed.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "angle_embed.1.layers.0.bias": [
+      256
+    ],
+    "angle_embed.1.layers.1.weight": [
+      24,
+      256
+    ],
+    "angle_embed.1.layers.1.bias": [
+      24
+    ],
+    "angle_embed.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "angle_embed.2.layers.0.bias": [
+      256
+    ],
+    "angle_embed.2.layers.1.weight": [
+      24,
+      256
+    ],
+    "angle_embed.2.layers.1.bias": [
+      24
+    ],
+    "depth_embed.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "depth_embed.0.layers.0.bias": [
+      256
+    ],
+    "depth_embed.0.layers.1.weight": [
+      2,
+      256
+    ],
+    "depth_embed.0.layers.1.bias": [
+      2
+    ],
+    "depth_embed.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "depth_embed.1.layers.0.bias": [
+      256
+    ],
+    "depth_embed.1.layers.1.weight": [
+      2,
+      256
+    ],
+    "depth_embed.1.layers.1.bias": [
+      2
+    ],
+    "depth_embed.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "depth_embed.2.layers.0.bias": [
+      256
+    ],
+    "depth_embed.2.layers.1.weight": [
+      2,
+      256
+    ],
+    "depth_embed.2.layers.1.bias": [
+      2
+    ],
+    "region_head.input_proj.0.0.weight": [
+      256,
+      256,
+      1,
+      1
+    ],
+    "region_head.input_proj.0.0.bias": [
+      256
+    ],
+    "region_head.input_proj.0.1.weight": [
+      256
+    ],
+    "region_head.input_proj.0.1.bias": [
+      256
+    ],
+    "region_head.input_proj.1.0.weight": [
+      256,
+      256,
+      1,
+      1
+    ],
+    "region_head.input_proj.1.0.bias": [
+      256
+    ],
+    "region_head.input_proj.1.1.weight": [
+      256
+    ],
+    "region_head.input_proj.1.1.bias": [
+      256
+    ],
+    "region_head.input_proj.2.0.weight": [
+      256,
+      256,
+      1,
+      1
+    ],
+    "region_head.input_proj.2.0.bias": [
+      256
+    ],
+    "region_head.input_proj.2.1.weight": [
+      256
+    ],
+    "region_head.input_proj.2.1.bias": [
+      256
+    ],
+    "region_head.input_proj.3.0.weight": [
+      256,
+      256,
+      1,
+      1
+    ],
+    "region_head.input_proj.3.0.bias": [
+      256
+    ],
+    "region_head.input_proj.3.1.weight": [
+      256
+    ],
+    "region_head.input_proj.3.1.bias": [
+      256
+    ],
+    "region_head.pred.0.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.0.0.bias": [
+      256
+    ],
+    "region_head.pred.0.2.weight": [
+      1,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.0.2.bias": [
+      1
+    ],
+    "region_head.pred.1.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.1.0.bias": [
+      256
+    ],
+    "region_head.pred.1.2.weight": [
+      1,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.1.2.bias": [
+      1
+    ],
+    "region_head.pred.2.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.2.0.bias": [
+      256
+    ],
+    "region_head.pred.2.2.weight": [
+      1,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.2.2.bias": [
+      1
+    ],
+    "region_head.pred.3.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.3.0.bias": [
+      256
+    ],
+    "region_head.pred.3.2.weight": [
+      1,
+      256,
+      3,
+      3
+    ],
+    "region_head.pred.3.2.bias": [
+      1
+    ],
+    "region_head.deconv.0.weight": [
+      256,
+      256,
+      2,
+      2
+    ],
+    "region_head.deconv.0.bias": [
+      256
+    ],
+    "region_head.deconv.1.weight": [
+      256,
+      256,
+      2,
+      2
+    ],
+    "region_head.deconv.1.bias": [
+      256
+    ],
+    "region_head.deconv.2.weight": [
+      256,
+      256,
+      2,
+      2
+    ],
+    "region_head.deconv.2.bias": [
+      256
+    ],
+    "region_head.attention.0.fc1.weight": [
+      16,
+      256,
+      1,
+      1
+    ],
+    "region_head.attention.0.fc1.bias": [
+      16
+    ],
+    "region_head.attention.0.fc2.weight": [
+      256,
+      16,
+      1,
+      1
+    ],
+    "region_head.attention.0.fc2.bias": [
+      256
+    ],
+    "region_head.attention.1.fc1.weight": [
+      16,
+      256,
+      1,
+      1
+    ],
+    "region_head.attention.1.fc1.bias": [
+      16
+    ],
+    "region_head.attention.1.fc2.weight": [
+      256,
+      16,
+      1,
+      1
+    ],
+    "region_head.attention.1.fc2.bias": [
+      256
+    ],
+    "region_head.attention.2.fc1.weight": [
+      16,
+      256,
+      1,
+      1
+    ],
+    "region_head.attention.2.fc1.bias": [
+      16
+    ],
+    "region_head.attention.2.fc2.weight": [
+      256,
+      16,
+      1,
+      1
+    ],
+    "region_head.attention.2.fc2.bias": [
+      256
+    ],
+    "region_head.attention.3.fc1.weight": [
+      16,
+      256,
+      1,
+      1
+    ],
+    "region_head.attention.3.fc1.bias": [
+      16
+    ],
+    "region_head.attention.3.fc2.weight": [
+      256,
+      16,
+      1,
+      1
+    ],
+    "region_head.attention.3.fc2.bias": [
+      256
+    ],
+    "sizeNet.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "sizeNet.0.layers.0.bias": [
+      256
+    ],
+    "sizeNet.0.layers.1.weight": [
+      256,
+      256
+    ],
+    "sizeNet.0.layers.1.bias": [
+      256
+    ],
+    "sizeNet.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "sizeNet.1.layers.0.bias": [
+      256
+    ],
+    "sizeNet.1.layers.1.weight": [
+      256,
+      256
+    ],
+    "sizeNet.1.layers.1.bias": [
+      256
+    ],
+    "sizeNet.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "sizeNet.2.layers.0.bias": [
+      256
+    ],
+    "sizeNet.2.layers.1.weight": [
+      256,
+      256
+    ],
+    "sizeNet.2.layers.1.bias": [
+      256
+    ],
+    "angleNet.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "angleNet.0.layers.0.bias": [
+      256
+    ],
+    "angleNet.0.layers.1.weight": [
+      256,
+      256
+    ],
+    "angleNet.0.layers.1.bias": [
+      256
+    ],
+    "angleNet.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "angleNet.1.layers.0.bias": [
+      256
+    ],
+    "angleNet.1.layers.1.weight": [
+      256,
+      256
+    ],
+    "angleNet.1.layers.1.bias": [
+      256
+    ],
+    "angleNet.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "angleNet.2.layers.0.bias": [
+      256
+    ],
+    "angleNet.2.layers.1.weight": [
+      256,
+      256
+    ],
+    "angleNet.2.layers.1.bias": [
+      256
+    ],
+    "depthNet.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthNet.0.layers.0.bias": [
+      256
+    ],
+    "depthNet.0.layers.1.weight": [
+      256,
+      256
+    ],
+    "depthNet.0.layers.1.bias": [
+      256
+    ],
+    "depthNet.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthNet.1.layers.0.bias": [
+      256
+    ],
+    "depthNet.1.layers.1.weight": [
+      256,
+      256
+    ],
+    "depthNet.1.layers.1.bias": [
+      256
+    ],
+    "depthNet.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "depthNet.2.layers.0.bias": [
+      256
+    ],
+    "depthNet.2.layers.1.weight": [
+      256,
+      256
+    ],
+    "depthNet.2.layers.1.bias": [
+      256
+    ],
+    "depth_embed_para.0.layers.0.weight": [
+      256,
+      256
+    ],
+    "depth_embed_para.0.layers.0.bias": [
+      256
+    ],
+    "depth_embed_para.0.layers.1.weight": [
+      2,
+      256
+    ],
+    "depth_embed_para.0.layers.1.bias": [
+      2
+    ],
+    "depth_embed_para.1.layers.0.weight": [
+      256,
+      256
+    ],
+    "depth_embed_para.1.layers.0.bias": [
+      256
+    ],
+    "depth_embed_para.1.layers.1.weight": [
+      2,
+      256
+    ],
+    "depth_embed_para.1.layers.1.bias": [
+      2
+    ],
+    "depth_embed_para.2.layers.0.weight": [
+      256,
+      256
+    ],
+    "depth_embed_para.2.layers.0.bias": [
+      256
+    ],
+    "depth_embed_para.2.layers.1.weight": [
+      2,
+      256
+    ],
+    "depth_embed_para.2.layers.1.bias": [
+      2
+    ],
+    "query_embed.weight": [
+      550,
+      512
+    ],
+    "input_proj.0.0.weight": [
+      256,
+      512,
+      1,
+      1
+    ],
+    "input_proj.0.0.bias": [
+      256
+    ],
+    "input_proj.0.1.weight": [
+      256
+    ],
+    "input_proj.0.1.bias": [
+      256
+    ],
+    "input_proj.1.0.weight": [
+      256,
+      1024,
+      1,
+      1
+    ],
+    "input_proj.1.0.bias": [
+      256
+    ],
+    "input_proj.1.1.weight": [
+      256
+    ],
+    "input_proj.1.1.bias": [
+      256
+    ],
+    "input_proj.2.0.weight": [
+      256,
+      2048,
+      1,
+      1
+    ],
+    "input_proj.2.0.bias": [
+      256
+    ],
+    "input_proj.2.1.weight": [
+      256
+    ],
+    "input_proj.2.1.bias": [
+      256
+    ],
+    "input_proj.3.0.weight": [
+      256,
+      2048,
+      3,
+      3
+    ],
+    "input_proj.3.0.bias": [
+      256
+    ],
+    "input_proj.3.1.weight": [
+      256
+    ],
+    "input_proj.3.1.bias": [
+      256
+    ],
+    "backbone.conv1.conv1_1.conv.weight": [
+      32,
+      3,
+      3,
+      3
+    ],
+    "backbone.conv1.conv1_1.norm.weight": [
+      32
+    ],
+    "backbone.conv1.conv1_1.norm.bias": [
+      32
+    ],
+    "backbone.conv1.conv1_1.norm.running_mean": [
+      32
+    ],
+    "backbone.conv1.conv1_1.norm.running_var": [
+      32
+    ],
+    "backbone.conv1.conv1_2.conv.weight": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "backbone.conv1.conv1_2.norm.weight": [
+      32
+    ],
+    "backbone.conv1.conv1_2.norm.bias": [
+      32
+    ],
+    "backbone.conv1.conv1_2.norm.running_mean": [
+      32
+    ],
+    "backbone.conv1.conv1_2.norm.running_var": [
+      32
+    ],
+    "backbone.conv1.conv1_3.conv.weight": [
+      64,
+      32,
+      3,
+      3
+    ],
+    "backbone.conv1.conv1_3.norm.weight": [
+      64
+    ],
+    "backbone.conv1.conv1_3.norm.bias": [
+      64
+    ],
+    "backbone.conv1.conv1_3.norm.running_mean": [
+      64
+    ],
+    "backbone.conv1.conv1_3.norm.running_var": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2a.conv.weight": [
+      64,
+      64,
+      1,
+      1
+    ],
+    "backbone.res_layers.0.blocks.0.branch2a.norm.weight": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2a.norm.bias": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2a.norm.running_mean": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2a.norm.running_var": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2b.conv.weight": [
+      64,
+      64,
+      3,
+      3
+    ],
+    "backbone.res_layers.0.blocks.0.branch2b.norm.weight": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2b.norm.bias": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2b.norm.running_mean": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2b.norm.running_var": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.0.branch2c.conv.weight": [
+      256,
+      64,
+      1,
+      1
+    ],
+    "backbone.res_layers.0.blocks.0.branch2c.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.0.branch2c.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.0.branch2c.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.0.branch2c.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.0.short.conv.weight": [
+      256,
+      64,
+      1,
+      1
+    ],
+    "backbone.res_layers.0.blocks.0.short.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.0.short.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.0.short.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.0.short.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.1.branch2a.conv.weight": [
+      64,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.0.blocks.1.branch2a.norm.weight": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2a.norm.bias": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2a.norm.running_mean": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2a.norm.running_var": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2b.conv.weight": [
+      64,
+      64,
+      3,
+      3
+    ],
+    "backbone.res_layers.0.blocks.1.branch2b.norm.weight": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2b.norm.bias": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2b.norm.running_mean": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2b.norm.running_var": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.1.branch2c.conv.weight": [
+      256,
+      64,
+      1,
+      1
+    ],
+    "backbone.res_layers.0.blocks.1.branch2c.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.1.branch2c.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.1.branch2c.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.1.branch2c.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.2.branch2a.conv.weight": [
+      64,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.0.blocks.2.branch2a.norm.weight": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2a.norm.bias": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2a.norm.running_mean": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2a.norm.running_var": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2b.conv.weight": [
+      64,
+      64,
+      3,
+      3
+    ],
+    "backbone.res_layers.0.blocks.2.branch2b.norm.weight": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2b.norm.bias": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2b.norm.running_mean": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2b.norm.running_var": [
+      64
+    ],
+    "backbone.res_layers.0.blocks.2.branch2c.conv.weight": [
+      256,
+      64,
+      1,
+      1
+    ],
+    "backbone.res_layers.0.blocks.2.branch2c.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.2.branch2c.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.2.branch2c.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.0.blocks.2.branch2c.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.1.blocks.0.branch2a.conv.weight": [
+      128,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.0.branch2a.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2a.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2a.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2a.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2b.conv.weight": [
+      128,
+      128,
+      3,
+      3
+    ],
+    "backbone.res_layers.1.blocks.0.branch2b.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2b.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2b.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2b.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.0.branch2c.conv.weight": [
+      512,
+      128,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.0.branch2c.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.0.branch2c.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.0.branch2c.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.0.branch2c.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.0.short.conv.conv.weight": [
+      512,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.0.short.conv.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.0.short.conv.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.0.short.conv.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.0.short.conv.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.1.branch2a.conv.weight": [
+      128,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.1.branch2a.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2a.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2a.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2a.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2b.conv.weight": [
+      128,
+      128,
+      3,
+      3
+    ],
+    "backbone.res_layers.1.blocks.1.branch2b.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2b.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2b.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2b.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.1.branch2c.conv.weight": [
+      512,
+      128,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.1.branch2c.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.1.branch2c.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.1.branch2c.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.1.branch2c.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.2.branch2a.conv.weight": [
+      128,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.2.branch2a.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2a.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2a.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2a.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2b.conv.weight": [
+      128,
+      128,
+      3,
+      3
+    ],
+    "backbone.res_layers.1.blocks.2.branch2b.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2b.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2b.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2b.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.2.branch2c.conv.weight": [
+      512,
+      128,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.2.branch2c.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.2.branch2c.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.2.branch2c.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.2.branch2c.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.3.branch2a.conv.weight": [
+      128,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.3.branch2a.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2a.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2a.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2a.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2b.conv.weight": [
+      128,
+      128,
+      3,
+      3
+    ],
+    "backbone.res_layers.1.blocks.3.branch2b.norm.weight": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2b.norm.bias": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2b.norm.running_mean": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2b.norm.running_var": [
+      128
+    ],
+    "backbone.res_layers.1.blocks.3.branch2c.conv.weight": [
+      512,
+      128,
+      1,
+      1
+    ],
+    "backbone.res_layers.1.blocks.3.branch2c.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.3.branch2c.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.3.branch2c.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.1.blocks.3.branch2c.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.2.blocks.0.branch2a.conv.weight": [
+      256,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.0.branch2a.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2a.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2a.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2a.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2b.conv.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "backbone.res_layers.2.blocks.0.branch2b.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2b.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2b.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2b.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.0.branch2c.conv.weight": [
+      1024,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.0.branch2c.norm.weight": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.0.branch2c.norm.bias": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.0.branch2c.norm.running_mean": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.0.branch2c.norm.running_var": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.0.short.conv.conv.weight": [
+      1024,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.0.short.conv.norm.weight": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.0.short.conv.norm.bias": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.0.short.conv.norm.running_mean": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.0.short.conv.norm.running_var": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.1.branch2a.conv.weight": [
+      256,
+      1024,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.1.branch2a.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2a.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2a.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2a.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2b.conv.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "backbone.res_layers.2.blocks.1.branch2b.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2b.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2b.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2b.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.1.branch2c.conv.weight": [
+      1024,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.1.branch2c.norm.weight": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.1.branch2c.norm.bias": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.1.branch2c.norm.running_mean": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.1.branch2c.norm.running_var": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.2.branch2a.conv.weight": [
+      256,
+      1024,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.2.branch2a.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2a.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2a.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2a.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2b.conv.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "backbone.res_layers.2.blocks.2.branch2b.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2b.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2b.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2b.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.2.branch2c.conv.weight": [
+      1024,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.2.branch2c.norm.weight": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.2.branch2c.norm.bias": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.2.branch2c.norm.running_mean": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.2.branch2c.norm.running_var": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.3.branch2a.conv.weight": [
+      256,
+      1024,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.3.branch2a.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2a.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2a.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2a.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2b.conv.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "backbone.res_layers.2.blocks.3.branch2b.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2b.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2b.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2b.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.3.branch2c.conv.weight": [
+      1024,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.3.branch2c.norm.weight": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.3.branch2c.norm.bias": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.3.branch2c.norm.running_mean": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.3.branch2c.norm.running_var": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.4.branch2a.conv.weight": [
+      256,
+      1024,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.4.branch2a.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2a.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2a.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2a.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2b.conv.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "backbone.res_layers.2.blocks.4.branch2b.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2b.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2b.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2b.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.4.branch2c.conv.weight": [
+      1024,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.4.branch2c.norm.weight": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.4.branch2c.norm.bias": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.4.branch2c.norm.running_mean": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.4.branch2c.norm.running_var": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.5.branch2a.conv.weight": [
+      256,
+      1024,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.5.branch2a.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2a.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2a.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2a.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2b.conv.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "backbone.res_layers.2.blocks.5.branch2b.norm.weight": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2b.norm.bias": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2b.norm.running_mean": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2b.norm.running_var": [
+      256
+    ],
+    "backbone.res_layers.2.blocks.5.branch2c.conv.weight": [
+      1024,
+      256,
+      1,
+      1
+    ],
+    "backbone.res_layers.2.blocks.5.branch2c.norm.weight": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.5.branch2c.norm.bias": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.5.branch2c.norm.running_mean": [
+      1024
+    ],
+    "backbone.res_layers.2.blocks.5.branch2c.norm.running_var": [
+      1024
+    ],
+    "backbone.res_layers.3.blocks.0.branch2a.conv.weight": [
+      512,
+      1024,
+      1,
+      1
+    ],
+    "backbone.res_layers.3.blocks.0.branch2a.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2a.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2a.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2a.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2b.conv.weight": [
+      512,
+      512,
+      3,
+      3
+    ],
+    "backbone.res_layers.3.blocks.0.branch2b.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2b.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2b.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2b.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.0.branch2c.conv.weight": [
+      2048,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.3.blocks.0.branch2c.norm.weight": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.0.branch2c.norm.bias": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.0.branch2c.norm.running_mean": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.0.branch2c.norm.running_var": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.0.short.conv.conv.weight": [
+      2048,
+      1024,
+      1,
+      1
+    ],
+    "backbone.res_layers.3.blocks.0.short.conv.norm.weight": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.0.short.conv.norm.bias": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.0.short.conv.norm.running_mean": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.0.short.conv.norm.running_var": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.1.branch2a.conv.weight": [
+      512,
+      2048,
+      1,
+      1
+    ],
+    "backbone.res_layers.3.blocks.1.branch2a.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2a.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2a.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2a.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2b.conv.weight": [
+      512,
+      512,
+      3,
+      3
+    ],
+    "backbone.res_layers.3.blocks.1.branch2b.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2b.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2b.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2b.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.1.branch2c.conv.weight": [
+      2048,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.3.blocks.1.branch2c.norm.weight": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.1.branch2c.norm.bias": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.1.branch2c.norm.running_mean": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.1.branch2c.norm.running_var": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.2.branch2a.conv.weight": [
+      512,
+      2048,
+      1,
+      1
+    ],
+    "backbone.res_layers.3.blocks.2.branch2a.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2a.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2a.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2a.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2b.conv.weight": [
+      512,
+      512,
+      3,
+      3
+    ],
+    "backbone.res_layers.3.blocks.2.branch2b.norm.weight": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2b.norm.bias": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2b.norm.running_mean": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2b.norm.running_var": [
+      512
+    ],
+    "backbone.res_layers.3.blocks.2.branch2c.conv.weight": [
+      2048,
+      512,
+      1,
+      1
+    ],
+    "backbone.res_layers.3.blocks.2.branch2c.norm.weight": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.2.branch2c.norm.bias": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.2.branch2c.norm.running_mean": [
+      2048
+    ],
+    "backbone.res_layers.3.blocks.2.branch2c.norm.running_var": [
+      2048
+    ]
+  },
+  "model_state_sha256": "344222be2ed6413294593986bba84fc3d4bf17548dd0688d6022c3535d7d7c06",
+  "round_trip_exact": true,
+  "optimizer_transferred": false,
+  "cuda_initialized": false,
+  "load_policy": "weights_only=True; observed NumPy scalar/dtype/Float64DType allowlist",
+  "published_class_order": [
+    "Pedestrian",
+    "Car",
+    "Cyclist"
+  ],
+  "planned_eap_mapping": {
+    "Pedestrian_0": "pedestrian_3",
+    "Car_1": "car_0",
+    "Cyclist_2": "bike_1"
+  },
+  "limits": [
+    "Published config and log support all three classes; checkpoint omits its original config/code hash.",
+    "Author best-result metadata matches the log; it is a KITTI metric, not an eAP score.",
+    "Cyclist versus eAP bike and source versus target box conventions need explicit transfer review.",
+    "Source MIT and a model-card badge do not certify weight license or external-data benchmark admission.",
+    "CPU conversion does not admit another GPU experiment or establish detection quality."
+  ],
+  "source_sha256": "ab12d59030b7f1379e6078f849dcf688b94e29ad06b17f46a6a0748f5ca02e8f",
+  "serialization_documentation": "https://docs.pytorch.org/docs/2.11/notes/serialization.html"
+}

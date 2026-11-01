@@ -330,6 +330,28 @@ def main() -> None:
                 "",
             ]
         )
+    transfer_archive = ROOT / "docs/detection_sota_20261029/evidence/monocop_transfer_20261101"
+    if (transfer_archive / "ARCHIVE.json").is_file():
+        transfer_manifest = read(transfer_archive / "ARCHIVE.json")
+        transfer_result = read(transfer_archive / "v2/RESULTS.json")
+        if (
+            inputs[str(transfer_archive / "v2/RESULTS.json")]
+            != transfer_manifest["files"]["v2/RESULTS.json"]["sha256"]
+        ):
+            raise ValueError("MonoCoP transfer evidence changed")
+        lines.extend(
+            [
+                f"Transferencia MonoCoP multiclase: **{transfer_result['status']}**. "
+                "Pesos públicos descargados y convertidos con procedencia fijada; "
+                "Car, Pedestrian y Cyclist mapeados, otras cinco filas nuevas. "
+                "Pasaron ocho clases, targets vacíos, un frame TRAIN real y replay "
+                "exacto. v2 corrige una API sin cambiar pesos ni resultados numéricos. "
+                "Cero pasos de optimizador, ninguna mAP eAP de MonoCoP. No confundir "
+                "con el ensayo KITTI MonoDGP activo. Informe: "
+                "`evidence/monocop_transfer_20261101/report/REPORT.md`.",
+                "",
+            ]
+        )
     lines.extend(
         [
             "",

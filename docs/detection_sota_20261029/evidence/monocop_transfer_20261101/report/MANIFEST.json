@@ -1,0 +1,13 @@
+{
+  "input_sha256": {
+    "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_all_plain_v1\\CONVERSION.json": "2397de69a15942dcfbe392610b113e993e21ef833f5d39a8c7577adbab492986",
+    "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\RESULTS.json": "9746b6b5388196d4d67f23fe44d8f510bd6d2c8b7cf387363ed6df95bc7564fb",
+    "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\RESULTS.json": "d0e083750627f97cfd1bba43e0d04f26dd6906980a6d08edb53bba3c93d77068"
+  },
+  "report_sha256": "c4235309c30103992fb26e1757f5a6dbf67ff4af06b3bb311eb86d21a8b51bdf",
+  "generator_sha256": "58115a5bec488ab5c1b117ba5309339b880023b1d094546974aed2ec10e7afaa",
+  "api_correction_all_stage_results_exact": true,
+  "initialized_checkpoint_sha256": "e0de1b40d0b0316eaaf88d8133b333a00b825baf080fc19604b55d51c321b80a",
+  "quality_evaluated": false,
+  "promotion": false
+}
