@@ -1,0 +1,21 @@
+{
+  "schema": "phase_monocop_screen_v1",
+  "experiment_id": "monocop-all-range300-seed7-screen-v1",
+  "technical_config": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_plan_v4/smoke.json",
+  "technical_config_sha256": "d62b6c4ed7e2fe2ffb3418aa25d6dc159f15876821ef08c19ee0a014ee73b30d",
+  "technical_gate": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_gpu_smoke_recovery_v1/GATE.json",
+  "technical_gate_sha256": "6f7531bf4259ce447b789b3aafd07b6868874966add927a54ac8c2d5a64494ac",
+  "population": "D:/PHASE_TTC_RANGE_20261101/screen_config_v1/population.json",
+  "population_sha256": "481ac9c0adc9f31a8555928a6fed4dc5784b38485e170833ac3e510bd01e645b",
+  "updates": 2048,
+  "evaluation_updates": [
+    0,
+    512,
+    1024,
+    1536,
+    2048
+  ],
+  "checkpoint_interval": 128,
+  "maximum_seconds": 7200.0,
+  "cache_cpu_gib": 4.0
+}

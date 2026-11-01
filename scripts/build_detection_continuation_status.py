@@ -450,6 +450,55 @@ def main() -> None:
             lines.extend(
                 ["MonoCoP GPU: no hay todavía un STATUS de ejecución en el destino registrado.", ""]
             )
+        screen = args.competitor_root / "monocop_screen_v1"
+        screen_plan_path = args.competitor_root / "monocop_screen_plan_v2/PLAN.json"
+        if screen_plan_path.is_file():
+            screen_plan = read(screen_plan_path)
+            lines.extend(
+                [
+                    "Screening MonoCoP posterior registrado: "
+                    f"**{screen_plan['decision']}**. 4.096 TRAIN/512 selección, "
+                    "2.048 actualizaciones, 7.200 s, una semilla; parte de los pesos "
+                    "CPU anteriores al smoke. Regla: +0,005 sobre ambos controles "
+                    "del panel antes de confirmar selección completa. "
+                    f"Plan `{screen_plan_path.as_posix()}`.",
+                    "",
+                ]
+            )
+            if (screen / "STATUS.json").is_file():
+                current = read(screen / "STATUS.json")
+                writer_alive = False
+                if (screen / "WRITER.lock").is_file():
+                    writer = read(screen / "WRITER.lock")
+                    try:
+                        writer_alive = (
+                            abs(
+                                psutil.Process(writer["pid"]).create_time()
+                                - writer["created_epoch"]
+                            )
+                            < 1
+                        )
+                    except psutil.NoSuchProcess:
+                        pass
+                lines += [
+                    f"Estado screening: `{json.dumps(current, ensure_ascii=False)}`. "
+                    f"Escritor vivo con identidad coincidente: {writer_alive}.",
+                    "",
+                    "| Update MonoCoP | mAP alineada en panel | Segundos de evaluación |",
+                    "|---:|---:|---:|",
+                ]
+                for path in sorted((screen / "evaluation").glob("*.json")):
+                    result = read(path)
+                    lines.append(
+                        f"| {int(path.stem)} | {result['metrics']['mAP']:.8f} | "
+                        f"{result['seconds']:.2f} |"
+                    )
+                lines += [
+                    "",
+                    "Estas cifras son desarrollo sobre 512 imágenes; "
+                    "no son selección completa ni score oficial.",
+                    "",
+                ]
     lines.extend(
         [
             "",
@@ -461,8 +510,8 @@ def main() -> None:
             "3. Conservar los resultados negativos del ranking por clase; "
             "consultar el cierre 300 m y los JSON originales sin repetir inferencia.",
             "4. Usar el cierre KITTI sin ampliar automáticamente sus 2.048 updates. "
-            "MonoCoP ha pasado el smoke técnico de 32 updates; cualquier "
-            "screening de calidad requiere revisar su gate, coste y registrar otra receta.",
+            "MonoCoP pasó el smoke y tiene un screening separado registrado; "
+            "verificar su estado sin reiniciar, ampliar presupuesto o adelantar conclusiones.",
             "5. Mantener ocho clases, raw GT, particiones, recibos y artefactos negativos. "
             "No tocar etiquetas privadas ni usar score test para hiperparámetros.",
             "6. Todo gasto cloud nuevo requiere un límite explícito. "

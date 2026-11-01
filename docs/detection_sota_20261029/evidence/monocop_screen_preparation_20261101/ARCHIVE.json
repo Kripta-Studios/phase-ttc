@@ -1,0 +1,31 @@
+{
+  "files": {
+    "monocop_screen_plan_v2/PLAN.json": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v2/PLAN.json",
+      "sha256": "0de2cecd5306dd9f6317dc5494da3aa7436c1dd1564e70d2e97ab64177a22806"
+    },
+    "monocop_screen_plan_v2/screen.json": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v2/screen.json",
+      "sha256": "4f1924fb10a8102c34cb7abe77549588fed3999c9159234e16dc99bd3453cf97"
+    },
+    "monocop_screen_plan_v1/FAILURE.json": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v1/FAILURE.json",
+      "sha256": "6be3199ef2346c24397d2508cbec12f1a1560a5fb4cdf7b8a42d4c5fd8e71473"
+    },
+    "monocop_screen_plan_v1/code/scripts/prepare_monocop_screen.py": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v1/code/scripts/prepare_monocop_screen.py",
+      "sha256": "508b46ad9a564ac567ee9c480ae6aaca810f52f9e083b8df07bd340c151fd3d4"
+    },
+    "monocop_screen_validation_v1/pytest.xml": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_validation_v1/pytest.xml",
+      "sha256": "856811dc4af9a53af355b2026913a9e0ba01b786415e068438b54eeb7596fe5c"
+    },
+    "monocop_screen_validation_v1/cuda_cache.xml": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_validation_v1/cuda_cache.xml",
+      "sha256": "570ea11ff442d2b87d5f98550c5bb378345506c925e5b280fa9304082601eb9f"
+    }
+  },
+  "preflight_tool_chunk": "02e105",
+  "preflight_exit_code": 0,
+  "cuda_initialized_during_preflight": false
+}

@@ -1,5 +1,13 @@
 # Viabilidad de MonoCoP para una comparación posterior
 
+La investigación ya avanzó a GPU: el gate técnico se recuperó mediante replay
+exacto en un proceso independiente, sin repetir entrenamiento, y se registró
+el [primer screening de calidad](MONOCOP_SCREEN_PLAN_20261101.md).
+Los fallos técnicos, la recuperación y las copias verificadas están en
+[la evidencia GPU](evidence/monocop_gpu_execution_20261101/ARCHIVE.json).
+Las restricciones y observaciones siguientes describen sus etapas anteriores;
+no sustituyen los estados reales del nuevo ensayo.
+
 Actualización posterior a la revisión estática: el [port CPU v2](evidence/monocop_cpu_port_20261101/report/REPORT.md)
 pasó construcción, atención, forward/backward, calibración y replay en 56,126 s.
 El intento v1 falló por dimensiones de la pirámide y se conserva con su corrección.
@@ -11,7 +19,7 @@ También se completó posteriormente la [transferencia CPU de los pesos multicla
 La descarga quedó fijada por revisión y SHA-256, y las tres clases se mapearon
 explícitamente a eAP. Pasaron gradientes, datos TRAIN reales y replay exacto,
 incluida una corrección de API con igualdad del checkpoint y todos los resultados
-numéricos. Sigue sin haber una métrica eAP de MonoCoP ni admisión de otra cola GPU.
+numéricos. Esa transferencia CPU no midió mAP ni admitió por sí sola una cola GPU.
 
 MonoCoP queda como un competidor condicional. Esta revisión estática no admite
 otro entrenamiento: primero deben terminar los ensayos de rango e inicialización
