@@ -60,10 +60,14 @@ licencias/entornos. El diagnóstico actual justifica corregir primero cobertura
 y contrato de validación del baseline existente.
 
 El [repositorio oficial eAP](https://github.com/NAIL-HNU/eAP_dataset) enlaza la
-competición 16717; el recibo de nuestro envío registra 17291. La recuperación
-web de ambas páginas devolvió contenido ajeno al benchmark. No se verificaron
-reglas vigentes, leaderboard ni equivalencia privada. Resolver antes de enviar
-otro candidato o admitir datos externos; no bloquea este análisis público local.
+competición 17291, coincidente con el recibo de nuestro envío. Corrección de la
+nota inicial: la referencia a 16717 fue un error de lectura, no un cambio del
+README; sus bytes siguen teniendo el mismo hash registrado. La recuperación
+web devolvió contenido ajeno al benchmark. Posteriormente, la API respondió
+correctamente al solicitar JSON explícitamente: overview, términos y fase
+verificados; el leaderboard público no mostró entradas. Véase
+[el recibo público](evidence/range_campaign_20261101/BENCHMARK_PUBLIC_STATUS.json).
+La equivalencia privada y la admisión de datos externos siguen sin certificarse.
 
 ## Estado y continuidad
 
@@ -72,7 +76,8 @@ del pool guardado y una decisión. No cierra todos los apartados de P0–P2:
 quedan reglas externas, censo TRAIN por tracks/admisión, AP por rango con una
 política explícita de FP, errores de reproyección, visibilidad/iluminación
 verificadas y auditoría de independencia. El trainer nuevo, ensayo y cola
-reanudable siguen pendientes. No hay campaña larga lista para lanzar todavía.
+reanudable quedaron pendientes al cierre del diagnóstico. La continuación
+posterior está documentada en [RANGE_CAMPAIGN_20261101.md](RANGE_CAMPAIGN_20261101.md).
 
 El mejor candidato válido sigue siendo el paquete RGB ranked del cierre;
 ningún oracle debe exportarse como detector ni enviarse al benchmark.

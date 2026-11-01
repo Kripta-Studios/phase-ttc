@@ -1,0 +1,30 @@
+{
+  "ruff_check": "PASS",
+  "ruff_format_check": "11 files already formatted",
+  "pyright": "0 errors on all new modules/scripts checked in batches",
+  "pytest": {
+    "status": "PASS",
+    "tests": 22,
+    "paths": [
+      "tests/unit/test_detection_range_campaign.py",
+      "tests/unit/test_detection_benchmark_evaluation.py",
+      "tests/unit/test_detection_raw_diagnostics.py"
+    ]
+  },
+  "new_full_selection_evaluator_gpu_validation": "PENDING; no promotion based on unvalidated evaluator",
+  "source_sha256": {
+    "scripts/admit_detection_range_panel.py": "2f07394d03e10b815a9ee0756605949307de2d9eb3b48e309582a06cdc5100bf",
+    "scripts/audit_detection_range_census.py": "3f673f6e49f04af77fd990d5a21c9750c12d080eb7b678693a7e5ae7c34ef655",
+    "scripts/audit_detection_range_smoke.py": "7461e6ca6ed504aa39db664cc44ebfb3a1644b9c16c2a82f9b178f1c09007332",
+    "scripts/audit_detection_track_identity.py": "9e9859883d0a96584ecf41ecaad91c6a35b1e24af108ef5908bbf7d631ad9881",
+    "scripts/build_detection_range_report.py": "af2cdff71544a18a9f1522b7ad334314a041692d8f553e1006fcdebc8c814398",
+    "scripts/evaluate_detection_range.py": "60fa45173b217027703b0b5a93f69b70159d47e3dda6c0deb1fa1307efab0589",
+    "scripts/prepare_detection_range_campaign.py": "00718ae265c42cbedd2e0670cd0c0256ae06aa6369e6d4915e66491886af113d",
+    "scripts/run_detection_range_queue.py": "6c92771fa594bb86151578608b16aa45aaf50f6b5ebe0607a5e3659c1bc19e89",
+    "scripts/train_detection_range.py": "4fe163d0a5fedc58de9fafe0cfa9adeae4959be75e10bf159a61409ef6876eb9",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+    "tests/unit/test_detection_range_campaign.py": "414f7a2c8f07000e1e117d254e692930e058d158e63095c0f314b596f2916da6",
+    "scripts/compare_detection_range_panel.py": "ff4c9b74a6101ab2d5acce0ca2f5f5ae3b72b0d4f6142a16363fd069c7dcaf23"
+  },
+  "external_raw_panel_parity": "PASS: complete metric reports on 512 frames at updates 0 and 512 equal re-evaluation from historical external raw GT"
+}

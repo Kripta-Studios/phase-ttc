@@ -1,0 +1,7 @@
+{
+  "frames": 16,
+  "exact_full_report_parity": true,
+  "mAP": 0.059280670758069025,
+  "source": "public labels vs saved external GT",
+  "test_labels_read": false
+}

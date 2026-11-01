@@ -26,6 +26,6 @@
       "url": "https://github.com/HyeonjeongPark37/RARE/tree/8f8cf40d1a7f39762845dedf8b554b5f82b49b46"
     }
   ],
-  "codabench_status": "Web retrieval of both 17291 and 16717 returned unrelated text; rules and leaderboard NOT verified. Official repository README links 16717, historical submission receipt names 17291. Resolve before any new submission.",
+  "codabench_status": "CORRECTION and continuation 2026-11-01: exact README at recorded commit/hash links 17291; prior 16717 note was a reading error. Public API works with JSON Accept header; overview, terms, phase and empty visible leaderboard verified. See ../range_campaign_20261101/BENCHMARK_PUBLIC_STATUS.json. Private scorer equivalence remains unverified.",
   "private_scorer_equivalence": false
 }

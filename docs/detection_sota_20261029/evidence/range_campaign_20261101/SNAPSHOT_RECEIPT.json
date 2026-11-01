@@ -1,0 +1,34 @@
+{
+  "source_root": "D:\\PHASE_TTC_RANGE_20261101",
+  "source_sha256": {
+    "SMOKE_AUDIT.json": "06d8627f503d4509c59be340c9624cf4d0c3f348394190e17bed7574a8b3a810",
+    "screen_config_v1/ADMISSION.json": "5490f2b6eaf7616f0ec81255d649975fb01f3731f8115aa39f89c4ddaccc947a",
+    "screen_config_v1/range60.json": "1930ae8539be0aeb826e9a1b01f8015997cc1e6d1a0f56feefb2bb162963bd6e",
+    "screen_config_v1/range150.json": "c4fa84afb33b5f7c3e076c0f08f536df0123777bb2295b5e6303f44fd8b66362",
+    "screen_config_v1/QUEUE.json": "fb880e9d13d0f99a2ffde77c6ffd6cf88c62658c9b571ad774a9b86ab3c8d620",
+    "RAW_PANEL_PARITY.json": "6984f91bd913cf2a2ce7f8b0104b33a86f1dad00958900b946c4a9dba62947c8",
+    "TRACK_IDENTITY_v2.json": "54f817f4e750bab4b7424aff412fdeb9892ac2fed63e81574b12900d98b35424",
+    "screen_range60_v1/STATUS.json": "41650b452038112c3929897009cee2fb410a36ddcd73b8025bd1fc02ca95b278",
+    "screen_range60_v1/evaluation/000000.json": "f494c4456285bd94d8a07f43ce5e8e6f458f2b7052cddde2e15312cdfedfc219",
+    "screen_range60_v1/evaluation/000512.json": "1e6e0a96ded9c7ce53f8dd2d6bb52fdff6840081cbfefc84c65578f2cef8484e",
+    "screen_range60_v1/evaluation/001024.json": "40bc50977d406e43ea143e2e2af04a25b7dfe1b0a27a66595d0a8f528a4f3c5a",
+    "PANEL_COMPARISON.json": "157bf5c6402fc2d1c8c32db355b88f8e29d2c31b79fda450bcee62f94e33f48a"
+  },
+  "report_builder_sha256": "af2cdff71544a18a9f1522b7ad334314a041692d8f553e1006fcdebc8c814398",
+  "source_population_sha256": "481ac9c0adc9f31a8555928a6fed4dc5784b38485e170833ac3e510bd01e645b",
+  "files": {
+    "ADMISSION.json": "5490f2b6eaf7616f0ec81255d649975fb01f3731f8115aa39f89c4ddaccc947a",
+    "BENCHMARK_PUBLIC_STATUS.json": "7ae080c8c37039790a09be2340dcd440e1d8dba8ad8b8066f485334de5f20f76",
+    "CONFIG_RANGE150.json": "c4fa84afb33b5f7c3e076c0f08f536df0123777bb2295b5e6303f44fd8b66362",
+    "CONFIG_RANGE60.json": "1930ae8539be0aeb826e9a1b01f8015997cc1e6d1a0f56feefb2bb162963bd6e",
+    "PANEL_COMPARISON.json": "157bf5c6402fc2d1c8c32db355b88f8e29d2c31b79fda450bcee62f94e33f48a",
+    "QUEUE.json": "fb880e9d13d0f99a2ffde77c6ffd6cf88c62658c9b571ad774a9b86ab3c8d620",
+    "RAW_PANEL_PARITY.json": "6984f91bd913cf2a2ce7f8b0104b33a86f1dad00958900b946c4a9dba62947c8",
+    "REPORT.md": "7054ccbbfbbd7eb6ca5e2f488ba6288915c33f3fe50d7abc016bc1f8d75001f4",
+    "SCREENING_RESULTS.json": "03648df6e97b6877be3a802f35c5754fe7dc15486898f3e0ae6e2c85a37a7383",
+    "SMOKE_AUDIT.json": "06d8627f503d4509c59be340c9624cf4d0c3f348394190e17bed7574a8b3a810",
+    "TRACK_IDENTITY_SUMMARY.json": "74eff56192e189b347c82686ce080dccae9f3fc655b0f304c40df2d5d304b4fe",
+    "VALIDATION.json": "f975b4ec5f3283e4571a4cd8bf6941f3127f27ed4d0a899718767e2c3cb1b68b"
+  },
+  "promotion": false
+}
