@@ -1,0 +1,29 @@
+{
+  "files": {
+    "PLAN.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_compact_v2/PLAN.json",
+      "sha256": "b9f5a7f6cf632dca2ae2c5fc8361f1a0f46925c54e4845932f5d0544c8c33c40"
+    },
+    "COMPLETE.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_compact_v2/COMPLETE.json",
+      "sha256": "e7a2518bcdca7883d2e0c1ebf6e3daa2dae877f13fc2727a519fa37a9d8a8032"
+    },
+    "RESULTS.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_compact_v2/RESULTS.json",
+      "sha256": "6e70c3625584de00af87fb34bccc1fe7ec4c15fc41599c606c5a833f691e372f"
+    },
+    "REPORT.md": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_compact_v2/REPORT.md",
+      "sha256": "0fc3ddf8569f1b697c2070489837a3708f283f241dcf23dd6d65e5f24f140bcf"
+    },
+    "STATUS.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_compact_v2/STATUS.json",
+      "sha256": "97df77fe2dd31cb7a8d5fe38a5831b3ce0cbf24e1ecc2ac4aefadf4bb3a3af6c"
+    }
+  },
+  "generated_files": {
+    "SHARD_ARTIFACTS.json": "361432fd86d21cd197e4f565754dfc891bcf2bee97d1db00041f57f43aa36428",
+    "DECISION.json": "c442e364f66973e609b4b605b2d3bb62a00a7568edf61b6cd78a2a50480202df"
+  },
+  "git_commit": "82aa957c75a35cffa8e3e815bd85d95da0225a25"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "phase_fixed_range_ensemble_compact_v2",
+  "timestamp_utc": "2026-11-01T20:22:03.530875+00:00",
+  "git_commit": "e6e27c03b3c79e232846986c76f27b4122f76c25",
+  "sources": {
+    "scripts/evaluate_detection_range_ensemble_compact.py": "42b30854770ae59ebcc46389c4cdd637f006a7fa118973cccd0a1ecb3e3fee89",
+    "docs/detection_sota_20261029/RANGE_ENSEMBLE_PLAN_20261101.md": "d183b2dced3a6efee7f8f030f082a6ba68f3680d81b8f7be54c88e176655c72c",
+    "docs/detection_sota_20261029/RANGE_ENSEMBLE_COMPACT_20261101.md": "10519fb592d78e1b0419d32619e26beab08b5e748ecf14b480f3f18629b61c8b",
+    "src/e_jepa_ttc/detection/range_ensemble.py": "d2d052dcb0927261b846a50e40ab3e7032a0f8aa0f3edc88af7c0c4bf4a99155",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f"
+  },
+  "input_manifests": {
+    "D:/PHASE_TTC_BENCHMARK_ALIGNED_20261101/verified/MANIFEST.json": "3ee88f564527ca9108b1272f68321f87020410ab3c6a7a935b0fa4e7f6d1e60d",
+    "D:/PHASE_TTC_RANGE_20261101/range150_confirmation_v1/full_selection/STATUS.json": "adaa6726167c8dd915f9a247be1537d0c9cd0fca3edb9dd1e667bcd7d601476f",
+    "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/PLAN.json": "e11ebe8886a2f57049746372d94bf9d9d1c2908dfe1baf5f5e0e5349a5cee32b",
+    "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/shards/00000/COMPLETE.json": "bf8b3ed48d8fb3f8d2381400c89fe737148fe820218c2763f0bc0243c591b434",
+    "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/FAILURE.json": "d4ea0c299560a24bb7c6cbb7abfaffe4647a177fe634732a8ee1de7aa3b4b834"
+  },
+  "candidate_result_sha256": "f1eb7539d416fb85c7871901a18b3f78753c1226986207a2ade31ff1c25f4692",
+  "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+  "frames": 23958,
+  "boundary_optical_depth_m": 60.0,
+  "routing": "Predictions only: original Z<=60, range150 Z>60; preserve scores and boxes",
+  "primary": "gated_60m",
+  "controls": [
+    "original_unranked",
+    "range150_unranked",
+    "ungated_union"
+  ],
+  "maximum_proposals_per_frame": 100,
+  "minimum_gain_over_incumbent_and_best_single": 0.005,
+  "must_beat_ungated_union": true,
+  "class_decline_review_threshold": 0.01,
+  "maximum_seconds": 1800,
+  "storage": "Lossless ordered (source_detector, proposal_index) references per token",
+  "v1_prediction_parity_required_frames": 512,
+  "exposed_selection": true,
+  "gpu_inference": false,
+  "test_labels_read": false,
+  "new_cloud_spend": false,
+  "promotion": false
+}
