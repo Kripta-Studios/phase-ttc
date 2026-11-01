@@ -11,7 +11,11 @@ Generado desde JSON original. Screening de una semilla en selección ya expuesta
 | screen_range60_v1 | COMPLETE | 1024 | 0.05238365 | 372.96 |
 | screen_range60_v1 | COMPLETE | 1536 | 0.05331721 | 343.91 |
 | screen_range60_v1 | COMPLETE | 2048 | 0.05707034 | 347.98 |
-| screen_range150_v1 | NO_STATUS_YET | — | — | — |
+| screen_range150_v1 | COMPLETE | 0 | 0.06035564 | 337.64 |
+| screen_range150_v1 | COMPLETE | 512 | 0.06205089 | 268.86 |
+| screen_range150_v1 | COMPLETE | 1024 | 0.06586902 | 246.20 |
+| screen_range150_v1 | COMPLETE | 1536 | 0.06294887 | 190.97 |
+| screen_range150_v1 | COMPLETE | 2048 | 0.06445375 | 164.75 |
 
 ## Soporte del panel de selección
 

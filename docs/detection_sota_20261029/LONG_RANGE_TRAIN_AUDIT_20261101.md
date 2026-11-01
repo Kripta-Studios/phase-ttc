@@ -53,7 +53,7 @@ Máximo de targets admitidos por imagen: 38; fotogramas con más de 50: 0.
 ## Comprobaciones y límites
 
 - Exact raw/60/150 per-sequence counts, aggregate reasons and track counts.
-- Dos tests comparan la proyección vectorizada con el productor original, incluidos límites de profundidad y exclusiones.
+- Dos tests cubren la comparación con el productor original (límites de profundidad y exclusiones) y el rechazo de geometría inválida.
 - Los filtros reproducen la aproximación pinhole existente: centro dentro de imagen, esquinas delante de cámara y caja recortada mayor de un píxel. No certifican ausencia de oclusión ni detectabilidad visual.
 - Los límites son profundidad óptica, con máximo exclusivo, no distancia euclídea.
 - Incluir más camiones lejanos no aporta soporte a bicycle u other_vehicle.

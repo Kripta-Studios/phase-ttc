@@ -102,8 +102,8 @@ def main() -> None:
             "## Comprobaciones y límites",
             "",
             f"- {result['parity']}.",
-            "- Dos tests comparan la proyección vectorizada con el productor original, "
-            "incluidos límites de profundidad y exclusiones.",
+            "- Dos tests cubren la comparación con el productor original "
+            "(límites de profundidad y exclusiones) y el rechazo de geometría inválida.",
             "- Los filtros reproducen la aproximación pinhole existente: centro dentro "
             "de imagen, esquinas delante de cámara y caja recortada mayor de un píxel. "
             "No certifican ausencia de oclusión ni detectabilidad visual.",

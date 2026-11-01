@@ -49,3 +49,35 @@ Registro y estado real:
 El registro inicial y la cola se conservan en
 `evidence/long_range_20261101/`. No implican que el smoke o el screening
 hayan concluido. No se autoriza gasto cloud ni se leen etiquetas privadas.
+
+## Orden actualizado tras cerrar 150 m
+
+El plan original de 60/150 m exige confirmar los checkpoints seleccionados
+en selección completa. Se prioriza esa confirmación antes del ensayo 300 m.
+El marcador `long_range_campaign_v1/STOP` y el recibo
+`DEFERRED_FOR_CONFIRMATION.json` postergan la cola sin editar sus fuentes:
+el runner registra `FAILED: Stop requested before next stage` al liberar
+su espera. Es una parada operativa solicitada, no un fallo científico del modelo.
+
+`run_detection_range_confirmation.py` espera esa parada y el fin de la
+inferencia TRAIN. Comprueba primero paridad exacta de predicciones y métricas
+en las mismas 512 imágenes; solo entonces evalúa las 23.958 de selección.
+Al completar, verifica que el marcador STOP es exactamente el suyo, lo retira
+y reinicia la cola original 300 m. Ante cualquier discrepancia conserva la parada.
+Contrato y progreso: `D:/PHASE_TTC_RANGE_20261101/range150_confirmation_v1/`.
+
+La paridad del evaluador ya pasó en las 512 imágenes: coinciden todas las
+predicciones y el diccionario completo de métricas. El checkpoint seleccionado
+de 150 m corresponde al update 1.024, con mAP 0,06586902 en ese panel; el
+incumbente con ranking obtiene 0,06533347 y el control 60 m, 0,06035564.
+Esto justifica confirmar según el plan original, pero no demuestra mejora en
+selección completa ni cumple por sí solo la regla más exigente del nuevo 300 m.
+
+El control 60 m seleccionó el update cero. `verify_detection_range_control_reuse.py`
+verifica igualdad de todos los pesos salvo dos tensores de clasificación de
+profundidad auxiliar, que no alimentan las detecciones decodificadas. Verifica
+también las fuentes, el decoder y la igualdad exacta de las 512 predicciones con
+los shards históricos. Se reutiliza por ello su evaluación completa ya guardada,
+mAP 0,05701726 en 23.958 imágenes. Esta equivalencia solo cubre las detecciones:
+los logits auxiliares y el entrenamiento sí difieren. Recibo:
+`evidence/range_campaign_20261101/CONTROL_REUSE.json`.
