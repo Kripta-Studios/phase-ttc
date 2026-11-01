@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument("--pretrained-root", required=True, type=Path)
     parser.add_argument("--aligned-root", required=True, type=Path)
     parser.add_argument("--semantic-root", type=Path)
+    parser.add_argument("--ensemble-root", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     inputs: dict[str, str] = {}
@@ -174,6 +175,35 @@ def main() -> None:
                 "y las observaciones sobre oclusión y cajas visibles/amodales.",
                 "Informe: `docs/detection_sota_20261029/evidence/"
                 "semantic_probe_20261101/REPORT.md`.",
+                "",
+            ]
+        )
+    if args.ensemble_root is not None:
+        path = args.ensemble_root
+        lines.extend(["Combinación CPU por profundidad predicha, frontera fija de 60 m:", ""])
+        if (path / "FAILURE.json").is_file():
+            lines.append(f"Fallo registrado: `{json.dumps(read(path / 'FAILURE.json'))}`.")
+        elif (path / "COMPLETE.json").is_file():
+            receipt = read(path / "COMPLETE.json")
+            if receipt["status"] != "VERIFIED" or receipt["frames"] != 23958:
+                raise ValueError("Incomplete ensemble receipt")
+            for name, expected in receipt["files"].items():
+                if hashlib.sha256((path / name).read_bytes()).hexdigest() != expected:
+                    raise ValueError("Ensemble result changed")
+            result = read(path / "RESULTS.json")
+            for name, metrics in result["metrics"].items():
+                lines.append(f"- `{name}`: mAP **{metrics['mAP']:.8f}**.")
+            lines.append(
+                f"Criterio macro primario: **{result['macro_gate_pass']}**; sin promoción."
+            )
+        else:
+            lines.append(f"Estado registrado: `{json.dumps(read(path / 'STATUS.json'))}`.")
+        lines.extend(
+            [
+                f"Artefactos: `{path.as_posix()}`. Las predicciones compactas son índices "
+                "con hashes de las cajas originales; necesitan esos archivos para reconstruirse.",
+                "El intento v1 se detuvo técnicamente antes de métricas completas. "
+                "Ver RANGE_ENSEMBLE_PLAN_20261101.md y RANGE_ENSEMBLE_COMPACT_20261101.md.",
                 "",
             ]
         )
