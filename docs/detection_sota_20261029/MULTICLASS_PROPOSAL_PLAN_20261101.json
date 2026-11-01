@@ -1,0 +1,22 @@
+{
+  "schema": "phase_multiclass_hypothesis_plan_v1",
+  "registered_before_experiment": true,
+  "recipe": "all_8_sigmoid_classes_per_existing_geometry_v1",
+  "rationale": "The frozen decoder keeps one argmax class although all eight independent logits are exposed. The raw class oracle and large bicycle class-agnostic recall gap motivate testing this information without retraining.",
+  "checkpoint": "frozen Dfull selected; require exact existing aligned receipt SHA",
+  "population": "all 23958 existing public selection frames, all raw annotations",
+  "proposals": "one hypothesis per existing geometry and class, usually 50 times 8 = 400; reject above 500; no new geometry",
+  "score": "preserve historical argmax confidence exactly; other classes use stable float64 sigmoid of saved float32 logits",
+  "ordering": "original proposal order then frozen taxonomy order",
+  "fit": false,
+  "new_inference": false,
+  "parameters_tuned_on_selection": false,
+  "threshold_or_topk_search": false,
+  "nms": false,
+  "ranker_adapted_to_new_classes": false,
+  "controls": ["frozen argmax baseline with sigmoid confidence", "frozen TRAIN-fitted ranked release"],
+  "checks": ["verified sidecar/checkpoint/prediction binding", "exact argmax sub-pool preservation", "all child geometries and velocities unchanged", "matching-record resume preserves global score-tie ordering"],
+  "promotion_gate": "At least +0.005 raw macro mAP versus the ranked incumbent, inspect every per-class drop above 0.01, and validate an executable label-free inference producer before packaging. A smaller gain over the unranked baseline is mechanism evidence only.",
+  "limitation": "No improvement in class-agnostic geometric coverage is possible. Additional wrong-class hypotheses may increase false positives. Selection is already exposed; a gain is not a claim of SOTA or eight-class excellence.",
+  "gpu_or_cloud_compute": false
+}

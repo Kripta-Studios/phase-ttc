@@ -1,0 +1,23 @@
+{
+  "schema": "phase_multiclass_hypothesis_plan_v1",
+  "registered_before_experiment": true,
+  "registration_context": "The all-eight-class evaluation is still running; no final metrics have been inspected. The source MonoDGP decode_helper.py extract_dets_from_outputs selects top 50 across flattened query-class scores.",
+  "recipe": "global_top50_sigmoid_classes_per_existing_geometry_v1",
+  "rationale": "Separate the effect of retaining alternate class hypotheses from the effect of increasing the output budget from 50 to 400. Use the original producer's fixed top-50 cardinality, with the existing audited eAP geometry.",
+  "checkpoint": "frozen Dfull selected; require exact existing aligned receipt SHA",
+  "population": "all 23958 existing public selection frames, all raw annotations",
+  "proposals": "Expand all eight classes, sort descending confidence, keep 50 per frame; stable ties follow original query order then taxonomy order. No new geometry.",
+  "score": "Same as all-eight recipe: exact historical argmax confidence, stable float64 sigmoid of saved float32 logits otherwise",
+  "fit": false,
+  "new_inference": false,
+  "parameters_tuned_on_selection": false,
+  "threshold_or_topk_search": false,
+  "fixed_topk": 50,
+  "nms": false,
+  "ranker_adapted_to_new_classes": false,
+  "controls": ["frozen argmax baseline, 50 outputs", "frozen TRAIN-fitted ranked release, 50 outputs", "previously registered all-eight-class recipe, 400 outputs"],
+  "checks": ["Same verified expansion and sidecar binding as all-eight recipe", "Selected outputs exactly equal stable descending score top 50", "No physical geometry or velocity changes"],
+  "promotion_gate": "At least +0.005 raw macro mAP versus ranked incumbent, inspect every per-class drop above 0.01, and validate an executable label-free inference producer. Candidate selection between these declared recipes must be disclosed as public-selection adaptation.",
+  "limitation": "Source-native top-k semantics motivate cardinality only; this does not certify full equivalence to the KITTI decoder. No improvement in class-agnostic geometric coverage is possible. Selection is already exposed. No SOTA or excellence claim.",
+  "gpu_or_cloud_compute": false
+}

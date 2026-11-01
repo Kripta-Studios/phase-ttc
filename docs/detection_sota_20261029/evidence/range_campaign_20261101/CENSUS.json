@@ -1,0 +1,734 @@
+{
+  "schema": "phase_range_train_census_v1",
+  "frames": 70279,
+  "sequences": {
+    "2cyv0Oedzg": {
+      "raw": {
+        "truck": 4908,
+        "car": 12314,
+        "motorcycle": 191,
+        "pedestrian": 16,
+        "tricycle": 10,
+        "bus": 172
+      },
+      "admitted60": {
+        "truck": 2494,
+        "car": 9533,
+        "motorcycle": 84,
+        "pedestrian": 15,
+        "bus": 8
+      },
+      "admitted150": {
+        "truck": 4444,
+        "car": 11186,
+        "motorcycle": 182,
+        "pedestrian": 15,
+        "tricycle": 10,
+        "bus": 116
+      }
+    },
+    "34K84TaN11": {
+      "raw": {
+        "car": 13481,
+        "truck": 2176,
+        "pedestrian": 235,
+        "bus": 82,
+        "motorcycle": 220,
+        "bicycle": 98
+      },
+      "admitted60": {
+        "car": 7713,
+        "truck": 467,
+        "motorcycle": 68,
+        "pedestrian": 110,
+        "bicycle": 88
+      },
+      "admitted150": {
+        "car": 13035,
+        "truck": 1939,
+        "pedestrian": 234,
+        "bus": 70,
+        "motorcycle": 168,
+        "bicycle": 88
+      }
+    },
+    "5ilM1PX2vz": {
+      "raw": {
+        "truck": 3663,
+        "car": 9519,
+        "pedestrian": 99,
+        "tricycle": 519,
+        "motorcycle": 370,
+        "other_vehicle": 35,
+        "bus": 27
+      },
+      "admitted60": {
+        "truck": 714,
+        "car": 5413,
+        "pedestrian": 52,
+        "tricycle": 429,
+        "bus": 5,
+        "motorcycle": 151
+      },
+      "admitted150": {
+        "truck": 2480,
+        "car": 9129,
+        "pedestrian": 98,
+        "tricycle": 518,
+        "motorcycle": 359,
+        "other_vehicle": 35,
+        "bus": 23
+      }
+    },
+    "6WCDpro5rE": {
+      "raw": {
+        "car": 15659,
+        "truck": 687,
+        "motorcycle": 2173,
+        "pedestrian": 1432,
+        "tricycle": 227,
+        "bicycle": 124,
+        "bus": 294
+      },
+      "admitted60": {
+        "car": 8700,
+        "truck": 103,
+        "pedestrian": 454,
+        "motorcycle": 915,
+        "tricycle": 90,
+        "bicycle": 84,
+        "bus": 41
+      },
+      "admitted150": {
+        "car": 14274,
+        "truck": 501,
+        "motorcycle": 2035,
+        "pedestrian": 1406,
+        "tricycle": 206,
+        "bicycle": 108,
+        "bus": 264
+      }
+    },
+    "8SdieOgbva": {
+      "raw": {
+        "car": 13973,
+        "truck": 6932,
+        "motorcycle": 2143,
+        "bus": 519,
+        "pedestrian": 1002,
+        "tricycle": 70,
+        "bicycle": 56,
+        "other_vehicle": 20
+      },
+      "admitted60": {
+        "car": 9032,
+        "truck": 2891,
+        "motorcycle": 1643,
+        "bus": 298,
+        "pedestrian": 721,
+        "tricycle": 66,
+        "other_vehicle": 12,
+        "bicycle": 46
+      },
+      "admitted150": {
+        "car": 13041,
+        "truck": 5778,
+        "motorcycle": 1949,
+        "bus": 441,
+        "pedestrian": 973,
+        "tricycle": 66,
+        "other_vehicle": 19,
+        "bicycle": 49
+      }
+    },
+    "9ITOs4twfk": {
+      "raw": {
+        "car": 24939,
+        "truck": 6406,
+        "bus": 234,
+        "motorcycle": 414,
+        "pedestrian": 117,
+        "other_vehicle": 13,
+        "bicycle": 8
+      },
+      "admitted60": {
+        "car": 14542,
+        "truck": 1166,
+        "bus": 197,
+        "motorcycle": 5,
+        "pedestrian": 35,
+        "other_vehicle": 4
+      },
+      "admitted150": {
+        "car": 23661,
+        "truck": 4861,
+        "bus": 210,
+        "motorcycle": 338,
+        "pedestrian": 116,
+        "other_vehicle": 13,
+        "bicycle": 8
+      }
+    },
+    "A1Nhv0KtmL": {
+      "raw": {
+        "car": 10002,
+        "truck": 3860,
+        "bus": 9,
+        "motorcycle": 1,
+        "pedestrian": 11,
+        "other_vehicle": 13
+      },
+      "admitted60": {
+        "car": 5928,
+        "truck": 1100
+      },
+      "admitted150": {
+        "car": 9616,
+        "truck": 2352,
+        "bus": 9,
+        "pedestrian": 11,
+        "other_vehicle": 13
+      }
+    },
+    "ClXqVoZOFu": {
+      "raw": {
+        "car": 13240,
+        "truck": 6692,
+        "motorcycle": 102,
+        "bus": 26
+      },
+      "admitted60": {
+        "car": 8033,
+        "truck": 1401
+      },
+      "admitted150": {
+        "car": 12811,
+        "truck": 5085,
+        "motorcycle": 84,
+        "bus": 24
+      }
+    },
+    "DGqicHUGWb": {
+      "raw": {
+        "truck": 447,
+        "motorcycle": 1090,
+        "car": 2750,
+        "bicycle": 125,
+        "pedestrian": 39,
+        "tricycle": 130
+      },
+      "admitted60": {
+        "truck": 129,
+        "motorcycle": 430,
+        "car": 1498,
+        "bicycle": 77,
+        "pedestrian": 36,
+        "tricycle": 28
+      },
+      "admitted150": {
+        "truck": 292,
+        "motorcycle": 1079,
+        "car": 2242,
+        "bicycle": 120,
+        "pedestrian": 38,
+        "tricycle": 121
+      }
+    },
+    "GjMYZjmSQb": {
+      "raw": {
+        "car": 12285,
+        "truck": 2475,
+        "motorcycle": 484
+      },
+      "admitted60": {
+        "car": 6145,
+        "truck": 1058
+      },
+      "admitted150": {
+        "car": 12184,
+        "truck": 2052,
+        "motorcycle": 441
+      }
+    },
+    "L36QTEoVkB": {
+      "raw": {
+        "car": 8262,
+        "truck": 7899,
+        "motorcycle": 79,
+        "pedestrian": 82
+      },
+      "admitted60": {
+        "car": 5334,
+        "truck": 2362,
+        "pedestrian": 45
+      },
+      "admitted150": {
+        "car": 7873,
+        "truck": 6805,
+        "motorcycle": 71,
+        "pedestrian": 81
+      }
+    },
+    "LMHPShQkaU": {
+      "raw": {
+        "car": 13510,
+        "truck": 9454,
+        "motorcycle": 151,
+        "bus": 1014,
+        "tricycle": 121
+      },
+      "admitted60": {
+        "car": 10495,
+        "truck": 2920,
+        "bus": 286,
+        "motorcycle": 14
+      },
+      "admitted150": {
+        "car": 13139,
+        "truck": 8008,
+        "motorcycle": 143,
+        "bus": 1011,
+        "tricycle": 121
+      }
+    },
+    "OYgB6RGWcq": {
+      "raw": {
+        "car": 9720,
+        "truck": 5467,
+        "motorcycle": 22
+      },
+      "admitted60": {
+        "car": 6584,
+        "truck": 1763,
+        "motorcycle": 8
+      },
+      "admitted150": {
+        "car": 9485,
+        "truck": 4259,
+        "motorcycle": 22
+      }
+    },
+    "Po6ePjWYAz": {
+      "raw": {
+        "car": 9368,
+        "truck": 3979,
+        "tricycle": 253,
+        "pedestrian": 1100,
+        "motorcycle": 1737,
+        "other_vehicle": 26,
+        "bicycle": 215,
+        "bus": 134
+      },
+      "admitted60": {
+        "car": 5337,
+        "truck": 1441,
+        "tricycle": 162,
+        "pedestrian": 778,
+        "motorcycle": 1118,
+        "other_vehicle": 19,
+        "bicycle": 187,
+        "bus": 35
+      },
+      "admitted150": {
+        "car": 8928,
+        "truck": 3105,
+        "tricycle": 230,
+        "pedestrian": 1070,
+        "motorcycle": 1599,
+        "other_vehicle": 24,
+        "bicycle": 191,
+        "bus": 119
+      }
+    },
+    "eX8t2nGd6O": {
+      "raw": {
+        "car": 13763,
+        "truck": 3651,
+        "motorcycle": 494,
+        "tricycle": 4,
+        "bus": 8,
+        "pedestrian": 6,
+        "bicycle": 4
+      },
+      "admitted60": {
+        "car": 9261,
+        "motorcycle": 1,
+        "truck": 1193,
+        "pedestrian": 4,
+        "bicycle": 4
+      },
+      "admitted150": {
+        "car": 13345,
+        "truck": 3018,
+        "motorcycle": 429,
+        "tricycle": 4,
+        "bus": 7,
+        "pedestrian": 4,
+        "bicycle": 4
+      }
+    },
+    "mHGFBekt7X": {
+      "raw": {
+        "car": 27606,
+        "truck": 7025,
+        "motorcycle": 1465,
+        "bus": 356,
+        "pedestrian": 32
+      },
+      "admitted60": {
+        "car": 16048,
+        "motorcycle": 18,
+        "truck": 1064,
+        "bus": 79
+      },
+      "admitted150": {
+        "car": 26789,
+        "truck": 4845,
+        "motorcycle": 1280,
+        "bus": 325,
+        "pedestrian": 32
+      }
+    },
+    "nRcwUlHyAd": {
+      "raw": {
+        "car": 14532,
+        "motorcycle": 3534,
+        "truck": 4800,
+        "tricycle": 485,
+        "pedestrian": 1354,
+        "other_vehicle": 70,
+        "bicycle": 57,
+        "bus": 521
+      },
+      "admitted60": {
+        "car": 8016,
+        "motorcycle": 2093,
+        "truck": 1545,
+        "tricycle": 265,
+        "pedestrian": 348,
+        "other_vehicle": 15,
+        "bicycle": 46,
+        "bus": 369
+      },
+      "admitted150": {
+        "car": 13516,
+        "motorcycle": 3130,
+        "truck": 3616,
+        "tricycle": 450,
+        "pedestrian": 1342,
+        "other_vehicle": 68,
+        "bicycle": 48,
+        "bus": 475
+      }
+    },
+    "pzJcg1OCfc": {
+      "raw": {
+        "car": 11499,
+        "truck": 1966,
+        "motorcycle": 654,
+        "bus": 16,
+        "pedestrian": 126,
+        "tricycle": 13
+      },
+      "admitted60": {
+        "car": 5646,
+        "truck": 789,
+        "pedestrian": 40,
+        "motorcycle": 86
+      },
+      "admitted150": {
+        "car": 11011,
+        "truck": 1514,
+        "motorcycle": 584,
+        "bus": 12,
+        "pedestrian": 125,
+        "tricycle": 11
+      }
+    },
+    "q2k6O0X6JY": {
+      "raw": {
+        "car": 5044,
+        "truck": 2171,
+        "bus": 135,
+        "pedestrian": 48,
+        "motorcycle": 89,
+        "tricycle": 114,
+        "bicycle": 2,
+        "other_vehicle": 31
+      },
+      "admitted60": {
+        "car": 2599,
+        "truck": 434,
+        "pedestrian": 7,
+        "motorcycle": 21,
+        "bicycle": 1,
+        "bus": 18
+      },
+      "admitted150": {
+        "car": 4865,
+        "truck": 1489,
+        "bus": 81,
+        "pedestrian": 47,
+        "motorcycle": 80,
+        "tricycle": 114,
+        "bicycle": 1,
+        "other_vehicle": 31
+      }
+    },
+    "qGsgzl4Q8B": {
+      "raw": {
+        "car": 9172,
+        "truck": 1606,
+        "motorcycle": 243,
+        "pedestrian": 173,
+        "other_vehicle": 7,
+        "bus": 131
+      },
+      "admitted60": {
+        "car": 5908,
+        "truck": 434,
+        "motorcycle": 60,
+        "pedestrian": 35,
+        "bus": 40
+      },
+      "admitted150": {
+        "car": 8482,
+        "truck": 1192,
+        "motorcycle": 222,
+        "pedestrian": 171,
+        "other_vehicle": 7,
+        "bus": 131
+      }
+    },
+    "qoohcdtLDH": {
+      "raw": {
+        "car": 11553,
+        "truck": 8935,
+        "pedestrian": 536,
+        "bus": 84,
+        "motorcycle": 2293,
+        "tricycle": 203,
+        "bicycle": 124
+      },
+      "admitted60": {
+        "car": 7884,
+        "truck": 5242,
+        "pedestrian": 325,
+        "motorcycle": 1152,
+        "bus": 16,
+        "tricycle": 89,
+        "bicycle": 110
+      },
+      "admitted150": {
+        "car": 11176,
+        "truck": 8339,
+        "pedestrian": 523,
+        "bus": 68,
+        "motorcycle": 2154,
+        "tricycle": 190,
+        "bicycle": 113
+      }
+    },
+    "t79dBxj1WS": {
+      "raw": {
+        "bus": 1071,
+        "car": 8453,
+        "truck": 2704,
+        "motorcycle": 676,
+        "tricycle": 40,
+        "pedestrian": 170,
+        "other_vehicle": 12
+      },
+      "admitted60": {
+        "bus": 545,
+        "car": 4214,
+        "truck": 729,
+        "motorcycle": 333,
+        "pedestrian": 38,
+        "tricycle": 10,
+        "other_vehicle": 3
+      },
+      "admitted150": {
+        "bus": 977,
+        "car": 8036,
+        "motorcycle": 657,
+        "truck": 2087,
+        "tricycle": 40,
+        "pedestrian": 169,
+        "other_vehicle": 9
+      }
+    },
+    "wE9MZUmiJP": {
+      "raw": {
+        "car": 18166,
+        "truck": 4036,
+        "bicycle": 8,
+        "motorcycle": 818,
+        "pedestrian": 175,
+        "bus": 253,
+        "tricycle": 12
+      },
+      "admitted60": {
+        "car": 7945,
+        "truck": 524,
+        "motorcycle": 240,
+        "pedestrian": 13,
+        "bicycle": 2,
+        "bus": 21
+      },
+      "admitted150": {
+        "car": 17418,
+        "truck": 2147,
+        "bicycle": 8,
+        "motorcycle": 723,
+        "pedestrian": 173,
+        "bus": 193,
+        "tricycle": 10
+      }
+    },
+    "xkiVthsGwf": {
+      "raw": {
+        "motorcycle": 3289,
+        "car": 15390,
+        "truck": 5747,
+        "bus": 51,
+        "pedestrian": 1055,
+        "tricycle": 67,
+        "bicycle": 13,
+        "other_vehicle": 10
+      },
+      "admitted60": {
+        "motorcycle": 1898,
+        "car": 10146,
+        "truck": 2454,
+        "pedestrian": 800,
+        "tricycle": 61,
+        "bicycle": 10
+      },
+      "admitted150": {
+        "motorcycle": 3067,
+        "car": 14423,
+        "truck": 4837,
+        "bus": 47,
+        "pedestrian": 1043,
+        "tricycle": 62,
+        "bicycle": 13,
+        "other_vehicle": 10
+      }
+    }
+  },
+  "counts": {
+    "raw": {
+      "truck": 107686,
+      "car": 304200,
+      "motorcycle": 22732,
+      "pedestrian": 7808,
+      "tricycle": 2268,
+      "bus": 5137,
+      "bicycle": 834,
+      "other_vehicle": 237
+    },
+    "admitted60": {
+      "truck": 34417,
+      "car": 181954,
+      "motorcycle": 10338,
+      "pedestrian": 3856,
+      "bus": 1958,
+      "bicycle": 655,
+      "tricycle": 1200,
+      "other_vehicle": 53
+    },
+    "admitted150": {
+      "truck": 85045,
+      "car": 289665,
+      "motorcycle": 20796,
+      "pedestrian": 7671,
+      "tricycle": 2153,
+      "bus": 4603,
+      "bicycle": 751,
+      "other_vehicle": 229
+    }
+  },
+  "sequence_instance_id_counts": {
+    "raw": {
+      "truck": 1974,
+      "car": 4622,
+      "motorcycle": 1453,
+      "pedestrian": 469,
+      "tricycle": 87,
+      "bus": 134,
+      "bicycle": 86,
+      "other_vehicle": 16
+    },
+    "admitted60": {
+      "truck": 612,
+      "car": 2235,
+      "motorcycle": 682,
+      "pedestrian": 255,
+      "bus": 35,
+      "bicycle": 69,
+      "tricycle": 51,
+      "other_vehicle": 6
+    },
+    "admitted150": {
+      "truck": 1566,
+      "car": 4395,
+      "motorcycle": 1277,
+      "pedestrian": 464,
+      "tricycle": 81,
+      "bus": 123,
+      "bicycle": 77,
+      "other_vehicle": 16
+    }
+  },
+  "ignored_reasons": {
+    "admitted60": {
+      "center_depth_outside_profile": 198483,
+      "projected_center_outside_image": 17186,
+      "corner_behind_or_near_camera": 631,
+      "projected_center_outside_clipped_box": 171
+    },
+    "admitted150": {
+      "center_depth_outside_profile": 20538,
+      "projected_center_outside_image": 18627,
+      "corner_behind_or_near_camera": 631,
+      "projected_center_outside_clipped_box": 193
+    }
+  },
+  "capacity_over_50": [],
+  "label_sha256": {
+    "data/train/2cyv0Oedzg/labels.parquet": "e1fc19e222d4a5b98cfdeea98b5e27c621758766c7b269514229a9a2e21ab08d",
+    "data/train/34K84TaN11/labels.parquet": "76b40d6a848322acd10606c85d5ae4173b4df024bca7729a6c1dd812ee2f7c84",
+    "data/train/5ilM1PX2vz/labels.parquet": "67abaaf4948bb7a815d69847659889d7b84687edcc7f1ec9b31fb4f21e68ee74",
+    "data/train/6WCDpro5rE/labels.parquet": "6a588547774a2eb0005fb152886d2604f2825cf7e050abe822f00d9ff8698a5a",
+    "data/train/8SdieOgbva/labels.parquet": "2bf43a9a5fe3170ec2dd5c96a59d97f50d0a1b4e8140d5279b2492dba1f734bc",
+    "data/train/9ITOs4twfk/labels.parquet": "4e7da8f7b8f348b534a4e40c10d0ac84bf6f1ece7950d6ca3f0d816b9af0ccad",
+    "data/train/A1Nhv0KtmL/labels.parquet": "4d8848844bad6945fa67ed30c229f0c143040f975f5e6dc4d8b7739d79a2eb93",
+    "data/train/ClXqVoZOFu/labels.parquet": "f55e8e35e5a8d08f72abc2045378d3d12c06133d443a9a7157dbbf6694ee5bac",
+    "data/train/DGqicHUGWb/labels.parquet": "908244488914a000b5448c9ffd69f0a49b869c2815fc398badb3a60b0908846f",
+    "data/train/GjMYZjmSQb/labels.parquet": "d1da779468834eb3ce723f80bf3e41b2e88ce73738817cbe852d8b15b4296f98",
+    "data/train/L36QTEoVkB/labels.parquet": "3e48675ad8d15887f8e40241412aab66c50a884084087c8b1061848080af91e6",
+    "data/train/LMHPShQkaU/labels.parquet": "c3035d5eb7b549b73d5e53f4861889c288a8a35eb5e39093f63a71e96defe9eb",
+    "data/train/OYgB6RGWcq/labels.parquet": "53bab51c8a1ff99fbfb9586f6df1430865f76a7ed2e36e6fe57e082d0e634c89",
+    "data/train/Po6ePjWYAz/labels.parquet": "72861dfb52c6d3bec01666514a6244aa0faeceb7fceb62ab4d1f7d7ccafc9f06",
+    "data/train/eX8t2nGd6O/labels.parquet": "97564157856a379ec6adddd1d16404c45cefd4f3cca2558dba0eebdf3e1b3142",
+    "data/train/mHGFBekt7X/labels.parquet": "1892b201c114990bd8a9f77acf188d0cfff20a105fb4720a926c223536412686",
+    "data/train/nRcwUlHyAd/labels.parquet": "b8d14b5f4f3aaa892b679883212f12447c6418c8c5df605d413b91a3355b5f10",
+    "data/train/pzJcg1OCfc/labels.parquet": "0c80ddccb4d99b4b25f38a6df6c1a34e39d984fab1dfbc32a7a5565c7c58d690",
+    "data/train/q2k6O0X6JY/labels.parquet": "2dc66c48829d1275faac1c3ccfed3233738b992edc82907e14ce5904042056a5",
+    "data/train/qGsgzl4Q8B/labels.parquet": "ed4989281b7e398c276e1b966ee0d4db9dbb1e7b3374e7a41c3838a8a23b37e2",
+    "data/train/qoohcdtLDH/labels.parquet": "a512a2f2228afe433bd34e63bc00ea1d656ba2591fde19f42b6bc0ecbe85295a",
+    "data/train/t79dBxj1WS/labels.parquet": "0c41ede5398ff9182c2b64a72aaa5be4ea4ac421d08daccc5d2cba352eafbd73",
+    "data/train/wE9MZUmiJP/labels.parquet": "c9afcbdac7e27e06f8f2cfc73c00cf68e03c00d6555ae1e6e652afe31311d6ab",
+    "data/train/xkiVthsGwf/labels.parquet": "8a1106b3eab269525475e70b3b261cf5293dae88e7cf9b72a77a51718460e38e"
+  },
+  "source_sha256": {
+    "scripts\\audit_detection_range_census.py": "3f673f6e49f04af77fd990d5a21c9750c12d080eb7b678693a7e5ae7c34ef655",
+    "src\\e_jepa_ttc\\detection\\monodgp_eap_adapter.py": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+    "src\\e_jepa_ttc\\detection\\geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f"
+  },
+  "media_admission_sha256": "cccfb3a1889101a7caed698c0c89d33f64e73f57039667072cc23f1bd9491ac6",
+  "image_content": "blank; only geometry/annotation admission evaluated, no model input",
+  "track_scope": "sequence plus instance_id, not certified independent acquisition",
+  "status": "VERIFIED"
+}

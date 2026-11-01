@@ -43,7 +43,18 @@ Los identificadores se cuentan dentro de secuencia. No certifican adquisiciones 
 
 Unión clase/centro: PASS; colisiones: 0.
 
-Censo de admisión geométrica completa: pendiente.
+## Admisión de targets TRAIN
+
+| Clase | Raw | Admitidos 60 m | Admitidos 150 m |
+|---|---:|---:|---:|
+| bicycle | 834 | 655 | 751 |
+| bus | 5137 | 1958 | 4603 |
+| car | 304200 | 181954 | 289665 |
+| motorcycle | 22732 | 10338 | 20796 |
+| other_vehicle | 237 | 53 | 229 |
+| pedestrian | 7808 | 3856 | 7671 |
+| tricycle | 2268 | 1200 | 2153 |
+| truck | 107686 | 34417 | 85045 |
 
 ## Reproducción
 

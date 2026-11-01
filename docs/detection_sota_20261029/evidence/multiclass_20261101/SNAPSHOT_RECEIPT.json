@@ -1,0 +1,17 @@
+{
+  "sources": {
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\COMPARISON.json": "f91f48b20b1d8773a076b6dc76c51f6c0f1d60b7b84be3cd8da1056c2007f1a1",
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\baseline.json": "5072353eee41ddcbd64d264654e691bdf4de3aa7e729241129393c7ebaded677",
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\ranked.json": "086ea40ec97548877f282716391b9eee178e0500b26db80a2661568989ccc603",
+    "D:\\PHASE_TTC_BENCHMARK_ALIGNED_20261101\\verified\\scalar_uncertainty.json": "0a538f2f46a27b5ffc2dabb51fa19cf1a29dd3bdef91317c5ef6264987454567",
+    "D:\\PHASE_TTC_MULTICLASS_20261101\\v1\\RESULTS.json": "355d9522d101af60df41c96f627bd85fa5f775c78ee9eb1d7ee31bbfec3f2d02",
+    "D:\\PHASE_TTC_MULTICLASS_20261101\\v1\\INTAKE.json": "d9d3dccad87e9e2412a551ebc9561e8c83b7b36d5802a04bbdc9a7585e46ccaa"
+  },
+  "generator_sha256": "7c989a043e33702687dda8b40bc8369325976b6fcb6a3941546adfce9a8d7f76",
+  "report_sha256": "8e03ccc4cb2cfc0823d5816a2523bd6ff6631f0bee598159f6b424eac4176c2e",
+  "states": {
+    "v1": "EVALUATED_NOT_PROMOTED",
+    "top50_v1": "PENDING"
+  },
+  "promotion": false
+}

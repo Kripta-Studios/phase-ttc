@@ -1,20 +1,20 @@
 {
   "screen_range60_v1": {
     "status": {
-      "update": 1136,
-      "exposures": 2272,
-      "loss": 6.067544937133789,
-      "gradient_norm": 733.8810424804688,
-      "prepare_seconds": 0.008921900000132155,
-      "compute_seconds": 2.5858124000005773,
+      "update": 1416,
+      "exposures": 2832,
+      "loss": 8.342534065246582,
+      "gradient_norm": 378.8666687011719,
+      "prepare_seconds": 0.010126699999091215,
+      "compute_seconds": 1.6300732000017888,
       "sample_tokens": [
-        "ClXqVoZOFu:000000655_000508695",
-        "A1Nhv0KtmL:000000485_000297783"
+        "nRcwUlHyAd:000000528_000236309",
+        "wE9MZUmiJP:000000567_000353549"
       ],
       "status": "TRAINING",
       "best_aligned_mAP": 0.060355637294592326,
-      "elapsed_seconds": 3496.2931792000018,
-      "timestamp_utc": "2026-11-01T16:42:35.948705+00:00"
+      "elapsed_seconds": 4081.2716910000017,
+      "timestamp_utc": "2026-11-01T16:52:20.928375+00:00"
     },
     "evaluations": {
       "0": {
