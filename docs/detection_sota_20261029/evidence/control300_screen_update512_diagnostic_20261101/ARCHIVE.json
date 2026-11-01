@@ -1,0 +1,54 @@
+{
+  "files": {
+    "candidate.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/candidate.json",
+      "sha256": "a517fca8358d461700076b6c9296a1fa976bde071d24c3c4995b58fc21a451b1",
+      "expanded_sha256": "98b4144bbf45ad02737e9f67a0b44abb1f787c4123c910b1b53ca77d7f6c9622"
+    },
+    "candidate_diagnostics.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/candidate_diagnostics.json",
+      "sha256": "b29fbfa1c82eb918fa40c563b61c85118084a43216074571a15409e066df4107",
+      "expanded_sha256": "a40410da3a52e4df7c4f1c7b701f989861c6f56cd9ffd6e4cfba46d55838b30f"
+    },
+    "incumbent.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/incumbent.json",
+      "sha256": "41855e971fa9de4c1b917709479c8bdbc499f1fcffbf3a2fad8fa4c59c7c892b",
+      "expanded_sha256": "ab4cc7a965f7382266985f63732e026e3f0af87e7a0c579a2b53c33d7b4f1aec"
+    },
+    "incumbent_diagnostics.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/incumbent_diagnostics.json",
+      "sha256": "fc240d450664d53978bb71000627609791ddf2df390fdadb46de8cec2453d198",
+      "expanded_sha256": "61f8a911c958c5fa88f65373e132f318bff163f3673dcda5ae95e602a1ea8157"
+    },
+    "oracle_class.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/oracle_class.json",
+      "sha256": "a270d97d8d30b47ac0a2c476375392b4a199b1afd77dee734dc9f41772eaed8d",
+      "expanded_sha256": "8d42b7ea642c0806514b3334197c6e2fdd2e717db396e4330a9d5d3b340083cc"
+    },
+    "oracle_depth.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/oracle_depth.json",
+      "sha256": "d22c1fe94261fe5ef4065f61f47fa56e4196ef0495795412a0f47df68610ec90",
+      "expanded_sha256": "7ed3b7ef4dc67313f3ad1edc75f8c811f5528436f48961b71222675c65ada293"
+    },
+    "oracle_rank.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/oracle_rank.json",
+      "sha256": "2d1d57f60e295b76561e6cd80a5724c69173fc4d61087628b027cd1db3131d81",
+      "expanded_sha256": "7ea8a2cdd51599264d1f5eab6d3ae5444fed614c9a82052cde9905fe9a9e31c6"
+    },
+    "oracle_size.json.gz": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/oracle_size.json",
+      "sha256": "bc27b957e018388e4041a9fe8f83d5d240a75f5d2c400be9daf77392730ef190",
+      "expanded_sha256": "74fce9c5b8b31d110d887241d8a2f4e8b0fac148a2287fd9706b46a94ecd4d26"
+    },
+    "COMPLETE.json": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostics_update512_v1/COMPLETE.json",
+      "sha256": "fb2ffc6188b60ffbd472bb25268b21d7e78243711561dec18ea9210d7d03c3c3"
+    },
+    "REPORT.md": {
+      "source": "D:/PHASE_TTC_COMPETITOR_20261101/control300_screen_diagnostic_report_update512_v1/REPORT.md",
+      "sha256": "6cc4aacbf4629256b3c344fe53a427201e6522e8a56dcbf2eec7a436fdca890a"
+    }
+  },
+  "compressed_json_is_lossless": true,
+  "generator_supports_gzip": true
+}
