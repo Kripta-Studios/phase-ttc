@@ -1,0 +1,84 @@
+{
+  "samples": 1974,
+  "phase_counts": {
+    "forward": 1201,
+    "prepare": 217,
+    "finite_check": 87,
+    "decode": 109,
+    "dataset_getitem": 326,
+    "other_or_unknown": 34
+  },
+  "phase_sample_fraction": {
+    "forward": 0.6084093211752786,
+    "prepare": 0.1099290780141844,
+    "finite_check": 0.044072948328267476,
+    "decode": 0.05521783181357649,
+    "dataset_getitem": 0.1651469098277609,
+    "other_or_unknown": 0.017223910840932118
+  },
+  "top_leaf": [
+    [
+      "load (PIL\\ImageFile.py:412)",
+      235
+    ],
+    [
+      "forward (torch\\nn\\modules\\linear.py:134)",
+      151
+    ],
+    [
+      "_conv_forward (torch\\nn\\modules\\conv.py:548)",
+      113
+    ],
+    [
+      "resize (PIL\\Image.py:2438)",
+      105
+    ],
+    [
+      "require_finite (scripts\\smoke_monodgp_portable.py:290)",
+      86
+    ],
+    [
+      "forward (monodgp\\backbone.py:62)",
+      62
+    ],
+    [
+      "deformable_attention_pytorch (e_jepa_ttc\\detection\\portable_attention.py:66)",
+      40
+    ],
+    [
+      "forward (modules\\ms_deform_attn.py:130)",
+      39
+    ],
+    [
+      "deformable_attention_pytorch (e_jepa_ttc\\detection\\portable_attention.py:45)",
+      35
+    ],
+    [
+      "prepare_sample (e_jepa_ttc\\detection\\monodgp_eap_adapter.py:108)",
+      34
+    ],
+    [
+      "forward (monodgp\\backbone.py:64)",
+      32
+    ],
+    [
+      "forward (monodgp\\backbone.py:63)",
+      29
+    ],
+    [
+      "apply (e_jepa_ttc\\detection\\portable_attention.py:87)",
+      23
+    ],
+    [
+      "_in_projection_packed (torch\\nn\\functional.py:5873)",
+      23
+    ],
+    [
+      "relu (torch\\nn\\functional.py:1723)",
+      20
+    ]
+  ],
+  "input_sha256": "fabbc38e86399a376f7cc15979b2ce7e1ac9b202fc144e525579ab93e7e56732",
+  "generator_sha256": "9168aa314fb1fbb0cc8516e6e72ce6745ee824709bbfdb800661634c4fc734b9",
+  "limits": "Python stack sample shares, including wait time; not wall-time fractions or CUDA kernel timing. Unknown samples stay explicit. No acceleration claim."
+}
