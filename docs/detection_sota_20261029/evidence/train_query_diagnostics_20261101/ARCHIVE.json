@@ -1,0 +1,42 @@
+{
+  "files": {
+    "diagnostics/INTAKE.json": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_v1/INTAKE.json",
+      "sha256": "3a9e4f39343964145562e5eebc9571b0ef88208680427f73aa7f92dd57cf6592"
+    },
+    "diagnostics/COMPLETE.json": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_v1/COMPLETE.json",
+      "sha256": "be58466f48c2481657115ef76e3427f9f5e9e56b1751dd000cba0eb3bb1702d6"
+    },
+    "diagnostics/TRAIN_DIAGNOSTICS.json": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_v1/TRAIN_DIAGNOSTICS.json",
+      "sha256": "19c1a875596f19cd84cef7f07a0f880c12f2d4f6a24b0d45cfd648ec7798d701"
+    },
+    "diagnostics/COMPARISON.json": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_v1/COMPARISON.json",
+      "sha256": "9bf60fce8e3ad6ea9e1aba7472d4a4f14709ba1a5f6c737455dc3aa623b21129"
+    },
+    "diagnostics/REPORT.md": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_v1/REPORT.md",
+      "sha256": "8b7e576e522905a2d6b09e1d7782ffc5107a42db61120b728bee980f50aa3870"
+    },
+    "report/REPORT.md": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_report_v1/REPORT.md",
+      "sha256": "247bc9daac53f7924d85b4f7b69d7a56b6c0bfaafe1e5b37caa4766097423bc2"
+    },
+    "report/CLASS_DEPTH.json": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_report_v1/CLASS_DEPTH.json",
+      "sha256": "490fab828b9405ec99bda003538f642906cbdd1ca967d1a1aeb9ba1342664014"
+    },
+    "report/DECISION.json": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_report_v1/DECISION.json",
+      "sha256": "eecfcf7a6fc7b7a033e8c96ddbc73d4d4ba0710029a751a363df8f38c52de480"
+    },
+    "report/MANIFEST.json": {
+      "source": "D:/PHASE_TTC_QUERY_QUALITY_20261101/train_diagnostics_report_v1/MANIFEST.json",
+      "sha256": "9973be27ed660b9dd533ee93d9ce0c82bfb58402adeb61d7a0470417c515e24f"
+    }
+  },
+  "raw_image_or_label_copies": false,
+  "diagnostic_unit_tests_passed": 7
+}

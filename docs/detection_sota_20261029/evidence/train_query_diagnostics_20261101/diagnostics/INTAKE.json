@@ -1,0 +1,30 @@
+{
+  "schema": "phase_train_query_diagnostic_v1",
+  "git_commit": "7d64d5eb0cf3a546d14a482cdb014f01541f924b",
+  "sources": {
+    "scripts/diagnose_detection_train_queries.py": "0a88f3f45dd85c12601ec8d8781a22598afdd10856dcd60740aa4f98043f4c48",
+    "src/e_jepa_ttc/detection/raw_diagnostics.py": "bb57b4575cd8f58a57ffd30e5f33b91220a50779752c56060a37e60e03795316",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+    "src/e_jepa_ttc/detection/eap_rgb_data.py": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55"
+  },
+  "inputs": {
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/campaign/train_inference/COMPLETE.json": "a241982551fe8701ff26398c480959906ca3f76ce6a5983f72963fff0dff6182",
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/campaign/train_inference/INTAKE.json": "d9bcb464781a7570cec7e9eca51bb4d9aa307a0b678624720d77b31eb489cffd",
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/panel/PANEL.json": "7032c1fc01274f6722ffadb8363a623cef41d8fd1b91377a0ed8bb801217329f",
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/panel/gt_train.json": "61b08cda230e2bf4352098904ab3802712043751903ad5c6ef7ae0a091655ad9",
+    "D:/PHASE_TTC_RAW_DIAGNOSTICS_20261101/v2/COMPLETE.json": "96f1c426af66a9d17b2cdbf826d3bff08f5920459562387bd1ab6a57e059e716",
+    "D:/PHASE_TTC_RAW_DIAGNOSTICS_20261101/v2/ERROR_DIAGNOSTICS.json": "2ce1a0a6f51866d92e58c1ef4e02fdf16ac374085c1478e1af41d7826f31fece",
+    "D:/PHASE_TTC_RANGE_20261101/train_long_range_v2/CENSUS.json": "8f10a2c416526cf5a895245e558b152aded0fef164c61395495d794b537c0094",
+    "E:/eAP_dataset/data/train.parquet": "69ffedab74ea28b295fe3ec2c2c83c08716bc31c216bc2ec9971f8ca9644a314"
+  },
+  "frames": 4096,
+  "population": "TRAIN panel enriched with every raw bicycle/other_vehicle frame",
+  "comparison_scope": "Different TRAIN and selection populations; not a generalization gap",
+  "maximum_seconds": 600,
+  "new_inference": false,
+  "new_training": false,
+  "test_labels_read": false,
+  "promotion": false
+}

@@ -1,0 +1,11 @@
+{
+  "diagnostic_complete_sha256": "be58466f48c2481657115ef76e3427f9f5e9e56b1751dd000cba0eb3bb1702d6",
+  "comparison_sha256": "9bf60fce8e3ad6ea9e1aba7472d4a4f14709ba1a5f6c737455dc3aa623b21129",
+  "generator_sha256": "c0319cb070a9892e41486454e0c43872c0a87c8d23ffa2b2a8f17b4b0f699ed7",
+  "base_report_source_sha256": "0a88f3f45dd85c12601ec8d8781a22598afdd10856dcd60740aa4f98043f4c48",
+  "files": {
+    "REPORT.md": "247bc9daac53f7924d85b4f7b69d7a56b6c0bfaafe1e5b37caa4766097423bc2",
+    "CLASS_DEPTH.json": "490fab828b9405ec99bda003538f642906cbdd1ca967d1a1aeb9ba1342664014",
+    "DECISION.json": "eecfcf7a6fc7b7a033e8c96ddbc73d4d4ba0710029a751a363df8f38c52de480"
+  }
+}
