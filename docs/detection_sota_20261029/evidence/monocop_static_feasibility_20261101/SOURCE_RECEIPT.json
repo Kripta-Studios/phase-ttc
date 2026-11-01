@@ -1,0 +1,399 @@
+{
+  "repository": "alanzhangcs/MonoCoP",
+  "commit": "7d3932444f7ea94be564ae61a0b334fc6673213b",
+  "files": {
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/LICENSE",
+      "git_blob_sha1": "3ed51f4e282cf2d09d47b5d1544bc0a237aca5e3",
+      "sha256": "13ad03e76afe58d3cc859f30d95d5e6e11b176804649b00b9ce528c7b6c11084",
+      "bytes": 1193
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/README.md",
+      "git_blob_sha1": "8fd496d8cd277a0e8cbdcbac6644f94361406ed3",
+      "sha256": "54426c42667725f62c60cdf029e255cd0691d9675214d94c2f993636efca8b3e",
+      "bytes": 6858
+    },
+    "config/monocop.yaml": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/config/monocop.yaml",
+      "git_blob_sha1": "bf1a6bb0551ee58958578f32bc10e15ac05ef897",
+      "sha256": "0fcdbade6b1a75419aa053b35a46280c207a7045402275be5a121bdc6b8c9bde",
+      "bytes": 2446
+    },
+    "config/monocop_car.yaml": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/config/monocop_car.yaml",
+      "git_blob_sha1": "8f4409fe9d4cad2e290ac08fbe7ae929ee774494",
+      "sha256": "26191a6a3c79040b5ff20b09d39ad324c01dc14a626b9d32c8d8d8902236d8a2",
+      "bytes": 2429
+    },
+    "config/monocop_nusc.yaml": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/config/monocop_nusc.yaml",
+      "git_blob_sha1": "7be4a6b646fb048773f3a189e4fdcb9af316ce1b",
+      "sha256": "d2280bbd6282fff69e4c0311aa36eb2d05556f4fce573885f07b84a18e952f62",
+      "bytes": 2785
+    },
+    "config/monocop_test.yaml": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/config/monocop_test.yaml",
+      "git_blob_sha1": "da183f578070b7cbc4a8eef6a6ed3dc78e2af7e3",
+      "sha256": "cc0045cb8d8f10d8e5a788f702e93a150dfb4ab1b8ce9ecbf453d237c25189e9",
+      "bytes": 2481
+    },
+    "config/monocop_waymo.yaml": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/config/monocop_waymo.yaml",
+      "git_blob_sha1": "1d842eab450b9ffbf7598a503d1d95efc9c53d78",
+      "sha256": "f16fa07e59ed6c4740515df6bb3b83bfa9c25d21bef430204db3cfac836f7d99",
+      "bytes": 2915
+    },
+    "lib/datasets/kitti/kitti_dataset.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_dataset.py",
+      "git_blob_sha1": "540389e7da4cdfa8cfd7324ee7125db19c54654c",
+      "sha256": "8617c3bce3aa25532bd2fb8a462d4f7d4653e6f9c116ab0f3cc97489762c1714",
+      "bytes": 23244
+    },
+    "lib/datasets/kitti/kitti_eval_python/LICENSE": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_eval_python/LICENSE",
+      "git_blob_sha1": "ab602974d200aa6849e6ad8220951ef9a78d9f08",
+      "sha256": "83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c",
+      "bytes": 1057
+    },
+    "lib/datasets/kitti/kitti_eval_python/README.md": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_eval_python/README.md",
+      "git_blob_sha1": "888eee3aebe63ea658358a9b02ffe79659731919",
+      "sha256": "54db883f1952835aca7f75d5ae54ab2b7c40edb6e09ceddbf033a58e3588d624",
+      "bytes": 1823
+    },
+    "lib/datasets/kitti/kitti_eval_python/eval.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_eval_python/eval.py",
+      "git_blob_sha1": "179728ad704cacffaab21d9c4ea22b6512cf8049",
+      "sha256": "c96ea8cdc8daadc5a0d7b06c50110035dc8f1aa2b972a55d93a9a155bc50efda",
+      "bytes": 42976
+    },
+    "lib/datasets/kitti/kitti_eval_python/evaluate.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_eval_python/evaluate.py",
+      "git_blob_sha1": "e6e3f6df732b83b41b701ba16e671c4eb6f63613",
+      "sha256": "4f0f083a033c6bbb72db1ca1dda173228e81088efed4057fccf6e6415e8871ec",
+      "bytes": 908
+    },
+    "lib/datasets/kitti/kitti_eval_python/kitti_common.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_eval_python/kitti_common.py",
+      "git_blob_sha1": "27c91444df6321e09152d0ab4e39626591e6d725",
+      "sha256": "38255af58ff703ceb7ad78ddc687e115a754287dbb02e0de9780f1ddf5d950a8",
+      "bytes": 15309
+    },
+    "lib/datasets/kitti/kitti_eval_python/rotate_iou.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_eval_python/rotate_iou.py",
+      "git_blob_sha1": "543d8f26fbb3a975ae8084c83075782819a641d4",
+      "sha256": "d9b2820b5be5d15ee7233147643134c5d73eff129c773aef4b59ce73a8ecd7f4",
+      "bytes": 11552
+    },
+    "lib/datasets/kitti/kitti_utils.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/kitti_utils.py",
+      "git_blob_sha1": "15607aca1c0b44b3f10fdd5c72d0549021493304",
+      "sha256": "96d7154928e2d11c595c9307e14346c3eadeda596d952ac493c531530723ad64",
+      "bytes": 15542
+    },
+    "lib/datasets/kitti/pd.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/kitti/pd.py",
+      "git_blob_sha1": "fe984bc8bdead336a40b34d70a3b5b627b2662aa",
+      "sha256": "ee5b0a07e70403ce595e5691c6dd94847a8b2759f6d972fbbbb4fa8b637411b1",
+      "bytes": 13455
+    },
+    "lib/datasets/nuscenes/nusc_dataset.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/nuscenes/nusc_dataset.py",
+      "git_blob_sha1": "8b60442631665f30ab1d4716bc3c1d511136820a",
+      "sha256": "2f716aa6c9079da655c4ad8d8008a093d61eebed46e4c5bdcd433189acc2af36",
+      "bytes": 27926
+    },
+    "lib/datasets/nuscenes/nusc_eval.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/nuscenes/nusc_eval.py",
+      "git_blob_sha1": "a4d00050dc07d141030c69df8cf99bde1995f1cf",
+      "sha256": "3df30676a59b9f40a81155b80b7bff759f818e6c1b7537a22d10bc2295da6111",
+      "bytes": 16396
+    },
+    "lib/datasets/utils.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/utils.py",
+      "git_blob_sha1": "a133e0ba5805b853febf4c75899e742400814785",
+      "sha256": "022b1564a6d84d4b700d72ed478fe7b943db7c867a7a42fcbf9100446ed8fbf8",
+      "bytes": 4405
+    },
+    "lib/datasets/waymo/waymo_dataset.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/waymo/waymo_dataset.py",
+      "git_blob_sha1": "a2402887f7480a4dec364de6852c414ed5920765",
+      "sha256": "b0f9b18dd73caff01a08aa7cd64286f9abe72ee570e6c3d55c18a43643237cfe",
+      "bytes": 25112
+    },
+    "lib/datasets/waymo/waymo_eval.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/datasets/waymo/waymo_eval.py",
+      "git_blob_sha1": "65a47dff5ff3e0f061a033b173553df56901d996",
+      "sha256": "446ff9d4001aa80d9a6e09689de9c34176f9b6e00e65bb568ceb23769dcafe3a",
+      "bytes": 14569
+    },
+    "lib/helpers/benchmark.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/benchmark.py",
+      "git_blob_sha1": "5a7cdbdb0ba8aa7fe6f529e74c66372216df9c1d",
+      "sha256": "901f64d4d68b3448408163ad20a533b38812c69810aa4b7b3488f54686ec0d5d",
+      "bytes": 22679
+    },
+    "lib/helpers/dataloader_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/dataloader_helper.py",
+      "git_blob_sha1": "e41b773bf3596a87e898746fd58511084d4618c1",
+      "sha256": "d09055e13849103187c0b3d115432e146eb0c37eea55e149dfd463dfa3b9f81c",
+      "bytes": 1814
+    },
+    "lib/helpers/decode_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/decode_helper.py",
+      "git_blob_sha1": "1098b3ba1664b3694e3d229b046212f714652aeb",
+      "sha256": "f6415c5b7b053d90d3749bf12c0003cec3869d9d36c9b34a4c331f16eff14560",
+      "bytes": 5885
+    },
+    "lib/helpers/model_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/model_helper.py",
+      "git_blob_sha1": "b2427c6aecaf28944764a894245e8f00093f3db1",
+      "sha256": "f7826fa166eb3337ebdc53f866d9405f8c46ab940a27dad10f5a13463a1639d7",
+      "bytes": 99
+    },
+    "lib/helpers/optimizer_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/optimizer_helper.py",
+      "git_blob_sha1": "d8895bc7cae2862467a8b2d918f244888801db21",
+      "sha256": "a5da952eaea50d334ba9b2b03faa659e1a91c1bbf4ebb5e356373d63d999aec2",
+      "bytes": 5575
+    },
+    "lib/helpers/save_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/save_helper.py",
+      "git_blob_sha1": "8fc235f232e25141b811e9a03412759e48bb325e",
+      "sha256": "3f35882ed3d3a9267c0101fc370b06e54ed12afe01a64ba2f0749bc1d305ad0f",
+      "bytes": 1727
+    },
+    "lib/helpers/scheduler_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/scheduler_helper.py",
+      "git_blob_sha1": "e9e8e4b58df07c5fdfb5913ceceefab5560fd2fe",
+      "sha256": "8066169cbb905f8a2339e8adcb43a4fd62d5143905a893d1411a75ea39424203",
+      "bytes": 2786
+    },
+    "lib/helpers/tester_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/tester_helper.py",
+      "git_blob_sha1": "ceab29d15caf119634293354655ac876d1c3b949",
+      "sha256": "31feaa5a3f63205577c5e7de24979d68cd0227d7d7d7914ccdfe115e7ad76202",
+      "bytes": 6893
+    },
+    "lib/helpers/trainer_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/trainer_helper.py",
+      "git_blob_sha1": "86c09da1ed61bd9b0f3e1fa299bf501403d4ba00",
+      "sha256": "3592fe49d3634169c511cea62bb4154ab14459648082ce7fdaf71b1bbf33b0b5",
+      "bytes": 7896
+    },
+    "lib/helpers/utils_helper.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/helpers/utils_helper.py",
+      "git_blob_sha1": "df8218305375e6290e70ef11061f8d052612bf33",
+      "sha256": "c52ba2ac1907f2b214802dbd0ec060c4b28204ecc835f0bff86e4071da00832e",
+      "bytes": 844
+    },
+    "lib/losses/dim_aware_loss.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/losses/dim_aware_loss.py",
+      "git_blob_sha1": "7488b7cecf2895d87442b4940615c847d639d73f",
+      "sha256": "41c8e2df9b857505888f017542c2a34104adb28d93dca5ce17e923420deaa69f",
+      "bytes": 521
+    },
+    "lib/losses/focal_loss.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/losses/focal_loss.py",
+      "git_blob_sha1": "3551f70fa0034a5e5e53ed89acec6c0d702476e3",
+      "sha256": "c1f9a55083fa59f0701ebcdafa9cb8e915b03d9b685f6983e120041e4a6b52ee",
+      "bytes": 2890
+    },
+    "lib/losses/uncertainty_loss.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/losses/uncertainty_loss.py",
+      "git_blob_sha1": "762f64c4def50cab448cc77f0e74e8e4381e9c8c",
+      "sha256": "4d360a7a55c6370fa1d9e74d3c318a2485a6c8471a15760ffd2bfb5e86eee540",
+      "bytes": 1082
+    },
+    "lib/models/monocop/__init__.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/__init__.py",
+      "git_blob_sha1": "c0f41e34bf7ab5bb9dd9d7c8cd3224f16ca549da",
+      "sha256": "356d06389badd416c56e306d8f4640c1a89af6f2be3a350c9f5ec1670f7d1c9d",
+      "bytes": 183
+    },
+    "lib/models/monocop/attribute_net.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/attribute_net.py",
+      "git_blob_sha1": "135f56d3cfadf80968dcbeb90b19515c6d0c40ea",
+      "sha256": "85b5bacf2ce55d34456ebf3fd1494072a34f7e39db4ca63cc73a8dcdb4f750ab",
+      "bytes": 575
+    },
+    "lib/models/monocop/backbone.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/backbone.py",
+      "git_blob_sha1": "1345e526a748387c7fdcf76305d73cbb8436f661",
+      "sha256": "4b0274edb30413187c30ec54666878823d29be87d73aa38eac95eefe10bd8554",
+      "bytes": 11252
+    },
+    "lib/models/monocop/depth_predictor/__init__.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depth_predictor/__init__.py",
+      "git_blob_sha1": "42a4992c9326fdbc0dfee8970eba33a581fb78fd",
+      "sha256": "be9b137295f541c87ebde8e3453eebdd53c068a2dc3c1ef068ce11e40f07af60",
+      "bytes": 44
+    },
+    "lib/models/monocop/depth_predictor/ddn_loss/__init__.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depth_predictor/ddn_loss/__init__.py",
+      "git_blob_sha1": "0ff8b2b5bad3bdb8fbc4992f3eb4d70849a967f2",
+      "sha256": "721b492c190ade3cdd95aa07bb845b3b6352bbed60ea494c3816a6b937cb960c",
+      "bytes": 68
+    },
+    "lib/models/monocop/depth_predictor/ddn_loss/balancer.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depth_predictor/ddn_loss/balancer.py",
+      "git_blob_sha1": "24143ec9f599971ca159f1d2cb783da5710789f3",
+      "sha256": "4110b7720bc1f6ca13a3676104f3dcaabe6e6102934ad35ac93ffde1bade859b",
+      "bytes": 2935
+    },
+    "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "git_blob_sha1": "46ce6ddafc5ee682b502bd3e10f67e63eea866af",
+      "sha256": "5549c438e13ce0eb54ef588bf433d1680aee5d90842409c043173f553f4e3edc",
+      "bytes": 5148
+    },
+    "lib/models/monocop/depth_predictor/ddn_loss/focalloss.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depth_predictor/ddn_loss/focalloss.py",
+      "git_blob_sha1": "41366ccb6c1b463a6f89c4a87621393dba9d541f",
+      "sha256": "647eea4c53b87d3dacc7d084a19a086113a76e73fabf11bc8a43408e2a30ceaf",
+      "bytes": 11598
+    },
+    "lib/models/monocop/depth_predictor/depth_predictor.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depth_predictor/depth_predictor.py",
+      "git_blob_sha1": "55e5cc87d74a62500d67ce7a7d3227a26cdb0366",
+      "sha256": "568b61891db8c2db6f44954b6349fc31f6c5668200ddba775d2100e60507193a",
+      "bytes": 4248
+    },
+    "lib/models/monocop/depth_predictor/transformer.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depth_predictor/transformer.py",
+      "git_blob_sha1": "b4a0858d4a014391a6c7925ab7508f028b4bb3cc",
+      "sha256": "faf4e7351081139daf477e82b9bd1358a5e19bcec6d2df33d87656e4d8732edb",
+      "bytes": 2403
+    },
+    "lib/models/monocop/depthaware_transformer.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/depthaware_transformer.py",
+      "git_blob_sha1": "f12f4849079901d76ec54a29b130358148b3643c",
+      "sha256": "beef68ad199cfe1bbd4f6482cc4a80416ddb0ea64f0be8695cefcc39f32bccc5",
+      "bytes": 24365
+    },
+    "lib/models/monocop/dn_components.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/dn_components.py",
+      "git_blob_sha1": "7d9f7b103ef265dd07cf4085629180f1116cf0ed",
+      "sha256": "0d1e2880c6474a836f3b939c1da0ba60e2052c4c08666f1c401605910cc11771",
+      "bytes": 19084
+    },
+    "lib/models/monocop/matcher.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/matcher.py",
+      "git_blob_sha1": "8a762f2ee4c03a65cbbabadea9e98b73e4f2653f",
+      "sha256": "bdd2d41c7aa1e4ab6be3d6f1afbedfce55df0c8912e3e29f99399c9374ec0f2b",
+      "bytes": 5816
+    },
+    "lib/models/monocop/monocop.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/monocop.py",
+      "git_blob_sha1": "05be1ab173822ac00afbbae0bb603b7e8386a51a",
+      "sha256": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+      "bytes": 29481
+    },
+    "lib/models/monocop/ops/functions/__init__.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/ops/functions/__init__.py",
+      "git_blob_sha1": "8a2197bda3199aa32cafc5b9d396479609853dd2",
+      "sha256": "e1a39c1cf23562b11d696d81f95cf8bef368c48149b681d1eadc7f6d188edd3a",
+      "bytes": 598
+    },
+    "lib/models/monocop/ops/functions/ms_deform_attn_func.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/ops/functions/ms_deform_attn_func.py",
+      "git_blob_sha1": "8c5df8cf5d23aca963eec6c1133c180b37289607",
+      "sha256": "dd9906037ce7dc45b9ef6f39d4934bb4dddefc3e09049024496827714b6738bc",
+      "bytes": 3298
+    },
+    "lib/models/monocop/ops/make.sh": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/ops/make.sh",
+      "git_blob_sha1": "106b685722bc6ed70a06bf04309e75e62f73a430",
+      "sha256": "37a07393d06bc9114f634fbc216119ff709283a1718816aff8bd6eab6e26788b",
+      "bytes": 593
+    },
+    "lib/models/monocop/ops/modules/__init__.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/ops/modules/__init__.py",
+      "git_blob_sha1": "c0c136b3a95ffc690ea0c2c019b31396300b0d71",
+      "sha256": "5ee74e878252076bc3709f52fc705730e9473e02fef6aefb099eaac2edb1c3bb",
+      "bytes": 677
+    },
+    "lib/models/monocop/ops/modules/ms_deform_attn.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/ops/modules/ms_deform_attn.py",
+      "git_blob_sha1": "6496e6f9e2ab96adbdc81b43284b9ba34c80a9f9",
+      "sha256": "0103d40184e8a17ac0516c4e2b83779f9acfd3d836a5ea9652d355f0f83d38f6",
+      "bytes": 31948
+    },
+    "lib/models/monocop/ops/setup.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/ops/setup.py",
+      "git_blob_sha1": "0bd239a1ba81998db03c555be91ff9cc35dba0b7",
+      "sha256": "d4b036c77ee95b6db3027b1926ccabe1be69c306590f2eba46d47e0aacb5a3ec",
+      "bytes": 2782
+    },
+    "lib/models/monocop/ops/test.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/ops/test.py",
+      "git_blob_sha1": "8dbf6d5547d131f01a8c5c28b76557bd27a9334b",
+      "sha256": "6066519322d749265c9983117ba8b012b35b6fbd46505d5b7842751eeb706942",
+      "bytes": 4087
+    },
+    "lib/models/monocop/position_encoding.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/position_encoding.py",
+      "git_blob_sha1": "cc6fdc490b4988c8c76f3979952de79f81795126",
+      "sha256": "b5e2f3f84ba5d6f56036b8cec5ecc69bdad6f66f08b7640af3ad4a62bf52698b",
+      "bytes": 3967
+    },
+    "lib/models/monocop/region_seg_head.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/lib/models/monocop/region_seg_head.py",
+      "git_blob_sha1": "53f84c4b659738c01f22cf22250708f2d5bcd8f1",
+      "sha256": "af9fca0ccfc918194b72be6ce85fd797511cc6db32fc69c3eb05c56cec54210f",
+      "bytes": 3322
+    },
+    "requirements.txt": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/requirements.txt",
+      "git_blob_sha1": "363758a2bdca7b36faf0734c50645a7f11ac8659",
+      "sha256": "edbf4fef351dcac28d4c15f3bc3b5fa3f22949cc04738ce543572b153e902f59",
+      "bytes": 51
+    },
+    "test.sh": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/test.sh",
+      "git_blob_sha1": "4fe21f2eed681c3779fd6d8942333aebf854c752",
+      "sha256": "0f29be66bd688657352a3037d5e091d4fca8f892b506084b1296b84384f2c92b",
+      "bytes": 89
+    },
+    "train.sh": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/train.sh",
+      "git_blob_sha1": "ea112429dcbfbdb50e4834dcedc98e30664db930",
+      "sha256": "e222435a3807f6edae79df88c24d22b3add6f02d425225fe6958ddb88d2cae31",
+      "bytes": 97
+    },
+    "train_val.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/train_val.py",
+      "git_blob_sha1": "062844e079b3cf8cebee0cadac2dbe5be9b3b7d9",
+      "sha256": "394dde23bb13ff5cdb0c391c7e6f5a6c8e24db8eaf871632d36f13c412e9702a",
+      "bytes": 3913
+    },
+    "utils/__init__.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/utils/__init__.py",
+      "git_blob_sha1": "7083bf49592f0df62066f1f8bd0a0b29b5e8692d",
+      "sha256": "a101de83cee507766e0ad18e63b9a5dfe707971b6e634166e2c646dc5a44b6fd",
+      "bytes": 273
+    },
+    "utils/box_ops.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/utils/box_ops.py",
+      "git_blob_sha1": "239f1dcea7d16dde0e9bcbe90ec1f5ee663a79da",
+      "sha256": "24fbfc914bbbad278b5fdf3078b103d67f771fac24ccec22276fb5392afd9e40",
+      "bytes": 3003
+    },
+    "utils/dino_utils.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/utils/dino_utils.py",
+      "git_blob_sha1": "604b1745f88c3661fa0bac931b41dfb178b3320d",
+      "sha256": "e3a84229d6d1496df5a2ea5b7880658294abcf2994cdee362032ca56d530cc5e",
+      "bytes": 7185
+    },
+    "utils/misc.py": {
+      "url": "https://raw.githubusercontent.com/alanzhangcs/MonoCoP/7d3932444f7ea94be564ae61a0b334fc6673213b/utils/misc.py",
+      "git_blob_sha1": "ad2a2a839f7baa037ce7f7b76d0b4058e06d8341",
+      "sha256": "f835599a9402895811769e3eec19da12691686c859d23c55e90f4b05674ccea8",
+      "bytes": 15904
+    }
+  },
+  "source_executed": false,
+  "weights_downloaded": false,
+  "purpose": "Static competitor feasibility review"
+}

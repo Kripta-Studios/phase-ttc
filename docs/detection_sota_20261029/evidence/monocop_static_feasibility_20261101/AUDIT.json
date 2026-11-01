@@ -1,0 +1,204 @@
+{
+  "schema": "phase_ttc_monocop_static_feasibility_v1",
+  "commit": "7d3932444f7ea94be564ae61a0b334fc6673213b",
+  "source_receipt_sha256": "90f69f32b8e2f63ea56cc168afdb1fe571f106ac1c8f54dd1b43b3e3a8a342c8",
+  "verified_source_files": 65,
+  "source_bytes": 495059,
+  "findings": {
+    "root_license": {
+      "file": "LICENSE",
+      "sha256": "13ad03e76afe58d3cc859f30d95d5e6e11b176804649b00b9ce528c7b6c11084",
+      "lines": [
+        1
+      ]
+    },
+    "readme_paper_link": {
+      "file": "README.md",
+      "sha256": "54426c42667725f62c60cdf029e255cd0691d9675214d94c2f993636efca8b3e",
+      "lines": [
+        4
+      ]
+    },
+    "recommended_torch": {
+      "file": "README.md",
+      "sha256": "54426c42667725f62c60cdf029e255cd0691d9675214d94c2f993636efca8b3e",
+      "lines": [
+        84
+      ]
+    },
+    "nusc_classes": {
+      "file": "config/monocop_nusc.yaml",
+      "sha256": "d2280bbd6282fff69e4c0311aa36eb2d05556f4fce573885f07b84a18e952f62",
+      "lines": [
+        32
+      ]
+    },
+    "nusc_car_list": {
+      "file": "config/monocop_nusc.yaml",
+      "sha256": "d2280bbd6282fff69e4c0311aa36eb2d05556f4fce573885f07b84a18e952f62",
+      "lines": [
+        14
+      ]
+    },
+    "nusc_kitti_evaluation": {
+      "file": "config/monocop_nusc.yaml",
+      "sha256": "d2280bbd6282fff69e4c0311aa36eb2d05556f4fce573885f07b84a18e952f62",
+      "lines": [
+        12
+      ]
+    },
+    "chain_size": {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+      "lines": [
+        252
+      ]
+    },
+    "chain_angle": {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+      "lines": [
+        258
+      ]
+    },
+    "chain_depth": {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+      "lines": [
+        264
+      ]
+    },
+    "train_routing": {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+      "lines": [
+        280
+      ]
+    },
+    "eval_routing": {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+      "lines": [
+        288
+      ]
+    },
+    "vertical_prior_uses_fx": {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+      "lines": [
+        274
+      ]
+    },
+    "ddn_cuda_constructor": {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256": "5549c438e13ce0eb54ef588bf433d1680aee5d90842409c043173f553f4e3edc",
+      "lines": [
+        32
+      ]
+    },
+    "ddn_default_range": {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256": "5549c438e13ce0eb54ef588bf433d1680aee5d90842409c043173f553f4e3edc",
+      "lines": [
+        66
+      ]
+    },
+    "ddn_forward_uses_defaults": {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256": "5549c438e13ce0eb54ef588bf433d1680aee5d90842409c043173f553f4e3edc",
+      "lines": [
+        119
+      ]
+    },
+    "backbone_variant_d": {
+      "file": "lib/models/monocop/backbone.py",
+      "sha256": "4b0274edb30413187c30ec54666878823d29be87d73aa38eac95eefe10bd8554",
+      "lines": [
+        277
+      ]
+    },
+    "backbone_download": {
+      "file": "lib/models/monocop/backbone.py",
+      "sha256": "4b0274edb30413187c30ec54666878823d29be87d73aa38eac95eefe10bd8554",
+      "lines": [
+        343
+      ]
+    },
+    "compiled_attention_import": {
+      "file": "lib/models/monocop/ops/functions/ms_deform_attn_func.py",
+      "sha256": "dd9906037ce7dc45b9ef6f39d4934bb4dddefc3e09049024496827714b6738bc",
+      "lines": [
+        18
+      ]
+    },
+    "attention_reference": {
+      "file": "lib/models/monocop/ops/functions/ms_deform_attn_func.py",
+      "sha256": "dd9906037ce7dc45b9ef6f39d4934bb4dddefc3e09049024496827714b6738bc",
+      "lines": [
+        41
+      ]
+    },
+    "attention_license_header": {
+      "file": "lib/models/monocop/ops/functions/ms_deform_attn_func.py",
+      "sha256": "dd9906037ce7dc45b9ef6f39d4934bb4dddefc3e09049024496827714b6738bc",
+      "lines": [
+        4
+      ]
+    },
+    "decode_dimensions": {
+      "file": "lib/helpers/decode_helper.py",
+      "sha256": "f6415c5b7b053d90d3749bf12c0003cec3869d9d36c9b34a4c331f16eff14560",
+      "lines": [
+        38
+      ]
+    },
+    "decode_bottom_center": {
+      "file": "lib/helpers/decode_helper.py",
+      "sha256": "f6415c5b7b053d90d3749bf12c0003cec3869d9d36c9b34a4c331f16eff14560",
+      "lines": [
+        44
+      ]
+    },
+    "decode_score_uncertainty": {
+      "file": "lib/helpers/decode_helper.py",
+      "sha256": "f6415c5b7b053d90d3749bf12c0003cec3869d9d36c9b34a4c331f16eff14560",
+      "lines": [
+        51
+      ]
+    }
+  },
+  "incumbent_findings": {
+    "backbone_torchvision": {
+      "file": "detector/code/portable_source/lib/models/monodgp/backbone.py",
+      "sha256": "210f2516ee086cc26a47a406530d3669f4e6c21a17d6f376d322f12277c1f128",
+      "lines": [
+        100
+      ]
+    },
+    "backbone_no_download": {
+      "file": "detector/code/portable_source/lib/models/monodgp/backbone.py",
+      "sha256": "210f2516ee086cc26a47a406530d3669f4e6c21a17d6f376d322f12277c1f128",
+      "lines": [
+        102
+      ]
+    },
+    "vertical_prior_uses_fy": {
+      "file": "detector/code/portable_source/lib/models/monodgp/monodgp.py",
+      "sha256": "ac16913d545b470cf1f741df2dd783f0ca82eaca515cc94a824a7074c4113c6e",
+      "lines": [
+        261
+      ]
+    }
+  },
+  "release_manifest_sha256": "61fc1023d67cf63aec8409023ddbdc44d02041c7413c3c2f83361e69a9ab2fbc",
+  "generator_sha256": "a1ae84246f540069564d6bd650e170c6f4ddb90eef8a6a417506449023ba7c6c",
+  "correct_paper": "https://arxiv.org/abs/2505.04594",
+  "project": "https://alanzhangcs.github.io/monocop-page/",
+  "decision": "CONDITIONAL_COMPETITOR_REQUIRES_PORT_AND_RUNTIME_GATES",
+  "external_source_imported": false,
+  "model_constructed": false,
+  "weights_downloaded_by_this_audit": false,
+  "gpu_experiment_admitted": false,
+  "eap_quality_measured": false,
+  "promotion": false
+}
