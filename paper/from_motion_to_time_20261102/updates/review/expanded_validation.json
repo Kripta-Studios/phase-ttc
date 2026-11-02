@@ -1,15 +1,16 @@
 {
   "pages": 65,
-  "words": 26674,
+  "words": 26677,
   "figures": 25,
   "tables": 30,
   "all_fonts_embedded": true,
-  "pdf_sha256": "e569a424e7b53aa19f1557590f4484244063e46a7ecff2176d460e43a9eb2589",
+  "pdf_sha256": "09fbf449acee1c5214ead60aece1c4bfa0450a74f6922a9ac37dbe639b34bf9b",
   "latex_checks": {
     "overfull_boxes": 0,
     "missing_glyphs": 0,
     "undefined_references_or_citations": 0,
     "latex_warnings": 0
   },
-  "visual_review": "All65 final pages individually inspected; pixel-identical to reviewed proof. See updates/review/final_visual_validation.json."
+  "visual_review": "PASS: Poppler-rendered cover inspected; contact links legible, no logo, clipping or overlap. All body pages remain pixel-identical to the reviewed prior PDF.",
+  "author_contact_update": "updates/review/author_contact_update_validation.json"
 }

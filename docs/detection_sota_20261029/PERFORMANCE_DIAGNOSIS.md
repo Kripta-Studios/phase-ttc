@@ -150,3 +150,30 @@ Las rutas siguientes son relativas al repositorio; el Markdown no conserva rutas
 | `output/evaluation_ap_fast/ap101_exact_v2/receipt.json` | `7e9f429001b52f75c8203e14e56b7f59b2a644ede9b62515346f8ee7096a3d0f` |
 | `output/evaluation_ap_fast/ap101_exact_v3/receipt.json` | `2becd32a9ccadaac069972e5fe9a33303dc9b6462b6195c64e94cfc08945177c` |
 | `output/evaluation_ap_fast/ap101_integration_v4/receipt.json` | `aabb6af83b7c110b61372d8b0be76c1bfdcf757fead1d6648aebdd1e0c12f0a8` |
+
+## Perfil pasivo de selección completa en update 4096
+
+La pila `run:768` aparece en 1.462 de 1.469 muestras (99,52%); junto con la identidad del proceso, confirma que la ventana corresponde al bloque de selección completa, no a entrenamiento. Durante 60,04 s no avanzó ningún update ni apareció un artefacto nuevo de evaluación.
+
+| Categoría exclusiva | Muestras | Fracción de muestras |
+|---|---:|---:|
+| Forward visible desde Python | 767 | 52.21% |
+| Decodificación PNG | 390 | 26.55% |
+| Preparación/H2D | 169 | 11.50% |
+| Decode de predicciones | 67 | 4.56% |
+| Comprobaciones finitas | 49 | 3.34% |
+| Construcción GT | 9 | 0.61% |
+| Lectura TAR visible | 7 | 0.48% |
+| No resuelto | 11 | 0.75% |
+
+Son fracciones de muestras de stacks, no fracciones de tiempo de pared ni de kernels GPU. El tee contemporáneo registra 1.469 muestras y 29 errores de muestreo.
+
+El proceso consumió 217,64 CPU-s en 60,04 s (3,62 cores lógicos equivalentes). Leyó 5,78 MiB/s según el contador del trainer y 9,08 MiB/s a nivel de sistema. Esto confirma CPU host activo y lecturas concurrentes, pero no distingue latencia de medio físico frente a caché del SO o I/O nativo.
+
+La GPU promedió 13,38% y alcanzó 42%, sin muestras de throttling. La baja utilización por sí sola no demuestra starvation: py-spy no observa duración de kernels CUDA asíncronos.
+
+La prioridad práctica es medir por separado lectura/PNG/preparación y submission/forward, conservando aparte el tiempo end-to-end de selección completa. Este perfil no acredita un speedup ni una mejora del entrenamiento.
+
+Fuentes hash-bound: `full_selection4096_passive_v1.json`, `full_selection4096_pyspy_v1/pyspy_raw.txt`, `console_live.txt`, `process_identity.json` y el binario `py-spy.exe`; sus SHA-256 están en `output/performance/full_selection4096_profile_analysis_v1.json`.
+
+La [proyección del perfil](evidence/pending_candidates_20261102/performance/full_selection4096_profile_analysis_v1.json), el registro pasivo y las muestras originales se conservan en `evidence/pending_candidates_20261102/performance/`. El binario externo de py-spy se identifica por hash y no se redistribuye.

@@ -9,6 +9,13 @@ docs/jepa_closure_20261031/** -text whitespace=cr-at-eol
 # SOTA intake and executed evidence are bound by byte-level SHA-256.
 docs/detection_sota_20261029/evidence/** -text -whitespace
 
+# Isolated S0 candidates retain the exact source identities recorded in their audits.
+src/e_jepa_ttc/detection/event_accumulation.py -text whitespace=cr-at-eol
+scripts/profile_detection_event_accumulation.py -text whitespace=cr-at-eol
+src/e_jepa_ttc/detection/static_attention_candidate.py -text whitespace=cr-at-eol
+# These code-as-data fixtures preserve historical whitespace as well as line endings.
+tests/fixtures/detection_candidate_sources/*.py.txt -text -whitespace
+
 # TRAIN40 runtime receipts and source snapshots are bound by byte-level SHA-256.
 docs/train40_runtime_handoff_20261027/evidence/** -text -whitespace
 docs/train40_runtime_resume_20261027/evidence/** -text -whitespace

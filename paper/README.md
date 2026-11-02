@@ -10,7 +10,8 @@ controls. The files below retain the original 28 October snapshot.
 
 Álvaro Schwiedop Souto · Evidence snapshot: 28 October 2026
 
-[alvaro.schwiedop@evocon-solutions.com](mailto:alvaro.schwiedop@evocon-solutions.com) ·
+[alvaro@schwiedop.com](mailto:alvaro@schwiedop.com) ·
+[schwiedop.com/PHASE-TTC](https://schwiedop.com/PHASE-TTC) ·
 [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/) ·
 [Repository](https://github.com/Kripta-Studios/phase-ttc)
 

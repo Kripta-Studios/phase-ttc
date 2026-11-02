@@ -1,0 +1,423 @@
+{
+  "schema": "phase_ttc_s0_pending_import_v1",
+  "source_head": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+  "note": "Original hashes identify previously uncommitted S0 worktree bytes. Integrated hashes normalize CRLF to LF for text portability; unchanged frozen sources retain their exact-byte contract separately. No original files were changed.",
+  "files": [
+    {
+      "path": "docs/detection_sota_20261029/COMPUTE_OPTIMIZATION_AUDIT.md",
+      "original_git_status": " M",
+      "original_sha256": "0fc9b45f05fa279e5d660b23f0c1579d05f393efd4dcc65694b0631e4a6eff5d",
+      "original_bytes": 9947,
+      "integrated_text_lf_sha256": "0fc9b45f05fa279e5d660b23f0c1579d05f393efd4dcc65694b0631e4a6eff5d",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/PERFORMANCE_DIAGNOSIS.md",
+      "original_git_status": " M",
+      "original_sha256": "cf0d6f1d9efb9963262026f93546730416dde8fbfd4f5db69bf91f04d91321d6",
+      "original_bytes": 11192,
+      "integrated_text_lf_sha256": "e45805512f1fe63f6bbe811a9fa494246141cbe8dd098594ddb7b51ab7826faa",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/EVENT_ACCUMULATION_PROFILE.md",
+      "original_git_status": "??",
+      "original_sha256": "42d96cd28ff2e9449fc1a776419e4d23b80af8434eac9d09bfe8b4552b6a02da",
+      "original_bytes": 3219,
+      "integrated_text_lf_sha256": "8914627fdc87a2cb47a3b4b162e10c9750d565e24c8636875cf864ac24983595",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/PERSISTENT_TAR_INDEX_CANDIDATE.md",
+      "original_git_status": "??",
+      "original_sha256": "e175e526994926ab2e4a518c73091c1cbf8fe33c046b8a3128d321c6deeb0fce",
+      "original_bytes": 2970,
+      "integrated_text_lf_sha256": "e175e526994926ab2e4a518c73091c1cbf8fe33c046b8a3128d321c6deeb0fce",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/PROGRESS_AND_ETA.md",
+      "original_git_status": "??",
+      "original_sha256": "7237ca862c4ff0a0c4761d9e0f38a7687275af9e24e82cce1d5910ecf94478ad",
+      "original_bytes": 2699,
+      "integrated_text_lf_sha256": "ea19ca17c9c046121bb7e0067461dddba7ba200639c51afa680416b4b14ac883",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/PROGRESS_AND_ETA_V2.md",
+      "original_git_status": "??",
+      "original_sha256": "91b11c5971303409b53c0bbfbc06670bc5009c82c7bf5685f3351370a416bc78",
+      "original_bytes": 2761,
+      "integrated_text_lf_sha256": "d98045c3fa8c223a23ec04284136ef8c32504d4fd78a74584637f502fea55992",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/PROGRESS_AND_ETA_V3.md",
+      "original_git_status": "??",
+      "original_sha256": "9b12cbe916979565c7411fd0481a889757963b34e52dfd360b0c76816fce00c1",
+      "original_bytes": 3065,
+      "integrated_text_lf_sha256": "2a8854290bdf0123b131827724e9567f9e01de2a8677fbee81c92c6081ebcd0f",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/PROGRESS_AND_ETA_V4.md",
+      "original_git_status": "??",
+      "original_sha256": "27aeb0df2506ecfbb0b87944c8a4276e7e2da67cb760275a4e09a85cd21b03fc",
+      "original_bytes": 3465,
+      "integrated_text_lf_sha256": "237550d799c561c89faf10028734d08bf972ed30150399f933f0e5f067188656",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/PROGRESS_AND_ETA_V5.md",
+      "original_git_status": "??",
+      "original_sha256": "13d0a35a9f47edba2d2130574fe56109a6e1954c5cc0f334544d8ab26d8a3b93",
+      "original_bytes": 3625,
+      "integrated_text_lf_sha256": "7be154a592b5feceeb12b72c31c4c613f79daa591b6fe8e9f23efc12d620a0db",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/PROGRESS_AND_ETA_V6.md",
+      "original_git_status": "??",
+      "original_sha256": "e3275b9beef709eba547d533b155b5b9f8e0bf5e2e564a78e1340910464d941e",
+      "original_bytes": 4216,
+      "integrated_text_lf_sha256": "177066c6f17f99abb0ba624be5a6e277ff2a785f88e13a6685d82d21752c4aad",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/PROGRESS_AND_ETA_V7.md",
+      "original_git_status": "??",
+      "original_sha256": "926de9dbde996d843ad0df7fc1371307e316aba2a761b4fa3f088a0333131106",
+      "original_bytes": 3871,
+      "integrated_text_lf_sha256": "295d6ee144f4eec087ca27137f320ec0491c0f776882704e53490bfd2c6ace95",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/R0_MONITOR_CURVE.md",
+      "original_git_status": "??",
+      "original_sha256": "4effb24d3641e6020fbb2ff0905ef6dc1a1661db4c76ce5e5aff0c25bb1538d7",
+      "original_bytes": 3361,
+      "integrated_text_lf_sha256": "3921cab6591935d2a143b3af0536b264f245314aa3860f8ccf8f1b5b0f713379",
+      "same_original_bytes": false
+    },
+    {
+      "path": "docs/detection_sota_20261029/STATIC_ATTENTION_CUDA_GRAPH_CANDIDATE.md",
+      "original_git_status": "??",
+      "original_sha256": "68500cc62d13323e6c075353156163d70f102a45481b25096bf3156abf5643d9",
+      "original_bytes": 4419,
+      "integrated_text_lf_sha256": "68500cc62d13323e6c075353156163d70f102a45481b25096bf3156abf5643d9",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/owner_retired.json",
+      "original_git_status": "??",
+      "original_sha256": "92bf201d8dcd33e3b0a8a271e7ba8d8693ffd92a0149515e0dcb2767cb3dd3a0",
+      "original_bytes": 56,
+      "integrated_text_lf_sha256": "92bf201d8dcd33e3b0a8a271e7ba8d8693ffd92a0149515e0dcb2767cb3dd3a0",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/queue_before_completion.json",
+      "original_git_status": "??",
+      "original_sha256": "2211e9fd0e5f77626de7589b0e7dbb3fadff9bd463528a0b01af12394c88c53a",
+      "original_bytes": 847,
+      "integrated_text_lf_sha256": "2211e9fd0e5f77626de7589b0e7dbb3fadff9bd463528a0b01af12394c88c53a",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/r0_diagnostics.json",
+      "original_git_status": "??",
+      "original_sha256": "2f16aecf0a17660bcaf3df25f8fbd8ecbf92e7e1b40baf73bae2bdf799eb54e5",
+      "original_bytes": 62615,
+      "integrated_text_lf_sha256": "2f16aecf0a17660bcaf3df25f8fbd8ecbf92e7e1b40baf73bae2bdf799eb54e5",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/r0_rare_full.json",
+      "original_git_status": "??",
+      "original_sha256": "394dde148bb723bf039c484199b268c048b28e541f3218cbae6f6bfb0fb8e648",
+      "original_bytes": 12625,
+      "integrated_text_lf_sha256": "394dde148bb723bf039c484199b268c048b28e541f3218cbae6f6bfb0fb8e648",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/r0_verified.json",
+      "original_git_status": "??",
+      "original_sha256": "35978f00a37b07e5a98d445a922901c384f14022cffc5724ad7f6e296b91c98c",
+      "original_bytes": 51981,
+      "integrated_text_lf_sha256": "35978f00a37b07e5a98d445a922901c384f14022cffc5724ad7f6e296b91c98c",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/r2_diagnostics.json",
+      "original_git_status": "??",
+      "original_sha256": "58ebce07d78c6ee7fb2dd966a802a1b412100d94d7251275d0f926ef6e59f72c",
+      "original_bytes": 62356,
+      "integrated_text_lf_sha256": "58ebce07d78c6ee7fb2dd966a802a1b412100d94d7251275d0f926ef6e59f72c",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/r2_rare_full.json",
+      "original_git_status": "??",
+      "original_sha256": "aef55fc4e2ab8ce93dd18ee2ae91c754c2aaa07288fe5bdb38394a5b333c1e4a",
+      "original_bytes": 12590,
+      "integrated_text_lf_sha256": "aef55fc4e2ab8ce93dd18ee2ae91c754c2aaa07288fe5bdb38394a5b333c1e4a",
+      "same_original_bytes": true
+    },
+    {
+      "path": "docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/r2_verified.json",
+      "original_git_status": "??",
+      "original_sha256": "ccd7aa89901d64c099fd4b5cc249e193d345149f6a8f7b6f7b1ba578596e16d3",
+      "original_bytes": 51703,
+      "integrated_text_lf_sha256": "ccd7aa89901d64c099fd4b5cc249e193d345149f6a8f7b6f7b1ba578596e16d3",
+      "same_original_bytes": true
+    },
+    {
+      "path": "pyright.static_candidate.json",
+      "original_git_status": "??",
+      "original_sha256": "ccbfe40687c06194a84ff6d443e2206a1ce4fd3dffdf055afc16a50e97c82df6",
+      "original_bytes": 521,
+      "integrated_text_lf_sha256": "944a1c5cc24cc08a7dc62680182c97e502618fe0dd60f5cb182be4d175ddb18c",
+      "same_original_bytes": false
+    },
+    {
+      "path": "scripts/analyze_full_selection4096_passive.py",
+      "original_git_status": "??",
+      "original_sha256": "c8173cdd8a2cfc3d2f290a8b890a6e50db13248692f5287c50ef7d87badcd674",
+      "original_bytes": 13541,
+      "integrated_text_lf_sha256": "202e049974c1a31f1eebcc4d42085f651c4f60cb28d3fdb3ab84fd4793c18523",
+      "same_original_bytes": false
+    },
+    {
+      "path": "scripts/build_detection_progress_status.py",
+      "original_git_status": "??",
+      "original_sha256": "a0693d1d6cd37154f77facbf4ade363c5f1d9a983bb72ec3422855f50c18aa7c",
+      "original_bytes": 23576,
+      "integrated_text_lf_sha256": "ad790f07859fac89daa15b153f8f9a9a24ccea89962be71cafd9ad3f4fb064b8",
+      "same_original_bytes": false
+    },
+    {
+      "path": "scripts/build_r0_monitor_curve.py",
+      "original_git_status": "??",
+      "original_sha256": "3810bf37a5682ce4b21b3ab885f872db09958a2fae8a514b326d8c6e705fc694",
+      "original_bytes": 18053,
+      "integrated_text_lf_sha256": "db8398d876eb8dad410f6a424aa63e213fa14739492bb1b8b610c72a8aade4d0",
+      "same_original_bytes": false
+    },
+    {
+      "path": "scripts/migrate_detection_campaign_writer.py",
+      "original_git_status": "??",
+      "original_sha256": "8708d769fab9aa7342b6ab152698dee2d6b5a04760a1825fc45578f9ff18de1a",
+      "original_bytes": 38223,
+      "integrated_text_lf_sha256": "8708d769fab9aa7342b6ab152698dee2d6b5a04760a1825fc45578f9ff18de1a",
+      "same_original_bytes": true
+    },
+    {
+      "path": "scripts/observe_detection_training_passive.py",
+      "original_git_status": "??",
+      "original_sha256": "557bf5eb22c50bc7cce9030fdd2ca0f710d83e0448e2c32284227be49495e5e2",
+      "original_bytes": 10301,
+      "integrated_text_lf_sha256": "557bf5eb22c50bc7cce9030fdd2ca0f710d83e0448e2c32284227be49495e5e2",
+      "same_original_bytes": true
+    },
+    {
+      "path": "scripts/prepare_fixed_state_gpu_diagnostic.py",
+      "original_git_status": "??",
+      "original_sha256": "79292201c90314ce316bc56370f2f2edf009f1d91dc55ad90d8c52fb9e2ca330",
+      "original_bytes": 2057,
+      "integrated_text_lf_sha256": "79292201c90314ce316bc56370f2f2edf009f1d91dc55ad90d8c52fb9e2ca330",
+      "same_original_bytes": true
+    },
+    {
+      "path": "scripts/profile_detection_event_accumulation.py",
+      "original_git_status": "??",
+      "original_sha256": "08440a9b7cd67d973410d7908b0e4c2560032df0e970890731d0708a080fbb80",
+      "original_bytes": 11413,
+      "integrated_text_lf_sha256": "08440a9b7cd67d973410d7908b0e4c2560032df0e970890731d0708a080fbb80",
+      "same_original_bytes": true
+    },
+    {
+      "path": "scripts/run_fixed_state_gpu_diagnostic.py",
+      "original_git_status": "??",
+      "original_sha256": "7b4cbd8d3f20625cb6c084a3c9b8ae8f1c4b39ce74a552ba87c2b6d35b2530cc",
+      "original_bytes": 29227,
+      "integrated_text_lf_sha256": "7b4cbd8d3f20625cb6c084a3c9b8ae8f1c4b39ce74a552ba87c2b6d35b2530cc",
+      "same_original_bytes": true
+    },
+    {
+      "path": "scripts/summarize_detection_campaign.py",
+      "original_git_status": "??",
+      "original_sha256": "28bdf7d6ccd52dc3e1183a2212025557753eb41c57e353812a82251acc7abe8d",
+      "original_bytes": 25356,
+      "integrated_text_lf_sha256": "28bdf7d6ccd52dc3e1183a2212025557753eb41c57e353812a82251acc7abe8d",
+      "same_original_bytes": true
+    },
+    {
+      "path": "scripts/summarize_detection_training_observation.py",
+      "original_git_status": "??",
+      "original_sha256": "55c5f0d2ae5712fdcc03948cfb9eb0ab7eaea95286a1b6ff5ab31b7234cac2da",
+      "original_bytes": 4959,
+      "integrated_text_lf_sha256": "55c5f0d2ae5712fdcc03948cfb9eb0ab7eaea95286a1b6ff5ab31b7234cac2da",
+      "same_original_bytes": true
+    },
+    {
+      "path": "src/e_jepa_ttc/detection/consumed_input_tar.py",
+      "original_git_status": "??",
+      "original_sha256": "567de6f6cbebcfc07dedc2e25918a97db666afe81097d2dc0d2e7bd9b808cf85",
+      "original_bytes": 16928,
+      "integrated_text_lf_sha256": "567de6f6cbebcfc07dedc2e25918a97db666afe81097d2dc0d2e7bd9b808cf85",
+      "same_original_bytes": true
+    },
+    {
+      "path": "src/e_jepa_ttc/detection/event_accumulation.py",
+      "original_git_status": "??",
+      "original_sha256": "386a02fdbf7800e76add5d5aa3b2861e276b4139e1335c904b3fe18f5fc4342d",
+      "original_bytes": 9335,
+      "integrated_text_lf_sha256": "386a02fdbf7800e76add5d5aa3b2861e276b4139e1335c904b3fe18f5fc4342d",
+      "same_original_bytes": true
+    },
+    {
+      "path": "src/e_jepa_ttc/detection/fixed_state_gpu_diagnostic.py",
+      "original_git_status": "??",
+      "original_sha256": "36e67b15113d08346ea916f7a14c13a9a7a3ae490ac5dbf85eb8116304057a4d",
+      "original_bytes": 8491,
+      "integrated_text_lf_sha256": "36e67b15113d08346ea916f7a14c13a9a7a3ae490ac5dbf85eb8116304057a4d",
+      "same_original_bytes": true
+    },
+    {
+      "path": "src/e_jepa_ttc/detection/fixed_state_trial_executor.py",
+      "original_git_status": "??",
+      "original_sha256": "b71a5e1199f403a88a738224c7415700d8d9fc6a78cbb3071faae0671762ffc9",
+      "original_bytes": 12494,
+      "integrated_text_lf_sha256": "b71a5e1199f403a88a738224c7415700d8d9fc6a78cbb3071faae0671762ffc9",
+      "same_original_bytes": true
+    },
+    {
+      "path": "src/e_jepa_ttc/detection/persistent_tar_index.py",
+      "original_git_status": "??",
+      "original_sha256": "f89c8956ed5fc1c842d97bbca7725e5318aadc93f567a441d299a6120dd15d25",
+      "original_bytes": 15896,
+      "integrated_text_lf_sha256": "f89c8956ed5fc1c842d97bbca7725e5318aadc93f567a441d299a6120dd15d25",
+      "same_original_bytes": true
+    },
+    {
+      "path": "src/e_jepa_ttc/detection/static_attention_candidate.py",
+      "original_git_status": "??",
+      "original_sha256": "6fa1f2dd3bb9ee5d6fd053b8365a4621125e72e25994cd606beae0ee055665eb",
+      "original_bytes": 10801,
+      "integrated_text_lf_sha256": "6fa1f2dd3bb9ee5d6fd053b8365a4621125e72e25994cd606beae0ee055665eb",
+      "same_original_bytes": true
+    },
+    {
+      "path": "src/e_jepa_ttc/detection/static_eval_source_patch.py",
+      "original_git_status": "??",
+      "original_sha256": "7aca0ac89d9d6289526028fbf0db8909c82b3b7ef032ae4f60b61c164b676829",
+      "original_bytes": 13778,
+      "integrated_text_lf_sha256": "048200cec143016fc1b1bdb2a3d7ba3ca90bf705d2dac0691ba68b33e28db57d",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_analyze_full_selection4096_passive.py",
+      "original_git_status": "??",
+      "original_sha256": "924c1c3545133818c32af0ec1ebfab82c66d086b75af97b1c61bf56325c3c5d9",
+      "original_bytes": 2511,
+      "integrated_text_lf_sha256": "aa38d4b4ddce1eeaeb6f8d1d599393514ab1bed614183bb9927bcf7a8e9563ad",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_build_detection_progress_status.py",
+      "original_git_status": "??",
+      "original_sha256": "75b794757228be9b06c5c9c0b665a0cf627ed7ce5542f3897d951c89c3ca05b4",
+      "original_bytes": 7795,
+      "integrated_text_lf_sha256": "05a8b1063d7d442436cf1dac2ebdddab2404b8c6cb9b0b2f1cde5e28328cb218",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_build_r0_monitor_curve.py",
+      "original_git_status": "??",
+      "original_sha256": "7c70ed61ce1a339388295d2fd5e90229690f1749599448bbf044ac317672c7f5",
+      "original_bytes": 2979,
+      "integrated_text_lf_sha256": "7c70ed61ce1a339388295d2fd5e90229690f1749599448bbf044ac317672c7f5",
+      "same_original_bytes": true
+    },
+    {
+      "path": "tests/unit/test_detection_consumed_input_tar.py",
+      "original_git_status": "??",
+      "original_sha256": "d43b1cc0d860df73b27d0adee6bddd7191daea80676f9b24bea48653bc9a2e51",
+      "original_bytes": 8867,
+      "integrated_text_lf_sha256": "2d51367fb6d7731a2a4aac0782e7b5f167526b5c70cafab941981628c80351fb",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_detection_event_accumulation.py",
+      "original_git_status": "??",
+      "original_sha256": "30bcd50a06aa65e3f1a5a369c523fac6670cf1ef55e4282f452c3a9ce0a12104",
+      "original_bytes": 4496,
+      "integrated_text_lf_sha256": "30bcd50a06aa65e3f1a5a369c523fac6670cf1ef55e4282f452c3a9ce0a12104",
+      "same_original_bytes": true
+    },
+    {
+      "path": "tests/unit/test_detection_persistent_tar_index.py",
+      "original_git_status": "??",
+      "original_sha256": "ff1482e9f015f0cb1cf8f85002e1fe3cbb35e5677094edadaf9890bf6ce58c21",
+      "original_bytes": 5646,
+      "integrated_text_lf_sha256": "26f538782db513f0264ad18bd0c89fb7a40ddb6d411a83b40d58e5cfc3a758d0",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_detection_static_attention_candidate.py",
+      "original_git_status": "??",
+      "original_sha256": "16b9ca97c989777711a1dc51422f65302bc8b2c3e76de7effbdc64d0368e944c",
+      "original_bytes": 6373,
+      "integrated_text_lf_sha256": "e0580263c887bebfbb1df46b4736c36b7f4b30146eb6ee9cbca67082f17eb1e9",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_detection_static_eval_source_patch.py",
+      "original_git_status": "??",
+      "original_sha256": "8f970174dc38dd63e1aa30e4530e800f2e205f6e1dad957cdbd3220e3f286278",
+      "original_bytes": 7405,
+      "integrated_text_lf_sha256": "8590998aceaca610db70bebc43b5f97512f2f4fa2f70bd7bcabd9859e75b108c",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_fixed_state_gpu_diagnostic.py",
+      "original_git_status": "??",
+      "original_sha256": "d04909d470821649386960d3486cffe7fa5d7e44ce013db1423c4986e7ab8994",
+      "original_bytes": 2429,
+      "integrated_text_lf_sha256": "d04909d470821649386960d3486cffe7fa5d7e44ce013db1423c4986e7ab8994",
+      "same_original_bytes": true
+    },
+    {
+      "path": "tests/unit/test_fixed_state_gpu_runner.py",
+      "original_git_status": "??",
+      "original_sha256": "21b427dd18259b8b3d2e0f543d3e8c69a2559ab89ee28c23e8cbad41919a0dbc",
+      "original_bytes": 4525,
+      "integrated_text_lf_sha256": "b1553fc208c3ad887aa8916a4a14f2b0dd17a88932e58d5c4616b3fa653adda9",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_fixed_state_trial_executor.py",
+      "original_git_status": "??",
+      "original_sha256": "2b32dc03105ab007bc2934d7774699b6f32fd6122f21b5663ca66797685fb373",
+      "original_bytes": 4159,
+      "integrated_text_lf_sha256": "cfb4872caa0d52fb0e3d3b8d27b40ae075f69e3860e0bb44cd8b615107c04d3e",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_migrate_detection_campaign_writer.py",
+      "original_git_status": "??",
+      "original_sha256": "a2cc18434aa76d66b253631c66745195277070cdbf48ec33f3a4945ca7de619a",
+      "original_bytes": 20603,
+      "integrated_text_lf_sha256": "7c714e4507b88b0217aca23890ac771cc5bfb2680141ec31d11ec3abfca4623e",
+      "same_original_bytes": false
+    },
+    {
+      "path": "tests/unit/test_summarize_detection_campaign.py",
+      "original_git_status": "??",
+      "original_sha256": "c447d35cb247232cb149c2b5f6119e924b616493bd83ce38bd2ef6a03671c0c7",
+      "original_bytes": 2791,
+      "integrated_text_lf_sha256": "c447d35cb247232cb149c2b5f6119e924b616493bd83ce38bd2ef6a03671c0c7",
+      "same_original_bytes": true
+    }
+  ]
+}

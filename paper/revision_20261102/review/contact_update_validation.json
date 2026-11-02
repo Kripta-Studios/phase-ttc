@@ -1,0 +1,28 @@
+{
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "missing_glyphs": 0,
+  "pages": 7,
+  "page_size_points": [
+    612.0,
+    792.0
+  ],
+  "characters": 34857,
+  "fonts_embedded": true,
+  "pdf_sha256": "99cc12ab02ce8fc33006003feb0a6ce993aca3f1d2226a275c6506f609ab0be4",
+  "scope": "Author-contact-only revision; scientific text, figures, tables and evidence unchanged.",
+  "author_email": "alvaro@schwiedop.com",
+  "website_text": "schwiedop.com/PHASE-TTC",
+  "website_uri": "https://schwiedop.com/PHASE-TTC",
+  "evocon_absent_from_article": true,
+  "email_addresses": [
+    "alvaro@schwiedop.com"
+  ],
+  "consolidated_same_extracted_text": true,
+  "consolidated_pixel_identical_at_72dpi": true,
+  "consolidated_requires_bibtex": false,
+  "source_tex_sha256": "46760b4680b5294ef1dfb24fc0afc85ce2a0ea9e561d1c6bcfafacfe2a6ed616",
+  "consolidated_tex_sha256": "f5e669a53680c0185307284a2c1dfa08c52ef16e8e0c73f81eaba7ce289ec1de",
+  "visual_review": "Poppler title rendering, seven-page contact sheet, and all changed pages 1-5 inspected; no clipping, overlap or layout defects. Pages 6-7 pixel-identical to the preceding PDF.",
+  "evidence_bytes_unchanged_vs_head": true
+}

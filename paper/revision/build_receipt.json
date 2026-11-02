@@ -1,14 +1,14 @@
 {
-  "built_at_utc": "2026-10-29T08:55:54.155392+00:00",
+  "built_at_utc": "2026-11-02T22:43:16.546348+00:00",
   "scope": "Result-ledger validation and reproducible saved-prediction analysis; no training or sensor inference",
-  "python": "3.11.15",
-  "numpy_version": "2.4.6",
+  "python": "3.14.2",
+  "numpy_version": "2.3.5",
   "pdflatex": "MiKTeX-pdfTeX 4.26 (MiKTeX 26.2)",
   "bibtex_executable": "bibtex.EXE",
   "main_tex": "PHASE_TTC_Final.tex",
   "pdf": "PHASE_TTC_Final.pdf",
-  "pdf_sha256": "bbec72cf1a52591416edcb780bd5a3772412bf96c1fbf8c60800b31ee63f590f",
-  "tex_sha256": "1546c877ade084df737b5355eedab335ab13a77329c2b6995728efecc7875925",
+  "pdf_sha256": "b290ef82eed4f2ed7041f7a726132b7528962eb5396a868b6afbf38407ae7357",
+  "tex_sha256": "c8dc13e37627328fff538bd596d2a102abea8d21c44a8087923287548dc622c3",
   "pages": 52,
   "numbered_figures": 24,
   "numbered_tables": 27,
@@ -54,5 +54,28 @@
     "undefined_references_or_citations": 0,
     "latex_warnings": 0
   },
-  "visual_review": "Requires visual inspection of the exact compiled output."
+  "visual_review": "PASS: Poppler-rendered cover inspected; contact links legible, no logo, clipping or overlap. All body pages remain pixel-identical to the reviewed prior PDF.",
+  "author_contact_update": {
+    "pdf": "PHASE_TTC_Final.pdf",
+    "pdf_sha256": "b290ef82eed4f2ed7041f7a726132b7528962eb5396a868b6afbf38407ae7357",
+    "previous_pdf_sha256": "bbec72cf1a52591416edcb780bd5a3772412bf96c1fbf8c60800b31ee63f590f",
+    "pages": 52,
+    "words": 20283,
+    "changed_pages_at_72dpi": [
+      1
+    ],
+    "body_pages_pixel_identical": true,
+    "modular_consolidated_text_identical": true,
+    "all_fonts_embedded": true,
+    "visible_evocon_mentions": 0,
+    "old_email_mentions": 0,
+    "author_contact_links": [
+      "mailto:alvaro@schwiedop.com",
+      "https://schwiedop.com/PHASE-TTC",
+      "https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/",
+      "https://github.com/Kripta-Studios/phase-ttc"
+    ],
+    "immutable_asset_hashes_verified": 82,
+    "visual_review": "PASS: Poppler-rendered cover inspected; contact links legible, no logo, clipping or overlap. All body pages remain pixel-identical to the reviewed prior PDF."
+  }
 }

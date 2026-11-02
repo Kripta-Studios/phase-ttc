@@ -1,0 +1,105 @@
+{
+  "conclusion": {
+    "action": "Profile reader/decode/preparation and forward submission separately before changing GPU kernels; preserve a separate end-to-end full-selection timing.",
+    "dominant_evidence": "HOST_CPU_WORK_WITH_CONCURRENT_READ_IO",
+    "gpu_boundary": "Mean GPU utilization was 13.38% with no throttle samples, but low utilization alone does not prove starvation and py-spy cannot measure GPU kernel time.",
+    "host_cpu": "The trainer consumed 217.64 CPU-seconds in 60.04 seconds (3.62 logical-core equivalents), while PNG decode, preparation and Python-visible forward stacks account for most sampled stacks.",
+    "physical_reading": "Trainer and system read counters increased materially, so reading occurred. The receipts do not distinguish physical media latency from OS cache/native I/O."
+  },
+  "limitations": [
+    "py-spy sample fractions are not wall-time fractions.",
+    "Python stacks cannot measure asynchronous CUDA kernel duration.",
+    "The 60-second window did not finish or write a new full-selection artifact.",
+    "No causal speedup or training-rate claim follows from this profile."
+  ],
+  "passive": {
+    "elapsed_seconds": 60.043099,
+    "gpu_utilization_percent_mean": 13.383333333333333,
+    "gpu_utilization_percent_peak": 42.0,
+    "mean_logical_core_equivalents": 3.6247400388177833,
+    "nonzero_gpu_throttle_samples": 0,
+    "rss_bytes_max": 3648151552,
+    "rss_bytes_min": 3622121472,
+    "system_read_bytes": 571972608,
+    "system_read_mib_per_second": 9.084734049744835,
+    "trainer_cpu_seconds": 217.640625,
+    "trainer_read_bytes": 363620701,
+    "trainer_read_mib_per_second": 5.775446791267993
+  },
+  "phase": {
+    "confirmed_by_stack": true,
+    "evaluation_artifacts_unchanged": true,
+    "full_selection_finished_in_window": false,
+    "trainer_run_line": 768,
+    "updates_completed": 0
+  },
+  "pyspy": {
+    "console_captured_live": true,
+    "exclusive_categories": {
+      "decode": {
+        "sample_fraction": 0.045609257998638526,
+        "samples": 67
+      },
+      "finite_checks": {
+        "sample_fraction": 0.033356024506466984,
+        "samples": 49
+      },
+      "forward": {
+        "sample_fraction": 0.5221238938053098,
+        "samples": 767
+      },
+      "ground_truth": {
+        "sample_fraction": 0.006126616746085773,
+        "samples": 9
+      },
+      "png_decode": {
+        "sample_fraction": 0.26548672566371684,
+        "samples": 390
+      },
+      "prepare": {
+        "sample_fraction": 0.11504424778761062,
+        "samples": 169
+      },
+      "raw_tar": {
+        "sample_fraction": 0.004765146358066712,
+        "samples": 7
+      },
+      "unresolved": {
+        "sample_fraction": 0.007488087134104833,
+        "samples": 11
+      }
+    },
+    "gpu_kernels_visible": false,
+    "interpretation": "sample fractions, not wall-time or GPU-kernel fractions",
+    "malformed_lines": 0,
+    "run_line_768_fraction": 0.9952348536419333,
+    "run_line_768_samples": 1462,
+    "sampling_errors": 29,
+    "total_samples": 1469
+  },
+  "schema": "phase_ttc_full_selection4096_profile_analysis_v1",
+  "scope": "passive 60-second sample inside update-4096 full-selection evaluation",
+  "sources": {
+    "console_live": {
+      "path": "output/performance/full_selection4096_pyspy_v1/console_live.txt",
+      "sha256": "50b23b036bed14a7ec904111fd134e7f32b83c9b3873f1427e8f56070f231a10"
+    },
+    "passive": {
+      "path": "output/performance/full_selection4096_passive_v1.json",
+      "sha256": "89c77ede1f0d5d1926031fd7dd967eb82c38aea9e2d4608ea51bb9be2e47d8c0"
+    },
+    "process_identity": {
+      "path": "output/performance/full_selection4096_pyspy_v1/process_identity.json",
+      "process_id": 52532,
+      "sha256": "73e4e79fe0c6d0d7c405bbb265c916d975409867406b6381ea5810f73f6527c6"
+    },
+    "pyspy_raw": {
+      "path": "output/performance/full_selection4096_pyspy_v1/pyspy_raw.txt",
+      "sha256": "f4cdc2bbbdf507d3f34db98670fd1174ce0609e017e1a0fc2fe081c88b060bff"
+    },
+    "pyspy_tool": {
+      "path": "<RGB_PORT_EVIDENCE_ROOT>/tools/py-spy.exe",
+      "sha256": "6e83ab095f40453742d01a2719a178f308534015da519ec0659d2584139dc995"
+    }
+  }
+}

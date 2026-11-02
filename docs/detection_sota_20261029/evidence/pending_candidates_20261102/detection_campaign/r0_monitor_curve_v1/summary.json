@@ -1,0 +1,567 @@
+{
+  "curve_integrity": {
+    "best_retained_monitor_update": 3072,
+    "continuity_limit": "4096 is not falsely stitched to the discarded tail; resume on another GPU/runtime can introduce nondeterminism even with the same intended sampler/optimizer state",
+    "discarded_tail": "228 updates/912 exposures from the stopped process are excluded",
+    "full_selection_23958": "RUNNING_NO_RESULT_INCLUDED",
+    "same_protocol_population_and_support": true,
+    "update_4096": "original-runtime fallback resumed from durable update 3840",
+    "updates_1024_2048_3072": "retained original monitor artifacts"
+  },
+  "interpretation": {
+    "ap_delta_3072_to_4096": -0.03537644568060087,
+    "class_ap_delta_3072_to_4096": {
+      "bicycle": -0.007079594019924283,
+      "bus": -0.00883306687312088,
+      "car": -0.21532046250107617,
+      "motorcycle": -0.030892860901694037,
+      "other_vehicle": 0.0,
+      "pedestrian": 0.006323177047807353,
+      "tricycle": 0.003252718339496011,
+      "truck": -0.030461476536294912
+    },
+    "dominant_observed_pattern": "CENTER_LOCALIZATION_DIAGNOSTIC_DEGRADATION",
+    "largest_class_ap_declines": [
+      {
+        "class_name": "car",
+        "delta": -0.21532046250107617
+      },
+      {
+        "class_name": "motorcycle",
+        "delta": -0.030892860901694037
+      },
+      {
+        "class_name": "truck",
+        "delta": -0.030461476536294912
+      }
+    ],
+    "not_proven": [
+      "One lower monitor does not prove overfitting.",
+      "The curve does not measure TTC accuracy or an official/SOTA score.",
+      "The monitor does not isolate optimizer evolution from GPU/runtime nondeterminism."
+    ],
+    "reason": "Tight score-ordered class-agnostic recall and median ego-XY matched error degrade together, so center localization is the strongest reported diagnostic signal. The recall implementation is score-order-dependent, therefore these monitors do not isolate geometry from ranking. Car AP supplies the largest class decline.",
+    "recall_delta_3072_to_4096": {
+      "0.5": -0.18042681612416467,
+      "1.0": -0.2166415175684415,
+      "2.0": -0.1539124811381763,
+      "4.0": -0.03449019185169222
+    },
+    "xy_median_delta_m": 0.5560303300599586
+  },
+  "invariants": {
+    "eligible_ground_truth_count": 4639,
+    "population_identity_sha256": "0c200b6f686df7e1f655b59b1ae10fdbd19a4dbdc7ae43005fb914810fda8ec5",
+    "profile": "eap_local_dev_xy_ap101_population_v2",
+    "protocol_sha256": "10da30cf8f08247d48d975f3650cb02f1b43375fe0e841a5389dfb3b5d7b4a5e",
+    "sample_count": 1024
+  },
+  "monitors": [
+    {
+      "class_agnostic_recall": {
+        "0.5": 0.21491700797585686,
+        "1.0": 0.3875835309333908,
+        "2.0": 0.5824531148954516,
+        "4.0": 0.7809872817417547
+      },
+      "dev_ap101_supported_classes": 0.04313689976544985,
+      "eligible_ground_truth_count": 4639,
+      "errors": {
+        "dimension_lwh_mean_abs_median_m": 0.1330715815226237,
+        "ego_z_median_m": 0.05144091943957896,
+        "match_count": 2235,
+        "xy_median_m": 0.9852029525243802,
+        "yaw_median_rad": 0.04382254362276683
+      },
+      "inference_seconds_total": 189.29373920016224,
+      "official_eap_score": false,
+      "per_class": {
+        "bicycle": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 26,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 322
+        },
+        "bus": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 85,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 44
+        },
+        "car": {
+          "ap101": 0.2817212950404347,
+          "eligible_ground_truth_count": 2524,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.10818503300348917,
+            "ego_z_median_m": 0.03945834835527895,
+            "match_count": 1646,
+            "xy_median_m": 0.8721942002442458,
+            "yaw_median_rad": 0.03479017748292512
+          },
+          "prediction_count_after_domain_filter": 14871
+        },
+        "motorcycle": {
+          "ap101": 0.040516465918144416,
+          "eligible_ground_truth_count": 963,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.24750993649164835,
+            "ego_z_median_m": 0.12822809032137472,
+            "match_count": 367,
+            "xy_median_m": 1.2379835646464392,
+            "yaw_median_rad": 1.394116082780374
+          },
+          "prediction_count_after_domain_filter": 19194
+        },
+        "other_vehicle": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 4,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 0
+        },
+        "pedestrian": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 338,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 97
+        },
+        "tricycle": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 80,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 54
+        },
+        "truck": {
+          "ap101": 0.022857437165019714,
+          "eligible_ground_truth_count": 619,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 1.222492774327596,
+            "ego_z_median_m": 0.292939505130851,
+            "match_count": 222,
+            "xy_median_m": 1.2302136821835314,
+            "yaw_median_rad": 0.0432717503536062
+          },
+          "prediction_count_after_domain_filter": 16263
+        }
+      },
+      "population_identity_sha256": "0c200b6f686df7e1f655b59b1ae10fdbd19a4dbdc7ae43005fb914810fda8ec5",
+      "profile": "eap_local_dev_xy_ap101_population_v2",
+      "protocol_sha256": "10da30cf8f08247d48d975f3650cb02f1b43375fe0e841a5389dfb3b5d7b4a5e",
+      "sample_count": 1024,
+      "source": {
+        "path": "output/detection_campaign/rgb_screen_v5_seed7_v1/automatic_runs_v1/r0_1024/evaluation/selection_update_001024.json",
+        "sha256": "a21c3485fae2cd79f5037014e88969aa7c67c8d80024961d03d4c9c98981f888"
+      },
+      "update": 1024
+    },
+    {
+      "class_agnostic_recall": {
+        "0.5": 0.24294028885535676,
+        "1.0": 0.4160379392110369,
+        "2.0": 0.6309549471868937,
+        "4.0": 0.8247467126535891
+      },
+      "dev_ap101_supported_classes": 0.06949553916694147,
+      "eligible_ground_truth_count": 4639,
+      "errors": {
+        "dimension_lwh_mean_abs_median_m": 0.11080869038899739,
+        "ego_z_median_m": 0.046388707568738086,
+        "match_count": 2418,
+        "xy_median_m": 0.8075345450397837,
+        "yaw_median_rad": 0.07191061392772058
+      },
+      "inference_seconds_total": 426.3698489003,
+      "official_eap_score": false,
+      "per_class": {
+        "bicycle": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 26,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 16
+        },
+        "bus": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 85,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 6
+        },
+        "car": {
+          "ap101": 0.44329245053948907,
+          "eligible_ground_truth_count": 2524,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.08968528111775716,
+            "ego_z_median_m": 0.038270000370241974,
+            "match_count": 1865,
+            "xy_median_m": 0.7034111547613137,
+            "yaw_median_rad": 0.06519941410507268
+          },
+          "prediction_count_after_domain_filter": 17124
+        },
+        "motorcycle": {
+          "ap101": 0.05776581516041718,
+          "eligible_ground_truth_count": 963,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.3350117802619934,
+            "ego_z_median_m": 0.09949274585677315,
+            "match_count": 233,
+            "xy_median_m": 1.1664037214641345,
+            "yaw_median_rad": 0.30762042399709166
+          },
+          "prediction_count_after_domain_filter": 3181
+        },
+        "other_vehicle": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 4,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 0
+        },
+        "pedestrian": {
+          "ap101": 0.00508228655979219,
+          "eligible_ground_truth_count": 338,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.14446340998013815,
+            "ego_z_median_m": 0.11728433092915425,
+            "match_count": 38,
+            "xy_median_m": 1.0261792250300634,
+            "yaw_median_rad": 1.3952901659158679
+          },
+          "prediction_count_after_domain_filter": 12077
+        },
+        "tricycle": {
+          "ap101": 0.00433278621979845,
+          "eligible_ground_truth_count": 80,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.17637737592061362,
+            "ego_z_median_m": 0.10206389965894386,
+            "match_count": 2,
+            "xy_median_m": 0.9531286554447418,
+            "yaw_median_rad": 0.0470531511345198
+          },
+          "prediction_count_after_domain_filter": 228
+        },
+        "truck": {
+          "ap101": 0.04549097485603483,
+          "eligible_ground_truth_count": 619,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.8919463555018107,
+            "ego_z_median_m": 0.21794383322145927,
+            "match_count": 280,
+            "xy_median_m": 1.240750720024377,
+            "yaw_median_rad": 0.10936621733932927
+          },
+          "prediction_count_after_domain_filter": 16851
+        }
+      },
+      "population_identity_sha256": "0c200b6f686df7e1f655b59b1ae10fdbd19a4dbdc7ae43005fb914810fda8ec5",
+      "profile": "eap_local_dev_xy_ap101_population_v2",
+      "protocol_sha256": "10da30cf8f08247d48d975f3650cb02f1b43375fe0e841a5389dfb3b5d7b4a5e",
+      "sample_count": 1024,
+      "source": {
+        "path": "output/detection_campaign/rgb_screen_v5_seed7_v1/automatic_runs_v1/r0_8192/evaluation/selection_update_002048.json",
+        "sha256": "a80faf4a2ea65b622ea8436b0db2295c02de348135d7f70db029c269d770d136"
+      },
+      "update": 2048
+    },
+    {
+      "class_agnostic_recall": {
+        "0.5": 0.26622116835524895,
+        "1.0": 0.4257383056693253,
+        "2.0": 0.623194654020263,
+        "4.0": 0.815908600991593
+      },
+      "dev_ap101_supported_classes": 0.07669186858179068,
+      "eligible_ground_truth_count": 4639,
+      "errors": {
+        "dimension_lwh_mean_abs_median_m": 0.09636902809143066,
+        "ego_z_median_m": 0.04496773842985169,
+        "match_count": 2307,
+        "xy_median_m": 0.7632842420585341,
+        "yaw_median_rad": 0.049281875801016284
+      },
+      "inference_seconds_total": 406.85253029857995,
+      "official_eap_score": false,
+      "per_class": {
+        "bicycle": {
+          "ap101": 0.008729759036425934,
+          "eligible_ground_truth_count": 26,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.1673742731412252,
+            "ego_z_median_m": 0.07914181288691857,
+            "match_count": 9,
+            "xy_median_m": 1.6934349809880915,
+            "yaw_median_rad": 0.14443559997142508
+          },
+          "prediction_count_after_domain_filter": 5106
+        },
+        "bus": {
+          "ap101": 0.016798679867986797,
+          "eligible_ground_truth_count": 85,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.6573785146077473,
+            "ego_z_median_m": 0.14749663283461045,
+            "match_count": 2,
+            "xy_median_m": 0.7779599091200871,
+            "yaw_median_rad": 0.04477014818089442
+          },
+          "prediction_count_after_domain_filter": 746
+        },
+        "car": {
+          "ap101": 0.48391899095068125,
+          "eligible_ground_truth_count": 2524,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.08339043458302815,
+            "ego_z_median_m": 0.039379678560720555,
+            "match_count": 1886,
+            "xy_median_m": 0.6584850102446006,
+            "yaw_median_rad": 0.04651808706508165
+          },
+          "prediction_count_after_domain_filter": 17161
+        },
+        "motorcycle": {
+          "ap101": 0.052464205251642866,
+          "eligible_ground_truth_count": 963,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.17341047525405884,
+            "ego_z_median_m": 0.06917411186350642,
+            "match_count": 171,
+            "xy_median_m": 1.2219700427502125,
+            "yaw_median_rad": 1.36120769473749
+          },
+          "prediction_count_after_domain_filter": 3443
+        },
+        "other_vehicle": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 4,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 1
+        },
+        "pedestrian": {
+          "ap101": 0.0004034412827806414,
+          "eligible_ground_truth_count": 338,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.11427483956019084,
+            "ego_z_median_m": 0.12241754224878654,
+            "match_count": 3,
+            "xy_median_m": 1.6378620767640757,
+            "yaw_median_rad": 0.6423723948756432
+          },
+          "prediction_count_after_domain_filter": 3513
+        },
+        "tricycle": {
+          "ap101": 0.005039471926678054,
+          "eligible_ground_truth_count": 80,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.31949963172276813,
+            "ego_z_median_m": 0.1024865612738749,
+            "match_count": 7,
+            "xy_median_m": 1.2829563017655903,
+            "yaw_median_rad": 0.12179052915651933
+          },
+          "prediction_count_after_domain_filter": 1962
+        },
+        "truck": {
+          "ap101": 0.04618040033812984,
+          "eligible_ground_truth_count": 619,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 1.1159521738688152,
+            "ego_z_median_m": 0.15627323494553913,
+            "match_count": 229,
+            "xy_median_m": 1.2282654626324125,
+            "yaw_median_rad": 0.0454792377872586
+          },
+          "prediction_count_after_domain_filter": 18010
+        }
+      },
+      "population_identity_sha256": "0c200b6f686df7e1f655b59b1ae10fdbd19a4dbdc7ae43005fb914810fda8ec5",
+      "profile": "eap_local_dev_xy_ap101_population_v2",
+      "protocol_sha256": "10da30cf8f08247d48d975f3650cb02f1b43375fe0e841a5389dfb3b5d7b4a5e",
+      "sample_count": 1024,
+      "source": {
+        "path": "output/detection_campaign/rgb_screen_v5_seed7_v1/automatic_runs_v1/r0_8192/evaluation/selection_update_003072.json",
+        "sha256": "4032c65cce016229fc2a2db9a666bb65c40656cef4ac8fcd2cc729a431ff00c1"
+      },
+      "update": 3072
+    },
+    {
+      "class_agnostic_recall": {
+        "0.5": 0.08579435223108428,
+        "1.0": 0.2090967881008838,
+        "2.0": 0.4692821728820867,
+        "4.0": 0.7814184091399008
+      },
+      "dev_ap101_supported_classes": 0.041315422901189815,
+      "eligible_ground_truth_count": 4639,
+      "errors": {
+        "dimension_lwh_mean_abs_median_m": 0.1352475881576538,
+        "ego_z_median_m": 0.0642547121651047,
+        "match_count": 1711,
+        "xy_median_m": 1.3193145721184927,
+        "yaw_median_rad": 0.039045716768543404
+      },
+      "inference_seconds_total": 59.963596499932464,
+      "official_eap_score": false,
+      "per_class": {
+        "bicycle": {
+          "ap101": 0.00165016501650165,
+          "eligible_ground_truth_count": 26,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.24787795543670654,
+            "ego_z_median_m": 0.20251590054854285,
+            "match_count": 1,
+            "xy_median_m": 1.7519358960852325,
+            "yaw_median_rad": 0.07166699724507808
+          },
+          "prediction_count_after_domain_filter": 486
+        },
+        "bus": {
+          "ap101": 0.007965612994865917,
+          "eligible_ground_truth_count": 85,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 1.030854860941569,
+            "ego_z_median_m": 0.1773192166447607,
+            "match_count": 2,
+            "xy_median_m": 1.1220339449780639,
+            "yaw_median_rad": 1.5523136954191443
+          },
+          "prediction_count_after_domain_filter": 218
+        },
+        "car": {
+          "ap101": 0.2685985284496051,
+          "eligible_ground_truth_count": 2524,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.11351931095123291,
+            "ego_z_median_m": 0.053982630442113044,
+            "match_count": 1359,
+            "xy_median_m": 1.3116339426119976,
+            "yaw_median_rad": 0.03264218150109466
+          },
+          "prediction_count_after_domain_filter": 20843
+        },
+        "motorcycle": {
+          "ap101": 0.02157134434994883,
+          "eligible_ground_truth_count": 963,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.19014420111974079,
+            "ego_z_median_m": 0.18267614263242193,
+            "match_count": 140,
+            "xy_median_m": 1.3260228607405427,
+            "yaw_median_rad": 1.0062660265770287
+          },
+          "prediction_count_after_domain_filter": 2495
+        },
+        "other_vehicle": {
+          "ap101": 0.0,
+          "eligible_ground_truth_count": 4,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": null,
+            "ego_z_median_m": null,
+            "match_count": 0,
+            "xy_median_m": null,
+            "yaw_median_rad": null
+          },
+          "prediction_count_after_domain_filter": 28
+        },
+        "pedestrian": {
+          "ap101": 0.006726618330587994,
+          "eligible_ground_truth_count": 338,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.3395770986874898,
+            "ego_z_median_m": 0.39406409260425246,
+            "match_count": 13,
+            "xy_median_m": 1.2892822901271699,
+            "yaw_median_rad": 1.7355060649968967
+          },
+          "prediction_count_after_domain_filter": 1771
+        },
+        "tricycle": {
+          "ap101": 0.008292190266174065,
+          "eligible_ground_truth_count": 80,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 0.4637022316455841,
+            "ego_z_median_m": 0.08904380757612324,
+            "match_count": 12,
+            "xy_median_m": 1.5298926387691938,
+            "yaw_median_rad": 0.06033710361489231
+          },
+          "prediction_count_after_domain_filter": 1792
+        },
+        "truck": {
+          "ap101": 0.015718923801834928,
+          "eligible_ground_truth_count": 619,
+          "errors": {
+            "dimension_lwh_mean_abs_median_m": 1.0357971588770547,
+            "ego_z_median_m": 0.21993811639591493,
+            "match_count": 184,
+            "xy_median_m": 1.4049046978516175,
+            "yaw_median_rad": 0.06726171146885984
+          },
+          "prediction_count_after_domain_filter": 18933
+        }
+      },
+      "population_identity_sha256": "0c200b6f686df7e1f655b59b1ae10fdbd19a4dbdc7ae43005fb914810fda8ec5",
+      "profile": "eap_local_dev_xy_ap101_population_v2",
+      "protocol_sha256": "10da30cf8f08247d48d975f3650cb02f1b43375fe0e841a5389dfb3b5d7b4a5e",
+      "sample_count": 1024,
+      "source": {
+        "path": "<CAMPAIGN_EVIDENCE_ROOT>/original_fallback_plan_v1/run/evaluation/selection_update_004096.json",
+        "sha256": "93dd25e47645b78787ab4fdbde6cf8b0e1f9dced2e7177faab8457a8a8642455"
+      },
+      "update": 4096
+    }
+  ],
+  "schema": "phase_ttc_r0_monitor_curve_v1",
+  "scope": "four fixed selection monitors; local development protocol only"
+}

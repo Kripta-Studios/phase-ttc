@@ -1,0 +1,161 @@
+{
+  "current_state": {
+    "batched_evaluation": {
+      "adopted": false,
+      "parity_by_batch": {
+        "1": true,
+        "2": false,
+        "4": false
+      },
+      "profile_status": "PASS",
+      "recommendation": "REJECT_BATCHED_EVALUATION"
+    },
+    "campaign_target_update": 8192,
+    "clean_host_admission_runs": [
+      {
+        "completed_updates": 16,
+        "name": "old_A",
+        "selection_used": false,
+        "status": "BUDGET_STOPPED"
+      },
+      {
+        "completed_updates": 16,
+        "name": "old_B",
+        "selection_used": false,
+        "status": "BUDGET_STOPPED"
+      }
+    ],
+    "durable_resume_update": 3840,
+    "official_score": false,
+    "optimized_runtime": {
+      "adopted": false,
+      "failure_observed_at": "loss_depth_map",
+      "relative_error_boundary": 2.0,
+      "status": "REJECTED_PREREGISTERED_NUMERICAL_PARITY_GATE"
+    },
+    "original_fallback": {
+      "evidence_boundary": "the immutable argv receipt is PREPARED_NOT_EXECUTED; launched/running is an operator plus mutable-live-file observation, not a PASS receipt",
+      "launch_argv_sha256": "97deb2d1a8f1b0a7f8a27bb4b5d6df8d8782f051eaf6fb0180b78701ae49b4e5",
+      "nominal_stop_update": 8192,
+      "note": "live mutable metrics were observed, but no completion receipt exists",
+      "pass_claimed": false,
+      "resume_update": 3840,
+      "status": "LAUNCHED_UNVERIFIED_INCOMPLETE"
+    },
+    "original_logged_tail": {
+      "discarded_exposures": 912,
+      "discarded_updates": 228,
+      "last_logged_update": 4068,
+      "reduces_remaining_work": false
+    },
+    "remaining_r0_seed7_updates": 4352,
+    "s1": "RECOVERY_PARITY_PENDING",
+    "selected_candidate_dev_ap101_supported_classes": 0.07669186858179068,
+    "selected_scientific_candidate_update": 3072,
+    "strict_suite": {
+      "evidence_boundary": "operator state; definitive recovery receipt not yet present",
+      "external_stop_claimed": false,
+      "old_admission_runs_completed": true,
+      "recovery_evaluation_batch_size": 1,
+      "recovery_training_batch_size": 4,
+      "status": "HARNESS_REJECTED_RESOURCE_CONDITION_AFTER_GRAPHICAL_PROCESS_DETECTED"
+    }
+  },
+  "eta": {
+    "future_clean_passive_window": {
+      "end_update": null,
+      "observations_available": false,
+      "selection_rule": "after H5 completion is observed, start at the first update after the next 100-update boundary and collect exactly 100 updates",
+      "start_update": null,
+      "status": "PENDING_H5_COMPLETION_BOUNDARY"
+    },
+    "hours": null,
+    "next_rate_gate": [
+      "Complete recovery training with batch 4 and evaluation with batch 1.",
+      "Bind the recovery to the durable update-3840 checkpoint.",
+      "Observe exactly 100 resumed updates without changing the scientific path.",
+      "Report mean preprocessing and mean compute time, with evaluation time separate.",
+      "Only then publish a conditional S1 completion estimate; keep S2-S6 unpriced."
+    ],
+    "preregistered_passive_window": {
+      "completed_updates": 100,
+      "eligible_for_final_clean_rate": false,
+      "interpretation": "report when complete, but mark concurrent H5 full-SHA I/O",
+      "observations_available": false,
+      "report_evaluation_seconds_separately": true,
+      "report_mean_compute_seconds_per_update": true,
+      "report_mean_preprocessing_seconds_per_update": true,
+      "start_after_resume_update": 3840,
+      "training_batch_size": 4,
+      "update_range_inclusive": [
+        3841,
+        3940
+      ]
+    },
+    "total_eta_status": "UNKNOWN_PENDING_PARITY_RECOVERY_RATE",
+    "why_unknown": [
+      "The harness rejected the resource condition after detecting a graphical process; no valid recovery rate exists yet.",
+      "Old-host versus clean-host timing is not an attributable optimization comparison.",
+      "Evaluation batches 2 and 4 failed preregistered numerical parity and are rejected.",
+      "Later phases are conditional experiments whose winning branches and runtimes are not known."
+    ]
+  },
+  "phases": {
+    "S1": {
+      "remaining": "terminar R0 seed 7; ejecutar R1/R2 y las recetas posteriores admitidas; confirmar el resultado principal con tres semillas",
+      "status": "ORIGINAL_FALLBACK_RUNNING_UNVERIFIED"
+    },
+    "S2": {
+      "remaining": "ajustar y comparar una intervenci\u00f3n de ranking de pool fijo tras congelar el baseline S1",
+      "status": "PREREGISTERED_NOT_FIT"
+    },
+    "S3": {
+      "remaining": "ejecutar historia RGB causal y controles de capacidad/historia frente a S1",
+      "status": "ENGINEERING_READY_EXPERIMENT_NOT_RUN"
+    },
+    "S4": {
+      "remaining": "ejecutar la matriz RGB/eventos y controles causales negativos despu\u00e9s de S3",
+      "status": "FEASIBILITY_READY_EXPERIMENT_NOT_RUN"
+    },
+    "S5": {
+      "remaining": "completar evaluaci\u00f3n multiobjeto con entradas predichas y el gate TTC independiente",
+      "status": "PARTIAL_ENGINEERING_NO_GENERALIZATION_CLAIM"
+    },
+    "S6": {
+      "remaining": "confirmaci\u00f3n multisemilla, calibraci\u00f3n, comparaci\u00f3n final congelada y revisi\u00f3n",
+      "status": "NOT_STARTED"
+    }
+  },
+  "schema": "phase_ttc_detection_progress_status_v4",
+  "scope": "passive progress accounting; no benchmark, dataset scan, or checkpoint read",
+  "source_files": {
+    "batched_profile": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/batched_evaluation_profile_v1/receipt.json",
+      "sha256": "77e1e19b13115231fdef2f575b7002c63df5aa070b7afd5be59203daa9766a5c"
+    },
+    "fallback_launch": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/original_fallback_plan_v1/launch_argv_v2.json",
+      "sha256": "97deb2d1a8f1b0a7f8a27bb4b5d6df8d8782f051eaf6fb0180b78701ae49b4e5"
+    },
+    "old_a": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/gpu_admission_1024_v1/old_A/summary.json",
+      "sha256": "08ee4cb4b2ca56842f9f4393e32532f67ecd5e060f4c07f6fd597ff469ae692b"
+    },
+    "old_b": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/gpu_admission_1024_v1/old_B/summary.json",
+      "sha256": "6e8e75333fd9b0844d0d2530a549184beab301893b61baf1bedd9e3a4d5c2fe7"
+    },
+    "performance_v5": {
+      "path": "output/performance/performance_diagnosis_v5.json",
+      "sha256": "682833aea25223aaa9ec410f3ac478df51c25c9563808aab631050c748fc5d78"
+    },
+    "plan": {
+      "path": "docs/detection_sota_20261029/evidence/intake/SOTA_DEVELOPMENT_PLAN.md",
+      "sha256": "d63065f341594613554aecb48219b4bbc967aed2fd5628d3c6bd599cce7013b7"
+    },
+    "tail_accounting": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/original_r0_stop_v1/TRAINING_TAIL_ACCOUNTING.json",
+      "sha256": "27bc8cb433e37dff5e8766ccbdd4701f616cf9cc3a2f7bfd14dc17b143c95b3d"
+    }
+  }
+}

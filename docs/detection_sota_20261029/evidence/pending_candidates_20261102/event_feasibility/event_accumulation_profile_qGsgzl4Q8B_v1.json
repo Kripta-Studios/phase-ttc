@@ -1,0 +1,109 @@
+{
+  "benchmark": {
+    "alternating_order": [
+      "frozen_two_bincount",
+      "single_bincount",
+      "single_bincount",
+      "frozen_two_bincount",
+      "frozen_two_bincount",
+      "single_bincount"
+    ],
+    "candidate_median_seconds": 1.9478574999957345,
+    "candidate_seconds": [
+      1.8404162000515498,
+      1.9478574999957345,
+      2.1871016999939457
+    ],
+    "frozen_median_seconds": 2.1319432000163943,
+    "frozen_seconds": [
+      2.6993136999662966,
+      2.1319432000163943,
+      1.5263307999703102
+    ],
+    "repeats_per_method": 3,
+    "runs": [
+      {
+        "elapsed_seconds": 2.6993136999662966,
+        "event_count": 2014179,
+        "method": "frozen_two_bincount",
+        "run_index": 0,
+        "voxel_sha256_float32_le": "8eaf3fac6175cc389ecb11521b403465b840ac4fdf247320f1ef7149c1d1ba96"
+      },
+      {
+        "elapsed_seconds": 1.8404162000515498,
+        "event_count": 2014179,
+        "method": "single_bincount",
+        "run_index": 1,
+        "voxel_sha256_float32_le": "8eaf3fac6175cc389ecb11521b403465b840ac4fdf247320f1ef7149c1d1ba96"
+      },
+      {
+        "elapsed_seconds": 1.9478574999957345,
+        "event_count": 2014179,
+        "method": "single_bincount",
+        "run_index": 2,
+        "voxel_sha256_float32_le": "8eaf3fac6175cc389ecb11521b403465b840ac4fdf247320f1ef7149c1d1ba96"
+      },
+      {
+        "elapsed_seconds": 2.1319432000163943,
+        "event_count": 2014179,
+        "method": "frozen_two_bincount",
+        "run_index": 3,
+        "voxel_sha256_float32_le": "8eaf3fac6175cc389ecb11521b403465b840ac4fdf247320f1ef7149c1d1ba96"
+      },
+      {
+        "elapsed_seconds": 1.5263307999703102,
+        "event_count": 2014179,
+        "method": "frozen_two_bincount",
+        "run_index": 4,
+        "voxel_sha256_float32_le": "8eaf3fac6175cc389ecb11521b403465b840ac4fdf247320f1ef7149c1d1ba96"
+      },
+      {
+        "elapsed_seconds": 2.1871016999939457,
+        "event_count": 2014179,
+        "method": "single_bincount",
+        "run_index": 5,
+        "voxel_sha256_float32_le": "8eaf3fac6175cc389ecb11521b403465b840ac4fdf247320f1ef7149c1d1ba96"
+      }
+    ],
+    "speedup_frozen_over_candidate": 1.0945067593605091
+  },
+  "decision": "CANDIDATE_FASTER",
+  "parity": {
+    "all_events_retained_each_run": true,
+    "chunk_partition_independent": true,
+    "differing_float32_values": 0,
+    "maximum_absolute_float32_difference": 0.0,
+    "raw_numerator_sha256_int64_le": "020479dc807e7cd101b7ca5cd1e9301b95aa1559d15d1dcf519c25011a6f99bd",
+    "raw_reference_sha256_int64_le": "020479dc807e7cd101b7ca5cd1e9301b95aa1559d15d1dcf519c25011a6f99bd",
+    "voxel_sha256_float32_le": "8eaf3fac6175cc389ecb11521b403465b840ac4fdf247320f1ef7149c1d1ba96"
+  },
+  "provenance": {
+    "candidate_module_sha256": "386a02fdbf7800e76add5d5aa3b2861e276b4139e1335c904b3fe18f5fc4342d",
+    "frozen_event_data_sha256": "0ee69247ae11ee766c960c3da283eb166ec64f2c99b7c612572820f17df74d55",
+    "profile_script_sha256": "08440a9b7cd67d973410d7908b0e4c2560032df0e970890731d0708a080fbb80"
+  },
+  "resources": {
+    "baseline_rss_bytes": 605048832,
+    "includes_h5_reader": true,
+    "rss_limit_bytes_exclusive": 1073741824,
+    "sample_interval_ms": 10,
+    "sampled_peak_delta_bytes": 176242688,
+    "sampled_peak_rss_bytes": 781291520
+  },
+  "schema": "eap_detection_event_accumulation_profile_v1",
+  "scope": "CPU-only real 50 ms window; no labels/test/GPU/full-H5 hash",
+  "source": {
+    "chunk_events": 250000,
+    "event_count": 2014179,
+    "event_h5_expected_and_observed_size_bytes": 10201847567,
+    "event_h5_expected_sha256": "b12c384ae5a53d1879d410ba77d22ec47feadb393505b292f3b3fc0fe8127404",
+    "events_path": "data/train/qGsgzl4Q8B/events.h5",
+    "full_h5_hash_recomputed": false,
+    "probe_path": "output/event_feasibility/event_representation_50ms_qGsgzl4Q8B_v3.json",
+    "probe_sha256": "a235d39b8c4ba714be979d043b6cd5f12efd539778958f3479bd23aaf0669d95",
+    "sample_token": "qGsgzl4Q8B:000001037_000033536",
+    "window_end_us_exclusive": 1037036031,
+    "window_start_us_inclusive": 1036986031
+  },
+  "status": "PASS"
+}

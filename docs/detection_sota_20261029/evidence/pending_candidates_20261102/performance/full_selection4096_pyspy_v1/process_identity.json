@@ -1,0 +1,7 @@
+{
+  "ProcessId": 52532,
+  "ParentProcessId": 53544,
+  "Name": "python.exe",
+  "CreationDate": "2026-10-29T23:11:31.159983+01:00",
+  "CommandLine": "\"C:\\Users\\Álvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11-windows-x86_64-none\\python.exe\"  \"C:\\Users\\Álvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-s0-evaluation\\output\\detection_campaign\\rgb_screen_v5_seed7_v1\\producer\\scripts\\train_detection_campaign.py\" --config \"C:\\Users\\Álvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-s0-evaluation\\output\\detection_campaign\\rgb_screen_v5_seed7_v1\\configs\\r0.yaml\" --output D:\\PHASE_TTC_DETECTION_CAMPAIGN_20261029\\original_fallback_plan_v1\\run --resume \"C:\\Users\\Álvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-s0-evaluation\\output\\detection_campaign\\rgb_screen_v5_seed7_v1\\automatic_runs_v1\\r0_8192\\checkpoints\\last.pt\" --stop-after-update 8192"
+}

@@ -50,6 +50,10 @@ identical tensors; invalid shape, nonfinite sampling and wrong level-start negat
 profiler evidence showing fewer host synchronizations. No AP claim is needed for a bit-identical
 change.
 
+The isolated B1 implementation and hash-bound copied-source materializer are described in
+`STATIC_ATTENTION_CUDA_GRAPH_CANDIDATE.md`. CPU attention tensors and gradients match the eager
+arithmetic exactly, but real full-model/GPU parity and synchronization profiling remain pending.
+
 ### 2. Fuse recursive output finite checks into one synchronization
 
 Flatten the nested output structure deterministically, compute one `isfinite().all()` flag per tensor

@@ -9,7 +9,7 @@ creator or a separate redistribution license. Original dataset and material
 rights remain with their respective owners; the project's license does not
 relicense this third-party image.
 
-## Author-supplied logo
+## Archived cover asset
 
-`figures/logo-evocon.png` was supplied by the author for this publication and is
-included unchanged. Rights to the logo remain with its owner.
+The author-supplied cover image retained in this source inventory is no longer
+used by the manuscript. Rights to the image remain with its owner.

@@ -1,0 +1,110 @@
+{
+  "schema": "phase_ttc_pending_candidate_receipts_v1",
+  "source_branch": "dev/eap-s0-evaluation-20261029",
+  "source_head": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+  "source_status": "previously uncommitted local receipts; historical snapshots, not current admission",
+  "files": [
+    {
+      "original_path": "output/event_feasibility/event_accumulation_profile_qGsgzl4Q8B_v1.json",
+      "archive_path": "event_feasibility/event_accumulation_profile_qGsgzl4Q8B_v1.json",
+      "sha256": "1f2790429bd0b31bb372142679fd0b884d0bd53dd8c6427bf37bd383c1a84d4f",
+      "bytes": 4216
+    },
+    {
+      "original_path": "output/event_feasibility/event_representation_50ms_qGsgzl4Q8B_v3.json",
+      "archive_path": "event_feasibility/event_representation_50ms_qGsgzl4Q8B_v3.json",
+      "sha256": "a235d39b8c4ba714be979d043b6cd5f12efd539778958f3479bd23aaf0669d95",
+      "bytes": 3257
+    },
+    {
+      "original_path": "output/performance/full_selection4096_profile_analysis_v1.json",
+      "archive_path": "performance/full_selection4096_profile_analysis_v1.json",
+      "sha256": "8e956ef849b39544cb334823a180fdc033b8b90f3e8fad0be676277ea8d68f77",
+      "bytes": 4266
+    },
+    {
+      "original_path": "output/performance/full_selection4096_passive_v1.json",
+      "archive_path": "performance/full_selection4096_passive_v1.json",
+      "sha256": "89c77ede1f0d5d1926031fd7dd967eb82c38aea9e2d4608ea51bb9be2e47d8c0",
+      "bytes": 18467
+    },
+    {
+      "original_path": "output/performance/full_selection4096_pyspy_v1/pyspy_raw.txt",
+      "archive_path": "performance/full_selection4096_pyspy_v1/pyspy_raw.txt",
+      "sha256": "f4cdc2bbbdf507d3f34db98670fd1174ce0609e017e1a0fc2fe081c88b060bff",
+      "bytes": 386481
+    },
+    {
+      "original_path": "output/performance/full_selection4096_pyspy_v1/process_identity.json",
+      "archive_path": "performance/full_selection4096_pyspy_v1/process_identity.json",
+      "sha256": "73e4e79fe0c6d0d7c405bbb265c916d975409867406b6381ea5810f73f6527c6",
+      "bytes": 993
+    },
+    {
+      "original_path": "output/performance/full_selection4096_pyspy_v1/console_live.txt",
+      "archive_path": "performance/full_selection4096_pyspy_v1/console_live.txt",
+      "sha256": "50b23b036bed14a7ec904111fd134e7f32b83c9b3873f1427e8f56070f231a10",
+      "bytes": 326
+    },
+    {
+      "original_path": "output/performance/detection_progress_status_v1.json",
+      "archive_path": "performance/detection_progress_status_v1.json",
+      "sha256": "43888d347b41f0d7dd18b8c1e61acf580e53891945bdc0e454fa5eeaf35b1159",
+      "bytes": 4571
+    },
+    {
+      "original_path": "output/performance/detection_progress_status_v2.json",
+      "archive_path": "performance/detection_progress_status_v2.json",
+      "sha256": "27f1f7ba35b7df9d839c407da4f05fc6f8a76d4e01e5c73570adb70f82a29666",
+      "bytes": 4665
+    },
+    {
+      "original_path": "output/performance/detection_progress_status_v3.json",
+      "archive_path": "performance/detection_progress_status_v3.json",
+      "sha256": "09b5b23e16f24bf3d971e42ecb91a5ad7d656525bdebdc1ece98b6090986f3b7",
+      "bytes": 5324
+    },
+    {
+      "original_path": "output/performance/detection_progress_status_v4.json",
+      "archive_path": "performance/detection_progress_status_v4.json",
+      "sha256": "a81c04d516b53564e19bd9a5aa383092f46dbc54a77d45aed1bf7aa7676f957c",
+      "bytes": 6843
+    },
+    {
+      "original_path": "output/performance/detection_progress_status_v5.json",
+      "archive_path": "performance/detection_progress_status_v5.json",
+      "sha256": "514dbe5b479799192aa4d97a41a0b6f54d9c66db2a95d1ecffea2ae13bc9f1ed",
+      "bytes": 8015
+    },
+    {
+      "original_path": "output/performance/detection_progress_status_v6.json",
+      "archive_path": "performance/detection_progress_status_v6.json",
+      "sha256": "9224c8d9102eadecaff673f75dc349b83ea7f9d39d4ac81f91530b215f2848f6",
+      "bytes": 9070
+    },
+    {
+      "original_path": "output/performance/detection_progress_status_v7.json",
+      "archive_path": "performance/detection_progress_status_v7.json",
+      "sha256": "9bac8ba700f8a8126eec4b09e331f6c21295910e475e7a3082fea2daad44f95d",
+      "bytes": 8906
+    },
+    {
+      "original_path": "output/detection_campaign/r0_monitor_curve_v1/summary.json",
+      "archive_path": "detection_campaign/r0_monitor_curve_v1/summary.json",
+      "sha256": "95876a437e239fd6db2385c95b117db132c16172aa5d497b4b8a69c77025a338",
+      "bytes": 21884
+    },
+    {
+      "original_path": "output/detection_campaign/r0_monitor_curve_v1/curve.csv",
+      "archive_path": "detection_campaign/r0_monitor_curve_v1/curve.csv",
+      "sha256": "2ea9862a131a7b0cee5f49e5cba2106280c062c615e45b424ae588945eed90a3",
+      "bytes": 1466
+    },
+    {
+      "original_path": "output/detection_campaign/r0_monitor_curve_v1/r0_monitor_curve.png",
+      "archive_path": "detection_campaign/r0_monitor_curve_v1/r0_monitor_curve.png",
+      "sha256": "90f9d366a710b8673b173e6c219a955b993d9f364c047fa52b4dafd341908249",
+      "bytes": 138032
+    }
+  ]
+}

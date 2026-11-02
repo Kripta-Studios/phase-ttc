@@ -31,7 +31,7 @@ Los nuevos identificadores N01–N07 complementan los históricos; no reemplazan
 
 ## Tipografía y continuidad estética
 
-Se mantienen XCharter/newtxmath, A4, una columna, los márgenes, la portada From Motion to Time, el logotipo y la paleta original. Se han estabilizado los tamaños tras cambios locales, aumentado discretamente la legibilidad de pies y claves de evidencia, suavizado el abstract con un fondo azul y ajustado el índice y los saltos de página.
+Se mantienen XCharter/newtxmath, A4, una columna, los márgenes, la portada From Motion to Time y la paleta original. La portada prescinde del logotipo y muestra el correo `alvaro@schwiedop.com` y la web [schwiedop.com/PHASE-TTC](https://schwiedop.com/PHASE-TTC). Se han estabilizado los tamaños tras cambios locales, aumentado discretamente la legibilidad de pies y claves de evidencia, suavizado el abstract con un fondo azul y ajustado el índice y los saltos de página.
 
 La fuente arXiv suministrada sirvió como referencia de ritmo tipográfico, jerarquía y tratamiento del abstract. No se impone su formato de dos columnas ni se copian sus autores, texto científico o gráficos. Las figuras originales conservan sus colores, datos y atribuciones, descritas en `ASSETS.md`.
 

@@ -1,3 +1,26 @@
+CURRENT DELIVERY REVIEW — AUTHOR CONTACT UPDATE
+
+The user requested removal of the cover logo and replacement of the author's
+email and website. Current contacts are alvaro@schwiedop.com and
+https://schwiedop.com/PHASE-TTC. No company branding or prior email remains
+in the active/consolidated LaTeX or extracted PDF text.
+
+Current PDF: 65 pages; 26,677 extracted words; 25 figures; 30 tables.
+The Poppler-rendered cover passes visual inspection. Pages 2–65 are pixel-identical
+at 72 dpi to the previously reviewed 65-page PDF. Scientific text, tables and
+figures retain their prior layout. All 114 bundled asset/evidence hashes checked
+before this update remain unchanged. Modular and consolidated text agrees;
+fonts are embedded; LaTeX warnings, overfull boxes and missing references are zero.
+
+Current PDF SHA-256:
+09fbf449acee1c5214ead60aece1c4bfa0450a74f6922a9ac37dbe639b34bf9b
+
+See author_contact_update_validation.json and expanded_validation.json for the
+current delivery. The report below records the earlier delivery and its earlier
+hash; it is retained as historical review provenance.
+
+--- PREVIOUS DELIVERY REVIEW (BEFORE AUTHOR CONTACT UPDATE) ---
+
 FINAL DELIVERY REVIEW — FROM MOTION TO TIME, EXPANDED EDITION
 
 Final PDF: 65 pages; 26,674 extracted words; 25 figures; 30 tables.

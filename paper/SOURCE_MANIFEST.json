@@ -10,23 +10,23 @@
     },
     {
       "path": "ASSETS.md",
-      "bytes": 643,
-      "sha256": "f0483944015be768751f567d4ccdd8c5de659d5bab877840b7d6212ebb5de1b2"
+      "bytes": 646,
+      "sha256": "1578cac6c11217d4d586814fb39d28a32eb55176dc5392ef567ef7a544e258c2"
     },
     {
       "path": "PHASE_TTC_Final.pdf",
-      "bytes": 2912170,
-      "sha256": "bbec72cf1a52591416edcb780bd5a3772412bf96c1fbf8c60800b31ee63f590f"
+      "bytes": 2895547,
+      "sha256": "b290ef82eed4f2ed7041f7a726132b7528962eb5396a868b6afbf38407ae7357"
     },
     {
       "path": "PHASE_TTC_Final.tex",
-      "bytes": 172147,
-      "sha256": "1546c877ade084df737b5355eedab335ab13a77329c2b6995728efecc7875925"
+      "bytes": 172048,
+      "sha256": "c8dc13e37627328fff538bd596d2a102abea8d21c44a8087923287548dc622c3"
     },
     {
       "path": "README.md",
-      "bytes": 3918,
-      "sha256": "90d01424162bcfb67b76b41562dd4826ae60aa660f2f58fb3b41d1e7f67f3bcc"
+      "bytes": 4344,
+      "sha256": "e66a4a1d7ac6098687101e94735b6143977129126e18f660970698306ac49fe4"
     },
     {
       "path": "data/early_results.json",
@@ -440,8 +440,8 @@
     },
     {
       "path": "paper_style.sty",
-      "bytes": 7606,
-      "sha256": "d9f5792e35da8e7b6cf27e49258e71ed9f176472bbc20e4af1ee852e73841301"
+      "bytes": 7508,
+      "sha256": "fa943716343b85ea2529476d2dd3b830c46b8258a8191f3ecede70ca2c09b54f"
     },
     {
       "path": "references.bib",
@@ -465,8 +465,8 @@
     },
     {
       "path": "revision/build_receipt.json",
-      "bytes": 2063,
-      "sha256": "eaede337bfac0892d1554bea5e420b5c3a6e34deb14de783cb765d5870c69375"
+      "bytes": 3170,
+      "sha256": "6b1942868662562cc2bb4f2565a73c531693b7b683104fedf9e11830b22240e2"
     },
     {
       "path": "revision/comp_CCRm-low_garl_event.dat",

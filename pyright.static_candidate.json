@@ -1,0 +1,22 @@
+{
+  "include": [
+    "src/e_jepa_ttc/detection/static_attention_candidate.py",
+    "src/e_jepa_ttc/detection/static_eval_source_patch.py",
+    "tests/unit/test_detection_static_attention_candidate.py",
+    "tests/unit/test_detection_static_eval_source_patch.py"
+  ],
+  "exclude": [
+    "artifacts",
+    "data/cache",
+    "scratch",
+    "tmp"
+  ],
+  "extraPaths": [
+    "src"
+  ],
+  "typeCheckingMode": "basic",
+  "reportMissingImports": "error",
+  "reportMissingTypeStubs": "none",
+  "venvPath": ".",
+  "venv": ".venv"
+}

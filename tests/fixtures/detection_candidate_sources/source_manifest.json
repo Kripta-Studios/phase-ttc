@@ -1,0 +1,20 @@
+[
+  {
+    "path": "det2d_transformer.py.txt",
+    "original_relative_path": "output/detection_campaign/rgb_screen_v5_seed7_v1/automatic_runs_v1/r0_8192/code/portable_source/lib/models/monodgp/det2d_transformer.py",
+    "sha256": "4706f607808b2c5fd0e2033a4f5d40d803bfc02271d08adb05f9968805304ff2",
+    "bytes": 14991
+  },
+  {
+    "path": "r0_train_detection_campaign.py.txt",
+    "original_relative_path": "output/detection_campaign/rgb_screen_v5_seed7_v1/producer/scripts/train_detection_campaign.py",
+    "sha256": "659dfe453aaf574f67b7fb037a40bf56d2e77783e86da8b20a69dc8e07b326fc",
+    "bytes": 40849
+  },
+  {
+    "path": "writer_train_detection_campaign.py.txt",
+    "original_relative_path": "output/detection_campaign/r0_d4096_seed7_v2/stage1/code/scripts/train_detection_campaign.py",
+    "sha256": "168b1041de16e1d6adce10f00cdce6b2e7c02ecbdee2ef08e0a4f6a9c00bc8da",
+    "bytes": 39378
+  }
+]

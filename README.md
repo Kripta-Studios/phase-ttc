@@ -8,14 +8,17 @@ compact RGB-anchored fusion head combine the resulting phase estimates.
 
 ## Research article and current implementation
 
-**[PHASE-TTC: From Motion to Time](paper/PHASE_TTC_Final.pdf)** documents the
-final TRAIN40 system, the experiments that led to it, and its evaluation.
+**[PHASE-TTC: From Motion to Time](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)**
+documents the final TRAIN40 system, the experiments that led to it, and its
+evaluation. The expanded edition of **2 November 2026** adds the corrected
+EvTTC evaluation, quality adaptation, canonical-cadence studies, and subsequent
+physical and detection controls while retaining the original article.
 The implementation and public research evidence are maintained together on
 `main`.
 
-- [Article PDF](paper/PHASE_TTC_Final.pdf)
-- [LaTeX source and build instructions](paper/README.md)
-- [Complete article source bundle](paper/PHASE_TTC_Final_Complete_Source.zip)
+- [Expanded article PDF](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)
+- [Expanded LaTeX source and build instructions](paper/from_motion_to_time_20261102/README.md)
+- [Original 28 October article and source bundle](paper/README.md)
 - [Scientific and engineering history](docs/engineering_history_20261027/README.md)
 
 As of **28 October 2026**, PHASE-TTC ranks first among the three displayed
@@ -25,9 +28,10 @@ failures**. The TRAIN40 submission uses up to **650 ms of causal event–RGB
 history**. The [distributed scoring records](paper/data/official_benchmark.json)
 and article specify the protocol and comparison scope.
 
-The paper also reports 468 labeled transfer queries from 32 sequences, 434
-separate EvTTC competition queries with unverified TTC labels, and a 250-update
-paced replay. Fusion has a mixed error profile against RGB alone, and the
+The original article reports 468 labeled transfer queries from 32 sequences,
+434 separate EvTTC competition queries whose label mapping was then unverified,
+and a 250-update paced replay. The expanded edition incorporates the corrected
+434-target evaluation described below. Fusion has a mixed error profile against RGB alone, and the
 replay's 29.14 ms p95 response exceeds the 20 ms target.
 
 **EvTTC research status, 1 November 2026:** the
@@ -73,7 +77,8 @@ provide the versioned model packages and checksums. The local attachment was
 renamed from `results.zip` to `PHASE-TTC-Adapt.zip` without changing its bytes;
 historical receipts retain the original filename.
 
-[Email](mailto:alvaro.schwiedop@evocon-solutions.com) ·
+[Email](mailto:alvaro@schwiedop.com) ·
+[Website](https://schwiedop.com/PHASE-TTC) ·
 [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/) ·
 [GitHub](https://github.com/Kripta-Studios/phase-ttc)
 

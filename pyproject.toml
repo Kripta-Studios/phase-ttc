@@ -5,6 +5,10 @@ description = "Causal event-RGB fusion for time-to-contact estimation; formerly 
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 license = { text = "MIT" }
+license-files = [
+    "LICENSE",
+    "docs/detection_local_20261029/evidence/deformable_detr_LICENSE.txt",
+]
 authors = [{ name = "KriptaStudios" }]
 dependencies = [
     "gdown>=6.1",
@@ -54,7 +58,7 @@ dev = [
 ]
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
@@ -124,6 +128,8 @@ exclude = [
   "scripts/run_detection_campaign_queue.py",
   "src/e_jepa_ttc/detection/event_fusion.py",
   "src/e_jepa_ttc/detection/temporal_fusion.py",
+  # The isolated static-attention materializer verifies this source's exact SHA-256.
+  "src/e_jepa_ttc/detection/static_attention_candidate.py",
   "operational/joint_measurement/data.py",
   "src/e_jepa_ttc/data/garlttc_lhr_cache.py",
   "src/e_jepa_ttc/data/object_event_v4.py",

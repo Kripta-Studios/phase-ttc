@@ -116,9 +116,7 @@
 \newenvironment{evidencebox}[1]{\begin{tcolorbox}[enhanced,breakable,title={#1},colback=pale,colframe=blue!25,coltitle=ink,colbacktitle=blue!10,fonttitle=\bfseries,boxrule=.5pt,arc=2pt,before upper={\parindent0pt}]}{\end{tcolorbox}}
 \newcommand{\papertitle}[4]{%
   \thispagestyle{empty}
-  \noindent\begin{minipage}[c]{.70\linewidth}
-  \includegraphics[width=42mm]{figures/logo-evocon.png}
-  \end{minipage}\hfill\begin{minipage}[c]{.28\linewidth}\raggedleft\sffamily\scriptsize RESEARCH SERIES\\28 OCTOBER 2026\end{minipage}
+  \noindent{\sffamily\scriptsize RESEARCH SERIES\hfill28 OCTOBER 2026}
   \par\vspace{8pt}\noindent\textcolor{ink}{\rule{\linewidth}{1.1pt}}
   \vspace{5pt}
   \begin{center}
@@ -127,7 +125,8 @@
   {\fontsize{14.2}{17}\selectfont\color{ink}#3}\par\vspace{6pt}
   {\normalsize\bfseries #4}\par\vspace{2pt}
   {\fontsize{8.2}{10}\selectfont
-  \href{mailto:alvaro.schwiedop@evocon-solutions.com}{alvaro.schwiedop@evocon-solutions.com}\par
+  \href{mailto:alvaro@schwiedop.com}{alvaro@schwiedop.com}\par
+  \href{https://schwiedop.com/PHASE-TTC}{schwiedop.com/PHASE-TTC}\enspace\textcolor{muted}{|}\enspace
   \href{https://www.linkedin.com/in/\%C3\%A1lvaro-schwiedop-souto-92718b339/}{LinkedIn}\enspace\textcolor{muted}{|}\enspace
   \href{https://github.com/Kripta-Studios/phase-ttc}{Repository}}\par
   \end{center}\vspace{1pt}}

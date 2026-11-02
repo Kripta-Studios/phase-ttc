@@ -1,0 +1,26 @@
+{
+  "status": "FINISH_R2_ONLY_COMPARE_NEXT",
+  "active": [
+    "r2_seed7"
+  ],
+  "completed": {
+    "r0_seed7": {
+      "output": "/workspace/phase_release/cloud_runs_eval_v1/r0_seed7_resumed",
+      "summary_sha256": "ac93fa69b24ea8f4313bc1b24c3e34cff1391ce86df1bdf7c5db7734d0101308",
+      "metric": 0.10420094273555215
+    }
+  },
+  "failures": {},
+  "pending": [],
+  "concurrency": 1,
+  "resume_update": 4096,
+  "evaluation_progress": "/workspace/phase_release/evaluation_optimization_v1/r0_migration/pending_evaluation/evaluation_progress/full_selection_update_004096.json",
+  "run_output": "/workspace/phase_release/cloud_runs_eval_v1/r2_seed7",
+  "deferred": [
+    "r0_seed13",
+    "r2_seed13",
+    "r0_seed23",
+    "r2_seed23"
+  ],
+  "decision": "User deferred seeds 13 and 23; finish R2 seed 7, compare R0 and choose next intervention."
+}

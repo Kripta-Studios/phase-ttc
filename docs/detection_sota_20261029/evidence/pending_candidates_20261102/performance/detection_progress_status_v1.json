@@ -1,0 +1,116 @@
+{
+  "current_state": {
+    "batched_evaluation": {
+      "adopted": false,
+      "parity_by_batch": {
+        "1": true,
+        "2": false,
+        "4": false
+      },
+      "profile_status": "PASS",
+      "recommendation": "REJECT_BATCHED_EVALUATION"
+    },
+    "campaign_target_update": 8192,
+    "clean_host_admission_runs": [
+      {
+        "completed_updates": 16,
+        "name": "old_A",
+        "selection_used": false,
+        "status": "BUDGET_STOPPED"
+      },
+      {
+        "completed_updates": 16,
+        "name": "old_B",
+        "selection_used": false,
+        "status": "BUDGET_STOPPED"
+      }
+    ],
+    "durable_resume_update": 3840,
+    "official_score": false,
+    "original_logged_tail": {
+      "discarded_exposures": 912,
+      "discarded_updates": 228,
+      "last_logged_update": 4068,
+      "reduces_remaining_work": false
+    },
+    "remaining_durable_updates": 4352,
+    "s1": "RECOVERY_PARITY_PENDING",
+    "selected_candidate_dev_ap101_supported_classes": 0.07669186858179068,
+    "selected_scientific_candidate_update": 3072,
+    "strict_suite": {
+      "evidence_boundary": "operator state; definitive recovery receipt not yet present",
+      "recovery_scope": "PARITY_ONLY_NEXT",
+      "status": "ABORTED_BY_LOGONUI_EXTERNAL_INTERRUPT"
+    }
+  },
+  "eta": {
+    "hours": null,
+    "next_rate_gate": [
+      "Complete parity-only recovery under the frozen batch-1 path.",
+      "Bind the recovery to the durable update-3840 checkpoint.",
+      "Observe a preregistered clean-host continuation window without changing the scientific path.",
+      "Only then publish a conditional S1 completion estimate; keep S2-S6 unpriced."
+    ],
+    "total_eta_status": "UNKNOWN_PENDING_PARITY_RECOVERY_RATE",
+    "why_unknown": [
+      "The clean-host strict suite was externally interrupted before a valid recovery rate existed.",
+      "Old-host versus clean-host timing is not an attributable optimization comparison.",
+      "Batch sizes 2 and 4 failed preregistered numerical parity and are rejected.",
+      "Later phases are conditional experiments whose winning branches and runtimes are not known."
+    ]
+  },
+  "phases": {
+    "S1": {
+      "remaining": "resume at update 3840, reach 8192, complete scheduled evaluation and confirmation gates",
+      "status": "IN_PROGRESS_RECOVERY_GATED"
+    },
+    "S2": {
+      "remaining": "fit and compare one fixed-pool ranking intervention after a frozen S1 baseline",
+      "status": "PREREGISTERED_NOT_FIT"
+    },
+    "S3": {
+      "remaining": "run causal RGB history and capacity/history controls against S1",
+      "status": "ENGINEERING_READY_EXPERIMENT_NOT_RUN"
+    },
+    "S4": {
+      "remaining": "run RGB/event matrix and causal negative controls after S3",
+      "status": "FEASIBILITY_READY_EXPERIMENT_NOT_RUN"
+    },
+    "S5": {
+      "remaining": "complete multi-object predicted-input evaluation and independent TTC gate",
+      "status": "PARTIAL_ENGINEERING_NO_GENERALIZATION_CLAIM"
+    },
+    "S6": {
+      "remaining": "multi-seed confirmation, calibration, frozen final comparison and review",
+      "status": "NOT_STARTED"
+    }
+  },
+  "schema": "phase_ttc_detection_progress_status_v1",
+  "scope": "passive progress accounting; no benchmark, dataset scan, or checkpoint read",
+  "source_files": {
+    "batched_profile": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/batched_evaluation_profile_v1/receipt.json",
+      "sha256": "77e1e19b13115231fdef2f575b7002c63df5aa070b7afd5be59203daa9766a5c"
+    },
+    "old_a": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/gpu_admission_1024_v1/old_A/summary.json",
+      "sha256": "08ee4cb4b2ca56842f9f4393e32532f67ecd5e060f4c07f6fd597ff469ae692b"
+    },
+    "old_b": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/gpu_admission_1024_v1/old_B/summary.json",
+      "sha256": "6e8e75333fd9b0844d0d2530a549184beab301893b61baf1bedd9e3a4d5c2fe7"
+    },
+    "performance_v5": {
+      "path": "output/performance/performance_diagnosis_v5.json",
+      "sha256": "682833aea25223aaa9ec410f3ac478df51c25c9563808aab631050c748fc5d78"
+    },
+    "plan": {
+      "path": "docs/detection_sota_20261029/evidence/intake/SOTA_DEVELOPMENT_PLAN.md",
+      "sha256": "d63065f341594613554aecb48219b4bbc967aed2fd5628d3c6bd599cce7013b7"
+    },
+    "tail_accounting": {
+      "path": "<CAMPAIGN_EVIDENCE_ROOT>/original_r0_stop_v1/TRAINING_TAIL_ACCOUNTING.json",
+      "sha256": "27bc8cb433e37dff5e8766ccbdd4701f616cf9cc3a2f7bfd14dc17b143c95b3d"
+    }
+  }
+}
