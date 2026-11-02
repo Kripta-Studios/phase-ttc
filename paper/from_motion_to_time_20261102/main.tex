@@ -1,0 +1,59 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{paper_style}
+\hypersetup{pdftitle={PHASE-TTC: From Motion to Time},pdfsubject={Causal Event--RGB Fusion for Signed Time-to-Contact Estimation}}
+\input{tables/official_macros.tex}
+\input{tables/evttc_macros.tex}
+\input{tables/revision_macros.tex}
+\input{updates/evidence_tables.tex}
+\begin{document}
+\papertitle{PHASE-TTC}{From Motion to Time}{Causal Event--RGB Fusion\\for Signed Time-to-Contact Estimation}{\'Alvaro Schwiedop Souto}
+\begin{abstract}
+PHASE-TTC estimates signed time-to-contact by combining event and RGB measurements over causal history. Each modality estimates motion separately; a compact head corrects the RGB estimate using twenty phase, timing, and support features. Grouped out-of-fold predictions train the later stages. With up to 650\,ms of history, the submitted TRAIN40 system scores \OfficialPhasePublishedOverallMiD{} Overall MiD over \OfficialSampleCount{} GarlTTC Test tokens, a \OfficialOverallRelativeGain{} reduction relative to Garl-TTC in the 28 October 2026 record. The broader evidence is mixed: on 468 labeled, development-exposed EvTTC queries, fusion trades a lower empirical p95 against worse mean and extreme errors, with paired sequence-bootstrap intervals that include zero. This expanded article retains those findings and adds the subsequent research. A compact quality adapter combines frozen neural estimates and causal box expansion in signed inverse TTC; on a corrected local evaluation of 434 historically exposed queries, MAE decreases from 0.8250 to 0.3359\,s. An unresolved official-evaluator discrepancy prevents interpreting that local gain as a new official result. A separate canonical-cadence intervention improves one Slider recording but yields a road interval containing zero and fails downstream promotion controls. New predictive-learning, observability, sensor, and detection diagnostics preserve negative results rather than establish a universal JEPA benefit. A paced replay retains numerical parity but reaches 29.14\,ms at p95, exceeding the 20\,ms deadline. Together, the original experiments and subsequent controls characterize what causal event--RGB fusion can measure, where adaptation helps, and which claims still require independent validation.
+\end{abstract}
+\begin{figure}[H]
+\centering\includegraphics[width=\linewidth]{figures/rev_hero.pdf}
+\caption{\textbf{GarlTTC Test leaderboard, 28 October 2026.} Overall MiD appears on the left and the four TTC bands on the right. Circles denote PHASE-TTC and squares Garl-TTC. Both entries report 0\% scorer-defined failures across 6,762 tokens. \evidence{B01,B02}}
+\label{fig:official}
+\end{figure}
+\clearpage
+\tableofcontents
+\clearpage
+\finding{Evaluation overview}{\textbf{GarlTTC Test:} scored benchmark performance (6,762 tokens).\par
+\textbf{Labeled EvTTC transfer:} errors and constituent controls (468 eligible queries).\par
+\textbf{EvTTC competition:} preserved frozen-model coverage/disagreement and corrected local adaptation scores (434 queries).\par
+\textbf{Canonical-cadence development:} 2,608 queries; historical exposure and rejected promotion controls.\par
+\textbf{Paced replay:} complete-output response time (250 updates).}
+\input{sections/introduction}
+\input{sections/final_model}
+\FloatBarrier
+\input{sections/protocol}
+\input{sections/official_results}
+\input{sections/transfer}
+\input{sections/evttc_competition}
+\input{sections/quality_adaptation}
+\input{sections/canonical_cadence}
+\input{sections/design_analysis}
+\input{sections/runtime}
+\input{sections/discussion}
+\clearpage
+\begingroup\small
+\setlength{\bibsep}{3pt}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\endgroup
+\appendixdivider
+\appendix
+\input{sections/methods}
+\input{sections/evaluation_details}
+\input{sections/derived_transfer}
+\input{sections/competition_details}
+\input{sections/early}
+\input{sections/middle}
+\input{sections/late_research}
+\input{sections/physics_followup}
+\input{sections/detection_followup}
+\input{sections/history}
+\input{sections/reproducibility}
+\input{sections/evidence_index}
+\input{sections/update_evidence}
+\end{document}

@@ -1,0 +1,41 @@
+\section{Canonical cadence as a controlled intervention}
+\label{sec:canonical-cadence}
+\cohortline{FROZEN-GRAPH INTERVENTION / 149-query screen and 2,608-query development population / candidate not promoted}
+
+The metric phase uses a fixed interval, whereas the sensor supplies observations at measured intervals. These two time quantities must remain separate. The canonical-PAIR experiment asks whether normalizing the learned readout to a reference interval improves its consistency, then tests whether any local improvement survives the downstream contexts and fusion. The intervention introduces no optimizer updates into the original chain. \evidence{N02}
+
+\subsection{Recomputing the readout before rescaling}
+The intervention first rebuilds the 133-coordinate PAIR input with its three time-derived fields recomputed for $d_0=0.1$\,s: duration, log-duration, and inverse duration. The frozen PAIR network processes this input and emits raw phase $\phi_c$. Given the actual interval $\Delta$, the adapter then computes
+\begin{align}
+ q_c&=-\operatorname{expm1}(-\phi_c)/d_0,\\
+ q_\Delta&=q_c d_0/\Delta,\\
+ \phi_\Delta&=-\log(1-d_0q_\Delta).
+ \label{eq:canonical-pair-intervention}
+\end{align}
+Only after this transformation does it apply the original emission policy. The implementation checks finiteness and $1-d_0q_\Delta>0$; unsupported transformations remain explicit failures. When $\Delta$ equals the FP32 representation of 0.1\,s, a direct identity path preserves the original bytes. This is not a division of an already emitted TTC, nor a rescaling of the original phase with its time-conditioned features unchanged. \evidence{N02}
+
+Weights, normalizers, observation cutoffs, and producer batches remain fixed. The run reconstructs the complete PHASE17 feature vector from corrected PAIR features, including disagreements, and reruns temporal contexts and the final fusion head. Predictions and missing-output status are sealed before a separate process joins targets. Each new query first reproduces a paired original execution on the same platform; an old cache is not substituted as the control.
+
+A small time-warp diagnostic motivated this population test. It altered prepared observations and their clocks, rather than reselecting fixed-duration windows from a time-scaled raw stream. Under speed factor $a$, the ideal comparison is $aT_{\mathrm{warped}}/T_{\mathrm{original}}=1$. Canonicalization improved all four tested F0 contrasts, yet the road event-context ratio at $a=0.5$ moved from 0.673790 to 1.891432. The downstream regression prevents an interpretation in which every intermediate correction must benefit the complete estimator. \evidence{N02}
+
+\subsection{Fixed screen and modality localization}
+The initial screen contains 72 road queries and 77 Slider-500 queries. A later four-arm localization control holds this population fixed and corrects events only, RGB only, both, or neither. In that paired CPU control, road macro MAE is 0.748852855\,s for the original and event-only arms, and 0.748672302\,s for RGB-only and both. The observed road change therefore comes from the RGB intervention in this control. On the 76 available Slider outputs, the corresponding values are 1.178155983, 1.163044442, 1.141746554, and 1.120808948\,s. Both modalities contribute there. This localization experiment diagnoses a fixed candidate; it does not select a new recipe after inspecting the four results. \evidence{N02,N05}
+
+\subsection{Complete development population}
+\EvidenceCanonicalTable
+The full experiment reuses the sealed screen and adds 2,459 road queries, yielding 2,531 road queries across twenty-four recordings and 77 Slider-500 queries. The original F0 and its canonical counterpart both return all road predictions and 76 Slider predictions. The previous Slider absence remains absent. Neither route introduces a new missing prediction or a sign change. \evidence{N02}
+
+Road recording-macro MAE changes from 0.810620018 to 0.810489612\,s. A paired bootstrap over complete road recordings, using 10,000 resamples and seed 7, gives a mean difference of $-0.000130406$\,s and a descriptive 95\% interval of $[-0.000504700,0.000093150]$\,s. The interval includes zero. Slider-500 improves from 1.178155898 to 1.120808950\,s, a 4.87\% relative reduction, but consists of one acquisition already inspected in the screen. The extra road queries do not provide an independent Slider replication.
+
+The F0 intervention passes the fixed numerical development criteria: preserve coverage, avoid worsening either error metric in either domain, and improve at least one metric. Passing that screen is narrower than establishing a statistically independent benefit or permission to replace the delivered system. The data remain historically exposed, and the measured road effect is small.
+
+\subsection{Why the downstream candidate was rejected}
+The frozen adapted router improves aggregates on the complete population but fails the earlier road screen. That failed criterion remains binding. A subsequent paired refit evaluates eight folds, three seeds, and original/canonical feature arms, totaling 48 fits. The canonical ensemble improves full-population road MAE from 0.539608 to 0.537801\,s and Slider MAE from 0.364987 to 0.356515\,s. On the fixed screen, however, road MAE worsens from 0.484752 to 0.511821\,s and relative error from 16.720860\% to 17.431738\%. No seed passes both evaluation views. The refit is rejected; no final refit or export replaces PHASE-TTC-Adapt. These are out-of-fold ensemble scores, not the scores of the delivered all-fitting-data router. \evidence{N03}
+
+\subsection{Native replay: output sensitivity versus accuracy}
+The same-platform eAP comparison covers 5,805 physical queries and their 6,762 submission-template tokens, including aliases. Both arms preserve availability and sign, and the event context remains identical. For F0, median absolute output change is $1.4305\times10^{-5}$\,s, p95 is $7.6771\times10^{-5}$\,s, and the maximum is 0.006496\,s. These are differences between model predictions, not errors relative to targets. The private Test12 labels were not used, so the experiment establishes no accuracy or ranking conservation. \evidence{N03}
+
+Historical parity is a separate issue. The recaptured original is exactly repeatable locally, but every one of the 5,805 queries fails some comparison with historical intermediate states, and 504 fail the historical TTC tolerance. Local repeatability cannot remove those failures or assign their cause. The paired original/canonical design isolates the new intervention within the present platform while retaining the older reproducibility discrepancy.
+
+A separate 120-query warm-weight raw-path benchmark measures an original p95 of 963.353\,ms and a canonical p95 of 1,008.124\,ms. It uses supplied boxes and potentially warm operating-system caches; it excludes detection, physical capture, and sensor transport. These measurements cover a different execution path from the five-second paced service in Section~\ref{sec:runtime}. Their percentiles cannot be subtracted from precomputed-input percentiles to recover preprocessing cost. The result provides no sustained 50\,Hz evidence and adds a runtime cost to the proposed intervention. \evidence{N07}
+\FloatBarrier

@@ -1,0 +1,176 @@
+[
+  {
+    "path": "AGENTS.md",
+    "ref": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+    "commit": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "acbd1f36b3e83b50dfbf4f82dfa2a7a8e993b60e",
+    "full_semantic_read": true,
+    "latest_version_bytes": 40561,
+    "latest_version_lines": 1809,
+    "read_method": "complete working-tree text in untruncated tool outputs",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "acbd1f36b3e83b50dfbf4f82dfa2a7a8e993b60e",
+        "full_semantic_read": true
+      }
+    ]
+  },
+  {
+    "path": "DEVELOPMENT_PLAN.md",
+    "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "eef2f1eda0cf1f9f908032c80e5334b55343ce3d",
+    "full_semantic_read": true,
+    "latest_version_bytes": 76364,
+    "latest_version_lines": 653,
+    "read_method": "complete working-tree text in untruncated tool outputs",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "eef2f1eda0cf1f9f908032c80e5334b55343ce3d",
+        "full_semantic_read": true
+      }
+    ]
+  },
+  {
+    "path": "docs/progress.md",
+    "ref": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+    "commit": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "6a0448a3a96b7f0752ab221ee886078eeb0c45d5",
+    "full_semantic_read": true,
+    "latest_version_bytes": 41016,
+    "latest_version_lines": 689,
+    "read_method": "complete HEAD text plus complete untruncated git diff from HEAD blob to latest changed blob",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "686e2dae381a7df070a6e31866f24d376a6f3a0a",
+        "full_semantic_read": true
+      },
+      {
+        "ref": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+        "blob": "6a0448a3a96b7f0752ab221ee886078eeb0c45d5",
+        "full_semantic_read": true,
+        "method": "complete base plus full diff; divergent branch, not cumulative supersession"
+      }
+    ]
+  },
+  {
+    "path": "README.md",
+    "ref": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+    "commit": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "723ed95aabd8f5b1043c718cd4f90bccde67690d",
+    "full_semantic_read": true,
+    "latest_version_bytes": 27465,
+    "latest_version_lines": 510,
+    "read_method": "complete HEAD text plus complete untruncated git diff from HEAD blob to latest changed blob",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "d8e86682acad8fb995dd10e8ad9e25f0638f2658",
+        "full_semantic_read": true
+      },
+      {
+        "ref": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+        "blob": "723ed95aabd8f5b1043c718cd4f90bccde67690d",
+        "full_semantic_read": true,
+        "method": "complete base plus full diff; divergent branch, not cumulative supersession"
+      }
+    ]
+  },
+  {
+    "path": "paper/README.md",
+    "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "b46576604a6bea4e200a8d188a337bf5df95809a",
+    "full_semantic_read": true,
+    "latest_version_bytes": 3918,
+    "latest_version_lines": 81,
+    "read_method": "complete working-tree text in untruncated tool outputs",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "b46576604a6bea4e200a8d188a337bf5df95809a",
+        "full_semantic_read": true
+      }
+    ]
+  },
+  {
+    "path": "paper/ASSETS.md",
+    "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "4ae375290230a302f4ab90773eed280929071e08",
+    "full_semantic_read": true,
+    "latest_version_bytes": 643,
+    "latest_version_lines": 15,
+    "read_method": "complete working-tree text in untruncated tool outputs",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "4ae375290230a302f4ab90773eed280929071e08",
+        "full_semantic_read": true
+      }
+    ]
+  },
+  {
+    "path": "docs/decisions/ADR-0042-phase-ttc-name.md",
+    "ref": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+    "commit": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "6d0fa78d6a993157465770f84e93cfad5824af7b",
+    "full_semantic_read": true,
+    "latest_version_bytes": 2681,
+    "latest_version_lines": 65,
+    "read_method": "complete working-tree text in untruncated tool outputs",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "6d0fa78d6a993157465770f84e93cfad5824af7b",
+        "full_semantic_read": true
+      }
+    ]
+  },
+  {
+    "path": "docs/decisions/ADR-0043-evttc-competition-sensor-adapter.md",
+    "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "cf6792a015433f2b278c1f7f64e9ec071ee29ffa",
+    "full_semantic_read": true,
+    "latest_version_bytes": 7216,
+    "latest_version_lines": 125,
+    "read_method": "complete working-tree text in untruncated tool outputs",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "cf6792a015433f2b278c1f7f64e9ec071ee29ffa",
+        "full_semantic_read": true
+      }
+    ]
+  },
+  {
+    "path": "docs/decisions/ADR-0044-published-expired-execution-wrappers.md",
+    "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+    "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "0078f81565b023f76e5f7dbc1465f837bfb9058e",
+    "full_semantic_read": true,
+    "latest_version_bytes": 1655,
+    "latest_version_lines": 37,
+    "read_method": "complete working-tree text in untruncated tool outputs",
+    "read_versions": [
+      {
+        "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+        "blob": "0078f81565b023f76e5f7dbc1465f837bfb9058e",
+        "full_semantic_read": true
+      }
+    ]
+  }
+]

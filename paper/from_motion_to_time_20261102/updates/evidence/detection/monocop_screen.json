@@ -1,0 +1,3318 @@
+{
+  "schema": "phase_completed_monocop_screen_v1",
+  "status": {
+    "status": "COMPLETE",
+    "update": 2048,
+    "checkpoint_update": 2048,
+    "selected_update": 2048,
+    "exposures": 4096,
+    "best_aligned_mAP": 0.03476029937874453,
+    "elapsed_seconds": 3396.9123571999953,
+    "timestamp_utc": "2026-11-02T09:33:47.541556+00:00",
+    "peak_cuda_bytes": 2926220288,
+    "last_loss": 18.25851821899414,
+    "cache": {
+      "schema": "phase_lossless_compact_training_cache_v1",
+      "device": "cuda",
+      "capacity": 4096,
+      "resident_samples": 512,
+      "gpu_image_bytes": 0,
+      "cpu_image_bytes": 3019898880,
+      "target_metadata_payload_bytes": 16844988,
+      "hits": 0,
+      "misses": 512,
+      "raw_images_retained": 0,
+      "pending_cpu_preparations": 2
+    }
+  },
+  "evaluations": {
+    "0": {
+      "metrics": {
+        "mAP": 0.005601514545509135,
+        "samples": 512,
+        "gt_boxes": 3762,
+        "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+        "classes": {
+          "car": {
+            "AP": 0.044809337562267515,
+            "gt_count": 1999,
+            "pred_count": 8684,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 250,
+                "FP": 8434,
+                "recall": 0.12506253126563283,
+                "maximum_precision_used_by_primary_AP": 0.04854201303641921
+              },
+              "1.0": {
+                "AP": 0.004835097353351558,
+                "TP": 487,
+                "FP": 8197,
+                "recall": 0.24362181090545273,
+                "maximum_precision_used_by_primary_AP": 0.18356437839172218
+              },
+              "2.0": {
+                "AP": 0.047670960625113216,
+                "TP": 731,
+                "FP": 7953,
+                "recall": 0.36568284142071034,
+                "maximum_precision_used_by_primary_AP": 0.4173354809849857
+              },
+              "4.0": {
+                "AP": 0.12673129227060528,
+                "TP": 977,
+                "FP": 7707,
+                "recall": 0.48874437218609307,
+                "maximum_precision_used_by_primary_AP": 0.6042757242757242
+              }
+            }
+          },
+          "bicycle": {
+            "AP": 0.0,
+            "gt_count": 16,
+            "pred_count": 124,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 124,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 124,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 124,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 123,
+                "recall": 0.0625,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "truck": {
+            "AP": 0.0,
+            "gt_count": 782,
+            "pred_count": 254,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 254,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 254,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 253,
+                "recall": 0.0012787723785166241,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 3,
+                "FP": 251,
+                "recall": 0.0038363171355498722,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "pedestrian": {
+            "AP": 2.778801805565792e-06,
+            "gt_count": 231,
+            "pred_count": 2824,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 8,
+                "FP": 2816,
+                "recall": 0.03463203463203463,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 16,
+                "FP": 2808,
+                "recall": 0.06926406926406926,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 27,
+                "FP": 2797,
+                "recall": 0.11688311688311688,
+                "maximum_precision_used_by_primary_AP": 0.010541733858129492
+              },
+              "4.0": {
+                "AP": 1.1115207222263167e-05,
+                "TP": 56,
+                "FP": 2768,
+                "recall": 0.24242424242424243,
+                "maximum_precision_used_by_primary_AP": 0.10090033178500332
+              }
+            }
+          },
+          "motorcycle": {
+            "AP": 0.0,
+            "gt_count": 624,
+            "pred_count": 42,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 42,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 42,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 42,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 42,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "bus": {
+            "AP": 0.0,
+            "gt_count": 68,
+            "pred_count": 12980,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 2,
+                "FP": 12978,
+                "recall": 0.029411764705882353,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 2,
+                "FP": 12978,
+                "recall": 0.029411764705882353,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 4,
+                "FP": 12976,
+                "recall": 0.058823529411764705,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 10,
+                "FP": 12970,
+                "recall": 0.14705882352941177,
+                "maximum_precision_used_by_primary_AP": 0.0013623358433194068
+              }
+            }
+          },
+          "tricycle": {
+            "AP": 0.0,
+            "gt_count": 42,
+            "pred_count": 468,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 468,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 467,
+                "recall": 0.023809523809523808,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 467,
+                "recall": 0.023809523809523808,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 467,
+                "recall": 0.023809523809523808,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "other_vehicle": {
+            "AP": 0.0,
+            "gt_count": 0,
+            "pred_count": 224,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 224,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 224,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 224,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 224,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          }
+        }
+      },
+      "seconds": 35.18549960000382
+    },
+    "512": {
+      "metrics": {
+        "mAP": 0.030134012137786773,
+        "samples": 512,
+        "gt_boxes": 3762,
+        "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+        "classes": {
+          "car": {
+            "AP": 0.2394120163774877,
+            "gt_count": 1999,
+            "pred_count": 11141,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.026461034268523403,
+                "TP": 492,
+                "FP": 10649,
+                "recall": 0.24612306153076538,
+                "maximum_precision_used_by_primary_AP": 0.36472639570695803
+              },
+              "1.0": {
+                "AP": 0.1258432747949665,
+                "TP": 763,
+                "FP": 10378,
+                "recall": 0.38169084542271137,
+                "maximum_precision_used_by_primary_AP": 0.5994514341380927
+              },
+              "2.0": {
+                "AP": 0.3190263088253303,
+                "TP": 1085,
+                "FP": 10056,
+                "recall": 0.5427713856928464,
+                "maximum_precision_used_by_primary_AP": 0.8208217340264967
+              },
+              "4.0": {
+                "AP": 0.48631744762113077,
+                "TP": 1377,
+                "FP": 9764,
+                "recall": 0.6888444222111055,
+                "maximum_precision_used_by_primary_AP": 0.9401426946920509
+              }
+            }
+          },
+          "bicycle": {
+            "AP": 0.0,
+            "gt_count": 16,
+            "pred_count": 27,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 27,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 27,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 27,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 27,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "truck": {
+            "AP": 0.0,
+            "gt_count": 782,
+            "pred_count": 12722,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 27,
+                "FP": 12695,
+                "recall": 0.034526854219948847,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 60,
+                "FP": 12662,
+                "recall": 0.07672634271099744,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 112,
+                "FP": 12610,
+                "recall": 0.1432225063938619,
+                "maximum_precision_used_by_primary_AP": 0.013309566891046214
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 231,
+                "FP": 12491,
+                "recall": 0.29539641943734013,
+                "maximum_precision_used_by_primary_AP": 0.06837727977007517
+              }
+            }
+          },
+          "pedestrian": {
+            "AP": 0.0016600807248064794,
+            "gt_count": 231,
+            "pred_count": 686,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 6,
+                "FP": 680,
+                "recall": 0.025974025974025976,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 14,
+                "FP": 672,
+                "recall": 0.06060606060606061,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 32,
+                "FP": 654,
+                "recall": 0.13852813852813853,
+                "maximum_precision_used_by_primary_AP": 0.05145464201226283
+              },
+              "4.0": {
+                "AP": 0.006640322899225917,
+                "TP": 62,
+                "FP": 624,
+                "recall": 0.2683982683982684,
+                "maximum_precision_used_by_primary_AP": 0.18626610133104338
+              }
+            }
+          },
+          "motorcycle": {
+            "AP": 0.0,
+            "gt_count": 624,
+            "pred_count": 1021,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 1021,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 1021,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 1020,
+                "recall": 0.0016025641025641025,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 6,
+                "FP": 1015,
+                "recall": 0.009615384615384616,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "bus": {
+            "AP": 0.0,
+            "gt_count": 68,
+            "pred_count": 3,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 3,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 3,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 3,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 3,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "tricycle": {
+            "AP": 0.0,
+            "gt_count": 42,
+            "pred_count": 0,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "other_vehicle": {
+            "AP": 0.0,
+            "gt_count": 0,
+            "pred_count": 0,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          }
+        }
+      },
+      "seconds": 163.06901520000247
+    },
+    "1024": {
+      "metrics": {
+        "mAP": 0.02818374260353884,
+        "samples": 512,
+        "gt_boxes": 3762,
+        "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+        "classes": {
+          "car": {
+            "AP": 0.22372365876657485,
+            "gt_count": 1999,
+            "pred_count": 8707,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0201679787393107,
+                "TP": 426,
+                "FP": 8281,
+                "recall": 0.21310655327663833,
+                "maximum_precision_used_by_primary_AP": 0.3558722390940609
+              },
+              "1.0": {
+                "AP": 0.1140188849380047,
+                "TP": 689,
+                "FP": 8018,
+                "recall": 0.344672336168084,
+                "maximum_precision_used_by_primary_AP": 0.5912767005767614
+              },
+              "2.0": {
+                "AP": 0.29338584876416834,
+                "TP": 1006,
+                "FP": 7701,
+                "recall": 0.5032516258129065,
+                "maximum_precision_used_by_primary_AP": 0.8359440929364174
+              },
+              "4.0": {
+                "AP": 0.4673219226248156,
+                "TP": 1286,
+                "FP": 7421,
+                "recall": 0.6433216608304152,
+                "maximum_precision_used_by_primary_AP": 0.9716460945985977
+              }
+            }
+          },
+          "bicycle": {
+            "AP": 0.0,
+            "gt_count": 16,
+            "pred_count": 314,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 314,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 314,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 313,
+                "recall": 0.0625,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 3,
+                "FP": 311,
+                "recall": 0.1875,
+                "maximum_precision_used_by_primary_AP": 0.02216815742397138
+              }
+            }
+          },
+          "truck": {
+            "AP": 0.00037456129526448895,
+            "gt_count": 782,
+            "pred_count": 11382,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 22,
+                "FP": 11360,
+                "recall": 0.028132992327365727,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 54,
+                "FP": 11328,
+                "recall": 0.06905370843989769,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 113,
+                "FP": 11269,
+                "recall": 0.1445012787723785,
+                "maximum_precision_used_by_primary_AP": 0.02528497609831074
+              },
+              "4.0": {
+                "AP": 0.0014982451810579558,
+                "TP": 244,
+                "FP": 11138,
+                "recall": 0.31202046035805625,
+                "maximum_precision_used_by_primary_AP": 0.14288557213930347
+              }
+            }
+          },
+          "pedestrian": {
+            "AP": 0.0013717207664713901,
+            "gt_count": 231,
+            "pred_count": 1270,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 8,
+                "FP": 1262,
+                "recall": 0.03463203463203463,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 18,
+                "FP": 1252,
+                "recall": 0.07792207792207792,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 42,
+                "FP": 1228,
+                "recall": 0.18181818181818182,
+                "maximum_precision_used_by_primary_AP": 0.043382267754588644
+              },
+              "4.0": {
+                "AP": 0.005486883065885561,
+                "TP": 76,
+                "FP": 1194,
+                "recall": 0.329004329004329,
+                "maximum_precision_used_by_primary_AP": 0.20927787562660885
+              }
+            }
+          },
+          "motorcycle": {
+            "AP": 0.0,
+            "gt_count": 624,
+            "pred_count": 3902,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 2,
+                "FP": 3900,
+                "recall": 0.003205128205128205,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 6,
+                "FP": 3896,
+                "recall": 0.009615384615384616,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 18,
+                "FP": 3884,
+                "recall": 0.028846153846153848,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 33,
+                "FP": 3869,
+                "recall": 0.052884615384615384,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "bus": {
+            "AP": 0.0,
+            "gt_count": 68,
+            "pred_count": 21,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 21,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 21,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 21,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 21,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "tricycle": {
+            "AP": 0.0,
+            "gt_count": 42,
+            "pred_count": 4,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 4,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 4,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 4,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 4,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "other_vehicle": {
+            "AP": 0.0,
+            "gt_count": 0,
+            "pred_count": 0,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          }
+        }
+      },
+      "seconds": 175.1749834999937
+    },
+    "1536": {
+      "metrics": {
+        "mAP": 0.03277838110908847,
+        "samples": 512,
+        "gt_boxes": 3762,
+        "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+        "classes": {
+          "car": {
+            "AP": 0.2591455613837692,
+            "gt_count": 1999,
+            "pred_count": 6648,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.029949261150989333,
+                "TP": 460,
+                "FP": 6188,
+                "recall": 0.23011505752876438,
+                "maximum_precision_used_by_primary_AP": 0.35386779257787476
+              },
+              "1.0": {
+                "AP": 0.14253672669042844,
+                "TP": 743,
+                "FP": 5905,
+                "recall": 0.37168584292146073,
+                "maximum_precision_used_by_primary_AP": 0.6158235356006208
+              },
+              "2.0": {
+                "AP": 0.34086942583962054,
+                "TP": 1077,
+                "FP": 5571,
+                "recall": 0.5387693846923461,
+                "maximum_precision_used_by_primary_AP": 0.8632501363530114
+              },
+              "4.0": {
+                "AP": 0.5232268318540384,
+                "TP": 1381,
+                "FP": 5267,
+                "recall": 0.6908454227113556,
+                "maximum_precision_used_by_primary_AP": 0.9691479864332775
+              }
+            }
+          },
+          "bicycle": {
+            "AP": 0.0,
+            "gt_count": 16,
+            "pred_count": 266,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 266,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 1,
+                "FP": 265,
+                "recall": 0.0625,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 2,
+                "FP": 264,
+                "recall": 0.125,
+                "maximum_precision_used_by_primary_AP": 0.012976650119507263
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 3,
+                "FP": 263,
+                "recall": 0.1875,
+                "maximum_precision_used_by_primary_AP": 0.016187392877547134
+              }
+            }
+          },
+          "truck": {
+            "AP": 0.00016621362967841335,
+            "gt_count": 782,
+            "pred_count": 14142,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 27,
+                "FP": 14115,
+                "recall": 0.034526854219948847,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 62,
+                "FP": 14080,
+                "recall": 0.0792838874680307,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 145,
+                "FP": 13997,
+                "recall": 0.18542199488491048,
+                "maximum_precision_used_by_primary_AP": 0.04598103582442286
+              },
+              "4.0": {
+                "AP": 0.0006648545187136534,
+                "TP": 275,
+                "FP": 13867,
+                "recall": 0.3516624040920716,
+                "maximum_precision_used_by_primary_AP": 0.12048668288062937
+              }
+            }
+          },
+          "pedestrian": {
+            "AP": 0.002915273859260155,
+            "gt_count": 231,
+            "pred_count": 1361,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 9,
+                "FP": 1352,
+                "recall": 0.03896103896103896,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 20,
+                "FP": 1341,
+                "recall": 0.08658008658008658,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 45,
+                "FP": 1316,
+                "recall": 0.19480519480519481,
+                "maximum_precision_used_by_primary_AP": 0.058268730650154796
+              },
+              "4.0": {
+                "AP": 0.01166109543704062,
+                "TP": 86,
+                "FP": 1275,
+                "recall": 0.3722943722943723,
+                "maximum_precision_used_by_primary_AP": 0.2182662835249042
+              }
+            }
+          },
+          "motorcycle": {
+            "AP": 0.0,
+            "gt_count": 624,
+            "pred_count": 3089,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 4,
+                "FP": 3085,
+                "recall": 0.00641025641025641,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 9,
+                "FP": 3080,
+                "recall": 0.014423076923076924,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 25,
+                "FP": 3064,
+                "recall": 0.04006410256410257,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 65,
+                "FP": 3024,
+                "recall": 0.10416666666666667,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "bus": {
+            "AP": 0.0,
+            "gt_count": 68,
+            "pred_count": 84,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 84,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 84,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 84,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 84,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "tricycle": {
+            "AP": 0.0,
+            "gt_count": 42,
+            "pred_count": 10,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 10,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 10,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 10,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 10,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "other_vehicle": {
+            "AP": 0.0,
+            "gt_count": 0,
+            "pred_count": 0,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          }
+        }
+      },
+      "seconds": 194.55614860000787
+    },
+    "2048": {
+      "metrics": {
+        "mAP": 0.03476029937874453,
+        "samples": 512,
+        "gt_boxes": 3762,
+        "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+        "classes": {
+          "car": {
+            "AP": 0.27502097117883695,
+            "gt_count": 1999,
+            "pred_count": 7823,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.03550326874453452,
+                "TP": 485,
+                "FP": 7338,
+                "recall": 0.24262131065532766,
+                "maximum_precision_used_by_primary_AP": 0.40280989347044394
+              },
+              "1.0": {
+                "AP": 0.17783121279171094,
+                "TP": 808,
+                "FP": 7015,
+                "recall": 0.4042021010505253,
+                "maximum_precision_used_by_primary_AP": 0.6960964436407475
+              },
+              "2.0": {
+                "AP": 0.362586085125783,
+                "TP": 1082,
+                "FP": 6741,
+                "recall": 0.5412706353176588,
+                "maximum_precision_used_by_primary_AP": 0.9166283124128312
+              },
+              "4.0": {
+                "AP": 0.5241633180533194,
+                "TP": 1379,
+                "FP": 6444,
+                "recall": 0.6898449224612306,
+                "maximum_precision_used_by_primary_AP": 0.9811227844482562
+              }
+            }
+          },
+          "bicycle": {
+            "AP": 0.0,
+            "gt_count": 16,
+            "pred_count": 205,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 205,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 205,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 2,
+                "FP": 203,
+                "recall": 0.125,
+                "maximum_precision_used_by_primary_AP": 0.014018892228424215
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 2,
+                "FP": 203,
+                "recall": 0.125,
+                "maximum_precision_used_by_primary_AP": 0.014018892228424215
+              }
+            }
+          },
+          "truck": {
+            "AP": 0.0007530054093071773,
+            "gt_count": 782,
+            "pred_count": 13210,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 35,
+                "FP": 13175,
+                "recall": 0.04475703324808184,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 81,
+                "FP": 13129,
+                "recall": 0.10358056265984655,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 142,
+                "FP": 13068,
+                "recall": 0.1815856777493606,
+                "maximum_precision_used_by_primary_AP": 0.05056965177738124
+              },
+              "4.0": {
+                "AP": 0.003012021637228709,
+                "TP": 284,
+                "FP": 12926,
+                "recall": 0.3631713554987212,
+                "maximum_precision_used_by_primary_AP": 0.1490762385084526
+              }
+            }
+          },
+          "pedestrian": {
+            "AP": 0.002308418441812092,
+            "gt_count": 231,
+            "pred_count": 1048,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 11,
+                "FP": 1037,
+                "recall": 0.047619047619047616,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 16,
+                "FP": 1032,
+                "recall": 0.06926406926406926,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 32,
+                "FP": 1016,
+                "recall": 0.13852813852813853,
+                "maximum_precision_used_by_primary_AP": 0.035919437108122815
+              },
+              "4.0": {
+                "AP": 0.009233673767248369,
+                "TP": 80,
+                "FP": 968,
+                "recall": 0.3463203463203463,
+                "maximum_precision_used_by_primary_AP": 0.20126943827356394
+              }
+            }
+          },
+          "motorcycle": {
+            "AP": 0.0,
+            "gt_count": 624,
+            "pred_count": 3196,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 9,
+                "FP": 3187,
+                "recall": 0.014423076923076924,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 14,
+                "FP": 3182,
+                "recall": 0.022435897435897436,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 35,
+                "FP": 3161,
+                "recall": 0.05608974358974359,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 79,
+                "FP": 3117,
+                "recall": 0.1266025641025641,
+                "maximum_precision_used_by_primary_AP": 0.044756172548139114
+              }
+            }
+          },
+          "bus": {
+            "AP": 0.0,
+            "gt_count": 68,
+            "pred_count": 81,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 81,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 81,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 81,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 81,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "tricycle": {
+            "AP": 0.0,
+            "gt_count": 42,
+            "pred_count": 37,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 37,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 37,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 37,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 37,
+                "recall": 0.0,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          },
+          "other_vehicle": {
+            "AP": 0.0,
+            "gt_count": 0,
+            "pred_count": 0,
+            "thresholds": {
+              "0.5": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "1.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "2.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              },
+              "4.0": {
+                "AP": 0.0,
+                "TP": 0,
+                "FP": 0,
+                "recall": null,
+                "maximum_precision_used_by_primary_AP": 0.0
+              }
+            }
+          }
+        }
+      },
+      "seconds": 64.71087110000371
+    }
+  },
+  "selected_update": 2048,
+  "best": 0.03476029937874453,
+  "incumbent_panel": {
+    "mAP": 0.06533347492745492,
+    "samples": 512,
+    "gt_boxes": 3762,
+    "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+    "classes": {
+      "car": {
+        "AP": 0.3631062726572316,
+        "gt_count": 1999,
+        "pred_count": 11235,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.15438060212987909,
+            "TP": 629,
+            "FP": 10606,
+            "recall": 0.31465732866433216,
+            "maximum_precision_used_by_primary_AP": 0.8526501372424817
+          },
+          "1.0": {
+            "AP": 0.32886362946901454,
+            "TP": 913,
+            "FP": 10322,
+            "recall": 0.45672836418209106,
+            "maximum_precision_used_by_primary_AP": 0.977766865079365
+          },
+          "2.0": {
+            "AP": 0.44826379632667407,
+            "TP": 1088,
+            "FP": 10147,
+            "recall": 0.544272136068034,
+            "maximum_precision_used_by_primary_AP": 1.0
+          },
+          "4.0": {
+            "AP": 0.5209170627033587,
+            "TP": 1228,
+            "FP": 10007,
+            "recall": 0.6143071535767884,
+            "maximum_precision_used_by_primary_AP": 1.0
+          }
+        }
+      },
+      "bicycle": {
+        "AP": 0.0010288065843621398,
+        "gt_count": 16,
+        "pred_count": 544,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.0,
+            "TP": 0,
+            "FP": 544,
+            "recall": 0.0,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "1.0": {
+            "AP": 0.0,
+            "TP": 0,
+            "FP": 544,
+            "recall": 0.0,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "2.0": {
+            "AP": 0.0,
+            "TP": 2,
+            "FP": 542,
+            "recall": 0.125,
+            "maximum_precision_used_by_primary_AP": 0.07396923076923077
+          },
+          "4.0": {
+            "AP": 0.004115226337448559,
+            "TP": 2,
+            "FP": 542,
+            "recall": 0.125,
+            "maximum_precision_used_by_primary_AP": 0.27619047619047615
+          }
+        }
+      },
+      "truck": {
+        "AP": 0.04100870035707739,
+        "gt_count": 782,
+        "pred_count": 5677,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.0,
+            "TP": 50,
+            "FP": 5627,
+            "recall": 0.0639386189258312,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "1.0": {
+            "AP": 0.004638361243196167,
+            "TP": 107,
+            "FP": 5570,
+            "recall": 0.13682864450127877,
+            "maximum_precision_used_by_primary_AP": 0.3772473760821267
+          },
+          "2.0": {
+            "AP": 0.03976112982648805,
+            "TP": 157,
+            "FP": 5520,
+            "recall": 0.20076726342711,
+            "maximum_precision_used_by_primary_AP": 0.6667179487179486
+          },
+          "4.0": {
+            "AP": 0.11963531035862535,
+            "TP": 214,
+            "FP": 5463,
+            "recall": 0.27365728900255754,
+            "maximum_precision_used_by_primary_AP": 0.9480419790104947
+          }
+        }
+      },
+      "pedestrian": {
+        "AP": 0.00027639889872595197,
+        "gt_count": 231,
+        "pred_count": 912,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.0,
+            "TP": 5,
+            "FP": 907,
+            "recall": 0.021645021645021644,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "1.0": {
+            "AP": 0.0,
+            "TP": 11,
+            "FP": 901,
+            "recall": 0.047619047619047616,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "2.0": {
+            "AP": 0.0,
+            "TP": 17,
+            "FP": 895,
+            "recall": 0.0735930735930736,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "4.0": {
+            "AP": 0.0011055955949038079,
+            "TP": 50,
+            "FP": 862,
+            "recall": 0.21645021645021645,
+            "maximum_precision_used_by_primary_AP": 0.13878994974874373
+          }
+        }
+      },
+      "motorcycle": {
+        "AP": 0.0417033060516519,
+        "gt_count": 624,
+        "pred_count": 4390,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.0,
+            "TP": 43,
+            "FP": 4347,
+            "recall": 0.06891025641025642,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "1.0": {
+            "AP": 3.089353101623573e-05,
+            "TP": 83,
+            "FP": 4307,
+            "recall": 0.1330128205128205,
+            "maximum_precision_used_by_primary_AP": 0.1025023760123151
+          },
+          "2.0": {
+            "AP": 0.03716446365259879,
+            "TP": 154,
+            "FP": 4236,
+            "recall": 0.2467948717948718,
+            "maximum_precision_used_by_primary_AP": 0.5884703801945181
+          },
+          "4.0": {
+            "AP": 0.12961786702299258,
+            "TP": 239,
+            "FP": 4151,
+            "recall": 0.38301282051282054,
+            "maximum_precision_used_by_primary_AP": 0.8618765036086607
+          }
+        }
+      },
+      "bus": {
+        "AP": 0.05598674243330232,
+        "gt_count": 68,
+        "pred_count": 430,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.0,
+            "TP": 6,
+            "FP": 424,
+            "recall": 0.08823529411764706,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "1.0": {
+            "AP": 0.031181717580410388,
+            "TP": 11,
+            "FP": 419,
+            "recall": 0.16176470588235295,
+            "maximum_precision_used_by_primary_AP": 0.7130909090909091
+          },
+          "2.0": {
+            "AP": 0.06774176725489271,
+            "TP": 14,
+            "FP": 416,
+            "recall": 0.20588235294117646,
+            "maximum_precision_used_by_primary_AP": 1.0
+          },
+          "4.0": {
+            "AP": 0.12502348489790618,
+            "TP": 17,
+            "FP": 413,
+            "recall": 0.25,
+            "maximum_precision_used_by_primary_AP": 1.0
+          }
+        }
+      },
+      "tricycle": {
+        "AP": 0.019557572437288062,
+        "gt_count": 42,
+        "pred_count": 283,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.0,
+            "TP": 3,
+            "FP": 280,
+            "recall": 0.07142857142857142,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "1.0": {
+            "AP": 0.0,
+            "TP": 5,
+            "FP": 278,
+            "recall": 0.11904761904761904,
+            "maximum_precision_used_by_primary_AP": 0.04137226512226513
+          },
+          "2.0": {
+            "AP": 0.004155386375315283,
+            "TP": 8,
+            "FP": 275,
+            "recall": 0.19047619047619047,
+            "maximum_precision_used_by_primary_AP": 0.24760233918128655
+          },
+          "4.0": {
+            "AP": 0.07407490337383697,
+            "TP": 10,
+            "FP": 273,
+            "recall": 0.23809523809523808,
+            "maximum_precision_used_by_primary_AP": 1.0
+          }
+        }
+      },
+      "other_vehicle": {
+        "AP": 0.0,
+        "gt_count": 0,
+        "pred_count": 2129,
+        "thresholds": {
+          "0.5": {
+            "AP": 0.0,
+            "TP": 0,
+            "FP": 2129,
+            "recall": null,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "1.0": {
+            "AP": 0.0,
+            "TP": 0,
+            "FP": 2129,
+            "recall": null,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "2.0": {
+            "AP": 0.0,
+            "TP": 0,
+            "FP": 2129,
+            "recall": null,
+            "maximum_precision_used_by_primary_AP": 0.0
+          },
+          "4.0": {
+            "AP": 0.0,
+            "TP": 0,
+            "FP": 2129,
+            "recall": null,
+            "maximum_precision_used_by_primary_AP": 0.0
+          }
+        }
+      }
+    }
+  },
+  "control_df300": {
+    "selected_update": 1024,
+    "best": 0.06435241780942923,
+    "evaluations": {
+      "0": {
+        "metrics": {
+          "mAP": 0.060355637294592326,
+          "samples": 512,
+          "gt_boxes": 3762,
+          "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+          "classes": {
+            "car": {
+              "AP": 0.33167875567964766,
+              "gt_count": 1999,
+              "pred_count": 11235,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.1100940439717466,
+                  "TP": 629,
+                  "FP": 10606,
+                  "recall": 0.31465732866433216,
+                  "maximum_precision_used_by_primary_AP": 0.5848053537226766
+                },
+                "1.0": {
+                  "AP": 0.27764034060306386,
+                  "TP": 913,
+                  "FP": 10322,
+                  "recall": 0.45672836418209106,
+                  "maximum_precision_used_by_primary_AP": 0.8107340087042387
+                },
+                "2.0": {
+                  "AP": 0.4237421634186073,
+                  "TP": 1088,
+                  "FP": 10147,
+                  "recall": 0.544272136068034,
+                  "maximum_precision_used_by_primary_AP": 0.9475216381312914
+                },
+                "4.0": {
+                  "AP": 0.5152384747251728,
+                  "TP": 1229,
+                  "FP": 10006,
+                  "recall": 0.6148074037018509,
+                  "maximum_precision_used_by_primary_AP": 0.9977312925170068
+                }
+              }
+            },
+            "bicycle": {
+              "AP": 0.0015080721747388413,
+              "gt_count": 16,
+              "pred_count": 544,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 544,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 544,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0007977207977207971,
+                  "TP": 2,
+                  "FP": 542,
+                  "recall": 0.125,
+                  "maximum_precision_used_by_primary_AP": 0.13758241758241757
+                },
+                "4.0": {
+                  "AP": 0.005234567901234568,
+                  "TP": 2,
+                  "FP": 542,
+                  "recall": 0.125,
+                  "maximum_precision_used_by_primary_AP": 0.32266666666666666
+                }
+              }
+            },
+            "truck": {
+              "AP": 0.03652952611949222,
+              "gt_count": 782,
+              "pred_count": 5677,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 50,
+                  "FP": 5627,
+                  "recall": 0.0639386189258312,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.00249742446845951,
+                  "TP": 107,
+                  "FP": 5570,
+                  "recall": 0.13682864450127877,
+                  "maximum_precision_used_by_primary_AP": 0.3018032143295301
+                },
+                "2.0": {
+                  "AP": 0.03389464673953281,
+                  "TP": 157,
+                  "FP": 5520,
+                  "recall": 0.20076726342711,
+                  "maximum_precision_used_by_primary_AP": 0.6390606653620352
+                },
+                "4.0": {
+                  "AP": 0.10972603326997657,
+                  "TP": 214,
+                  "FP": 5463,
+                  "recall": 0.27365728900255754,
+                  "maximum_precision_used_by_primary_AP": 0.9052828947368421
+                }
+              }
+            },
+            "pedestrian": {
+              "AP": 0.0003640415441272004,
+              "gt_count": 231,
+              "pred_count": 912,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 5,
+                  "FP": 907,
+                  "recall": 0.021645021645021644,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 11,
+                  "FP": 901,
+                  "recall": 0.047619047619047616,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 17,
+                  "FP": 895,
+                  "recall": 0.0735930735930736,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0014561661765088016,
+                  "TP": 50,
+                  "FP": 862,
+                  "recall": 0.21645021645021645,
+                  "maximum_precision_used_by_primary_AP": 0.1461052631578947
+                }
+              }
+            },
+            "motorcycle": {
+              "AP": 0.044868689437737815,
+              "gt_count": 624,
+              "pred_count": 4390,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 43,
+                  "FP": 4347,
+                  "recall": 0.06891025641025642,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.00010490383198204102,
+                  "TP": 83,
+                  "FP": 4307,
+                  "recall": 0.1330128205128205,
+                  "maximum_precision_used_by_primary_AP": 0.10849721039054533
+                },
+                "2.0": {
+                  "AP": 0.04172684205848002,
+                  "TP": 154,
+                  "FP": 4236,
+                  "recall": 0.2467948717948718,
+                  "maximum_precision_used_by_primary_AP": 0.555153422501967
+                },
+                "4.0": {
+                  "AP": 0.1376430118604892,
+                  "TP": 239,
+                  "FP": 4151,
+                  "recall": 0.38301282051282054,
+                  "maximum_precision_used_by_primary_AP": 0.7943575099942889
+                }
+              }
+            },
+            "bus": {
+              "AP": 0.05299810302345631,
+              "gt_count": 68,
+              "pred_count": 430,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 6,
+                  "FP": 424,
+                  "recall": 0.08823529411764706,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0301469993421213,
+                  "TP": 11,
+                  "FP": 419,
+                  "recall": 0.16176470588235295,
+                  "maximum_precision_used_by_primary_AP": 0.6509090909090909
+                },
+                "2.0": {
+                  "AP": 0.05981526956907617,
+                  "TP": 14,
+                  "FP": 416,
+                  "recall": 0.20588235294117646,
+                  "maximum_precision_used_by_primary_AP": 0.7463636363636363
+                },
+                "4.0": {
+                  "AP": 0.12203014318262777,
+                  "TP": 17,
+                  "FP": 413,
+                  "recall": 0.25,
+                  "maximum_precision_used_by_primary_AP": 0.9373333333333334
+                }
+              }
+            },
+            "tricycle": {
+              "AP": 0.014897910377538561,
+              "gt_count": 42,
+              "pred_count": 283,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 3,
+                  "FP": 280,
+                  "recall": 0.07142857142857142,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 5,
+                  "FP": 278,
+                  "recall": 0.11904761904761904,
+                  "maximum_precision_used_by_primary_AP": 0.07256448412698413
+                },
+                "2.0": {
+                  "AP": 0.0023909001663496026,
+                  "TP": 8,
+                  "FP": 275,
+                  "recall": 0.19047619047619047,
+                  "maximum_precision_used_by_primary_AP": 0.14074468085106384
+                },
+                "4.0": {
+                  "AP": 0.057200741343804644,
+                  "TP": 10,
+                  "FP": 273,
+                  "recall": 0.23809523809523808,
+                  "maximum_precision_used_by_primary_AP": 0.8542857142857143
+                }
+              }
+            },
+            "other_vehicle": {
+              "AP": 0.0,
+              "gt_count": 0,
+              "pred_count": 2129,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 2129,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 2129,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 2129,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 2129,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                }
+              }
+            }
+          }
+        },
+        "seconds": 99.22439240000676
+      },
+      "512": {
+        "metrics": {
+          "mAP": 0.06067604814767155,
+          "samples": 512,
+          "gt_boxes": 3762,
+          "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+          "classes": {
+            "car": {
+              "AP": 0.3406540490860927,
+              "gt_count": 1999,
+              "pred_count": 9424,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.09538557561729875,
+                  "TP": 602,
+                  "FP": 8822,
+                  "recall": 0.30115057528764383,
+                  "maximum_precision_used_by_primary_AP": 0.5377241979241558
+                },
+                "1.0": {
+                  "AP": 0.2601023884347979,
+                  "TP": 892,
+                  "FP": 8532,
+                  "recall": 0.4462231115557779,
+                  "maximum_precision_used_by_primary_AP": 0.7622411458883805
+                },
+                "2.0": {
+                  "AP": 0.4314632132563805,
+                  "TP": 1125,
+                  "FP": 8299,
+                  "recall": 0.5627813906953477,
+                  "maximum_precision_used_by_primary_AP": 0.9101387153750053
+                },
+                "4.0": {
+                  "AP": 0.5756650190358936,
+                  "TP": 1359,
+                  "FP": 8065,
+                  "recall": 0.6798399199599799,
+                  "maximum_precision_used_by_primary_AP": 0.9824475122231808
+                }
+              }
+            },
+            "bicycle": {
+              "AP": 0.0,
+              "gt_count": 16,
+              "pred_count": 13,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 13,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 13,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 13,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0,
+                  "TP": 1,
+                  "FP": 12,
+                  "recall": 0.0625,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                }
+              }
+            },
+            "truck": {
+              "AP": 0.04482265049082565,
+              "gt_count": 782,
+              "pred_count": 10859,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 58,
+                  "FP": 10801,
+                  "recall": 0.0741687979539642,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.003776532853039408,
+                  "TP": 109,
+                  "FP": 10750,
+                  "recall": 0.13938618925831203,
+                  "maximum_precision_used_by_primary_AP": 0.3805855522201863
+                },
+                "2.0": {
+                  "AP": 0.046523311903600775,
+                  "TP": 184,
+                  "FP": 10675,
+                  "recall": 0.23529411764705882,
+                  "maximum_precision_used_by_primary_AP": 0.6466692851531815
+                },
+                "4.0": {
+                  "AP": 0.12899075720666242,
+                  "TP": 307,
+                  "FP": 10552,
+                  "recall": 0.39258312020460356,
+                  "maximum_precision_used_by_primary_AP": 0.8621814475025484
+                }
+              }
+            },
+            "pedestrian": {
+              "AP": 3.0975807577346434e-05,
+              "gt_count": 231,
+              "pred_count": 1675,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 1,
+                  "FP": 1674,
+                  "recall": 0.004329004329004329,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 8,
+                  "FP": 1667,
+                  "recall": 0.03463203463203463,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 22,
+                  "FP": 1653,
+                  "recall": 0.09523809523809523,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.00012390323030938573,
+                  "TP": 51,
+                  "FP": 1624,
+                  "recall": 0.22077922077922077,
+                  "maximum_precision_used_by_primary_AP": 0.1083958901618476
+                }
+              }
+            },
+            "motorcycle": {
+              "AP": 0.04029907147514031,
+              "gt_count": 624,
+              "pred_count": 3488,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 26,
+                  "FP": 3462,
+                  "recall": 0.041666666666666664,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 55,
+                  "FP": 3433,
+                  "recall": 0.08814102564102565,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.03434428583344305,
+                  "TP": 133,
+                  "FP": 3355,
+                  "recall": 0.21314102564102563,
+                  "maximum_precision_used_by_primary_AP": 0.578550064093434
+                },
+                "4.0": {
+                  "AP": 0.12685200006711816,
+                  "TP": 206,
+                  "FP": 3282,
+                  "recall": 0.3301282051282051,
+                  "maximum_precision_used_by_primary_AP": 0.8511851851851852
+                }
+              }
+            },
+            "bus": {
+              "AP": 0.05233877823943184,
+              "gt_count": 68,
+              "pred_count": 106,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 4,
+                  "FP": 102,
+                  "recall": 0.058823529411764705,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.027964463520019075,
+                  "TP": 10,
+                  "FP": 96,
+                  "recall": 0.14705882352941177,
+                  "maximum_precision_used_by_primary_AP": 0.6882051282051282
+                },
+                "2.0": {
+                  "AP": 0.07837626425861721,
+                  "TP": 14,
+                  "FP": 92,
+                  "recall": 0.20588235294117646,
+                  "maximum_precision_used_by_primary_AP": 0.7937142857142857
+                },
+                "4.0": {
+                  "AP": 0.10301438517909108,
+                  "TP": 15,
+                  "FP": 91,
+                  "recall": 0.22058823529411764,
+                  "maximum_precision_used_by_primary_AP": 0.8816666666666666
+                }
+              }
+            },
+            "tricycle": {
+              "AP": 0.007262860082304527,
+              "gt_count": 42,
+              "pred_count": 35,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 2,
+                  "FP": 33,
+                  "recall": 0.047619047619047616,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 3,
+                  "FP": 32,
+                  "recall": 0.07142857142857142,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 4,
+                  "FP": 31,
+                  "recall": 0.09523809523809523,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.02905144032921811,
+                  "TP": 6,
+                  "FP": 29,
+                  "recall": 0.14285714285714285,
+                  "maximum_precision_used_by_primary_AP": 0.8206666666666668
+                }
+              }
+            },
+            "other_vehicle": {
+              "AP": 0.0,
+              "gt_count": 0,
+              "pred_count": 0,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 0,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 0,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 0,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 0,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                }
+              }
+            }
+          }
+        },
+        "seconds": 188.30890419999196
+      },
+      "1024": {
+        "metrics": {
+          "mAP": 0.06435241780942923,
+          "samples": 512,
+          "gt_boxes": 3762,
+          "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+          "classes": {
+            "car": {
+              "AP": 0.33570919308564295,
+              "gt_count": 1999,
+              "pred_count": 9002,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.09662541241926142,
+                  "TP": 626,
+                  "FP": 8376,
+                  "recall": 0.31315657828914456,
+                  "maximum_precision_used_by_primary_AP": 0.5131829544920101
+                },
+                "1.0": {
+                  "AP": 0.25343553655556444,
+                  "TP": 912,
+                  "FP": 8090,
+                  "recall": 0.4562281140570285,
+                  "maximum_precision_used_by_primary_AP": 0.7334512501135831
+                },
+                "2.0": {
+                  "AP": 0.4222067026498193,
+                  "TP": 1150,
+                  "FP": 7852,
+                  "recall": 0.575287643821911,
+                  "maximum_precision_used_by_primary_AP": 0.8857302401993183
+                },
+                "4.0": {
+                  "AP": 0.5705691207179265,
+                  "TP": 1395,
+                  "FP": 7607,
+                  "recall": 0.6978489244622311,
+                  "maximum_precision_used_by_primary_AP": 0.9622705183951019
+                }
+              }
+            },
+            "bicycle": {
+              "AP": 0.012304526748971195,
+              "gt_count": 16,
+              "pred_count": 13,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 13,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 13,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.006814814814814815,
+                  "TP": 2,
+                  "FP": 11,
+                  "recall": 0.125,
+                  "maximum_precision_used_by_primary_AP": 0.388
+                },
+                "4.0": {
+                  "AP": 0.04240329218106997,
+                  "TP": 3,
+                  "FP": 10,
+                  "recall": 0.1875,
+                  "maximum_precision_used_by_primary_AP": 0.588
+                }
+              }
+            },
+            "truck": {
+              "AP": 0.04618799214723156,
+              "gt_count": 782,
+              "pred_count": 8971,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 52,
+                  "FP": 8919,
+                  "recall": 0.06649616368286446,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0015599555903465282,
+                  "TP": 99,
+                  "FP": 8872,
+                  "recall": 0.1265984654731458,
+                  "maximum_precision_used_by_primary_AP": 0.2263564028180688
+                },
+                "2.0": {
+                  "AP": 0.0445753808248337,
+                  "TP": 171,
+                  "FP": 8800,
+                  "recall": 0.2186700767263427,
+                  "maximum_precision_used_by_primary_AP": 0.61875950668037
+                },
+                "4.0": {
+                  "AP": 0.138616632173746,
+                  "TP": 272,
+                  "FP": 8699,
+                  "recall": 0.34782608695652173,
+                  "maximum_precision_used_by_primary_AP": 0.8521148255813953
+                }
+              }
+            },
+            "pedestrian": {
+              "AP": 8.2993578371872e-07,
+              "gt_count": 231,
+              "pred_count": 2348,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 4,
+                  "FP": 2344,
+                  "recall": 0.017316017316017316,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 12,
+                  "FP": 2336,
+                  "recall": 0.05194805194805195,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 26,
+                  "FP": 2322,
+                  "recall": 0.11255411255411256,
+                  "maximum_precision_used_by_primary_AP": 0.018183518125392345
+                },
+                "4.0": {
+                  "AP": 3.31974313487488e-06,
+                  "TP": 61,
+                  "FP": 2287,
+                  "recall": 0.26406926406926406,
+                  "maximum_precision_used_by_primary_AP": 0.10026889919392487
+                }
+              }
+            },
+            "motorcycle": {
+              "AP": 0.036324429068154564,
+              "gt_count": 624,
+              "pred_count": 5027,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 28,
+                  "FP": 4999,
+                  "recall": 0.04487179487179487,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 66,
+                  "FP": 4961,
+                  "recall": 0.10576923076923077,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0271395495006386,
+                  "TP": 134,
+                  "FP": 4893,
+                  "recall": 0.21474358974358973,
+                  "maximum_precision_used_by_primary_AP": 0.5214156835530881
+                },
+                "4.0": {
+                  "AP": 0.11815816677197966,
+                  "TP": 218,
+                  "FP": 4809,
+                  "recall": 0.34935897435897434,
+                  "maximum_precision_used_by_primary_AP": 0.7572789115646258
+                }
+              }
+            },
+            "bus": {
+              "AP": 0.07375280585980638,
+              "gt_count": 68,
+              "pred_count": 205,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 6,
+                  "FP": 199,
+                  "recall": 0.08823529411764706,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.03653251126795957,
+                  "TP": 12,
+                  "FP": 193,
+                  "recall": 0.17647058823529413,
+                  "maximum_precision_used_by_primary_AP": 0.6384615384615385
+                },
+                "2.0": {
+                  "AP": 0.07256673511738015,
+                  "TP": 14,
+                  "FP": 191,
+                  "recall": 0.20588235294117646,
+                  "maximum_precision_used_by_primary_AP": 0.8152727272727274
+                },
+                "4.0": {
+                  "AP": 0.18591197705388582,
+                  "TP": 21,
+                  "FP": 184,
+                  "recall": 0.3088235294117647,
+                  "maximum_precision_used_by_primary_AP": 0.9281318681318682
+                }
+              }
+            },
+            "tricycle": {
+              "AP": 0.010539565629843407,
+              "gt_count": 42,
+              "pred_count": 29,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 2,
+                  "FP": 27,
+                  "recall": 0.047619047619047616,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 4,
+                  "FP": 25,
+                  "recall": 0.09523809523809523,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.013012532734754959,
+                  "TP": 6,
+                  "FP": 23,
+                  "recall": 0.14285714285714285,
+                  "maximum_precision_used_by_primary_AP": 0.39651515151515154
+                },
+                "4.0": {
+                  "AP": 0.029145729784618674,
+                  "TP": 7,
+                  "FP": 22,
+                  "recall": 0.16666666666666666,
+                  "maximum_precision_used_by_primary_AP": 0.6961904761904762
+                }
+              }
+            },
+            "other_vehicle": {
+              "AP": 0.0,
+              "gt_count": 0,
+              "pred_count": 5,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 5,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 5,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 5,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 5,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                }
+              }
+            }
+          }
+        },
+        "seconds": 157.7686371000018
+      },
+      "1536": {
+        "metrics": {
+          "mAP": 0.060151334799708,
+          "samples": 512,
+          "gt_boxes": 3762,
+          "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+          "classes": {
+            "car": {
+              "AP": 0.3351002472288307,
+              "gt_count": 1999,
+              "pred_count": 9712,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.09666587628316789,
+                  "TP": 638,
+                  "FP": 9074,
+                  "recall": 0.31915957978989495,
+                  "maximum_precision_used_by_primary_AP": 0.5162603129978817
+                },
+                "1.0": {
+                  "AP": 0.2496178625281688,
+                  "TP": 918,
+                  "FP": 8794,
+                  "recall": 0.4592296148074037,
+                  "maximum_precision_used_by_primary_AP": 0.7286460012551838
+                },
+                "2.0": {
+                  "AP": 0.417227973358781,
+                  "TP": 1152,
+                  "FP": 8560,
+                  "recall": 0.576288144072036,
+                  "maximum_precision_used_by_primary_AP": 0.8757092911966883
+                },
+                "4.0": {
+                  "AP": 0.5768892767452052,
+                  "TP": 1390,
+                  "FP": 8322,
+                  "recall": 0.6953476738369184,
+                  "maximum_precision_used_by_primary_AP": 0.9677263057352494
+                }
+              }
+            },
+            "bicycle": {
+              "AP": 0.0023045267489711935,
+              "gt_count": 16,
+              "pred_count": 7,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 7,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 7,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 1,
+                  "FP": 6,
+                  "recall": 0.0625,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.009218106995884774,
+                  "TP": 2,
+                  "FP": 5,
+                  "recall": 0.125,
+                  "maximum_precision_used_by_primary_AP": 0.4866666666666667
+                }
+              }
+            },
+            "truck": {
+              "AP": 0.041114530708806746,
+              "gt_count": 782,
+              "pred_count": 9844,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 46,
+                  "FP": 9798,
+                  "recall": 0.058823529411764705,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.004339155258922377,
+                  "TP": 107,
+                  "FP": 9737,
+                  "recall": 0.13682864450127877,
+                  "maximum_precision_used_by_primary_AP": 0.3258084619782733
+                },
+                "2.0": {
+                  "AP": 0.03287904992710557,
+                  "TP": 163,
+                  "FP": 9681,
+                  "recall": 0.20843989769820973,
+                  "maximum_precision_used_by_primary_AP": 0.5249377704182469
+                },
+                "4.0": {
+                  "AP": 0.12723991764919904,
+                  "TP": 285,
+                  "FP": 9559,
+                  "recall": 0.36445012787723785,
+                  "maximum_precision_used_by_primary_AP": 0.7901417151162791
+                }
+              }
+            },
+            "pedestrian": {
+              "AP": 0.00020164518729762042,
+              "gt_count": 231,
+              "pred_count": 1126,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 3,
+                  "FP": 1123,
+                  "recall": 0.012987012987012988,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 10,
+                  "FP": 1116,
+                  "recall": 0.04329004329004329,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 21,
+                  "FP": 1105,
+                  "recall": 0.09090909090909091,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0008065807491904817,
+                  "TP": 52,
+                  "FP": 1074,
+                  "recall": 0.22510822510822512,
+                  "maximum_precision_used_by_primary_AP": 0.13002878074306645
+                }
+              }
+            },
+            "motorcycle": {
+              "AP": 0.03851237083889194,
+              "gt_count": 624,
+              "pred_count": 4542,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 28,
+                  "FP": 4514,
+                  "recall": 0.04487179487179487,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 70,
+                  "FP": 4472,
+                  "recall": 0.11217948717948718,
+                  "maximum_precision_used_by_primary_AP": 0.040172225016204335
+                },
+                "2.0": {
+                  "AP": 0.024342025053407202,
+                  "TP": 140,
+                  "FP": 4402,
+                  "recall": 0.22435897435897437,
+                  "maximum_precision_used_by_primary_AP": 0.47129333963155406
+                },
+                "4.0": {
+                  "AP": 0.12970745830216054,
+                  "TP": 231,
+                  "FP": 4311,
+                  "recall": 0.3701923076923077,
+                  "maximum_precision_used_by_primary_AP": 0.7729123711340207
+                }
+              }
+            },
+            "bus": {
+              "AP": 0.048005022406975004,
+              "gt_count": 68,
+              "pred_count": 314,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 4,
+                  "FP": 310,
+                  "recall": 0.058823529411764705,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.013590065699227492,
+                  "TP": 9,
+                  "FP": 305,
+                  "recall": 0.1323529411764706,
+                  "maximum_precision_used_by_primary_AP": 0.4826666666666667
+                },
+                "2.0": {
+                  "AP": 0.07798886023963424,
+                  "TP": 14,
+                  "FP": 300,
+                  "recall": 0.20588235294117646,
+                  "maximum_precision_used_by_primary_AP": 0.8816666666666666
+                },
+                "4.0": {
+                  "AP": 0.10044116368903827,
+                  "TP": 17,
+                  "FP": 297,
+                  "recall": 0.25,
+                  "maximum_precision_used_by_primary_AP": 0.8816666666666666
+                }
+              }
+            },
+            "tricycle": {
+              "AP": 0.015972335277890836,
+              "gt_count": 42,
+              "pred_count": 33,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 1,
+                  "FP": 32,
+                  "recall": 0.023809523809523808,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.002942612942612943,
+                  "TP": 5,
+                  "FP": 28,
+                  "recall": 0.11904761904761904,
+                  "maximum_precision_used_by_primary_AP": 0.3383516483516484
+                },
+                "2.0": {
+                  "AP": 0.002942612942612943,
+                  "TP": 5,
+                  "FP": 28,
+                  "recall": 0.11904761904761904,
+                  "maximum_precision_used_by_primary_AP": 0.3383516483516484
+                },
+                "4.0": {
+                  "AP": 0.05800411522633746,
+                  "TP": 8,
+                  "FP": 25,
+                  "recall": 0.19047619047619047,
+                  "maximum_precision_used_by_primary_AP": 0.7457142857142858
+                }
+              }
+            },
+            "other_vehicle": {
+              "AP": 0.0,
+              "gt_count": 0,
+              "pred_count": 22,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 22,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 22,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 22,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 22,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                }
+              }
+            }
+          }
+        },
+        "seconds": 150.61949040000036
+      },
+      "2048": {
+        "metrics": {
+          "mAP": 0.061878394485781064,
+          "samples": 512,
+          "gt_boxes": 3762,
+          "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+          "classes": {
+            "car": {
+              "AP": 0.3397700972079059,
+              "gt_count": 1999,
+              "pred_count": 9340,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.10045625430001451,
+                  "TP": 648,
+                  "FP": 8692,
+                  "recall": 0.32416208104052024,
+                  "maximum_precision_used_by_primary_AP": 0.5183935742971888
+                },
+                "1.0": {
+                  "AP": 0.25914384997537615,
+                  "TP": 932,
+                  "FP": 8408,
+                  "recall": 0.46623311655827915,
+                  "maximum_precision_used_by_primary_AP": 0.7406446140797286
+                },
+                "2.0": {
+                  "AP": 0.4212429870570063,
+                  "TP": 1153,
+                  "FP": 8187,
+                  "recall": 0.5767883941970986,
+                  "maximum_precision_used_by_primary_AP": 0.8853067407904242
+                },
+                "4.0": {
+                  "AP": 0.5782372974992267,
+                  "TP": 1387,
+                  "FP": 7953,
+                  "recall": 0.6938469234617308,
+                  "maximum_precision_used_by_primary_AP": 0.9696822550236814
+                }
+              }
+            },
+            "bicycle": {
+              "AP": 0.0023045267489711935,
+              "gt_count": 16,
+              "pred_count": 11,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 11,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 11,
+                  "recall": 0.0,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 1,
+                  "FP": 10,
+                  "recall": 0.0625,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.009218106995884774,
+                  "TP": 2,
+                  "FP": 9,
+                  "recall": 0.125,
+                  "maximum_precision_used_by_primary_AP": 0.4866666666666667
+                }
+              }
+            },
+            "truck": {
+              "AP": 0.045380340143291405,
+              "gt_count": 782,
+              "pred_count": 9685,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 52,
+                  "FP": 9633,
+                  "recall": 0.06649616368286446,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.002258540248617901,
+                  "TP": 107,
+                  "FP": 9578,
+                  "recall": 0.13682864450127877,
+                  "maximum_precision_used_by_primary_AP": 0.28294176013805
+                },
+                "2.0": {
+                  "AP": 0.037314214144192615,
+                  "TP": 187,
+                  "FP": 9498,
+                  "recall": 0.2391304347826087,
+                  "maximum_precision_used_by_primary_AP": 0.5492837977296181
+                },
+                "4.0": {
+                  "AP": 0.1419486061803551,
+                  "TP": 298,
+                  "FP": 9387,
+                  "recall": 0.38107416879795397,
+                  "maximum_precision_used_by_primary_AP": 0.8301468384776746
+                }
+              }
+            },
+            "pedestrian": {
+              "AP": 0.00016697715977854815,
+              "gt_count": 231,
+              "pred_count": 1398,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 2,
+                  "FP": 1396,
+                  "recall": 0.008658008658008658,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 8,
+                  "FP": 1390,
+                  "recall": 0.03463203463203463,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 23,
+                  "FP": 1375,
+                  "recall": 0.09956709956709957,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0006679086391141926,
+                  "TP": 50,
+                  "FP": 1348,
+                  "recall": 0.21645021645021645,
+                  "maximum_precision_used_by_primary_AP": 0.12731577389760285
+                }
+              }
+            },
+            "motorcycle": {
+              "AP": 0.04336618643533054,
+              "gt_count": 624,
+              "pred_count": 4842,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 35,
+                  "FP": 4807,
+                  "recall": 0.05608974358974359,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 74,
+                  "FP": 4768,
+                  "recall": 0.11858974358974358,
+                  "maximum_precision_used_by_primary_AP": 0.051739609298011704
+                },
+                "2.0": {
+                  "AP": 0.03678715074189634,
+                  "TP": 151,
+                  "FP": 4691,
+                  "recall": 0.2419871794871795,
+                  "maximum_precision_used_by_primary_AP": 0.555153422501967
+                },
+                "4.0": {
+                  "AP": 0.13667759499942583,
+                  "TP": 238,
+                  "FP": 4604,
+                  "recall": 0.3814102564102564,
+                  "maximum_precision_used_by_primary_AP": 0.7716873315363881
+                }
+              }
+            },
+            "bus": {
+              "AP": 0.050253387887299446,
+              "gt_count": 68,
+              "pred_count": 258,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 4,
+                  "FP": 254,
+                  "recall": 0.058823529411764705,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.034867153079055385,
+                  "TP": 11,
+                  "FP": 247,
+                  "recall": 0.16176470588235295,
+                  "maximum_precision_used_by_primary_AP": 0.5987179487179488
+                },
+                "2.0": {
+                  "AP": 0.06860716620119212,
+                  "TP": 13,
+                  "FP": 245,
+                  "recall": 0.19117647058823528,
+                  "maximum_precision_used_by_primary_AP": 0.7884444444444445
+                },
+                "4.0": {
+                  "AP": 0.09753923226895028,
+                  "TP": 17,
+                  "FP": 241,
+                  "recall": 0.25,
+                  "maximum_precision_used_by_primary_AP": 0.7937142857142857
+                }
+              }
+            },
+            "tricycle": {
+              "AP": 0.013785640303671493,
+              "gt_count": 42,
+              "pred_count": 39,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 1,
+                  "FP": 38,
+                  "recall": 0.023809523809523808,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0018222511010035376,
+                  "TP": 5,
+                  "FP": 34,
+                  "recall": 0.11904761904761904,
+                  "maximum_precision_used_by_primary_AP": 0.24760233918128655
+                },
+                "2.0": {
+                  "AP": 0.0018222511010035376,
+                  "TP": 5,
+                  "FP": 34,
+                  "recall": 0.11904761904761904,
+                  "maximum_precision_used_by_primary_AP": 0.24760233918128655
+                },
+                "4.0": {
+                  "AP": 0.05149805901267889,
+                  "TP": 8,
+                  "FP": 31,
+                  "recall": 0.19047619047619047,
+                  "maximum_precision_used_by_primary_AP": 0.7457142857142858
+                }
+              }
+            },
+            "other_vehicle": {
+              "AP": 0.0,
+              "gt_count": 0,
+              "pred_count": 27,
+              "thresholds": {
+                "0.5": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 27,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "1.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 27,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "2.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 27,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                },
+                "4.0": {
+                  "AP": 0.0,
+                  "TP": 0,
+                  "FP": 27,
+                  "recall": null,
+                  "maximum_precision_used_by_primary_AP": 0.0
+                }
+              }
+            }
+          }
+        },
+        "seconds": 163.21099619999586
+      }
+    },
+    "status": {
+      "status": "COMPLETE",
+      "update": 2048,
+      "exposures": 4096,
+      "best_aligned_mAP": 0.06435241780942923,
+      "elapsed_seconds": 4420.648868599994,
+      "cache": {
+        "schema": "phase_lossless_compact_training_cache_v1",
+        "device": "cuda",
+        "capacity": 4096,
+        "resident_samples": 4096,
+        "gpu_image_bytes": 0,
+        "cpu_image_bytes": 3019898880,
+        "target_metadata_payload_bytes": 137247139,
+        "hits": 0,
+        "misses": 4096,
+        "raw_images_retained": 0,
+        "pending_cpu_preparations": 0
+      },
+      "peak_cuda_bytes": 2613205504
+    }
+  },
+  "delta_incumbent": -0.03057317554871039,
+  "delta_control": -0.029592118430684697,
+  "registered_rule": "After 2048 updates, gain >=0.005 over both incumbent and best Dfull300 panel before full selection confirmation. Full gain >=0.005 over incumbent and review any per-class AP drop >0.01. No automatic promotion.",
+  "panel_gate_passed": false,
+  "decision": "NO_FULL_CONFIRMATION_PANEL_GATE_NOT_MET",
+  "class_drops_gt_0_01_vs_incumbent": [
+    "car",
+    "truck",
+    "motorcycle",
+    "bus",
+    "tricycle"
+  ],
+  "selected_checkpoint": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/checkpoints/selected.pt",
+  "selected_checkpoint_sha256": "a608055453bca574f63d295de38d007061339321549742a62f58339128e723fb",
+  "checkpoint_cpu_load_and_finite_verified": true,
+  "mean_stage_seconds": {
+    "prepare_transfer_seconds": 0.013669064892606997,
+    "forward_seconds": 0.5328552902832975,
+    "loss_matching_seconds": 0.1839054672852498,
+    "backward_seconds": 0.41175169013657964,
+    "optimizer_seconds": 0.05646991533228629
+  },
+  "full_selection_measured": false,
+  "promotion": false,
+  "goal_complete": false,
+  "host_restart_recovery": {
+    "schema": "phase_monocop_host_restart_recovery_v1",
+    "original_run": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1",
+    "old_writer": {
+      "pid": 46560,
+      "created_epoch": 1793573736.3784566
+    },
+    "boot_epoch": 1793576796.2351134,
+    "old_writer_absent": true,
+    "original_status_sha256": "480c52f030d9e55cec53a16e454ffe8f12b56b9d93a0dadd28f226af89393195",
+    "original_status_condition": "all bytes are zero; original preserved",
+    "restored_update": 1792,
+    "selected_update": 1536,
+    "last_logged_update": 1858,
+    "replayed_logged_updates": 66,
+    "replayed_logged_exposures": 132,
+    "reserved_consumed_seconds": 3120,
+    "budget_policy": "ceil(reboot_epoch - original_process_creation) + 60; no budget extension",
+    "original_maximum_seconds": 7200.0,
+    "checkpoint_cpu_load_and_finite_verified": true,
+    "files": {
+      "CONTRACT.json": "c0ab817f97072295833b8921193f9a25cbe520dfec73a49a26b095b56202a9b4",
+      "ENVIRONMENT.json": "3796d4bfa62bf8fc29dbc339c03bcdfa1126eebce301aaa32c590d0bae9f36cc",
+      "metrics.jsonl": "df075cfe143214b8ea20d01b24cf1fa75c1389a9ec91b37d0ad00eb59e8e919b",
+      "checkpoints/last.pt": "e7954e661ae8908042cd5e2bf381e551ff2f28e8034d3c5f47e90f1ca5a32153",
+      "checkpoints/selected.pt": "0e257b75d3fda7cc222099fe30fb231f71d8f71c03c4d32cd9582eca23cd181f",
+      "evaluation/000000.json": "f95590a728f869b22a903e4611bdeb9e73d2ad9c2b62564d2604a69a865b1173",
+      "evaluation/000512.json": "d9357e7639c92e6c230f1b3eea9a60f833e37c998646cee987b952e6570b398b",
+      "evaluation/001024.json": "8036b593b89d78822ffbf8bb1b0718036284b6eb5d7d8c6776d52e628093d793",
+      "evaluation/001536.json": "9ec925fd8e49b55d0cdcb254c558aebe59b945f809ec7cabeefeffdc46fc76b9"
+    },
+    "recovery_script_sha256": "7a6756b078bd37323c345fd9c04d281a7921effae66c3e89dc436626135c51b5",
+    "replayed_losses_bitwise_equal": false,
+    "logical_exposures": 4096,
+    "minimum_executed_exposures_including_lost_work": 4228
+  }
+}

@@ -1,0 +1,180 @@
+Scientific council: detection and geometry review, 2026-11-02
+
+DECISION
+Include a compact appendix on detection limits, evaluation reconciliation and geometric diagnostics. Do not turn detector scores, infrastructure checks or ideal-target geometry into a TTC/JEPA headline. The causal fusion and timing synthesis belongs in the main paper. No reviewed detection result overturns that editorial decision.
+
+REVIEW COVERAGE
+Ref dev/eap-diagnostics-20261101=b89c3bf9e654514e3a824f1b823ea9b07764465a. The branch contains all previous detection and s0-evaluation commits. Reviewed the 106 recent commit messages touching detection docs/implementation/scripts, late geometry implementation and evidence, and 51 Nov1-2 changed Markdown snapshots. Identical smoke-plan copies were verified against their read canonical document and differing versions read as diffs. Early Oct29-31 documentation (90 scoped paths plus release candidate, some overlap) was completed by early_detection and its intake reader, including G0/G1/swarm council, local pilot, Dfull, training/performance and integration. Their report is tmp/paper_revision/council_early_detection.txt. Some reproduction command examples were omitted from prose passes; this is scientific content review, not executing all commands. The union inventory is 137 Markdown paths; list appended below. Commit review is history/status/provenance analysis, not a new execution of every experiment or line-by-line audit of every code change.
+
+WHAT IS WORTH INCLUDING
+1. Evidence-based boundaries for the end-to-end claim. Detection is RGB MonoDGP-R50 plus a TRAIN-fitted shared logistic ranker, not an event detector or JEPA result. The later real eight-frame PHASE bridge yielded five signed TTCs in the last frame plus one track_not_confirmed. It proves functional causal integration only. Frozen TRAIN40 PHASE producers were exposed to these sequences; it does not demonstrate independent detector-to-TTC accuracy.
+2. Fixed-pool ranking as an engineering control. On the same 23,958 development-exposed frames, eight classes, 190,469 raw GT and 1,197,900 proposals, baseline aligned mAP 0.05701725780005367 and ranked mAP 0.062042288605807405. Absolute gain 0.005025030805753735; no geometry/class/velocity change. Single detector seed, selection exposed. Bicycle and other_vehicle AP remain zero; motorcycle falls 0.04742940354287591 to 0.0457533024963028. No baseline submission exists, so cannot claim ranking improves official test.
+3. Metric/population reconciliation is a useful methodological finding. Historical AP101 ranked 0.1850207831690803 was restricted-domain (107,308 eligible, 83,161 ignored), precision-envelope, different tie rules. On new raw matches, envelope formula gives 0.10937358 while aligned formula gives 0.06204229. Aligned AP uses ego-XY greedy class matching with strict <0.5/1/2/4 m, 101 recall interpolation without envelope, min_recall/min_precision=.1, macro over all eight classes. Private scorer's aggregate arithmetic was reconstructed, not private matching certified. Test AP 0.051295080474643054 on 35,940 frames is a separate official result; eAP composite .13980148 is not mAP. No new official submission in Nov1-2 diagnostic continuation.
+4. Cuboid-edge inversion as a diagnostic, not priority novelty claim. For rotated corner offsets delta_i, center pixel u, and intrinsic K, a_i=K[0:2,:]delta_i-u*delta_iz. For positive edge distance t_e use signed numerators (-a_ix,+a_ix,-a_iy,+a_iy), z_e=max_i(signed_i,e/t_e-delta_iz). Median across non-clipped edges. This follows cuboid containment with the touching vertex; clipped borders are not equalities. With perfect target size/yaw/edges, the height prior H*fy/h has signed bias -4.844935754414118m, MAE 4.923050318241922m, vs inversion MAE 2.108504240207313e-6m on the same 25,424 targets from 4,096 TRAIN frames / 26,546 raw labels. This measures consistency with the pinhole target generator, not physical sensor calibration or learned accuracy.
+5. Necessary counterexample: on a DIFFERENT 4,096-frame TRAIN query panel with 204,800 predicted proposals, baseline learned depth mAP .2106477859625314; height-only .08308034537667813; cuboid-edge-only .16478485385415936. Replacement keeps class/score/size/yaw/pool, removes learned depth residual, and falls back on invalid geometry (28 cuboid cases; 12 height cases). Cuboid inversion beats isolated height prior, but neither beats learned output. No model promotion, no heldout evaluation, no retraining compatible residual. Avoid implying near-zero ideal error translates to deployment.
+
+EXACT COPIED SOURCES FOR PAPER
+paper/revision_20261102/evidence/detection/source_manifest.json records branch, commit, source path, Git blob and SHA256. All copied JSON bytes are exactly Git blobs:
+- aligned_baseline.json: .mAP, .samples, .gt_boxes, .pred_boxes, .classes.<class>.AP
+- aligned_ranked.json: same keys
+- official_scores.json: .AP, .ATE, .ASE, .AOE
+- height_prior_ideal.json: .frames, .raw_targets, .admitted_targets, .groups.all.height_prior.mae_m, .groups.all.height_prior.mean_signed_m, .groups.all.cuboid_edges_on_same_subset.mae_m
+- geometry_predicted.json: .baseline.mAP, .height_only.mAP, .cuboid_edges_only.mAP
+- monocop_screen.json: .best=.03476029937874453, .incumbent_panel.mAP=.06533347492745492, .promotion=false, .panel_gate_passed=false
+Original prefix docs/detection_sota_20261029/evidence/; source_manifest gives precise filenames.
+
+NEGATIVES TO PRESERVE, COMPRESS IN APPENDIX
+150m full-selection .06105242 (below ranked .06204229); range ensemble .06048236; union .04055616. Full-selection class hypotheses .05797162 / top50 .05783289; class-linear ranker .05809659; MLP .05752680. 300m panel best .06435242 vs .06533347 incumbent; no full-selection result exists. KITTI MonoDGP panel .03828135 and MonoCoP .03476030, both fail +.005 gate, both no full confirmation. One-seed 2,048-update screenings do not show convergence or refute all transfer/architectures. Dfull prior training 281,116 eAP exposures is unequal to KITTI/MonoCoP histories; MonoCoP also changes architecture. Uniform 512-frame panel has no other_vehicle GT; AP=0 remains in eight-class macro.
+Historical post-Dfull temporal best .16884845 vs current-only .16910427; events F01 .17055750 vs local capacity .16756493, gain .00299257 below predeclared .005; F11 .16944685. Historical AP101, 1,024-frame panel, single seed; not aligned scores or evidence all temporal/event models fail.
+
+LIMITATIONS AND EXCLUSIONS
+- No SOTA, production/safety, calibrated uncertainty or end-to-end TTC generalization claim.
+- Depth field historical name depth_log_variance actually parameterizes Laplace loss 1.4142*exp(-s)*abs(e)+s. Scale b=exp(s)/1.4142; do not use exp(s/2) Gaussian intervals.
+- TRAIN census covers 70,279 frames in 24 sequences. Maximum optical depth 249.892971m; max radial ego XY 253.595616m. No TRAIN labels at 400m. 300m configuration does not imply capacity at 300/400m.
+- Extra long-range targets overwhelmingly trucks (18,255 of 20,527 added beyond 150m); appearances are correlated and do not solve rare-class diversity.
+- TRAIN/selection rare-class gaps do not isolate overfitting because identities and scene distribution differ. 24/8/8 split has no acquisition independence certification.
+- Internal pinhole round-trip is not independent rectification audit. eAP remaps RGB to event plane; calibration approximation remains.
+- MonoCoP recovery repeated 66 lost updates/132 exposures after host restart. Logical 4,096 exposures vs >=4,228 executed. Reported 3396.91s includes 3120s conservative reservation, not exact compute; losses not bitwise equal despite token replay.
+- CI fixes, downloads, source-preserving formatter exceptions, cache throughput, technical smoke and restart plumbing belong in reproducibility record, not scientific novelty headline.
+
+SUGGESTED APPENDIX PROSE
+A separate RGB detection study exposes the limits of extending PHASE-TTC to predicted objects. On 23,958 public development frames, a TRAIN-fitted ranker increased aligned eight-class mAP from 0.0570 to 0.0620 while preserving proposal geometry. The submitted detector obtained official AP 0.0513 on 35,940 test frames; no paired baseline submission was made. The development set was reused for model selection, and rare-class performance remained weak. An ideal-target cuboid inversion removed the geometric bias of a height-only prior, but replacing learned depth with that inversion reduced TRAIN mAP from 0.2106 to 0.1648. These results support an auditable integration study, not a claim of improved end-to-end TTC accuracy.
+
+MARKDOWN INVENTORY
+docs/detection_g0_g2_20261029/EXECUTION_REPORT.md
+docs/detection_g0_g2_20261029/G0_DATA_GEOMETRY.md
+docs/detection_g0_g2_20261029/G1_DETECTOR_FEASIBILITY.md
+docs/detection_g0_g2_20261029/INDEPENDENT_REVIEW.md
+docs/detection_local_20261029/DETECTOR_PHASE_BRIDGE.md
+docs/detection_local_20261029/DEVELOPMENT_METRICS.md
+docs/detection_local_20261029/EXPERIMENTS_AND_FINDINGS.md
+docs/detection_local_20261029/G1_LOCAL_PREFLIGHT.md
+docs/detection_local_20261029/GARL_ALIGNMENT.md
+docs/detection_local_20261029/GEOMETRY_RESOLUTION.md
+docs/detection_local_20261029/IMAGE_SIGNAL_CONTROLS.md
+docs/detection_local_20261029/IMPLEMENTATION_REPORT.md
+docs/detection_local_20261029/INDEPENDENT_FINAL_REVIEW.md
+docs/detection_local_20261029/INFERENCE_VISUALS.md
+docs/detection_local_20261029/LOCAL_EXECUTION_REPORT.md
+docs/detection_local_20261029/MEDIA_PILOT.md
+docs/detection_local_20261029/NATIVE_VELOCITY_HEAD.md
+docs/detection_local_20261029/PORTABLE_DETECTOR.md
+docs/detection_local_20261029/README.md
+docs/detection_local_20261029/REPRODUCTION_AND_HANDOFF.md
+docs/detection_local_20261029/RGB_EXPERIMENT_ADMISSION.md
+docs/detection_local_20261029/RGB_TRAINING_RESULTS.md
+docs/detection_local_20261029/TRAINING_TABLES.md
+docs/detection_sota_20261029/AP101_OPTIMIZATION.md
+docs/detection_sota_20261029/AUTONOMOUS_QUEUE.md
+docs/detection_sota_20261029/AUTONOMOUS_QUEUE_RESUME.md
+docs/detection_sota_20261029/BATCHED_EVALUATION_PROFILE_PLAN.md
+docs/detection_sota_20261029/BENCHMARK_LOCAL_ALIGNMENT_20261101.md
+docs/detection_sota_20261029/BENCHMARK_SUBMISSION_20261101.md
+docs/detection_sota_20261029/BENCHMARK_TARGET.md
+docs/detection_sota_20261029/CAMPAIGN_CONTROLS.md
+docs/detection_sota_20261029/COMPUTE_OPTIMIZATION_AUDIT.md
+docs/detection_sota_20261029/CONTROLS.md
+docs/detection_sota_20261029/D4096_READABLE_REVISION.md
+docs/detection_sota_20261029/DATA_AUDIT.md
+docs/detection_sota_20261029/DEPTH_SCALE_SEMANTICS_20261101.md
+docs/detection_sota_20261029/DFULL_BATCH8_20261031.md
+docs/detection_sota_20261029/DFULL_COMPUTE_INVESTIGATION_20261031.md
+docs/detection_sota_20261029/DFULL_RUN_20261031.md
+docs/detection_sota_20261029/DIAGNOSTICS.md
+docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261101.md
+docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261102.md
+docs/detection_sota_20261029/EVALUATION_MEMORY_PROFILE.md
+docs/detection_sota_20261029/EVENT_DATA_FEASIBILITY.md
+docs/detection_sota_20261029/EVENT_FUSION.md
+docs/detection_sota_20261029/EVENT_REPRESENTATION.md
+docs/detection_sota_20261029/EVENT_SCREEN_EXECUTION.md
+docs/detection_sota_20261029/EXECUTION.md
+docs/detection_sota_20261029/EXTERNAL_PROTOCOL.md
+docs/detection_sota_20261029/GENERATED_RESULTS.md
+docs/detection_sota_20261029/GEOMETRY_AND_TARGET_AUDIT_20261101.md
+docs/detection_sota_20261029/GPU_ADMISSION_HARNESS.md
+docs/detection_sota_20261029/INDEPENDENT_H5_ADMISSION.md
+docs/detection_sota_20261029/INDEPENDENT_PHASE_POPULATION.md
+docs/detection_sota_20261029/INDEPENDENT_PHASE_TEACHER_CACHE.md
+docs/detection_sota_20261029/INDEPENDENT_PRODUCER_FOUNDATION.md
+docs/detection_sota_20261029/INDEPENDENT_RAW_HISTORY.md
+docs/detection_sota_20261029/INDEPENDENT_R_A5_RGB_SOURCE_INVENTORY.md
+docs/detection_sota_20261029/INDEPENDENT_TEACHER_CROSSWALK.md
+docs/detection_sota_20261029/LONG_RANGE_CAMPAIGN_20261101.md
+docs/detection_sota_20261029/LONG_RANGE_TRAIN_AUDIT_20261101.md
+docs/detection_sota_20261029/MONOCOP_CPU_PORT_PLAN_20261101.md
+docs/detection_sota_20261029/MONOCOP_FEASIBILITY_20261101.md
+docs/detection_sota_20261029/MONOCOP_GPU_SMOKE_PLAN_20261101.md
+docs/detection_sota_20261029/MONOCOP_SCREEN_PLAN_20261101.md
+docs/detection_sota_20261029/MONOCOP_TRANSFER_PLAN_20261101.md
+docs/detection_sota_20261029/MULTIOBJECT.md
+docs/detection_sota_20261029/NEXT_INTERVENTION_DECISION_20261101.md
+docs/detection_sota_20261029/PERFORMANCE_DIAGNOSIS.md
+docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261101.md
+docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261102.md
+docs/detection_sota_20261029/POST_DFULL_RESULTS.md
+docs/detection_sota_20261029/PREFETCH_AND_GPU_OPTIMIZATION.md
+docs/detection_sota_20261029/PRETRAINED_COMPARISON_20261101.md
+docs/detection_sota_20261029/PRETRAINED_MONODGP_INTAKE_20261101.md
+docs/detection_sota_20261029/PROFILE.md
+docs/detection_sota_20261029/QUERY_QUALITY_CAMPAIGN_20261101.md
+docs/detection_sota_20261029/R0_R2_SEED7_DECISION.md
+docs/detection_sota_20261029/R2_RARE_FINAL_AND_DFULL_DECISION.md
+docs/detection_sota_20261029/R2_RARE_SAMPLING_CAMPAIGN.md
+docs/detection_sota_20261029/R3_R4_CANDIDATE_PREREGISTRATION.md
+docs/detection_sota_20261029/RANGE_CAMPAIGN_20261101.md
+docs/detection_sota_20261029/RANGE_ENSEMBLE_COMPACT_20261101.md
+docs/detection_sota_20261029/RANGE_ENSEMBLE_PLAN_20261101.md
+docs/detection_sota_20261029/RANKING_EXPERIMENT.md
+docs/detection_sota_20261029/RANKING_PANEL_RECIPE.md
+docs/detection_sota_20261029/RELEASE_CANDIDATE_20261101.md
+docs/detection_sota_20261029/RGB_FULL_PREFLIGHT.md
+docs/detection_sota_20261029/RUNPOD_EVALUATION_OPTIMIZATION.md
+docs/detection_sota_20261029/RUNPOD_INPUT_OPTIMIZATION.md
+docs/detection_sota_20261029/RUNPOD_RELEASE_PREPARATION.md
+docs/detection_sota_20261029/S5_REAL_REPLAY.md
+docs/detection_sota_20261029/TEMPORAL_DATA.md
+docs/detection_sota_20261029/TEMPORAL_MODEL.md
+docs/detection_sota_20261029/TEMPORAL_POPULATION.md
+docs/detection_sota_20261029/evidence/benchmark_local_alignment_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/control300_screen_update512_diagnostic_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/current_v1/GENERATED_RESULTS.md
+docs/detection_sota_20261029/evidence/current_v1/README.md
+docs/detection_sota_20261029/evidence/current_v1/s0/CONTROLS.md
+docs/detection_sota_20261029/evidence/current_v1/s0/DIAGNOSTICS.md
+docs/detection_sota_20261029/evidence/current_v2/ADMISSION_RESULTS.md
+docs/detection_sota_20261029/evidence/current_v2/README.md
+docs/detection_sota_20261029/evidence/external_protocol_v2/README.md
+docs/detection_sota_20261029/evidence/height_prior_geometry_20261102/REPORT.md
+docs/detection_sota_20261029/evidence/intake/AUDIT_REPRODUCTION.md
+docs/detection_sota_20261029/evidence/intake/INDEPENDENT_PLAN_REVIEW.md
+docs/detection_sota_20261029/evidence/intake/SOTA_DEVELOPMENT_PLAN.md
+docs/detection_sota_20261029/evidence/intake/independent_sota_code_review.md
+docs/detection_sota_20261029/evidence/intake/independent_sota_research_review.md
+docs/detection_sota_20261029/evidence/intake/independent_sota_science_review.md
+docs/detection_sota_20261029/evidence/intake/pilot_code_findings.md
+docs/detection_sota_20261029/evidence/intake/pilot_science_findings.md
+docs/detection_sota_20261029/evidence/intake/sota_primary_findings.md
+docs/detection_sota_20261029/evidence/kitti_screen_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/monocop_cpu_port_20261101/report/REPORT.md
+docs/detection_sota_20261029/evidence/monocop_gpu_execution_20261101/monocop_gpu_smoke_plan_v3/MONOCOP_GPU_SMOKE_PLAN_20261101.md
+docs/detection_sota_20261029/evidence/monocop_gpu_execution_20261101/monocop_gpu_smoke_plan_v4/MONOCOP_GPU_SMOKE_PLAN_20261101.md
+docs/detection_sota_20261029/evidence/monocop_gpu_smoke_preparation_20261101/v1/MONOCOP_GPU_SMOKE_PLAN_20261101.md
+docs/detection_sota_20261029/evidence/monocop_gpu_smoke_preparation_20261101/v2/MONOCOP_GPU_SMOKE_PLAN_20261101.md
+docs/detection_sota_20261029/evidence/monocop_screen_baseline_diagnostic_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/monocop_screen_final_20261102/REPORT.md
+docs/detection_sota_20261029/evidence/monocop_screen_update512_diagnostic_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/monocop_transfer_20261101/report/REPORT.md
+docs/detection_sota_20261029/evidence/multiclass_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/official_benchmark_20261101/ANALYSIS.md
+docs/detection_sota_20261029/evidence/query_quality_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/range150_confirmation_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/range300_screen_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/range_campaign_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/range_ensemble_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/raw_diagnostics_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/semantic_probe_20261101/REPORT.md
+docs/detection_sota_20261029/evidence/train_query_diagnostics_20261101/diagnostics/REPORT.md
+docs/detection_sota_20261029/evidence/train_query_diagnostics_20261101/report/REPORT.md
+docs/phase_3d_ttc_20261029/council_review.md
+docs/phase_3d_ttc_20261029/swarm_research.md

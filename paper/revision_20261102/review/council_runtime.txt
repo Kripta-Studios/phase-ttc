@@ -1,0 +1,282 @@
+SCIENTIFIC COUNCIL: RUNTIME AND PUBLICATION REVIEW
+Review date: 2026-11-02. Scope begins 2026-10-28 00:00 Europe/Madrid.
+Reviewer: council_runtime, with an independent subreview of the resume archive.
+
+RECOMMENDATION
+
+Support the proposed manuscript focus: interpretable phase/timing fusion, explicitly
+development-exposed quality adaptation, the elapsed-time intervention and negative
+JEPA evidence. Runtime merits a main-text subsection and one compact table, with
+numerical diagnostic detail in the supplement. Its contribution is a causal,
+auditable implementation and a measurement lesson, not achievement of a hard
+20 ms deadline, physical real-time operation, or novel cryptographic hashing.
+Do not let operational completeness displace the scientific comparisons.
+
+The runtime sources expose a useful failure mode: mean service time below the
+query period does not imply deadline compliance after acquisition and queueing.
+The best recorded replay delivers all 250 single-object updates with preserved
+predictions but misses 20 ms on 201 of them. The failure denominator is central.
+
+PRIMARY TABLE: EXACT MACHINE-READABLE SOURCE
+
+artifacts/train40_runtime_council_20261028/paced/memory_cache_overlap_reverse1_250_v1/summary.json
+
+Use the following prefix for all three latency rows:
+  paced.latency_populations.populations.successful_all_object_ttc
+Then deadline_response_ms, raw_availability_response_ms, service_span_ms.
+Each dictionary supplies count, mean_ms, p50_ms, p95_ms, p99_ms, max_ms and
+at_least_20ms_count. Values in milliseconds:
+
+Clock                n    mean        p50       p95        p99        maximum
+Scheduled arrival    250  23.9071148  24.538    29.143155  32.414209  35.3326
+Payload available    250  20.7330316  20.8045   25.252990  27.627191  29.5930
+Service execution    250  17.6103860  16.91275  21.426025  23.212746  25.9175
+
+Deadline >=20 ms: 201/250 = 80.4%. Source fields:
+  paced.latency_populations.counts.successful_all_object_ttc = 250
+  paced.latency_populations.counts.failed_acknowledgements = 0
+  paced.latency_populations.counts.dropped_updates = 0
+  paced.latency_populations.counts.source_errors = 0
+  paced.offered_updates = 250
+  paced.offered_duration_s = 5.0
+  paced.rate_hz = 50
+  paced.actual_wall_duration_s = 5.0493202
+  paced.last_successful_all_object_ttc_duration_s = 5.0036785
+  separate_parity.passed = true
+  milestone.milestone_with_parity_passed = false
+  capacity_with_parity_passed = false
+  paced.physical_goal_demonstrated = false
+
+200/250 scheduled arrivals observed one earlier update unfinished; 50 observed
+zero. Maximum prior work was one. This is finite-run backlog, not proof of
+asymptotic instability or of stability. Never report inverse-mean throughput as
+sustained throughput. The source explicitly labels inverse-mean fields otherwise.
+
+Clock semantics: scheduled arrival starts BEFORE raw acquisition/copy/sealing,
+includes acquisition delay and queue waiting, and ends with all three required
+TTC scalars in host memory. The raw_availability field starts AFTER the payload
+has been acquired/copied/sealed, despite its convenient name. Service execution
+starts only when the consumer begins. Thus the second row should preferably be
+labelled 'Payload-ready to host TTC', not 'sensor arrival to TTC'.
+
+Hardware/configuration: RTX 5070 Ti Laptop GPU, Python 3.11.15, Torch
+2.11.0+cu128, CUDA build 12.8, FP32, TF32 off, 2 Torch CPU threads, 8 RGB workers,
+queue capacity 2, Windows build 26200. CPU model and GPU driver absent. Startup
+outside arrival clock: raw preload 2.7692392 s, model/service init approximately
+0.516 s, synthetic priming approximately 12.095 s for 7 layouts, 600 ms history
+initialization approximately 0.132 s, source warmup approximately 0.051 s.
+Use paper/revision/deployment_contract.json for the existing portable projection
+and paper/tables/runtime_setup.tex as a cross-check, not as numerical authority.
+
+Scope: preloaded raw CPU arrivals, single object, CPLA-low, five seconds. Future
+raw bytes private to feeder; no future tokens/hashes/crops/features prepared.
+Disk I/O is outside measured arrivals. The source bound is 2,611,872,720 bytes
+under explicit 3 GiB budget; this is a numerical allocation bound, not measured
+RSS, and excludes Python/HDF5/model/GPU overhead. No natural 60-second episode,
+physical-camera source or admitted multiobject paced run exists in this record.
+
+EXACT REUSE AND CAUSALITY
+
+Final profile at f046b791: PIL ROI-first; temporal prefix/top-k normalization;
+query graphs; native producer batches; event encoder reuse off; RGB feature
+reuse on; RGB object chunk size 1; parallel branches; event execution overlaps
+RGB preparation; transport reverse-summaries. SHA-256 V1 immutable tokens stay
+default. Crop cache, uint8 preparation, BLAKE3 V2 wiring and subpacket backend
+are excluded from the selected paced profile. Changing defaults did not itself
+produce another GPU measurement.
+
+Immutable cache keys bind pixels, timestamps, ROI, model weights, runtime and
+batch layout. Metadata/context estimates are recomputed; predictions are not
+replayed from a cache. Raw gaps invalidate history rather than emitting stale
+TTC. Synthetic shape priming uses no observations and preserves causal reset.
+These are defensible method details, supported by code and receipts.
+
+Prepared transport diagnostic:
+artifacts/train40_runtime_council_20261028/producers/exact_transport_sensitive_v1/summary.json
+  status COMPLETE; query_coverage_exact true; all_replay_gates_passed true;
+  complete_update_admitted false; sustained_50hz_demonstrated false;
+  two_object_admitted false; weights_unchanged and normalizers_unchanged true.
+Seven query records, indices 0,137,488,505,514,533,553; 462 explicit calls across
+original/reverse/reverse-summaries and serial/parallel routes. Per-call
+records[*].replay_parity[*].feature_parity.exact validates four feature groups
+bit-for-bit. TTC uses unchanged atol=rtol=1e-5; do NOT turn this into a claim
+that every TTC is bitexact (the RGB TTC has nonzero rounding differences in
+some reference comparisons). Includes initial calls, warmups, repetitions.
+Already-prepared GPU producer timing excludes RAW, H2D and downstream context.
+
+5 ms subpacket diagnostic:
+artifacts/train40_runtime_council_20261028/event/subpacket_backend_sensitive_v2/summary.json
+  all_backend_gates_passed, all_final_ttc_passed, all_canonical_inputs_passed true;
+  latency_measured false; target_50hz_demonstrated false;
+  three_quarters_latency_saving_claimed false; objects 1.
+Three queries (0,137,553), common initial 600 ms filled by thirty original 20 ms
+packets, then 120 5 ms ingests over another 600 ms. There are 31 complete
+boundaries per query, total 93; all 558 persistent buffer comparisons and 465
+scalar-state comparisons are exact; 93 representations exact; 6 final canonical
+inputs and 18 final TTC components exact. Intermediate queries use fixed full
+sensor ROI for diagnostics, only final anchor uses the real query ROI for TTC.
+The required aggregate event budget remains per 20 ms, not per 5 ms. Partial
+phases cannot predict; overflow or interruption latches invalid state until reset.
+It has NO paced 200 Hz feeder integration or measured latency savings. Four
+5 ms calls increase some transfers/dispatches; 75% savings would be invented.
+
+NUMERICAL AND NEGATIVE RESULTS WORTH RETAINING
+
+1. Compiled transport is not an admitted improvement. Native-log/native-match
+fail final TTC on sensitive examples, despite close intermediate values. The
+isolated coordinate investigation diagnoses 202 differing scalars on four
+coarse cases: replacing only the two compiled linspace constructions by opaque
+ATen calls gives 12/12 exact transport-summary cases (3,888 scalar comparisons).
+Grid 16 differs at coordinates 6,7,8,9 by up to 1.4901161193847656e-08; grid 32
+does not. This is conditioned on earlier preserved sampling/reduction boundaries,
+not universal attribution of all compiled error or admission of a full model.
+Source: artifacts/train40_runtime_council_20261028/compiled_pipeline/linspace_attribution_v1/summary.json
+keys all_candidates_exact, all_controls_reproduced_exactly,
+standalone_coordinates, records; final_ttc_admitted=false, latency_measured=false.
+
+2. Failure acknowledgements can spuriously improve a latency average. The crop
+cache replay contains 115 successful TTC updates, 133 failed acknowledgements
+and 2 drops. Successful deadline mean is 27.5726547826 ms, p95 37.42381 ms;
+mixed responses mean is 16.1513044355 ms. The latter is NOT prediction latency.
+The 115 produced predictions preserve parity, but global coverage fails.
+Source: artifacts/train40_runtime_council_20261028/paced/memory_crops_reverse1_250_v1/summary.json
+same latency_populations paths as primary table. No matched A/B establishes
+that cache or garbage collection caused the failure. Keep causal language narrow.
+
+3. BLAKE3 only improves isolated CPU copy+hash: SHA mean 3.9973 vs BLAKE3 1.6342
+ms/frame; paired reduction 2.3632 ms. Seven 6,912,000-byte frames, twenty repeated
+pairs, 140 per-frame samples per algorithm/scope; they are not independent
+episodes. V2 core implemented, no wiring or end-to-end admission. This is an
+appendix engineering observation at most, not a novelty claim.
+Source: docs/train40_runtime_council_20261028/FRAME_HASH_CPU_GENERATED.json and
+artifacts/train40_runtime_council_20261028/frame_hash_cpu/idx553_v1/summary.json.
+
+4. GPU-exact RGB crop passes seven preparation checks, but no end-to-end TTC
+admission or paired win over PIL. First real preparation includes 6631.424 ms
+compilation. Prepared miss 35.600-39.863 ms vs causal reconstructed-prefix
+8.686-10.566 ms (three repeats). They are different work amounts, not a sustained
+speedup comparison. Exclude from abstract and central contribution list.
+
+INDEPENDENT RECOMPUTATION DURING THIS REVIEW
+
+Loaded the stdlib-only paced_statistics.py and recomputed populations from raw
+monotonic arrival/object/group receipts for all seven saved paced runs. Five
+existing modern latency_populations match exactly. The two oldest runs contain
+no stored population projection; modern recomputation gives:
+baseline1_50_v1: 13 valid, 0 failed acks, 37 drops, deadline mean 999.5149231 ms,
+p95 3817.13708 ms.
+memory1_50_v1: 9 valid, 40 failed acks, 1 drop, mean 55.6078667 ms,
+p95 74.72102 ms.
+memory_cache_overlap1_50_v1: 27 valid,22 failed acks,1 drop, mean45.4657815,
+p95 69.72315. The 50-update reverse pilot and lifecycle repeat both preserve
+50/50 output, with p95 29.892095 and28.85508 ms respectively.
+No GPU execution, training or new performance measurement was performed.
+
+PUBLICATION AND CLAIMS TO REVISE
+
+The old paper is careful about runtime. Preserve its deadline failure and
+separate timing scopes. Tighten the wording of the second clock as above.
+Its sentence saying timing evidence is aggregate-only reflects the portable
+paper projection; the original paced source contains per-arrival and object
+records, so the new manuscript can use them without fabricating a distribution.
+Do not carry a stale present-tense 'unverified labels on 434 queries' claim into
+the revision if later exact recording/target mapping now supplies those labels;
+the transfer reviewer must resolve that evolution with the new source revision.
+The October28 public benchmark score is a dated observation, not a current SOTA
+claim. The complete-system comparison confounds upstream producer training,
+history duration and modality. A 1,955-parameter fusion head is not a total
+system-size or full latency claim. The 468-query positive-TTC development cohort
+and 434-query competition-aligned cohort cannot be merged by scenario names.
+
+The release commit89c74c34 added the existing manuscript, source ZIP, 99-source
+registry and CI rebuild. Dependencies/newtx plain TeX and clean-clone portability
+were fixed afterward. This is publication infrastructure, not fresh experimental
+evidence. ADR0044 preserves25 historical runtime-bound wrappers byte-for-byte;
+their presence/hashes are not proof of execution. Third-party FCWD illustration
+in paper/ASSETS.md has no separately identified redistribution license; a new
+original vector schematic avoids unnecessary image reuse.
+
+COVERAGE
+
+Identified56 recent commits on perf/train40-persistent-50hz. The runtime-path
+history through release/phase-ttc-final-20261029 contains41 commits. The release
+has81 unique changed .md paths over the interval,34 in the council tree.
+Reviewed19 current council documents (narrative, contracts, proposals and
+generated-results interpretation),2 evidence README files,13 archived council
+documents by content deduplication and differing-version comparison. Nine
+archived documents are byte-identical to current versions; differing COUNCIL,
+FROZEN_RGB_V2_DESIGN and RGB_GPU_FINDINGS were compared line-by-line. Generated
+result tables were interpreted against structured source receipts, including
+the old/new failed-response semantics. Reviewed paper README/ASSETS, runtime,
+reproducibility, discussion and setup-table source, ADR0044, key source diffs,
+paced_statistics implementation and main runtime JSONs named above.
+The resume-tree subreview is attached separately in a parent message. This
+coverage is a targeted runtime/publication council review, not a claim to have
+personally read every eAP/transfer document in the full multi-branch repository.
+
+RESUME ARCHIVE SUBREVIEW (resume_docs)
+
+The subreview read all37 changed Markdown paths in
+docs/train40_runtime_resume_20261027 (24 unique byte contents, historical
+snapshot differences included), its three doc commits471302d7,451cf090,2521de1a,
+publication commits89c74c34,820e6a6f,bb4ef634,3434a3be and0f10312d delivery record.
+Together with34 council paths, this covers71 runtime Markdown paths among the81
+release changed paths. Transfer/adapter docs are assigned to the transfer lane.
+
+Additional conclusions and exact source locations:
+
+R1. Preserving event producer batching matters. Event endpoint reuse failed5/554
+E_CTX outputs despite input parity. E reuse OFF/RGB reuse ON restores all-three
+TTC parity on554/554, unchanged atol=rtol=1e-5. E_CTX bitexact; whole-system
+parity.exact=false. Source:
+docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/corrected_all554_v1/summary.json
+parity.components.E_CTX_TRAIN40.max_abs_error=0;
+PHASE max_abs_error=0.0000667572021484375;
+R_CTX max_abs_error=0.00031280517578125.
+RAW-ready to TTC mean46.1917847 ms,p95 66.634525,max103.7058 across554 queries;
+history rebuilt outside each clock, therefore not a paced-service comparison.
+
+R2. Exact event prefix representation:121 spatial prefix planes,600ms history,
+5ms boundaries, integer counts/moments with epoch-crossing correction and
+original float64 interpolation. Exact95th percentile needs top
+1+ceil((N-1)/20) values; N163840 gives k8193. Dense query553,5 measured samples:
+one ROI bucket7.84078 ms versus prefix/top-k/query graph6.46498 ms;
+20 translated artificial ROI73.7359 versus30.62268 ms. Representation exact.
+Source under same archive: prefix/gpu_query_graph_v1/summary.json,
+prefix/IMPLEMENTATION_NOTES.md, normalization/NOTES.md. No TTC or stream claim.
+
+R3. Metadata cache opportunities:32 sequences,3191 scheduled,3129 accepted,
+62 exclusions,650ms retention. Exact-ROI event reuse115/18774=0.6125%; effective
+projection155/18774=0.8256%; full RGB-call reuse1719/3129=54.9377% accepted,
+53.8703% scheduled. Native RGB spacing50ms (~20Hz), model triplets100ms.
+Source compute_council/causal_cache_metadata_v1.json and
+rgb_cache/metadata_reuse_v1.json under archive. One-object metadata proxy,
+not a measured live cache rate.
+
+R4. Compiled transport final-three-TTC gates pass5/7 default,4/7 no-FMA,5/7
+no-FMA+exact-division; each rejected. Sources compiled_pipeline/
+gpu_sensitive_v2/summary.json,gpu_no_fma_v3/summary.json,
+gpu_no_fma_exact_div_v4/summary.json and PRECISION_VARIANTS.md.
+All PHASE outputs pass but event/RGB constituent TTC fails, so retain rejection.
+PIL vsuint8 four-process ABBA120 updates all parity pass but no consistent gain:
+one-object medians PIL25.620/24.704/79.312 versusuint8 29.563/24.784/80.765ms
+for three cases. Source multiobject/paired_1_2_uint8_v1_aggregate/summary.json;
+causal_speedup_admitted=false and goal_50hz_under_20ms_demonstrated=false.
+
+R5. Twenty translated ROI pilot mean383.714367ms,p95 386.36472ms on3 updates.
+Exact RGB cache MISS408.6445ms vs4 repeated identical-input HIT mean189.4901ms;
+48,384,000 hashed raw bytes per update costs22.3652-23.0006ms.
+Sources multiobject/pilot_20_chunk1_querygraphs_v1/summary.json and
+multiobject/pilot_20_exact_cache_v1/summary.json under archive.
+These are capacity diagnostics with translated ROI, not twenty annotated tracks.
+
+R6. Scheduler fake control3000 arrivals/60s: Event.wait p95 15.225025ms versus
+sleep0.610805ms to fake RAW, all controls covered. Source
+compute_council/paced_scheduler_ab_v1/summary.json. No Torch/GPU/TTC in this
+experiment; never mix these times with real service timing or imply causal
+attribution of the entire real-service gain.
+
+Previous publication:52pages,24figures,27tables, evidence snapshotOct28. The
+revision should be a new concise scientific article, not another chronological
+operational diary. Preserve dated benchmark interpretation and refresh obsolete
+434-query label status only against newer exact correspondence evidence.

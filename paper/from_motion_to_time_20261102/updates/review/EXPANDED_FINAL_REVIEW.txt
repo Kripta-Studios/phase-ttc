@@ -1,0 +1,26 @@
+FINAL DELIVERY REVIEW — FROM MOTION TO TIME, EXPANDED EDITION
+
+Final PDF: 65 pages; 26,674 extracted words; 25 figures; 30 tables.
+Original PDF: 52 pages; 20,281 extracted words.
+
+The scientific review accepted the expanded edition. All 19 original section
+inputs are retained; original figures/data/architecture-source bytes are unchanged.
+New evidence identifiers complement the historical registry.
+
+Visual inspection covered all final pages through four independent ranges:
+01–16, 17–34, 35–50 and 51–65. No clipping, overlap or broken equations/tables was
+reported. Root reviewed the cover, contents, opening pages and contact sheets.
+The sole layout change after that review removed an editorial-only 66th page.
+All 65 final pages are pixel-identical at 72 dpi to the inspected proof pages.
+
+The modular and consolidated PDF text is identical. Fonts are embedded.
+LaTeX reports zero warnings, overfull boxes, missing glyphs or undefined references.
+The new and changed generator scripts pass Ruff. Original and new numerical
+ledgers pass their build checks. No training or sensor inference was rerun.
+
+SHA-256 final PDF:
+e569a424e7b53aa19f1557590f4484244063e46a7ecff2176d460e43a9eb2589
+
+The earlier companion review files in this source package document the material
+used to prepare the expansion. This receipt and expanded_validation.json describe
+the full From Motion to Time delivery.

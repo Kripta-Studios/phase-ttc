@@ -1,0 +1,74 @@
+TYPOGRAPHIC REVIEW — ORIGINAL FROM MOTION TO TIME
+Read-only review, 2 November 2026
+
+Scope
+Read the full original paper/paper_style.sty and the supplied-reference style
+analysis. Rendered and inspected original PDF pages1,2,3,4,7,9,14,19,25,31,45,52.
+Inspected body-font spans on pages3,4,7,14,25,45. The source PDF has52pages.
+No manuscript source files changed by this reviewer.
+
+Recommendation
+Retain the original editorial identity. XCharter with matching newtxmath works
+well in the dense mathematical content. The blue section hierarchy, muted
+running furniture, EVOCON mark, and33pt/26pt two-line title make From Motion
+to Time identifiable. The52-page report and technical supplement have a different
+reading task from the compact two-column LeVJEPA reference; forcing its exact
+layout would reduce figure/equation room and alter the identity the user values.
+Use reference-derived restraint and a pale-blue abstract, not a font substitution.
+
+Specific low-risk changes
+1. Keep A4,22mm side margins, single-column body,10.6pt type and14.05pt baseline.
+   Define normalsize explicitly so size resets follow the intended system.
+   However, don't claim an observed original size defect: measured original body
+   text is already approximately10.6pt. Slight extracted size differences come
+   from microtype font expansion and PDF point conversion.
+2. Define small at9.3/12pt and footnotesize around8.2/10.5pt. This gives figure
+   captions and compact tables a gentler size step from the body than class
+   defaults. Check existing wide tables after this adjustment; retain a local
+   smaller table size only where the content genuinely needs it.
+3. Raise muted evidence identifiers from7.2pt to7.5–7.6pt and preserve their
+   subdued color. They are currently the least readable text in ordinary viewing.
+   Keep identifiers separate from scientific bibliography citations.
+4. Keep section15.3/19pt blue and subsection11.5/14.5pt dark. These already
+   establish a coherent hierarchy. A slightly lighter section rule is optional;
+   do not add extra decorative rules or another type family.
+5. A pale-blue abstract panel fits the existing callout palette and the reference.
+   Use a nearly invisible border,2–3pt radius,8–10pt internal padding, and a quiet
+   bold Abstract label. Preserve the cover's title hierarchy and generous space.
+   Check that the longer new abstract does not collide with the original hero;
+   move that hero deliberately if it cannot retain a legible size on page1.
+6. Keep captions below figures and above tables, with a bold lead phrase and
+   ragged/right or justified setting used consistently. Existing7pt caption skip
+   works. Do not enlarge captions enough to dominate the diagrams.
+7. Preserve the figure colors already consistent with event/RGB/fusion semantics.
+   Existing vector plots and the architecture diagram are readable at full width.
+   New plots should use the same muted blue/teal/purple family and similar font
+   sizes, rather than the unrelated gray+blue appearance of the prior short draft.
+
+Pagination checks for the expanded manuscript
+- Original contents page fits21entries plus overview. The new sections may
+  overflow: reduce l@section's vertical insertion from.8em to.45–.55em, or allow
+  a deliberate two-page contents. Do not squeeze the whole document to save one
+  contents page. Keep the overview panel with adequate breathing room.
+- Page31 leaves much whitespace after a short runtime subsection because the
+  following sequence figures start on forced pages. Check whether a local break
+  can be removed, but preserve the large signed trace plots as full-width pages.
+- Keep the technical-supplement divider. Its generous whitespace is intentional
+  and aesthetically effective; update its date and scope, not its purpose.
+- Long evidence tables should retain repeated headers, safe URL wrapping and
+  complete hashes/keys. Font consistency matters more than making them compact.
+- Reflow after typography changes can create new widows or lonely section
+  headings despite original guards. Inspect every final rendered page.
+
+Reference comparison
+The inspected arXiv source uses Latin Modern9.3pt, two-column US Letter, a pale
+blue full-width abstract, quiet black headings and centered folios. Its main
+file disables the theme's running header. The compatible transferable elements
+are restrained abstract styling, clean booktabs tables, coherent size hierarchy
+and disciplined spacing. Retaining PHASE's XCharter, A4 and running identity is
+the correct response to the user's latest explicit preference.
+
+Verdict
+The original is already aesthetically strong. A restrained typography pass,
+updated first-page abstract, and careful reflow can improve comfort and polish
+without replacing the visual design. No broad redesign is warranted.

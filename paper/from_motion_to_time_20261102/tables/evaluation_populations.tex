@@ -1,0 +1,16 @@
+\begin{table}[H]
+\centering\small
+\caption{Evaluation populations and the quantities each supports. Historical46 and Extended-new share three sequence groups but no query identities. The 434-query inference snapshot and corrected local comparison share identities but answer different questions.}
+\label{tab:evaluation-populations}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.24\linewidth}>{\raggedright\arraybackslash}p{.22\linewidth}X@{}}
+\toprule Population & Size & Interpretation \\\midrule
+Official GarlTTC Test & 6,762 scored tokens & Private targets; band-weighted MiD and scorer-defined failures. \evidence{B01,B02} \\
+Published Garl EvTTC & 3 sequences & Published RTE; target/query correspondence to our run unverified. \evidence{T02} \\
+EvTTC competition snapshot & 434 queries; 10 sequences & Original 28 October predictions, coverage and disagreement; targets not verified at that snapshot. \evidence{T01} \\
+Corrected local EvTTC & Same 434 queries & Original versus adapted PHASE-TTC error; historically exposed, local scoring, Slider-750 official equivalence unresolved. \evidence{N01} \\
+EvTTC Extended-new & 468 targets; 32 sequences & Labeled, development-exposed transfer with annotated ROI. \evidence{L01} \\
+EvTTC Historical46 & 46 targets; 3 sequences & Labeled, development-exposed transfer with annotated ROI. \evidence{L01} \\
+Cadence development & 2,608 queries; 25 recordings & Recording-macro paired comparison; 24 road recordings and Slider-500; historically exposed. \evidence{N02} \\
+Native eAP replay & 5,805 physical queries; 6,762 template tokens & Local output sensitivity and coverage; private Test12 targets not scored for the candidate. \evidence{N03} \\
+\bottomrule\end{tabularx}
+\end{table}

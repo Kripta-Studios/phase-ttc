@@ -1,0 +1,2062 @@
+{
+  "count": 411,
+  "paths": [
+    "AGENTS.md",
+    "DEVELOPMENT_PLAN.md",
+    "EXECUTION_REPORT.md",
+    "G0_DATA_GEOMETRY.md",
+    "G1_DETECTOR_FEASIBILITY.md",
+    "INDEPENDENT_REVIEW.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/01_ESTADO_Y_DIAGNOSTICO.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/02_SOTA_Y_LECCIONES.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/03_PROTOCOLO_Y_DATOS.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/04_EVALUADOR_Y_BASELINES.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/05_DIAGNOSTICO_DE_SENSORES_Y_MODELO.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/06_INTERVENCIONES_MINIMAS.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/07_FUSION_Y_FINE_TUNING.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/08_JEPA_Y_ARQUITECTURAS_FUTURAS.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/09_MATRIZ_EXPERIMENTAL_Y_DECISIONES.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/10_CONFIRMACION_ESTADISTICA_Y_SOTA.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/11_RUNTIME_RECURSOS_Y_REPRODUCIBILIDAD.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/12_BACKLOG_Y_PRIMERA_ITERACION.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/13_REFERENCIAS_Y_ALCANCE.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/14_CONTRATOS_Y_COMANDOS_PROPUESTOS.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/15_REVISION_INDEPENDIENTE.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/MANIFIESTO.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/README.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/AUDITORIA_DATOS.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/EXPERIMENTO.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/HANDOFF.md",
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/REPORTE_RESULTADOS.md",
+    "README.md",
+    "SOTA_DEVELOPMENT_PLAN.md",
+    "docs/TTC_EVALUATION_ADMISSION.md",
+    "docs/decisions/ADR-0042-phase-ttc-name.md",
+    "docs/decisions/ADR-0043-evttc-competition-sensor-adapter.md",
+    "docs/decisions/ADR-0044-published-expired-execution-wrappers.md",
+    "docs/decisions/ADR-0045-close-jepa-fixed-teacher-pilot.md",
+    "docs/decisions/ADR-0045-detection-receipt-source-formatting.md",
+    "docs/detection_g0_g2_20261029/EXECUTION_REPORT.md",
+    "docs/detection_g0_g2_20261029/G0_DATA_GEOMETRY.md",
+    "docs/detection_g0_g2_20261029/G1_DETECTOR_FEASIBILITY.md",
+    "docs/detection_g0_g2_20261029/INDEPENDENT_REVIEW.md",
+    "docs/detection_local_20261029/DETECTOR_PHASE_BRIDGE.md",
+    "docs/detection_local_20261029/DEVELOPMENT_METRICS.md",
+    "docs/detection_local_20261029/EXPERIMENTS_AND_FINDINGS.md",
+    "docs/detection_local_20261029/G1_LOCAL_PREFLIGHT.md",
+    "docs/detection_local_20261029/GARL_ALIGNMENT.md",
+    "docs/detection_local_20261029/GEOMETRY_RESOLUTION.md",
+    "docs/detection_local_20261029/IMAGE_SIGNAL_CONTROLS.md",
+    "docs/detection_local_20261029/IMPLEMENTATION_REPORT.md",
+    "docs/detection_local_20261029/INDEPENDENT_FINAL_REVIEW.md",
+    "docs/detection_local_20261029/INFERENCE_VISUALS.md",
+    "docs/detection_local_20261029/LOCAL_EXECUTION_REPORT.md",
+    "docs/detection_local_20261029/MEDIA_PILOT.md",
+    "docs/detection_local_20261029/NATIVE_VELOCITY_HEAD.md",
+    "docs/detection_local_20261029/PORTABLE_DETECTOR.md",
+    "docs/detection_local_20261029/README.md",
+    "docs/detection_local_20261029/REPRODUCTION_AND_HANDOFF.md",
+    "docs/detection_local_20261029/RGB_EXPERIMENT_ADMISSION.md",
+    "docs/detection_local_20261029/RGB_TRAINING_RESULTS.md",
+    "docs/detection_local_20261029/TRAINING_TABLES.md",
+    "docs/detection_sota_20261029/AP101_OPTIMIZATION.md",
+    "docs/detection_sota_20261029/AUTONOMOUS_QUEUE.md",
+    "docs/detection_sota_20261029/AUTONOMOUS_QUEUE_RESUME.md",
+    "docs/detection_sota_20261029/BATCHED_EVALUATION_PROFILE_PLAN.md",
+    "docs/detection_sota_20261029/BENCHMARK_LOCAL_ALIGNMENT_20261101.md",
+    "docs/detection_sota_20261029/BENCHMARK_SUBMISSION_20261101.md",
+    "docs/detection_sota_20261029/BENCHMARK_TARGET.md",
+    "docs/detection_sota_20261029/CAMPAIGN_CONTROLS.md",
+    "docs/detection_sota_20261029/COMPUTE_OPTIMIZATION_AUDIT.md",
+    "docs/detection_sota_20261029/CONTROLS.md",
+    "docs/detection_sota_20261029/D4096_READABLE_REVISION.md",
+    "docs/detection_sota_20261029/DATA_AUDIT.md",
+    "docs/detection_sota_20261029/DEPTH_SCALE_SEMANTICS_20261101.md",
+    "docs/detection_sota_20261029/DFULL_BATCH8_20261031.md",
+    "docs/detection_sota_20261029/DFULL_COMPUTE_INVESTIGATION_20261031.md",
+    "docs/detection_sota_20261029/DFULL_RUN_20261031.md",
+    "docs/detection_sota_20261029/DIAGNOSTICS.md",
+    "docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261101.md",
+    "docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261102.md",
+    "docs/detection_sota_20261029/EVALUATION_MEMORY_PROFILE.md",
+    "docs/detection_sota_20261029/EVENT_DATA_FEASIBILITY.md",
+    "docs/detection_sota_20261029/EVENT_FUSION.md",
+    "docs/detection_sota_20261029/EVENT_REPRESENTATION.md",
+    "docs/detection_sota_20261029/EVENT_SCREEN_EXECUTION.md",
+    "docs/detection_sota_20261029/EXECUTION.md",
+    "docs/detection_sota_20261029/EXTERNAL_PROTOCOL.md",
+    "docs/detection_sota_20261029/GENERATED_RESULTS.md",
+    "docs/detection_sota_20261029/GEOMETRY_AND_TARGET_AUDIT_20261101.md",
+    "docs/detection_sota_20261029/GPU_ADMISSION_HARNESS.md",
+    "docs/detection_sota_20261029/INDEPENDENT_H5_ADMISSION.md",
+    "docs/detection_sota_20261029/INDEPENDENT_PHASE_POPULATION.md",
+    "docs/detection_sota_20261029/INDEPENDENT_PHASE_TEACHER_CACHE.md",
+    "docs/detection_sota_20261029/INDEPENDENT_PRODUCER_FOUNDATION.md",
+    "docs/detection_sota_20261029/INDEPENDENT_RAW_HISTORY.md",
+    "docs/detection_sota_20261029/INDEPENDENT_R_A5_RGB_SOURCE_INVENTORY.md",
+    "docs/detection_sota_20261029/INDEPENDENT_TEACHER_CROSSWALK.md",
+    "docs/detection_sota_20261029/LONG_RANGE_CAMPAIGN_20261101.md",
+    "docs/detection_sota_20261029/LONG_RANGE_TRAIN_AUDIT_20261101.md",
+    "docs/detection_sota_20261029/MONOCOP_CPU_PORT_PLAN_20261101.md",
+    "docs/detection_sota_20261029/MONOCOP_FEASIBILITY_20261101.md",
+    "docs/detection_sota_20261029/MONOCOP_GPU_SMOKE_PLAN_20261101.md",
+    "docs/detection_sota_20261029/MONOCOP_SCREEN_PLAN_20261101.md",
+    "docs/detection_sota_20261029/MONOCOP_TRANSFER_PLAN_20261101.md",
+    "docs/detection_sota_20261029/MULTIOBJECT.md",
+    "docs/detection_sota_20261029/NEXT_INTERVENTION_DECISION_20261101.md",
+    "docs/detection_sota_20261029/PERFORMANCE_DIAGNOSIS.md",
+    "docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261101.md",
+    "docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261102.md",
+    "docs/detection_sota_20261029/POST_DFULL_RESULTS.md",
+    "docs/detection_sota_20261029/PREFETCH_AND_GPU_OPTIMIZATION.md",
+    "docs/detection_sota_20261029/PRETRAINED_COMPARISON_20261101.md",
+    "docs/detection_sota_20261029/PRETRAINED_MONODGP_INTAKE_20261101.md",
+    "docs/detection_sota_20261029/PROFILE.md",
+    "docs/detection_sota_20261029/QUERY_QUALITY_CAMPAIGN_20261101.md",
+    "docs/detection_sota_20261029/R0_R2_SEED7_DECISION.md",
+    "docs/detection_sota_20261029/R2_RARE_FINAL_AND_DFULL_DECISION.md",
+    "docs/detection_sota_20261029/R2_RARE_SAMPLING_CAMPAIGN.md",
+    "docs/detection_sota_20261029/R3_R4_CANDIDATE_PREREGISTRATION.md",
+    "docs/detection_sota_20261029/RANGE_CAMPAIGN_20261101.md",
+    "docs/detection_sota_20261029/RANGE_ENSEMBLE_COMPACT_20261101.md",
+    "docs/detection_sota_20261029/RANGE_ENSEMBLE_PLAN_20261101.md",
+    "docs/detection_sota_20261029/RANKING_EXPERIMENT.md",
+    "docs/detection_sota_20261029/RANKING_PANEL_RECIPE.md",
+    "docs/detection_sota_20261029/RELEASE_CANDIDATE_20261101.md",
+    "docs/detection_sota_20261029/RGB_FULL_PREFLIGHT.md",
+    "docs/detection_sota_20261029/RUNPOD_EVALUATION_OPTIMIZATION.md",
+    "docs/detection_sota_20261029/RUNPOD_INPUT_OPTIMIZATION.md",
+    "docs/detection_sota_20261029/RUNPOD_RELEASE_PREPARATION.md",
+    "docs/detection_sota_20261029/S5_REAL_REPLAY.md",
+    "docs/detection_sota_20261029/TEMPORAL_DATA.md",
+    "docs/detection_sota_20261029/TEMPORAL_MODEL.md",
+    "docs/detection_sota_20261029/TEMPORAL_POPULATION.md",
+    "docs/detection_sota_20261029/evidence/benchmark_local_alignment_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/control300_screen_update512_diagnostic_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/current_v1/GENERATED_RESULTS.md",
+    "docs/detection_sota_20261029/evidence/current_v1/README.md",
+    "docs/detection_sota_20261029/evidence/current_v1/s0/CONTROLS.md",
+    "docs/detection_sota_20261029/evidence/current_v1/s0/DIAGNOSTICS.md",
+    "docs/detection_sota_20261029/evidence/current_v2/ADMISSION_RESULTS.md",
+    "docs/detection_sota_20261029/evidence/current_v2/README.md",
+    "docs/detection_sota_20261029/evidence/external_protocol_v2/README.md",
+    "docs/detection_sota_20261029/evidence/height_prior_geometry_20261102/REPORT.md",
+    "docs/detection_sota_20261029/evidence/intake/AUDIT_REPRODUCTION.md",
+    "docs/detection_sota_20261029/evidence/intake/INDEPENDENT_PLAN_REVIEW.md",
+    "docs/detection_sota_20261029/evidence/intake/SOTA_DEVELOPMENT_PLAN.md",
+    "docs/detection_sota_20261029/evidence/intake/independent_sota_code_review.md",
+    "docs/detection_sota_20261029/evidence/intake/independent_sota_research_review.md",
+    "docs/detection_sota_20261029/evidence/intake/independent_sota_science_review.md",
+    "docs/detection_sota_20261029/evidence/intake/pilot_code_findings.md",
+    "docs/detection_sota_20261029/evidence/intake/pilot_science_findings.md",
+    "docs/detection_sota_20261029/evidence/intake/sota_primary_findings.md",
+    "docs/detection_sota_20261029/evidence/kitti_screen_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/monocop_cpu_port_20261101/report/REPORT.md",
+    "docs/detection_sota_20261029/evidence/monocop_gpu_execution_20261101/monocop_gpu_smoke_plan_v3/MONOCOP_GPU_SMOKE_PLAN_20261101.md",
+    "docs/detection_sota_20261029/evidence/monocop_gpu_execution_20261101/monocop_gpu_smoke_plan_v4/MONOCOP_GPU_SMOKE_PLAN_20261101.md",
+    "docs/detection_sota_20261029/evidence/monocop_gpu_smoke_preparation_20261101/v1/MONOCOP_GPU_SMOKE_PLAN_20261101.md",
+    "docs/detection_sota_20261029/evidence/monocop_gpu_smoke_preparation_20261101/v2/MONOCOP_GPU_SMOKE_PLAN_20261101.md",
+    "docs/detection_sota_20261029/evidence/monocop_screen_baseline_diagnostic_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/monocop_screen_final_20261102/REPORT.md",
+    "docs/detection_sota_20261029/evidence/monocop_screen_update512_diagnostic_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/monocop_transfer_20261101/report/REPORT.md",
+    "docs/detection_sota_20261029/evidence/multiclass_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/official_benchmark_20261101/ANALYSIS.md",
+    "docs/detection_sota_20261029/evidence/query_quality_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/range150_confirmation_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/range300_screen_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/range_campaign_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/range_ensemble_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/raw_diagnostics_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/semantic_probe_20261101/REPORT.md",
+    "docs/detection_sota_20261029/evidence/train_query_diagnostics_20261101/diagnostics/REPORT.md",
+    "docs/detection_sota_20261029/evidence/train_query_diagnostics_20261101/report/REPORT.md",
+    "docs/evttc_competition.md",
+    "docs/evttc_submission_20261031/README.md",
+    "docs/evttc_submission_20261031/REPORT.md",
+    "docs/evttc_submission_20261031/REVIEW.md",
+    "docs/evttc_transfer_v2/BASELINES.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_DECISIONS.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_REPRODUCTION.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_RESULTS.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_REVIEW.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_VERIFICATION.md",
+    "docs/evttc_transfer_v2/EXECUTION_LEDGER.md",
+    "docs/evttc_transfer_v2/HANDOFF.md",
+    "docs/evttc_transfer_v2/ORGANIZER_QUESTIONS.md",
+    "docs/evttc_transfer_v2/PILOT_DECISION.md",
+    "docs/evttc_transfer_v2/STARTUP_ROUTER_HANDOFF.md",
+    "docs/evttc_transfer_v2/evidence/phase_robust/report/REPORT.md",
+    "docs/evttc_transfer_v2/evidence/phase_startup/REPORT.md",
+    "docs/evttc_transfer_v2/evidence/phase_startup/REVIEW.md",
+    "docs/garl_evttc_competition.md",
+    "docs/handoff_20261031_pause/01_TRABAJO_Y_RESULTADOS.md",
+    "docs/handoff_20261031_pause/02_ARTEFACTOS_Y_REPRODUCCION.md",
+    "docs/handoff_20261031_pause/03_PENDIENTES_Y_CONTINUIDAD.md",
+    "docs/handoff_20261031_pause/04_PROMPT_CONTINUAR.md",
+    "docs/handoff_20261031_pause/README.md",
+    "docs/jepa_closure_20261031/POD_RETENTION.md",
+    "docs/jepa_closure_20261031/README.md",
+    "docs/jepa_closure_20261031/tables.md",
+    "docs/phase_3d_ttc_20261029/council_review.md",
+    "docs/phase_3d_ttc_20261029/swarm_research.md",
+    "docs/phase_adapt_final.md",
+    "docs/physics_review_20261031/00_ALCANCE_Y_METODO.md",
+    "docs/physics_review_20261031/01_HISTORIAL_GIT.md",
+    "docs/physics_review_20261031/02_AUDITORIA_ARTICULO.md",
+    "docs/physics_review_20261031/03_DATOS_RESULTADOS_Y_EXPOSICION.md",
+    "docs/physics_review_20261031/04_LECCIONES_EXPERIMENTALES.md",
+    "docs/physics_review_20261031/05_RELOJ_Y_ESTADO_RELATIVO.md",
+    "docs/physics_review_20261031/06_MODELO_DEL_SENSOR.md",
+    "docs/physics_review_20261031/07_OBSERVABILIDAD_Y_FUSION.md",
+    "docs/physics_review_20261031/08_SIMETRIAS_Y_SUPERFICIES.md",
+    "docs/physics_review_20261031/09_JEPA_Y_RETENCION_FISICA.md",
+    "docs/physics_review_20261031/10_PLAN_EXPERIMENTAL_ACOTADO.md",
+    "docs/physics_review_20261031/11_SISTEMA_Y_DOCUMENTACION.md",
+    "docs/physics_review_20261031/12_REFERENCIAS_VERIFICADAS.md",
+    "docs/physics_review_20261031/13_ACTUALIZACION_CONCURRENTE.md",
+    "docs/physics_review_20261031/DOCUMENT_INDEX.md",
+    "docs/physics_review_20261031/README.md",
+    "docs/physics_review_20261031/RESULTS_VERIFIED.md",
+    "docs/physics_review_20261031/git/2026-06.md",
+    "docs/physics_review_20261031/git/2026-07.md",
+    "docs/physics_review_20261031/git/2026-08.md",
+    "docs/physics_review_20261031/git/2026-09.md",
+    "docs/physics_review_20261031/git/2026-10.md",
+    "docs/progress.md",
+    "docs/release_research_implementation_20261031/CADENCE_LOCALIZATION_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/CLOCK_CADENCE_CONTROL.md",
+    "docs/release_research_implementation_20261031/CLOCK_REGIMES_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/NATIVE_BACKEND_DIAGNOSIS.md",
+    "docs/release_research_implementation_20261031/NATIVE_INTERRUPTION_RECOVERY.md",
+    "docs/release_research_implementation_20261031/NATIVE_LOCAL_LATENCY_PROTOCOL.md",
+    "docs/release_research_implementation_20261031/NATIVE_PAIR_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/NATIVE_PARITY_FOLLOWUP.md",
+    "docs/release_research_implementation_20261031/NATIVE_PLATFORM_PAIR_PROTOCOL.md",
+    "docs/release_research_implementation_20261031/NATIVE_RAW_LATENCY_PROTOCOL.md",
+    "docs/release_research_implementation_20261031/OBSERVABILITY_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/PHOTOMETRIC_Q_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/README.md",
+    "docs/release_research_implementation_20261031/ROBUST_MEASUREMENT_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/SENSOR_PROXY_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/SENSOR_REFERENCE_CONTROL.md",
+    "docs/release_research_implementation_20261031/SURFACE_PREREGISTRATION.md",
+    "docs/release_research_implementation_20261031/campaign_results_v1/POPULATION.md",
+    "docs/release_research_implementation_20261031/campaign_results_v1/RESULTS.md",
+    "docs/release_research_implementation_20261031/continued_results_v1/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v1/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v1/cadence_localization/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v1/clock_regimes/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v1/native_original_drift/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v1/observability_failure/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v1/robust_measurement/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v1/sensor_identifiability/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/cadence_localization/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/clock_cadence/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/clock_regimes/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/native_original_drift/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/observability_failure/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/photometric_q/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/robust_measurement/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/sensor_identifiability/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/sensor_proxy/RESULTS.md",
+    "docs/release_research_implementation_20261031/followup_results_v2/sensor_reference_control/RESULTS.md",
+    "docs/release_research_implementation_20261031/native_parity_distribution_v1/RESULTS.md",
+    "docs/release_research_implementation_20261031/raw_latency_results_v1/RESULTS.md",
+    "docs/release_research_implementation_20261031/results/RESULTS.md",
+    "docs/release_research_implementation_20261031/results_v2/RESULTS.md",
+    "docs/release_research_plan_20261031/00_RELEASE_Y_PUNTOS_DE_INTEGRACION.md",
+    "docs/release_research_plan_20261031/01_DATOS_Y_PROTOCOLO.md",
+    "docs/release_research_plan_20261031/02_CADENCIA_Y_DIAGNOSTICOS.md",
+    "docs/release_research_plan_20261031/03_RELOJ_Y_ESTADO_CAUSAL.md",
+    "docs/release_research_plan_20261031/04_OBSERVABILIDAD_Y_FUSION.md",
+    "docs/release_research_plan_20261031/05_AUXILIAR_DEL_SENSOR.md",
+    "docs/release_research_plan_20261031/06_COORDENADAS_Y_VISIBILIDAD.md",
+    "docs/release_research_plan_20261031/07_SECUENCIA_Y_PRESUPUESTO.md",
+    "docs/release_research_plan_20261031/08_EVALUACION_Y_PROMOCION.md",
+    "docs/release_research_plan_20261031/09_JEPA_CONDICIONAL.md",
+    "docs/release_research_plan_20261031/10_GUIA_DE_EJECUCION.md",
+    "docs/release_research_plan_20261031/11_FUENTES_Y_RAZONAMIENTO.md",
+    "docs/release_research_plan_20261031/README.md",
+    "docs/release_research_summary_20261101/RESULTADOS_Y_LIMITES.md",
+    "docs/release_research_summary_20261101/TRABAJO_REALIZADO.md",
+    "docs/research_log_20261029_31/01_CRONOLOGIA_Y_ALCANCE.md",
+    "docs/research_log_20261029_31/02_DATOS_EVALUADOR_Y_FISICA.md",
+    "docs/research_log_20261029_31/03_MODELOS_Y_ENTRENAMIENTOS.md",
+    "docs/research_log_20261029_31/04_RESULTADOS_Y_COMPARACIONES.md",
+    "docs/research_log_20261029_31/05_RENDIMIENTO_Y_RECURSOS.md",
+    "docs/research_log_20261029_31/06_VERIFICACION_Y_FALLOS.md",
+    "docs/research_log_20261029_31/07_ARTEFACTOS_Y_REPRODUCCION.md",
+    "docs/research_log_20261029_31/08_LIMITES_Y_SIGUIENTES_PASOS.md",
+    "docs/research_log_20261029_31/09_PUBLICACION_E_INVENTARIO.md",
+    "docs/research_log_20261029_31/README.md",
+    "docs/research_log_20261029_31/RELEASE_NOTES.md",
+    "docs/research_log_20261031_canonical_pair/EAP_CURRENT_QUERY_AUDIT.md",
+    "docs/research_log_20261031_canonical_pair/README.md",
+    "docs/research_log_20261031_canonical_screen149/CONTINUATION.md",
+    "docs/research_log_20261031_canonical_screen149/EAP_DEPLOYMENT_PREFLIGHT.md",
+    "docs/research_log_20261031_canonical_screen149/EAP_EVENT_CADENCE.md",
+    "docs/research_log_20261031_canonical_screen149/EAP_ORIGINAL_CONTEXT_REPLAY.md",
+    "docs/research_log_20261031_canonical_screen149/README.md",
+    "docs/research_log_20261031_canonical_screen149/VALIDATION.md",
+    "docs/research_log_20261031_event_expansion/README.md",
+    "docs/research_log_20261031_joint_support/README.md",
+    "docs/research_log_20261031_joint_support/producer_next_steps.md",
+    "docs/research_log_20261031_native_context/README.md",
+    "docs/research_log_20261031_native_support/README.md",
+    "docs/research_log_20261031_producer_timewarp/README.md",
+    "docs/research_log_20261031_sign_safe/README.md",
+    "docs/research_log_canonical_population2608/CANONICAL_ROUTER_REFIT_PROTOCOL.md",
+    "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_PROTOCOL.md",
+    "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_RESULT.md",
+    "docs/research_log_canonical_population2608/EAP_ROUTER_SENSITIVITY_PROTOCOL.md",
+    "docs/research_log_canonical_population2608/NATIVE_CAPTURE_RECOVERY.md",
+    "docs/research_log_canonical_population2608/README.md",
+    "docs/research_progress_20261101/01_TRABAJO_REALIZADO.md",
+    "docs/research_progress_20261101/02_RESULTADOS_Y_PENDIENTES.md",
+    "docs/research_progress_20261101/03_ENTREGA_ADAPTADA_Y_COMPARACION.md",
+    "docs/research_progress_20261101/04_ANALISIS_INTEGRACION_MAIN.md",
+    "docs/research_progress_20261101/README.md",
+    "docs/research_progress_20261101/v1/README.md",
+    "docs/superpowers/plans/2026-10-30-evttc-transfer-diagnosis.md",
+    "docs/superpowers/plans/2026-10-30-phase-adapt-final.md",
+    "docs/superpowers/plans/2026-10-30-phase-campaign-completion.md",
+    "docs/superpowers/plans/2026-10-31-evttc-final-submission.md",
+    "docs/superpowers/plans/2026-10-31-jepa-reopening.md",
+    "docs/superpowers/plans/2026-10-31-phase-canonical-pair-pilot.md",
+    "docs/superpowers/plans/2026-10-31-phase-canonical-population2608.md",
+    "docs/superpowers/plans/2026-10-31-phase-canonical-screen149.md",
+    "docs/superpowers/plans/2026-10-31-phase-causal-event-expansion.md",
+    "docs/superpowers/plans/2026-10-31-phase-correlated-failure-augmentation.md",
+    "docs/superpowers/plans/2026-10-31-phase-event-background-stress.md",
+    "docs/superpowers/plans/2026-10-31-phase-native-context-augmentation.md",
+    "docs/superpowers/plans/2026-10-31-phase-native-observation-cache.md",
+    "docs/superpowers/plans/2026-10-31-phase-native-support-fusion.md",
+    "docs/superpowers/plans/2026-10-31-phase-producer-timewarp-pilot.md",
+    "docs/superpowers/plans/2026-10-31-phase-robust-fusion.md",
+    "docs/superpowers/plans/2026-10-31-phase-sign-safe-fusion.md",
+    "docs/superpowers/plans/2026-10-31-phase-startup-router.md",
+    "docs/superpowers/plans/2026-10-31-phase-support-context-joint.md",
+    "docs/superpowers/plans/2026-10-31-research-dossier-publication.md",
+    "docs/train40_runtime_council_20261028/COUNCIL.md",
+    "docs/train40_runtime_council_20261028/DEFAULT_PROFILE.md",
+    "docs/train40_runtime_council_20261028/EXACT_TRANSPORT_REUSE.md",
+    "docs/train40_runtime_council_20261028/FRAME_HASH_CPU_GENERATED.md",
+    "docs/train40_runtime_council_20261028/FRAME_SEALING_CPU_GENERATED.md",
+    "docs/train40_runtime_council_20261028/FROZEN_RGB_V2_DESIGN.md",
+    "docs/train40_runtime_council_20261028/FROZEN_RGB_V2_WIRING_DESIGN.md",
+    "docs/train40_runtime_council_20261028/GC_TRACE_V1_PROPOSAL.md",
+    "docs/train40_runtime_council_20261028/HANDOFF.md",
+    "docs/train40_runtime_council_20261028/LINSPACE_ATTRIBUTION.md",
+    "docs/train40_runtime_council_20261028/MEASUREMENT_AUDIT.md",
+    "docs/train40_runtime_council_20261028/MEMORY_RAW_PARITY.md",
+    "docs/train40_runtime_council_20261028/PRELOADED_RAW_CPU_ARRIVALS_PROPOSAL.md",
+    "docs/train40_runtime_council_20261028/RESULTS_GENERATED.md",
+    "docs/train40_runtime_council_20261028/REVIEW_CAUSAL_RUNTIME.md",
+    "docs/train40_runtime_council_20261028/RGB_GPU_FINDINGS.md",
+    "docs/train40_runtime_council_20261028/STRESS_REPLAY_V1_PROPOSAL.md",
+    "docs/train40_runtime_council_20261028/SUBPACKET_BACKEND.md",
+    "docs/train40_runtime_council_20261028/SUBPACKET_NUMERICS.md",
+    "docs/train40_runtime_council_20261028/evidence/council_final_delta_v1/README.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/README.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/COUNCIL.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/EXACT_TRANSPORT_REUSE.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/FRAME_HASH_CPU_GENERATED.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/FRAME_SEALING_CPU_GENERATED.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/FROZEN_RGB_V2_DESIGN.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/LINSPACE_ATTRIBUTION.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/MEASUREMENT_AUDIT.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/MEMORY_RAW_PARITY.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/PRELOADED_RAW_CPU_ARRIVALS_PROPOSAL.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/RESULTS_GENERATED.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/REVIEW_CAUSAL_RUNTIME.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/RGB_GPU_FINDINGS.md",
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/STRESS_REPLAY_V1_PROPOSAL.md",
+    "docs/train40_runtime_resume_20261027/CURRENT_FINDINGS.md",
+    "docs/train40_runtime_resume_20261027/HANDOFF.md",
+    "docs/train40_runtime_resume_20261027/MULTIOBJECT_PAIRED_GENERATED.md",
+    "docs/train40_runtime_resume_20261027/MULTIOBJECT_SERVICE_AND_TRANSPORT.md",
+    "docs/train40_runtime_resume_20261027/README.md",
+    "docs/train40_runtime_resume_20261027/RESULTS_GENERATED.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compiled_pipeline/DESIGN_AND_COMMANDS.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compiled_pipeline/GPU_FINDINGS.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compute_council/CAUSAL_REUSE_AND_20MS.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compute_council/IMPLEMENTATION.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compute_council/WINDOWS_SCHEDULER_JITTER.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/multiobject/IMPLEMENTATION.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/normalization/NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/prefix/IMPLEMENTATION_NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/producers/NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/producers/PACED_RUNNER.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_cache/NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_raw_ring/IMPLEMENTATION.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_uint8/CPU_BENCHMARK_NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_uint8/IMPLEMENTATION.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/CLOSURE_HANDOFF.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/DESIGN_AND_COMMANDS.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/GPU_FINDINGS.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/PRECISION_VARIANTS.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compute_council/CAUSAL_REUSE_AND_20MS.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compute_council/IMPLEMENTATION.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compute_council/WINDOWS_SCHEDULER_JITTER.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/multiobject/IMPLEMENTATION.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/multiobject/paired_1_2_uint8_v1_aggregate/REPORT.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/normalization/NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/prefix/IMPLEMENTATION_NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/producers/NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/producers/PACED_RUNNER.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_cache/NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_raw_ring/IMPLEMENTATION.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_uint8/CPU_BENCHMARK_NOTES.md",
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_uint8/IMPLEMENTATION.md",
+    "paper/ASSETS.md",
+    "paper/README.md"
+  ],
+  "most_recent_changed_version": {
+    "docs/decisions/ADR-0045-detection-receipt-source-formatting.md": {
+      "commit": "88aa131137e7d0c234650e9ae5b6ed14093352ce",
+      "blob": "6c0dc5901ddf8bb4ce071da899617f3bfea4ef6e"
+    },
+    "docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261102.md": {
+      "commit": "935059131d7b81c6b1748d8d35d7c3f98a03b78b",
+      "blob": "731f3d656b7cdf2e4fc37211084d07542f3dd0bd"
+    },
+    "docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261102.md": {
+      "commit": "935059131d7b81c6b1748d8d35d7c3f98a03b78b",
+      "blob": "77c7c94846e16dee4d71fc4196066afa5ecddc62"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_screen_final_20261102/REPORT.md": {
+      "commit": "3de7c2b6d527bab98c87c559ac6a1f0773c6b22b",
+      "blob": "0eefc48dbdf9c3d3ac0801a4fa1eaf14c69e0ce1"
+    },
+    "docs/detection_sota_20261029/evidence/height_prior_geometry_20261102/REPORT.md": {
+      "commit": "987c1abc3f16a6211aab16693ae08fa309e6ccb3",
+      "blob": "ff015e09d2101ace3c57ee884cbf2d091fb7a4dd"
+    },
+    "docs/detection_sota_20261029/evidence/control300_screen_update512_diagnostic_20261101/REPORT.md": {
+      "commit": "7ccc1d2f1a6a51723bb8cbe9c020ca8966f8e73e",
+      "blob": "27a68309eeac575fca2b99b451e337785a35161f"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_screen_baseline_diagnostic_20261101/REPORT.md": {
+      "commit": "a4ced3a799d3275fbdcd3a1d16e6b04f80573fd2",
+      "blob": "c085cf47c0e73a341f7b31c7fafc470c00ec69a8"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_screen_update512_diagnostic_20261101/REPORT.md": {
+      "commit": "a4ced3a799d3275fbdcd3a1d16e6b04f80573fd2",
+      "blob": "93338e5ce605decfac1570063db823d3cc8bc9a8"
+    },
+    "docs/detection_sota_20261029/MONOCOP_FEASIBILITY_20261101.md": {
+      "commit": "9c3f130def63b384649fe51e39aec0a069a02277",
+      "blob": "8f4ab376d30cb00cf9bd2435a4f8a400d24e01ed"
+    },
+    "docs/detection_sota_20261029/MONOCOP_SCREEN_PLAN_20261101.md": {
+      "commit": "d59f47c7de58ffc0c3870b62a30204c0d5ddbdd0",
+      "blob": "a5e58db23d8952b6dcbb107fdb4a6d768e358319"
+    },
+    "docs/detection_sota_20261029/PRETRAINED_COMPARISON_20261101.md": {
+      "commit": "8f11cfcd82710a04c91f8fb79c543b1c80414c39",
+      "blob": "dd762f91f3c1f84ac3f6f8e78d8ea63e6e83c96b"
+    },
+    "docs/detection_sota_20261029/evidence/kitti_screen_20261101/REPORT.md": {
+      "commit": "8f11cfcd82710a04c91f8fb79c543b1c80414c39",
+      "blob": "4a85da2253097713e86a1ed9ac16b80d219ee9a5"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_gpu_execution_20261101/monocop_gpu_smoke_plan_v3/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "commit": "8f11cfcd82710a04c91f8fb79c543b1c80414c39",
+      "blob": "be431a966436ec8132446f82e790268fd7a84b81"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_gpu_execution_20261101/monocop_gpu_smoke_plan_v4/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "commit": "8f11cfcd82710a04c91f8fb79c543b1c80414c39",
+      "blob": "be431a966436ec8132446f82e790268fd7a84b81"
+    },
+    "docs/detection_sota_20261029/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "commit": "0a97e709e41afe2000955dd8b72fcfe236872126",
+      "blob": "be431a966436ec8132446f82e790268fd7a84b81"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_gpu_smoke_preparation_20261101/v1/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "commit": "0a97e709e41afe2000955dd8b72fcfe236872126",
+      "blob": "8fdaa705551a275753e258d4feb1d55f938d11a4"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_gpu_smoke_preparation_20261101/v2/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "commit": "0a97e709e41afe2000955dd8b72fcfe236872126",
+      "blob": "be431a966436ec8132446f82e790268fd7a84b81"
+    },
+    "docs/detection_sota_20261029/MONOCOP_TRANSFER_PLAN_20261101.md": {
+      "commit": "7841dcede8387653cb948053fc11b74b727eacf6",
+      "blob": "d2b976d45eee8f3010e85438582b895b0adeb821"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_transfer_20261101/report/REPORT.md": {
+      "commit": "7841dcede8387653cb948053fc11b74b727eacf6",
+      "blob": "75dcaedc79968d8a5b02f8e5a41a94b510f830a6"
+    },
+    "docs/detection_sota_20261029/MONOCOP_CPU_PORT_PLAN_20261101.md": {
+      "commit": "ae5791a09a9b515bf4737aabe2e4d989f3426bc8",
+      "blob": "7e83dd7d2543e7c79383c8692e916cd092e8e05c"
+    },
+    "docs/detection_sota_20261029/evidence/monocop_cpu_port_20261101/report/REPORT.md": {
+      "commit": "ae5791a09a9b515bf4737aabe2e4d989f3426bc8",
+      "blob": "645a61a12e43b4af6e418046e0e7351084ae3461"
+    },
+    "docs/detection_sota_20261029/LONG_RANGE_CAMPAIGN_20261101.md": {
+      "commit": "c76c5501bcd4b4a40545a7aaf055adfc78fa6a48",
+      "blob": "8dbee5007d563484dfe743c10a43ea800e4f062d"
+    },
+    "docs/detection_sota_20261029/PRETRAINED_MONODGP_INTAKE_20261101.md": {
+      "commit": "c76c5501bcd4b4a40545a7aaf055adfc78fa6a48",
+      "blob": "713b75cdc79e93b4e0a191012c8cba7b693bcc1b"
+    },
+    "docs/detection_sota_20261029/evidence/range300_screen_20261101/REPORT.md": {
+      "commit": "c76c5501bcd4b4a40545a7aaf055adfc78fa6a48",
+      "blob": "58d6adafd2ebb6c32bc28805a8c20c510f2e1113"
+    },
+    "docs/detection_sota_20261029/evidence/train_query_diagnostics_20261101/diagnostics/REPORT.md": {
+      "commit": "29a20d67c131de8efa972dda5022b7bc8a155996",
+      "blob": "f15feb65d7f3db990bb60c6516ed533fde59f050"
+    },
+    "docs/detection_sota_20261029/evidence/train_query_diagnostics_20261101/report/REPORT.md": {
+      "commit": "29a20d67c131de8efa972dda5022b7bc8a155996",
+      "blob": "cf12063d11e2144ae94e6e75c2829468149f4b2e"
+    },
+    "docs/detection_sota_20261029/evidence/range_ensemble_20261101/REPORT.md": {
+      "commit": "b9127b900d68c4c27979c8187bd384e4d7afd76c",
+      "blob": "6fe0c39419704658e945f47cc9868d2169bb0df9"
+    },
+    "docs/detection_sota_20261029/RANGE_ENSEMBLE_COMPACT_20261101.md": {
+      "commit": "e6e27c03b3c79e232846986c76f27b4122f76c25",
+      "blob": "f3f93ab2d58a208183098a45165f01c7c5edfdc7"
+    },
+    "docs/detection_sota_20261029/RANGE_ENSEMBLE_PLAN_20261101.md": {
+      "commit": "8cd65b9a3dab11e200203e4a57e7398e105c918a",
+      "blob": "6fa8da61d834fb74620e75d6bd6279ab59163ac4"
+    },
+    "docs/detection_sota_20261029/evidence/range150_confirmation_20261101/REPORT.md": {
+      "commit": "e5f20c785c8f5a1ceaf28e26173191658468d00f",
+      "blob": "c69236392e805da0fd47365c058d36aeeffedae3"
+    },
+    "docs/detection_sota_20261029/evidence/semantic_probe_20261101/REPORT.md": {
+      "commit": "3c401cd65805f4e16b6a385655084b287eb4eb40",
+      "blob": "ef4d9068e175747b1ddf79ce89b8c5c2f0a16fcc"
+    },
+    "docs/detection_sota_20261029/evidence/query_quality_20261101/REPORT.md": {
+      "commit": "555600421811b79c0d577bf914a6c24f963ef85c",
+      "blob": "b6a35c49305327cacbd1737b80bf88d24b97ea45"
+    },
+    "docs/detection_sota_20261029/LONG_RANGE_TRAIN_AUDIT_20261101.md": {
+      "commit": "3806336329c426896cdf3daa81b55b58801ca14f",
+      "blob": "3bcd7f6bb0298be1d802c768878e342a7b8bd20f"
+    },
+    "docs/detection_sota_20261029/evidence/range_campaign_20261101/REPORT.md": {
+      "commit": "3806336329c426896cdf3daa81b55b58801ca14f",
+      "blob": "c4dd1dfa173aeb56701543f6bb908edc2499aeb1"
+    },
+    "docs/detection_sota_20261029/DEPTH_SCALE_SEMANTICS_20261101.md": {
+      "commit": "5ba8b43ffe88db4b4fba179361df3f457b3f82b2",
+      "blob": "6a416ad9ee606945266e63c653790ea17887c452"
+    },
+    "docs/detection_sota_20261029/DIAGNOSTICS.md": {
+      "commit": "5ba8b43ffe88db4b4fba179361df3f457b3f82b2",
+      "blob": "3fb40584aefee7713adbd1590565f059b6029dab"
+    },
+    "docs/detection_sota_20261029/RANKING_EXPERIMENT.md": {
+      "commit": "5ba8b43ffe88db4b4fba179361df3f457b3f82b2",
+      "blob": "39590f5b05fcc4c2a22bdffe873d315a0f0fea55"
+    },
+    "docs/detection_sota_20261029/QUERY_QUALITY_CAMPAIGN_20261101.md": {
+      "commit": "64f4332328fecb2f8640d5a42c93bf24264ed082",
+      "blob": "b304fbee2efdc770d63de071dc978a3957d8f778"
+    },
+    "docs/detection_sota_20261029/evidence/multiclass_20261101/REPORT.md": {
+      "commit": "64f4332328fecb2f8640d5a42c93bf24264ed082",
+      "blob": "958daad6317af8896831dfab2b2a0faecd7a0767"
+    },
+    "docs/detection_sota_20261029/NEXT_INTERVENTION_DECISION_20261101.md": {
+      "commit": "cd603ad2ee10087c7d228bfe8a8d5992bc7d3b3d",
+      "blob": "ff5854d48507780a6f0e15c89e39d4707e4255f4"
+    },
+    "docs/detection_sota_20261029/RANGE_CAMPAIGN_20261101.md": {
+      "commit": "cd603ad2ee10087c7d228bfe8a8d5992bc7d3b3d",
+      "blob": "b0e066549535aca82374e6e837a59cbd4c62ed4f"
+    },
+    "docs/detection_sota_20261029/GEOMETRY_AND_TARGET_AUDIT_20261101.md": {
+      "commit": "93b2ba3b1f78a7855e307ff08fb325aecb383d07",
+      "blob": "d5ef33a140d895c565b9afc1a0e33ff9c49b42c0"
+    },
+    "docs/detection_sota_20261029/evidence/raw_diagnostics_20261101/REPORT.md": {
+      "commit": "93b2ba3b1f78a7855e307ff08fb325aecb383d07",
+      "blob": "30068a64f630315a6ed4c0ed8368648f24d0593d"
+    },
+    "README.md": {
+      "commit": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+      "blob": "723ed95aabd8f5b1043c718cd4f90bccde67690d"
+    },
+    "docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261101.md": {
+      "commit": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+      "blob": "d36a5271e7efe2b8ad0d93a94a3cf283b772491a"
+    },
+    "docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261101.md": {
+      "commit": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+      "blob": "26f9fac36d23c1416d7174b1b5a0750af33cd6d6"
+    },
+    "docs/detection_sota_20261029/BENCHMARK_LOCAL_ALIGNMENT_20261101.md": {
+      "commit": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+      "blob": "c0bdde0a83f759284dae6ed25e68d9b9db6386ab"
+    },
+    "docs/detection_sota_20261029/EXTERNAL_PROTOCOL.md": {
+      "commit": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+      "blob": "4c73fcffd07578f608a39245845ed28c1951ea5a"
+    },
+    "docs/detection_sota_20261029/evidence/benchmark_local_alignment_20261101/REPORT.md": {
+      "commit": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+      "blob": "c4e25064c3c841d63fefb13a3d8ef7a59f9afd49"
+    },
+    "docs/progress.md": {
+      "commit": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+      "blob": "6a0448a3a96b7f0752ab221ee886078eeb0c45d5"
+    },
+    "docs/detection_sota_20261029/BENCHMARK_SUBMISSION_20261101.md": {
+      "commit": "f3328d7b3725d00738d7dbcf0c0a9be939a3e91b",
+      "blob": "c6ae3ab1920881599340795d86efea9bbb354a8a"
+    },
+    "docs/detection_sota_20261029/evidence/official_benchmark_20261101/ANALYSIS.md": {
+      "commit": "f3328d7b3725d00738d7dbcf0c0a9be939a3e91b",
+      "blob": "9c0a089ad49f1b6bab73bb5f3151901b328ccccb"
+    },
+    "DEVELOPMENT_PLAN.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "eef2f1eda0cf1f9f908032c80e5334b55343ce3d"
+    },
+    "EXECUTION_REPORT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "7cb6f0f36d602b564616c06a09e69047a77fdb2f"
+    },
+    "G0_DATA_GEOMETRY.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "df1e65119fbdb1d148cd557ebbbbda4f34f25900"
+    },
+    "G1_DETECTOR_FEASIBILITY.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2633c2872a640d74792990a934e481d2e0241561"
+    },
+    "INDEPENDENT_REVIEW.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b379aed202deb6208155abeaccf441732781a149"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/01_ESTADO_Y_DIAGNOSTICO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b42723fec5c2664708067bf872a09f40fe0cbb86"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/02_SOTA_Y_LECCIONES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "24ecbc78dbb44feb86d5e2762ad53cdd9bd43b15"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/03_PROTOCOLO_Y_DATOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4a131b7c9001775260155b0700fc526091b0631d"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/04_EVALUADOR_Y_BASELINES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "813fb28ffd3f89b9a1e46d21606fac6e374e9da0"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/05_DIAGNOSTICO_DE_SENSORES_Y_MODELO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b94d5be4ed4aae814debe1ddd10cab3edc0630b5"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/06_INTERVENCIONES_MINIMAS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4353bc3ed28442e152289f371ffdab96bd3926c8"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/07_FUSION_Y_FINE_TUNING.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "da7400b1a411eb525f63bd3ef7d8c96d5811203a"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/08_JEPA_Y_ARQUITECTURAS_FUTURAS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e6ce8b99643bdf936dbcf317ec5189b4eacec83a"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/09_MATRIZ_EXPERIMENTAL_Y_DECISIONES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "01b782d9dce95ed83625e1b6b7a2195bb1133e56"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/10_CONFIRMACION_ESTADISTICA_Y_SOTA.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5e735cb42c93ed79f986475e892349e830932342"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/11_RUNTIME_RECURSOS_Y_REPRODUCIBILIDAD.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "01f4e0c3ca94d8b9c9c4ff7e66b5502a4d03b178"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/12_BACKLOG_Y_PRIMERA_ITERACION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "475ea1332dd87ad431a9acfa0e9c1d382a68f779"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/13_REFERENCIAS_Y_ALCANCE.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "99ac5013a3fec01c0f0b1278a29f036aad41b460"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/14_CONTRATOS_Y_COMANDOS_PROPUESTOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "117dfafae9c4ccf6010e404122d286b74b2833d8"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/15_REVISION_INDEPENDIENTE.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d0ff597ee1d9c0a3e36dedb88736206599258905"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/MANIFIESTO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5fa6db03861a4c5ddd76ac0ef3796c995b32e63a"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "887a8b0f721468211c6e49a066a3a0548a9c57b5"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/AUDITORIA_DATOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "19c70ec5ee641856286fe746f6678dc28ed63c0c"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/EXPERIMENTO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e4bbeca5c1c9622943eb445e874008d9be621f7c"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/HANDOFF.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e4d31e26a1986fb23814333ac1ec5a4e10e67d44"
+    },
+    "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/REPORTE_RESULTADOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "ab6a73365a03759a16d8ff1e31d3ced11fb58cdf"
+    },
+    "SOTA_DEVELOPMENT_PLAN.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "374b3b1ae86112d21b16d72136d8ce8229fc92b8"
+    },
+    "docs/decisions/ADR-0045-close-jepa-fixed-teacher-pilot.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "60526d4504e7bc00ca97f131b14580be1cb347bf"
+    },
+    "docs/evttc_submission_20261031/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "907b6c15e1ad061eba007a38fe69cc7a78e49f9d"
+    },
+    "docs/evttc_submission_20261031/REPORT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f298293e6534b5306e20599351d3f0d2d692813d"
+    },
+    "docs/evttc_submission_20261031/REVIEW.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c9f7f287462655b42efb56a9407ce20dee2763d5"
+    },
+    "docs/evttc_transfer_v2/BASELINES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6a4ea0992bc8e5a024500e835b5e6b8063f92f26"
+    },
+    "docs/evttc_transfer_v2/CAMPAIGN_DECISIONS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f333e1c0ea479a7d0c8b4dabfb81a8efd2d64b79"
+    },
+    "docs/evttc_transfer_v2/CAMPAIGN_REPRODUCTION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f6fc0cfcbba43ff47e7a769bc9003c2febc93706"
+    },
+    "docs/evttc_transfer_v2/CAMPAIGN_RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4affe35a25a75118b627e055f29596ef35025289"
+    },
+    "docs/evttc_transfer_v2/CAMPAIGN_REVIEW.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "655488a7602b1a8f294445a4b7aae0846aa4b44c"
+    },
+    "docs/evttc_transfer_v2/CAMPAIGN_VERIFICATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "180d0ec12aaad3e6f916cea3c36833d248be1628"
+    },
+    "docs/evttc_transfer_v2/EXECUTION_LEDGER.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f9e3c520b9deef6c82b697aa6e9493a6038df69e"
+    },
+    "docs/evttc_transfer_v2/HANDOFF.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1fe11ae4952413f28964b827d5e2f1f881252d61"
+    },
+    "docs/evttc_transfer_v2/ORGANIZER_QUESTIONS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "fce5baf56749e2d9eb9180176c52feb8f74d198b"
+    },
+    "docs/evttc_transfer_v2/PILOT_DECISION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4384038c111e37afdc4fd5f6e21c24f2274fa669"
+    },
+    "docs/evttc_transfer_v2/STARTUP_ROUTER_HANDOFF.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "bc0c3f6bb735510005941ac071e33d2f09f7e7ef"
+    },
+    "docs/evttc_transfer_v2/evidence/phase_robust/report/REPORT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8091169ac95bc9095654a877aa587422dc4fc61f"
+    },
+    "docs/evttc_transfer_v2/evidence/phase_startup/REPORT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "00f3151287c85f7468a06f37352700d717d95d34"
+    },
+    "docs/evttc_transfer_v2/evidence/phase_startup/REVIEW.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0c283036d8c2991d160a074e55b86a935c3582ba"
+    },
+    "docs/handoff_20261031_pause/01_TRABAJO_Y_RESULTADOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "09cade3e6c98c3344b02b2a764ec777d617b5567"
+    },
+    "docs/handoff_20261031_pause/02_ARTEFACTOS_Y_REPRODUCCION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f33a34de2e5249225e239c9dd9b6c3772a2a0f39"
+    },
+    "docs/handoff_20261031_pause/03_PENDIENTES_Y_CONTINUIDAD.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a2b9c169c848a4c2ba6f94d13b0627747b9bff1d"
+    },
+    "docs/handoff_20261031_pause/04_PROMPT_CONTINUAR.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "3fd0ee5a788949a7b1c6283d3ae1d4deeeb89262"
+    },
+    "docs/handoff_20261031_pause/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "447240b1c3a0022618b0289432f08ac98dd3fceb"
+    },
+    "docs/jepa_closure_20261031/POD_RETENTION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "718959e45c7134e68f10500cec1495bcdc0f7b74"
+    },
+    "docs/jepa_closure_20261031/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1962837328c1193ec30d24ff934b6bec7bc59be4"
+    },
+    "docs/jepa_closure_20261031/tables.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "9a8c06d269eae2518aa4bffe521a5850e523133e"
+    },
+    "docs/phase_adapt_final.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c70a6692cef9bffb99728fdbda632b919882e6da"
+    },
+    "docs/physics_review_20261031/00_ALCANCE_Y_METODO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "7c6caf0bd4fb4f621ebf923c2a5d85bc6a8fedef"
+    },
+    "docs/physics_review_20261031/01_HISTORIAL_GIT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6a9c735036c58e8357f4bb749344d5f1e115bdbf"
+    },
+    "docs/physics_review_20261031/02_AUDITORIA_ARTICULO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8651920bb86191898a1a810ff1611a6020320912"
+    },
+    "docs/physics_review_20261031/03_DATOS_RESULTADOS_Y_EXPOSICION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "407b853b6454d35882cfac1ff60dceea330c53ec"
+    },
+    "docs/physics_review_20261031/04_LECCIONES_EXPERIMENTALES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "ba8a4033923ee6c93c496d32f2a9b5ab53cf63fb"
+    },
+    "docs/physics_review_20261031/05_RELOJ_Y_ESTADO_RELATIVO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "88088507efc1fef52890481229867b9b75cf0a09"
+    },
+    "docs/physics_review_20261031/06_MODELO_DEL_SENSOR.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "01eb44550c69a14c8a8e1f3fb79ca3d20c8b5b29"
+    },
+    "docs/physics_review_20261031/07_OBSERVABILIDAD_Y_FUSION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d7a8c7d49cd6a759e0c08465237d7292d6c2c27c"
+    },
+    "docs/physics_review_20261031/08_SIMETRIAS_Y_SUPERFICIES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "26508158049a8a013ee3abde21b5c60e3f4693f7"
+    },
+    "docs/physics_review_20261031/09_JEPA_Y_RETENCION_FISICA.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "bb3248e0d0c7687a380fe2a90034ea0a6d96fab1"
+    },
+    "docs/physics_review_20261031/10_PLAN_EXPERIMENTAL_ACOTADO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b5a3d23c2ed939d9bea9bb65695ac5ad007faaf0"
+    },
+    "docs/physics_review_20261031/11_SISTEMA_Y_DOCUMENTACION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "873bfefa49be2cbb29c52ff9c8ef4c01230ef6c7"
+    },
+    "docs/physics_review_20261031/12_REFERENCIAS_VERIFICADAS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6c6fa76a746ac979eb92f5cf75b983f498477bdb"
+    },
+    "docs/physics_review_20261031/13_ACTUALIZACION_CONCURRENTE.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "22c4f88079e25089d9a094fa38059ba0baaab7d4"
+    },
+    "docs/physics_review_20261031/DOCUMENT_INDEX.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d23c33d814aec4cc14a19647dc3654acb80d4302"
+    },
+    "docs/physics_review_20261031/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1f3491c35d518f52c5e12d963feb8a58b9225d69"
+    },
+    "docs/physics_review_20261031/RESULTS_VERIFIED.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "063d27364b9d403ed1e50b8092d3091a9032872f"
+    },
+    "docs/physics_review_20261031/git/2026-06.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5d56f5bec7dac0b1ac16bd0c0d02fe03f0c04281"
+    },
+    "docs/physics_review_20261031/git/2026-07.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1fe03fb73f52cb2e0c4e1ac9571ad16b1e82811b"
+    },
+    "docs/physics_review_20261031/git/2026-08.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d64f38c7ca14f2f1687f0dee8518b34b61859b43"
+    },
+    "docs/physics_review_20261031/git/2026-09.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "16dfbcd2d1892910c7be807370498722f9557243"
+    },
+    "docs/physics_review_20261031/git/2026-10.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "664d42f83ecf66ad5cd8d2e648cda3129350e34c"
+    },
+    "docs/release_research_implementation_20261031/CADENCE_LOCALIZATION_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e3b0bd99ba91147c5fd8406366b430ccf4fee59d"
+    },
+    "docs/release_research_implementation_20261031/CLOCK_CADENCE_CONTROL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "13fdcfc8d2d5bfbcfde4c74f33a6dcc0ed5e1085"
+    },
+    "docs/release_research_implementation_20261031/CLOCK_REGIMES_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "07ffb555803cf4cf768c493f5918b62badcd7475"
+    },
+    "docs/release_research_implementation_20261031/NATIVE_BACKEND_DIAGNOSIS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e004f11ae749f091495fa861cd41ca2d5bec7bf1"
+    },
+    "docs/release_research_implementation_20261031/NATIVE_INTERRUPTION_RECOVERY.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "9f6dadda8e6e1af6181fa7655cf25a2b3d6a66cc"
+    },
+    "docs/release_research_implementation_20261031/NATIVE_LOCAL_LATENCY_PROTOCOL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c4139c78ce7d7c62637ee6f364b343e7d220e22c"
+    },
+    "docs/release_research_implementation_20261031/NATIVE_PAIR_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b613d22eaef19ffbe4d799e2fb6fe355d5c42821"
+    },
+    "docs/release_research_implementation_20261031/NATIVE_PARITY_FOLLOWUP.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "90f6e2125eed9959960327c4caddbe863aea502f"
+    },
+    "docs/release_research_implementation_20261031/NATIVE_PLATFORM_PAIR_PROTOCOL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "171c81b0072440b73f211fe93f9504a01c42a11a"
+    },
+    "docs/release_research_implementation_20261031/NATIVE_RAW_LATENCY_PROTOCOL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "462f46c948057d9385ac14c7109cb125ca4a2c1c"
+    },
+    "docs/release_research_implementation_20261031/OBSERVABILITY_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "108251f281dac286d5731277d521aa3d70b1e7b5"
+    },
+    "docs/release_research_implementation_20261031/PHOTOMETRIC_Q_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c462a0664420d904a440013980f443566f244ae5"
+    },
+    "docs/release_research_implementation_20261031/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b708cf39d7eb94b5a5931c3ec4f96c2b87b61de4"
+    },
+    "docs/release_research_implementation_20261031/ROBUST_MEASUREMENT_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "ae16186f0b2de4437ab00e4f34b9832c6d10e1f3"
+    },
+    "docs/release_research_implementation_20261031/SENSOR_PROXY_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6ce35ef67e583d921fc076ed44a5e211d950f31f"
+    },
+    "docs/release_research_implementation_20261031/SENSOR_REFERENCE_CONTROL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f8b00d784e5101a70f363eff79e6bd3374a5b47a"
+    },
+    "docs/release_research_implementation_20261031/SURFACE_PREREGISTRATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5add42e5c420f41af4e2b6740912d5e100e8d2c9"
+    },
+    "docs/release_research_implementation_20261031/campaign_results_v1/POPULATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5b87af24ae5e174eb6a9b3b0f4917eae31911a92"
+    },
+    "docs/release_research_implementation_20261031/campaign_results_v1/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "099a557154e484a65b1507d279d08b49e6bf2787"
+    },
+    "docs/release_research_implementation_20261031/continued_results_v1/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d2c514151f8a559a3b1efb0cab854130b8b0050e"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v1/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8b5b306deb4c6293fda24a1bf38a8fbb0dae027d"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v1/cadence_localization/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e8f6481b9f3b5e2e163304aee42fe1a936717a11"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v1/clock_regimes/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e512ef2b1837716f698f4202c2c7b9152c9f262c"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v1/native_original_drift/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "83f26dd2d4bd5fa6bfd22a4b5a695d60d0120ef9"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v1/observability_failure/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "51d0b105895ebffe7018ebbac02b79ae6f0c044f"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v1/robust_measurement/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c14c4eb0b2b776282ff5c0b30a8dbf4d7d760191"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v1/sensor_identifiability/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "aa00ef79df5da3fa62e6f17c11a1e95063c6b073"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "395c070273108d6cfc7b568ecfa81e861f54d706"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/cadence_localization/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e8f6481b9f3b5e2e163304aee42fe1a936717a11"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/clock_cadence/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "84d928302c2da3b28d90f8c052f7334ae5137032"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/clock_regimes/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e512ef2b1837716f698f4202c2c7b9152c9f262c"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/native_original_drift/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "83f26dd2d4bd5fa6bfd22a4b5a695d60d0120ef9"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/observability_failure/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "51d0b105895ebffe7018ebbac02b79ae6f0c044f"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/photometric_q/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1b628588136cce509c3d9e7f0084225f91b255ca"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/robust_measurement/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c14c4eb0b2b776282ff5c0b30a8dbf4d7d760191"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/sensor_identifiability/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "aa00ef79df5da3fa62e6f17c11a1e95063c6b073"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/sensor_proxy/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "278f0aa3bb5387c7da3f69623caac13e2aef0e59"
+    },
+    "docs/release_research_implementation_20261031/followup_results_v2/sensor_reference_control/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a84290fbba7c54f61f79ee4e1a357867fc8f515e"
+    },
+    "docs/release_research_implementation_20261031/native_parity_distribution_v1/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5c27e8f544443257b9de64d9fb96d965983f0714"
+    },
+    "docs/release_research_implementation_20261031/raw_latency_results_v1/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "9ef7c308473249553d901a190d478c2fde6a7926"
+    },
+    "docs/release_research_implementation_20261031/results/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "36d05c378f5e6771b678ec680a55d7b4a9a3ebe2"
+    },
+    "docs/release_research_implementation_20261031/results_v2/RESULTS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "18eb83bcf226a5693ea78df3b809195eb3e1c216"
+    },
+    "docs/release_research_plan_20261031/00_RELEASE_Y_PUNTOS_DE_INTEGRACION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "782759b55eef5271c6735e41b3ef4faf1032f876"
+    },
+    "docs/release_research_plan_20261031/01_DATOS_Y_PROTOCOLO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "859d4f60cd790ec39a81dd577dce26903881bdcc"
+    },
+    "docs/release_research_plan_20261031/02_CADENCIA_Y_DIAGNOSTICOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "ff9db70a73e336fd3f0924036488a37ca64454f2"
+    },
+    "docs/release_research_plan_20261031/03_RELOJ_Y_ESTADO_CAUSAL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f3939e99c13eea27689c18dc74a8e8d6d8b6cf7e"
+    },
+    "docs/release_research_plan_20261031/04_OBSERVABILIDAD_Y_FUSION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "bf2d4993c7f282ad87710df250fa1b64800007c5"
+    },
+    "docs/release_research_plan_20261031/05_AUXILIAR_DEL_SENSOR.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e680019f6f309e89af04f5e59f1f8521c7742eef"
+    },
+    "docs/release_research_plan_20261031/06_COORDENADAS_Y_VISIBILIDAD.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "57101cf72610f0b315a8278b1fb22ee4927015b3"
+    },
+    "docs/release_research_plan_20261031/07_SECUENCIA_Y_PRESUPUESTO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "07ceb953ce9bf6ca2d3fb6a191ef5b7254ee1ddf"
+    },
+    "docs/release_research_plan_20261031/08_EVALUACION_Y_PROMOCION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5b2f17e03b78164081c552f21f8f3bb030e22949"
+    },
+    "docs/release_research_plan_20261031/09_JEPA_CONDICIONAL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f871c32f577a8dbc42d5c5c1c80776ed103f6e8d"
+    },
+    "docs/release_research_plan_20261031/10_GUIA_DE_EJECUCION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "49abe84590baadcf0a108911071511b5d7a3c119"
+    },
+    "docs/release_research_plan_20261031/11_FUENTES_Y_RAZONAMIENTO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "095bf4813d80ef527a6a6455154a0bb2952564b5"
+    },
+    "docs/release_research_plan_20261031/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "7c402f922c5c241b6ebafce6d2aac35be09ff481"
+    },
+    "docs/release_research_summary_20261101/RESULTADOS_Y_LIMITES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d97d017ebebb64cb21c1003396cbb2ce198abdc0"
+    },
+    "docs/release_research_summary_20261101/TRABAJO_REALIZADO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e36220f304837cce2422e12c06161a61e7088620"
+    },
+    "docs/research_log_20261029_31/01_CRONOLOGIA_Y_ALCANCE.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d21278880a983b1680970e0d16b1a1fa60174f3f"
+    },
+    "docs/research_log_20261029_31/02_DATOS_EVALUADOR_Y_FISICA.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a646fec14b6d72aa7b641966a098ebce21a45075"
+    },
+    "docs/research_log_20261029_31/03_MODELOS_Y_ENTRENAMIENTOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8778a3e07557c26c1d9d5ca7ac57a7f8960ac8f4"
+    },
+    "docs/research_log_20261029_31/04_RESULTADOS_Y_COMPARACIONES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b2b33ab31abbac9e9199bd5cfe20c8a3d04dec9e"
+    },
+    "docs/research_log_20261029_31/05_RENDIMIENTO_Y_RECURSOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "9d770f338b0a3a8db8f4fa435ba8977030161cdf"
+    },
+    "docs/research_log_20261029_31/06_VERIFICACION_Y_FALLOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d1a880041cedf35782b13b80260fc026bfe9f830"
+    },
+    "docs/research_log_20261029_31/07_ARTEFACTOS_Y_REPRODUCCION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "43602e22e0a4ef85075d9fd3f3f22e105639f72d"
+    },
+    "docs/research_log_20261029_31/08_LIMITES_Y_SIGUIENTES_PASOS.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "83915c12e1faa04c74629c8ac4e94067cc2d8652"
+    },
+    "docs/research_log_20261029_31/09_PUBLICACION_E_INVENTARIO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "99e1b441453c8852294077647ecefaab561f7b4b"
+    },
+    "docs/research_log_20261029_31/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "13b987f6cc0d68a3e513acf16543e4a7cc228bd5"
+    },
+    "docs/research_log_20261029_31/RELEASE_NOTES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "477dad853823aa14ca2ad6b4d36462c103eed40c"
+    },
+    "docs/research_log_20261031_canonical_pair/EAP_CURRENT_QUERY_AUDIT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b5e77ce14922341e9e8f1551d3e7838a259a0ba7"
+    },
+    "docs/research_log_20261031_canonical_pair/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0f2d9c9b4084bc0feac5075ba26c138b74b68874"
+    },
+    "docs/research_log_20261031_canonical_screen149/CONTINUATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d1a396330a5daa008d3f2f5ac6c1edd6e858ad9a"
+    },
+    "docs/research_log_20261031_canonical_screen149/EAP_DEPLOYMENT_PREFLIGHT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0e5f7a799976cbb89edee7c799fb280463d2760e"
+    },
+    "docs/research_log_20261031_canonical_screen149/EAP_EVENT_CADENCE.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a34df812e921b720e51d67a8a9dbcce72777755b"
+    },
+    "docs/research_log_20261031_canonical_screen149/EAP_ORIGINAL_CONTEXT_REPLAY.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2a40b00d605f11f6df38717bf81b3a79383829e9"
+    },
+    "docs/research_log_20261031_canonical_screen149/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1fa32de352a8170deb4ad4254dfeedecf15d463c"
+    },
+    "docs/research_log_20261031_canonical_screen149/VALIDATION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1b57c2a572896dfaa43e4db591acef32f28c1229"
+    },
+    "docs/research_log_20261031_event_expansion/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "032d04ff9756eb39bffdfb6c6a9c35cebc386716"
+    },
+    "docs/research_log_20261031_joint_support/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0b366ed81e6c418f057d11d031cfb8632e6f7351"
+    },
+    "docs/research_log_20261031_joint_support/producer_next_steps.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "12c805b225248869754333877de4c0cffefe19d4"
+    },
+    "docs/research_log_20261031_native_context/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "16a3ad027a7fbde4660c5a688c4dd4cb7b67943d"
+    },
+    "docs/research_log_20261031_native_support/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a92a2874ac58008577232ff7510173155c323bd4"
+    },
+    "docs/research_log_20261031_producer_timewarp/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "54813d4fc5808786daf028b01187d44d5bda55a0"
+    },
+    "docs/research_log_20261031_sign_safe/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "621ef238a3d4699510f1c742d7bf5600f147b0cf"
+    },
+    "docs/research_log_canonical_population2608/CANONICAL_ROUTER_REFIT_PROTOCOL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2671eafa73a490fcc4e94cd4f519091a0d03107a"
+    },
+    "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_PROTOCOL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "cdaa3e7221507f27e466d4ff820760ce42668222"
+    },
+    "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_RESULT.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f80a440941107d53f2d27fc2c8792d98cfd96f8c"
+    },
+    "docs/research_log_canonical_population2608/EAP_ROUTER_SENSITIVITY_PROTOCOL.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "60b06de7a2c8939ed211b7d065f6cbde57b0d4e5"
+    },
+    "docs/research_log_canonical_population2608/NATIVE_CAPTURE_RECOVERY.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e39989ec4f2a3ecb2876d5f58d9c9c513d56db98"
+    },
+    "docs/research_log_canonical_population2608/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4452d6849abb1aa5ef378d6b457b0f89036ad7e2"
+    },
+    "docs/research_progress_20261101/01_TRABAJO_REALIZADO.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "08f7c77ea06a28474b6a845961300265ff310606"
+    },
+    "docs/research_progress_20261101/02_RESULTADOS_Y_PENDIENTES.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b7088b160a7688cc1f99be76e5b8cf48bfc05a06"
+    },
+    "docs/research_progress_20261101/03_ENTREGA_ADAPTADA_Y_COMPARACION.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "fa3eb12ae498ba0478205a2102c65160e78954a9"
+    },
+    "docs/research_progress_20261101/04_ANALISIS_INTEGRACION_MAIN.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "9f1c02fc2a4cb6000e6c05d684d6ea2256fa09cd"
+    },
+    "docs/research_progress_20261101/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "99bec0c1e7cd5c84319a4b98808b4bbdd8fa81b5"
+    },
+    "docs/research_progress_20261101/v1/README.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "294057db42991e4bf021f93293e0d457dd6f36ce"
+    },
+    "docs/superpowers/plans/2026-10-30-phase-adapt-final.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2fd02b45c2ed7f6c4c9c07806839e1aa919ac7ec"
+    },
+    "docs/superpowers/plans/2026-10-30-phase-campaign-completion.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c7318a21fdf66c843cd409cc9696029887c44267"
+    },
+    "docs/superpowers/plans/2026-10-31-evttc-final-submission.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c696e4685b907ee8331dcadf287e496b59c765f8"
+    },
+    "docs/superpowers/plans/2026-10-31-jepa-reopening.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d3d17e32169581f2072a6922d083560a3a3bc1b8"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-canonical-pair-pilot.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f7375e3d78c2250662f5bcc7e0352013968b876a"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-canonical-population2608.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "9c22e36a9d32552cb98c85d0a40dae865f9ee752"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-canonical-screen149.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2c9e1756232398f81b03bfa71680c0de50c8f96f"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-causal-event-expansion.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e56ad593638f93d152f641415ceaa7cf3c4971f9"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-correlated-failure-augmentation.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "7b50e4b0fe3ff44e27f5641616557a731c8ff2e1"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-event-background-stress.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0e9e03d669ce114f45e6d32216a409b71572d114"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-native-context-augmentation.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d90587b83f598945c53888909048bbf3b9e8fcd2"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-native-observation-cache.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "609ca29487608c23e83669ed1f2f8e510a00b7e7"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-native-support-fusion.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "316b9a511b42692c79723731cb32ecc86e8f21ae"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-producer-timewarp-pilot.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "364e74c54a1e90389b867d5bc4c7a1d22c2ea66e"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-robust-fusion.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8a85cc44b090597d31e818fb2b60a860555701d9"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-sign-safe-fusion.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8db14d0c4109e187174f33952bf457b0d7f18c5c"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-startup-router.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b1b65351d29f6bf6fad44147bb9a9d16ea81cffd"
+    },
+    "docs/superpowers/plans/2026-10-31-phase-support-context-joint.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "49e350449b5e0801f2b7c288527b5b32b15cc0dd"
+    },
+    "docs/superpowers/plans/2026-10-31-research-dossier-publication.md": {
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "dc2d87076b3c950e8ff827b210fb477cc9aa88d1"
+    },
+    "docs/detection_sota_20261029/POST_DFULL_RESULTS.md": {
+      "commit": "0e07ad774850cac91cda9fcd54cc963ccf15266c",
+      "blob": "a58058ab3ff578a40d6c99a68af184cdac9b8fbb"
+    },
+    "docs/detection_sota_20261029/RELEASE_CANDIDATE_20261101.md": {
+      "commit": "0e07ad774850cac91cda9fcd54cc963ccf15266c",
+      "blob": "6f4bacd033346decc2bc1e2af86bfe5fa2f2ea43"
+    },
+    "docs/detection_sota_20261029/EVENT_SCREEN_EXECUTION.md": {
+      "commit": "9bde41028cca50f2ca43f327a6ddc33ee8bc9404",
+      "blob": "5bced9c7182fd6a78629da1216789cf5d8ffbd27"
+    },
+    "docs/detection_sota_20261029/DFULL_BATCH8_20261031.md": {
+      "commit": "cdada23b031a952470e50f3b7fc7f786a7258751",
+      "blob": "bc9112c9da8eb38878806ab80e45aa897a93e52b"
+    },
+    "docs/detection_sota_20261029/DFULL_RUN_20261031.md": {
+      "commit": "cdada23b031a952470e50f3b7fc7f786a7258751",
+      "blob": "40ab443aaa2b753693396e733baac3aa596cc246"
+    },
+    "docs/detection_sota_20261029/DFULL_COMPUTE_INVESTIGATION_20261031.md": {
+      "commit": "26a8b32375c9465ab9ad074729fcb14a9611046a",
+      "blob": "6d86b8313ab50638b772aa0513d567df0ffb3469"
+    },
+    "docs/detection_sota_20261029/R2_RARE_FINAL_AND_DFULL_DECISION.md": {
+      "commit": "1803f28dd6e0a5216406100db9f61e3fa236f54d",
+      "blob": "e90662f21fb4e699261790d19923ad4ab3760437"
+    },
+    "docs/detection_sota_20261029/R2_RARE_SAMPLING_CAMPAIGN.md": {
+      "commit": "6f119a3df05ad1c78c80f467da704271031a452e",
+      "blob": "d7821c5f1eeb6e43f2292cbe56a28b09b2d6e586"
+    },
+    "docs/detection_sota_20261029/R0_R2_SEED7_DECISION.md": {
+      "commit": "db6d01e903b218db7d40969cecf0c6182af1dceb",
+      "blob": "4712742312b6cb157d6750e5b26ff63200ad89d9"
+    },
+    "docs/detection_sota_20261029/RUNPOD_EVALUATION_OPTIMIZATION.md": {
+      "commit": "fa0a26d066c74b9d53d50ae676ba88a1f1e596d8",
+      "blob": "d32ea3d7e0035c3bf6fd459a3edb39eba0fc690a"
+    },
+    "docs/detection_sota_20261029/RUNPOD_INPUT_OPTIMIZATION.md": {
+      "commit": "aea6ff21cbaa94e3bc4f89007e4d6e2c4dc3fefe",
+      "blob": "e899b758a4bcda1b90e4e6b189e4243608a58634"
+    },
+    "docs/superpowers/plans/2026-10-30-evttc-transfer-diagnosis.md": {
+      "commit": "30b28b5c14eb9ed60067ed2f1dc262d7b60f2654",
+      "blob": "1b5d29f5c0d84e14944c18d059dab845bb7cfb34"
+    },
+    "docs/detection_sota_20261029/RUNPOD_RELEASE_PREPARATION.md": {
+      "commit": "8be74334ea989fd560d5df128b58e16237c5aeda",
+      "blob": "7bae32679330923d23403bc467162c84ef22d684"
+    },
+    "docs/detection_sota_20261029/AUTONOMOUS_QUEUE_RESUME.md": {
+      "commit": "9f6994d437e1320ce65e4ed6875c950fd33d6027",
+      "blob": "1034f3f2347221cb5bbe450735d59c69fe9538c5"
+    },
+    "docs/detection_sota_20261029/AUTONOMOUS_QUEUE.md": {
+      "commit": "b1d7481ec27ef22b3f2b1f2950ae39a4558fe9fc",
+      "blob": "4cee203431879d1b085df24bfd9f9d11c0cf3241"
+    },
+    "docs/detection_sota_20261029/INDEPENDENT_PRODUCER_FOUNDATION.md": {
+      "commit": "da54439d055430afdd3e9c3a8034871afb65c123",
+      "blob": "0ba9faa1d7ece3f26853e71817201648816b311a"
+    },
+    "docs/detection_sota_20261029/INDEPENDENT_H5_ADMISSION.md": {
+      "commit": "d6a84353ef807cc845bc55a396840c1b39f184b1",
+      "blob": "9469cce438bb1d462f6abc11e0f5cc1c25c4c5d2"
+    },
+    "docs/detection_sota_20261029/INDEPENDENT_R_A5_RGB_SOURCE_INVENTORY.md": {
+      "commit": "d6a84353ef807cc845bc55a396840c1b39f184b1",
+      "blob": "9c2cd08ae18ad426eb136236439bc116f5fb64df"
+    },
+    "docs/detection_sota_20261029/BATCHED_EVALUATION_PROFILE_PLAN.md": {
+      "commit": "28c7817753e0108e8aadebfde6f8d21e933eac8f",
+      "blob": "93bd6f77d1846418afec8414ec6b258bd5b5aa10"
+    },
+    "docs/detection_sota_20261029/COMPUTE_OPTIMIZATION_AUDIT.md": {
+      "commit": "427dc04b5be2617063306108a2d4ee9b0545c4cd",
+      "blob": "ed7265bdb10b40291c1fd749cc73bf7a765f8262"
+    },
+    "docs/detection_sota_20261029/INDEPENDENT_PHASE_TEACHER_CACHE.md": {
+      "commit": "0ca5fb5859020263c86c80a03bb16bf7f1cde6fe",
+      "blob": "5c52e66ca6d460b005410756aaeab229c8e9441a"
+    },
+    "docs/detection_sota_20261029/GPU_ADMISSION_HARNESS.md": {
+      "commit": "d5c2d6f211ed847194936f8d1d49fe8d5f1bbe70",
+      "blob": "5d0ae99b1339f273df08a962fe268f035935a97f"
+    },
+    "docs/detection_sota_20261029/INDEPENDENT_PHASE_POPULATION.md": {
+      "commit": "7f9d5788ecfbb0413555134ba2bbbe3c0f3857b2",
+      "blob": "4286865267c9dccb58a029f42a1d7b720b3ea890"
+    },
+    "docs/detection_sota_20261029/PERFORMANCE_DIAGNOSIS.md": {
+      "commit": "7f9d5788ecfbb0413555134ba2bbbe3c0f3857b2",
+      "blob": "d8ebb49d0813c66713c670cbcc02f84ae3a5ba03"
+    },
+    "docs/detection_sota_20261029/INDEPENDENT_RAW_HISTORY.md": {
+      "commit": "45bfba3e90c96f558cbbd0162b4920b03ea9e97c",
+      "blob": "b2112083520b9ce0ae2caba4fb362ea053e8fe24"
+    },
+    "docs/detection_sota_20261029/INDEPENDENT_TEACHER_CROSSWALK.md": {
+      "commit": "45bfba3e90c96f558cbbd0162b4920b03ea9e97c",
+      "blob": "aa1d313eeff174dc3f829259744a0e62a3005889"
+    },
+    "docs/detection_sota_20261029/AP101_OPTIMIZATION.md": {
+      "commit": "4b9c9da5edd75104838fc21fc63fd3c9b89c8bcf",
+      "blob": "d454c4d06a9431d56a5e71ee141888111e951ede"
+    },
+    "docs/TTC_EVALUATION_ADMISSION.md": {
+      "commit": "6addaf94e4cb8496ed0e5d37ee4de0d46f7ffdcb",
+      "blob": "57e400e9e616f7522847a7268373a5fcd31e3710"
+    },
+    "docs/detection_sota_20261029/PREFETCH_AND_GPU_OPTIMIZATION.md": {
+      "commit": "9526ec101d3c5a98295de15ad9be722d4b033e85",
+      "blob": "eec5ef7a70669f8693f9ea30c4c5eb952acc2e69"
+    },
+    "docs/detection_sota_20261029/TEMPORAL_MODEL.md": {
+      "commit": "233aba9bc5147184bd8bac0d754a64182369b0fa",
+      "blob": "06ffb37766e159d1a70f364fa1b9c86a6d228565"
+    },
+    "docs/detection_sota_20261029/TEMPORAL_POPULATION.md": {
+      "commit": "233aba9bc5147184bd8bac0d754a64182369b0fa",
+      "blob": "8c4be646029606c893034ff1564d17c6cf3972fd"
+    },
+    "docs/detection_sota_20261029/CAMPAIGN_CONTROLS.md": {
+      "commit": "293073ffc83a3e7ef747747e19bab1c01cbd3bc0",
+      "blob": "d0de674d184e6b1e83defc71c3a7b9a09058392b"
+    },
+    "docs/detection_sota_20261029/EVENT_FUSION.md": {
+      "commit": "592dabfb764f693646ec4f445626fc480ba97667",
+      "blob": "474f224f3e146af8fc2a5b665118c5da508326b0"
+    },
+    "docs/detection_sota_20261029/EXECUTION.md": {
+      "commit": "4527ee5e554153be624e72b4448e0d4a20192a00",
+      "blob": "881bdc6d3ff7a58749c74f6f02890de51ff96ef2"
+    },
+    "docs/detection_sota_20261029/R3_R4_CANDIDATE_PREREGISTRATION.md": {
+      "commit": "4527ee5e554153be624e72b4448e0d4a20192a00",
+      "blob": "acfdcece21469ee2616ee10ba27402176ffecf0f"
+    },
+    "docs/detection_sota_20261029/RANKING_PANEL_RECIPE.md": {
+      "commit": "4527ee5e554153be624e72b4448e0d4a20192a00",
+      "blob": "27c2d9281fac68c0e03c613f5ac91de1f24b3f45"
+    },
+    "docs/detection_sota_20261029/evidence/current_v2/ADMISSION_RESULTS.md": {
+      "commit": "4527ee5e554153be624e72b4448e0d4a20192a00",
+      "blob": "d07bd9ebb1282b739c3acd1cf873776fe7f9a828"
+    },
+    "docs/detection_sota_20261029/evidence/current_v2/README.md": {
+      "commit": "4527ee5e554153be624e72b4448e0d4a20192a00",
+      "blob": "ceaa851dd89f7def6cb17ebd4c61033fb2cbf176"
+    },
+    "docs/detection_sota_20261029/BENCHMARK_TARGET.md": {
+      "commit": "e7ac5012b3a913531ba3b2f5dbc775887fcd5eb1",
+      "blob": "c7cf6719a07f7d1e0a26e39aad31a10f0eb3e6c6"
+    },
+    "docs/detection_sota_20261029/evidence/external_protocol_v2/README.md": {
+      "commit": "e7ac5012b3a913531ba3b2f5dbc775887fcd5eb1",
+      "blob": "a34cc76872b819cc539c8dec584e22ba218455b0"
+    },
+    "docs/detection_sota_20261029/D4096_READABLE_REVISION.md": {
+      "commit": "2332b76b32a888c188496ff023c438677f68ded7",
+      "blob": "d41088ee02b6def1c17e4bc107dd3f9b9e545fa2"
+    },
+    "docs/detection_sota_20261029/EVALUATION_MEMORY_PROFILE.md": {
+      "commit": "2332b76b32a888c188496ff023c438677f68ded7",
+      "blob": "4f5d77c062e9f71aaf0e7e0eb4317f7d319dd7b8"
+    },
+    "docs/detection_sota_20261029/RGB_FULL_PREFLIGHT.md": {
+      "commit": "2332b76b32a888c188496ff023c438677f68ded7",
+      "blob": "f1f07f2941321b02b1b219a0dd752344e617a578"
+    },
+    "docs/detection_sota_20261029/EVENT_DATA_FEASIBILITY.md": {
+      "commit": "dd0523a3c0b7f8909a850e3ce13667d74648fd59",
+      "blob": "95eb7f2e956eb40f1cd8c6202fb7954077122bcc"
+    },
+    "docs/detection_sota_20261029/EVENT_REPRESENTATION.md": {
+      "commit": "dd0523a3c0b7f8909a850e3ce13667d74648fd59",
+      "blob": "2af94bccc864fe9c19ad26738a1d873af7f11a60"
+    },
+    "docs/detection_sota_20261029/TEMPORAL_DATA.md": {
+      "commit": "fd2bd8d201c8b16e76d1d0350421a382a98ab740",
+      "blob": "cff24abb94299ef8eb5b6c58a2ee93f63ee6306e"
+    },
+    "docs/detection_sota_20261029/GENERATED_RESULTS.md": {
+      "commit": "1f64441ef15756eb1d3af7070dccaa4c796cb835",
+      "blob": "226b0f4dc76a32a81b2abe5e76966193c10116cd"
+    },
+    "docs/detection_sota_20261029/evidence/current_v1/GENERATED_RESULTS.md": {
+      "commit": "1f64441ef15756eb1d3af7070dccaa4c796cb835",
+      "blob": "226b0f4dc76a32a81b2abe5e76966193c10116cd"
+    },
+    "docs/detection_sota_20261029/evidence/current_v1/README.md": {
+      "commit": "1f64441ef15756eb1d3af7070dccaa4c796cb835",
+      "blob": "f92f2e4b7c5e85cef6f9ef20c2a5c9f01e8ffd02"
+    },
+    "docs/detection_sota_20261029/evidence/current_v1/s0/CONTROLS.md": {
+      "commit": "1f64441ef15756eb1d3af7070dccaa4c796cb835",
+      "blob": "638d595b7e7a024515235f486325a80e276f2716"
+    },
+    "docs/detection_sota_20261029/evidence/current_v1/s0/DIAGNOSTICS.md": {
+      "commit": "1f64441ef15756eb1d3af7070dccaa4c796cb835",
+      "blob": "03b6379e95f40ece970a5d248479847bd31638c2"
+    },
+    "docs/detection_sota_20261029/MULTIOBJECT.md": {
+      "commit": "56fec56b993a3c1308e946b3ea2a8539647a2c06",
+      "blob": "37c27012a2a5f0658755740f8c8e0f0e007744b1"
+    },
+    "docs/detection_sota_20261029/S5_REAL_REPLAY.md": {
+      "commit": "56fec56b993a3c1308e946b3ea2a8539647a2c06",
+      "blob": "fd8b4ced555cb9b883ea770090880a2b74e56883"
+    },
+    "docs/detection_sota_20261029/DATA_AUDIT.md": {
+      "commit": "2293f674e0b4094c3bb06ea40cf5cd533fc1bbb0",
+      "blob": "3a9a1e2d15ca199b6b3bfc364018d4c90b8c3254"
+    },
+    "docs/detection_sota_20261029/CONTROLS.md": {
+      "commit": "dcc7614272d9e084efc7a5fd618f06623ae2a4f6",
+      "blob": "78f19e608429a1f6796ed956a161eb29d7fb2b10"
+    },
+    "docs/detection_sota_20261029/PROFILE.md": {
+      "commit": "dcc7614272d9e084efc7a5fd618f06623ae2a4f6",
+      "blob": "1dd0ce7b4a38aa7e4217660736973380d0ab724c"
+    },
+    "docs/detection_sota_20261029/evidence/intake/AUDIT_REPRODUCTION.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "4a5d47b9b2e1cc72d1e4cd91397dc9ba6d93b13c"
+    },
+    "docs/detection_sota_20261029/evidence/intake/INDEPENDENT_PLAN_REVIEW.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "5664329b2bbb540fcdd55a30ca6dff3ce0ee1388"
+    },
+    "docs/detection_sota_20261029/evidence/intake/SOTA_DEVELOPMENT_PLAN.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "462838af869e03f1740dd34fc61ea482178116c0"
+    },
+    "docs/detection_sota_20261029/evidence/intake/independent_sota_code_review.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "9abd509d3ffd5a38a91727f4a1ea222e44f958c7"
+    },
+    "docs/detection_sota_20261029/evidence/intake/independent_sota_research_review.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "03e86cebd4bb3c4a69977dbc23bf38ce1f28dd9e"
+    },
+    "docs/detection_sota_20261029/evidence/intake/independent_sota_science_review.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "89754dd1c2c4f162238269c84d8f1dbd6a8b7aa4"
+    },
+    "docs/detection_sota_20261029/evidence/intake/pilot_code_findings.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "b60b5483f94c04fa05b7634b8827879c05a1f620"
+    },
+    "docs/detection_sota_20261029/evidence/intake/pilot_science_findings.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "86858a8a8d911e500ca71b59d866ec51d9e9605b"
+    },
+    "docs/detection_sota_20261029/evidence/intake/sota_primary_findings.md": {
+      "commit": "44c4e415adccfdacecf3bf40bd08a7ebc6bfa7ba",
+      "blob": "c1b6c956f8d215398b6d18ddb320423c40e4a892"
+    },
+    "docs/detection_local_20261029/EXPERIMENTS_AND_FINDINGS.md": {
+      "commit": "24b8f36f6e4aa17c965f9526d8cf486b512a8046",
+      "blob": "3bf4a0752566dfe19389085a8edb68bb4c2fd196"
+    },
+    "docs/detection_local_20261029/IMPLEMENTATION_REPORT.md": {
+      "commit": "24b8f36f6e4aa17c965f9526d8cf486b512a8046",
+      "blob": "cf7942247c6f4721b1751ec18f56c4ccdcc7c1ba"
+    },
+    "docs/detection_local_20261029/README.md": {
+      "commit": "24b8f36f6e4aa17c965f9526d8cf486b512a8046",
+      "blob": "1f945a1a733751903fdad9fa2405df278dfb8ac2"
+    },
+    "docs/detection_local_20261029/REPRODUCTION_AND_HANDOFF.md": {
+      "commit": "24b8f36f6e4aa17c965f9526d8cf486b512a8046",
+      "blob": "ac2e73d60cc1a5698a285cb7571707df1740ef47"
+    },
+    "docs/detection_local_20261029/RGB_TRAINING_RESULTS.md": {
+      "commit": "24b8f36f6e4aa17c965f9526d8cf486b512a8046",
+      "blob": "5106f95bec1aabcf544b38e7cbf2473b5ad12e51"
+    },
+    "docs/detection_local_20261029/DETECTOR_PHASE_BRIDGE.md": {
+      "commit": "5c9fc73062f109f808be732a4a10d6f26a91afee",
+      "blob": "3f23f6ac1cf4f60bf312f186be3736e667a4d0d1"
+    },
+    "docs/detection_local_20261029/IMAGE_SIGNAL_CONTROLS.md": {
+      "commit": "5c9fc73062f109f808be732a4a10d6f26a91afee",
+      "blob": "a36c0a01542f7d9737888a7810cfa4d66d55ef0d"
+    },
+    "docs/detection_local_20261029/INDEPENDENT_FINAL_REVIEW.md": {
+      "commit": "5c9fc73062f109f808be732a4a10d6f26a91afee",
+      "blob": "9ce8c168e4f970c9235a3f9e12e24152a232e3af"
+    },
+    "docs/detection_local_20261029/INFERENCE_VISUALS.md": {
+      "commit": "5c9fc73062f109f808be732a4a10d6f26a91afee",
+      "blob": "db5f98fc8d6734dd9bb83d5711ed47f7f239421b"
+    },
+    "docs/detection_local_20261029/LOCAL_EXECUTION_REPORT.md": {
+      "commit": "5c9fc73062f109f808be732a4a10d6f26a91afee",
+      "blob": "4918ef588e070b1eb7913b886d38c5456e343fb5"
+    },
+    "docs/detection_local_20261029/PORTABLE_DETECTOR.md": {
+      "commit": "5c9fc73062f109f808be732a4a10d6f26a91afee",
+      "blob": "8436846f5aaa20f2c55f2db0f07ae63aa3dbef4e"
+    },
+    "docs/detection_local_20261029/TRAINING_TABLES.md": {
+      "commit": "5c9fc73062f109f808be732a4a10d6f26a91afee",
+      "blob": "ca0b6b02d67dddf435c6ddcedb4ca98c452a2e55"
+    },
+    "docs/detection_local_20261029/DEVELOPMENT_METRICS.md": {
+      "commit": "3ebac039e56e3e5af98e0e3302084f00923235a1",
+      "blob": "97c355f2cf364c7f02c03f9e45a102081266f4a5"
+    },
+    "docs/detection_local_20261029/GEOMETRY_RESOLUTION.md": {
+      "commit": "3ebac039e56e3e5af98e0e3302084f00923235a1",
+      "blob": "cc7b8ddf78733d514c0b1b03c886cfe167a0859c"
+    },
+    "docs/detection_local_20261029/MEDIA_PILOT.md": {
+      "commit": "3ebac039e56e3e5af98e0e3302084f00923235a1",
+      "blob": "87ddd67ed6f57a4b85fc9534a8088a370e14398e"
+    },
+    "docs/detection_local_20261029/NATIVE_VELOCITY_HEAD.md": {
+      "commit": "3ebac039e56e3e5af98e0e3302084f00923235a1",
+      "blob": "b3d01ce12728d91d8ccbe5b399407bb771dc2ec4"
+    },
+    "docs/detection_local_20261029/RGB_EXPERIMENT_ADMISSION.md": {
+      "commit": "3ebac039e56e3e5af98e0e3302084f00923235a1",
+      "blob": "d79785890305f17d9bc56e54deb526fe7dbe3391"
+    },
+    "docs/detection_local_20261029/G1_LOCAL_PREFLIGHT.md": {
+      "commit": "79efcbed4dc09f23dccabfdf678b727b584d0912",
+      "blob": "73b817504ab52def87c81682f2eec7a89e0de90b"
+    },
+    "docs/detection_local_20261029/GARL_ALIGNMENT.md": {
+      "commit": "79efcbed4dc09f23dccabfdf678b727b584d0912",
+      "blob": "e4adb8ef2f5e834b84557255bc6edc0f266f45a1"
+    },
+    "docs/detection_g0_g2_20261029/EXECUTION_REPORT.md": {
+      "commit": "c15eb936d4c97638cfa340670950eb58691e417c",
+      "blob": "7cb6f0f36d602b564616c06a09e69047a77fdb2f"
+    },
+    "docs/detection_g0_g2_20261029/G0_DATA_GEOMETRY.md": {
+      "commit": "c15eb936d4c97638cfa340670950eb58691e417c",
+      "blob": "df1e65119fbdb1d148cd557ebbbbda4f34f25900"
+    },
+    "docs/detection_g0_g2_20261029/G1_DETECTOR_FEASIBILITY.md": {
+      "commit": "c15eb936d4c97638cfa340670950eb58691e417c",
+      "blob": "2633c2872a640d74792990a934e481d2e0241561"
+    },
+    "docs/detection_g0_g2_20261029/INDEPENDENT_REVIEW.md": {
+      "commit": "c15eb936d4c97638cfa340670950eb58691e417c",
+      "blob": "b379aed202deb6208155abeaccf441732781a149"
+    },
+    "docs/phase_3d_ttc_20261029/council_review.md": {
+      "commit": "f2903f0bfd47d7bf56358a94ad5fac0b8a8906ef",
+      "blob": "16111e1ab29b1583ebfd60534112f5130bdfc71e"
+    },
+    "docs/phase_3d_ttc_20261029/swarm_research.md": {
+      "commit": "f2903f0bfd47d7bf56358a94ad5fac0b8a8906ef",
+      "blob": "0ce22bc8c0d59dfda14537ede16ed162afbf9042"
+    },
+    "docs/decisions/ADR-0043-evttc-competition-sensor-adapter.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "cf6792a015433f2b278c1f7f64e9ec071ee29ffa"
+    },
+    "docs/decisions/ADR-0044-published-expired-execution-wrappers.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0078f81565b023f76e5f7dbc1465f837bfb9058e"
+    },
+    "docs/evttc_competition.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "aed58ead7f67b3aaedaa4c606eed7a449aa21235"
+    },
+    "docs/garl_evttc_competition.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "7808688028d9cfa245d4a78d605bbf3c1a5edf5d"
+    },
+    "docs/train40_runtime_council_20261028/COUNCIL.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "21d1e0b2033c0966f946e6a0e8b72ba91b19d28b"
+    },
+    "docs/train40_runtime_council_20261028/DEFAULT_PROFILE.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "af0100b445b48e296e3089eb048f09e64b831114"
+    },
+    "docs/train40_runtime_council_20261028/EXACT_TRANSPORT_REUSE.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "caffb487db85e42e27c30693880b702e894825e7"
+    },
+    "docs/train40_runtime_council_20261028/FRAME_HASH_CPU_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "160731baf0504e98b491ccac14d39556450651a1"
+    },
+    "docs/train40_runtime_council_20261028/FRAME_SEALING_CPU_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "ea64d321c2fff8c487c1f374926f96bd51c11006"
+    },
+    "docs/train40_runtime_council_20261028/FROZEN_RGB_V2_DESIGN.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "660a1f992b9e1b4be01a1e7f9a9ef1fab90bd49f"
+    },
+    "docs/train40_runtime_council_20261028/FROZEN_RGB_V2_WIRING_DESIGN.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "63e4b25926c0ec250e1278dee65a3bc7059b287c"
+    },
+    "docs/train40_runtime_council_20261028/GC_TRACE_V1_PROPOSAL.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "61b8e8d1e345abaa9de8353dbbb027c694a57c20"
+    },
+    "docs/train40_runtime_council_20261028/HANDOFF.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "338338bffee4e91cca1bc6a0b07c452e478d0201"
+    },
+    "docs/train40_runtime_council_20261028/LINSPACE_ATTRIBUTION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "ae5c12d3aab917598b28a80a78afa07c6d08696f"
+    },
+    "docs/train40_runtime_council_20261028/MEASUREMENT_AUDIT.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "1c74d64a8c58c7546f5a752b50a8dda2c01b6ed4"
+    },
+    "docs/train40_runtime_council_20261028/MEMORY_RAW_PARITY.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "d6bd5b393efbeb1df283d584b224252db3f3835e"
+    },
+    "docs/train40_runtime_council_20261028/PRELOADED_RAW_CPU_ARRIVALS_PROPOSAL.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "6b75ca03f5f5f108deb22c488045b1b31de4bb47"
+    },
+    "docs/train40_runtime_council_20261028/RESULTS_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "8e7ebfd5171848f2738f04472ae99b567a021ef3"
+    },
+    "docs/train40_runtime_council_20261028/REVIEW_CAUSAL_RUNTIME.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "d38d46099b2df2be93cf8442afc1e469c9f1bbf3"
+    },
+    "docs/train40_runtime_council_20261028/RGB_GPU_FINDINGS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "f1f9a687d1d7f65c92f7676894fd557ad14b15a3"
+    },
+    "docs/train40_runtime_council_20261028/STRESS_REPLAY_V1_PROPOSAL.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "6a829a0978320a80ce57bf43db4f4f159befbcd8"
+    },
+    "docs/train40_runtime_council_20261028/SUBPACKET_BACKEND.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "c6384bbbf53d9bfed5af105d2f9081e71fec38fc"
+    },
+    "docs/train40_runtime_council_20261028/SUBPACKET_NUMERICS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "c747e2068f71ae511bc4cd6b762d84f406fc75f6"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_final_delta_v1/README.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "35805241c3c998fc25fa8e1fef45db7e5f608ffb"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/README.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "d57a861cbb1b32ffe5604fe12fa44d177528584c"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/COUNCIL.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "1952fdf7d6f942ee1c1bb40acc96f001ffd52d23"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/EXACT_TRANSPORT_REUSE.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "caffb487db85e42e27c30693880b702e894825e7"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/FRAME_HASH_CPU_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "160731baf0504e98b491ccac14d39556450651a1"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/FRAME_SEALING_CPU_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "ea64d321c2fff8c487c1f374926f96bd51c11006"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/FROZEN_RGB_V2_DESIGN.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "cbb71e2ddbc8563473c636e97406c7c1cc9fa2f6"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/LINSPACE_ATTRIBUTION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "ae5c12d3aab917598b28a80a78afa07c6d08696f"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/MEASUREMENT_AUDIT.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "1c74d64a8c58c7546f5a752b50a8dda2c01b6ed4"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/MEMORY_RAW_PARITY.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "d6bd5b393efbeb1df283d584b224252db3f3835e"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/PRELOADED_RAW_CPU_ARRIVALS_PROPOSAL.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "6b75ca03f5f5f108deb22c488045b1b31de4bb47"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/RESULTS_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "248bd6f58fd1b52747251e56b8ac3bae603515e8"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/REVIEW_CAUSAL_RUNTIME.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "d38d46099b2df2be93cf8442afc1e469c9f1bbf3"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/RGB_GPU_FINDINGS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "7abb286e23a03f85676e668f38e0aad7752557e3"
+    },
+    "docs/train40_runtime_council_20261028/evidence/council_v1/docs/train40_runtime_council_20261028/STRESS_REPLAY_V1_PROPOSAL.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "6a829a0978320a80ce57bf43db4f4f159befbcd8"
+    },
+    "docs/train40_runtime_resume_20261027/CURRENT_FINDINGS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "bc1deb02e64119c98692725dca444186913f192e"
+    },
+    "docs/train40_runtime_resume_20261027/HANDOFF.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "bf43642683f14908b81ed9301bb7639266d8f6b0"
+    },
+    "docs/train40_runtime_resume_20261027/MULTIOBJECT_PAIRED_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0071c5096f0200ad24b0c279b37a9448d28dd824"
+    },
+    "docs/train40_runtime_resume_20261027/MULTIOBJECT_SERVICE_AND_TRANSPORT.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0758347b8258f714dc4a6be1f1f1054067cc5d5e"
+    },
+    "docs/train40_runtime_resume_20261027/README.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "08cad33f0a2442e66a36a5d29e8977beb16cf673"
+    },
+    "docs/train40_runtime_resume_20261027/RESULTS_GENERATED.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "6ceac83917db01a7d722a7e0bfc4ab17ce4245cd"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compiled_pipeline/DESIGN_AND_COMMANDS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "eec6d21cd86db5e123e638b9e83d3111cbd209fc"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compiled_pipeline/GPU_FINDINGS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "972ae02d2aa8207782c53130506fcfe875a2c938"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compute_council/CAUSAL_REUSE_AND_20MS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "f527d1419f1cd1257efab7abccfe7474269fc615"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compute_council/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "8a390682108743f92ae08e726b1e7c672bab29f2"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/compute_council/WINDOWS_SCHEDULER_JITTER.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "f407173a1988d3494162bbdbed54f8963d578911"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/multiobject/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "eb2f94b74587253017e89141c05619aadc233954"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/normalization/NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "271b25448abf417008c7455a8bc20b6f06b1c7c9"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/prefix/IMPLEMENTATION_NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "bbf8467377557ad00f5a8af168a4e54297476786"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/producers/NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "c586ae337bcb74486971d244c95925de0a668b78"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/producers/PACED_RUNNER.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "07d13f1a1c36834910502bd4a9e5d28f386b0161"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_cache/NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0ff7f23cac3b3255ef06f9ce67ac89eeb09de542"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_raw_ring/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "70b2c2ec16842b5d7040e66fd0acf89b639c042d"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_uint8/CPU_BENCHMARK_NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "75e88fca5f035b321354c9eac4ec0669f4138270"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/checkpoint_20261028_001/rgb_uint8/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0dad462fa5b00e888636f7639272a0e40b81e921"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/CLOSURE_HANDOFF.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "35e195edad8439c572577ed25b176afb96cb24cc"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/DESIGN_AND_COMMANDS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "eec6d21cd86db5e123e638b9e83d3111cbd209fc"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/GPU_FINDINGS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "10b501d1844260334dd06580afd854cae8d988f6"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compiled_pipeline/PRECISION_VARIANTS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0787b64b291a0cb644d971f505400817a84e6d75"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compute_council/CAUSAL_REUSE_AND_20MS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "f527d1419f1cd1257efab7abccfe7474269fc615"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compute_council/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "8a390682108743f92ae08e726b1e7c672bab29f2"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/compute_council/WINDOWS_SCHEDULER_JITTER.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "f407173a1988d3494162bbdbed54f8963d578911"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/multiobject/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "eb2f94b74587253017e89141c05619aadc233954"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/multiobject/paired_1_2_uint8_v1_aggregate/REPORT.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0071c5096f0200ad24b0c279b37a9448d28dd824"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/normalization/NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "271b25448abf417008c7455a8bc20b6f06b1c7c9"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/prefix/IMPLEMENTATION_NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "bbf8467377557ad00f5a8af168a4e54297476786"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/producers/NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "c586ae337bcb74486971d244c95925de0a668b78"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/producers/PACED_RUNNER.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "e012bd3dec3a453bead202135c6a62c5bd36c6f9"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_cache/NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0ff7f23cac3b3255ef06f9ce67ac89eeb09de542"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_raw_ring/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "70b2c2ec16842b5d7040e66fd0acf89b639c042d"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_uint8/CPU_BENCHMARK_NOTES.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "75e88fca5f035b321354c9eac4ec0669f4138270"
+    },
+    "docs/train40_runtime_resume_20261027/evidence/closure_20261028_002/rgb_uint8/IMPLEMENTATION.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "0dad462fa5b00e888636f7639272a0e40b81e921"
+    },
+    "paper/ASSETS.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "4ae375290230a302f4ab90773eed280929071e08"
+    },
+    "paper/README.md": {
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "b46576604a6bea4e200a8d188a337bf5df95809a"
+    },
+    "AGENTS.md": {
+      "commit": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+      "blob": "acbd1f36b3e83b50dfbf4f82dfa2a7a8e993b60e"
+    },
+    "docs/decisions/ADR-0042-phase-ttc-name.md": {
+      "commit": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+      "blob": "6d0fa78d6a993157465770f84e93cfad5824af7b"
+    }
+  }
+}

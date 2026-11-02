@@ -1,0 +1,171 @@
+{
+  "original_section_inputs": [
+    "sections/introduction",
+    "sections/final_model",
+    "sections/protocol",
+    "sections/official_results",
+    "sections/transfer",
+    "sections/evttc_competition",
+    "sections/design_analysis",
+    "sections/runtime",
+    "sections/discussion",
+    "sections/methods",
+    "sections/evaluation_details",
+    "sections/derived_transfer",
+    "sections/competition_details",
+    "sections/early",
+    "sections/middle",
+    "sections/late_research",
+    "sections/history",
+    "sections/reproducibility",
+    "sections/evidence_index"
+  ],
+  "expanded_section_inputs": [
+    "sections/introduction",
+    "sections/final_model",
+    "sections/protocol",
+    "sections/official_results",
+    "sections/transfer",
+    "sections/evttc_competition",
+    "sections/quality_adaptation",
+    "sections/canonical_cadence",
+    "sections/design_analysis",
+    "sections/runtime",
+    "sections/discussion",
+    "sections/methods",
+    "sections/evaluation_details",
+    "sections/derived_transfer",
+    "sections/competition_details",
+    "sections/early",
+    "sections/middle",
+    "sections/late_research",
+    "sections/physics_followup",
+    "sections/detection_followup",
+    "sections/history",
+    "sections/reproducibility",
+    "sections/evidence_index",
+    "sections/update_evidence"
+  ],
+  "all_original_sections_retained": true,
+  "byte_identical_original_assets": {
+    "figures": 60,
+    "data": 21,
+    "research": 1
+  },
+  "section_changes": [
+    {
+      "path": "sections\\competition_details.tex",
+      "original_sha256": "46763122043303fdd4ef94dfd5d6973bd6a32f474db59aafebe2d306eda680e4",
+      "expanded_sha256": "f5384d9d4c963e688643ff15e1877cb97df118e7dff1643017f1e1d20d147103",
+      "changed": true
+    },
+    {
+      "path": "sections\\derived_transfer.tex",
+      "original_sha256": "966ee8df2f8271084c231555f9303d116126b0596c905127f3d183e88744ecd6",
+      "expanded_sha256": "966ee8df2f8271084c231555f9303d116126b0596c905127f3d183e88744ecd6",
+      "changed": false
+    },
+    {
+      "path": "sections\\design_analysis.tex",
+      "original_sha256": "67629432090dd30a07c5f74cb3bd570ba946f764ae33a3ebbcf4545ff0c05368",
+      "expanded_sha256": "1f10b5a4d30af5a6443dd30879b8daee9b84729ab3bac9d291d0e2a05149f9df",
+      "changed": true
+    },
+    {
+      "path": "sections\\discussion.tex",
+      "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
+      "expanded_sha256": "ca6ebba9bc3c238d8c84eeffc1a8eedaff119018066687b8b766f05f5c791f7a",
+      "changed": true
+    },
+    {
+      "path": "sections\\early.tex",
+      "original_sha256": "c7aac90b3a93c3bd269702b8be743f27c3a04032fcfc1c7f7946bc5f36cea88a",
+      "expanded_sha256": "c7aac90b3a93c3bd269702b8be743f27c3a04032fcfc1c7f7946bc5f36cea88a",
+      "changed": false
+    },
+    {
+      "path": "sections\\evaluation_details.tex",
+      "original_sha256": "e7e0d10930fc535d4660d67d68bf0c70f0d4d98071d2d2e3111480814467383b",
+      "expanded_sha256": "e7e0d10930fc535d4660d67d68bf0c70f0d4d98071d2d2e3111480814467383b",
+      "changed": false
+    },
+    {
+      "path": "sections\\evidence_index.tex",
+      "original_sha256": "78a3f570ae15feacd2b26be83031f1af95162f5e2587b152656c8842b69aa0ae",
+      "expanded_sha256": "78a3f570ae15feacd2b26be83031f1af95162f5e2587b152656c8842b69aa0ae",
+      "changed": false
+    },
+    {
+      "path": "sections\\evttc_competition.tex",
+      "original_sha256": "f8630c9917ce710196cd9f7b7840291ce536d3a6fba8cef2e12b33a6b9993d2b",
+      "expanded_sha256": "02de5f099a1732653c14ce9059f98439b6cd2d609e24c07fb5e54894e7c6ab44",
+      "changed": true
+    },
+    {
+      "path": "sections\\final_model.tex",
+      "original_sha256": "ee946529c93a4985d3612d356949e05c68965065c3d51083644b0540142d6181",
+      "expanded_sha256": "9f588e6de1a9df43a59e697225f18b7229221ecca988da0391e548c5607b93ce",
+      "changed": true
+    },
+    {
+      "path": "sections\\history.tex",
+      "original_sha256": "c376203118f9aebe52403c495a2967d185c48aa2441adde62a1233816e375522",
+      "expanded_sha256": "f3c6ac5edaad9a68818d78e07cdb9d9b0240f403506b0f08b495df81b219667b",
+      "changed": true
+    },
+    {
+      "path": "sections\\introduction.tex",
+      "original_sha256": "2ea165727c8fe22993ffd76dbcad20188bfba40a2f0f076097ba3703b4b91f89",
+      "expanded_sha256": "863569fba9cc91ba43161461f872c9db557cbeee2ef0c107b44efeb75c0b4096",
+      "changed": true
+    },
+    {
+      "path": "sections\\late_research.tex",
+      "original_sha256": "d448cec89086dc1d847e737d8305dbaed340570aeb05ac7bbd06ce4e376e4992",
+      "expanded_sha256": "d448cec89086dc1d847e737d8305dbaed340570aeb05ac7bbd06ce4e376e4992",
+      "changed": false
+    },
+    {
+      "path": "sections\\methods.tex",
+      "original_sha256": "bd58d2c11d810846437a08f3ad5e6437eac9bc80a7f45a1ee1d3194a5b9f7b6b",
+      "expanded_sha256": "bd58d2c11d810846437a08f3ad5e6437eac9bc80a7f45a1ee1d3194a5b9f7b6b",
+      "changed": false
+    },
+    {
+      "path": "sections\\middle.tex",
+      "original_sha256": "192b783e448da66715287c8acdef43fe35e5fff95fd9873beedde0f6e365e661",
+      "expanded_sha256": "192b783e448da66715287c8acdef43fe35e5fff95fd9873beedde0f6e365e661",
+      "changed": false
+    },
+    {
+      "path": "sections\\official_results.tex",
+      "original_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
+      "expanded_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
+      "changed": false
+    },
+    {
+      "path": "sections\\protocol.tex",
+      "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
+      "expanded_sha256": "061323addde34c848f52d776860e89ba93567818a475d8c6b4cd8a3993bb757b",
+      "changed": true
+    },
+    {
+      "path": "sections\\reproducibility.tex",
+      "original_sha256": "722db763c91ed181eaea46374c7597d8a0cb9b88f30cd142f74484695a6cd59e",
+      "expanded_sha256": "904386ff08a788fa41531d3f6e21f85df81574238a28bdf6ab0cf00548b2fadd",
+      "changed": true
+    },
+    {
+      "path": "sections\\runtime.tex",
+      "original_sha256": "87869c87692f4189fc6ccb9163df44d2499bbee7ce6511432797e5bb4aca1289",
+      "expanded_sha256": "b97fabe9a8cf1d9ed984bb3136ef843896e394541dadaf4f975d10e6f4bc077d",
+      "changed": true
+    },
+    {
+      "path": "sections\\transfer.tex",
+      "original_sha256": "4130fe890f7ab78a2cacd1047a1abd13fb89dc3099b10dc646dcdb1823fe1b07",
+      "expanded_sha256": "4130fe890f7ab78a2cacd1047a1abd13fb89dc3099b10dc646dcdb1823fe1b07",
+      "changed": false
+    }
+  ]
+}

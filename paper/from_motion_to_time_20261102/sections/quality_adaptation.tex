@@ -1,0 +1,49 @@
+\section{Quality-conditioned adaptation of the frozen system}
+\label{sec:quality-adaptation}
+\cohortline{LOCAL ADAPTATION / 2,608 fitting queries / 434 corrected evaluation queries / historical exposure retained}
+
+The original TRAIN40 graph supplies several estimates of the same signed quantity: its final fused TTC, the RGB context estimate, and the event context estimate. Their errors need not agree, and their reliability changes with temporal support and apparent motion. The subsequent PHASE-TTC-Adapt experiment leaves all nine upstream components frozen and learns a small router over those three outputs and a causal box-expansion estimate. This is adaptation of the fusion rule. It is not a new end-to-end fit of the visual encoders, and it does not incorporate the later canonical-cadence intervention in Section~\ref{sec:canonical-cadence}. \evidence{N01}
+
+\subsection{Causal box geometry and its quality descriptors}
+For each query, the geometric branch admits supplied boxes with timestamps in the preceding 650\,ms, rejects nonfinite or nonpositive extents, and requires strictly increasing observation times. It fits three apparent sizes: width, height, and square root of area. Let $s_i$ denote one such size, $s_n$ its latest value, and $u_i$ time relative to the query in seconds. The branch constructs $\rho_i=s_n/s_i$ and estimates a line using median pair slopes,
+\begin{align}
+ b &= \operatorname{median}_{i<j}\frac{\rho_j-\rho_i}{u_j-u_i},
+ &a &= \operatorname{median}_i(\rho_i-bu_i),\\
+ q_s&=-b/a \quad (a>0).
+\end{align}
+The median of the three $q_s$ values supplies the geometric inverse TTC. This is an apparent-scale model with a query-time intercept; it does not recover metric depth or compensate for arbitrary rotation, occlusion, or annotation jitter. At least two boxes spanning 10\,ms are needed for a fit. Near-zero expansion, nonfinite descriptors, or an endpoint older than 150\,ms makes the geometric estimate unavailable. A two-point zero residual is not interpreted as zero uncertainty. \evidence{N01}
+
+Twenty descriptors expose the conditions of that fit: the three axis/area rates, their median and short-history counterpart, rate disagreement, residual and residual-to-motion ratio, temporal span, normalized box count, admitted-box fraction, endpoint age, quantization support, short/long disagreement, aspect ratio and its change, center motion, and slope scatter. Absolute coordinates and absolute clock time are absent. The evaluation supplies object regions, so this branch does not establish that an autonomous detector can provide equally useful observations.
+
+\subsection{Router architecture and exact output policy}
+Each quality router receives 33 values. Thirteen describe the three neural magnitudes, their availability, pairwise sign agreements, geometric availability, and neural/geometric sign agreement. The remaining twenty are the geometric quality descriptors, with the first five rate coordinates replaced by their magnitudes. This design lets the weights respond to agreement and support without supplying a sequence identifier or a target-derived error. The fitted normalizer and componentwise clipping to $[-8,8]$ precede a $33\!\rightarrow\!18\!\rightarrow\!4$ network with a tanh hidden layer. Its two affine maps contain 688 trainable parameters. The final affine weights start at zero with bias $(2,0,0,0)$, favoring F0 when other experts are available without forcing an exact initial F0 output. \evidence{N01}
+
+Let $m_j$ indicate an available expert and let $g_j(\mathbf x)$ be its gate logit. The router forms normalized masked weights
+\begin{equation}
+ w_j=\frac{m_j\exp g_j(\mathbf x)}{\sum_k m_k\exp g_k(\mathbf x)},
+ \qquad \widehat q=\sum_{j:m_j=1}\frac{w_j}{\widetilde T_j},
+ \label{eq:adapt-inverse-fusion}
+\end{equation}
+where $\widetilde T_j$ preserves the expert sign and limits its magnitude to $[0.1,60]$\,s. The implementation excludes zero-valued experts from inverse-coordinate fusion. It applies a rate-magnitude floor of $1/60$\,s$^{-1}$ before inversion, yielding a finite signed output with magnitude at most 60\,s. Exact cancellation, $\widehat q=0$, returns the original fused prediction F0 rather than choosing an approach direction.
+
+The delivered ensemble contains routers trained with seeds 7, 13, and 21. Each router performs Equation~\ref{eq:adapt-inverse-fusion} and emits seconds; the ensemble then averages those three TTC predictions in seconds. It does not average their inverse rates. The ensemble returns F0 exactly when no valid box history is supplied, when endpoint age is nonfinite, or when the latest box is older than 150\,ms. A valid geometric estimate is a separate requirement: a fresh but too-short box history can leave geometry unavailable while allowing the router to combine available neural estimates. These distinctions preserve the implemented fallback semantics. \evidence{N01}
+
+\subsection{Fitting population and exposure}
+The final fit uses 2,608 queries: 2,531 from twenty-four road recordings and 77 from Slider-500. Each seed runs 300 AdamW updates with learning rate 0.01 and weight decay 0.01. The eight competition road recordings and Slider-750/1000 do not enter this final optimizer fit. They had, however, influenced preceding development and startup-recipe inspection. We therefore treat the subsequent comparison as historically exposed local evaluation. Excluding recordings from a final refit does not erase earlier model-selection exposure. \evidence{N01}
+
+This delivered recipe must also remain distinct from earlier all-data fits with 2,677 queries and from the separate all-32-sequence F1 refit. Those experiments have different data membership and upstream fitting. Three router seeds quantify optimization variability conditional on the shared frozen producers; they do not independently replicate sensor acquisition or representation learning.
+
+\subsection{Corrected evaluation of the delivered adapter}
+\EvidenceAdaptTable
+The later target audit resolves the source assignment of CCRs1-low and CCRs1-medium using the public download mapping. It recovers eleven previously missing targets without fitting new clock offsets, making all 434 query identities scoreable locally. Earlier 423-row summaries are superseded for this comparison. The original October submission and the adapted submission retain their original bytes, including two and one negative predictions, respectively. For scoring only, both columns use the organizer-described interpolation of negative predictions between valid outputs. This transformation differs from the runtime's signed output policy. \evidence{N01}
+
+Over all 434 queries, MAE decreases from 0.824976 to 0.335899\,s and mean relative error from 49.894242\% to 17.249803\%. The respective relative reductions are 59.28\% and 65.43\%. Both errors decrease in each of the ten sequences under this evaluator. The 365 road queries improve from 0.305401 to 0.185200\,s MAE, so the aggregate gain is not solely a consequence of Slider-750. These reductions are query-weighted; they should not be combined with the recording-macro cadence summaries below.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=.72\linewidth]{updates/figures/adaptation.pdf}
+\caption{\textbf{Local effect of quality adaptation.} The corrected evaluator compares the original and adapted outputs on the same queries. A logarithmic vertical axis separates the road and Slider error scales. This figure reports exposed development evidence, with organizer-style negative-output interpolation applied to both variants. \evidence{N01}}
+\label{fig:quality-adaptation}
+\end{figure}
+
+Slider-750 remains a protocol discrepancy. The original model's locally reconstructed relative error is 283.931058\%, whereas the organizer-provided result is 132\%. The other nine sequence rows agree after rounding. The adapter's 76.071442\% on Slider-750 is therefore a local value and cannot be compared directly with the organizer's 132\%. No verified new official score for the adapted submission is available in this evidence snapshot. The gain supports further controlled evaluation; it does not establish independent transfer superiority or preservation of the original GarlTTC Test score.
+\FloatBarrier

@@ -1,0 +1,156 @@
+SCIENTIFIC COUNCIL: EARLY eAP DETECTION, 2026-10-29 through 2026-10-31
+Reference inspected: dev/eap-s0-evaluation-20261029 (latest snapshots; some summaries include Nov1 closure).
+Coverage: 55 commits touching scoped code/docs; 90 unique Markdown paths enumerated and content reviewed across this agent plus delegated intake_read (28 complete files). Also read RELEASE_CANDIDATE_20261101.md and structured JSON evidence. Shell command examples were omitted from some prose passes; this is content/scientific review, not execution of all reproduction commands. No models or training were run. No historical files changed.
+
+EDITORIAL VOTE
+Treat detection as a separate supplementary experiment and engineering bridge, not as the core PHASE-TTC accuracy result. The strongest early finding is a controlled, TRAIN-fitted fixed-proposal quality ranker. A second useful result is failed promotion of temporal/event fusion under prespecified small screens. Evaluation/causality audits belong in methods or limitations. Detector port, pilot overfit, performance tuning and training restarts belong in reproduction appendix or evidence index. This review cannot establish worldwide novelty or SOTA.
+
+PRIMARY VERIFIED RESULT
+File docs/detection_sota_20261029/evidence/post_dfull_20261031/ranking_full.json:
+frames = 23958
+results.baseline.AP = 0.16474566077612413
+results.scalar_uncertainty.AP = 0.17712301116490708
+results.learned.AP = 0.1850207831690803
+gain = 0.020275122392956174 (12.306923470663307 percent relative)
+Same local proposal geometry/classes and full development selection; ranker fitted only on 4096 TRAIN frames. One detector seed (7), development-exposed selection, no independent holdout. Do not compare .18502 directly with official AP: Nov1 aligned/official analysis is covered by parent. other_vehicle AP regresses 9.797185696163359e-05 -> 8.563781965421757e-05, while seven other classes improve.
+Model: shared logistic regression with 16 observable features: 8 class logits, class probability, top1-top2 margin, class entropy, predicted depth, depth uncertainty field, log L/W/H. TRAIN-only mean/std. Target quality is fraction of center-distance thresholds (0.5,1,2,4m) met by score-independent one-to-one TRAIN assignment. Duplicate proposals are negative; excluded/ignored instances are masked. CPU double, seed7, weighted soft BCE, 400 full-batch AdamW epochs, LR .02, weight decay 1e-4. Later depth-scale semantics supersede older 'log-variance' prose. Strictly monotonic temperature control preserves AP exactly (.16870712 on 1024-frame panel); this separates ranking changes from monotonic score calibration. No calibrated-risk claim.
+
+NEGATIVE MODALITY SCREEN (APPENDIX)
+File docs/detection_sota_20261029/evidence/post_dfull_20261031/temporal_screen.json:
+variants.current_only.AP = .169104272061326
+variants.correct_past_2.AP = .16884845107406019
+variants.current_repeated.AP = .16817067232848132
+variants.correct_past_1.AP = .1678841926036423
+gain_over_strongest_control = -.0002558209872658146; screening_pass=false.
+File event_screen.json in same directory:
+arms.F01_events.AP = .17055750129931024
+arms.F01_rgb_capacity.AP = .1675649291249355
+arms.F11_events.AP = .16944685441756638
+File final_screen_decision.json: event_gain_gate=.005; both passes_screen=false.
+All arms 1024 updates, seed7, batch4, fixed 1024-frame selection panel from the same Dfull parent. Temporal controls on cloud GPU; event and RGB-capacity arms local. Gains over local capacity .00299257217 and .00188192529. Do not claim events hurt or are useless; limited budget does not establish convergence. They fail promotion margin. Temporal adapter has 116480 params, up to two detached historical feature slots, zero-initialized residual, age embeddings; current_repeated capacity control. Event branch zero-init; 50ms half-open window ending at RGB exposure end, 5 bins/polarity, 160x96, lossless cache; separate RGB-capacity residual. Identity/parity at initialization is an engineering gate, not modality evidence.
+
+DETECTOR TRAINING CONTEXT (OPTIONAL APPENDIX)
+File docs/detection_sota_20261029/evidence/post_dfull_20261031/dfull_final_model.json:
+unique_train_frames=70279; run_exposures=281116; run_updates=38726; checkpoint_update=34333;
+checkpoint_sha256=c58c13297fd15638d89364a25b88245cd8be669ab8bfdbcb741f03df0e9215b3;
+selected_evaluation.metrics.AP=.1648002936374855, sample_count=23958.
+This cloud selected-model AP differs slightly from the local fixed-pool baseline; ranking gains must use local .16474566 as denominator.
+Dfull warm-starts R2 then uses a fresh optimizer/sampler. Batch4 -> batch8 migration at update7168 preserves 281116 exposures and exposure-clock LR, but changes AdamW update frequency and is not an equivalent optimization trajectory.
+File docs/detection_sota_20261029/evidence/r0_r2_seed7_20261031/comparison.json:
+runs.r0.full.8192.metrics.AP=.09400020246759494
+runs.r2.full.8192.metrics.AP=.11645298017774904
+same 32768 exposure schedule and 23958 selection frames. R2 changes warmup/cosine AND backbone LR; cannot attribute gain to backbone LR alone.
+R2-rare final AP .11565681 vs .11645298, failing macro and common-class preservation gates despite rare improvements. Same initial recipe and exposure budget, changed sampling calendar. CUDA grid_sample backward nondeterminism limits exact resumed trajectory claims. More views did not add bicycle/other_vehicle identity diversity (69/6 TRAIN identity pairs).
+
+EVALUATION AND CAUSALITY LESSONS
+Original pilot GT passed through training filters: retained 829/1565 train, 938/1936 selection annotations. Revised v2 independent GT includes 1035 selection objects plus 901 depth-ignored (same 256 frames). Preserve legacy and revised denominators separately. New v2 AP .019821723110847754, constant TRAIN prior .003839390946110635, fixed derangement .003654753769763242; only 2 sequence clusters, so bootstrap evidence is weak. Raw public selection eventually requires another alignment handled by parent.
+Public raw dataset audit: 40 train sequences, 118247 train frames; 12 test/35940 test frames. Train list46 vs release40 discrepancy is not new usable diversity. 24/8/8 train/selection/calibration split has no certified acquisition-group independence.
+Sensor-time causal RGB history requires past exposure end <= current exposure start; current image only available at its exposure end. Event input [exposure_end-50ms, exposure_end). Arrival/transport clocks absent, so no physical latency claim. Garl label timestamps differ from exposure clocks; no constant offset can be assumed (sampled 40/40 sequences vary). Shared RGB media do not prove identical object annotation IDs. Same literal object ID had 0/36 exact corner correspondences in audit; closest neighbor is not an authorized GT join.
+Exposure contamination: frozen TRAIN40 PHASE producers already saw all 40 sequences. Holding out detection sequences does not create independent detection+tracking+TTC evaluation. Independent TRAIN24 foundation/teacher crosswalk and E_A5 CPU backward exist, but no independent production refit was trained in these docs. A5 historical loss is supervised, including TTC and bbox terms plus relational distillation, not SSL.
+
+INTEGRATION EVIDENCE (NOT ACCURACY)
+File docs/detection_sota_20261029/evidence/release_candidate_20261101/phase_summary.json:
+status=EXECUTED_DEVELOPMENT_EXPOSED; frame_count=8; sensor_span_us=700010;
+packet_ingested_count=1; targets_read=false; generalization_claim=false.
+6 final detections, 5 ttc_status=available, one track_not_confirmed.
+cuda_resources.execution_wall_seconds_including_model_load_and_media_read=2.4878766999972868;
+peak_torch_allocated_bytes=4336928256; GPU RTX5070Ti Laptop; max_objects=8.
+This is a single startup-inclusive PHASE replay; excludes overall detector+PHASE service latency and supplies no aligned TTC accuracy. q10/q90 remain phase coordinates; crossing zero cannot become a continuous TTC interval by sorting reciprocals. Chunked wrapper ingests events once and supports >20 in CPU fixtures, but real >20 mature-track replay is absent.
+
+PORT / PILOT CAVEATS
+Portable MonoDGP is an adapted variant with PyTorch grid_sample attention and fixes (group_num, depth scaling, fx->fy, empty targets, finite matching). No equality with the original custom CUDA extension was measured; it did not compile locally. Exact label-free inference parity measured 272 frames (16 train+256 selection), not 279 (seven temporal frames lack comparison reference).
+Original pilot velocity head L2: .5949011525138365 vs zero1.3811502059018668 vs train-mean .7591277457551672 m/s on same 401 matches. Second component worsens (.03088006 vs .02086/.02062); conditional native-label affinity, not physical relative velocity, AVE or TTC.
+Engineering optimizations are not science claims: AP101 exact envelope, streaming serializer, bounded prefetch/input cache, explicit resume. B2/B4 inference had numerical failures relative to B1 and were rejected despite faster throughput. GPU time, startup, prep and end-to-end latency must stay separate.
+
+COVERED MARKDOWN PATHS (90 scope + release candidate):
+docs/detection_g0_g2_20261029/EXECUTION_REPORT.md
+docs/detection_g0_g2_20261029/G0_DATA_GEOMETRY.md
+docs/detection_g0_g2_20261029/G1_DETECTOR_FEASIBILITY.md
+docs/detection_g0_g2_20261029/INDEPENDENT_REVIEW.md
+docs/detection_local_20261029/DETECTOR_PHASE_BRIDGE.md
+docs/detection_local_20261029/DEVELOPMENT_METRICS.md
+docs/detection_local_20261029/EXPERIMENTS_AND_FINDINGS.md
+docs/detection_local_20261029/G1_LOCAL_PREFLIGHT.md
+docs/detection_local_20261029/GARL_ALIGNMENT.md
+docs/detection_local_20261029/GEOMETRY_RESOLUTION.md
+docs/detection_local_20261029/IMAGE_SIGNAL_CONTROLS.md
+docs/detection_local_20261029/IMPLEMENTATION_REPORT.md
+docs/detection_local_20261029/INDEPENDENT_FINAL_REVIEW.md
+docs/detection_local_20261029/INFERENCE_VISUALS.md
+docs/detection_local_20261029/LOCAL_EXECUTION_REPORT.md
+docs/detection_local_20261029/MEDIA_PILOT.md
+docs/detection_local_20261029/NATIVE_VELOCITY_HEAD.md
+docs/detection_local_20261029/PORTABLE_DETECTOR.md
+docs/detection_local_20261029/README.md
+docs/detection_local_20261029/REPRODUCTION_AND_HANDOFF.md
+docs/detection_local_20261029/RGB_EXPERIMENT_ADMISSION.md
+docs/detection_local_20261029/RGB_TRAINING_RESULTS.md
+docs/detection_local_20261029/TRAINING_TABLES.md
+docs/detection_sota_20261029/AP101_OPTIMIZATION.md
+docs/detection_sota_20261029/AUTONOMOUS_QUEUE.md
+docs/detection_sota_20261029/AUTONOMOUS_QUEUE_RESUME.md
+docs/detection_sota_20261029/BATCHED_EVALUATION_PROFILE_PLAN.md
+docs/detection_sota_20261029/BENCHMARK_TARGET.md
+docs/detection_sota_20261029/CAMPAIGN_CONTROLS.md
+docs/detection_sota_20261029/COMPUTE_OPTIMIZATION_AUDIT.md
+docs/detection_sota_20261029/CONTROLS.md
+docs/detection_sota_20261029/D4096_READABLE_REVISION.md
+docs/detection_sota_20261029/DATA_AUDIT.md
+docs/detection_sota_20261029/DFULL_BATCH8_20261031.md
+docs/detection_sota_20261029/DFULL_COMPUTE_INVESTIGATION_20261031.md
+docs/detection_sota_20261029/DFULL_RUN_20261031.md
+docs/detection_sota_20261029/DIAGNOSTICS.md
+docs/detection_sota_20261029/EVALUATION_MEMORY_PROFILE.md
+docs/detection_sota_20261029/EVENT_DATA_FEASIBILITY.md
+docs/detection_sota_20261029/EVENT_FUSION.md
+docs/detection_sota_20261029/EVENT_REPRESENTATION.md
+docs/detection_sota_20261029/EVENT_SCREEN_EXECUTION.md
+docs/detection_sota_20261029/EXECUTION.md
+docs/detection_sota_20261029/EXTERNAL_PROTOCOL.md
+docs/detection_sota_20261029/GENERATED_RESULTS.md
+docs/detection_sota_20261029/GPU_ADMISSION_HARNESS.md
+docs/detection_sota_20261029/INDEPENDENT_H5_ADMISSION.md
+docs/detection_sota_20261029/INDEPENDENT_PHASE_POPULATION.md
+docs/detection_sota_20261029/INDEPENDENT_PHASE_TEACHER_CACHE.md
+docs/detection_sota_20261029/INDEPENDENT_PRODUCER_FOUNDATION.md
+docs/detection_sota_20261029/INDEPENDENT_RAW_HISTORY.md
+docs/detection_sota_20261029/INDEPENDENT_R_A5_RGB_SOURCE_INVENTORY.md
+docs/detection_sota_20261029/INDEPENDENT_TEACHER_CROSSWALK.md
+docs/detection_sota_20261029/MULTIOBJECT.md
+docs/detection_sota_20261029/PERFORMANCE_DIAGNOSIS.md
+docs/detection_sota_20261029/POST_DFULL_RESULTS.md
+docs/detection_sota_20261029/PREFETCH_AND_GPU_OPTIMIZATION.md
+docs/detection_sota_20261029/PROFILE.md
+docs/detection_sota_20261029/R0_R2_SEED7_DECISION.md
+docs/detection_sota_20261029/R2_RARE_FINAL_AND_DFULL_DECISION.md
+docs/detection_sota_20261029/R2_RARE_SAMPLING_CAMPAIGN.md
+docs/detection_sota_20261029/R3_R4_CANDIDATE_PREREGISTRATION.md
+docs/detection_sota_20261029/RANKING_EXPERIMENT.md
+docs/detection_sota_20261029/RANKING_PANEL_RECIPE.md
+docs/detection_sota_20261029/RGB_FULL_PREFLIGHT.md
+docs/detection_sota_20261029/RUNPOD_EVALUATION_OPTIMIZATION.md
+docs/detection_sota_20261029/RUNPOD_INPUT_OPTIMIZATION.md
+docs/detection_sota_20261029/RUNPOD_RELEASE_PREPARATION.md
+docs/detection_sota_20261029/S5_REAL_REPLAY.md
+docs/detection_sota_20261029/TEMPORAL_DATA.md
+docs/detection_sota_20261029/TEMPORAL_MODEL.md
+docs/detection_sota_20261029/TEMPORAL_POPULATION.md
+docs/detection_sota_20261029/evidence/current_v1/GENERATED_RESULTS.md
+docs/detection_sota_20261029/evidence/current_v1/README.md
+docs/detection_sota_20261029/evidence/current_v1/s0/CONTROLS.md
+docs/detection_sota_20261029/evidence/current_v1/s0/DIAGNOSTICS.md
+docs/detection_sota_20261029/evidence/current_v2/ADMISSION_RESULTS.md
+docs/detection_sota_20261029/evidence/current_v2/README.md
+docs/detection_sota_20261029/evidence/external_protocol_v2/README.md
+docs/detection_sota_20261029/evidence/intake/AUDIT_REPRODUCTION.md
+docs/detection_sota_20261029/evidence/intake/INDEPENDENT_PLAN_REVIEW.md
+docs/detection_sota_20261029/evidence/intake/SOTA_DEVELOPMENT_PLAN.md
+docs/detection_sota_20261029/evidence/intake/independent_sota_code_review.md
+docs/detection_sota_20261029/evidence/intake/independent_sota_research_review.md
+docs/detection_sota_20261029/evidence/intake/independent_sota_science_review.md
+docs/detection_sota_20261029/evidence/intake/pilot_code_findings.md
+docs/detection_sota_20261029/evidence/intake/pilot_science_findings.md
+docs/detection_sota_20261029/evidence/intake/sota_primary_findings.md
+docs/phase_3d_ttc_20261029/council_review.md
+docs/phase_3d_ttc_20261029/swarm_research.md
+docs/detection_sota_20261029/RELEASE_CANDIDATE_20261101.md

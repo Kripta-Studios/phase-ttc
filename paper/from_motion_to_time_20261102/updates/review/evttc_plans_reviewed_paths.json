@@ -1,0 +1,27 @@
+{
+  "ref": "335f00e0",
+  "paths": [
+    "docs/superpowers/plans/2026-10-30-evttc-transfer-diagnosis.md",
+    "docs/superpowers/plans/2026-10-30-phase-adapt-final.md",
+    "docs/superpowers/plans/2026-10-30-phase-campaign-completion.md",
+    "docs/superpowers/plans/2026-10-31-evttc-final-submission.md",
+    "docs/superpowers/plans/2026-10-31-jepa-reopening.md",
+    "docs/superpowers/plans/2026-10-31-phase-canonical-pair-pilot.md",
+    "docs/superpowers/plans/2026-10-31-phase-canonical-population2608.md",
+    "docs/superpowers/plans/2026-10-31-phase-canonical-screen149.md",
+    "docs/superpowers/plans/2026-10-31-phase-causal-event-expansion.md",
+    "docs/superpowers/plans/2026-10-31-phase-correlated-failure-augmentation.md",
+    "docs/superpowers/plans/2026-10-31-phase-event-background-stress.md",
+    "docs/superpowers/plans/2026-10-31-phase-native-context-augmentation.md",
+    "docs/superpowers/plans/2026-10-31-phase-native-observation-cache.md",
+    "docs/superpowers/plans/2026-10-31-phase-native-support-fusion.md",
+    "docs/superpowers/plans/2026-10-31-phase-producer-timewarp-pilot.md",
+    "docs/superpowers/plans/2026-10-31-phase-robust-fusion.md",
+    "docs/superpowers/plans/2026-10-31-phase-sign-safe-fusion.md",
+    "docs/superpowers/plans/2026-10-31-phase-startup-router.md",
+    "docs/superpowers/plans/2026-10-31-phase-support-context-joint.md",
+    "docs/superpowers/plans/2026-10-31-research-dossier-publication.md"
+  ],
+  "count": 20,
+  "coverage": "All full bodies read in untruncated chunks; first three by resume_docs, remaining seventeen by council_runtime."
+}

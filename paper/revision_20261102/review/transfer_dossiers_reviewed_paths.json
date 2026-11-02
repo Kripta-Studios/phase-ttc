@@ -1,0 +1,282 @@
+[
+  {
+    "path": "docs/evttc_submission_20261031/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "907b6c15e1ad061eba007a38fe69cc7a78e49f9d",
+    "characters": 8426,
+    "lines": 141,
+    "sha256": "094d5553b3fd8285d42db203c5635247e81ded9eac39919fad89bac351652f6a",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/evttc_submission_20261031/REPORT.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "f298293e6534b5306e20599351d3f0d2d692813d",
+    "characters": 4964,
+    "lines": 93,
+    "sha256": "eb07b6e589d0ebff93fa9deae785f02c63c66f2c8aadced79bae456deebf9888",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/evttc_submission_20261031/REVIEW.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "c9f7f287462655b42efb56a9407ce20dee2763d5",
+    "characters": 3834,
+    "lines": 60,
+    "sha256": "723be9e1f6acf161352fd843d63812a8ecf58b1ee4f534dc2d052f157770a53f",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/handoff_20261031_pause/01_TRABAJO_Y_RESULTADOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "09cade3e6c98c3344b02b2a764ec777d617b5567",
+    "characters": 10849,
+    "lines": 181,
+    "sha256": "7152e04004ccd2a7948cf880c652f28df3ca0100844f92aa2665f17b311793ae",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/handoff_20261031_pause/02_ARTEFACTOS_Y_REPRODUCCION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "f33a34de2e5249225e239c9dd9b6c3772a2a0f39",
+    "characters": 8177,
+    "lines": 134,
+    "sha256": "cf4bb0a832d5f4a4c183c8704acddb30c6c59664be9243c80926c1f18e1a8964",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/handoff_20261031_pause/03_PENDIENTES_Y_CONTINUIDAD.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "a2b9c169c848a4c2ba6f94d13b0627747b9bff1d",
+    "characters": 7428,
+    "lines": 120,
+    "sha256": "ab7f995a53ff7f1b9d1880230ae1f387c38f5e14cdb36b699374bb97926d9acf",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/handoff_20261031_pause/04_PROMPT_CONTINUAR.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "3fd0ee5a788949a7b1c6283d3ae1d4deeeb89262",
+    "characters": 4643,
+    "lines": 80,
+    "sha256": "54444e2748f73a047714fed9533b312bafa86c1a35948b9fb84fa75e8b1c0632",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/handoff_20261031_pause/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "447240b1c3a0022618b0289432f08ac98dd3fceb",
+    "characters": 3433,
+    "lines": 57,
+    "sha256": "eb4964e0baf15b006e00999a6311f3f617c1f9d758b75b0f78b2958518410d4d",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/jepa_closure_20261031/POD_RETENTION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "718959e45c7134e68f10500cec1495bcdc0f7b74",
+    "characters": 5417,
+    "lines": 108,
+    "sha256": "210df3aaac93672b0513073c8a4c43e0ed227f1c67b1f677c3951c2df88a5b1e",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/jepa_closure_20261031/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "1962837328c1193ec30d24ff934b6bec7bc59be4",
+    "characters": 7512,
+    "lines": 130,
+    "sha256": "3daca55700b8ea12775bdcb4455557dd6587b9ef7d7390c80e359cdaefbbffdb",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/jepa_closure_20261031/tables.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "9a8c06d269eae2518aa4bffe521a5850e523133e",
+    "characters": 1685,
+    "lines": 31,
+    "sha256": "1c0d68ea855543795c286192ec629a3f41010617aec22e4171881be441261108",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/01_CRONOLOGIA_Y_ALCANCE.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "d21278880a983b1680970e0d16b1a1fa60174f3f",
+    "characters": 7428,
+    "lines": 128,
+    "sha256": "3962d73c99e9e7b15157f1ee26acf436452454fdb8e92cfe76a506f22fd4d1a0",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/02_DATOS_EVALUADOR_Y_FISICA.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "a646fec14b6d72aa7b641966a098ebce21a45075",
+    "characters": 8079,
+    "lines": 142,
+    "sha256": "d6babdaa8aa0c79219144e5590c3e511f99730d94383a1f892acc932608e368b",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/03_MODELOS_Y_ENTRENAMIENTOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "8778a3e07557c26c1d9d5ca7ac57a7f8960ac8f4",
+    "characters": 8511,
+    "lines": 148,
+    "sha256": "970e77184a205dd6e599820c7f20bef85f41570f1e5465e380c054c0bbf75d83",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/04_RESULTADOS_Y_COMPARACIONES.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "b2b33ab31abbac9e9199bd5cfe20c8a3d04dec9e",
+    "characters": 9631,
+    "lines": 181,
+    "sha256": "f27cb632a8eb20fd519771d15b6c89a4415d55adca90a21f5bd59f41275d1c94",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/05_RENDIMIENTO_Y_RECURSOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "9d770f338b0a3a8db8f4fa435ba8977030161cdf",
+    "characters": 7214,
+    "lines": 131,
+    "sha256": "ff163ab7d847fa87c1231141bcbcb607d991357ced1f1ac5d4650a2cf64cf347",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/06_VERIFICACION_Y_FALLOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "d1a880041cedf35782b13b80260fc026bfe9f830",
+    "characters": 8500,
+    "lines": 140,
+    "sha256": "6140b5654d3d19a233f10ba4ede1ee59fbe048c6c7a8b6fdcd78c265cfe4dbc9",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/07_ARTEFACTOS_Y_REPRODUCCION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "43602e22e0a4ef85075d9fd3f3f22e105639f72d",
+    "characters": 7705,
+    "lines": 140,
+    "sha256": "85ebcd79303fc52dc783805de797522897d028e63b9111dcb9f0cf100dc914ab",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/08_LIMITES_Y_SIGUIENTES_PASOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "83915c12e1faa04c74629c8ac4e94067cc2d8652",
+    "characters": 6140,
+    "lines": 97,
+    "sha256": "1f952e5cadccd1db98f6c3beb6acbabd92ff42ffdd93be1e28fd92826b858613",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/09_PUBLICACION_E_INVENTARIO.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "99e1b441453c8852294077647ecefaab561f7b4b",
+    "characters": 5935,
+    "lines": 104,
+    "sha256": "f755352435d0988ec297e9e5ee22a85fe00c66368fa9237bca63406f06e23f6d",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "13b987f6cc0d68a3e513acf16543e4a7cc228bd5",
+    "characters": 5336,
+    "lines": 83,
+    "sha256": "088aa3eb2096a9704a40f4feab2d0ace79301e2fe3539072c856436e711a5e4b",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_log_20261029_31/RELEASE_NOTES.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "477dad853823aa14ca2ad6b4d36462c103eed40c",
+    "characters": 2129,
+    "lines": 35,
+    "sha256": "5c25f6290fc244b5600b764b03fa63fe7a05fac28905fb16b2f856736e607584",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_progress_20261101/01_TRABAJO_REALIZADO.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "08f7c77ea06a28474b6a845961300265ff310606",
+    "characters": 11630,
+    "lines": 204,
+    "sha256": "500ebc06c8d1a9780a1dca54bf712e00fb1a10ae666202617e8bab7fc9ef2436",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_progress_20261101/02_RESULTADOS_Y_PENDIENTES.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "b7088b160a7688cc1f99be76e5b8cf48bfc05a06",
+    "characters": 11523,
+    "lines": 206,
+    "sha256": "bada8fdbd7c6914b9dd21ad4abed007d7f85b8bbcf5209e476bfe4843bfb8654",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_progress_20261101/03_ENTREGA_ADAPTADA_Y_COMPARACION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "fa3eb12ae498ba0478205a2102c65160e78954a9",
+    "characters": 7571,
+    "lines": 142,
+    "sha256": "b4e38545fce8e10de3cbfe22625c19d977bfd7147e06d09891a87e4fd6e83db6",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_progress_20261101/04_ANALISIS_INTEGRACION_MAIN.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "9f1c02fc2a4cb6000e6c05d684d6ea2256fa09cd",
+    "characters": 10331,
+    "lines": 185,
+    "sha256": "0d2320f6c4034e6905f3ee986314569228572d483ac3361d35dbccdc40f94d53",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_progress_20261101/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "99bec0c1e7cd5c84319a4b98808b4bbdd8fa81b5",
+    "characters": 4381,
+    "lines": 81,
+    "sha256": "1d7d9e956541754ae1964f35e130cee2743fb3f86119651fdd63f1c52b666c6c",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  },
+  {
+    "path": "docs/research_progress_20261101/v1/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "294057db42991e4bf021f93293e0d457dd6f36ce",
+    "characters": 3118,
+    "lines": 41,
+    "sha256": "8a10dd8a4e5cb5ce030d4b60f34cbc0b837fedd3735724ea1368fc6d35b340cd",
+    "review_status": "full_semantic_read_untruncated",
+    "reviewer": "history_inventory/transfer_dossiers"
+  }
+]

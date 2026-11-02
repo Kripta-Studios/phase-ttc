@@ -1,0 +1,52 @@
+{
+  "files": [
+    {
+      "path": "docs/physics_review_20261031/git/2026-06.md",
+      "sha256": "8791cab905b761fb8d5626f9415bc52f2bc0bf6eb3460108ae75ccb3221afd65",
+      "declared_commits": 11,
+      "actual_commit_sections": 11,
+      "full_commit_ids": 11,
+      "recent_window_sections": 0,
+      "read_status": "structured_generated_history_review; historical entries before Oct28 are outside requested work window"
+    },
+    {
+      "path": "docs/physics_review_20261031/git/2026-07.md",
+      "sha256": "a41d0b2d9c0d4b4492a823337a9d6d1473d7f1ddb3cdb8133c69b971b3a8130d",
+      "declared_commits": 192,
+      "actual_commit_sections": 192,
+      "full_commit_ids": 192,
+      "recent_window_sections": 0,
+      "read_status": "structured_generated_history_review; historical entries before Oct28 are outside requested work window"
+    },
+    {
+      "path": "docs/physics_review_20261031/git/2026-08.md",
+      "sha256": "e079af3df1eb6103f04e5fc00d25987b3a718b85b14dc07f74fd2b201265b2f2",
+      "declared_commits": 217,
+      "actual_commit_sections": 217,
+      "full_commit_ids": 217,
+      "recent_window_sections": 0,
+      "read_status": "structured_generated_history_review; historical entries before Oct28 are outside requested work window"
+    },
+    {
+      "path": "docs/physics_review_20261031/git/2026-09.md",
+      "sha256": "e3882c8e4457db7ab053ecd7f5d4748e65db3a277a44c4a7b0e2d6c22bb62b87",
+      "declared_commits": 433,
+      "actual_commit_sections": 433,
+      "full_commit_ids": 433,
+      "recent_window_sections": 0,
+      "read_status": "structured_generated_history_review; historical entries before Oct28 are outside requested work window"
+    },
+    {
+      "path": "docs/physics_review_20261031/git/2026-10.md",
+      "sha256": "6e84598ddec4eaf49477bcaaff87b5eeeb1ab406499c333e034317c9fe362089",
+      "declared_commits": 663,
+      "actual_commit_sections": 663,
+      "full_commit_ids": 663,
+      "recent_window_sections": 156,
+      "read_status": "structured_generated_history_review; historical entries before Oct28 are outside requested work window"
+    }
+  ],
+  "commits_exist": true,
+  "unique_commits": 1516,
+  "recent_sections": 156
+}

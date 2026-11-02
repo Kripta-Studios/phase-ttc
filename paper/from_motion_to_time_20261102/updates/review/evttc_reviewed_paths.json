@@ -1,0 +1,368 @@
+{
+  "count": 45,
+  "paths": [
+    "docs/evttc_competition.md",
+    "docs/evttc_submission_20261031/REPORT.md",
+    "docs/evttc_transfer_v2/BASELINES.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_DECISIONS.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_REPRODUCTION.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_RESULTS.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_REVIEW.md",
+    "docs/evttc_transfer_v2/CAMPAIGN_VERIFICATION.md",
+    "docs/evttc_transfer_v2/EXECUTION_LEDGER.md",
+    "docs/evttc_transfer_v2/HANDOFF.md",
+    "docs/evttc_transfer_v2/ORGANIZER_QUESTIONS.md",
+    "docs/evttc_transfer_v2/PILOT_DECISION.md",
+    "docs/evttc_transfer_v2/STARTUP_ROUTER_HANDOFF.md",
+    "docs/evttc_transfer_v2/evidence/phase_robust/report/REPORT.md",
+    "docs/evttc_transfer_v2/evidence/phase_startup/REPORT.md",
+    "docs/evttc_transfer_v2/evidence/phase_startup/REVIEW.md",
+    "docs/garl_evttc_competition.md",
+    "docs/jepa_closure_20261031/README.md",
+    "docs/jepa_closure_20261031/tables.md",
+    "docs/phase_adapt_final.md",
+    "docs/research_log_20261029_31/02_DATOS_EVALUADOR_Y_FISICA.md",
+    "docs/research_log_20261029_31/03_MODELOS_Y_ENTRENAMIENTOS.md",
+    "docs/research_log_20261031_canonical_pair/EAP_CURRENT_QUERY_AUDIT.md",
+    "docs/research_log_20261031_canonical_pair/README.md",
+    "docs/research_log_20261031_canonical_screen149/CONTINUATION.md",
+    "docs/research_log_20261031_canonical_screen149/EAP_DEPLOYMENT_PREFLIGHT.md",
+    "docs/research_log_20261031_canonical_screen149/EAP_EVENT_CADENCE.md",
+    "docs/research_log_20261031_canonical_screen149/EAP_ORIGINAL_CONTEXT_REPLAY.md",
+    "docs/research_log_20261031_canonical_screen149/README.md",
+    "docs/research_log_20261031_canonical_screen149/VALIDATION.md",
+    "docs/research_log_20261031_event_expansion/README.md",
+    "docs/research_log_20261031_joint_support/README.md",
+    "docs/research_log_20261031_joint_support/producer_next_steps.md",
+    "docs/research_log_20261031_native_context/README.md",
+    "docs/research_log_20261031_native_support/README.md",
+    "docs/research_log_20261031_producer_timewarp/README.md",
+    "docs/research_log_20261031_sign_safe/README.md",
+    "docs/research_log_canonical_population2608/CANONICAL_ROUTER_REFIT_PROTOCOL.md",
+    "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_PROTOCOL.md",
+    "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_RESULT.md",
+    "docs/research_log_canonical_population2608/EAP_ROUTER_SENSITIVITY_PROTOCOL.md",
+    "docs/research_log_canonical_population2608/NATIVE_CAPTURE_RECOVERY.md",
+    "docs/research_log_canonical_population2608/README.md",
+    "docs/research_progress_20261101/01_TRABAJO_REALIZADO.md",
+    "docs/research_progress_20261101/02_RESULTADOS_Y_PENDIENTES.md"
+  ],
+  "reviews": [
+    {
+      "path": "docs/evttc_competition.md",
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "aed58ead7f67b3aaedaa4c606eed7a449aa21235",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_submission_20261031/REPORT.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f298293e6534b5306e20599351d3f0d2d692813d",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/BASELINES.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6a4ea0992bc8e5a024500e835b5e6b8063f92f26",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/CAMPAIGN_DECISIONS.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f333e1c0ea479a7d0c8b4dabfb81a8efd2d64b79",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/CAMPAIGN_REPRODUCTION.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f6fc0cfcbba43ff47e7a769bc9003c2febc93706",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/CAMPAIGN_RESULTS.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4affe35a25a75118b627e055f29596ef35025289",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/CAMPAIGN_REVIEW.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "655488a7602b1a8f294445a4b7aae0846aa4b44c",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/CAMPAIGN_VERIFICATION.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "180d0ec12aaad3e6f916cea3c36833d248be1628",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/EXECUTION_LEDGER.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f9e3c520b9deef6c82b697aa6e9493a6038df69e",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/HANDOFF.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1fe11ae4952413f28964b827d5e2f1f881252d61",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/ORGANIZER_QUESTIONS.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "fce5baf56749e2d9eb9180176c52feb8f74d198b",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/PILOT_DECISION.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4384038c111e37afdc4fd5f6e21c24f2274fa669",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/STARTUP_ROUTER_HANDOFF.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "bc0c3f6bb735510005941ac071e33d2f09f7e7ef",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/evidence/phase_robust/report/REPORT.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8091169ac95bc9095654a877aa587422dc4fc61f",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/evidence/phase_startup/REPORT.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "00f3151287c85f7468a06f37352700d717d95d34",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/evttc_transfer_v2/evidence/phase_startup/REVIEW.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0c283036d8c2991d160a074e55b86a935c3582ba",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/garl_evttc_competition.md",
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "blob": "7808688028d9cfa245d4a78d605bbf3c1a5edf5d",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/jepa_closure_20261031/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1962837328c1193ec30d24ff934b6bec7bc59be4",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/jepa_closure_20261031/tables.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "9a8c06d269eae2518aa4bffe521a5850e523133e",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/phase_adapt_final.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "c70a6692cef9bffb99728fdbda632b919882e6da",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261029_31/02_DATOS_EVALUADOR_Y_FISICA.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a646fec14b6d72aa7b641966a098ebce21a45075",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261029_31/03_MODELOS_Y_ENTRENAMIENTOS.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "8778a3e07557c26c1d9d5ca7ac57a7f8960ac8f4",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_pair/EAP_CURRENT_QUERY_AUDIT.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b5e77ce14922341e9e8f1551d3e7838a259a0ba7",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_pair/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0f2d9c9b4084bc0feac5075ba26c138b74b68874",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_screen149/CONTINUATION.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d1a396330a5daa008d3f2f5ac6c1edd6e858ad9a",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_screen149/EAP_DEPLOYMENT_PREFLIGHT.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0e5f7a799976cbb89edee7c799fb280463d2760e",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_screen149/EAP_EVENT_CADENCE.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a34df812e921b720e51d67a8a9dbcce72777755b",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_screen149/EAP_ORIGINAL_CONTEXT_REPLAY.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2a40b00d605f11f6df38717bf81b3a79383829e9",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_screen149/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1fa32de352a8170deb4ad4254dfeedecf15d463c",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_canonical_screen149/VALIDATION.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1b57c2a572896dfaa43e4db591acef32f28c1229",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_event_expansion/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "032d04ff9756eb39bffdfb6c6a9c35cebc386716",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_joint_support/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0b366ed81e6c418f057d11d031cfb8632e6f7351",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_joint_support/producer_next_steps.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "12c805b225248869754333877de4c0cffefe19d4",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_native_context/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "16a3ad027a7fbde4660c5a688c4dd4cb7b67943d",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_native_support/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "a92a2874ac58008577232ff7510173155c323bd4",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_producer_timewarp/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "54813d4fc5808786daf028b01187d44d5bda55a0",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_20261031_sign_safe/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "621ef238a3d4699510f1c742d7bf5600f147b0cf",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_canonical_population2608/CANONICAL_ROUTER_REFIT_PROTOCOL.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2671eafa73a490fcc4e94cd4f519091a0d03107a",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_PROTOCOL.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "cdaa3e7221507f27e466d4ff820760ce42668222",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_canonical_population2608/EAP_RGB_CAPTURE_RESULT.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f80a440941107d53f2d27fc2c8792d98cfd96f8c",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_canonical_population2608/EAP_ROUTER_SENSITIVITY_PROTOCOL.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "60b06de7a2c8939ed211b7d065f6cbde57b0d4e5",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_canonical_population2608/NATIVE_CAPTURE_RECOVERY.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e39989ec4f2a3ecb2876d5f58d9c9c513d56db98",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_log_canonical_population2608/README.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4452d6849abb1aa5ef378d6b457b0f89036ad7e2",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_progress_20261101/01_TRABAJO_REALIZADO.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "08f7c77ea06a28474b6a845961300265ff310606",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    },
+    {
+      "path": "docs/research_progress_20261101/02_RESULTADOS_Y_PENDIENTES.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b7088b160a7688cc1f99be76e5b8cf48bfc05a06",
+      "mode": "full_semantic_read",
+      "current_content_matches_reviewed_blob": true
+    }
+  ],
+  "notes": "Full semantic reading of latest version; earlier truncated outputs excluded until completed in bounded chunks."
+}

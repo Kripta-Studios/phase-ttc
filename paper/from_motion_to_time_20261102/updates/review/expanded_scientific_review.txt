@@ -1,0 +1,25 @@
+EXPANDED ORIGINAL MANUSCRIPT — SCIENTIFIC REVIEW
+
+Verdict: ship within the scientific and editorial scope reviewed.
+
+The expanded scientific audit compared the new edition with the complete original
+paper, not only with the short companion. All 19 original section inputs remain
+(now 24); all 60 figure-directory files, 21 data files and 1 architecture-source file
+are byte-identical. All 21 old graphics references, 52 old section labels and 27 old
+table/data inputs remain. No duplicate section labels were found.
+
+New source identifiers N01–N07 do not overwrite E01–E08. The audit checked the
+434-query adaptation, fixed-teacher probe means/intervals, detection AP/counts,
+and 120-query timing against JSON. Router equations and fallback behavior were
+checked against implementation, including fresh one-box neural-only routing.
+
+Target absence is described as the historical 28 October status. Later corrected
+local scoring is separate from archived model disagreement and official scores.
+Final wording distinguishes F0's passed numerical development gate from failed
+router/refit gates and unverified native accuracy conservation.
+
+Typography retains XCharter/newtxmath, A4, one column, margins, original cover
+identity and existing figure palette. Changes stabilize font sizing, increase
+small-type legibility, give the abstract a quiet pale-blue background, and remove
+avoidable page breaks in the expanded index/introduction. Original data and
+artwork are unchanged.

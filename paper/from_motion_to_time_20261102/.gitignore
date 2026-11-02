@@ -1,0 +1,12 @@
+build/
+__pycache__/
+*.aux
+*.bbl
+*.log
+*.out
+*.blg
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+/main.pdf

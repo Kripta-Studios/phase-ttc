@@ -1,0 +1,128 @@
+{
+  "main_source_commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+  "source_archive_date": "2026-11-02",
+  "files": [
+    {
+      "evidence_id": "E01",
+      "source": "paper/sections/final_model.tex",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/00_final_model.tex",
+      "sha256": "ee946529c93a4985d3612d356949e05c68965065c3d51083644b0540142d6181"
+    },
+    {
+      "evidence_id": "E01",
+      "source": "paper/sections/protocol.tex",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/01_protocol.tex",
+      "sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e"
+    },
+    {
+      "evidence_id": "E02",
+      "source": "docs/research_progress_20261101/03_ENTREGA_ADAPTADA_Y_COMPARACION.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/02_03_ENTREGA_ADAPTADA_Y_COMPARACION.md",
+      "sha256": "b4e38545fce8e10de3cbfe22625c19d977bfd7147e06d09891a87e4fd6e83db6"
+    },
+    {
+      "evidence_id": "E04",
+      "source": "docs/research_progress_20261101/v1/evidence/refit_result.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/03_refit_result.json",
+      "sha256": "8475d5c7d8e5b870ef0273f35df677abc6a46a3b8845be32658d8cd0382d9f9f"
+    },
+    {
+      "evidence_id": "E04",
+      "source": "docs/research_progress_20261101/v1/evidence/native_result.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/04_native_result.json",
+      "sha256": "2e1aa9ab178b7767c4c1ee19e3fb6c4fa60cbb7cfdf0b73e357297f0445945d2"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/physics_review_20261031/07_OBSERVABILIDAD_Y_FUSION.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/05_07_OBSERVABILIDAD_Y_FUSION.md",
+      "sha256": "35f43e59bff5cf6b8385abeefb0538285df9f9eb5e91351c05f86edb8cf3c9b1"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/physics_review_20261031/05_RELOJ_Y_ESTADO_RELATIVO.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/06_05_RELOJ_Y_ESTADO_RELATIVO.md",
+      "sha256": "7ee52e509b52cbb5f19cb8ee4ece39b5ee7b7f039aa6ced5b6204b0a4264ce12"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/physics_review_20261031/06_MODELO_DEL_SENSOR.md",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/07_06_MODELO_DEL_SENSOR.md",
+      "sha256": "603016c2bb3b138f2358b36239d7c59028faf10c28f8ac493b6c20967990783d"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/campaign_results_v1/POPULATION.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/08_POPULATION.json",
+      "sha256": "fba7639355b437f74980c329f0fc107b3466a2ad457e5594a2004ec1cb1469e9"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/campaign_results_v1/NATIVE_SENSITIVITY.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/09_NATIVE_SENSITIVITY.json",
+      "sha256": "2e1aa9ab178b7767c4c1ee19e3fb6c4fa60cbb7cfdf0b73e357297f0445945d2"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/native_parity_distribution_v1/RESULTS.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/10_RESULTS.json",
+      "sha256": "0443ad5658bc27060449b33bdca206cfbf9dd724866c2c58049a3d845a396999"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/followup_results_v2/sensor_identifiability/METRICS.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/11_METRICS.json",
+      "sha256": "383b0935efede1a952ef15c09314fe453626375c51db518e376f0cbca6ab3569"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/followup_results_v2/photometric_q/METRICS.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/12_METRICS.json",
+      "sha256": "8f500bdc76cb7dcc35f85ee1e51711a95841a5ad15440307aaf6369020772932"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/followup_results_v2/clock_cadence/METRICS.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/13_METRICS.json",
+      "sha256": "db3bc472272c5c27d8102c87f8df07dca2a5b495e086cb007c52338b0f0c037a"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/continued_results_v1/OBSERVABILITY.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/14_OBSERVABILITY.json",
+      "sha256": "3f15023a0cd66da8252cb43ee41495877f7763b90a071bfaf77c0b2977fc88a8"
+    },
+    {
+      "evidence_id": "E06",
+      "source": "docs/release_research_implementation_20261031/continued_results_v1/SURFACES.json",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "bundled": "evidence/support/15_SURFACES.json",
+      "sha256": "686ebcae5b13f26563355065aa91ecc92756c0671140e69fdd05200e2a935b00"
+    }
+  ],
+  "runtime": {
+    "evidence_id": "E07",
+    "source": "artifacts/train40_runtime_council_20261028/paced/memory_cache_overlap_reverse1_250_v1/summary.json",
+    "bundled": "evidence/runtime/summary.json",
+    "sha256": "c27d5d980f2bb1c163b073f0f71d66b3aab887ce73f98c6b19c3d6ef4bcf322d"
+  },
+  "other_manifests": [
+    "source_manifest.json",
+    "evidence/detection/source_manifest.json"
+  ]
+}

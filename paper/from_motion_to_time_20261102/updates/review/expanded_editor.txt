@@ -1,0 +1,53 @@
+EXPANDED ORIGINAL MANUSCRIPT â€” EDITORIAL UPDATE
+Scope: PHASE-TTC: From Motion to Time, original full manuscript.
+
+Owned files changed:
+- sections/introduction.tex
+- sections/evttc_competition.tex
+- sections/discussion.tex
+- sections/protocol.tex
+- sections/competition_details.tex
+- tables/evaluation_populations.tex
+- scripts/make_population_table.py
+
+Preservation checks
+All original includegraphics paths, input tables, labels, and citation commands
+in the six manuscript files remain present. No original figure or table was
+removed or replaced by the seven-page manuscript. The corresponding source
+word counts increased from 2,971 to 4,284 (~1,313 words added). Paragraphs describing
+the original inference, baselines, paired disagreement, signed traces, latency,
+grouped fitting, metrics, and transfer limitations remain. Only statements
+rendered stale by the new target audit were rewritten, preserving their dated
+historical interpretation.
+
+Corrected claims
+1. Lack of mapped 434 targets now describes the 28 October snapshot. The
+   corrected 1 November local audit recovers all 434 targets, superseding earlier
+   423-target summaries. It does not turn output disagreement into error.
+2. Original-vs-adapted local error is separate from the archived Garl benchmark,
+   the 468-query Extended-new transfer, published three-sequence RTE, the 2,608
+   cadence cohort, and native 5,805-query output-sensitivity replay.
+3. Negative-prediction interpolation belongs only to the documented local
+   evaluator; the signed original prediction files and figures remain intact.
+4. Slider-750 local 283.931058% versus organizer 132% remains unresolved. The
+   adapted local 76.071442% is not ranked directly against the organizer value.
+5. The quality-adapter improvement is historically exposed. Exclusion from
+   the final fit does not erase prior model-selection exposure.
+6. Canonical timing and the 48-fit router experiment retain failed promotion
+   controls despite some favorable full-population aggregates.
+7. Native replay measures sensitivity, availability, sign and numerical drift,
+   not Test12 candidate accuracy. Template token count is labeled as such,
+   rather than implying that native candidate tokens received official scores.
+8. Conclusion now carries new positive and negative results while retaining
+   original tail-error and deadline limitations. Official ranking remains dated.
+
+New section references: sec:quality-adaptation, sec:canonical-cadence.
+New evidence source IDs use N01--N06, avoiding original E-series collisions.
+
+Generator verification
+make_population_table.py reads original public ledgers plus the copied adapted,
+canonical and native JSON. Population counts are derived, not handwritten.
+The first regenerated version matched the reviewed table exactly; the final
+native row changes only 'scored tokens' to 'template tokens' for clarity.
+Ruff check and format check pass after formatting. A second generation produces
+the same table bytes as the first; no training or sensor inference was run.

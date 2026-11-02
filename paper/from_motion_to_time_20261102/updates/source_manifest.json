@@ -1,0 +1,30 @@
+{
+  "official": {
+    "repository_source": "paper/data/official_benchmark.json",
+    "bundled_source": "evidence/official.json",
+    "sha256": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532",
+    "bytes": 3908
+  },
+  "adapt": {
+    "repository_source": "docs/research_progress_20261101/v1/evidence/evaluator_audit.json",
+    "bundled_source": "evidence/adapt.json",
+    "sha256": "af97200329206304d21aa7d16c740ef28340899d495cca533744c76f65437733",
+    "bytes": 22367
+  },
+  "canonical": {
+    "repository_source": "docs/research_log_canonical_population2608/evidence/report.json",
+    "bundled_source": "evidence/canonical.json",
+    "sha256": "fba7639355b437f74980c329f0fc107b3466a2ad457e5594a2004ec1cb1469e9",
+    "bytes": 30450
+  },
+  "jepa": {
+    "repository_source": "docs/jepa_closure_20261031/closure_analysis.json",
+    "bundled_source": "evidence/jepa.json",
+    "sha256": "f5a26209649df64752d401a7487c93f4a6caf27b7e801a274e75813d3525f819",
+    "bytes": 4533
+  },
+  "generator": {
+    "file": "build_evidence.py",
+    "sha256": "9c72ca8a8027aab7928f9bc9120babc9554821bc9e00601f12704045db001c18"
+  }
+}

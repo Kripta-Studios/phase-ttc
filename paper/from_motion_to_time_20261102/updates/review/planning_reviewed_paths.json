@@ -1,0 +1,568 @@
+{
+  "full_read_path_count": 50,
+  "entries": [
+    {
+      "path": "EXECUTION_REPORT.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "7cb6f0f36d602b564616c06a09e69047a77fdb2f",
+      "sha256": "b9ecceb98b4224e2d8cdc1985dc3f5f5d90dfd16d8c1715aaafec9ce3f39c317",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "G0_DATA_GEOMETRY.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "df1e65119fbdb1d148cd557ebbbbda4f34f25900",
+      "sha256": "f3ecf659bee9199cc0270a4e6944509cc404d0e3f4ccf9fd9d1e9e3b50e1c35f",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "G1_DETECTOR_FEASIBILITY.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "2633c2872a640d74792990a934e481d2e0241561",
+      "sha256": "c2a273afcd34fe19c91db792d1c11804a3365c4a1f0e74c00ab5fdea1d849328",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "INDEPENDENT_REVIEW.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b379aed202deb6208155abeaccf441732781a149",
+      "sha256": "8d663d0ea033f10b07a35b79b69bf42e13092c6f618331a3900c1bd5b0ab1a7d",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/01_ESTADO_Y_DIAGNOSTICO.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b42723fec5c2664708067bf872a09f40fe0cbb86",
+      "sha256": "9b48f8470bb24d03106a12c413db233ab94f887a1aca80f09b3c8f9023271f54",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/02_SOTA_Y_LECCIONES.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "24ecbc78dbb44feb86d5e2762ad53cdd9bd43b15",
+      "sha256": "4ceb8512f1fdf48671260d618b976eb12f1c6886dd8cccf23d20a7971724d5d6",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/03_PROTOCOLO_Y_DATOS.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4a131b7c9001775260155b0700fc526091b0631d",
+      "sha256": "efe05e47df0fc093a9342cba89585f4c20a338a0ed3d94cb57cbdfbcb225b3e0",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/04_EVALUADOR_Y_BASELINES.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "813fb28ffd3f89b9a1e46d21606fac6e374e9da0",
+      "sha256": "c60a79874a84e04ef735c92aa26de97b4bea16291aa4b62cc923628c8179340f",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/05_DIAGNOSTICO_DE_SENSORES_Y_MODELO.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b94d5be4ed4aae814debe1ddd10cab3edc0630b5",
+      "sha256": "618d724189bc8408bbe5247e63063b5ea7c06f4afcd28c996e6b2f5252d34d91",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/06_INTERVENCIONES_MINIMAS.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4353bc3ed28442e152289f371ffdab96bd3926c8",
+      "sha256": "6489b79648324e510a1b80073035dc86383fe6d482b4c45cd52de7cfc41b3109",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/07_FUSION_Y_FINE_TUNING.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "da7400b1a411eb525f63bd3ef7d8c96d5811203a",
+      "sha256": "0770d4080743676ce787bf9fb98bafab191de4ac62d17f6c59ee090cbeea1bdc",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/08_JEPA_Y_ARQUITECTURAS_FUTURAS.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e6ce8b99643bdf936dbcf317ec5189b4eacec83a",
+      "sha256": "5319f049f519fa80f6dc782cbbfeef2f12a034d54f0178026e4ce86d75961dad",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/09_MATRIZ_EXPERIMENTAL_Y_DECISIONES.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "01b782d9dce95ed83625e1b6b7a2195bb1133e56",
+      "sha256": "805c71e248e28d7ddfdb491831200fa970bbf6d83a049d6375b0d80003c6c1f8",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/10_CONFIRMACION_ESTADISTICA_Y_SOTA.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5e735cb42c93ed79f986475e892349e830932342",
+      "sha256": "00fc91fd1e6fd496e490438fc8a7be97e268e75316b4e4a0a56144d696dc998d",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/11_RUNTIME_RECURSOS_Y_REPRODUCIBILIDAD.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "01f4e0c3ca94d8b9c9c4ff7e66b5502a4d03b178",
+      "sha256": "9293d670e0c3d7aae75639535982b0fb952fa2a2c96ee22b5b4cab5fb9e2dfe1",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/12_BACKLOG_Y_PRIMERA_ITERACION.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "475ea1332dd87ad431a9acfa0e9c1d382a68f779",
+      "sha256": "6664b6fbd5a2e16b18039d607d78b6b202a47155316061cd19e3478a0f49e3f4",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/13_REFERENCIAS_Y_ALCANCE.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "99ac5013a3fec01c0f0b1278a29f036aad41b460",
+      "sha256": "f70353e8633ab90791f48731f306fcd5c85c6e1927bdd497e6a771707406996c",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/14_CONTRATOS_Y_COMANDOS_PROPUESTOS.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "117dfafae9c4ccf6010e404122d286b74b2833d8",
+      "sha256": "7ea429dad324287106fa277da9d78a6cab94c078c9b665d0a401d160fcfb8d19",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/15_REVISION_INDEPENDIENTE.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d0ff597ee1d9c0a3e36dedb88736206599258905",
+      "sha256": "5a2dfc7eb78358e4bcd1c0a6f89854d5343c7c4b6b95c18c87b37e0e9253d442",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/MANIFIESTO.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5fa6db03861a4c5ddd76ac0ef3796c995b32e63a",
+      "sha256": "342a5607e536601f017db426934320bd407744be14a371501a607e548c35b06e",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/README.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "887a8b0f721468211c6e49a066a3a0548a9c57b5",
+      "sha256": "c1befce378879e79c0308a380bc5067e4939f29fe571e8584c0c57da38bb631f",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/AUDITORIA_DATOS.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "19c70ec5ee641856286fe746f6678dc28ed63c0c",
+      "sha256": "b84e0098417cd4c3959eaf640f336b31e6e76a5a660ff17ea1e61e508473814a",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/EXPERIMENTO.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e4bbeca5c1c9622943eb445e874008d9be621f7c",
+      "sha256": "f6f22d8147ace6f4b00f190845bbf61292ab44c13f95b5ee2ba18e5a8f84fafd",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/HANDOFF.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e4d31e26a1986fb23814333ac1ec5a4e10e67d44",
+      "sha256": "419a1e6b1b541aa76db813e1386f5f4c09248e074424c69b643bea834baee040",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "PHASE_TTC_Ruta_SOTA_2026-10-30/plantillas/REPORTE_RESULTADOS.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "ab6a73365a03759a16d8ff1e31d3ced11fb58cdf",
+      "sha256": "d5b2433dce53eb2362c13eb05041943b3a3c79f73daebdebbe9f7750d80de99d",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "SOTA_DEVELOPMENT_PLAN.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "374b3b1ae86112d21b16d72136d8ce8229fc92b8",
+      "sha256": "72a02c1920411c13876538c20a91ba6b0a131a73d9c60ceb3f3e30f1907b1110",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/TTC_EVALUATION_ADMISSION.md",
+      "ref": "dev/eap-s0-evaluation-20261029",
+      "commit": "6addaf94e4cb8496ed0e5d37ee4de0d46f7ffdcb",
+      "blob": "57e400e9e616f7522847a7268373a5fcd31e3710",
+      "sha256": "94a5e3ac7b7043c8751301a3caa69cc3b75199aa93e798ad5cb7b518e5df0abb",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/physics_review_20261031/10_PLAN_EXPERIMENTAL_ACOTADO.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b5a3d23c2ed939d9bea9bb65695ac5ad007faaf0",
+      "sha256": "385304f61a323e230be7984fdf810615e293ef116ce21191deece9521c0d1828",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/physics_review_20261031/11_SISTEMA_Y_DOCUMENTACION.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "873bfefa49be2cbb29c52ff9c8ef4c01230ef6c7",
+      "sha256": "462cebc7575f33209820d1464e2d80220522d5c014daadaff602d6f22bf58630",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/physics_review_20261031/12_REFERENCIAS_VERIFICADAS.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6c6fa76a746ac979eb92f5cf75b983f498477bdb",
+      "sha256": "812a65d9f9bc6d691e0b1ef011dd2e33ad6a34fa7bf26a363655fe7129f4f1e9",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/physics_review_20261031/13_ACTUALIZACION_CONCURRENTE.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "22c4f88079e25089d9a094fa38059ba0baaab7d4",
+      "sha256": "ab3215a8d6ff80d474a0cc9206118907666926a0d3eebaa7a9535e8ff2ae6336",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/physics_review_20261031/DOCUMENT_INDEX.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "d23c33d814aec4cc14a19647dc3654acb80d4302",
+      "sha256": "fa3f4987a696e5148d7503e70439c05e6db778486c4514bcc6f1c04a70a17d8c",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/physics_review_20261031/README.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "1f3491c35d518f52c5e12d963feb8a58b9225d69",
+      "sha256": "cb2a9187fe24bac21b53a9d1e5f6ae08c037a859100dff42242db33861525488",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/05_AUXILIAR_DEL_SENSOR.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "e680019f6f309e89af04f5e59f1f8521c7742eef",
+      "sha256": "520942812f7c0db45bb051a80cc898e6fcbe3696196cb3db0f546891e299a236",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/06_COORDENADAS_Y_VISIBILIDAD.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "57101cf72610f0b315a8278b1fb22ee4927015b3",
+      "sha256": "e764a9491566a93a0e1479242e928961a717a701f6fb77545a036e144081eea8",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/07_SECUENCIA_Y_PRESUPUESTO.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "07ceb953ce9bf6ca2d3fb6a191ef5b7254ee1ddf",
+      "sha256": "a97b2d62d0f8bbb5d328d4cd50da68dbd874ca179d91b350487da4fc5aeec5e5",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/08_EVALUACION_Y_PROMOCION.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "5b2f17e03b78164081c552f21f8f3bb030e22949",
+      "sha256": "18d2a32a41cf32fca7253c36a95c5b4b6377148e91f159feddcab1747d987eae",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/09_JEPA_CONDICIONAL.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "f871c32f577a8dbc42d5c5c1c80776ed103f6e8d",
+      "sha256": "822d3b34aff39b9ca5a61c2e227fa4771eb7593569970623abeb61cabe05e69d",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/10_GUIA_DE_EJECUCION.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "49abe84590baadcf0a108911071511b5d7a3c119",
+      "sha256": "7d814fc231d4b94fa41e0db096c8f747678c6f4bd38613b9c32d183283e455a5",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/11_FUENTES_Y_RAZONAMIENTO.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "095bf4813d80ef527a6a6455154a0bb2952564b5",
+      "sha256": "0ada5919618a5c1453fd98eadf0fd10b380bf7a3fabd23b7b95ec87302335db5",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "docs/release_research_plan_20261031/README.md",
+      "ref": "main",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "7c402f922c5c241b6ebafce6d2aac35be09ff481",
+      "sha256": "225a0f6777a8221fd64a0f99fa9c6523c4b442fe8e7cf13c4ef55da0b2716913",
+      "read_scope": "full text, untruncated tool output",
+      "reviewer": "/root/history_inventory/planning_docs"
+    },
+    {
+      "path": "AGENTS.md",
+      "ref": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+      "commit": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "acbd1f36b3e83b50dfbf4f82dfa2a7a8e993b60e",
+      "full_semantic_read": true,
+      "latest_version_bytes": 40561,
+      "latest_version_lines": 1809,
+      "read_method": "complete working-tree text in untruncated tool outputs",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "acbd1f36b3e83b50dfbf4f82dfa2a7a8e993b60e",
+          "full_semantic_read": true
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "8824b3cbc33f39e0e93e856163826bb66c1dfe7bb4f20ccb21b4585a0b12179f"
+    },
+    {
+      "path": "DEVELOPMENT_PLAN.md",
+      "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "eef2f1eda0cf1f9f908032c80e5334b55343ce3d",
+      "full_semantic_read": true,
+      "latest_version_bytes": 76364,
+      "latest_version_lines": 653,
+      "read_method": "complete working-tree text in untruncated tool outputs",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "eef2f1eda0cf1f9f908032c80e5334b55343ce3d",
+          "full_semantic_read": true
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "2d635205be1ef07f99a12069001513b8c21fe1fdd5ccba477bbb7d864a68e7fa"
+    },
+    {
+      "path": "docs/progress.md",
+      "ref": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+      "commit": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6a0448a3a96b7f0752ab221ee886078eeb0c45d5",
+      "full_semantic_read": true,
+      "latest_version_bytes": 41016,
+      "latest_version_lines": 689,
+      "read_method": "complete HEAD text plus complete untruncated git diff from HEAD blob to latest changed blob",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "686e2dae381a7df070a6e31866f24d376a6f3a0a",
+          "full_semantic_read": true
+        },
+        {
+          "ref": "e6abc0440def083ad858719f9d56e32f7d3d74e9",
+          "blob": "6a0448a3a96b7f0752ab221ee886078eeb0c45d5",
+          "full_semantic_read": true,
+          "method": "complete base plus full diff; divergent branch, not cumulative supersession"
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "d3a8dfc4e70c95d5d0d5f38af99a8a5e2996b6ab6c8ce9a493d55ed74de6bec4"
+    },
+    {
+      "path": "README.md",
+      "ref": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+      "commit": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "723ed95aabd8f5b1043c718cd4f90bccde67690d",
+      "full_semantic_read": true,
+      "latest_version_bytes": 27465,
+      "latest_version_lines": 510,
+      "read_method": "complete HEAD text plus complete untruncated git diff from HEAD blob to latest changed blob",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "d8e86682acad8fb995dd10e8ad9e25f0638f2658",
+          "full_semantic_read": true
+        },
+        {
+          "ref": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+          "blob": "723ed95aabd8f5b1043c718cd4f90bccde67690d",
+          "full_semantic_read": true,
+          "method": "complete base plus full diff; divergent branch, not cumulative supersession"
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "6e508206c196f30555ef9b7315d9e4f86a574406ddbde8a0a960e2bce60c5d37"
+    },
+    {
+      "path": "paper/README.md",
+      "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "b46576604a6bea4e200a8d188a337bf5df95809a",
+      "full_semantic_read": true,
+      "latest_version_bytes": 3918,
+      "latest_version_lines": 81,
+      "read_method": "complete working-tree text in untruncated tool outputs",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "b46576604a6bea4e200a8d188a337bf5df95809a",
+          "full_semantic_read": true
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "90d01424162bcfb67b76b41562dd4826ae60aa660f2f58fb3b41d1e7f67f3bcc"
+    },
+    {
+      "path": "paper/ASSETS.md",
+      "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "4ae375290230a302f4ab90773eed280929071e08",
+      "full_semantic_read": true,
+      "latest_version_bytes": 643,
+      "latest_version_lines": 15,
+      "read_method": "complete working-tree text in untruncated tool outputs",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "4ae375290230a302f4ab90773eed280929071e08",
+          "full_semantic_read": true
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "f0483944015be768751f567d4ccdd8c5de659d5bab877840b7d6212ebb5de1b2"
+    },
+    {
+      "path": "docs/decisions/ADR-0042-phase-ttc-name.md",
+      "ref": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+      "commit": "1dbf329c77cda55358add8b752bdc1a7e9d0527f",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "6d0fa78d6a993157465770f84e93cfad5824af7b",
+      "full_semantic_read": true,
+      "latest_version_bytes": 2681,
+      "latest_version_lines": 65,
+      "read_method": "complete working-tree text in untruncated tool outputs",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "6d0fa78d6a993157465770f84e93cfad5824af7b",
+          "full_semantic_read": true
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "fb3fe543a4f72511bfbbef75c145f208202e213d0f820aa62f537d0beaaf05de"
+    },
+    {
+      "path": "docs/decisions/ADR-0043-evttc-competition-sensor-adapter.md",
+      "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "cf6792a015433f2b278c1f7f64e9ec071ee29ffa",
+      "full_semantic_read": true,
+      "latest_version_bytes": 7216,
+      "latest_version_lines": 125,
+      "read_method": "complete working-tree text in untruncated tool outputs",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "cf6792a015433f2b278c1f7f64e9ec071ee29ffa",
+          "full_semantic_read": true
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "e498560f87393badb37f2f10c9d985ece98c225c17fcd5ad70e49a122b36d99e"
+    },
+    {
+      "path": "docs/decisions/ADR-0044-published-expired-execution-wrappers.md",
+      "ref": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "commit": "e58d0106e1f114f00f796987f70cd622cc6d186e",
+      "head": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+      "blob": "0078f81565b023f76e5f7dbc1465f837bfb9058e",
+      "full_semantic_read": true,
+      "latest_version_bytes": 1655,
+      "latest_version_lines": 37,
+      "read_method": "complete working-tree text in untruncated tool outputs",
+      "read_versions": [
+        {
+          "ref": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+          "blob": "0078f81565b023f76e5f7dbc1465f837bfb9058e",
+          "full_semantic_read": true
+        }
+      ],
+      "reviewer": "/root/history_inventory/planning_docs/general_docs",
+      "sha256": "bff65fb4ffdaa97cd3eca3b33c93e20d5f753b3a753ef15beb534c73edbb2830"
+    }
+  ],
+  "full_read_path_version_count": 52,
+  "coverage_note": "All 50 unique requested paths full semantic read. README.md and docs/progress.md additionally read at both current main and latest-by-time divergent detection branch: complete main text plus complete untruncated diff. 52 path/blob versions. Latest single blob is not cross-branch semantic union."
+}

@@ -1,0 +1,34 @@
+FINAL REVIEW — 2 November 2026
+
+Scientific reviewer: paper_scientific_review (read-only agent).
+Final verdict: scientifically acceptable within the stated experimental scope.
+Corrections incorporated: hardware and measurement boundary for runtime; router
+architecture, masked inverse-rate fusion and averaging in seconds; history and
+rate-cancellation fallbacks;45 fits rather than45 auxiliary fits; canonical
+PAIR133 time-field reconstruction; dimensionless JEPA probe and fixed teacher;
+different ideal/predicted geometry panels and removed learned residual.
+Historical exposure, unresolved Slider750 equivalence, dated original benchmark,
+and lack of candidate promotion remain explicit.
+
+Visual reviewer: council_style (read-only agent).
+Reviewed contact sheet and all seven individual final rendered pages.
+No clipping, overlap, unreadable equations, tables, figures or footers detected.
+Effective reference style retained: two columns, Latin Modern, pale-blue abstract,
+restrained booktabs, numeric links and centered page numbers without header.
+
+Root verification:
+- Tables regenerated from the copied JSON ledgers; original sources preserved.
+- Ruff check and format check pass for all three manuscript scripts.
+- Final PDF:7 pages, all fonts embedded, zero overfull boxes, undefined
+  references or missing glyphs.
+- Consolidated TEX compiles without BibTeX; extracted text and72dpi rendered
+  pixels match the modular-source PDF exactly.
+- No model training, new benchmark submission, branch checkout, commit or push.
+- Existing manuscript and experiments unchanged; all repository additions are
+  under paper/revision_20261102. Deliverables copied to output/pdf.
+
+Coverage:
+241 unique commits,72 Git refs,411 latest directly touched Markdown paths.
+406 semantic/source-verified documents and5 generated historical inventories
+checked structurally, zero uncovered paths. Merge-imported older snapshots
+remain inventoried separately; no claim of full line-by-line code audit.

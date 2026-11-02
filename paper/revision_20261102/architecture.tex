@@ -1,0 +1,20 @@
+\begin{minipage}{.98\textwidth}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,font=\sffamily\fontsize{8}{9.5}\selectfont,
+ box/.style={draw=phaseblue!45,fill=abstractblue,rounded corners=2pt,align=center,minimum height=.8cm,text width=2.8cm},
+ line/.style={->,draw=phaseblue,line width=.7pt}]
+\node[box] (rgb) at (0,.62) {RGB exposures\\shared coordinates};
+\node[box,draw=phaseteal!50,fill=phaseteal!7] (event) at (0,-.62) {Asynchronous events\\causal windows};
+\node[box] (rp) at (3.5,.62) {A5 / C2F + PAIR\\RGB context};
+\node[box,draw=phaseteal!50,fill=phaseteal!7] (ep) at (3.5,-.62) {A5 / C2F + PAIR\\Event context};
+\node[box,minimum height=1.35cm] (fusion) at (7,0) {20 named fields\\phase, time, support\\\textbf{RGB-anchored fusion}};
+\node[box,minimum height=1.35cm] (qa) at (10.5,0) {Frozen TTC outputs\\+ box expansion\\\textbf{Quality adaptation}};
+\node[align=center,text width=1.5cm] (out) at (13.1,0) {Signed TTC\\+ status};
+\draw[line] (rgb)--(rp);\draw[line] (event)--(ep);
+\draw[line] (rp.east)--(fusion.west);\draw[line] (ep.east)--(fusion.west);
+\draw[line] (fusion)--(qa);\draw[line] (qa)--(out);
+\node[font=\sffamily\fontsize{7.5}{9}\selectfont,text=black!65] at (6,-1.38) {All observations precede the query time; the adaptation is evaluated separately.};
+\end{tikzpicture}
+\captionof{figure}{\textbf{PHASE-TTC and its quality adapter.} The original graph has nine fitted components. Its twenty-field fusion interface bypasses hidden-state alignment across modality models. The adapter adds three 688-parameter routers over frozen predictions and causal geometry. Official and local adaptation results refer to different model versions.}
+\label{fig:architecture}
+\end{minipage}

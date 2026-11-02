@@ -1,0 +1,198 @@
+[
+  {
+    "path": "docs/evttc_submission_20261031/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "907b6c15e1ad061eba007a38fe69cc7a78e49f9d",
+    "characters": 8426,
+    "lines": 141
+  },
+  {
+    "path": "docs/evttc_submission_20261031/REPORT.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "f298293e6534b5306e20599351d3f0d2d692813d",
+    "characters": 4964,
+    "lines": 93
+  },
+  {
+    "path": "docs/evttc_submission_20261031/REVIEW.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "c9f7f287462655b42efb56a9407ce20dee2763d5",
+    "characters": 3834,
+    "lines": 60
+  },
+  {
+    "path": "docs/handoff_20261031_pause/01_TRABAJO_Y_RESULTADOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "09cade3e6c98c3344b02b2a764ec777d617b5567",
+    "characters": 10849,
+    "lines": 181
+  },
+  {
+    "path": "docs/handoff_20261031_pause/02_ARTEFACTOS_Y_REPRODUCCION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "f33a34de2e5249225e239c9dd9b6c3772a2a0f39",
+    "characters": 8177,
+    "lines": 134
+  },
+  {
+    "path": "docs/handoff_20261031_pause/03_PENDIENTES_Y_CONTINUIDAD.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "a2b9c169c848a4c2ba6f94d13b0627747b9bff1d",
+    "characters": 7428,
+    "lines": 120
+  },
+  {
+    "path": "docs/handoff_20261031_pause/04_PROMPT_CONTINUAR.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "3fd0ee5a788949a7b1c6283d3ae1d4deeeb89262",
+    "characters": 4643,
+    "lines": 80
+  },
+  {
+    "path": "docs/handoff_20261031_pause/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "447240b1c3a0022618b0289432f08ac98dd3fceb",
+    "characters": 3433,
+    "lines": 57
+  },
+  {
+    "path": "docs/jepa_closure_20261031/POD_RETENTION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "718959e45c7134e68f10500cec1495bcdc0f7b74",
+    "characters": 5417,
+    "lines": 108
+  },
+  {
+    "path": "docs/jepa_closure_20261031/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "1962837328c1193ec30d24ff934b6bec7bc59be4",
+    "characters": 7512,
+    "lines": 130
+  },
+  {
+    "path": "docs/jepa_closure_20261031/tables.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "9a8c06d269eae2518aa4bffe521a5850e523133e",
+    "characters": 1685,
+    "lines": 31
+  },
+  {
+    "path": "docs/research_log_20261029_31/01_CRONOLOGIA_Y_ALCANCE.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "d21278880a983b1680970e0d16b1a1fa60174f3f",
+    "characters": 7428,
+    "lines": 128
+  },
+  {
+    "path": "docs/research_log_20261029_31/02_DATOS_EVALUADOR_Y_FISICA.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "a646fec14b6d72aa7b641966a098ebce21a45075",
+    "characters": 8079,
+    "lines": 142
+  },
+  {
+    "path": "docs/research_log_20261029_31/03_MODELOS_Y_ENTRENAMIENTOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "8778a3e07557c26c1d9d5ca7ac57a7f8960ac8f4",
+    "characters": 8511,
+    "lines": 148
+  },
+  {
+    "path": "docs/research_log_20261029_31/04_RESULTADOS_Y_COMPARACIONES.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "b2b33ab31abbac9e9199bd5cfe20c8a3d04dec9e",
+    "characters": 9631,
+    "lines": 181
+  },
+  {
+    "path": "docs/research_log_20261029_31/05_RENDIMIENTO_Y_RECURSOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "9d770f338b0a3a8db8f4fa435ba8977030161cdf",
+    "characters": 7214,
+    "lines": 131
+  },
+  {
+    "path": "docs/research_log_20261029_31/06_VERIFICACION_Y_FALLOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "d1a880041cedf35782b13b80260fc026bfe9f830",
+    "characters": 8500,
+    "lines": 140
+  },
+  {
+    "path": "docs/research_log_20261029_31/07_ARTEFACTOS_Y_REPRODUCCION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "43602e22e0a4ef85075d9fd3f3f22e105639f72d",
+    "characters": 7705,
+    "lines": 140
+  },
+  {
+    "path": "docs/research_log_20261029_31/08_LIMITES_Y_SIGUIENTES_PASOS.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "83915c12e1faa04c74629c8ac4e94067cc2d8652",
+    "characters": 6140,
+    "lines": 97
+  },
+  {
+    "path": "docs/research_log_20261029_31/09_PUBLICACION_E_INVENTARIO.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "99e1b441453c8852294077647ecefaab561f7b4b",
+    "characters": 5935,
+    "lines": 104
+  },
+  {
+    "path": "docs/research_log_20261029_31/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "13b987f6cc0d68a3e513acf16543e4a7cc228bd5",
+    "characters": 5336,
+    "lines": 83
+  },
+  {
+    "path": "docs/research_log_20261029_31/RELEASE_NOTES.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "477dad853823aa14ca2ad6b4d36462c103eed40c",
+    "characters": 2129,
+    "lines": 35
+  },
+  {
+    "path": "docs/research_progress_20261101/01_TRABAJO_REALIZADO.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "08f7c77ea06a28474b6a845961300265ff310606",
+    "characters": 11630,
+    "lines": 204
+  },
+  {
+    "path": "docs/research_progress_20261101/02_RESULTADOS_Y_PENDIENTES.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "b7088b160a7688cc1f99be76e5b8cf48bfc05a06",
+    "characters": 11523,
+    "lines": 206
+  },
+  {
+    "path": "docs/research_progress_20261101/03_ENTREGA_ADAPTADA_Y_COMPARACION.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "fa3eb12ae498ba0478205a2102c65160e78954a9",
+    "characters": 7571,
+    "lines": 142
+  },
+  {
+    "path": "docs/research_progress_20261101/04_ANALISIS_INTEGRACION_MAIN.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "9f1c02fc2a4cb6000e6c05d684d6ea2256fa09cd",
+    "characters": 10331,
+    "lines": 185
+  },
+  {
+    "path": "docs/research_progress_20261101/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "99bec0c1e7cd5c84319a4b98808b4bbdd8fa81b5",
+    "characters": 4381,
+    "lines": 81
+  },
+  {
+    "path": "docs/research_progress_20261101/v1/README.md",
+    "commit": "b736c9df9491c2e50bff8a5c2bed834cc935f871",
+    "blob": "294057db42991e4bf021f93293e0d457dd6f36ce",
+    "characters": 3118,
+    "lines": 41
+  }
+]

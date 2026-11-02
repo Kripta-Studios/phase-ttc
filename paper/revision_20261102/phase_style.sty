@@ -1,0 +1,55 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{phase_style}[2026/11/02 Independent two-column research style]
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern,microtype}
+\RequirePackage[letterpaper,top=.8in,bottom=.72in,left=.72in,right=.72in,headheight=12pt,headsep=6pt,footskip=30pt]{geometry}
+\RequirePackage{amsmath,amssymb,graphicx,booktabs,array,tabularx}
+\RequirePackage[table]{xcolor}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{caption,subcaption,titlesec,fancyhdr}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\RequirePackage{xurl}
+\definecolor{abstractblue}{HTML}{EAF4FB}
+\definecolor{tableblue}{HTML}{E8F1F7}
+\definecolor{phaseblue}{HTML}{35618B}
+\definecolor{phaseteal}{HTML}{287A73}
+\definecolor{linkblue}{HTML}{0000AA}
+\RequirePackage[colorlinks=true,allcolors=linkblue]{hyperref}
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{9.3pt}{11.2pt}\abovedisplayskip 6pt plus 2pt minus 2pt\belowdisplayskip 6pt plus 2pt minus 2pt\abovedisplayshortskip 2pt\belowdisplayshortskip 4pt}
+\renewcommand\small{\@setfontsize\small{8.4pt}{10.2pt}}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{7.5pt}{9pt}}
+\makeatother
+\AtBeginDocument{\normalsize}
+\setlength{\columnsep}{.34in}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\linespread{1.01}
+\raggedbottom
+\titleformat{\section}{\fontsize{11.5}{14}\selectfont\bfseries}{\thesection}{.6em}{}
+\titleformat{\subsection}{\fontsize{10.3}{12.5}\selectfont\bfseries}{\thesubsection}{.6em}{}
+\titleformat{\subsubsection}[runin]{\fontsize{9.5}{11}\selectfont\bfseries}{}{0pt}{}[.]
+\titlespacing*{\section}{0pt}{.9em}{.3em}
+\titlespacing*{\subsection}{0pt}{.7em}{.16em}
+\titlespacing*{\subsubsection}{0pt}{.45em}{.35em}
+\captionsetup{font=small,labelfont=bf,labelsep=period,justification=justified,singlelinecheck=false,skip=6pt}
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setcounter{topnumber}{2}\setcounter{totalnumber}{3}
+\renewcommand{\topfraction}{.9}\renewcommand{\textfraction}{.1}
+\renewcommand{\floatpagefraction}{.8}\renewcommand{\dbltopfraction}{.9}
+\renewcommand{\dblfloatpagefraction}{.8}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{10pt plus 2pt minus 2pt}
+\newcommand{\evid}[1]{\textsuperscript{\textsf{[#1]}}}
+\newcommand{\method}{PHASE-TTC}
+\newcommand{\adapt}{PHASE-TTC-Adapt}
+\newcommand{\q}{q}
+\newcommand{\R}{\mathbb{R}}
+\newtcolorbox{resultbox}{colback=abstractblue,colframe=abstractblue,boxrule=0pt,arc=2pt,left=6pt,right=6pt,top=5pt,bottom=5pt}

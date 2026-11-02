@@ -1,0 +1,176 @@
+SCIENTIFIC COUNCIL: EVTTC, CAUSAL FUSION, CADENCE, AND JEPA
+Review cutoff: 2026-11-02; branch research/evttc-transfer-v2 (now merged in main).
+
+COVERAGE AND HONEST SCOPE
+Inspected the complete dated commit-title inventory: 127 branch-reachable commits
+since 2026-10-28 00:00 +01:00. Inventoried all changed Markdown paths. Read the
+principal transfer, submission, JEPA, native-support/context, canonical-pair,
+canonical-population, Nov1 progress, physics review chapters 05-09, and all ten
+followup-v2 mechanism-result documents, plus campaign/continuation/summary reports.
+Some large bundled reads were output-truncated; do not claim that this lane alone
+read every line of every changed document or every diff. Runtime and detection
+are covered by other council lanes. Inspected actual ExpertRouter and
+CanonicalPair code; cross-checked primary numerical claims directly against JSON.
+
+EDITORIAL DECISION
+The central new story should be physical coordinates and measurement contracts
+in causal Event-RGB TTC, with compact signed inverse-rate fusion as a useful
+adaptation, and with cadence/representation diagnostics showing why improvements
+of intermediate objectives do not suffice to promote an estimator. Avoid a paper
+framed as a newly successful JEPA model. These five days produced a scientifically
+valuable negative result and targeted falsification evidence, not a validated
+new world model. Describe novelty as this system and these controlled findings;
+do not claim no prior work uses physical TTC, quality fusion, or temporal scaling.
+
+1. CAUSAL ADAPTATION -- INCLUDE MAIN TEXT
+Original F0: nine TRAIN40 components frozen: E_A5, E_C2F, PAIR_E, R_A5, R_C2F,
+PAIR_R, E_CTX_MATCHED, R_CTX, PHASE_ONLY_EVENT_S7_TRAIN40. Three new QA routers,
+seeds 7/13/21, 688 parameters each (33->18->4 tanh gate), four experts: F0,
+RGB context, event context, causal box geometry. Softmax masks unavailable
+experts. The gate receives magnitude/sign agreements, availability and 20
+quality quantities; it does not receive the sequence ID or target errors.
+Fusion uses signed inverse TTC. Internal expert magnitude limits [0.1,60] s;
+zero rate cancellation returns F0. No adequate history returns F0 exactly;
+stale box endpoint >150 ms invokes the history fallback. Geometry uses at most
+650 ms, at least two boxes separated >=10 ms. These are annotation-box inputs;
+do not imply detection was solved by the TTC comparison.
+
+Final Adapt fit: 2608 queries, 2531 from 24 road recordings and 77 Slider500,
+300 AdamW updates per seed, lr=.01, wd=.01. Eight competition recordings and
+Slider750/1000 excluded from THIS FINAL FIT. Historical tuning/exposure remains;
+earlier startup development explicitly used Slider750/1000. Therefore final-fit
+exclusion does not establish clean generalization.
+
+Corrected local comparison (query-weighted, same organizer-described processing
+of negative outputs in both columns; ZIP itself unchanged):
+Population n; original MAE -> Adapt MAE; original RAE -> Adapt RAE
+all434: .8249759271589365 -> .33589880629301444; 49.89424239376255 -> 17.249803112310904
+road365: .30540136387734423 -> .18520004117438355; 11.917131743756457 -> 7.469418642264264
+without750 n383: .3296427520836695 -> .19326319205961828; 18.730071105277833 -> 9.4171567321828
+Slider750 n51: 4.544831 -> 1.407064; 283.9310581484616 -> 76.071442
+
+SOURCE: docs/research_progress_20261101/v1/evidence/evaluator_audit.json
+KEY: frozen_baseline_metrics.<population>.{original_email_processed,frozen_submission_email_processed}
+fields mae_seconds, relative_error_pct, population, scored.
+population keys all434_public_diagnostic, road365, pdf_reproduced_sequences383, Slider-750.
+IMPORTANT: docs/evttc_submission_20261031/REPORT.md and early research logs show
+obsolete 423/434 target results. They MUST NOT be the new paper's current table.
+The fixed evaluator uses official download mappings to correct swapped low/medium
+target files without fitting clock offsets; 434 targets now supported. Nine
+sequence RAE values reproduce original organizer PDF rounding; Slider750 still
+differs (local 283.931058% vs official132%). Therefore local all434 is NOT an
+official benchmark score. Retain raw-vs-processed distinction and one remaining
+negative Adapt output. New adapted official evaluation is not confirmed.
+
+2. CADENCE -- INCLUDE MAIN TEXT, WITH NONPROMOTION
+CanonicalPair freezes weights, replaces dt,logdt,1/dt at PAIR input with d0=.1 s,
+obtains raw phase phi_c, converts q_c=-expm1(-phi_c)/d0, uses
+q_actual=q_c*d0/dt_actual, then phi_actual=-log1p(-d0*q_actual). Apply the original
+emission/clipping policy once afterwards. At dt==FP32(.1), return original bytes.
+Reject invalid real-domain transformation (1-d0*q<=0 or overflow).
+Recompute raw17 disagreements, temporal contexts and final head, not just output.
+
+The two-query timewarp diagnostic changes prepared observations and their clocks;
+it does NOT reselect fixed-duration windows from a time-scaled raw stream. Under
+speed factor a, ideal ratio a*T_transformed/T_control=1. F0 improved all four
+contrasts after correction, but road event context at a=.5 worsened .673790->1.891432.
+This counterexample is essential: intermediate consistency does not guarantee
+downstream consistency.
+
+Full exposed population: macro-recording metrics, paired original recapture.
+Road2531/2531: MAE .810620018160979 -> .8104896119362653;
+RAE30.600389999028852 ->30.591045605308967.
+Slider50076/77: MAE1.17815589826358 ->1.1208089503802752;
+RAE83.885893959795 ->82.44204743312503, relative MAE decrease4.8675%.
+Road delta MAE=-.00013040622471352978 s;
+95% descriptive recording bootstrap [-.0005047002743243974,.00009314967648063326].
+10000 resamples, seed7, 24 recordings. No new missing values or sign flips.
+Only one Slider recording, reused from screen: NOT independent replication.
+SOURCE docs/research_log_canonical_population2608/evidence/report.json
+KEY routes.F0.domains.{road,slider}.{original,canonical}; road_bootstrap.
+
+Frozen adapted router failed the prespecified 149-query road screen despite
+aggregate population improvement. Matched canonical refit: 48 fits, 8 folds,
+3 seeds, 2 arms. Full population road .539608->.537801 s, Slider .364987->.356515;
+fixed screen road regressed .484752->.511821 s and RAE16.720860->17.431738.
+No seed passes both views; no export/promotion. Source
+docs/research_progress_20261101/v1/evidence/refit_result.json:
+population2608.domains, screen149.domains, admit_further_validation=false.
+
+Local eAP sensitivity covers5805 physical queries (6762 aliases), not accuracy.
+F0 p50/p95 absolute change .0000143051/.0000767708 s; max .0064964291 s;
+no new missing/sign flips. Original local replay already differs historically:
+5805 fail some intermediate check, 504 fail TTC tolerance. Cannot claim official
+score preservation. Source native_result.json and router_result.json in same v1/evidence.
+
+3. JEPA -- INCLUDE NEGATIVE RESULT, NOT OPTIONAL FOOTNOTE
+Fixed V-JEPA2.1 ViT-B distilled teacher, event student, no TTC labels in student
+training; 1000 updates*3arms*3seeds, batch16. Frozen encoder ridge alpha1 on P512
+from24 sequences, H256 from8 other sequences; localization uses privileged boxes.
+Probe target is DIMENSIONLESS ANNOTATED LOG-HEIGHT CHANGE, not TTC or q.
+Means B_static .03763238961408746, C_one_step .03564004206250102,
+C_shuffle .035061885577055175, random .037196408997659317.
+C-B delta -.0019923475515864395, CI[-.0049620951828768045,.0008189780757168292].
+C-shuffle delta .0005781564854458428, CI[-.002170051001389082,.002925896583929867].
+Neither upper confidence bound below zero; continuation criterion failed.
+Future teacher-state MSE C-B improves -.01719163358 and C-shuffle -.05317387730;
+teacher increment MSE worsens +.03848015858 and +.00447422173. C also beats own
+student persistence for future state, -.03530466308. Thus improving future state
+alone does not establish useful dynamic representation. Mechanism not identified.
+SOURCE docs/jepa_closure_20261031/closure_analysis.json
+KEYS primary_mae, primary_comparisons, latent_comparisons.
+CI resamples 8 sequences keeping 3 seeds together; conditional on those seeds.
+H historically exposed; no independent confirmation. Pilot closed, rollout not run.
+
+4. MECHANISM CONTROLS -- SHORT MAIN DISCUSSION / APPENDIX
+Observability: q=c^T beta identifiable iff c lies in row space of H. Algebraic
+estimability and low residual do not protect against model bias. Here q estimable
+63/149; 26 wrong signs, 10 outside canonical domain,8 zero residual degrees freedom.
+Physical-feature probe for correction gain MSE .919267453 vs support .492043720;
+delta+.427223732 CI[.08055069039,1.01041723207]. Not TTC error.
+Robust reading: only8 outputs,4 wrong signs; fallback-system MAE .779543461 vs
+R0 .766024827. No new observability gate admitted.
+SOURCE continued_results_v1/OBSERVABILITY.json and
+followup_results_v2/{observability_failure,robust_measurement}/METRICS.json under
+docs/release_research_implementation_20261031.
+
+Photometric ambiguity: 24 synthetic paired streams coincide at pixel/polarity/
+timestamp tolerance1ps;12 have distinct q and inverse texture-gradient changes.
+Known reference can disambiguate within restricted bank. This is not a universal
+impossibility theorem. Photometric proxy72/149 road queries,24 acquisitions;
+physical sensor residual worse than activity. Adding observed RGB change helps
+sensor residual vs physical, but q readouts yield fallback MAE9.1685 s (affine)
+vs R0 .7660 s. Sensor reconstruction is not TTC validation.
+SOURCE followup_results_v2/{sensor_identifiability,sensor_reference_control,photometric_q}/METRICS.json.
+
+Surface three-frame estimate:133/149 measurements, fallback16, MAE3.103982972 vs
+R0 .766024827; delta CI [.93423130897,4.19824494379]. No varying crop zoom found
+in146 auditable histories;53 constant anisotropic resizes. Does not rule out
+occlusion/background/parallax. SOURCE continued_results_v1/SURFACES.json.
+
+Event-expansion solver: original endpoint warp p_ref=p+(q*p-b)(t_ref-t), free
+focus, NCC early/late images; synthetic confirmation12/12. At50% static background,
+both held-out fixtures accepted wrong q. Real Slider50062/77 available, RAE15.693702,
+MAE .268963; geometry on same62 MAE .207334; fallback-to-Adapt all77 MAE .256119
+vs Adapt .205044. Thus not promoted. Mixed-precision float32 failed objective parity;
+hybrid float64 GPU/CPU retains failures but is separate experimental solver.
+SOURCE docs/research_log_20261031_event_expansion/README.md plus its evidence JSON.
+
+5. PROTOCOL AND NOTATION
+Do not conflate historical official GarlTTC OverallMiD35.80145 (TRAIN40 frozen)
+with new adapted local RAE17.2498%. Different metrics, data, and training regimes.
+Distinguish original phase coordinate phi=-log(1-d0/T), physical q=1/T,
+and finite emitted TTC. Constant-depth-velocity dynamics q'=q/(1-delta*q)
+are classical algebra under axial assumptions, not new theorem. Finite magnitude
+cap60s cannot encode q=0 physics. Camera rotation/point changes violate simplified
+depth assumptions. No uncertainty calibration inherited by all-data refit.
+
+FILES AUTHORED BY THIS LANE
+paper/revision_20261102/build_evidence.py
+paper/revision_20261102/evidence_tables.tex
+paper/revision_20261102/evidence_values.json
+paper/revision_20261102/source_manifest.json
+paper/revision_20261102/evidence/{official,adapt,canonical,jepa}.json
+Script reads only JSON, copies exact source bytes and records SHA256; verifies
+official weighted score and corrected local434 audit. Generated four table
+commands and numeric macros; successfully executed with python -S. No training.

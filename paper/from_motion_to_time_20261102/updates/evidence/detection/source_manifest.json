@@ -1,0 +1,43 @@
+{
+  "source_ref": "dev/eap-diagnostics-20261101",
+  "source_commit": "b89c3bf9e654514e3a824f1b823ea9b07764465a",
+  "copied_git_blob_bytes_exactly": true,
+  "files": {
+    "aligned_baseline.json": {
+      "source_path": "docs/detection_sota_20261029/evidence/benchmark_local_alignment_20261101/baseline.json",
+      "sha256": "5072353eee41ddcbd64d264654e691bdf4de3aa7e729241129393c7ebaded677",
+      "bytes": 223958,
+      "git_blob": "5278a7d98530efd3f5e6d4daee12b7157296a5d2"
+    },
+    "aligned_ranked.json": {
+      "source_path": "docs/detection_sota_20261029/evidence/benchmark_local_alignment_20261101/ranked.json",
+      "sha256": "086ea40ec97548877f282716391b9eee178e0500b26db80a2661568989ccc603",
+      "bytes": 223600,
+      "git_blob": "80278c857c19f2e5ff11763b03032b356481110c"
+    },
+    "official_scores.json": {
+      "source_path": "docs/detection_sota_20261029/evidence/official_benchmark_20261101/scores.json",
+      "sha256": "ce8df0ce85cb62bb0b114bf40d84ae3cbf9b4b3fdc8dd54410a9ee74fe68b024",
+      "bytes": 120,
+      "git_blob": "daa13fcabe777f3c96b65a2178247dee8b149649"
+    },
+    "height_prior_ideal.json": {
+      "source_path": "docs/detection_sota_20261029/evidence/height_prior_geometry_20261102/RESULTS.json",
+      "sha256": "ec738c3c98518e8fefc0002b9441cc2be1ab70947e0a689a018e22af8d89faf7",
+      "bytes": 29223,
+      "git_blob": "d1b3ade4535fdfadc0e7bfeeb745f501dbd5e0ff"
+    },
+    "geometry_predicted.json": {
+      "source_path": "docs/detection_sota_20261029/evidence/predicted_geometry_20261102/RESULTS.json",
+      "sha256": "344f8ff612c9975c6063dad878f26b7079de744825c0b5203274b90d1fc01d69",
+      "bytes": 795254,
+      "git_blob": "eb0d7a75f9b799748cfb0e5192dbd203db8e2bd4"
+    },
+    "monocop_screen.json": {
+      "source_path": "docs/detection_sota_20261029/evidence/monocop_screen_final_20261102/RESULTS.json",
+      "sha256": "0b1ed1a08dd01cff28dbec6bb993052264b712d32749a99a1d1318ef61ce0376",
+      "bytes": 110126,
+      "git_blob": "921350e2fd7209c1d63186e4c9351f1e4552bc50"
+    }
+  }
+}

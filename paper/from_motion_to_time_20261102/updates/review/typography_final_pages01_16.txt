@@ -1,0 +1,31 @@
+FINAL EXPANDED PDF VISUAL REVIEW — PAGES 01–16
+
+Reviewed all sixteen individual final page PNGs through view_image, not only
+a contact sheet. Source: paper/from_motion_to_time_20261102/build/page-01.png
+through page-16.png. Complete PDF has66pages; assigned range is01–16.
+Expected source PDF SHA256:
+8d275a91d3b2da18cc990022b22d6cef54fa1bdb71e1f9d3799dc2cde6e3789a
+
+Verdict: PASS, no blocking visual defects.
+
+The original XCharter/newtxmath, blue section titles, EVOCON logo, large
+PHASE-TTC/From Motion to Time title, quiet running furniture and A4 single-column
+identity are preserved. The abstract's pale-blue panel is restrained and fits
+on the original-style cover with a readable benchmark hero and caption.
+
+Contents page is clear and fits all expanded entries without crowding. The
+evaluation overview transitions cleanly into the introduction on page3.
+The architecture, causal-history and fusion-interface figures retain readable
+labels, vector edges and color semantics. Mathematical displays on pages5–9
+and15 fit their columns with unobstructed equation numbers.
+
+Tables1–6 have legible text, clean rules, no clipped columns, and adequate row
+spacing. The expanded population table distinguishes the added cohorts without
+overflow. Historical plots on pages10–14 retain readable legends and labels.
+The new adapter text and table on pages14–16 match the existing manuscript's
+typography and spacing. No missing glyph, overlapping box, clipped footer,
+or orphan heading was detected in the assigned pages.
+
+Normal paragraph continuations around floated figures remain, including the
+historical model-coverage discussion across pages13–14. They do not lose text
+or create a blocking layout defect. No additional redesign recommended.

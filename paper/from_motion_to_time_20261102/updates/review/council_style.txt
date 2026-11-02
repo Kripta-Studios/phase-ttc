@@ -1,0 +1,58 @@
+COUNCIL STYLE REVIEW — arXiv-2608.27395v1.tar.gz
+
+Scope
+I inspected the archive member list, safely extracted 11 regular files after rejecting path traversal and links, read the complete paper-theme.sty and relevant main.tex layout/title/table/bibliography overrides. 00README identifies pdfLaTeX / TeX Live 2025. No whole-paper PDF was included (7 vector figure PDFs only). A read-only compilation attempt failed because fontsize.sty is absent in the installed MiKTeX. No original source was edited.
+
+Identity (for reference attribution, not authorship reuse)
+Title: LeVJEPA: Efficient & Scalable Video Pretraining without the Heuristics.
+Authors in source: Lukas Kuhn; Lucas Maes; Giuseppe Serra; Quentin Le Lidec; Yann LeCun; Randall Balestriero; Florian Buettner.
+The source contains a draft TODO about verifying its own author/affiliation list; this does not affect visual analysis. Do not transfer authors, institutional affiliations, correspondence, acknowledgments, scientific claims, plots or demo data to PHASE-TTC.
+
+Actual style after resolving main.tex overrides
+- article class, twocolumn, letterpaper (US Letter 8.5 x 11 in).
+- Latin Modern (Computer Modern-like) roman text and mathematical presentation, T1 encoding; base fontsize=9.3pt, linespread 1.01; microtype.
+- Left/right margins .72 in, top .8 in, bottom .72 in. The style package initially says top 1.05 in, but main.tex resets it to .8 in. Header height 12pt, header sep 6pt, footskip 30pt.
+- Text width 7.06 in; column separation .34 in; each column 3.36 in (~242.8pt).
+- Paragraph indent 1em, no paragraph skip, ragged bottom.
+- Main text color #111111, links #0000AA, abstract #EAF4FB, highlighted table rows #E8F1F7. Black headings. No colorful section rules.
+- Section 11.5/14 pt bold roman; subsection 10.3/12.5 pt; subsubsection run-in bold 9.5/11 pt without printed numbering. Section spacing .9em before/.3em after; subsection .7em/.16em; run-in .45em/.35em.
+- Captions small, bold label, period separator, justified, single-line check disabled, skip 6pt. Figure caption normally below figure and begins a bold explanatory phrase; table captions above table.
+- Title block full width: bold 16/19 pt, author line 10.5/13 pt, affiliation 9.5/11.5pt; centered. First page title vertically lifted .34 in.
+- Abstract inside pale blue rounded box, 88% text width, 5pt corner, 11pt left/right padding and 8pt top/bottom padding, no border, small text. No explicit 'Abstract' heading in source. It is followed by a full-width architecture hero in 98% text-width minipage and then two-column body.
+- Header navigation and running title defined in paper-theme.sty ARE DISABLED by main.tex. Actual pages have no running header and only centered page numbers; title page is bare.
+- Float settings: topnumber=2,totalnumber=3,topfraction=.9,textfraction=.1,floatpagefraction=.8,dbltopfraction=.9,dblfloatpagefraction=.8. Uses figure* for wide figures and side-by-side subfigures; figure for narrow plots. Avoid overfilling title page with large hero+abstract.
+- Tables: booktabs, no vertical rules, bold headings and selected best values, pale-blue highlight on selected row, often small font and tabcolsep=6pt. Descriptive captions state matched budget/protocol. Use highlights only for scientifically justified comparison, not indiscriminate winners.
+- Numeric citations via natbib [numbers,compress], loaded BEFORE hyperref. plainnat bibliography; bibliography starts on fresh page; appendix follows a clearpage and remains two column.
+
+Recommended implementation
+Create an independently written compact style matching the measurements above. Do not copy unused demonstration macros from paper-theme.sty: they embed invented demo data/graphics irrelevant to this manuscript. Do not carry over navigation, logo/author identity, commented drafts, or the reference's substantive text. Use 9.3pt via installed fontsize.sty if installing that single package is convenient; otherwise define normalsize as 9.3/11.2pt and small/footnotesize deliberately, and inspect actual render. A fallback merely calling fontsize in AtBeginDocument can lose the size after captions or size changes unless normalsize is redefined.
+
+Minimal compatible preamble outline (original reconstruction)
+\documentclass[twocolumn,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[letterpaper,top=.8in,bottom=.72in,left=.72in,right=.72in,headheight=12pt,headsep=6pt,footskip=30pt]{geometry}
+\usepackage{amsmath,amssymb,graphicx,booktabs,array}
+\usepackage[table]{xcolor}
+\usepackage[numbers,compress]{natbib}
+\usepackage{caption,subcaption,titlesec,fancyhdr}
+\usepackage[most]{tcolorbox}
+\definecolor{abstractblue}{HTML}{EAF4FB}
+\definecolor{tableblue}{HTML}{E8F1F7}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\setlength{\columnsep}{.34in}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+\linespread{1.01}
+\raggedbottom
+\captionsetup{font=small,labelfont=bf,labelsep=period,justification=justified,singlelinecheck=false,skip=6pt}
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+Use full-width \twocolumn[{...}] title/abstract/hero, then ordinary two-column sections. Define firstpage with no folio and plain style with centered folio. Match title and section size specifications above.
+
+Marker location (verified)
+C:/Users/Álvaro Schwiedop/.codex/plugins/cache/openai-primary-runtime/pdf/26.1026.10807/skills/pdf/container_tools/mark_artifact_operation_started.mjs
+The marker validates the six CLI arguments and exits successfully; it has no filesystem authoring behavior.
+
+Archive SHA256: 0161d3aef7ec94c28b00d6ca7715b350127b7644c7e4e6a859400321882572b3
