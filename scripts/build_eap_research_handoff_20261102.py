@@ -893,7 +893,7 @@ explica lo que sigue sin resolver.
 """
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for name, content in ((STATE_NAME, state), (PLAN_NAME, plan)):
-        (args.output_dir / name).write_text(content, encoding="utf-8")
+        (args.output_dir / name).write_text(content, encoding="utf-8", newline="\n")
     receipt = {
         "schema": "phase_eap_research_handoff_20261102",
         "implementation_close_commit": SOURCE_COMMIT,
@@ -905,7 +905,7 @@ explica lo que sigue sin resolver.
         "new_metrics_computed": False,
     }
     (args.output_dir / "HANDOFF_EAP_20261102.sources.json").write_text(
-        json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n"
     )
     print(
         json.dumps(

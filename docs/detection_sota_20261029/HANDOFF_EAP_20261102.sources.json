@@ -46,10 +46,10 @@
     "docs/detection_sota_20261029/evidence/range150_confirmation_20261101/INTAKE.json": "8f9aa14c6d1e6b116a9598326d2bc59d0d4687395f40957ed63ef1d6b573b9ce"
   },
   "generator": "scripts/build_eap_research_handoff_20261102.py",
-  "generator_sha256": "6dc3b056f61460b37c94eda4940b2d0ca6283f5f06523ecd20411f1899b6a088",
+  "generator_sha256": "afc509288ff2c8c2dc2a64fcf05f62c6be5da5ddf14e5aca5018e973c6553b51",
   "outputs": {
-    "ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261102.md": "9ab020a74032fd71a11926e7ebf5479dd10ebed9a7cc2559ad4e9713fa8800c9",
-    "PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261102.md": "4912965b8d37e28c9385026071e342c85542c6110a97f100a0d54052019d4765"
+    "ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261102.md": "2e650e72cd1e709a0ade5646ad81800e2089bc82532960694fc28352ddd6451e",
+    "PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261102.md": "81238828447a4fdf69f620f091d96cc21c5d7c3c6afa16bb9ff9c729159f5207"
   },
   "new_training": false,
   "new_metrics_computed": false
