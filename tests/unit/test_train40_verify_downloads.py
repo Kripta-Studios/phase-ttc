@@ -9,12 +9,16 @@ from operational.train40_system.verify_downloads import verify
 
 
 def test_verifier_reuses_receipt_and_rejects_changed_data(tmp_path):
+    tmp_path = tmp_path / "receipts-Á"
+    tmp_path.mkdir()
     media = tmp_path / "events.h5"
     media.write_bytes(b"complete TRAIN fixture")
     receipt = tmp_path / "receipt.json"
     expected = {"bytes": media.stat().st_size, "sha256": digest(media)}
     assert verify((media, receipt, expected))
-    assert json.loads(receipt.read_text())["status"] == "VERIFIED"
+    saved = json.loads(receipt.read_text(encoding="utf-8"))
+    assert saved["status"] == "VERIFIED"
+    assert saved["path"] == str(media)
     assert verify((media, receipt, expected))
     media.write_bytes(b"changed! TRAIN fixture")
     with pytest.raises(ValueError, match="changed"):
