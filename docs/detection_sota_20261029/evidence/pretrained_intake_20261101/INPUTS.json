@@ -1,0 +1,18 @@
+{
+  "CONVERSION.json": {
+    "path": "D:\\PHASE_TTC_PRETRAINED_20261101\\monodgp_kitti_plain_v1\\CONVERSION.json",
+    "sha256": "817f07779aaf48bde4e9406ac7377a48fcbd0f87491739ad0dfe068af34a585d"
+  },
+  "SHAPE_COMPARISON.json": {
+    "path": "D:\\PHASE_TTC_PRETRAINED_20261101\\monodgp_kitti\\SHAPE_COMPARISON.json",
+    "sha256": "eb6e26a34fdab6f4067d1aedc3df3380d13185c3e77ac809bc564fe68f7b9c3b"
+  },
+  "TRANSFER_AUDIT.json": {
+    "path": "D:\\PHASE_TTC_PRETRAINED_20261101\\cpu_transfer_v2\\TRANSFER_AUDIT.json",
+    "sha256": "f2ca18385a1948d83f1bcaf71b5cc6faa40c4ee1eb904a3a672ca5aa9f1a5f7e"
+  },
+  "PRESERVED_FAILURE.json": {
+    "path": "D:\\PHASE_TTC_PRETRAINED_20261101\\cpu_transfer_v1\\FAILURE.json",
+    "sha256": "f886403657be3f8ade64336563fe693fa038f771927a0a23af1bc00481ebfcf9"
+  }
+}

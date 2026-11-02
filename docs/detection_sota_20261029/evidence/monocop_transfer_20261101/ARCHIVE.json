@@ -1,0 +1,142 @@
+{
+  "schema": "phase_monocop_transfer_evidence_archive_v1",
+  "base_git_commit": "ae5791a0",
+  "execution_tree_note": "New transfer scripts were untracked during checks; executed bytes and hashes are archived. Converter working-tree edit after conversion only splits long string literals; the executed original is retained.",
+  "files": {
+    "v1/RESULTS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\RESULTS.json",
+      "sha256": "9746b6b5388196d4d67f23fe44d8f510bd6d2c8b7cf387363ed6df95bc7564fb",
+      "bytes": 56923
+    },
+    "v1/STATUS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\STATUS.json",
+      "sha256": "0d61c2d7b30697f3e54706bcd3a70fffe88832e8e040b129f1b8db3f291bbce6",
+      "bytes": 38
+    },
+    "v1/executed_audit_monocop_cpu_port.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_audit_monocop_cpu_port.py",
+      "sha256": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+      "bytes": 15703
+    },
+    "v1/executed_audit_monocop_transfer.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_audit_monocop_transfer.py",
+      "sha256": "bf7517a4879407c336f54c1a3841a0a78c2ab87283918af25f20ea10538ea29d",
+      "bytes": 10501
+    },
+    "v1/executed_eap_rgb_data.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_eap_rgb_data.py",
+      "sha256": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+      "bytes": 11636
+    },
+    "v1/executed_geometry_contract.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_geometry_contract.py",
+      "sha256": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+      "bytes": 7304
+    },
+    "v1/executed_monocop_initialization.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_monocop_initialization.py",
+      "sha256": "0842b8e49982197018345971e1bb36ba4c281b94fd40c8cb4088f134632a523f",
+      "bytes": 6605
+    },
+    "v1/executed_monodgp_eap_adapter.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_monodgp_eap_adapter.py",
+      "sha256": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+      "bytes": 13842
+    },
+    "v1/executed_portable_attention.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_portable_attention.py",
+      "sha256": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+      "bytes": 4262
+    },
+    "v1/executed_prepare_monocop_portable.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v1\\executed_prepare_monocop_portable.py",
+      "sha256": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+      "bytes": 10593
+    },
+    "v2/RESULTS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\RESULTS.json",
+      "sha256": "d0e083750627f97cfd1bba43e0d04f26dd6906980a6d08edb53bba3c93d77068",
+      "bytes": 56924
+    },
+    "v2/STATUS.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\STATUS.json",
+      "sha256": "0d61c2d7b30697f3e54706bcd3a70fffe88832e8e040b129f1b8db3f291bbce6",
+      "bytes": 38
+    },
+    "v2/executed_audit_monocop_cpu_port.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_audit_monocop_cpu_port.py",
+      "sha256": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+      "bytes": 15703
+    },
+    "v2/executed_audit_monocop_transfer.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_audit_monocop_transfer.py",
+      "sha256": "8f1beb2fa1ca5eb38275d7e6a819c97daac3c903fafe24dea826b3096c9b9c7d",
+      "bytes": 10533
+    },
+    "v2/executed_eap_rgb_data.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_eap_rgb_data.py",
+      "sha256": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+      "bytes": 11636
+    },
+    "v2/executed_geometry_contract.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_geometry_contract.py",
+      "sha256": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+      "bytes": 7304
+    },
+    "v2/executed_monocop_initialization.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_monocop_initialization.py",
+      "sha256": "98a0ebe2e21688a84abb589f217d253425a4805cef90f29508bfcdfe9e9cb64a",
+      "bytes": 6701
+    },
+    "v2/executed_monodgp_eap_adapter.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_monodgp_eap_adapter.py",
+      "sha256": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+      "bytes": 13842
+    },
+    "v2/executed_portable_attention.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_portable_attention.py",
+      "sha256": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+      "bytes": 4262
+    },
+    "v2/executed_prepare_monocop_portable.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_cpu_v2\\executed_prepare_monocop_portable.py",
+      "sha256": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+      "bytes": 10593
+    },
+    "conversion/CONVERSION.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_all_plain_v1\\CONVERSION.json",
+      "sha256": "2397de69a15942dcfbe392610b113e993e21ef833f5d39a8c7577adbab492986",
+      "bytes": 60473
+    },
+    "conversion/executed_converter.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_all_plain_v1\\executed_converter.py",
+      "sha256": "ab12d59030b7f1379e6078f849dcf688b94e29ad06b17f46a6a0748f5ca02e8f",
+      "bytes": 6928
+    },
+    "report/REPORT.md": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_report_v3\\REPORT.md",
+      "sha256": "c4235309c30103992fb26e1757f5a6dbf67ff4af06b3bb311eb86d21a8b51bdf",
+      "bytes": 2995
+    },
+    "report/MANIFEST.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_transfer_report_v3\\MANIFEST.json",
+      "sha256": "cb224886e53cc671fa17fef1404d886598aaa8678b320f088058fe2f9ae64989",
+      "bytes": 866
+    },
+    "upstream/LOG_RECEIPT.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_weight_sources_v1\\LOG_RECEIPT.json",
+      "sha256": "0df61e7ea03b72861d676e5157a4c17a30fdf998180db5c9cfd5577c62429d17",
+      "bytes": 439
+    },
+    "upstream/MonoCoP_All.pth.metadata": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_weights_all_v1\\.cache\\huggingface\\download\\MonoCoP_All.pth.metadata",
+      "sha256": "b8b7eafaf9beafac35028c312ab7635304347bc9d2104dfcff529740066f2441",
+      "bytes": 127
+    }
+  },
+  "weights_included": false,
+  "raw_data_included": false,
+  "quality_evaluation": false,
+  "gpu_training_admitted": false,
+  "report_note": "v3 normalizes Windows source paths for report replay on other OSes; REPORT.md bytes are identical to v2."
+}

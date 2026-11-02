@@ -1,0 +1,18 @@
+{
+  "role": "train",
+  "panel_sha256": "7032c1fc01274f6722ffadb8363a623cef41d8fd1b91377a0ed8bb801217329f",
+  "plan_sha256": "f83e28d4c8140f8a953ff7cfdfa7c6dc129983416ca90f2e4842d2059be2c83c",
+  "checkpoint_sha256": "c58c13297fd15638d89364a25b88245cd8be669ab8bfdbcb741f03df0e9215b3",
+  "split_sha256": "91a13c5ae7f6e40ee5fdb4a62da481eba5ffff2b8209ea1110befe3ad7cdc903",
+  "gt_train_sha256": "61b08cda230e2bf4352098904ab3802712043751903ad5c6ef7ae0a091655ad9",
+  "inference_complete_sha256": "a241982551fe8701ff26398c480959906ca3f76ce6a5983f72963fff0dff6182",
+  "sources": {
+    "scripts/train_detection_query_quality.py": "d199ce3e21f22eae4e488aac678b72be30977622b13c9b2a189981e8d0c0a8af",
+    "src/e_jepa_ttc/detection/query_quality.py": "896501a698d055ffdaf3d992b9a8a683cbbc3405756edca6fc956fa1452bbf88",
+    "src/e_jepa_ttc/detection/quality_ranking.py": "fb855d64f7ea5c1dab6771e4de44d141b0d61197ea3739b9f0f3618129e2dc10",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea"
+  },
+  "train_frames": 4096,
+  "test_labels_read": false
+}

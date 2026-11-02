@@ -1,0 +1,34 @@
+{
+  "files": {
+    "MANIFEST.json": {
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/MANIFEST.json",
+      "sha256": "0f5acf76d0ebac1c6f5e3e5a5b7788475f152e9bf8ac1013eef69be174fad0da",
+      "bytes": 3645
+    },
+    "REPORT.md": {
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/REPORT.md",
+      "sha256": "ebb171685aefdbe4358495e910cdaed5e82871fb0b05f58e14ed0bb9480db715",
+      "bytes": 3121
+    },
+    "RESULTS.json": {
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/RESULTS.json",
+      "sha256": "64406c665fa64f0093da5477b20a679e4f9e0b2457fed96bcfd6ae6f0a5f0ebf",
+      "bytes": 115380
+    },
+    "render_failure/executed_generator.py": {
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_report_render_failure_v1/executed_generator.py",
+      "sha256": "1737f72e7757030f3c186e2563a168f27695d32c7aa55e848059aa4c29869a99",
+      "bytes": 12423
+    },
+    "render_failure/FAILURE.json": {
+      "source": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_report_render_failure_v1/FAILURE.json",
+      "sha256": "f31683d908a9b5125e418a17b362e39e418e6519da2ce1e8b0d0859840c2669c",
+      "bytes": 521
+    },
+    "BACKUP.json": {
+      "source": "C:/Users/\u00c1lvaro Schwiedop/Downloads/PHASE_TTC_BACKUP_20261101/kitti_init_update2048/BACKUP.json",
+      "sha256": "45303050182a5b76810265842fdc1281b1a804ac30dda562aaf2d18d625b91bb",
+      "bytes": 8577
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "phase_ttc_diagnostic_intake_v1",
+  "timestamp_utc": "2026-11-01T14:16:31.753067+00:00",
+  "git_commit": "3b6cfe2f5d9377cc5386e0533ae58c4d941decd2",
+  "source_sha256": {
+    "scripts\\diagnose_detection_raw.py": "905006f4b12e021b7d5e98b5bf8431510b1c31c5d83c6bef9faf70243af6d9ff",
+    "scripts\\evaluate_detection_benchmark_local.py": "01e4daed258992f6a4c30afa4da95f29e657cf3091cff7e06815a7f065658389",
+    "src\\e_jepa_ttc\\detection\\raw_diagnostics.py": "bb57b4575cd8f58a57ffd30e5f33b91220a50779752c56060a37e60e03795316",
+    "src\\e_jepa_ttc\\detection\\benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src\\e_jepa_ttc\\detection\\geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f"
+  },
+  "python": "3.11.15",
+  "release_manifest_sha256": "61fc1023d67cf63aec8409023ddbdc44d02041c7413c3c2f83361e69a9ab2fbc",
+  "release_files_verified": 112,
+  "checkpoint_sha256": "c58c13297fd15638d89364a25b88245cd8be669ab8bfdbcb741f03df0e9215b3",
+  "ranker_file_sha256": "c59b41189d66b2a8816cc065017f2cccd953a4b94656b8ef4e5a75adc8cee78b",
+  "aligned_comparison_sha256": "f91f48b20b1d8773a076b6dc76c51f6c0f1d60b7b84be3cd8da1056c2007f1a1",
+  "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+  "private_scorer_equivalence": "NOT_CERTIFIED",
+  "test_labels_read": false,
+  "training": false,
+  "new_inference": false,
+  "cloud_compute_started": false
+}

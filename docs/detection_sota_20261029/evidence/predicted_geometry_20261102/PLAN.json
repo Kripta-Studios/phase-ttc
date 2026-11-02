@@ -1,0 +1,40 @@
+{
+  "schema": "phase_predicted_geometry_train_diagnostic_v1",
+  "git_commit": "987c1abc3f16a6211aab16693ae08fa309e6ccb3",
+  "sources": {
+    "scripts/diagnose_detection_predicted_geometry.py": "59800c01e70c573400f328a23c3c19f307475427fd088879491b6d510a6b35de",
+    "src/e_jepa_ttc/detection/predicted_geometry_depth.py": "792a25edff26969486d130d5dc1a5ae4f800918179623e78e95514441cc4233c",
+    "src/e_jepa_ttc/detection/cuboid_edge_depth.py": "d2495827c979df91516a47de002c71ac63ba74c4b09b6315ea2fb40e353cbe71",
+    "src/e_jepa_ttc/detection/monodgp_eap_adapter.py": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "src/e_jepa_ttc/detection/eap_rgb_data.py": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+    "src/e_jepa_ttc/detection/development_metrics.py": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a"
+  },
+  "inputs_at_start": {
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/campaign/train_inference/COMPLETE.json": "a241982551fe8701ff26398c480959906ca3f76ce6a5983f72963fff0dff6182",
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/campaign/train_inference/INTAKE.json": "d9bcb464781a7570cec7e9eca51bb4d9aa307a0b678624720d77b31eb489cffd",
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/panel/PANEL.json": "7032c1fc01274f6722ffadb8363a623cef41d8fd1b91377a0ed8bb801217329f",
+    "D:/PHASE_TTC_QUERY_QUALITY_20261101/panel/gt_train.json": "61b08cda230e2bf4352098904ab3802712043751903ad5c6ef7ae0a091655ad9",
+    "C:/Users/\u00c1lvaro Schwiedop/Desktop/KriptaStudios/EVOCON_JEPA_Codex_Handoff/phase-ttc-eap-diagnostics/data/splits/eap_detection_candidate_v1.json": "91a13c5ae7f6e40ee5fdb4a62da481eba5ffff2b8209ea1110befe3ad7cdc903",
+    "D:/PHASE_TTC_RELEASE_20261101/dfull-rgb-ranked-seed7/detector/runtime_preregistration.json": "04d6d1d269f636ccf48e9afff61e32e3bc56aa9dda1dd72789169bab255a3d48",
+    "E:/eAP_dataset/data/train.parquet": "69ffedab74ea28b295fe3ec2c2c83c08716bc31c216bc2ec9971f8ca9644a314"
+  },
+  "arms": [
+    "baseline",
+    "height_only",
+    "cuboid_edges_only"
+  ],
+  "boundary_exclusion_pixels": 1,
+  "invalid_geometry": "retain_original_detection",
+  "residual_policy": "replacement arms omit the learned residual entirely",
+  "maximum_seconds": 600,
+  "fit_parameters": false,
+  "new_detector_inference": false,
+  "selection_labels": false,
+  "test_labels": false,
+  "score": "original_class_sigmoid_without_ranker",
+  "promotion": false,
+  "scope": "TRAIN diagnostic; cannot establish generalization or justify promotion"
+}

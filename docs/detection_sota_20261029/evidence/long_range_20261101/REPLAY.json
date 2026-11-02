@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "comparison": "All census fields exactly equal except producer source hashes and execution time; v2 only fixes static typing",
+  "inputs": {
+    "D:\\PHASE_TTC_RANGE_20261101\\train_long_range_v1\\CENSUS.json": "def35595d9295294b6f738bd09e6eecf8e279be3b4839c47d93e78f82dc39ec1",
+    "D:\\PHASE_TTC_RANGE_20261101\\train_long_range_v2\\CENSUS.json": "8f10a2c416526cf5a895245e558b152aded0fef164c61395495d794b537c0094"
+  }
+}

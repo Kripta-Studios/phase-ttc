@@ -990,3 +990,86 @@ that its identified blockers are resolved in this run. Scientific limitations
 and unchanged experimental-model status remain explicit. The historical source
 bytes of both formatted Python files match their df8530f8 Git objects exactly;
 the local FORMAT_PARITY receipt records before/after hashes and AST equality.
+## 2026-10-29 — Detection continuation S0–S6
+
+The explicitly authorized continuation uses isolated branch
+`dev/eap-s0-evaluation-20261029`, based on pilot commit `24b8f36f`.
+The received plan and audit package remain byte-preserved. A detector-independent
+local evaluation protocol, ignored-object handling, error diagnostics, constant
+and permutation controls, and a label-free external observer are implemented and
+independently reviewed. The public evidence bundle regenerates without private
+`output/` files:
+
+```text
+python scripts/build_detection_sota_evidence.py --from-bundle --check
+```
+
+S1 added a diverse D4096 manifest, full training-state continuation, strict frozen
+inference and periodic validation. A real four-to-eight-update continuation and
+independent inference gave exact prediction parity. R0 subsequently stopped after
+725 completed updates because a PNG in the pinned public TAR is intrinsically
+truncated; the durable checkpoint is update 512. All failure evidence is retained.
+A complete media decode/hash preflight is underway before a revised fixed-cohort
+restart. This is not a completed RGB baseline or a new AP claim.
+
+Preparatory S2–S4 modules now cover train-only quality ranking, causal exposure
+history and exact chunked event accumulation. The multiobject PHASE service uses
+one packet ingestion and bounded object chunks while preserving native phase
+quantiles. These engineering checks do not demonstrate new TTC generalization.
+
+Detailed commands, scoped verification and remaining scientific gates are in
+[the execution ledger](detection_sota_20261029/EXECUTION.md). No cloud training,
+benchmark submission or external publication was performed in this continuation.
+
+## 2026-10-30 — Authorized A40 cloud campaign and evaluation optimization
+
+The subsequent user-authorized campaign runs on the user's RunPod A40. Exact
+input residency removed repeated TAR indexing and reached approximately 256
+updates/minute with warm training inputs. R0 seed 7 remains in progress; the
+release model and six-replica confirmation are not complete.
+
+An evaluation-only CPU prefetch candidate measured 1.5004x throughput on a fixed
+128-frame selection panel with exact evaluation payload parity apart from timing
+fields. It preserves single-frame FP32 inference and the complete scorer.
+The admitted handoff retains the active run and applies the revision to pending
+replicas after the existing R0 completes. Details, validation scope and rollout
+receipts are in [the A40 evaluation report](detection_sota_20261029/RUNPOD_EVALUATION_OPTIMIZATION.md).
+
+At the user's subsequent request, the revision also applies to active R0 via an
+explicit update-4096 checkpoint migration. Every state value outside runtime
+provenance is preserved, and a real strict-loader 4096-to-4097 smoke passed.
+The interrupted full evaluation is repeated with prefetch, followed automatically
+by the remaining training and five pending replicas. The original checkpoints
+and aborted evaluation evidence remain available.
+
+## 2026-10-31 — Verified R0/R2 completion and rare-sampling continuation
+
+R0 and R2 seed 7 completed and were compared on the same 23,958-frame development
+population: final AP 0.09400020 and 0.11645298. The four extra-seed runs were deferred
+by the user. See [the decision](detection_sota_20261029/R0_R2_SEED7_DECISION.md).
+Before stopping the pod, important missing artifacts were downloaded and verified
+at `D:/PHASE_TTC_POD_BACKUP_20261031`, including five complete training states.
+
+The user's new pod retains the same network volume. CUDA and historical checkpoint
+hashes passed admission. A separate `R2-rare-v1` producer now executes an identity-
+capped train-only sampling intervention, keeping 4,096 unique frames and the same
+32,768-exposure budget. Twenty tests and an eight-update GPU smoke passed; its strict
+continuation began at update 9 with the expected batch. A detached single-child
+controller verifies final artifacts and compares full-selection results automatically.
+No gain from the intervention is claimed yet. Seeds 13 and 23 remain deferred.
+See [the registered campaign](detection_sota_20261029/R2_RARE_SAMPLING_CAMPAIGN.md).
+
+## 2026-11-01 — Official detection result and benchmark-aligned local evaluation
+
+The official RGB ranked submission returned mAP 0.05129508 on 35,940 test frames.
+Its aggregate scoring output exposed minimum recall/precision 0.1 and TP-error
+arithmetic that differ from the historical local development profile. The new
+additive reference evaluator preserves the old protocol and frozen producers.
+It reevaluates all 23,958 saved selection frames with 190,469 raw public objects:
+baseline mAP 0.05701726, learned ranking 0.06204229, scalar control 0.06053089.
+No training, inference, paid compute or private-label access was needed.
+
+The [alignment report](detection_sota_20261029/BENCHMARK_LOCAL_ALIGNMENT_20261101.md)
+documents the comparison, reproduction command, 36 passing focused tests and
+remaining private-scorer equivalence limit. New training decisions must use the
+explicit new profile; historical frozen runners retain their original semantics.

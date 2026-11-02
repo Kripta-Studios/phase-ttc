@@ -1,0 +1,9 @@
+{
+  "reason": "The registered 60/150 plan requires full-selection confirmation of selected checkpoints; range150 gains >0.005 over control and is slightly above incumbent on the same panel",
+  "range150_checkpoint": "D:/PHASE_TTC_RANGE_20261101/screen_range150_v1/checkpoints/selected.pt",
+  "expected_checkpoint_sha256": "c63f7188ba7bfd70b63075c17411cc69a789548b8ac69fe5a2f0ae19f0a807aa",
+  "stop_marker_sha256": "560ffa6f5e7b2efc4ef468c9fc100b5ca018680ed13abd04258bd2eceb2a8769",
+  "resume_after": "Complete range150 evaluator panel parity and full selection, then remove only this unchanged STOP marker and restart the same long-range queue; do not modify its guarded sources",
+  "scientific_failure": false,
+  "gpu_stage_started": false
+}

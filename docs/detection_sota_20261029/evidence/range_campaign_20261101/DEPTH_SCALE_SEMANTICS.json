@@ -1,0 +1,11 @@
+{
+  "source": "detector/code/portable_source/lib/models/monodgp/monodgp.py",
+  "source_sha256": "ac16913d545b470cf1f741df2dd783f0ca82eaca515cc94a824a7074c4113c6e",
+  "function": "loss_depths",
+  "expression": "1.4142 * torch.exp(-depth_log_variance) * torch.abs(depth_input - target_depths) + depth_log_variance",
+  "laplace_scale_b": "exp(s)/1.4142",
+  "laplace_standard_deviation": "sqrt(2)*exp(s)/1.4142",
+  "standard_deviation_relative_to_exp_s": 1.0000095901379544,
+  "no_model_or_metric_change": true,
+  "calibration_demonstrated": false
+}

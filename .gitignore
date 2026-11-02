@@ -76,3 +76,6 @@ configs/local/*.yaml
 /*.zip
 # Third-party paper source archives are local reference material.
 /arXiv-*.tar.gz
+
+# Local browser inspection snapshots.
+/.playwright-mcp/

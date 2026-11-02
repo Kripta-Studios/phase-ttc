@@ -1,0 +1,29 @@
+{
+  "inputs": {
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\PLAN.json": "b3c4f5497f17ac3e22c3e850d743659b07355552a48c7d0df1722c39d41346dc",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\RESULTS.json": "ad0fea13dc2e350fb311a668f971e721a04b6fff7c87016bfcc596f91fb3de1d",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\MODEL_INTAKE.json": "ffa4d31bcf9c52a86628a05863afa26b3014d1ad45cb7c5cb18400f1357674c8",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\SOURCE_FORMAT_RECEIPT.json": "02cc91b49d3c96da5de02eae3352a247f1649b42098d1776ace0130b7b2b2f71",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\00.json": "f614cff19a0d46cc7cb3b6481684fa496c9db78ab65a63adfdb2a30f7b3eef58",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\01.json": "0db1a63a224ff62180ff346db21203deb242f36a11fe05596498d30258cbd710",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\02.json": "9430efa0c344085261cc48a4db0de9f56e01f5c63e87f93f0a138fb2ca6de381",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\03.json": "f174e8c9e9c64296bb98c2833b91760feecacf1963a525c48ee89a5d7ffdf2fb",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\04.json": "b71312b1861dca0b9e600bee84b4dd447c141181b18d30ebb7e0e1e657f6b820",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\05.json": "ea0500c590c3ef5c89aa26a71cbc5fc8d0c70ec373313574db7defafa8fd5e15",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\06.json": "c447558a2b5f95c17fd5ef607d872a63f9076075aee00e5c25b855bc78f317cf",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\07.json": "8bb891301b2027c40b41695581d5d8634b0cea1760324b3eca1e44df9531a946",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\08.json": "1c73032917b8e64d9aefc972282321c96c22aab0a2c9c22fa779affb1caafd1f",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\09.json": "3bd4ac9bc462e60c2b7472481126a49cdb7df56ec8a49df812484fb7a0869396",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\10.json": "7d8a3da34ab0950dfd885a2ad62de441125b4946fc10c61b3d66e37fd69ee0d9",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\11.json": "e0565bb0220ecc0b6b317b5eed0a694c2bf9dadedd0a19d78af6b4a8e6ab7813",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\12.json": "875f64db6543fdc8dbc1039d342d815df815555ef38f40c967d2ef92737a7e1b",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\13.json": "115e8078499cd9575cbd1810aa5349df5f526000382f09d7fc354e33c104e7cd",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\14.json": "e1b7cca622b034a269c83cb683cdd57d55f9df110c4e057fc585e30c6a52a89f",
+    "D:\\PHASE_TTC_SEMANTIC_20261101\\cpu_probe_v1\\predictions\\15.json": "2fd8e87ffb407dadf09c54cc773a9871662e7db4099de966f0e69b1c91e7726c"
+  },
+  "visual_metadata_sha256": "c4de9ceb22de0b9e03527958ccd5cd2810d62403661c3d380b1b47351ab87cad",
+  "report_sha256": "df7ac1aed30c71dd26b866a9b5f411344770828ac725c225800a3985be225fcc",
+  "source_sha256": "614f0ae0c3d896a11a16be1a56cc54d5c83cd805b20427452541b3263df1a7ee",
+  "decision": "DO_NOT_EXPAND_THIS_PROBE_YET",
+  "mAP_measured": false
+}

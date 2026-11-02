@@ -1,0 +1,32 @@
+{
+  "schema": "phase_monocop_gpu_smoke_v1",
+  "experiment_id": "monocop-all-range300-seed7-gpu-smoke-v1",
+  "dataset_root": "E:/eAP_dataset",
+  "population": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_config_v1/smoke_population.json",
+  "population_sha256": "90873c62a577d50b2c49062c4fddea04e3235019031857de10dc549b25be51b5",
+  "portable_source": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_port_v2/source",
+  "port_sha256": "9ba3647ece606feb68e9aea9332b6a6a5745db4788c5ec2f7271e37996f2deec",
+  "initialized_checkpoint": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_transfer_cpu_v2/initialized_model.pt",
+  "initialized_checkpoint_sha256": "e0de1b40d0b0316eaaf88d8133b333a00b825baf080fc19604b55d51c321b80a",
+  "cpu_result": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_transfer_cpu_v2/RESULTS.json",
+  "cpu_result_sha256": "d0e083750627f97cfd1bba43e0d04f26dd6906980a6d08edb53bba3c93d77068",
+  "evaluation_profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+  "seed": 7,
+  "width": 640,
+  "height": 384,
+  "depth_max_m": 300.0,
+  "batch_size": 2,
+  "updates": 32,
+  "evaluation_updates": [
+    0,
+    16,
+    32
+  ],
+  "learning_rate": 5e-05,
+  "backbone_lr_multiplier": 0.1,
+  "weight_decay": 0.0001,
+  "gradient_clip": 1.0,
+  "maximum_seconds": 600.0,
+  "maximum_cuda_bytes": 9663676416,
+  "cpu_threads": 4
+}

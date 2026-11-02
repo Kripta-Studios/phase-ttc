@@ -1,0 +1,11 @@
+{
+  "status": "FAILED",
+  "update": 32,
+  "checkpoint_update": 32,
+  "exposures": 64,
+  "elapsed_seconds": 19.00745230000757,
+  "timestamp_utc": "2026-11-01T22:44:49.852173+00:00",
+  "last_loss": 32.82616424560547,
+  "error_type": "FileNotFoundError",
+  "error": "[Errno 2] No such file or directory: 'D:\\\\PHASE_TTC_COMPETITOR_20261101\\\\monocop_gpu_smoke_v1\\\\checkpoints\\\\last.pt'"
+}

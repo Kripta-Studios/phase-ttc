@@ -1,0 +1,291 @@
+{
+  "schema": "phase_ttc_monocop_cpu_port_admission_v1",
+  "started_utc": "2026-11-01T21:39:36.825036+00:00",
+  "torch": "2.11.0+cu128",
+  "runner_sha256": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+  "source_receipt_sha256": "9ba3647ece606feb68e9aea9332b6a6a5745db4788c5ec2f7271e37996f2deec",
+  "stages": {
+    "construction": {
+      "seconds": 28.313764000005904,
+      "result": {
+        "depth_max": 300.0
+      }
+    },
+    "attention_reference": {
+      "seconds": 0.18735940000624396,
+      "result": {
+        "reference": "MonoCoP ms_deform_attn_core_pytorch",
+        "dtype": "float64",
+        "forward_max_abs": 8.881784197001252e-16,
+        "gradient_max_abs_value_locations_weights": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "compiled_cuda_extension_tested": false
+      }
+    },
+    "pyramid_resize_parity": {
+      "seconds": 0.26075590000255033,
+      "result": {
+        "cases": [
+          {
+            "input_hw": [
+              6,
+              10
+            ],
+            "forward_and_gradient_exact": true
+          },
+          {
+            "input_hw": [
+              12,
+              20
+            ],
+            "forward_and_gradient_exact": true
+          },
+          {
+            "input_hw": [
+              24,
+              40
+            ],
+            "forward_and_gradient_exact": true
+          }
+        ],
+        "odd_shape_exercised_by_full_model_fixture": [
+          96,
+          160
+        ]
+      }
+    },
+    "depth_bins": {
+      "seconds": 0.002137700008461252,
+      "result": {
+        "bins": [
+          80,
+          0,
+          35,
+          56,
+          72,
+          79,
+          80,
+          80,
+          80,
+          80
+        ]
+      }
+    },
+    "eight_class_backward": {
+      "seconds": 5.683960700000171,
+      "result": {
+        "loss": 400.1034851074219,
+        "loss_terms": {
+          "loss_ce": 1.132138729095459,
+          "class_error": 92.04545593261719,
+          "loss_bbox": 0.2679674029350281,
+          "loss_giou": 0.9210607409477234,
+          "cardinality_error": 539.0,
+          "loss_depth": 106.93258666992188,
+          "loss_dim": 8.093682289123535,
+          "loss_angle": 2.8017737865448,
+          "loss_center": 0.07879476249217987,
+          "loss_depth_map": 6.164062976837158,
+          "loss_region": 3.358553886413574,
+          "loss_ce_0": 1.1447792053222656,
+          "loss_bbox_0": 0.3059427738189697,
+          "loss_giou_0": 0.9063228368759155,
+          "cardinality_error_0": 520.0,
+          "loss_depth_0": 122.64215850830078,
+          "loss_dim_0": 7.798721790313721,
+          "loss_angle_0": 2.683615207672119,
+          "loss_center_0": 0.08474837988615036,
+          "loss_ce_1": 1.2311357259750366,
+          "loss_bbox_1": 0.28521034121513367,
+          "loss_giou_1": 0.9185340404510498,
+          "cardinality_error_1": 534.0,
+          "loss_depth_1": 109.85490417480469,
+          "loss_dim_1": 7.823556423187256,
+          "loss_angle_1": 2.7285280227661133,
+          "loss_center_1": 0.07823854684829712
+        },
+        "gradient_parameters": 419,
+        "logit_shape": [
+          1,
+          550,
+          8
+        ]
+      }
+    },
+    "empty_target_backward": {
+      "seconds": 4.237268799988669,
+      "result": {
+        "loss": 4.773618698120117,
+        "loss_terms": {
+          "loss_ce": 0.006820551585406065,
+          "class_error": 100.0,
+          "loss_bbox": 0.0,
+          "loss_giou": 0.0,
+          "cardinality_error": 546.0,
+          "loss_depth": 0.0,
+          "loss_dim": 0.0,
+          "loss_angle": 0.0,
+          "loss_center": 0.0,
+          "loss_depth_map": 1.1434190273284912,
+          "loss_region": 3.602393627166748,
+          "loss_ce_0": 0.004446049220860004,
+          "loss_bbox_0": 0.0,
+          "loss_giou_0": 0.0,
+          "cardinality_error_0": 517.0,
+          "loss_depth_0": 0.0,
+          "loss_dim_0": 0.0,
+          "loss_angle_0": 0.0,
+          "loss_center_0": 0.0,
+          "loss_ce_1": 0.00263644359074533,
+          "loss_bbox_1": 0.0,
+          "loss_giou_1": 0.0,
+          "cardinality_error_1": 549.0,
+          "loss_depth_1": 0.0,
+          "loss_dim_1": 0.0,
+          "loss_angle_1": 0.0,
+          "loss_center_1": 0.0
+        },
+        "gradient_parameters": 419,
+        "logit_shape": [
+          1,
+          550,
+          8
+        ]
+      }
+    },
+    "focal_contract": {
+      "seconds": 1.7199404999992112,
+      "result": {
+        "fy_max_abs_error": 5.960464477539062e-07,
+        "fx_outputs_exact": true
+      }
+    },
+    "checkpoint_replay": {
+      "seconds": 1.0048067000025185,
+      "result": {
+        "sha256": "9befe1b1b50795e2b11976743d7d0f971203eacc809a75390881b69f06926398",
+        "exact": true
+      }
+    },
+    "real_train_frame_backward": {
+      "seconds": 14.695858999999473,
+      "result": {
+        "loss": 402.34783935546875,
+        "loss_terms": {
+          "loss_ce": 1.0257694721221924,
+          "class_error": 68.83116912841797,
+          "loss_bbox": 0.2531393766403198,
+          "loss_giou": 0.9617056846618652,
+          "cardinality_error": 537.0,
+          "loss_depth": 102.867431640625,
+          "loss_dim": 9.035761833190918,
+          "loss_angle": 2.439495801925659,
+          "loss_center": 0.10114418715238571,
+          "loss_depth_map": 3.1801986694335938,
+          "loss_region": 3.287614345550537,
+          "loss_ce_0": 1.148120641708374,
+          "loss_bbox_0": 0.2902868092060089,
+          "loss_giou_0": 0.9138168692588806,
+          "cardinality_error_0": 538.0,
+          "loss_depth_0": 128.31053161621094,
+          "loss_dim_0": 8.9921875,
+          "loss_angle_0": 2.5005621910095215,
+          "loss_center_0": 0.09249909967184067,
+          "loss_ce_1": 1.253005027770996,
+          "loss_bbox_1": 0.2747327983379364,
+          "loss_giou_1": 0.940129280090332,
+          "cardinality_error_1": 543.0,
+          "loss_depth_1": 110.60072326660156,
+          "loss_dim_1": 8.967251777648926,
+          "loss_angle_1": 2.6898677349090576,
+          "loss_center_1": 0.09639051556587219
+        },
+        "gradient_parameters": 419,
+        "logit_shape": [
+          1,
+          550,
+          8
+        ],
+        "token": "xkiVthsGwf:000001113_000434196",
+        "member_sha256": "fb5dcf5f92c4aa378bee8a1312ef587ce8fdaa10dfbcdad50bcf8563ad17ae2a",
+        "maximum_target_depth_m": 249.15318298339844,
+        "admitted_targets": 7,
+        "decode_counts": {
+          "queries": 50,
+          "considered": 50,
+          "invalid_size_or_depth": 50,
+          "emitted": 0
+        },
+        "decoded_boxes": 0
+      }
+    }
+  },
+  "scope": "random_initialization_software_only",
+  "cpu_threads": 2,
+  "configuration": {
+    "num_classes": 8,
+    "return_intermediate_dec": true,
+    "device": "cpu",
+    "type": "monocop",
+    "num_channels": [
+      512,
+      1024,
+      2048
+    ],
+    "uncertainty_tau": 5,
+    "backbone": "resnet50",
+    "train_backbone": true,
+    "num_feature_levels": 4,
+    "mode": "LID",
+    "num_depth_bins": 80,
+    "depth_min": "1e-3",
+    "depth_max": 300.0,
+    "use_depth_pos_embed": true,
+    "with_box_refine": true,
+    "two_stage": false,
+    "use_dab": false,
+    "use_dn": false,
+    "two_stage_dino": false,
+    "init_box": false,
+    "enc_layers": 3,
+    "dec_layers": 3,
+    "hidden_dim": 256,
+    "dim_feedforward": 256,
+    "dropout": 0.1,
+    "nheads": 8,
+    "num_queries": 50,
+    "group_num": 11,
+    "enc_n_points": 4,
+    "dec_n_points": 4,
+    "scalar": 5,
+    "label_noise_scale": 0.2,
+    "box_noise_scale": 0.4,
+    "num_patterns": 0,
+    "aux_loss": true,
+    "cls_loss_coef": 2,
+    "focal_alpha": 0.25,
+    "bbox_loss_coef": 5,
+    "giou_loss_coef": 2,
+    "3dcenter_loss_coef": 10,
+    "dim_loss_coef": 1,
+    "angle_loss_coef": 1,
+    "depth_loss_coef": 1,
+    "depth_map_loss_coef": 1,
+    "region_loss_coef": 1,
+    "set_cost_class": 2,
+    "set_cost_bbox": 5,
+    "set_cost_giou": 2,
+    "set_cost_3dcenter": 10
+  },
+  "parameters": 42599880,
+  "trainable_parameters": 42571287,
+  "status": "PASS_CPU_PORT_ONLY",
+  "elapsed_seconds": 56.1264816000039,
+  "cuda_initialized": false,
+  "optimizer_steps": 0,
+  "eap_quality_measured": false,
+  "gpu_training_admitted": false
+}

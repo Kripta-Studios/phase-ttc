@@ -1,0 +1,10 @@
+{
+  "all_initial_metrics_exact": true,
+  "mAP": 0.060355637294592326,
+  "samples": 512,
+  "source_sha256": {
+    "screen_range60_v1": "f494c4456285bd94d8a07f43ce5e8e6f458f2b7052cddde2e15312cdfedfc219",
+    "screen_range150_v1": "4f1840f5f4e13f29dbfe47e2d947481d3117ec4e84cf7d403b7ac3fad66376f2"
+  },
+  "scope": "Same 512-frame public-selection panel before any optimizer update; not evidence that the auxiliary depth branches are identical."
+}

@@ -1,0 +1,9 @@
+{
+  "decision": "PRIORITIZE_REGISTERED_PRETRAINED_COMPARISON",
+  "new_gpu_experiment_started": false,
+  "range300_and_kitti_continue_as_registered": true,
+  "repeat_rare_sampling": false,
+  "causal_generalization_gap_claim": false,
+  "promotion": false,
+  "goal_complete": false
+}

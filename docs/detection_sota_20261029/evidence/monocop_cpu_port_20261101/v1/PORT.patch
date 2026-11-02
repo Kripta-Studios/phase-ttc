@@ -1,0 +1,218 @@
+--- a/lib/models/monocop/ops/functions/ms_deform_attn_func.py
++++ b/lib/models/monocop/ops/functions/ms_deform_attn_func.py
+@@ -15,27 +15,7 @@
+ from torch.autograd import Function
+ from torch.autograd.function import once_differentiable
+ 
+-import MultiScaleDeformableAttention as MSDA
+-
+-
+-class MSDeformAttnFunction(Function):
+-    @staticmethod
+-    def forward(ctx, value, value_spatial_shapes, value_level_start_index, sampling_locations, attention_weights, im2col_step):
+-        ctx.im2col_step = im2col_step
+-        output = MSDA.ms_deform_attn_forward(
+-            value, value_spatial_shapes, value_level_start_index, sampling_locations, attention_weights, ctx.im2col_step)
+-        ctx.save_for_backward(value, value_spatial_shapes, value_level_start_index, sampling_locations, attention_weights)
+-        return output
+-
+-    @staticmethod
+-    @once_differentiable
+-    def backward(ctx, grad_output):
+-        value, value_spatial_shapes, value_level_start_index, sampling_locations, attention_weights = ctx.saved_tensors
+-        grad_value, grad_sampling_loc, grad_attn_weight = \
+-            MSDA.ms_deform_attn_backward(
+-                value, value_spatial_shapes, value_level_start_index, sampling_locations, attention_weights, grad_output, ctx.im2col_step)
+-
+-        return grad_value, None, None, grad_sampling_loc, grad_attn_weight, None
++from e_jepa_ttc.detection.portable_attention import PortableMSDeformAttnFunction as MSDeformAttnFunction
+ 
+ 
+ def ms_deform_attn_core_pytorch(value, value_spatial_shapes, sampling_locations, attention_weights):
+--- a/lib/models/monocop/backbone.py
++++ b/lib/models/monocop/backbone.py
+@@ -340,8 +340,8 @@
+             self._freeze_norm(self)
+ 
+ 
+-        state = torch.hub.load_state_dict_from_url(donwload_url[depth])
+-        self.load_state_dict(state)
++        if pretrained:
++            raise ValueError('Load verified local weights after construction')
+ 
+ 
+     def _freeze_parameters(self, m: nn.Module):
+--- a/lib/models/monocop/backbone.py
++++ b/lib/models/monocop/backbone.py
+@@ -380,6 +380,6 @@
+     }
+ 
+     backbone = Backbone(
+-        depth=ResNet_map[backbone_name], freeze_norm=cfg.get("freeze_norm", True)
++        depth=ResNet_map[backbone_name], freeze_norm=cfg.get("freeze_norm", True), pretrained=False
+     )
+     return backbone
+--- a/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
++++ b/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
+@@ -29,7 +29,7 @@
+             downsample_factor [int]: Depth map downsample factor
+         """
+         super().__init__()
+-        self.device = torch.cuda.current_device()
++        self.device = None
+         self.balancer = Balancer(
+             downsample_factor=downsample_factor,
+             fg_weight=fg_weight,
+--- a/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
++++ b/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
+@@ -16,7 +16,7 @@
+                  gamma=2.0,
+                  fg_weight=13,
+                  bg_weight=1,
+-                 downsample_factor=1):
++                 downsample_factor=1, depth_min=1e-3, depth_max=60.0, num_bins=80):
+         """
+         Initializes DDNLoss module
+         Args:
+--- a/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
++++ b/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
+@@ -29,6 +29,9 @@
+             downsample_factor [int]: Depth map downsample factor
+         """
+         super().__init__()
++        self.range_min = depth_min
++        self.range_max = depth_max
++        self.range_bins = num_bins
+         self.device = None
+         self.balancer = Balancer(
+             downsample_factor=downsample_factor,
+--- a/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
++++ b/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
+@@ -66,7 +66,7 @@
+ 
+         return depth_maps
+ 
+-    def bin_depths(self, depth_map, mode="LID", depth_min=1e-3, depth_max=60, num_bins=80, target=False):
++    def bin_depths(self, depth_map, mode="LID", depth_min=None, depth_max=None, num_bins=None, target=False):
+         """
+         Converts depth map into bin indices
+         Args:
+--- a/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
++++ b/lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py
+@@ -82,6 +82,9 @@
+         Returns:
+             indices [torch.Tensor(H, W)]: Depth bin indices
+         """
++        depth_min = self.range_min if depth_min is None else depth_min
++        depth_max = self.range_max if depth_max is None else depth_max
++        num_bins = self.range_bins if num_bins is None else num_bins
+         if mode == "UD":
+             bin_size = (depth_max - depth_min) / num_bins
+             indices = ((depth_map - depth_min) / bin_size)
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -271,7 +271,7 @@
+             # depth_geo
+             box2d_height_norm = outputs_coord[:, :, 4] + outputs_coord[:, :, 5]
+             box2d_height = torch.clamp(box2d_height_norm * img_sizes[:, 1: 2], min=1.0)
+-            depth_geo = size3d_chain[:, :, 0] / box2d_height * calibs[:, 0, 0].unsqueeze(1)
++            depth_geo = size3d_chain[:, :, 0] / box2d_height * calibs[:, 1, 1].unsqueeze(1)
+             
+             
+             
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -466,7 +466,7 @@
+ 
+         # regression loss
+         heading_input_res = heading_input[:, 12:24]
+-        cls_onehot = torch.zeros(heading_target_cls.shape[0], 12).cuda().scatter_(dim=1, index=heading_target_cls.view(-1, 1), value=1)
++        cls_onehot = torch.zeros(heading_target_cls.shape[0], 12, device=heading_target_cls.device).scatter_(dim=1, index=heading_target_cls.view(-1, 1), value=1)
+         heading_input_res = torch.sum(heading_input_res * cls_onehot, 1)
+         reg_loss = F.l1_loss(heading_input_res, heading_target_res, reduction='none')
+         
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -479,7 +479,7 @@
+         depth_map_logits = outputs['pred_depth_map_logits']
+ 
+         num_gt_per_img = [len(t['boxes']) for t in targets]
+-        gt_boxes2d = torch.cat([t['boxes'] for t in targets], dim=0) * torch.tensor([80, 24, 80, 24], device='cuda')
++        gt_boxes2d = torch.cat([t['boxes'] for t in targets], dim=0) * depth_map_logits.new_tensor([depth_map_logits.shape[-1], depth_map_logits.shape[-2], depth_map_logits.shape[-1], depth_map_logits.shape[-2]])
+         gt_boxes2d = box_ops.box_cxcywh_to_xyxy(gt_boxes2d)
+         gt_center_depth = torch.cat([t['depth'] for t in targets], dim=0).squeeze(dim=1)
+         
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -437,6 +437,8 @@
+ 
+         idx = self._get_src_permutation_idx(indices)
+         src_dims = outputs['pred_3d_dim'][idx]
++        if src_dims.numel() == 0:
++            return {'loss_dim': src_dims.sum() * 0.0}
+         target_dims = torch.cat([t['size_3d'][i] for t, (_, i) in zip(targets, indices)], dim=0)
+ 
+         dimension = target_dims.clone().detach()
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -327,7 +327,7 @@
+         1) we compute hungarian assignment between ground truth boxes and the outputs of the model
+         2) we supervise each pair of matched ground-truth / prediction (supervise class and box)
+     """
+-    def __init__(self, num_classes, matcher, weight_dict, focal_alpha, losses, group_num=11):
++    def __init__(self, num_classes, matcher, weight_dict, focal_alpha, losses, group_num=11, depth_config=None):
+         """ Create the criterion.
+         Parameters:
+             num_classes: number of object categories, omitting the special no-object category
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -342,7 +342,7 @@
+         self.weight_dict = weight_dict
+         self.losses = losses
+         self.focal_alpha = focal_alpha
+-        self.ddn_loss = DDNLoss()  # for depth map
++        self.ddn_loss = DDNLoss(depth_min=float(depth_config['depth_min']), depth_max=float(depth_config['depth_max']), num_bins=int(depth_config['num_depth_bins']))
+         self.group_num = group_num
+ 
+     def loss_labels(self, outputs, targets, indices, num_boxes, log=True):
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -655,7 +655,7 @@
+         matcher=matcher,
+         weight_dict=weight_dict,
+         focal_alpha=cfg['focal_alpha'],
+-        losses=losses)
++        losses=losses, group_num=cfg['group_num'], depth_config=cfg)
+ 
+     device = torch.device(cfg['device'])
+     criterion.to(device)
+--- a/lib/models/monocop/monocop.py
++++ b/lib/models/monocop/monocop.py
+@@ -623,7 +623,7 @@
+         with_box_refine=cfg['with_box_refine'],
+         init_box=cfg['init_box'],
+         num_channels=cfg['num_channels'],
+-        uncertainty_tau=cfg.get("uncertainty_tau", 0))
++        uncertainty_tau=cfg.get("uncertainty_tau", 0), group_num=cfg["group_num"])
+     
+ 
+     # matcher
+--- a/lib/models/monocop/depthaware_transformer.py
++++ b/lib/models/monocop/depthaware_transformer.py
+@@ -586,4 +586,4 @@
+         two_stage=cfg['two_stage'],
+         two_stage_num_proposals=cfg['num_queries'],
+         use_dab= cfg['use_dab'],
+-        two_stage_dino = cfg['two_stage_dino'])
++        two_stage_dino = cfg['two_stage_dino'], group_num=cfg['group_num'])
+--- a/lib/models/monocop/matcher.py
++++ b/lib/models/monocop/matcher.py
+@@ -84,6 +84,8 @@
+ 
+         # Final cost matrix
+         C = self.cost_bbox * cost_bbox + self.cost_3dcenter * cost_3dcenter + self.cost_class * cost_class + self.cost_giou * cost_giou
++        if not torch.isfinite(C).all():
++            raise ValueError('Nonfinite matching cost')
+         C = C.view(bs, num_queries, -1).cpu()
+ 
+         sizes = [len(v["boxes"]) for v in targets]

@@ -1,0 +1,12 @@
+{
+  "estimand": "Unweighted mean of eight per-sequence mAP differences; not pooled mAP",
+  "seed": 7,
+  "resamples": 2000,
+  "resampling_unit": "sequence",
+  "point": -0.0016782953005849335,
+  "percentile95": [
+    -0.00371955938975868,
+    0.00037685947469406775
+  ],
+  "caveat": "Exploratory interval with eight exposed sequences; independence unverified"
+}

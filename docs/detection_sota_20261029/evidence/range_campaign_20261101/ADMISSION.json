@@ -1,0 +1,35 @@
+{
+  "schema": "phase_range_panel_admission_v1",
+  "population_sha256": "481ac9c0adc9f31a8555928a6fed4dc5784b38485e170833ac3e510bd01e645b",
+  "frames": 4096,
+  "counts": {
+    "60": {
+      "truck": 2015,
+      "car": 10762,
+      "motorcycle": 636,
+      "pedestrian": 244,
+      "bicycle": 41,
+      "tricycle": 68,
+      "bus": 131,
+      "other_vehicle": 8
+    },
+    "150": {
+      "truck": 4941,
+      "car": 17094,
+      "motorcycle": 1228,
+      "tricycle": 124,
+      "bus": 270,
+      "pedestrian": 474,
+      "bicycle": 55,
+      "other_vehicle": 17
+    }
+  },
+  "maximum_targets_per_frame": {
+    "60": 23,
+    "150": 35
+  },
+  "over_capacity": [],
+  "status": "PASS",
+  "elapsed_seconds": 51.83971939999901,
+  "script_sha256": "2f07394d03e10b815a9ee0756605949307de2d9eb3b48e309582a06cdc5100bf"
+}

@@ -1,0 +1,190 @@
+{
+  "attention": [
+    {
+      "dtype": "torch.float32",
+      "forward_max_abs": 2.384185791015625e-07,
+      "gradient_max_abs": [
+        1.1175870895385742e-08,
+        8.940696716308594e-08,
+        2.60770320892334e-08
+      ]
+    },
+    {
+      "dtype": "torch.float64",
+      "forward_max_abs": 2.220446049250313e-16,
+      "gradient_max_abs": [
+        6.938893903907228e-18,
+        5.551115123125783e-17,
+        1.3877787807814457e-17
+      ]
+    }
+  ],
+  "full_model": {
+    "output.pred_logits": {
+      "shape": [
+        1,
+        50,
+        8
+      ],
+      "max_abs": 1.5735626220703125e-05
+    },
+    "output.pred_boxes": {
+      "shape": [
+        1,
+        50,
+        6
+      ],
+      "max_abs": 1.9669532775878906e-06
+    },
+    "output.pred_3d_dim": {
+      "shape": [
+        1,
+        50,
+        3
+      ],
+      "max_abs": 1.2278556823730469e-05
+    },
+    "output.pred_depth": {
+      "shape": [
+        1,
+        50,
+        2
+      ],
+      "max_abs": 4.76837158203125e-05
+    },
+    "output.pred_angle": {
+      "shape": [
+        1,
+        50,
+        24
+      ],
+      "max_abs": 5.7250261306762695e-05
+    },
+    "output.pred_depth_map_logits": {
+      "shape": [
+        1,
+        81,
+        24,
+        40
+      ],
+      "max_abs": 1.8849968910217285e-06
+    },
+    "output.pred_region_prob.0": {
+      "shape": [
+        1,
+        1,
+        48,
+        80
+      ],
+      "max_abs": 1.0728836059570312e-06
+    },
+    "output.pred_region_prob.1": {
+      "shape": [
+        1,
+        1,
+        24,
+        40
+      ],
+      "max_abs": 9.5367431640625e-07
+    },
+    "output.pred_region_prob.2": {
+      "shape": [
+        1,
+        1,
+        12,
+        20
+      ],
+      "max_abs": 0.0
+    },
+    "output.pred_region_prob.3": {
+      "shape": [
+        1,
+        1,
+        6,
+        10
+      ],
+      "max_abs": 0.0
+    },
+    "output.aux_outputs.0.pred_logits": {
+      "shape": [
+        1,
+        50,
+        8
+      ],
+      "max_abs": 6.67572021484375e-06
+    },
+    "output.aux_outputs.0.pred_boxes": {
+      "shape": [
+        1,
+        50,
+        6
+      ],
+      "max_abs": 4.172325134277344e-07
+    },
+    "output.aux_outputs.0.pred_3d_dim": {
+      "shape": [
+        1,
+        50,
+        3
+      ],
+      "max_abs": 2.384185791015625e-06
+    },
+    "output.aux_outputs.0.pred_angle": {
+      "shape": [
+        1,
+        50,
+        24
+      ],
+      "max_abs": 1.8596649169921875e-05
+    },
+    "output.aux_outputs.0.pred_depth": {
+      "shape": [
+        1,
+        50,
+        2
+      ],
+      "max_abs": 3.814697265625e-05
+    },
+    "output.aux_outputs.1.pred_logits": {
+      "shape": [
+        1,
+        50,
+        8
+      ],
+      "max_abs": 1.239776611328125e-05
+    },
+    "output.aux_outputs.1.pred_boxes": {
+      "shape": [
+        1,
+        50,
+        6
+      ],
+      "max_abs": 1.3113021850585938e-06
+    },
+    "output.aux_outputs.1.pred_3d_dim": {
+      "shape": [
+        1,
+        50,
+        3
+      ],
+      "max_abs": 1.2874603271484375e-05
+    },
+    "output.aux_outputs.1.pred_angle": {
+      "shape": [
+        1,
+        50,
+        24
+      ],
+      "max_abs": 3.3736228942871094e-05
+    },
+    "output.aux_outputs.1.pred_depth": {
+      "shape": [
+        1,
+        50,
+        2
+      ],
+      "max_abs": 4.38690185546875e-05
+    }
+  },
+  "compiled_cuda_extension_tested": false
+}

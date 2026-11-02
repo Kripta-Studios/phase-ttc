@@ -1,0 +1,52 @@
+{
+  "schema": "phase_monocop_gpu_smoke_plan_v1",
+  "status": "PREPARED_NOT_ADMITTED",
+  "config_sha256": "92f682bdc1e248519d8b0383d9d592e568d6eccceb557a6d01ac5779bb8d5287",
+  "config_file_sha256": "d62b6c4ed7e2fe2ffb3418aa25d6dc159f15876821ef08c19ee0a014ee73b30d",
+  "sources": {
+    "scripts/prepare_monocop_gpu_smoke.py": "34900df032a98d946747b6013fd6785cb44895fbaf7cbc715500890dcbf07649",
+    "scripts/run_monocop_gpu_smoke.py": "46a764f2f874547169f0d0d086651060a12875b29a7314a1ee086082f8f4f153",
+    "scripts/prepare_monocop_portable.py": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+    "scripts/audit_monocop_cpu_port.py": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+    "src/e_jepa_ttc/detection/monocop_smoke.py": "ed96dfd550f907bbff020c59231f55a90d9f1f5c3b4b931933ebbac392bf104e",
+    "src/e_jepa_ttc/detection/monocop_initialization.py": "98a0ebe2e21688a84abb589f217d253425a4805cef90f29508bfcdfe9e9cb64a",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/campaign_training.py": "2ff58dda8f4c46ea4c9f71ae0508a636789a7f6bd8d2bbedea1e5a72efc2b999",
+    "src/e_jepa_ttc/detection/eap_rgb_data.py": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+    "src/e_jepa_ttc/detection/indexed_rgb_data.py": "c6aace6e78635c109a1c159d5586dc147ec06722f8caca15c1ec777b55fc2ec7",
+    "src/e_jepa_ttc/detection/monodgp_eap_adapter.py": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "src/e_jepa_ttc/detection/development_metrics.py": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a",
+    "src/e_jepa_ttc/detection/portable_attention.py": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+    "src/e_jepa_ttc/detection/evaluation_protocol.py": "44710d70540f2f114c6b9fccd7b7317fe50328630c01f9a07d0a3c56dca8c9b6"
+  },
+  "git_commit_at_preparation": "7841dcede8387653cb948053fc11b74b727eacf6",
+  "execution_tree_note": "Any uncommitted producer bytes are archived with their hashes; HEAD alone does not identify them.",
+  "plan_document_sha256": "9dffa4d5a9950cf5f9d90eff2e96a08408770305d59de17ce334de4406c3672e",
+  "predecessor_queue": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/QUEUE.json",
+  "predecessor_queue_sha256": "e639911788f2a43a9930a2bff33493d8e47ee7adb38eb4590ada5191c1bafe40",
+  "predecessor_processes": [
+    {
+      "pid": 6988,
+      "created_epoch": 1793560288.1108077,
+      "lock_source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/QUEUE.lock"
+    },
+    {
+      "pid": 30196,
+      "created_epoch": 1793568156.3466852,
+      "lock_source": "D:/PHASE_TTC_PRETRAINED_20261101/comparison_campaign_v1/screen/WRITER.lock"
+    }
+  ],
+  "required_separate_admission": "After predecessor completion and scientific review, local GPU_TECHNICAL_SMOKE_ONLY receipt",
+  "technical_gate": "Finite 32-update repeated-batch learning, last8 mean loss below first8, CPU/CUDA parity, exact checkpoint replay on16 frames, far targets admitted",
+  "budget": {
+    "seconds": 600,
+    "maximum_cuda_bytes": 9663676416,
+    "updates": 32,
+    "additional_cloud_spend": false
+  },
+  "quality_screen_admitted": false,
+  "promotion": false,
+  "cuda_initialized_during_preparation": false
+}

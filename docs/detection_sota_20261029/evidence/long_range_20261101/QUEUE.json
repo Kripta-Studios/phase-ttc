@@ -1,0 +1,29 @@
+{
+  "schema": "phase_long_range_queue_v1",
+  "sources": {
+    "scripts/run_detection_long_range_queue.py": "783867d8092d6723e36d77e98d5159adcf59c170e1e3693b12d207de9cc7ca42",
+    "scripts/train_detection_long_range.py": "31d3733897ea659c08d209f8041be195e41e6a5d3298eba4111fd35aafb58c62",
+    "scripts/audit_detection_long_range_smoke.py": "8384018686f749a4f775bd576ceb7703c60859fb8e3086a1126dc37a94434493",
+    "scripts/audit_detection_range_smoke.py": "7461e6ca6ed504aa39db664cc44ebfb3a1644b9c16c2a82f9b178f1c09007332",
+    "scripts/smoke_monodgp_portable.py": "db00914930f02d9c4551a5d97fabb9b7ff4b9a5fcd7d34e353efaea7fc8f6fe5",
+    "src/e_jepa_ttc/detection/long_range_campaign.py": "d55eee718ba836dbf17b747660665766a5d4879bd11ee5f71229561c25ad4981",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/campaign_training.py": "2ff58dda8f4c46ea4c9f71ae0508a636789a7f6bd8d2bbedea1e5a72efc2b999",
+    "src/e_jepa_ttc/detection/compact_training_cache.py": "4483e7cc12502046feb3563b2e4784735c85f9be7b88d68bff6c3554fda2e820",
+    "src/e_jepa_ttc/detection/resident_input_cache.py": "24fd9fa828bd784d5adeef2f12110282079d3969572e03d3852ec20518a4eff8",
+    "src/e_jepa_ttc/detection/eap_rgb_data.py": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+    "src/e_jepa_ttc/detection/monodgp_eap_adapter.py": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "src/e_jepa_ttc/detection/development_metrics.py": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a",
+    "src/e_jepa_ttc/detection/portable_attention.py": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+    "src/e_jepa_ttc/detection/evaluation_protocol.py": "44710d70540f2f114c6b9fccd7b7317fe50328630c01f9a07d0a3c56dca8c9b6",
+    "src/e_jepa_ttc/detection/velocity_extension.py": "08881d0ec2ea90b98cb1e8b17e2635b4b05cc648d6705610c856e9373f850c90"
+  },
+  "plan_sha256": "e95d0fe3975235f591872473dbf61478c192756a324ed9845755b33d5c96ff68",
+  "query_queue_sha256": "e035247aef1815fcd14cdda999b3379afad220f62674971018185a47691854b4",
+  "range_queue_sha256": "fb880e9d13d0f99a2ffde77c6ffd6cf88c62658c9b571ad774a9b86ab3c8d620",
+  "maximum_wait_seconds": 14400,
+  "smoke_maximum_seconds": 600,
+  "screen_maximum_seconds": 7200
+}

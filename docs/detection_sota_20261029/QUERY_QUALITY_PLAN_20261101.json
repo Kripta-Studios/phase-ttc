@@ -1,0 +1,22 @@
+{
+  "schema": "phase_query_quality_plan_v1",
+  "registered_before_training": true,
+  "motivation": "The all-eight-class public-selection replay gives mAP 0.05797162, below the frozen ranked incumbent 0.06204229. Bicycle recall at 2 m rises from 0.0760 to 0.5146 but clipped AP remains zero. Test whether TRAIN-only class-specific quality prediction can rank these existing geometries better.",
+  "checkpoint": "frozen Dfull selected; exact verified release manifest and checkpoint",
+  "seed": 7,
+  "train_frames": 4096,
+  "train_sampling": "Include every media-admitted TRAIN frame containing bicycle or other_vehicle, then fill to 4096 by random.Random(7) sampling without replacement from remaining sorted TRAIN tokens. Fail if mandatory frames exceed 4096. Keep all raw GT in sampled frames. Disclose changed fitting population versus incumbent ranker.",
+  "inference": "New label-free indexed RGB producer, identical frozen preprocessing/model/decoder. Require exact prediction and exposed-query parity on 16 already evaluated selection frames before admitting TRAIN inference. One GPU process at a time, after the paired range campaign.",
+  "features": "Existing 16 quality_ranking FEATURE_NAMES, bound to each original argmax query using score/class/exact dimensions. No token, sequence, timestamp, GT, or image annotation as input.",
+  "target": "For each original geometry and each class, fraction of fixed center-distance thresholds [0.5,1,2,4] at which its closest raw TRAIN GT of that class lies strictly inside the threshold. Zero if no GT of that class. Multiple nearby queries can receive positive targets; disclose duplicate-detection limitation.",
+  "arms": ["linear_16_to_8", "mlp_16_to_64_gelu_to_8"],
+  "normalization": "TRAIN mean and std, floor 1e-6; no selection fitting",
+  "loss": "BCEWithLogits on soft quality targets, per-class positive weight min(20,max(1,(N-sum(y))/max(sum(y),1))) from TRAIN only",
+  "optimizer": "AdamW, lr 0.001, weight_decay 0.001, fixed 8 epochs, batch_size 2048, gradient clip 5, CPU float32, seed 7 reset separately for each arm; no epoch selection",
+  "training_max_seconds_per_arm": 600,
+  "evaluation": "All 23958 existing public selection frames, all raw GT, eight-class macro; 400 class hypotheses per frame from existing geometry. No threshold/NMS/top-k/score fusion tuning. No changes to physical predictions or frozen ranker.",
+  "controls": ["frozen ranked incumbent", "frozen argmax baseline", "all-eight raw class confidence replay"],
+  "promotion_gate": "At least +0.005 macro mAP versus frozen ranked incumbent, inspect every class drop above 0.01 and rare-class support, then validate executable label-free producer. Compare the two preregistered heads transparently; do not call this independent test.",
+  "new_cloud_spend": false,
+  "limits": "This cannot improve class-agnostic geometry coverage or establish SOTA/excellence. Adjacent TRAIN frames are correlated. Selection is exposed. No private labels or test-driven tuning. A new head trained on existing features is a new producer, not a historical release modification."
+}

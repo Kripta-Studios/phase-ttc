@@ -1,0 +1,29 @@
+{
+  "schema": "eap_raw_diagnostics_validation_v1",
+  "focused_tests_passed": 61,
+  "ruff_check": "passed",
+  "ruff_format": "passed",
+  "pyright": "0 errors, 0 warnings",
+  "full_ranked_report_parity": true,
+  "source_hashes_reverified": true,
+  "copied_evidence_hashes_reverified": true,
+  "geometry_rgb_hashes_match_frozen_inference": true,
+  "geometry_frames": 27,
+  "geometry_admitted_targets": 154,
+  "visual_inspection_images": [
+    "000.jpg",
+    "017.jpg",
+    "023.jpg"
+  ],
+  "report_regeneration_byte_identical": true,
+  "training_started": false,
+  "cloud_started": false,
+  "scope_not_complete": [
+    "current benchmark rules and leaderboard",
+    "raw/admitted train track census",
+    "range AP with declared FP handling",
+    "quantitative reprojection diagnostics",
+    "new producer trainer integration and resume smoke",
+    "screening training"
+  ]
+}

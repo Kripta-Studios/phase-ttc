@@ -1,0 +1,159 @@
+{
+  "contract_sha256": "f7ec0731a3039111113159afec42f641d34ae6be28a1c9e8cdf8b8cc76305a65",
+  "arms": {
+    "linear_16_to_8": {
+      "arm": "linear_16_to_8",
+      "queries": 204800,
+      "frames": 4096,
+      "positive_weight": [
+        10.771636962890625,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0
+      ],
+      "target_mass": [
+        17397.75,
+        1659.75,
+        4378.5,
+        1063.75,
+        2895.0,
+        261.0,
+        529.25,
+        91.0
+      ],
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.8185009771585464,
+          "exposures": 204800,
+          "elapsed_seconds": 0.15980649999983143
+        },
+        {
+          "epoch": 2,
+          "loss": 0.7250373584032058,
+          "exposures": 409600,
+          "elapsed_seconds": 0.24556239999947138
+        },
+        {
+          "epoch": 3,
+          "loss": 0.6730559891462327,
+          "exposures": 614400,
+          "elapsed_seconds": 0.3362910999858286
+        },
+        {
+          "epoch": 4,
+          "loss": 0.6307014149427413,
+          "exposures": 819200,
+          "elapsed_seconds": 0.420439699999406
+        },
+        {
+          "epoch": 5,
+          "loss": 0.5939854043722153,
+          "exposures": 1024000,
+          "elapsed_seconds": 0.504570999997668
+        },
+        {
+          "epoch": 6,
+          "loss": 0.5615250039100647,
+          "exposures": 1228800,
+          "elapsed_seconds": 0.5888948999927379
+        },
+        {
+          "epoch": 7,
+          "loss": 0.532535862326622,
+          "exposures": 1433600,
+          "elapsed_seconds": 0.6739477999944938
+        },
+        {
+          "epoch": 8,
+          "loss": 0.5064710357785225,
+          "exposures": 1638400,
+          "elapsed_seconds": 0.7595402999868384
+        }
+      ],
+      "head_sha256": "f05c9f165d884ceb18ad93cbe4a840ae916e9c61b32795c3be342ae595967e43",
+      "promotion": false
+    },
+    "mlp_16_to_64_gelu_to_8": {
+      "arm": "mlp_16_to_64_gelu_to_8",
+      "queries": 204800,
+      "frames": 4096,
+      "positive_weight": [
+        10.771636962890625,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0
+      ],
+      "target_mass": [
+        17397.75,
+        1659.75,
+        4378.5,
+        1063.75,
+        2895.0,
+        261.0,
+        529.25,
+        91.0
+      ],
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.5929341059923172,
+          "exposures": 204800,
+          "elapsed_seconds": 0.16238619999785442
+        },
+        {
+          "epoch": 2,
+          "loss": 0.2933715412020683,
+          "exposures": 409600,
+          "elapsed_seconds": 0.3068189999903552
+        },
+        {
+          "epoch": 3,
+          "loss": 0.2260290962457657,
+          "exposures": 614400,
+          "elapsed_seconds": 0.4506165999919176
+        },
+        {
+          "epoch": 4,
+          "loss": 0.20515494108200072,
+          "exposures": 819200,
+          "elapsed_seconds": 0.5869668999948772
+        },
+        {
+          "epoch": 5,
+          "loss": 0.1954195600748062,
+          "exposures": 1024000,
+          "elapsed_seconds": 0.7192274999979418
+        },
+        {
+          "epoch": 6,
+          "loss": 0.1899807408452034,
+          "exposures": 1228800,
+          "elapsed_seconds": 0.8570072000002256
+        },
+        {
+          "epoch": 7,
+          "loss": 0.186395316272974,
+          "exposures": 1433600,
+          "elapsed_seconds": 0.9969643999938853
+        },
+        {
+          "epoch": 8,
+          "loss": 0.18380915448069574,
+          "exposures": 1638400,
+          "elapsed_seconds": 1.1434065999928862
+        }
+      ],
+      "head_sha256": "a309523dd6d16d50c4ffe24c8d1fce4f7808e7678ba7e9eebf78cecc5a31d4a8",
+      "promotion": false
+    }
+  }
+}

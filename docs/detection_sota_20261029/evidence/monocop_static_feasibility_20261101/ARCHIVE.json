@@ -1,0 +1,12 @@
+{
+  "schema": "phase_ttc_static_source_audit_archive_v1",
+  "files": {
+    "SOURCE_RECEIPT.json": "90f69f32b8e2f63ea56cc168afdb1fe571f106ac1c8f54dd1b43b3e3a8a342c8",
+    "AUDIT.json": "001e76fd7e58296e85e1137cd09f2c6f7c4c0c3ba898d8f0ab2c150501e8a901",
+    "HF_INTAKE.json": "eb9118982163b955f090159189d96e433af47cc0ffcd4c26b5aa8b3994584155"
+  },
+  "source_location": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_7d393244/source",
+  "source_execution": false,
+  "weights_in_archive": false,
+  "eap_metrics": null
+}

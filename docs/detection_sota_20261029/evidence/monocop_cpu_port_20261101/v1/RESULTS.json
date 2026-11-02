@@ -1,0 +1,108 @@
+{
+  "schema": "phase_ttc_monocop_cpu_port_admission_v1",
+  "started_utc": "2026-11-01T21:35:39.732147+00:00",
+  "torch": "2.11.0+cu128",
+  "runner_sha256": "82fa526af3e23d97245b21d34580fe9209bcb670099daf163c3b58a14f3c9174",
+  "source_receipt_sha256": "67d8fc1d3b0b638512a32f9394dbc3c645df30e433a5d439ed46b0f7a00756dd",
+  "stages": {
+    "construction": {
+      "seconds": 29.6265335999924,
+      "result": {
+        "depth_max": 300.0
+      }
+    },
+    "attention_reference": {
+      "seconds": 0.2850190000026487,
+      "result": {
+        "reference": "MonoCoP ms_deform_attn_core_pytorch",
+        "dtype": "float64",
+        "forward_max_abs": 8.881784197001252e-16,
+        "gradient_max_abs_value_locations_weights": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "compiled_cuda_extension_tested": false
+      }
+    },
+    "depth_bins": {
+      "seconds": 0.0020918000082019717,
+      "result": {
+        "bins": [
+          80,
+          0,
+          35,
+          56,
+          72,
+          79,
+          80,
+          80,
+          80,
+          80
+        ]
+      }
+    }
+  },
+  "scope": "random_initialization_software_only",
+  "cpu_threads": 2,
+  "configuration": {
+    "num_classes": 8,
+    "return_intermediate_dec": true,
+    "device": "cpu",
+    "type": "monocop",
+    "num_channels": [
+      512,
+      1024,
+      2048
+    ],
+    "uncertainty_tau": 5,
+    "backbone": "resnet50",
+    "train_backbone": true,
+    "num_feature_levels": 4,
+    "mode": "LID",
+    "num_depth_bins": 80,
+    "depth_min": "1e-3",
+    "depth_max": 300.0,
+    "use_depth_pos_embed": true,
+    "with_box_refine": true,
+    "two_stage": false,
+    "use_dab": false,
+    "use_dn": false,
+    "two_stage_dino": false,
+    "init_box": false,
+    "enc_layers": 3,
+    "dec_layers": 3,
+    "hidden_dim": 256,
+    "dim_feedforward": 256,
+    "dropout": 0.1,
+    "nheads": 8,
+    "num_queries": 50,
+    "group_num": 11,
+    "enc_n_points": 4,
+    "dec_n_points": 4,
+    "scalar": 5,
+    "label_noise_scale": 0.2,
+    "box_noise_scale": 0.4,
+    "num_patterns": 0,
+    "aux_loss": true,
+    "cls_loss_coef": 2,
+    "focal_alpha": 0.25,
+    "bbox_loss_coef": 5,
+    "giou_loss_coef": 2,
+    "3dcenter_loss_coef": 10,
+    "dim_loss_coef": 1,
+    "angle_loss_coef": 1,
+    "depth_loss_coef": 1,
+    "depth_map_loss_coef": 1,
+    "region_loss_coef": 1,
+    "set_cost_class": 2,
+    "set_cost_bbox": 5,
+    "set_cost_giou": 2,
+    "set_cost_3dcenter": 10
+  },
+  "parameters": 42599880,
+  "trainable_parameters": 42571287,
+  "status": "FAILED",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-eap-diagnostics\\scripts\\audit_monocop_cpu_port.py\", line 322, in main\n    run(args, report)\n  File \"C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-eap-diagnostics\\scripts\\audit_monocop_cpu_port.py\", line 191, in run\n    stage(\"eight_class_backward\", backward(model, criterion, inputs), step)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-eap-diagnostics\\scripts\\audit_monocop_cpu_port.py\", line 121, in backward\n    outputs = model(images, calibration, None, sizes)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-main-integration\\.venv\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-main-integration\\.venv\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_port_v1\\source\\lib\\models\\monocop\\monocop.py\", line 213, in forward\n    enhanced_srcs, region_probs, seg_embed = self.region_head(srcs)\n                                             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-main-integration\\.venv\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\phase-ttc-main-integration\\.venv\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_port_v1\\source\\lib\\models\\monocop\\region_seg_head.py\", line 58, in forward\n    p[i] = self.input_proj[i](features[i]) + self.upsample(p[i + 1])\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~\nRuntimeError: The size of tensor a (5) must match the size of tensor b (6) at non-singleton dimension 3\n",
+  "cuda_initialized": false
+}

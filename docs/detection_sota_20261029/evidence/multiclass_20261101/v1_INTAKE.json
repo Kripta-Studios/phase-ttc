@@ -1,0 +1,23 @@
+{
+  "schema": "phase_multiclass_replay_v1",
+  "plan_sha256": "9a756cc0e528ac9537c9d4f6a6ab052aa4136778d24703bfd11502b13c92ba60",
+  "aligned_sha256": "f91f48b20b1d8773a076b6dc76c51f6c0f1d60b7b84be3cd8da1056c2007f1a1",
+  "checkpoint_sha256": "c58c13297fd15638d89364a25b88245cd8be669ab8bfdbcb741f03df0e9215b3",
+  "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+  "sources": {
+    "scripts\\evaluate_detection_multiclass.py": "9af33751477f4b2acdc270af5f713ab997ace80be0afd93b408d20543db18462",
+    "scripts\\evaluate_detection_benchmark_local.py": "01e4daed258992f6a4c30afa4da95f29e657cf3091cff7e06815a7f065658389",
+    "src\\e_jepa_ttc\\detection\\multiclass_proposals.py": "21e396763b4e0d507c7a097f63ce42437d8c44f4c77e3002d265b1a239a71565",
+    "src\\e_jepa_ttc\\detection\\quality_ranking.py": "fb855d64f7ea5c1dab6771e4de44d141b0d61197ea3739b9f0f3618129e2dc10",
+    "src\\e_jepa_ttc\\detection\\benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src\\e_jepa_ttc\\detection\\range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea"
+  },
+  "recipe": "all_8_sigmoid_classes_per_existing_geometry_v1",
+  "test_labels_read": false,
+  "new_training": false,
+  "new_inference": false,
+  "new_geometry": false,
+  "changes_class_hypothesis_pool": true,
+  "argmax_confidence": "exact historical float32 value",
+  "other_confidences": "stable float64 sigmoid of saved float32 logit"
+}

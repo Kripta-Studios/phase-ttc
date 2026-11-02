@@ -1,0 +1,18 @@
+{
+  "schema": "phase_range150_confirmation_queue_v1",
+  "sources": {
+    "scripts/run_detection_range_confirmation.py": "2b6fc9d2489fa7c4ff78cb750ee942a16f29e45ba673e6005faf70b0cc1feb11",
+    "scripts/evaluate_detection_range.py": "60fa45173b217027703b0b5a93f69b70159d47e3dda6c0deb1fa1307efab0589",
+    "src/e_jepa_ttc/detection/indexed_rgb_data.py": "c6aace6e78635c109a1c159d5586dc147ec06722f8caca15c1ec777b55fc2ec7"
+  },
+  "checkpoint_sha256": "c63f7188ba7bfd70b63075c17411cc69a789548b8ac69fe5a2f0ae19f0a807aa",
+  "reference_panel_sha256": "5ae5b4773248e28a9d2ae0bc09a88dcd349ed637977a0391db880915c596caf6",
+  "query_queue_sha256": "e035247aef1815fcd14cdda999b3379afad220f62674971018185a47691854b4",
+  "deferred_queue_sha256": "b6002d707e1457b9e5fdf17b8cf00933d39310bde9c9963245a0fc343fb3679c",
+  "deferral_sha256": "ea35c38eb6a870f47252ac3d49d7e2af7a76c0b828d37bb4d173fa03cb65b2ed",
+  "scope": "512-frame producer parity followed by fixed full public selection",
+  "reason": "Registered 60/150 plan calls for confirming selected checkpoints; panel gain exceeds 0.005 over control and is positive over incumbent",
+  "promotion": false,
+  "new_cloud_spend": false,
+  "maximum_wait_seconds": 14400
+}

@@ -1,0 +1,36 @@
+{
+  "checked_utc": "2026-11-01T16:23:07.360024+00:00",
+  "competition_url": "https://www.codabench.org/competitions/17291/",
+  "detail_api": "https://www.codabench.org/api/competitions/17291/",
+  "detail_response_sha256": "28a1e1aa4fefd6e59dacf03033aed3fc57b230f6918519b92cab3c45700f559f",
+  "request_format": "Accept application/json, X-Requested-With XMLHttpRequest",
+  "title": "eAP 3D Detection Benchmark",
+  "pages": [
+    {
+      "title": "Overview",
+      "content_sha256": "0556d55b585c8dc3848ddad6d9d26bbe4f73af8f52c2c9f8b93f43d4f5d687a7"
+    },
+    {
+      "title": "Data",
+      "content_sha256": "d7e236adef399ed8e2a38c0e3afdbf0f9c66cee08d8f9f163b9a1e680cbb2a9f"
+    },
+    {
+      "title": "Submission",
+      "content_sha256": "c1b2b3ef98a4e812116b3ca924b04be56e4998f21a2e18cbf1b850aa0ac35c2c"
+    },
+    {
+      "title": "Terms",
+      "content_sha256": "d25306cb17987af82f8f754390a9a88fc9f8f29456115928dca34a796efb5cfb"
+    }
+  ],
+  "terms": "Benchmark research is allowed. Dataset licensing is referenced to Hugging Face. Recovering hidden test labels is prohibited.",
+  "leaderboard_url": "https://www.codabench.org/api/phases/28840/get_leaderboard/",
+  "leaderboard_response_sha256": "c41b9c21266c9d0c1be2f5d491b04c2fa9a1be6a7960b965ba6d3f604c16f2ac",
+  "public_visible_entries": 0,
+  "leaderboard_observation": "No visible public rows; does not establish that no other methods exist or have private scores.",
+  "private_scorer_equivalence": false,
+  "private_artifacts_requested": false,
+  "hf_readme_url": "https://huggingface.co/datasets/NAIL-HNU/eAP-dataset/blob/main/README.md",
+  "hf_readme_snapshot_sha256": "d34bc55bac6822e4b1f1005068558a1147691b90c6fbf17dc58955fc0779b374",
+  "license_observation": "README has no explicit license declaration; root listing has no LICENSE. Terms permit benchmark research, refer to HF license and prohibit recovering hidden labels. External-data admission remains unresolved."
+}

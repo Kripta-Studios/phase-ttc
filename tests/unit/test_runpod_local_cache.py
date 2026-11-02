@@ -9,6 +9,7 @@ from types import SimpleNamespace
 
 import pytest
 
+from operational.runpod_migration import local_cache
 from operational.runpod_migration.local_cache import (
     GIB,
     prove_rgb_route,
@@ -16,6 +17,14 @@ from operational.runpod_migration.local_cache import (
     route_rgb_source,
     stage_bundle,
 )
+
+
+@pytest.fixture(autouse=True)
+def disk_headroom(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep tiny staging tests independent of the runner's remaining disk space."""
+    monkeypatch.setattr(
+        local_cache.shutil, "disk_usage", lambda _path: SimpleNamespace(free=16 * GIB)
+    )
 
 
 def _sha(path: Path) -> str:
@@ -148,3 +157,32 @@ def test_router_rejects_shards_outside_logical_bundle(tmp_path: Path) -> None:
             stage_root=stage,
             readiness_path=Path(receipt["readiness_path"]),
         )
+
+
+@pytest.mark.parametrize("extra_bytes", [-1, 0])
+def test_stage_enforces_disk_reserve_boundary(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, extra_bytes: int
+) -> None:
+    logical, stage = tmp_path / "logical", tmp_path / "local-stage"
+    logical.mkdir()
+    rgb, teacher = _bundle(logical)
+    required = rgb.stat().st_size + teacher.stat().st_size
+    monkeypatch.setattr(
+        local_cache.shutil,
+        "disk_usage",
+        lambda _path: SimpleNamespace(free=4 * GIB + required + extra_bytes),
+    )
+    if extra_bytes < 0:
+        with pytest.raises(OSError, match="Insufficient local disk"):
+            stage_bundle(logical, stage, reserve_bytes=4 * GIB)
+        assert not stage.exists()
+    else:
+        assert stage_bundle(logical, stage, reserve_bytes=4 * GIB)["status"] == "READY"
+
+
+def test_stage_rejects_reserve_below_production_minimum(tmp_path: Path) -> None:
+    logical = tmp_path / "logical"
+    logical.mkdir()
+    _bundle(logical)
+    with pytest.raises(ValueError, match="at least 4 GiB"):
+        stage_bundle(logical, tmp_path / "stage", reserve_bytes=4 * GIB - 1)

@@ -1,0 +1,35 @@
+{
+  "schema": "phase_pretrained_initialization_plan_v1",
+  "status": "PREPARED_PENDING_GPU_SMOKE",
+  "hypothesis": "A supervised monocular 3D geometry initialization may improve the corrected eAP recipe",
+  "control_config": "D:\\PHASE_TTC_RANGE_20261101\\long_range_config_v1\\range300.json",
+  "control_config_sha256": "e224515ae795dee87d370c09741be04dfe8239c1eb85320bafb11e784e5210ca",
+  "screen_config_sha256": "c0ea01b8083de7063ee2135762ce4b68831b5221c44ca3440cc8922c01fbf920",
+  "smoke_config_sha256": "d118ec92ab2af78888ed2287e482e2908f011115cac5a10ad74a6c824975b60b",
+  "cpu_audit_sha256": "f2ca18385a1948d83f1bcaf71b5cc6faa40c4ee1eb904a3a672ca5aa9f1a5f7e",
+  "conversion_receipt_sha256": "817f07779aaf48bde4e9406ac7377a48fcbd0f87491739ad0dfe068af34a585d",
+  "smoke_far_target": {
+    "token": "xkiVthsGwf:000001113_000434196",
+    "optical_depth_m": 249.15318359334796
+  },
+  "paired_settings": "Same 4096 TRAIN/512 selection, seed7, 300m, 640x384, batch 2, FP32, LR 5e-5, warmup cosine, 2048 updates and evaluations 0/512/1024/1536/2048",
+  "changed_factor": "Initialization lineage and mandatory class/depth/velocity head remapping; no upstream optimizer state",
+  "smoke_gate": "32 repeated-batch updates, finite outputs/loss/gradients/checkpoint, final 8 mean loss below first 8, model weights reload, no inference annotations",
+  "primary": "Eight-class aligned raw-GT mAP",
+  "screen_budget_seconds": 7200.0,
+  "promotion": "Confirm selected checkpoint on all 23958 public selection frames only if panel gain>=0.005 over matched 300m control and incumbent; full gain>=0.005 over both with review of any class drop>0.01",
+  "limits": [
+    "Equal new exposures do not equalize previous training: Dfull already consumed 281116 eAP exposures; KITTI upstream used Car-only supervision.",
+    "A negative 2048-update screen cannot rule out longer external pretraining transfer.",
+    "Public selection is already exposed; this is exploratory development, not independent test.",
+    "No automatic extra epochs, seeds, cloud jobs, official submission or promotion."
+  ],
+  "resource_scope": "Local GPU, one GPU process at a time, after the registered 300m queue",
+  "test_labels_read": false,
+  "sources": {
+    "scripts/prepare_detection_pretrained.py": "f515207a48dbf2238f222746d420667b36bfcc063a31498c34eb7abdd8f441a3",
+    "scripts/train_detection_pretrained.py": "17a9b38977237378d5b8f4e443d6d15a8edba05b3e98be1acfc08d659ae05f54",
+    "src/e_jepa_ttc/detection/pretrained_campaign.py": "083a34dc78cad525744c33fa9ec700b0d40bdcf59d1253a78a689d2b0eb85f49",
+    "src/e_jepa_ttc/detection/pretrained_initialization.py": "91cd4045f5b446d674fa8b6bb2759091a3082d965df0fb215036a49d62bfa496"
+  }
+}

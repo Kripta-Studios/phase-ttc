@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "update": 0,
+      "name": "initial.pt",
+      "seconds": 0.16753849999804515
+    },
+    {
+      "update": 0,
+      "name": "last.pt",
+      "seconds": 0.14782140000897925
+    },
+    {
+      "update": 16,
+      "name": "update000016.pt",
+      "seconds": 0.43081510000047274
+    },
+    {
+      "update": 16,
+      "name": "last.pt",
+      "seconds": 0.4127614999888465
+    },
+    {
+      "update": 32,
+      "name": "last.pt",
+      "seconds": 0.47727229999145493
+    },
+    {
+      "update": 32,
+      "name": "last.pt",
+      "seconds": 0.4887419000006048
+    }
+  ],
+  "construction_and_initialization": 2.733066900007543,
+  "cold_train_preparation": 0.1415712000016356,
+  "numerical_parity": 1.27869869999995
+}

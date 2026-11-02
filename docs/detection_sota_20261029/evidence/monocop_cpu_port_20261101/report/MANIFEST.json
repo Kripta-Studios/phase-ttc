@@ -1,0 +1,9 @@
+{
+  "result_sha256": "3e9ce2b85c42470aa5863ba5b70843c8610ff865f244aeecd4fc83bfa92815ce",
+  "source_receipt_sha256": "9ba3647ece606feb68e9aea9332b6a6a5745db4788c5ec2f7271e37996f2deec",
+  "random_checkpoint_sha256": "9befe1b1b50795e2b11976743d7d0f971203eacc809a75390881b69f06926398",
+  "generator_sha256": "b464c77dfadd47846f5dd47cb9ab28d7459a58ef2e7a2a3840208e0e8a426be3",
+  "report_sha256": "6e0271d34a8e48653db7c1341172f79360437eb223d67a018bb06b0733671bd4",
+  "eap_quality_measured": false,
+  "promotion": false
+}

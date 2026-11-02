@@ -1,0 +1,7 @@
+{
+  "status": "FAILED",
+  "gate": "CPU-only audit unexpectedly initialized CUDA",
+  "cause": "DDNLoss.__init__ calls torch.cuda.current_device() for its unused self.device attribute; its tensor calculations select the input tensor device",
+  "source_sha256": "e255f419aec893d545be682d059af905e59ed98e29c66d244b14b98960eae24c",
+  "result_metrics_published": false
+}

@@ -1,0 +1,93 @@
+{
+  "same_shape_count": 693,
+  "changed_shapes": {
+    "class_embed.0.bias": {
+      "kitti": [
+        3
+      ],
+      "eap": [
+        8
+      ]
+    },
+    "class_embed.0.weight": {
+      "kitti": [
+        3,
+        256
+      ],
+      "eap": [
+        8,
+        256
+      ]
+    },
+    "class_embed.1.bias": {
+      "kitti": [
+        3
+      ],
+      "eap": [
+        8
+      ]
+    },
+    "class_embed.1.weight": {
+      "kitti": [
+        3,
+        256
+      ],
+      "eap": [
+        8,
+        256
+      ]
+    },
+    "class_embed.2.bias": {
+      "kitti": [
+        3
+      ],
+      "eap": [
+        8
+      ]
+    },
+    "class_embed.2.weight": {
+      "kitti": [
+        3,
+        256
+      ],
+      "eap": [
+        8,
+        256
+      ]
+    },
+    "class_embed.3.bias": {
+      "kitti": [
+        3
+      ],
+      "eap": [
+        8
+      ]
+    },
+    "class_embed.3.weight": {
+      "kitti": [
+        3,
+        256
+      ],
+      "eap": [
+        8,
+        256
+      ]
+    }
+  },
+  "only_kitti": [],
+  "only_eap": [
+    "velocity_embed.0.layers.0.bias",
+    "velocity_embed.0.layers.0.weight",
+    "velocity_embed.0.layers.1.bias",
+    "velocity_embed.0.layers.1.weight",
+    "velocity_embed.1.layers.0.bias",
+    "velocity_embed.1.layers.0.weight",
+    "velocity_embed.1.layers.1.bias",
+    "velocity_embed.1.layers.1.weight",
+    "velocity_embed.2.layers.0.bias",
+    "velocity_embed.2.layers.0.weight",
+    "velocity_embed.2.layers.1.bias",
+    "velocity_embed.2.layers.1.weight"
+  ],
+  "dfull_checkpoint_sha256": "c58c13297fd15638d89364a25b88245cd8be669ab8bfdbcb741f03df0e9215b3"
+}

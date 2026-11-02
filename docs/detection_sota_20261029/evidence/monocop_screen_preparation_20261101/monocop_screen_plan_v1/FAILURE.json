@@ -1,0 +1,8 @@
+{
+  "status": "PREPARATION_FAILED_BEFORE_GPU",
+  "error_type": "TypeError",
+  "error": "float object is not subscriptable",
+  "site": "control.runs.dfull300.best was already a scalar, not a metrics object",
+  "plan_published": false,
+  "training_updates": 0
+}

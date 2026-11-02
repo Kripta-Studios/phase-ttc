@@ -1,0 +1,28 @@
+{
+  "status": "COMPLETE",
+  "completed": {
+    "parity": {
+      "receipt_sha256": "8884427e07317d2ad598807ee245343487c54afc5f59e5be8bac96bb0ef9b307",
+      "returncode": 0
+    },
+    "train_inference": {
+      "receipt_sha256": "a241982551fe8701ff26398c480959906ca3f76ce6a5983f72963fff0dff6182",
+      "returncode": 0
+    },
+    "fit_heads": {
+      "receipt_sha256": "0c64b4e3727cc6540cbe9728709b04329e452e96ac4cd765a07e2e2143a79179",
+      "returncode": 0
+    },
+    "evaluate_linear_16_to_8": {
+      "receipt_sha256": "25f0805872e83352c14e64f47fa2acd4ea7ef234dbb0f62306c5332dfb2e95ba",
+      "returncode": 0
+    },
+    "evaluate_mlp_16_to_64_gelu_to_8": {
+      "receipt_sha256": "aa922d10fc9c22c453d157759a095290af8ab6f19232c53b6e021fc4eed77394",
+      "returncode": 0
+    }
+  },
+  "queue_sha256": "e035247aef1815fcd14cdda999b3379afad220f62674971018185a47691854b4",
+  "active_job": null,
+  "pid": null
+}

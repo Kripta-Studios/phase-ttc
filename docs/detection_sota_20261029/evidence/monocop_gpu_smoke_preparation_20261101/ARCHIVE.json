@@ -1,0 +1,69 @@
+{
+  "schema": "phase_monocop_gpu_smoke_preparation_archive_v1",
+  "files": {
+    "v1/PLAN.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v1\\PLAN.json",
+      "sha256": "0901b179ada389061f29914eda94df7568cb901a029d19ffd78b5694df64403a",
+      "bytes": 3624
+    },
+    "v1/smoke.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v1\\smoke.json",
+      "sha256": "d62b6c4ed7e2fe2ffb3418aa25d6dc159f15876821ef08c19ee0a014ee73b30d",
+      "bytes": 1369
+    },
+    "v1/VALIDATION.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v1\\VALIDATION.json",
+      "sha256": "7cfdc4f31195d57b5b844e11c5e01969eb7453d22e28bf4101b3f2b8a1564a18",
+      "bytes": 159
+    },
+    "v1/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v1\\MONOCOP_GPU_SMOKE_PLAN_20261101.md",
+      "sha256": "9dffa4d5a9950cf5f9d90eff2e96a08408770305d59de17ce334de4406c3672e",
+      "bytes": 3896
+    },
+    "v2/PLAN.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v2\\PLAN.json",
+      "sha256": "9b79ee0900c0e164ecef53eaabf62ff1540289e7df593b626f6d5896cd6c24d1",
+      "bytes": 3624
+    },
+    "v2/smoke.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v2\\smoke.json",
+      "sha256": "d62b6c4ed7e2fe2ffb3418aa25d6dc159f15876821ef08c19ee0a014ee73b30d",
+      "bytes": 1369
+    },
+    "v2/VALIDATION.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v2\\VALIDATION.json",
+      "sha256": "7cfdc4f31195d57b5b844e11c5e01969eb7453d22e28bf4101b3f2b8a1564a18",
+      "bytes": 159
+    },
+    "v2/MONOCOP_GPU_SMOKE_PLAN_20261101.md": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v2\\MONOCOP_GPU_SMOKE_PLAN_20261101.md",
+      "sha256": "8d9d9cc6f5ae22b7faf94b97934a85c499cd0010af0c9efdff3c4bdb8c99b6d2",
+      "bytes": 4346
+    },
+    "v1/SUPERSEDED.json": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v1\\SUPERSEDED.json",
+      "sha256": "ec3bc1141b84fd6254aea1603ea7e398f40d56408d37b103d242e9c4068df8b6",
+      "bytes": 438
+    },
+    "v1/executed_monocop_smoke.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v1\\code\\src\\e_jepa_ttc\\detection\\monocop_smoke.py",
+      "sha256": "ed96dfd550f907bbff020c59231f55a90d9f1f5c3b4b931933ebbac392bf104e",
+      "bytes": 9097
+    },
+    "v1/executed_run_monocop_gpu_smoke.py": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_plan_v1\\code\\scripts\\run_monocop_gpu_smoke.py",
+      "sha256": "46a764f2f874547169f0d0d086651060a12875b29a7314a1ee086082f8f4f153",
+      "bytes": 25370
+    },
+    "v2/pytest.xml": {
+      "source": "D:\\PHASE_TTC_COMPETITOR_20261101\\monocop_gpu_smoke_validation_v2\\pytest.xml",
+      "sha256": "9dab2daff09852c01ec18c2bf9e0e47eaa68f841d0880e29fa2d1fa595a4b2c5",
+      "bytes": 1827
+    }
+  },
+  "status": "PREPARED_NOT_ADMITTED",
+  "gpu_execution_evidence": false,
+  "v2_tests_passed": 12,
+  "v1_preserved_with_supersession": true
+}

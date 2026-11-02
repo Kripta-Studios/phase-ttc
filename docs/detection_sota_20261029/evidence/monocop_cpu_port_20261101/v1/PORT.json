@@ -1,0 +1,218 @@
+{
+  "schema": "phase_ttc_monocop_portable_source_v1",
+  "revision": "7d3932444f7ea94be564ae61a0b334fc6673213b",
+  "parent_receipt_sha256": "90f69f32b8e2f63ea56cc168afdb1fe571f106ac1c8f54dd1b43b3e3a8a342c8",
+  "parent_files": {
+    "LICENSE": "13ad03e76afe58d3cc859f30d95d5e6e11b176804649b00b9ce528c7b6c11084",
+    "README.md": "54426c42667725f62c60cdf029e255cd0691d9675214d94c2f993636efca8b3e",
+    "config/monocop.yaml": "0fcdbade6b1a75419aa053b35a46280c207a7045402275be5a121bdc6b8c9bde",
+    "config/monocop_car.yaml": "26191a6a3c79040b5ff20b09d39ad324c01dc14a626b9d32c8d8d8902236d8a2",
+    "config/monocop_nusc.yaml": "d2280bbd6282fff69e4c0311aa36eb2d05556f4fce573885f07b84a18e952f62",
+    "config/monocop_test.yaml": "cc0045cb8d8f10d8e5a788f702e93a150dfb4ab1b8ce9ecbf453d237c25189e9",
+    "config/monocop_waymo.yaml": "f16fa07e59ed6c4740515df6bb3b83bfa9c25d21bef430204db3cfac836f7d99",
+    "lib/datasets/kitti/kitti_dataset.py": "8617c3bce3aa25532bd2fb8a462d4f7d4653e6f9c116ab0f3cc97489762c1714",
+    "lib/datasets/kitti/kitti_eval_python/LICENSE": "83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c",
+    "lib/datasets/kitti/kitti_eval_python/README.md": "54db883f1952835aca7f75d5ae54ab2b7c40edb6e09ceddbf033a58e3588d624",
+    "lib/datasets/kitti/kitti_eval_python/eval.py": "c96ea8cdc8daadc5a0d7b06c50110035dc8f1aa2b972a55d93a9a155bc50efda",
+    "lib/datasets/kitti/kitti_eval_python/evaluate.py": "4f0f083a033c6bbb72db1ca1dda173228e81088efed4057fccf6e6415e8871ec",
+    "lib/datasets/kitti/kitti_eval_python/kitti_common.py": "38255af58ff703ceb7ad78ddc687e115a754287dbb02e0de9780f1ddf5d950a8",
+    "lib/datasets/kitti/kitti_eval_python/rotate_iou.py": "d9b2820b5be5d15ee7233147643134c5d73eff129c773aef4b59ce73a8ecd7f4",
+    "lib/datasets/kitti/kitti_utils.py": "96d7154928e2d11c595c9307e14346c3eadeda596d952ac493c531530723ad64",
+    "lib/datasets/kitti/pd.py": "ee5b0a07e70403ce595e5691c6dd94847a8b2759f6d972fbbbb4fa8b637411b1",
+    "lib/datasets/nuscenes/nusc_dataset.py": "2f716aa6c9079da655c4ad8d8008a093d61eebed46e4c5bdcd433189acc2af36",
+    "lib/datasets/nuscenes/nusc_eval.py": "3df30676a59b9f40a81155b80b7bff759f818e6c1b7537a22d10bc2295da6111",
+    "lib/datasets/utils.py": "022b1564a6d84d4b700d72ed478fe7b943db7c867a7a42fcbf9100446ed8fbf8",
+    "lib/datasets/waymo/waymo_dataset.py": "b0f9b18dd73caff01a08aa7cd64286f9abe72ee570e6c3d55c18a43643237cfe",
+    "lib/datasets/waymo/waymo_eval.py": "446ff9d4001aa80d9a6e09689de9c34176f9b6e00e65bb568ceb23769dcafe3a",
+    "lib/helpers/benchmark.py": "901f64d4d68b3448408163ad20a533b38812c69810aa4b7b3488f54686ec0d5d",
+    "lib/helpers/dataloader_helper.py": "d09055e13849103187c0b3d115432e146eb0c37eea55e149dfd463dfa3b9f81c",
+    "lib/helpers/decode_helper.py": "f6415c5b7b053d90d3749bf12c0003cec3869d9d36c9b34a4c331f16eff14560",
+    "lib/helpers/model_helper.py": "f7826fa166eb3337ebdc53f866d9405f8c46ab940a27dad10f5a13463a1639d7",
+    "lib/helpers/optimizer_helper.py": "a5da952eaea50d334ba9b2b03faa659e1a91c1bbf4ebb5e356373d63d999aec2",
+    "lib/helpers/save_helper.py": "3f35882ed3d3a9267c0101fc370b06e54ed12afe01a64ba2f0749bc1d305ad0f",
+    "lib/helpers/scheduler_helper.py": "8066169cbb905f8a2339e8adcb43a4fd62d5143905a893d1411a75ea39424203",
+    "lib/helpers/tester_helper.py": "31feaa5a3f63205577c5e7de24979d68cd0227d7d7d7914ccdfe115e7ad76202",
+    "lib/helpers/trainer_helper.py": "3592fe49d3634169c511cea62bb4154ab14459648082ce7fdaf71b1bbf33b0b5",
+    "lib/helpers/utils_helper.py": "c52ba2ac1907f2b214802dbd0ec060c4b28204ecc835f0bff86e4071da00832e",
+    "lib/losses/dim_aware_loss.py": "41c8e2df9b857505888f017542c2a34104adb28d93dca5ce17e923420deaa69f",
+    "lib/losses/focal_loss.py": "c1f9a55083fa59f0701ebcdafa9cb8e915b03d9b685f6983e120041e4a6b52ee",
+    "lib/losses/uncertainty_loss.py": "4d360a7a55c6370fa1d9e74d3c318a2485a6c8471a15760ffd2bfb5e86eee540",
+    "lib/models/monocop/__init__.py": "356d06389badd416c56e306d8f4640c1a89af6f2be3a350c9f5ec1670f7d1c9d",
+    "lib/models/monocop/attribute_net.py": "85b5bacf2ce55d34456ebf3fd1494072a34f7e39db4ca63cc73a8dcdb4f750ab",
+    "lib/models/monocop/backbone.py": "4b0274edb30413187c30ec54666878823d29be87d73aa38eac95eefe10bd8554",
+    "lib/models/monocop/depth_predictor/__init__.py": "be9b137295f541c87ebde8e3453eebdd53c068a2dc3c1ef068ce11e40f07af60",
+    "lib/models/monocop/depth_predictor/ddn_loss/__init__.py": "721b492c190ade3cdd95aa07bb845b3b6352bbed60ea494c3816a6b937cb960c",
+    "lib/models/monocop/depth_predictor/ddn_loss/balancer.py": "4110b7720bc1f6ca13a3676104f3dcaabe6e6102934ad35ac93ffde1bade859b",
+    "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py": "5549c438e13ce0eb54ef588bf433d1680aee5d90842409c043173f553f4e3edc",
+    "lib/models/monocop/depth_predictor/ddn_loss/focalloss.py": "647eea4c53b87d3dacc7d084a19a086113a76e73fabf11bc8a43408e2a30ceaf",
+    "lib/models/monocop/depth_predictor/depth_predictor.py": "568b61891db8c2db6f44954b6349fc31f6c5668200ddba775d2100e60507193a",
+    "lib/models/monocop/depth_predictor/transformer.py": "faf4e7351081139daf477e82b9bd1358a5e19bcec6d2df33d87656e4d8732edb",
+    "lib/models/monocop/depthaware_transformer.py": "beef68ad199cfe1bbd4f6482cc4a80416ddb0ea64f0be8695cefcc39f32bccc5",
+    "lib/models/monocop/dn_components.py": "0d1e2880c6474a836f3b939c1da0ba60e2052c4c08666f1c401605910cc11771",
+    "lib/models/monocop/matcher.py": "bdd2d41c7aa1e4ab6be3d6f1afbedfce55df0c8912e3e29f99399c9374ec0f2b",
+    "lib/models/monocop/monocop.py": "e63c2454cd985ffbd043a41069ae8fc1da65e6ae59db625502ff47a6c9a2f45b",
+    "lib/models/monocop/ops/functions/__init__.py": "e1a39c1cf23562b11d696d81f95cf8bef368c48149b681d1eadc7f6d188edd3a",
+    "lib/models/monocop/ops/functions/ms_deform_attn_func.py": "dd9906037ce7dc45b9ef6f39d4934bb4dddefc3e09049024496827714b6738bc",
+    "lib/models/monocop/ops/make.sh": "37a07393d06bc9114f634fbc216119ff709283a1718816aff8bd6eab6e26788b",
+    "lib/models/monocop/ops/modules/__init__.py": "5ee74e878252076bc3709f52fc705730e9473e02fef6aefb099eaac2edb1c3bb",
+    "lib/models/monocop/ops/modules/ms_deform_attn.py": "0103d40184e8a17ac0516c4e2b83779f9acfd3d836a5ea9652d355f0f83d38f6",
+    "lib/models/monocop/ops/setup.py": "d4b036c77ee95b6db3027b1926ccabe1be69c306590f2eba46d47e0aacb5a3ec",
+    "lib/models/monocop/ops/test.py": "6066519322d749265c9983117ba8b012b35b6fbd46505d5b7842751eeb706942",
+    "lib/models/monocop/position_encoding.py": "b5e2f3f84ba5d6f56036b8cec5ecc69bdad6f66f08b7640af3ad4a62bf52698b",
+    "lib/models/monocop/region_seg_head.py": "af9fca0ccfc918194b72be6ce85fd797511cc6db32fc69c3eb05c56cec54210f",
+    "requirements.txt": "edbf4fef351dcac28d4c15f3bc3b5fa3f22949cc04738ce543572b153e902f59",
+    "test.sh": "0f29be66bd688657352a3037d5e091d4fca8f892b506084b1296b84384f2c92b",
+    "train.sh": "e222435a3807f6edae79df88c24d22b3add6f02d425225fe6958ddb88d2cae31",
+    "train_val.py": "394dde23bb13ff5cdb0c391c7e6f5a6c8e24db8eaf871632d36f13c412e9702a",
+    "utils/__init__.py": "a101de83cee507766e0ad18e63b9a5dfe707971b6e634166e2c646dc5a44b6fd",
+    "utils/box_ops.py": "24fbfc914bbbad278b5fdf3078b103d67f771fac24ccec22276fb5392afd9e40",
+    "utils/dino_utils.py": "e3a84229d6d1496df5a2ea5b7880658294abcf2994cdee362032ca56d530cc5e",
+    "utils/misc.py": "f835599a9402895811769e3eec19da12691686c859d23c55e90f4b05674ccea8"
+  },
+  "files": {
+    "LICENSE": "13ad03e76afe58d3cc859f30d95d5e6e11b176804649b00b9ce528c7b6c11084",
+    "README.md": "54426c42667725f62c60cdf029e255cd0691d9675214d94c2f993636efca8b3e",
+    "config/monocop.yaml": "0fcdbade6b1a75419aa053b35a46280c207a7045402275be5a121bdc6b8c9bde",
+    "config/monocop_car.yaml": "26191a6a3c79040b5ff20b09d39ad324c01dc14a626b9d32c8d8d8902236d8a2",
+    "config/monocop_nusc.yaml": "d2280bbd6282fff69e4c0311aa36eb2d05556f4fce573885f07b84a18e952f62",
+    "config/monocop_test.yaml": "cc0045cb8d8f10d8e5a788f702e93a150dfb4ab1b8ce9ecbf453d237c25189e9",
+    "config/monocop_waymo.yaml": "f16fa07e59ed6c4740515df6bb3b83bfa9c25d21bef430204db3cfac836f7d99",
+    "lib/datasets/kitti/kitti_dataset.py": "8617c3bce3aa25532bd2fb8a462d4f7d4653e6f9c116ab0f3cc97489762c1714",
+    "lib/datasets/kitti/kitti_eval_python/LICENSE": "83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c",
+    "lib/datasets/kitti/kitti_eval_python/README.md": "54db883f1952835aca7f75d5ae54ab2b7c40edb6e09ceddbf033a58e3588d624",
+    "lib/datasets/kitti/kitti_eval_python/eval.py": "c96ea8cdc8daadc5a0d7b06c50110035dc8f1aa2b972a55d93a9a155bc50efda",
+    "lib/datasets/kitti/kitti_eval_python/evaluate.py": "4f0f083a033c6bbb72db1ca1dda173228e81088efed4057fccf6e6415e8871ec",
+    "lib/datasets/kitti/kitti_eval_python/kitti_common.py": "38255af58ff703ceb7ad78ddc687e115a754287dbb02e0de9780f1ddf5d950a8",
+    "lib/datasets/kitti/kitti_eval_python/rotate_iou.py": "d9b2820b5be5d15ee7233147643134c5d73eff129c773aef4b59ce73a8ecd7f4",
+    "lib/datasets/kitti/kitti_utils.py": "96d7154928e2d11c595c9307e14346c3eadeda596d952ac493c531530723ad64",
+    "lib/datasets/kitti/pd.py": "ee5b0a07e70403ce595e5691c6dd94847a8b2759f6d972fbbbb4fa8b637411b1",
+    "lib/datasets/nuscenes/nusc_dataset.py": "2f716aa6c9079da655c4ad8d8008a093d61eebed46e4c5bdcd433189acc2af36",
+    "lib/datasets/nuscenes/nusc_eval.py": "3df30676a59b9f40a81155b80b7bff759f818e6c1b7537a22d10bc2295da6111",
+    "lib/datasets/utils.py": "022b1564a6d84d4b700d72ed478fe7b943db7c867a7a42fcbf9100446ed8fbf8",
+    "lib/datasets/waymo/waymo_dataset.py": "b0f9b18dd73caff01a08aa7cd64286f9abe72ee570e6c3d55c18a43643237cfe",
+    "lib/datasets/waymo/waymo_eval.py": "446ff9d4001aa80d9a6e09689de9c34176f9b6e00e65bb568ceb23769dcafe3a",
+    "lib/helpers/benchmark.py": "901f64d4d68b3448408163ad20a533b38812c69810aa4b7b3488f54686ec0d5d",
+    "lib/helpers/dataloader_helper.py": "d09055e13849103187c0b3d115432e146eb0c37eea55e149dfd463dfa3b9f81c",
+    "lib/helpers/decode_helper.py": "f6415c5b7b053d90d3749bf12c0003cec3869d9d36c9b34a4c331f16eff14560",
+    "lib/helpers/model_helper.py": "f7826fa166eb3337ebdc53f866d9405f8c46ab940a27dad10f5a13463a1639d7",
+    "lib/helpers/optimizer_helper.py": "a5da952eaea50d334ba9b2b03faa659e1a91c1bbf4ebb5e356373d63d999aec2",
+    "lib/helpers/save_helper.py": "3f35882ed3d3a9267c0101fc370b06e54ed12afe01a64ba2f0749bc1d305ad0f",
+    "lib/helpers/scheduler_helper.py": "8066169cbb905f8a2339e8adcb43a4fd62d5143905a893d1411a75ea39424203",
+    "lib/helpers/tester_helper.py": "31feaa5a3f63205577c5e7de24979d68cd0227d7d7d7914ccdfe115e7ad76202",
+    "lib/helpers/trainer_helper.py": "3592fe49d3634169c511cea62bb4154ab14459648082ce7fdaf71b1bbf33b0b5",
+    "lib/helpers/utils_helper.py": "c52ba2ac1907f2b214802dbd0ec060c4b28204ecc835f0bff86e4071da00832e",
+    "lib/losses/dim_aware_loss.py": "41c8e2df9b857505888f017542c2a34104adb28d93dca5ce17e923420deaa69f",
+    "lib/losses/focal_loss.py": "c1f9a55083fa59f0701ebcdafa9cb8e915b03d9b685f6983e120041e4a6b52ee",
+    "lib/losses/uncertainty_loss.py": "4d360a7a55c6370fa1d9e74d3c318a2485a6c8471a15760ffd2bfb5e86eee540",
+    "lib/models/monocop/__init__.py": "356d06389badd416c56e306d8f4640c1a89af6f2be3a350c9f5ec1670f7d1c9d",
+    "lib/models/monocop/attribute_net.py": "85b5bacf2ce55d34456ebf3fd1494072a34f7e39db4ca63cc73a8dcdb4f750ab",
+    "lib/models/monocop/backbone.py": "43a6ccef44dc1ad6a8d3589838c4344bfb18ad50e20260a0da90b29c4135f455",
+    "lib/models/monocop/depth_predictor/__init__.py": "be9b137295f541c87ebde8e3453eebdd53c068a2dc3c1ef068ce11e40f07af60",
+    "lib/models/monocop/depth_predictor/ddn_loss/__init__.py": "721b492c190ade3cdd95aa07bb845b3b6352bbed60ea494c3816a6b937cb960c",
+    "lib/models/monocop/depth_predictor/ddn_loss/balancer.py": "4110b7720bc1f6ca13a3676104f3dcaabe6e6102934ad35ac93ffde1bade859b",
+    "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py": "0e4aa60f89c9eead6f1ab5fca26ec7a731da65ddda70e591bd45fb836a2439f0",
+    "lib/models/monocop/depth_predictor/ddn_loss/focalloss.py": "647eea4c53b87d3dacc7d084a19a086113a76e73fabf11bc8a43408e2a30ceaf",
+    "lib/models/monocop/depth_predictor/depth_predictor.py": "568b61891db8c2db6f44954b6349fc31f6c5668200ddba775d2100e60507193a",
+    "lib/models/monocop/depth_predictor/transformer.py": "faf4e7351081139daf477e82b9bd1358a5e19bcec6d2df33d87656e4d8732edb",
+    "lib/models/monocop/depthaware_transformer.py": "aefc119a22286b2828076e7ab8df57d713e8a0c002fadfe796a43d5368444e64",
+    "lib/models/monocop/dn_components.py": "0d1e2880c6474a836f3b939c1da0ba60e2052c4c08666f1c401605910cc11771",
+    "lib/models/monocop/matcher.py": "0af64073973cc66760d50dcc4517a932353c014d6372d6c9fd8eeb3bdcd1ad72",
+    "lib/models/monocop/monocop.py": "7999b5580766feb15f70172ad52034e2c0697dc0fe9515d19cf198e5dc910772",
+    "lib/models/monocop/ops/functions/__init__.py": "e1a39c1cf23562b11d696d81f95cf8bef368c48149b681d1eadc7f6d188edd3a",
+    "lib/models/monocop/ops/functions/ms_deform_attn_func.py": "e4d8e33b45bbd3bd7855da57d922c0258f700eb27e95f3ce0a3035f748f0313c",
+    "lib/models/monocop/ops/make.sh": "37a07393d06bc9114f634fbc216119ff709283a1718816aff8bd6eab6e26788b",
+    "lib/models/monocop/ops/modules/__init__.py": "5ee74e878252076bc3709f52fc705730e9473e02fef6aefb099eaac2edb1c3bb",
+    "lib/models/monocop/ops/modules/ms_deform_attn.py": "0103d40184e8a17ac0516c4e2b83779f9acfd3d836a5ea9652d355f0f83d38f6",
+    "lib/models/monocop/ops/setup.py": "d4b036c77ee95b6db3027b1926ccabe1be69c306590f2eba46d47e0aacb5a3ec",
+    "lib/models/monocop/ops/test.py": "6066519322d749265c9983117ba8b012b35b6fbd46505d5b7842751eeb706942",
+    "lib/models/monocop/position_encoding.py": "b5e2f3f84ba5d6f56036b8cec5ecc69bdad6f66f08b7640af3ad4a62bf52698b",
+    "lib/models/monocop/region_seg_head.py": "af9fca0ccfc918194b72be6ce85fd797511cc6db32fc69c3eb05c56cec54210f",
+    "requirements.txt": "edbf4fef351dcac28d4c15f3bc3b5fa3f22949cc04738ce543572b153e902f59",
+    "test.sh": "0f29be66bd688657352a3037d5e091d4fca8f892b506084b1296b84384f2c92b",
+    "train.sh": "e222435a3807f6edae79df88c24d22b3add6f02d425225fe6958ddb88d2cae31",
+    "train_val.py": "394dde23bb13ff5cdb0c391c7e6f5a6c8e24db8eaf871632d36f13c412e9702a",
+    "utils/__init__.py": "a101de83cee507766e0ad18e63b9a5dfe707971b6e634166e2c646dc5a44b6fd",
+    "utils/box_ops.py": "24fbfc914bbbad278b5fdf3078b103d67f771fac24ccec22276fb5392afd9e40",
+    "utils/dino_utils.py": "e3a84229d6d1496df5a2ea5b7880658294abcf2994cdee362032ca56d530cc5e",
+    "utils/misc.py": "f835599a9402895811769e3eec19da12691686c859d23c55e90f4b05674ccea8"
+  },
+  "changes": [
+    {
+      "file": "lib/models/monocop/ops/functions/ms_deform_attn_func.py",
+      "sha256_after_edit": "e4d8e33b45bbd3bd7855da57d922c0258f700eb27e95f3ce0a3035f748f0313c"
+    },
+    {
+      "file": "lib/models/monocop/backbone.py",
+      "sha256_after_edit": "0712dc0dc8114dde62c65127844b1cce4d58c94fb2dd5a9af2ac3eccb4ef0ec7"
+    },
+    {
+      "file": "lib/models/monocop/backbone.py",
+      "sha256_after_edit": "43a6ccef44dc1ad6a8d3589838c4344bfb18ad50e20260a0da90b29c4135f455"
+    },
+    {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256_after_edit": "d52ce2703ba6d15f723d36a043c3a9c63c877350a8d2a5631ff2fab555db9601"
+    },
+    {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256_after_edit": "b4cad95ad3b76d7dffe16868eb3bfac219667603880bbdaa00a55bcac2287c92"
+    },
+    {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256_after_edit": "ff5adbc1a2ce791cecf8f3b72f71e81c8c442c1bfb951c3247e57c7c2cb7dbee"
+    },
+    {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256_after_edit": "5603d5e09c0b1df07a7d8e299ff5960846482c86cc775982fdc1306f7ebc78fa"
+    },
+    {
+      "file": "lib/models/monocop/depth_predictor/ddn_loss/ddn_loss.py",
+      "sha256_after_edit": "0e4aa60f89c9eead6f1ab5fca26ec7a731da65ddda70e591bd45fb836a2439f0"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "37bc8d4610ac5b4e557a2151c9c2e66fa39d53b2d6d059b4dfe018139d7f997f"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "254d1b23892bb5aa68472d0eb3b07d2edc7da32d7a4cdb4d9133042f81694cd2"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "3f33a291b8ead02b9b06d80a7806046240aa6faabed08ba8b28976243f87120d"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "6707f7004dda47e7fa727d8350e63c2b83d749cb853155c139680027f4a15a32"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "b2f70d61f29cdb6ed1bc292a6cf7ae814b454b6a828a69210ce8c16084b1c1b2"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "1cc39036ad8b781cdea98a3b264c3c4a5968276580d52996c8ef66d2533bd3a1"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "e619e5e541479d1bee954909c1bf6cbcf92d8b5e5b1eee6ac9e25950fb87eed7"
+    },
+    {
+      "file": "lib/models/monocop/monocop.py",
+      "sha256_after_edit": "7999b5580766feb15f70172ad52034e2c0697dc0fe9515d19cf198e5dc910772"
+    },
+    {
+      "file": "lib/models/monocop/depthaware_transformer.py",
+      "sha256_after_edit": "aefc119a22286b2828076e7ab8df57d713e8a0c002fadfe796a43d5368444e64"
+    },
+    {
+      "file": "lib/models/monocop/matcher.py",
+      "sha256_after_edit": "0af64073973cc66760d50dcc4517a932353c014d6372d6c9fd8eeb3bdcd1ad72"
+    }
+  ],
+  "patch_sha256": "9952010b72352699e080acd489109f1a50b0b65434bb584d1cbb0f2571d45e35",
+  "generator_sha256": "bb10ac09dbafd9b35656475497e87177c41d3b461b02e833baf968c3914aeea5",
+  "portable_attention_sha256": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+  "backbone_weights_downloaded": false,
+  "compiled_attention_parity": "NOT_TESTED"
+}

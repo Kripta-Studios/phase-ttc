@@ -1,0 +1,130 @@
+{
+  "schema": "phase_range_smoke_audit_v1",
+  "status": "PASS_WITH_GPU_NUMERICAL_LIMITATION",
+  "bin_parity": {
+    "UD": {
+      "60m_exact": true,
+      "depths": 10006,
+      "far_bins_150m": [
+        42,
+        53,
+        79
+      ]
+    },
+    "LID": {
+      "60m_exact": true,
+      "depths": 10006,
+      "far_bins_150m": [
+        58,
+        65,
+        79
+      ]
+    },
+    "SID": {
+      "60m_exact": true,
+      "depths": 10006,
+      "far_bins_150m": [
+        70,
+        73,
+        79
+      ]
+    }
+  },
+  "full_state_at_update16": {
+    "sampler": true,
+    "scheduler": true,
+    "rng": true
+  },
+  "cuda_bitwise_model_parity": false,
+  "cuda_max_absolute_weight_difference": 0.00028993189334869385,
+  "cuda_changed_model_tensors": 450,
+  "interpretation": "State restoration verified; CUDA training is not claimed bitwise deterministic.",
+  "checkpoint_sha256": {
+    "smoke150_segment_a_v2": "8fbf8d2a0a00f23c66c26eea7b99b8c64057595b467ac1e03824b43adfa05d88",
+    "smoke150_segment_b_v2": "b5cd644eb4c514363bbee79e9844f1f2d001bbf4e0c8198024c18f7926bc8ecb",
+    "smoke150_uninterrupted_v2": "2d1ff335e01ba66c9b48488fdd112fe0f2b5cc4b79b8bb529259058e3f4c38ee"
+  },
+  "run_statuses": {
+    "smoke150_segment_a_v2": {
+      "status": "SEGMENT_STOPPED",
+      "update": 8,
+      "exposures": 16,
+      "best_aligned_mAP": 0.06093953570933894,
+      "elapsed_seconds": 10.889364000002388,
+      "cache": {
+        "schema": "phase_lossless_compact_training_cache_v1",
+        "device": "cuda",
+        "capacity": 64,
+        "resident_samples": 16,
+        "gpu_image_bytes": 0,
+        "cpu_image_bytes": 47185920,
+        "target_metadata_payload_bytes": 542670,
+        "hits": 0,
+        "misses": 16,
+        "raw_images_retained": 0,
+        "pending_cpu_preparations": 2
+      },
+      "peak_cuda_bytes": 2550520320
+    },
+    "smoke150_segment_b_v2": {
+      "status": "COMPLETE",
+      "update": 16,
+      "exposures": 32,
+      "best_aligned_mAP": 0.0610993612252906,
+      "elapsed_seconds": 21.43288919999759,
+      "cache": {
+        "schema": "phase_lossless_compact_training_cache_v1",
+        "device": "cuda",
+        "capacity": 64,
+        "resident_samples": 16,
+        "gpu_image_bytes": 0,
+        "cpu_image_bytes": 47185920,
+        "target_metadata_payload_bytes": 537988,
+        "hits": 0,
+        "misses": 16,
+        "raw_images_retained": 0,
+        "pending_cpu_preparations": 2
+      },
+      "peak_cuda_bytes": 2560786944
+    },
+    "smoke150_uninterrupted_v2": {
+      "status": "COMPLETE",
+      "update": 16,
+      "exposures": 32,
+      "best_aligned_mAP": 0.061116357862115125,
+      "elapsed_seconds": 16.77557519999391,
+      "cache": {
+        "schema": "phase_lossless_compact_training_cache_v1",
+        "device": "cuda",
+        "capacity": 64,
+        "resident_samples": 32,
+        "gpu_image_bytes": 0,
+        "cpu_image_bytes": 47185920,
+        "target_metadata_payload_bytes": 1080658,
+        "hits": 0,
+        "misses": 32,
+        "raw_images_retained": 0,
+        "pending_cpu_preparations": 2
+      },
+      "peak_cuda_bytes": 2560387072
+    }
+  },
+  "preserved_first_failure": {
+    "status": "FAILED",
+    "type": "TypeError",
+    "error": "unsupported operand type(s) for -: 'float' and 'str'"
+  },
+  "raw_panel_parity": {
+    "frames": 16,
+    "exact_full_report_parity": true,
+    "mAP": 0.059280670758069025,
+    "source": "public labels vs saved external GT",
+    "test_labels_read": false
+  },
+  "source_sha256": {
+    "audit": "7461e6ca6ed504aa39db664cc44ebfb3a1644b9c16c2a82f9b178f1c09007332",
+    "parent_ddn": "f641a264ae8c0c44810749e254bc50c5016658925c22d64934668faffb06a551",
+    "derived_ddn": "2fbe1612617a01072beb9389167bdd8f6d54a7dc81dd93ae624987f5f81a23e4"
+  },
+  "gpu_used_by_audit": false
+}

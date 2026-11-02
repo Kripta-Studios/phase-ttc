@@ -1,0 +1,20 @@
+{
+  "user_instruction": "continua y vete acabando",
+  "round_status": "CLOSED_AT_USER_REQUEST",
+  "excellent_model_demonstrated": false,
+  "new_candidate_promoted": false,
+  "delivery": "C:\\Users\\\u00c1lvaro Schwiedop\\Downloads\\PHASE_TTC_ENTREGA_20261102",
+  "delivery_manifest_sha256": "b89ff9da6d2d28056cbc0005f7908bb9976c0e7806152a9ca248cfc01bb4e0d2",
+  "delivery_files_verified": 127,
+  "training_or_diagnostic_processes": [],
+  "backups": {
+    "monocop_screen_final_20261102": {
+      "receipt": "C:\\Users\\\u00c1lvaro Schwiedop\\Downloads\\PHASE_TTC_BACKUP_20261101\\monocop_screen_final_20261102\\BACKUP.json",
+      "sha256": "59c7ae3348ba8d211f7911d9b741d94386db6fc57ac44decb329bb7ad7b8284c"
+    },
+    "geometry_diagnostics_20261102": {
+      "receipt": "C:\\Users\\\u00c1lvaro Schwiedop\\Downloads\\PHASE_TTC_BACKUP_20261101\\geometry_diagnostics_20261102\\BACKUP.json",
+      "sha256": "1ab83b6578ff105722b1e4efb6d4b5f6e241b3b02803c3dc1685fd2184c366ba"
+    }
+  }
+}

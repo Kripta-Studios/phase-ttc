@@ -6,6 +6,8 @@ docs/research_progress_20261101/**/evidence/** -text whitespace=cr-at-eol
 
 # JEPA closure evidence and retention receipts preserve their verified SHA-256 bytes.
 docs/jepa_closure_20261031/** -text whitespace=cr-at-eol
+# SOTA intake and executed evidence are bound by byte-level SHA-256.
+docs/detection_sota_20261029/evidence/** -text -whitespace
 
 # TRAIN40 runtime receipts and source snapshots are bound by byte-level SHA-256.
 docs/train40_runtime_handoff_20261027/evidence/** -text -whitespace

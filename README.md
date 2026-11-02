@@ -85,6 +85,35 @@ import namespace and `e-jepa-ttc` command remain compatible with existing script
 and checkpoints. Historical artifacts retain their original identifiers.
 See [the naming decision](docs/decisions/ADR-0042-phase-ttc-name.md).
 
+## RGB detector development candidate
+
+The [1 November detector candidate](docs/detection_sota_20261029/RELEASE_CANDIDATE_20261101.md)
+packages the completed Dfull RGB detector with a TRAIN-fitted ranking model.
+On the same 23,958 development-selection frames, local AP improves from
+0.16474566 to 0.18502078. Temporal and event screening did not pass the
+predefined promotion margin. The package has verified replay parity and a
+functional multiobject PHASE replay; these results do not establish official
+3D-detection SOTA, production readiness, or new TTC accuracy.
+
+The [first official eAP detection result](docs/detection_sota_20261029/evidence/official_benchmark_20261101/ANALYSIS.md),
+returned on 1 November 2026, reports **mAP 0.05129508** and **eAP score 0.13980148**
+on all 35,940 test frames. Four classes have zero official AP. The returned
+configuration applies minimum recall/precision of 0.1; the local development
+protocol and population differ. The development AP above is not an estimate of
+this official test score or evidence of eight-class production readiness.
+
+The [benchmark-aligned local reevaluation](docs/detection_sota_20261029/BENCHMARK_LOCAL_ALIGNMENT_20261101.md)
+retains all 190,469 public selection annotations and uses the organizer-returned
+AP/TP configuration with reference matching. On the same 23,958 frames, mAP is
+**0.05701726 without ranking and 0.06204229 with ranking**. This additive profile
+preserves the historical results; equivalence to the private scorer is unverified.
+No new training or inference was needed.
+
+For continuation, read the [eAP state and artifact handoff](docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261101.md)
+and the [research plan with a ready-to-use Codex prompt](docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261101.md).
+The plan separates completed evidence from proposed experiments and starts with
+geometry, target coverage and proposal diagnostics before further long training.
+
 ## Historical development notes
 
 The dated notes below preserve the status at each research checkpoint. The

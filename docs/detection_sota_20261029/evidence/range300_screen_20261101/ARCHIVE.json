@@ -1,0 +1,45 @@
+{
+  "schema": "phase_ttc_completed_range300_archive_v1",
+  "source_root": "D:\\PHASE_TTC_RANGE_20261101",
+  "files": {
+    "REPORT.md": {
+      "source": "range300_screen_report_v1/REPORT.md",
+      "sha256": "af04a69f04823afb597ddd5866a2e32802babea3f2e0d70963460b0effe6180a"
+    },
+    "RESULTS.json": {
+      "source": "range300_screen_report_v1/RESULTS.json",
+      "sha256": "23942ca4fa71b70f2e11c1b6a5d4a88210474f79440f83d410001a879c0c1b5d"
+    },
+    "MANIFEST.json": {
+      "source": "range300_screen_report_v1/MANIFEST.json",
+      "sha256": "5abf770637275cf86496d2df5c964730a1e2b457fbf765264e976c874bd6acc5"
+    },
+    "PLAN.json": {
+      "source": "long_range_config_v1/PLAN.json",
+      "sha256": "e95d0fe3975235f591872473dbf61478c192756a324ed9845755b33d5c96ff68"
+    },
+    "CONFIG.json": {
+      "source": "long_range_config_v1/range300.json",
+      "sha256": "e224515ae795dee87d370c09741be04dfe8239c1eb85320bafb11e784e5210ca"
+    },
+    "CONTRACT.json": {
+      "source": "long_range_campaign_v1/screen/CONTRACT.json",
+      "sha256": "e85b2dc854b3ad63d195cf6bc02d2edc8c8cf17095e13064e90b2ae0a697439b"
+    },
+    "ENVIRONMENT.json": {
+      "source": "long_range_campaign_v1/screen/ENVIRONMENT.json",
+      "sha256": "2ca1e99414584fef22c847d786ac7bef8469a5a4844cf616c1fc494a9e4964fb"
+    },
+    "STATUS.json": {
+      "source": "long_range_campaign_v1/screen/STATUS.json",
+      "sha256": "d2c0748209f4a2bda014c23d66342853b1087807773720a3a786a82738b09fb0"
+    },
+    "QUEUE.status.json": {
+      "source": "long_range_campaign_v1/QUEUE.status.json",
+      "sha256": "4e0c12c22841c776d9a06c53ea770e8af0ffc4e8b11f09fbfb19bbbe1c867cc0"
+    }
+  },
+  "weights_in_git": false,
+  "promotion": false,
+  "goal_complete": false
+}

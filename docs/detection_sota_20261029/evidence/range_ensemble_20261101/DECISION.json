@@ -1,0 +1,13 @@
+{
+  "decision": "RETAIN_INCUMBENT_NO_ENSEMBLE_PROMOTION",
+  "primary_mAP": 0.06048236156490934,
+  "union_mAP": 0.04055616034293738,
+  "incumbent_mAP": 0.062042288605807405,
+  "delta_incumbent": -0.0015599270408980653,
+  "delta_best_single": -0.0005700560923779657,
+  "macro_gate_pass": false,
+  "class_declines_over_0_01": {},
+  "control_metric_exact_parity": true,
+  "reason": "Primary and ungated union both trail the incumbent; no integrated GPU inference or additional seeds justified for these recipes. Do not sweep the boundary after this result.",
+  "goal_complete": false
+}

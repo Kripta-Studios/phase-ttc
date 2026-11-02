@@ -1,0 +1,32 @@
+{
+  "decision": "TECHNICAL_STOP_BEFORE_FULL_METRICS",
+  "returncode": 1,
+  "process_id_observed_terminal": 49552,
+  "last_progress_is_not_live_state": true,
+  "scientific_negative_result": false,
+  "complete_metrics_produced": false,
+  "files": {
+    "PLAN.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/PLAN.json",
+      "sha256": "e11ebe8886a2f57049746372d94bf9d9d1c2908dfe1baf5f5e0e5349a5cee32b"
+    },
+    "FAILURE.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/FAILURE.json",
+      "sha256": "d4ea0c299560a24bb7c6cbb7abfaffe4647a177fe634732a8ee1de7aa3b4b834"
+    },
+    "LAST_PROGRESS.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/STATUS.json",
+      "sha256": "0ff4a62a731606efd1a616de984f12835b20cad84fa9ba3b534cf5c7af5db04d"
+    },
+    "PROFILE.txt": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/PROFILE.txt",
+      "sha256": "5882e200eddc3cea34536bf3bc3f1565bf99c1333c5a06cc8d5b832dcb04319b"
+    },
+    "FIRST_SHARD_RECEIPT.json": {
+      "source": "D:/PHASE_TTC_RANGE_20261101/range_ensemble_v1/shards/00000/COMPLETE.json",
+      "sha256": "bf8b3ed48d8fb3f8d2381400c89fe737148fe820218c2763f0bc0243c591b434"
+    }
+  },
+  "summary_sha256": "a707a20ffbd2e2d9955cceb8e6f4a48a730b3564f111bff9e1f42fa47ffeaca8",
+  "next_producer_commit": "e6e27c03"
+}

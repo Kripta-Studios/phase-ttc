@@ -1,0 +1,11 @@
+{
+  "status": "REPORT_RENDER_FAILED",
+  "recorded_utc": "2026-11-01T22:36:54.474670+00:00",
+  "source_sha256": "1737f72e7757030f3c186e2563a168f27695d32c7aa55e848059aa4c29869a99",
+  "source_commit": "0a97e709",
+  "exit_code": 1,
+  "error_type": "TypeError",
+  "error": "unsupported format string passed to NoneType.__format__",
+  "cause": "Undefined recall for a class with zero ground-truth annotations was formatted as a float. Preserve null in JSON and render n/a.",
+  "training_or_metrics_changed": false
+}

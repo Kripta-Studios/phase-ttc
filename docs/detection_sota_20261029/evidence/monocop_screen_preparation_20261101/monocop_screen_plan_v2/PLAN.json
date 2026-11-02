@@ -1,0 +1,46 @@
+{
+  "schema": "phase_monocop_screen_plan_v1",
+  "decision": "ADMITTED_LOCAL_MONOCOP_SCREEN_ONLY",
+  "config_sha256": "93e47bd13293380067f97ed85846f5ac4796d8a93d24197a5f9a3bc7e1d6ae18",
+  "config_file_sha256": "4f1924fb10a8102c34cb7abe77549588fed3999c9159234e16dc99bd3453cf97",
+  "plan_document_sha256": "f1e115dc5e0ea6b8bca91e373399d8f7a00c391ea905f59eb20b76cd858aa0f8",
+  "git_commit_at_preparation": "43bb9bbb78542a9803851a4d4ef2c2c230003a85",
+  "execution_tree_note": "Archived source hashes identify the exact producer bytes.",
+  "sources": {
+    "scripts/prepare_monocop_screen.py": "3b6f3e494210d9c3884f1f2ae7ed0eb67da9371c4916933188e5e3ccf873df69",
+    "scripts/train_detection_monocop.py": "e12ddff09f70c138c50b727a10af1627239a9268ab870d64c9825e8fa21ac415",
+    "scripts/run_monocop_gpu_smoke.py": "ffea35bcdff7bb74b860a1c84ff3528ec1d789a19bd1f4459095bb8248db8630",
+    "scripts/prepare_monocop_portable.py": "af44ecf4c69deac3394cf4930922e29354e1009e23bd0f9d857a169222655280",
+    "scripts/audit_monocop_cpu_port.py": "8ffa487c6c81747fb11f3744ef80e06237d3973a32b80fcc4b1b25e8d5dad923",
+    "src/e_jepa_ttc/detection/monocop_campaign.py": "00982dbe8a02547fefec268146e90edd15b2827127e76304a3c5884f35e714fa",
+    "src/e_jepa_ttc/detection/monocop_smoke.py": "609e8135ad054521f3d1cbb19ed4bd421ee9862bc19450326b836b8e4bb3ebe1",
+    "src/e_jepa_ttc/detection/monocop_initialization.py": "98a0ebe2e21688a84abb589f217d253425a4805cef90f29508bfcdfe9e9cb64a",
+    "src/e_jepa_ttc/detection/range_campaign.py": "4c1b330c332d928a94e4dd61332e97c7eddc21bf47eada2533e37109194e7cea",
+    "src/e_jepa_ttc/detection/benchmark_evaluation.py": "4d58095d8d4eddaf8d9c9b148f7157d39f1269d815af15a8e84388aa8c30fa58",
+    "src/e_jepa_ttc/detection/campaign_training.py": "2ff58dda8f4c46ea4c9f71ae0508a636789a7f6bd8d2bbedea1e5a72efc2b999",
+    "src/e_jepa_ttc/detection/compact_training_cache.py": "4483e7cc12502046feb3563b2e4784735c85f9be7b88d68bff6c3554fda2e820",
+    "src/e_jepa_ttc/detection/resident_input_cache.py": "24fd9fa828bd784d5adeef2f12110282079d3969572e03d3852ec20518a4eff8",
+    "src/e_jepa_ttc/detection/eap_rgb_data.py": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+    "src/e_jepa_ttc/detection/indexed_rgb_data.py": "c6aace6e78635c109a1c159d5586dc147ec06722f8caca15c1ec777b55fc2ec7",
+    "src/e_jepa_ttc/detection/monodgp_eap_adapter.py": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d",
+    "src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "src/e_jepa_ttc/detection/development_metrics.py": "88f66fcf07d71e1d2fe268a0dee32b4baa2c010957cc8949f477dc57f5ff280a",
+    "src/e_jepa_ttc/detection/portable_attention.py": "e3a5ca88ca989e7bd10fe1f8381f7da32b83eea3063ac89b67113511b045f7fa",
+    "src/e_jepa_ttc/detection/evaluation_protocol.py": "44710d70540f2f114c6b9fccd7b7317fe50328630c01f9a07d0a3c56dca8c9b6"
+  },
+  "controls": {
+    "report": "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/RESULTS.json",
+    "report_sha256": "64406c665fa64f0093da5477b20a679e4f9e0b2457fed96bcfd6ae6f0a5f0ebf"
+  },
+  "primary": "Eight-class aligned raw-GT mAP on the fixed 512-frame selection panel",
+  "reference_panel_mAP": {
+    "incumbent_ranked": 0.06533347492745492,
+    "dfull300_best": 0.06435241780942923
+  },
+  "promotion": "After 2048 updates, gain >=0.005 over both incumbent and best Dfull300 panel before full selection confirmation. Full gain >=0.005 over incumbent and review any per-class AP drop >0.01. No automatic promotion.",
+  "maximum_seconds": 7200,
+  "maximum_cuda_bytes": 9663676416,
+  "new_cloud_spend": false,
+  "official_submission": false,
+  "automatic_followup": false
+}

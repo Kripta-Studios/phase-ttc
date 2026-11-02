@@ -1,0 +1,36 @@
+{
+  "inputs": {
+    "long_range_campaign_v1/QUEUE.json": "b6002d707e1457b9e5fdf17b8cf00933d39310bde9c9963245a0fc343fb3679c",
+    "long_range_campaign_v1/QUEUE.status.json": "4e0c12c22841c776d9a06c53ea770e8af0ffc4e8b11f09fbfb19bbbe1c867cc0",
+    "long_range_config_v1/PLAN.json": "e95d0fe3975235f591872473dbf61478c192756a324ed9845755b33d5c96ff68",
+    "long_range_config_v1/range300.json": "e224515ae795dee87d370c09741be04dfe8239c1eb85320bafb11e784e5210ca",
+    "PANEL_COMPARISON.json": "157bf5c6402fc2d1c8c32db355b88f8e29d2c31b79fda450bcee62f94e33f48a",
+    "screen_config_v1/population.json": "481ac9c0adc9f31a8555928a6fed4dc5784b38485e170833ac3e510bd01e645b",
+    "screen_range60_v1/STATUS.json": "ccd71b48c4e6358e5bd9f98dfd8c1a3373c23f81271cd65f049f1b3f1b096e28",
+    "screen_range60_v1/CONTRACT.json": "069d5ff87393b966f2ee14dee88630eb73765b7e56e786ff83254952b28262c2",
+    "screen_range60_v1/evaluation/000000.json": "f494c4456285bd94d8a07f43ce5e8e6f458f2b7052cddde2e15312cdfedfc219",
+    "screen_range60_v1/evaluation/000512.json": "1e6e0a96ded9c7ce53f8dd2d6bb52fdff6840081cbfefc84c65578f2cef8484e",
+    "screen_range60_v1/evaluation/001024.json": "40bc50977d406e43ea143e2e2af04a25b7dfe1b0a27a66595d0a8f528a4f3c5a",
+    "screen_range60_v1/evaluation/001536.json": "6848205a9a9ddcda1f256f9a4eb0d5ef46ba24aad192c48a828fd57724d4d1b5",
+    "screen_range60_v1/evaluation/002048.json": "2b3f4e9f560f827dbc1ac8a923d4a416f6f0c3a58ebf58ee2e88f7497fbcf38a",
+    "screen_range150_v1/STATUS.json": "2bc532fa07fa23ab605b08b4bbcdc5f49d16f20c5b1facf045b62719bb9a0db0",
+    "screen_range150_v1/CONTRACT.json": "cd3b081563e6c73986a72e9f8c563c8c90fd1a5632fe1259e2822af311c94047",
+    "screen_range150_v1/evaluation/000000.json": "4f1840f5f4e13f29dbfe47e2d947481d3117ec4e84cf7d403b7ac3fad66376f2",
+    "screen_range150_v1/evaluation/000512.json": "c6614b374caad98911851e6001075ea619d929fbd688e93a19c331ed7ad70164",
+    "screen_range150_v1/evaluation/001024.json": "5ae5b4773248e28a9d2ae0bc09a88dcd349ed637977a0391db880915c596caf6",
+    "screen_range150_v1/evaluation/001536.json": "efd5e466acc4ac2454c3a003640c2c35877c02e11ce158aaa38ddb9e945ad711",
+    "screen_range150_v1/evaluation/002048.json": "d7a4856b3006bbc47008a0001a33046d67902fd0d2a6d7e3a696ce08670ffcb8",
+    "long_range_campaign_v1/screen/STATUS.json": "d2c0748209f4a2bda014c23d66342853b1087807773720a3a786a82738b09fb0",
+    "long_range_campaign_v1/screen/CONTRACT.json": "e85b2dc854b3ad63d195cf6bc02d2edc8c8cf17095e13064e90b2ae0a697439b",
+    "long_range_campaign_v1/screen/evaluation/000000.json": "a53b28e0a6d2228aebfaa7e34e80ce29c592778c0e72b3811496b26d611299d8",
+    "long_range_campaign_v1/screen/evaluation/000512.json": "8c1c96035cf93b7024097275e8c89606ceca3401976691f32bf025d173a61201",
+    "long_range_campaign_v1/screen/evaluation/001024.json": "9f97f0f69e886f376315b150f1e3bdac7a36c9e7e859553644e754e40e60af5d",
+    "long_range_campaign_v1/screen/evaluation/001536.json": "a80b5975fdab2d6790989bc2de9e25e1a1827b4bf9120d5716b7ab236bcaed78",
+    "long_range_campaign_v1/screen/evaluation/002048.json": "1fc3de81b5d3c1ed41d2761a9886e5c26e30ab096a1124507337eb377795f440"
+  },
+  "generator_sha256": "b22fac19399bb68d52c39ea4393f49e6bf323ef69946492ac7e0f37108402ef7",
+  "files": {
+    "RESULTS.json": "23942ca4fa71b70f2e11c1b6a5d4a88210474f79440f83d410001a879c0c1b5d",
+    "REPORT.md": "af04a69f04823afb597ddd5866a2e32802babea3f2e0d70963460b0effe6180a"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "python": "3.11.15",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "started_utc": "2026-11-01T22:44:34.860694+00:00",
+  "git_commit_at_preparation": "0a97e709e41afe2000955dd8b72fcfe236872126"
+}

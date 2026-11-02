@@ -1,0 +1,14 @@
+{
+  "status": "LAUNCH_BEFORE_GPU_FAILED",
+  "recorded_utc": "2026-11-01T22:41:05.392812+00:00",
+  "source_sha256": "eee718c817ab902bde2e80184ceaaf900b6e6157f50795bd69efd31eae3c4991",
+  "plan_sha256": "9b79ee0900c0e164ecef53eaabf62ff1540289e7df593b626f6d5896cd6c24d1",
+  "admission_sha256": "01629cc1d62bec779acd3e52f2ea586aee06f153607000663273f4f1b1177380",
+  "exit_code": 1,
+  "error_type": "TypeError",
+  "error": "argument 1 must be str, not WindowsPath",
+  "site": "psutil.disk_usage(args.output.parent)",
+  "output_directory_created": false,
+  "training_updates": 0,
+  "gpu_execution_stage_reached": false
+}

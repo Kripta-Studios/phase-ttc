@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "frames": 512,
+  "exact_predictions": true,
+  "exact_metrics": true,
+  "reference_sha256": "5ae5b4773248e28a9d2ae0bc09a88dcd349ed637977a0391db880915c596caf6",
+  "results_sha256": "e55e292a6f33310a6826dae4c79d8a86a7553016d73ea317612d28b9c6276860"
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "phase_extended_range_public_selection_v1",
+  "checkpoint_sha256": "fa47a5a75f6b93cac28b4ac682097f16466d8308024d1e9d5465327c9d1b6098",
+  "training_contract_sha256": "aada15af0e49eee9562492e2114e460cdcd279c0363b5cec139c2f8d903bfd60",
+  "tokens_sha256": "6db9fcfe041900924a79f885c30b570a6f35b987a44c4b41f18f06325969ba71",
+  "frames": 16,
+  "profile_sha256": "797e6cbd1f5e6779c1521c900b7c36108d846cc757d9ec5c582e12bc15dd1ade",
+  "panel_only": true,
+  "shard_size": 512,
+  "code": {
+    "scripts\\evaluate_detection_extended_range.py": "5f4062bc2021f388eb8e49bc312246bf419c8cb3d3690aa930ca25b83669bfd2",
+    "src\\e_jepa_ttc\\detection\\indexed_rgb_data.py": "c6aace6e78635c109a1c159d5586dc147ec06722f8caca15c1ec777b55fc2ec7"
+  },
+  "inventory_sha256": "2e65cd7f2600eea55f37f59e9a22d55b5ba0aa50445756fd7aaf01332c2b3ff1",
+  "media_admission_sha256": "cccfb3a1889101a7caed698c0c89d33f64e73f57039667072cc23f1bd9491ac6",
+  "label_sha256": {
+    "data/train/2Y46OkK3ff/labels.parquet": "06a1fc3d3e9ddfd2ffe514b09819e9636f0b3d4b3fd035ed94f4d013015b3c4d"
+  },
+  "annotations_in_model_forward": 0,
+  "targets_argument": null,
+  "test_labels_read": false,
+  "score": "class_sigmoid_no_ranker"
+}

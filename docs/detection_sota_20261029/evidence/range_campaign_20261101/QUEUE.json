@@ -1,0 +1,17 @@
+{
+  "schema": "phase_range_queue_v1",
+  "admission": "D:\\PHASE_TTC_RANGE_20261101\\screen_config_v1\\ADMISSION.json",
+  "admission_sha256": "5490f2b6eaf7616f0ec81255d649975fb01f3731f8115aa39f89c4ddaccc947a",
+  "jobs": [
+    {
+      "config": "D:\\PHASE_TTC_RANGE_20261101\\screen_config_v1\\range60.json",
+      "config_sha256": "1930ae8539be0aeb826e9a1b01f8015997cc1e6d1a0f56feefb2bb162963bd6e",
+      "output": "D:\\PHASE_TTC_RANGE_20261101\\screen_range60_v1"
+    },
+    {
+      "config": "D:\\PHASE_TTC_RANGE_20261101\\screen_config_v1\\range150.json",
+      "config_sha256": "c4fa84afb33b5f7c3e076c0f08f536df0123777bb2295b5e6303f44fd8b66362",
+      "output": "D:\\PHASE_TTC_RANGE_20261101\\screen_range150_v1"
+    }
+  ]
+}
