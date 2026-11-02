@@ -285,11 +285,14 @@ def test_strict_baseline_load_happens_before_adapter_attachment() -> None:
         )
 
 
+@pytest.mark.external_data
 def test_source_admission_requires_exact_hash_and_marker(tmp_path: Path) -> None:
     source = Path(
         "output/detection_campaign/r0_d4096_seed7_v2/stage1/code/portable_source/"
         "lib/models/monodgp/monodgp.py"
     )
+    if not source.is_file():
+        pytest.skip("External R0 MonoDGP source snapshot is not installed")
     receipt = admit_monodgp_temporal_source(source)
     assert receipt["source_sha256"] == MONODGP_SOURCE_SHA256
     changed = tmp_path / "monodgp.py"

@@ -272,13 +272,17 @@ def test_batch_rejects_non_boolean_relation_valid(tmp_path: Path) -> None:
         source.batch([0], teacher)
 
 
+@pytest.mark.external_data
 def test_real_teacher_role_equals_history_valid_plus_exact_invalid_mask() -> None:
     from operational.independent_refit.lineage import load_rotation_role
 
     root = Path(__file__).resolve().parents[1]
     fold_path = root / "output/independent_phase/train24_population_v2/FOLD_CONTRACT.json"
     preflight_root = root / "output/independent_phase/raw_history_h5_metadata_preflight_v4"
-    role_mask = pd.read_parquet(preflight_root / "roles/rotation_0_producer.parquet")
+    role_path = preflight_root / "roles/rotation_0_producer.parquet"
+    if not fold_path.is_file() or not role_path.is_file():
+        pytest.skip("External independent PHASE fold and history-mask artifacts are not installed")
+    role_mask = pd.read_parquet(role_path)
     nominal = load_rotation_role(fold_path, rotation=0, role="producer")
     nominal_tokens = frozenset(nominal["sample_token"].astype(str))
     valid_tokens = frozenset(role_mask.loc[role_mask["history_valid"], "sample_token"].astype(str))

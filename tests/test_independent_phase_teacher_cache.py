@@ -614,7 +614,10 @@ def test_owned_path_guard_rejects_root_and_external_path(tmp_path: Path) -> None
 
 def test_conversion_cli_requires_conversion_inputs(
     monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
 ) -> None:
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "output/independent_phase").mkdir(parents=True)
     output = Path("output/independent_phase/test_missing_conversion_inputs")
     monkeypatch.setattr(
         "sys.argv",

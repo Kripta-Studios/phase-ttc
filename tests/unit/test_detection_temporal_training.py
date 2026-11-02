@@ -114,7 +114,9 @@ def batch(*, targets: bool = True, history_requires_grad: bool = False) -> Tempo
 
 
 def baseline_config():
-    path = Path("output/detection_campaign/rgb_screen_v5_seed7_v1/configs/r1.yaml")
+    path = (
+        Path(__file__).resolve().parents[2] / "configs/detection_campaign/rgb_r1_d4096_seed7.yaml"
+    )
     return load_campaign_config(path)
 
 
@@ -211,7 +213,9 @@ def test_continuation_parent_is_bound_to_its_own_config_not_child_budget() -> No
 
 
 def test_continuation_config_loads_dfull_parent_with_short_child_budget(tmp_path: Path) -> None:
-    source = Path("output/detection_campaign/rgb_screen_v5_seed7_v1/configs/r1.yaml")
+    source = (
+        Path(__file__).resolve().parents[2] / "configs/detection_campaign/rgb_r1_d4096_seed7.yaml"
+    )
     parent = yaml.safe_load(source.read_text(encoding="utf-8"))
     parent["optimization"]["updates"] = 38726
     parent["evaluation"]["updates"] = [38726]
@@ -381,7 +385,9 @@ def test_resume_rejects_wrong_variant_parent_or_runtime(tmp_path: Path) -> None:
 
 
 def test_config_rejects_unknown_key_and_wrong_admission_hash(tmp_path: Path) -> None:
-    baseline = Path("output/detection_campaign/rgb_screen_v5_seed7_v1/configs/r1.yaml").resolve()
+    baseline = (
+        Path(__file__).resolve().parents[2] / "configs/detection_campaign/rgb_r1_d4096_seed7.yaml"
+    )
     value = {
         "schema": TEMPORAL_TRAINING_SCHEMA,
         "baseline_config": str(baseline),
@@ -426,10 +432,20 @@ def test_config_rejects_unknown_key_and_wrong_admission_hash(tmp_path: Path) -> 
 
 
 def test_parity_rejects_shallow_pass_and_changed_runtime_sources() -> None:
-    root = Path("output/detection_temporal/r0_update512_parity_v2/runtime").resolve()
+    root = Path(__file__).resolve().parents[2]
     report = json.loads(
-        Path("output/detection_temporal/r0_update512_parity_v2/report.json").read_text()
+        (
+            root
+            / "docs/detection_sota_20261029/evidence/post_dfull_20261031"
+            / "event_local_gpu_parity.json"
+        ).read_text(encoding="utf-8")
     )
+    # Use an in-memory test fixture for the current sources. The archived receipt
+    # stays untouched; this is validation coverage, not a new GPU parity claim.
+    report["runtime_source_hashes"] = {
+        relative: sha256_file(root / relative) for relative in report["runtime_source_hashes"]
+    }
+    report["runtime_source_hashes_sha256"] = canonical_sha256(report["runtime_source_hashes"])
     arguments = {
         "parent_sha256": report["checkpoint_sha256"],
         "source_manifest_sha256": report["source_manifest_sha256"],

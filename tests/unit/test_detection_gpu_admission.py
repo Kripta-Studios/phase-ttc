@@ -8,6 +8,7 @@ from typing import Any
 
 import pytest
 import torch
+import yaml
 
 from e_jepa_ttc.detection.campaign_training import load_campaign_config, sha256_file
 from e_jepa_ttc.detection.gpu_admission_harness import (
@@ -55,10 +56,16 @@ def _checkpoint(
 
 def _plan(tmp_path: Path) -> dict[str, Any]:
     tmp_path.mkdir(parents=True, exist_ok=True)
-    config_path = ROOT / "configs/detection_campaign/rgb_r0_d4096_seed7.yaml"
+    template = ROOT / "configs/detection_campaign/rgb_r0_d4096_seed7.yaml"
+    config_path = tmp_path / "config.yaml"
+    manifest_path = tmp_path / "dataset_manifest.json"
+    manifest = {"source_media_sha256": "4" * 64}
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    raw_config = yaml.safe_load(template.read_text(encoding="utf-8"))
+    raw_config["data"]["manifest"] = str(manifest_path)
+    raw_config["data"]["expected_manifest_sha256"] = sha256_file(manifest_path)
+    config_path.write_text(yaml.safe_dump(raw_config), encoding="utf-8")
     config = load_campaign_config(config_path)
-    manifest_path = Path(config.data.manifest)
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     old_producer = tmp_path / "old_runner.py"
     optimized_producer = tmp_path / "optimized_runner.py"
     performance = tmp_path / "performance.json"

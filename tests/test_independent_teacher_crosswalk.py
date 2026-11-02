@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -65,10 +67,12 @@ def test_crosswalk_accepts_distinct_raw_and_teacher_ordinals():
     validate_crosswalk_frame(crosswalk, population)
 
 
+@pytest.mark.external_data
 def test_actual_known_ordinal_namespace_regression():
-    frame = pd.read_parquet(
-        "output/independent_phase/teacher_crosswalk_v3/teacher_crosswalk.parquet"
-    )
+    path = Path("output/independent_phase/teacher_crosswalk_v3/teacher_crosswalk.parquet")
+    if not path.is_file():
+        pytest.skip("External teacher crosswalk is not installed")
+    frame = pd.read_parquet(path)
     row = frame.loc[frame["public_source_ordinal"] == 2102].iloc[0]
     assert row["sample_token"] == "pzJcg1OCfc_000002_12321000000"
     assert int(row["teacher_ordinal"]) == 71589

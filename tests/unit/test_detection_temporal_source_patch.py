@@ -105,11 +105,14 @@ def test_fake_forward_split_preserves_outputs_and_state_dict() -> None:
         assert torch.equal(expected[key], split[key])
 
 
+@pytest.mark.external_data
 def test_real_r0_source_transforms_deterministically() -> None:
     source_path = (
         Path("output/detection_campaign/r0_d4096_seed7_v2/stage1/code/portable_source/")
         / MONODGP_RELATIVE_PATH
     )
+    if not source_path.is_file():
+        pytest.skip("External R0 MonoDGP source snapshot is not installed")
     source = source_path.read_text(encoding="utf-8")
     assert hashlib.sha256(source.encode()).hexdigest() == R0_MONODGP_SHA256
     first = transform_monodgp_source(source)

@@ -170,8 +170,14 @@ def test_strict_config_rejects_unknown_and_changed_max_age() -> None:
         TemporalCampaignConfig.from_mapping({**value, "maximum_history_age_us": 1})
 
 
+@pytest.mark.external_data
 def test_frozen_v2_admission_receipts_load_exact_populations() -> None:
     root = Path("output/campaign_data/temporal_d4096_v5_admission_v2")
+    if (
+        not (root / "temporal_media_admission.json").is_file()
+        or not (root / "history_media_receipt.json").is_file()
+    ):
+        pytest.skip("External temporal V2 admission receipts are not installed")
     ledger = load_temporal_admission_ledger(
         root / "temporal_media_admission.json", root / "history_media_receipt.json"
     )

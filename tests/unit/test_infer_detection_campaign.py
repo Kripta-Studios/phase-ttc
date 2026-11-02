@@ -11,6 +11,8 @@ import numpy as np
 import pytest
 import torch
 
+from e_jepa_ttc.detection.campaign_training import canonical_sha256
+
 
 def load_script(name: str):
     path = Path(__file__).parents[2] / "scripts" / name
@@ -209,7 +211,7 @@ def test_external_media_admission_snapshot_is_location_independent(tmp_path: Pat
     first = module.snapshot_media_admission(tmp_path / "producer-a", first_source)
     second = module.snapshot_media_admission(tmp_path / "producer-b", second_source)
     assert first == second
-    assert module.canonical_sha256(first) == module.canonical_sha256(second)
+    assert canonical_sha256(first) == canonical_sha256(second)
     assert set(first) == {"data/admission/media_admission.json"}
     assert (tmp_path / "producer-a/code/data/admission/media_admission.json").read_text(
         encoding="utf-8"
