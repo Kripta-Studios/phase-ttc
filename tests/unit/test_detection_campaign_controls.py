@@ -83,9 +83,7 @@ def test_compact_streaming_constant_matches_full_v2_global_metrics():
     full: Any = evaluate_detections_v2(
         constant_predictions(sorted(truth), priors), truth, protocol=protocol
     )
-    compact: Any = MODULE.score_constant_streaming(
-        sorted(truth.items()), priors, protocol=protocol
-    )
+    compact: Any = MODULE.score_constant_streaming(sorted(truth.items()), priors, protocol=protocol)
     assert compact["sample_count"] == full["sample_count"]
     assert compact["population"] == full["population"]
     assert compact["predictions"]["input_count"] == full["predictions"]["input_count"]
@@ -118,9 +116,7 @@ def test_streaming_requires_sorted_unique_tokens():
     ]
     frame = ground_truth(annotation("car", 10.0))
     with pytest.raises(ValueError, match="strictly sorted"):
-        MODULE.score_constant_streaming(
-            [("b", frame), ("a", frame)], prior, protocol=protocol
-        )
+        MODULE.score_constant_streaming([("b", frame), ("a", frame)], prior, protocol=protocol)
 
 
 def test_streaming_rejects_duplicate_class_priors():

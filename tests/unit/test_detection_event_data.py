@@ -130,9 +130,7 @@ def test_large_cross_bin_stream_is_exactly_partition_independent(normalize: bool
         partitions, sequence_id="s", cutoff_us=150_000, config=config
     )
     assert np.array_equal(combined.voxel, split.voxel)
-    assert combined.receipt["voxel_sha256_float32_le"] == split.receipt[
-        "voxel_sha256_float32_le"
-    ]
+    assert combined.receipt["voxel_sha256_float32_le"] == split.receipt["voxel_sha256_float32_le"]
 
 
 @pytest.mark.parametrize(

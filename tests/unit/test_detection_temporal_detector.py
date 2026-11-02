@@ -65,9 +65,7 @@ class _FakeBackend(ProjectedFeatureBackend):
 
 
 def _fusion() -> CausalTemporalFeatureFusion:
-    return CausalTemporalFeatureFusion(
-        TemporalFusionSpec(channels=(4,), bottleneck_channels=3)
-    )
+    return CausalTemporalFeatureFusion(TemporalFusionSpec(channels=(4,), bottleneck_channels=3))
 
 
 def _frame(frame: str, *, generation: int = 0) -> TemporalFrameIdentity:

@@ -18,9 +18,7 @@ from typing import Any
 
 def canonical_sha256(value: object) -> str:
     """Hash one finite JSON-compatible contract."""
-    encoded = json.dumps(
-        value, sort_keys=True, separators=(",", ":"), allow_nan=False
-    ).encode()
+    encoded = json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
     return hashlib.sha256(encoded).hexdigest()
 
 
@@ -165,9 +163,7 @@ class PhaseSeries:
             "total_seconds": sum(self.values),
             "median_seconds": statistics.median(self.values) if self.values else None,
             "p90_seconds": (
-                sorted(self.values)[int(0.9 * (len(self.values) - 1))]
-                if self.values
-                else None
+                sorted(self.values)[int(0.9 * (len(self.values) - 1))] if self.values else None
             ),
         }
 

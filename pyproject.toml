@@ -111,6 +111,15 @@ select = ["E", "F", "I", "B", "UP", "N", "ANN"]
 [tool.ruff.format]
 # These files are bound by V18 registration/admission records; lint still applies.
 exclude = [
+  # Detection receipts bind these exact bytes; see ADR-0045 and regression tests.
+  "scripts/audit_monocop_gpu_smoke.py",
+  "scripts/preflight_detection_rgb_assets.py",
+  "scripts/probe_detection_event_representation.py",
+  "scripts/profile_detection_evaluation_memory.py",
+  "scripts/revise_detection_campaign_media.py",
+  "scripts/run_detection_campaign_queue.py",
+  "src/e_jepa_ttc/detection/event_fusion.py",
+  "src/e_jepa_ttc/detection/temporal_fusion.py",
   "operational/joint_measurement/data.py",
   "src/e_jepa_ttc/data/garlttc_lhr_cache.py",
   "src/e_jepa_ttc/data/object_event_v4.py",

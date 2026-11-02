@@ -84,6 +84,7 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
     import numpy as np
     import pandas as pd
     import psutil
+
     torch: Any = importlib.import_module("torch")
 
     from e_jepa_ttc.data.object_event_v4 import collate_object_event_v4
@@ -177,9 +178,7 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
     if _sha256(teacher_index_path) != teacher_manifest["index_sha256"]:
         raise ValueError("Teacher index changed")
     teacher_index = pd.read_parquet(teacher_index_path)
-    teacher_row = teacher_index.loc[
-        teacher_index["sample_token"].astype(str) == args.sample_token
-    ]
+    teacher_row = teacher_index.loc[teacher_index["sample_token"].astype(str) == args.sample_token]
     if len(teacher_row) != 1:
         raise ValueError("Teacher target token differs")
     teacher_name = str(teacher_row.iloc[0]["cache_shard"])
@@ -243,9 +242,7 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
         config = CausalScaleTTCConfig(**cast(dict[str, Any], recipe["model_config"]))
         model = CausalScaleTTC(config).cpu().train()
         initial_state_sha256 = state_tensor_sha256(model.state_dict())
-        loss_config = CausalScaleTTCLossConfig(
-            **cast(dict[str, Any], recipe["loss_config"])
-        )
+        loss_config = CausalScaleTTCLossConfig(**cast(dict[str, Any], recipe["loss_config"]))
         total, components, model_output = _loss(
             model,
             batch,
@@ -259,9 +256,7 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
             raise FloatingPointError("Engineering E_A5 total loss is non-finite")
         total.backward()
         output_inventory = _tensor_inventory(model_output)
-        component_values = {
-            name: float(value.detach()) for name, value in components.items()
-        }
+        component_values = {name: float(value.detach()) for name, value in components.items()}
         if any(not math.isfinite(value) for value in component_values.values()):
             raise FloatingPointError("Engineering E_A5 component loss is non-finite")
         gradients = [

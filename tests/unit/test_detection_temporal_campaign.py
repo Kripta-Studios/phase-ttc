@@ -41,14 +41,8 @@ def rows() -> list[dict[str, object]]:
 def raw(token: str, *, labels: bool) -> RawRGBSample:
     sequence, index = token.split(":")
     row = next(item for item in rows() if item["sample_token"] == token)
-    transform = np.array(
-        [[1, 0, 0, 0], [0, 0, -1, 0], [0, 1, 0, 0], [0, 0, 0, 1.0]]
-    )
-    annotations = (
-        [{"category": "car", "bbox_3d_ego": [0, 20, 0, 4, 1.5, 2, 0]}]
-        if labels
-        else []
-    )
+    transform = np.array([[1, 0, 0, 0], [0, 0, -1, 0], [0, 1, 0, 0], [0, 0, 0, 1.0]])
+    annotations = [{"category": "car", "bbox_3d_ego": [0, 20, 0, 4, 1.5, 2, 0]}] if labels else []
     return RawRGBSample(
         token,
         sequence,
@@ -237,9 +231,7 @@ def test_history_is_label_free_and_targets_are_current_only() -> None:
 
 
 def test_selection_current_is_label_free_and_targets_none() -> None:
-    source, current, history = dataset(
-        "correct_past_2", tokens=("a:3",), current_labels=False
-    )
+    source, current, history = dataset("correct_past_2", tokens=("a:3",), current_labels=False)
     batch = source.collate([0])
     assert not current.labels_enabled and not history.labels_enabled
     assert batch.targets is None
@@ -283,9 +275,7 @@ def test_explicit_unreadable_slot_is_masked_without_backfill_or_read() -> None:
 def test_missing_admission_and_runtime_read_failure_fail_closed() -> None:
     admission = admissions()
     del admission["a:2"]
-    source, _, _ = dataset(
-        "correct_past_2", tokens=("a:3",), history_admission=admission
-    )
+    source, _, _ = dataset("correct_past_2", tokens=("a:3",), history_admission=admission)
     with pytest.raises(TemporalMediaError, match="no explicit media admission"):
         source[0]
     source, _, history = dataset("correct_past_2", tokens=("a:3",))

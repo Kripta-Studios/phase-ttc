@@ -258,18 +258,18 @@ def _worker(args: argparse.Namespace) -> int:
                     current=(identity,),
                     history=((None, None),),
                 )
+
+                def current_only_forward(
+                    image: torch.Tensor = image,
+                    calibration: torch.Tensor = calibration,
+                    size: torch.Tensor = size,
+                    context: TemporalBatchContext = empty_context,
+                ) -> Any:
+                    return adapter(image, calibration, None, size, temporal_context=context)
+
                 execute(
                     "current_only",
-                    lambda image=image, calibration=calibration, size=size,
-                    empty_context=empty_context: (
-                        adapter(
-                            image,
-                            calibration,
-                            None,
-                            size,
-                            temporal_context=empty_context,
-                        )
-                    ),
+                    current_only_forward,
                     raw.sample_token,
                     prepared.calibration,
                     raw.event_from_ego,
@@ -282,22 +282,29 @@ def _worker(args: argparse.Namespace) -> int:
                     history=((identity, identity),),
                 )
                 histories = image.unsqueeze(1).repeat(1, 2, 1, 1, 1)
+
+                def current_repeated_forward(
+                    image: torch.Tensor = image,
+                    calibration: torch.Tensor = calibration,
+                    size: torch.Tensor = size,
+                    context: TemporalBatchContext = repeated_context,
+                    histories: torch.Tensor = histories,
+                ) -> Any:
+                    return adapter(
+                        image,
+                        calibration,
+                        None,
+                        size,
+                        temporal_context=context,
+                        history_images=histories,
+                        history_ages_us=torch.zeros(1, 2, device=image.device),
+                        history_mask=torch.ones(1, 2, dtype=torch.bool, device=image.device),
+                        history_limit=2,
+                    )
+
                 execute(
                     "current_repeated",
-                    lambda image=image, calibration=calibration, size=size,
-                    repeated_context=repeated_context, histories=histories: (
-                        adapter(
-                            image,
-                            calibration,
-                            None,
-                            size,
-                            temporal_context=repeated_context,
-                            history_images=histories,
-                            history_ages_us=torch.zeros(1, 2, device=image.device),
-                            history_mask=torch.ones(1, 2, dtype=torch.bool, device=image.device),
-                            history_limit=2,
-                        )
-                    ),
+                    current_repeated_forward,
                     raw.sample_token,
                     prepared.calibration,
                     raw.event_from_ego,

@@ -21,8 +21,7 @@ def make_history(tmp_path: Path):
         run = tmp_path / name
         run.mkdir()
         rows = [
-            {"update": update, "sample_tokens": tokens}
-            for update in range(start, logged_end + 1)
+            {"update": update, "sample_tokens": tokens} for update in range(start, logged_end + 1)
         ]
         (run / "metrics.jsonl").write_text("\n".join(json.dumps(row) for row in rows))
         runs.append((run, start, end))

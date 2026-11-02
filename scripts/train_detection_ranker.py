@@ -86,12 +86,9 @@ def _int(value: object, name: str) -> int:
 
 def _box(value: Mapping[str, object]) -> EvaluationBox:
     translation = tuple(
-        _float(item, "translation")
-        for item in _array(value.get("translation_m"), "translation")
+        _float(item, "translation") for item in _array(value.get("translation_m"), "translation")
     )
-    size = tuple(
-        _float(item, "size") for item in _array(value.get("size_lwh_m"), "size")
-    )
+    size = tuple(_float(item, "size") for item in _array(value.get("size_lwh_m"), "size"))
     if len(translation) != 3 or len(size) != 3:
         raise ValueError("Serialized ground-truth vectors must contain three values")
     return EvaluationBox(
@@ -100,9 +97,7 @@ def _box(value: Mapping[str, object]) -> EvaluationBox:
         size_lwh_m=cast(tuple[float, float, float], size),
         yaw_rad=_float(value["yaw_rad"], "yaw_rad"),
         source_index=_int(value["source_index"], "source_index"),
-        ignore_reason=(
-            None if value.get("ignore_reason") is None else str(value["ignore_reason"])
-        ),
+        ignore_reason=(None if value.get("ignore_reason") is None else str(value["ignore_reason"])),
     )
 
 
@@ -262,9 +257,7 @@ def verify_fit_evidence(
     frames = sidecar.get("frames")
     if not isinstance(frames, list):
         raise ValueError("Fit sidecar must contain exactly one frame per train4096 token")
-    raw_frame_tokens = [
-        frame.get("sample_token") for frame in frames if isinstance(frame, Mapping)
-    ]
+    raw_frame_tokens = [frame.get("sample_token") for frame in frames if isinstance(frame, Mapping)]
     if len(raw_frame_tokens) != len(frames) or any(
         not isinstance(token, str) or not token for token in raw_frame_tokens
     ):
@@ -274,9 +267,7 @@ def verify_fit_evidence(
         raise ValueError("Fit sidecar must contain exactly one frame per train4096 token")
     if not isinstance(split, dict):
         raise ValueError("Fit split must be a JSON object")
-    ownership_sha256 = verify_train_token_ownership(
-        tokens, split, sequence_id_by_token
-    )
+    ownership_sha256 = verify_train_token_ownership(tokens, split, sequence_id_by_token)
     if receipt.get("train_ownership_sha256") != ownership_sha256:
         raise ValueError("GT receipt TRAIN ownership differs from recomputation")
     return recipe_sha256, receipt_sha256, ownership_sha256
@@ -284,9 +275,7 @@ def verify_fit_evidence(
 
 def fit(args: argparse.Namespace) -> None:
     protocol = EvaluationProtocol.default()
-    document, predictions, sidecar = load_predictions_and_sidecar(
-        args.predictions, args.sidecar
-    )
+    document, predictions, sidecar = load_predictions_and_sidecar(args.predictions, args.sidecar)
     ground_truth, sequence_id_by_token = restore_ground_truth(args.ground_truth, protocol)
     split_manifest = read_json(args.split_manifest)
     if not isinstance(split_manifest, dict):
@@ -323,9 +312,7 @@ def fit(args: argparse.Namespace) -> None:
 
 def apply(args: argparse.Namespace) -> None:
     protocol = EvaluationProtocol.default()
-    document, predictions, sidecar = load_predictions_and_sidecar(
-        args.predictions, args.sidecar
-    )
+    document, predictions, sidecar = load_predictions_and_sidecar(args.predictions, args.sidecar)
     bundle = read_json(args.bundle)
     if not isinstance(bundle, dict):
         raise ValueError("Ranker bundle must be a JSON object")
@@ -347,12 +334,8 @@ def apply(args: argparse.Namespace) -> None:
 def control(args: argparse.Namespace) -> None:
     """Materialize one preregistered fixed-pool ranking control."""
     protocol = EvaluationProtocol.default()
-    document, predictions, sidecar = load_predictions_and_sidecar(
-        args.predictions, args.sidecar
-    )
-    rescored = apply_score_control(
-        predictions, sidecar, protocol=protocol, control=args.control
-    )
+    document, predictions, sidecar = load_predictions_and_sidecar(args.predictions, args.sidecar)
+    rescored = apply_score_control(predictions, sidecar, protocol=protocol, control=args.control)
     output = dict(document)
     output.update(
         {

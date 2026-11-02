@@ -78,8 +78,7 @@ def _verified_unfinished_parent_chain(
         or prereg.get("status") != "RUNNING"
         or prereg.get("run_name") != old_run.name
         or prereg.get("config_sha256") != old_runtime_prereg["config_sha256"]
-        or prereg.get("evaluation_protocol_sha256")
-        != old_runtime_prereg["protocol_sha256"]
+        or prereg.get("evaluation_protocol_sha256") != old_runtime_prereg["protocol_sha256"]
         or prereg.get("runtime_provenance") != dict(old_provenance)
         or Path(str(prereg.get("config"))).resolve()
         != Path(str(source_state["config_path"])).resolve()
@@ -131,8 +130,10 @@ def _evaluation_roots_for_resumed_boundary(
         return {update: old_run for update in required}
     start_update = unfinished_chain.get("start_update")
     raw_chain = unfinished_chain.get("parent_run_chain")
-    if not isinstance(start_update, int) or isinstance(start_update, bool) or not isinstance(
-        raw_chain, list
+    if (
+        not isinstance(start_update, int)
+        or isinstance(start_update, bool)
+        or not isinstance(raw_chain, list)
     ):
         raise ValueError("Unfinished inherited-chain boundary is malformed")
     segments: list[tuple[int, Path]] = []
@@ -343,15 +344,11 @@ def build_migration_bundle(
         raise FileExistsError(f"Use a new migration output directory: {output}")
     output.mkdir(parents=True)
     try:
-        source_state = verify_source_state_receipt(
-            source_state_receipt, source_run=old_run
-        )
-        old, target, old_provenance, target_provenance, contract = (
-            _preregistration_contract(
-                old_run,
-                target_preregistration_dir,
-                performance_config_relative,
-            )
+        source_state = verify_source_state_receipt(source_state_receipt, source_run=old_run)
+        old, target, old_provenance, target_provenance, contract = _preregistration_contract(
+            old_run,
+            target_preregistration_dir,
+            performance_config_relative,
         )
         pinned_last = output / "pinned/last.pt"
         last_copy = stable_copy_checkpoint(
@@ -413,9 +410,7 @@ def build_migration_bundle(
             checkpoint=last,
             selected=selected_identity,
             evaluation_updates=tuple(cast(list[int], evaluation["updates"])),
-            full_selection_updates=tuple(
-                cast(list[int], evaluation["full_selection_updates"])
-            ),
+            full_selection_updates=tuple(cast(list[int], evaluation["full_selection_updates"])),
             selection_metric=str(evaluation["selection_metric"]),
             evaluation_root_by_update=_evaluation_roots_for_resumed_boundary(
                 old_run=old_run,
@@ -460,9 +455,7 @@ def build_migration_bundle(
             boundary=boundary,
             migrated_last=migrated_last,
             migrated_selected=migrated_selected,
-            old_preregistration_sha256=contract[
-                "parent_runtime_preregistration_sha256"
-            ],
+            old_preregistration_sha256=contract["parent_runtime_preregistration_sha256"],
             old_source_receipt_sha256=contract["parent_source_receipt_sha256"],
             source_state=source_state,
             recovery_boundary_sha256=sha256_file(output / "recovery_boundary.json"),
@@ -485,9 +478,7 @@ def build_migration_bundle(
             },
             "target_runtime_provenance": target_provenance,
             "resume_parent_summary_sha256": sha256_file(output / "summary.json"),
-            "recovery_boundary_sha256": sha256_file(
-                output / "recovery_boundary.json"
-            ),
+            "recovery_boundary_sha256": sha256_file(output / "recovery_boundary.json"),
             "producer_was_stopped": False,
             "cuda_or_model_constructed": False,
             "gpu_admission_complete": False,

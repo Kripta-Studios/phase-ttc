@@ -65,8 +65,7 @@ class EventCampaignExtension:
         if frame.sample_token.duplicated().any():
             raise ValueError("RGB exposure identities are not unique")
         self.cutoffs = {
-            str(token): int(cutoff)
-            for token, cutoff in frame.itertuples(index=False, name=None)
+            str(token): int(cutoff) for token, cutoff in frame.itertuples(index=False, name=None)
         }
         self.spec = EventFusionSpec(input_height=96, input_width=160)
         self.provenance = {

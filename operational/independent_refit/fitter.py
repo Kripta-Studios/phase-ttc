@@ -152,9 +152,7 @@ def bind_foundation_identity(
         or raw_receipt.get("stream_bounds_checked") is not False
     ):
         raise ValueError("Raw History V4 temporal/blocking contract differs")
-    rows = lineage.load_rotation_role(
-        fold_contract_path, rotation=rotation, role="producer"
-    )
+    rows = lineage.load_rotation_role(fold_contract_path, rotation=rotation, role="producer")
     cache = teacher_cache.load_teacher_role(
         teacher_cache_manifest_path,
         expected_manifest_sha256=teacher_cache_manifest_sha256,
@@ -228,9 +226,7 @@ def _synthetic_smoke(model: nn.Module, config: EngineeringSmokeConfig) -> dict[s
     )
     if config.modality == "rgb":
         inputs = torch.sigmoid(inputs)
-    delta_t_s = torch.full(
-        (config.batch_size, config.steps - 1), PACKET_US / 1_000_000.0
-    )
+    delta_t_s = torch.full((config.batch_size, config.steps - 1), PACKET_US / 1_000_000.0)
     with torch.inference_mode():
         output = model(inputs, delta_t_s)
     finite = bool(
@@ -338,8 +334,7 @@ def verify_engineering_smoke_checkpoint(path: Path) -> dict[str, Any]:
         or identity.get("config_sha256") != canonical_sha256(asdict(config))
         or identity.get("model_config_sha256") != canonical_sha256(asdict(model_config))
         or asdict(model_config) != asdict(expected_model_config)
-        or identity.get("foundation_identity_sha256")
-        != canonical_sha256(asdict(foundation))
+        or identity.get("foundation_identity_sha256") != canonical_sha256(asdict(foundation))
         or claimed != canonical_sha256(payload)
         or identity.get("state_tensor_sha256") != state_tensor_sha256(state)
         or identity.get("state_tensor_sha256") != state_tensor_sha256(expected_state)

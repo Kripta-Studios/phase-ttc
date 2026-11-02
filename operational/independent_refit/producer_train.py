@@ -61,6 +61,7 @@ class GeneratorLike(Protocol):
 
     def set_state(self, state: object) -> None: ...
 
+
 RUN_SCHEMA = "independent_phase_e_a5_run_contract_v1"
 CHECKPOINT_SCHEMA = "independent_phase_e_a5_checkpoint_v1"
 JOURNAL_SCHEMA = "independent_phase_e_a5_update_journal_v1"
@@ -231,8 +232,7 @@ def verify_run_contract(value: Mapping[str, Any]) -> None:
     if (
         value.get("schema") != RUN_SCHEMA
         or value.get("status") != "FROZEN_NOT_STARTED"
-        or value.get("scientific_mode")
-        != "SUPERVISED_TTC_BBOX_PLUS_FROZEN_DINO_AUXILIARY"
+        or value.get("scientific_mode") != "SUPERVISED_TTC_BBOX_PLUS_FROZEN_DINO_AUXILIARY"
         or value.get("ssl_claim_allowed") is not False
         or value.get("rotation") != 0
         or value.get("seed") != 7
@@ -264,12 +264,8 @@ def verify_run_contract(value: Mapping[str, Any]) -> None:
         "crosswalk_receipt": CROSSWALK_RECEIPT_SHA256,
         "crosswalk": CROSSWALK_PARQUET_SHA256,
         "role_mask": cast(Mapping[str, Any], plan["history_role_mask"])["sha256"],
-        "teacher_manifest": cast(Mapping[str, str], plan["parent_sha256"])[
-            "teacher_manifest"
-        ],
-        "teacher_role_receipt": cast(Mapping[str, str], plan["parent_sha256"])[
-            "teacher_role"
-        ],
+        "teacher_manifest": cast(Mapping[str, str], plan["parent_sha256"])["teacher_manifest"],
+        "teacher_role_receipt": cast(Mapping[str, str], plan["parent_sha256"])["teacher_role"],
     }
     if any(parents[name].get("sha256") != digest for name, digest in expected_hashes.items()):
         raise ValueError("Independent E_A5 run parent identity differs")
@@ -445,9 +441,9 @@ class IndependentDurableState:
         self.durable = self.committed
         lost = max(0, int(journal["committed_updates"]) - self.committed)
         lost += int(journal["pending_update_upper"])
-        self.recovery_upper = max(
-            int(saved["recovery_upper"]), int(journal["recovery_upper"])
-        ) + lost
+        self.recovery_upper = (
+            max(int(saved["recovery_upper"]), int(journal["recovery_upper"])) + lost
+        )
         if self.recovery_upper > int(self.contract["recovery_upper_limit"]):
             raise RuntimeError("Independent recovery budget exceeded")
         model.load_state_dict(saved["model_state_dict"], strict=True)
@@ -593,8 +589,7 @@ def run_e_a5(
         valid_source_tokens = frozenset(source.index["sample_token"].astype(str))
         if (
             not valid_source_tokens < teacher.allowed_tokens
-            or teacher.allowed_tokens - valid_source_tokens
-            != source.history_invalid_tokens
+            or teacher.allowed_tokens - valid_source_tokens != source.history_invalid_tokens
             or len(source.history_invalid_tokens) != 68
         ):
             raise ValueError("Teacher role does not equal valid source plus 68 masked tokens")
@@ -617,9 +612,7 @@ def run_e_a5(
         cursor: dict[str, Any] = {
             "epoch": 1,
             "batch_position": 0,
-            "order": epoch_order(
-                source.sampling_groups, generator, population_size=len(source)
-            ),
+            "order": epoch_order(source.sampling_groups, generator, population_size=len(source)),
             "curve": [],
             "pending_curve": [],
             "pending_curve_update": 0,
@@ -690,8 +683,7 @@ def run_e_a5(
                 optimizer.step()
                 state.commit_update()
                 losses = {
-                    name: float(value.detach().float().cpu())
-                    for name, value in components.items()
+                    name: float(value.detach().float().cpu()) for name, value in components.items()
                 }
                 losses["total"] = float(total.detach().float().cpu())
                 position += 1

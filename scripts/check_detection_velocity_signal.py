@@ -159,9 +159,7 @@ def main() -> int:
         "development_metrics": sha256_file(
             ROOT / "src/e_jepa_ttc/detection/development_metrics.py"
         ),
-        "evaluation_ap_fast": sha256_file(
-            ROOT / "src/e_jepa_ttc/detection/evaluation_ap_fast.py"
-        ),
+        "evaluation_ap_fast": sha256_file(ROOT / "src/e_jepa_ttc/detection/evaluation_ap_fast.py"),
     }
     report["input_paths"] = {
         "train_results": str(args.train_results),

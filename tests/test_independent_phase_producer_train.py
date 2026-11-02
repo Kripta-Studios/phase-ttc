@@ -52,9 +52,7 @@ def test_curve_transaction_recovers_both_crash_boundaries(
         nonlocal durable
         durable = deepcopy(resumed)
 
-    subject._durable_curve_transaction(
-        tmp_path, "contract", resumed, resumed_checkpoint
-    )
+    subject._durable_curve_transaction(tmp_path, "contract", resumed, resumed_checkpoint)
     assert durable["curve"] == []
     assert durable["pending_curve"] == []
     artifact = tmp_path / "curves/curve_000100.json"

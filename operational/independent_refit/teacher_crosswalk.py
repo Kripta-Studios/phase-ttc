@@ -357,12 +357,11 @@ def verify_teacher_crosswalk(receipt_path: Path, fold_contract_path: Path) -> di
         for members in expected_members
     ):
         raise ValueError("Raw Garl RGB members differ during crosswalk verification")
-    if (
-        frame["raw_rgb_member_0"].astype(str).tolist()
-        != [str(members[0]) for members in expected_members]
-        or frame["raw_rgb_member_1"].astype(str).tolist()
-        != [str(members[1]) for members in expected_members]
-    ):
+    if frame["raw_rgb_member_0"].astype(str).tolist() != [
+        str(members[0]) for members in expected_members
+    ] or frame["raw_rgb_member_1"].astype(str).tolist() != [
+        str(members[1]) for members in expected_members
+    ]:
         raise ValueError("Crosswalk raw RGB member identity differs")
     if receipt.get("role_token_sets") != _role_token_sets(fold_contract_path):
         raise ValueError("Teacher crosswalk role token sets differ from the fold")

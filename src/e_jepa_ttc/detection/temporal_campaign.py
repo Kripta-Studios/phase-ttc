@@ -37,18 +37,12 @@ TemporalCampaignVariant = Literal[
 
 TEMPORAL_CAMPAIGN_SCHEMA = "eap_detection_temporal_campaign_v1"
 TEMPORAL_MAXIMUM_HISTORY_AGE_US = 500_000
-D4096_V5_MANIFEST_SHA256 = (
-    "9beeb6a3c5b76bf994808eee0b3f0dfa2f7339f139bd120dbfa6318e414945f1"
-)
-FULL_SELECTION_V1_SHA256 = (
-    "e4303685e39f635a47b76921b9c5f38821e8715f3aa5f202c73a2c32dae1a497"
-)
+D4096_V5_MANIFEST_SHA256 = "9beeb6a3c5b76bf994808eee0b3f0dfa2f7339f139bd120dbfa6318e414945f1"
+FULL_SELECTION_V1_SHA256 = "e4303685e39f635a47b76921b9c5f38821e8715f3aa5f202c73a2c32dae1a497"
 TEMPORAL_MEDIA_ADMISSION_V2_SHA256 = (
     "1e00d240adba04011063341a3d8d6cea6c0afd3bce310a18d4a8710701e43d38"
 )
-HISTORY_MEDIA_RECEIPT_V2_SHA256 = (
-    "0804d352451fbf5296dc95aa4f61c4c7335bf3b53a0d71181196ec7a9f4fb9c5"
-)
+HISTORY_MEDIA_RECEIPT_V2_SHA256 = "0804d352451fbf5296dc95aa4f61c4c7335bf3b53a0d71181196ec7a9f4fb9c5"
 
 
 class TemporalMediaError(RuntimeError):
@@ -391,10 +385,8 @@ class TemporalCampaignDataset:
         if (
             sample.sample_token != token
             or sample.sequence_id != str(row["sequence_id"])
-            or sample.exposure_start_us
-            != int(cast(Any, row["rgb_exposure_start_timestamp_us"]))
-            or sample.exposure_end_us
-            != int(cast(Any, row["rgb_exposure_end_timestamp_us"]))
+            or sample.exposure_start_us != int(cast(Any, row["rgb_exposure_start_timestamp_us"]))
+            or sample.exposure_end_us != int(cast(Any, row["rgb_exposure_end_timestamp_us"]))
         ):
             raise TemporalMediaError(f"RGB identity/timestamps differ from exposure index: {token}")
         if history:
@@ -426,8 +418,7 @@ class TemporalCampaignDataset:
                 raise TemporalMediaError(f"Canonical history differs from admission: {token}")
             if (
                 admission_row["sequence_id"] != temporal.sequence_id
-                or admission_row["current_exposure_start_us"]
-                != temporal.current_exposure_start_us
+                or admission_row["current_exposure_start_us"] != temporal.current_exposure_start_us
                 or admission_row["current_exposure_end_us"] != temporal.current_exposure_end_us
                 or admission_row["decision_sensor_us"] != temporal.decision_sensor_us
             ):
@@ -547,10 +538,14 @@ class TemporalCampaignDataset:
                     expected_mask[slot], expected_age[slot] = False, None
             if self.config.variant == "correct_past_1":
                 expected_mask[0], expected_age[0] = False, None
-            if history_mask != expected_mask or [
-                None if not valid else history_ages[slot]
-                for slot, valid in enumerate(history_mask)
-            ] != expected_age:
+            if (
+                history_mask != expected_mask
+                or [
+                    None if not valid else history_ages[slot]
+                    for slot, valid in enumerate(history_mask)
+                ]
+                != expected_age
+            ):
                 raise TemporalMediaError(
                     f"Runtime history mask/ages differ from admission: {token}"
                 )
@@ -635,9 +630,7 @@ class TemporalCampaignDataset:
                 "current_tokens": [item.current_identity.frame_id for item in items],
                 "current_member_sha256": [item.current_member_sha256 for item in items],
                 "history_member_sha256": [list(item.history_member_sha256) for item in items],
-                "canonical_history_tokens": [
-                    list(item.canonical_history_tokens) for item in items
-                ],
+                "canonical_history_tokens": [list(item.canonical_history_tokens) for item in items],
                 "history_slot_reasons": [list(item.history_slot_reasons) for item in items],
             },
         )
@@ -679,8 +672,7 @@ class TemporalCampaignSampler:
             state["schema"] != "eap_detection_temporal_sampler_state_v1"
             or state["manifest_sha256"] != self.dataset.manifest_sha256
             or state["variant"] != self.dataset.config.variant
-            or tuple(cast(Sequence[str], state["current_tokens"]))
-            != self.dataset.current_tokens
+            or tuple(cast(Sequence[str], state["current_tokens"])) != self.dataset.current_tokens
         ):
             raise ValueError("Temporal sampler state belongs to another campaign")
         self._sampler.load_state_dict(cast(Mapping[str, Any], state["sampler"]))
@@ -735,14 +727,10 @@ def build_v5_temporal_campaign(
             raise ValueError("Full-selection artifact differs from the D4096-v5 contract")
         current_tokens = selection["sample_tokens"]
         sequences = selection["sequence_ids"]
-        if not set(manifest["roles"]["selection"]["sample_tokens"]).issubset(
-            current_tokens
-        ):
+        if not set(manifest["roles"]["selection"]["sample_tokens"]).issubset(current_tokens):
             raise ValueError("D4096 monitor selection is not a subset of full selection")
         source_hashes["full_selection_v1"] = selection_hash
-    expected_count = {"train": 4096, "monitor_selection": 1024, "full_selection": 23958}[
-        population
-    ]
+    expected_count = {"train": 4096, "monitor_selection": 1024, "full_selection": 23958}[population]
     if len(current_tokens) != expected_count or len(set(current_tokens)) != expected_count:
         raise ValueError("Frozen temporal current-frame population count differs")
     root = Path(dataset_root).resolve()
@@ -766,7 +754,9 @@ def build_v5_temporal_campaign(
     current_dataset_cls = EAPRGBDataset if current_labels else _LabelFreeEAPRGBDataset
     current_reader = EAPTokenReader(
         current_dataset_cls(
-            root, current_tokens, max_label_sequences=max_label_sequences,
+            root,
+            current_tokens,
+            max_label_sequences=max_label_sequences,
             max_open_shards=max_open_shards,
         ),
         labels_enabled=current_labels,

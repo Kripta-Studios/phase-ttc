@@ -18,9 +18,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--split", type=Path, default=Path("data/splits/eap_detection_candidate_v1.json")
     )
-    parser.add_argument(
-        "--garl-data", type=Path, required=True
-    )
+    parser.add_argument("--garl-data", type=Path, required=True)
     parser.add_argument(
         "--garl-annotations",
         type=Path,

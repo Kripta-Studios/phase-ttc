@@ -53,8 +53,10 @@ def optimized_runtime_relative_paths(performance_config_relative: str) -> tuple[
 
 
 def _digest(value: object, field: str) -> str:
-    if not isinstance(value, str) or len(value) != 64 or any(
-        character not in "0123456789abcdef" for character in value
+    if (
+        not isinstance(value, str)
+        or len(value) != 64
+        or any(character not in "0123456789abcdef" for character in value)
     ):
         raise ValueError(f"{field} must be a lowercase SHA-256")
     return value

@@ -151,9 +151,7 @@ def test_mode_boundary_cleans_then_resets_peaks(monkeypatch: pytest.MonkeyPatch)
     calls: list[str] = []
     monkeypatch.setattr(torch.cuda, "synchronize", lambda: calls.append("synchronize"))
     monkeypatch.setattr(torch.cuda, "empty_cache", lambda: calls.append("empty_cache"))
-    monkeypatch.setattr(
-        torch.cuda, "reset_peak_memory_stats", lambda: calls.append("reset_peaks")
-    )
+    monkeypatch.setattr(torch.cuda, "reset_peak_memory_stats", lambda: calls.append("reset_peaks"))
     monkeypatch.setattr(torch.cuda, "memory_allocated", lambda: 11)
     monkeypatch.setattr(torch.cuda, "memory_reserved", lambda: 17)
     boundary = begin_cuda_mode_boundary()

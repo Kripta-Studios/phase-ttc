@@ -328,9 +328,7 @@ def _snapshot(output: Path, paths: list[Path]) -> dict[str, str]:
 
 def campaign_owned_paths(extra_owned_paths: tuple[Path, ...] = ()) -> list[Path]:
     """Return the exact ordered runtime source closure frozen into lineage."""
-    return [ROOT / relative for relative in base_runtime_relative_paths()] + list(
-        extra_owned_paths
-    )
+    return [ROOT / relative for relative in base_runtime_relative_paths()] + list(extra_owned_paths)
 
 
 def snapshot_media_admission(output: Path, source: Path) -> dict[str, str]:
@@ -409,10 +407,7 @@ def run(
     stop_after_update: int | None = None,
     *,
     dataset_factory: (
-        Callable[
-            [str | Path, list[str] | tuple[str, ...], CampaignConfig], EAPRGBDataset
-        ]
-        | None
+        Callable[[str | Path, list[str] | tuple[str, ...], CampaignConfig], EAPRGBDataset] | None
     ) = None,
     runtime_extension: Mapping[str, object] | None = None,
     extra_owned_paths: tuple[Path, ...] = (),

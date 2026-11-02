@@ -109,10 +109,13 @@ def _ap101(flags: Sequence[int], count: int) -> float | None:
     for rank, flag in enumerate(flags, 1):
         correct += flag
         curve.append((correct / count, correct / rank))
-    return sum(
-        max((precision for recall, precision in curve if recall >= step / 100), default=0.0)
-        for step in range(101)
-    ) / 101
+    return (
+        sum(
+            max((precision for recall, precision in curve if recall >= step / 100), default=0.0)
+            for step in range(101)
+        )
+        / 101
+    )
 
 
 def score_constant_streaming(
@@ -302,9 +305,7 @@ def score_constant_streaming(
                     "TP": class_agnostic_tp[threshold],
                     "FN": eligible_count - class_agnostic_tp[threshold],
                     "recall": (
-                        class_agnostic_tp[threshold] / eligible_count
-                        if eligible_count
-                        else None
+                        class_agnostic_tp[threshold] / eligible_count if eligible_count else None
                     ),
                 }
                 for threshold in protocol.distance_thresholds_m
@@ -519,12 +520,15 @@ def _frames(
         image_wh = tuple(receipt["image_wh"])
         if len(receipt["member_sha256"]) != 64 or image_wh != (1280, 720):
             raise ValueError(f"Media admission lacks verified geometry/hash: {token}")
-        yield token, build_evaluation_ground_truth(
-            labels_by_sequence[sequence].get(token, []),
-            intrinsic=media["K_event"],
-            event_from_ego=media["T_event_ego"],
-            image_wh=image_wh,  # type: ignore[arg-type]
-            protocol=protocol,
+        yield (
+            token,
+            build_evaluation_ground_truth(
+                labels_by_sequence[sequence].get(token, []),
+                intrinsic=media["K_event"],
+                event_from_ego=media["T_event_ego"],
+                image_wh=image_wh,  # type: ignore[arg-type]
+                protocol=protocol,
+            ),
         )
 
 

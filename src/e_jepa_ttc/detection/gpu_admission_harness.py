@@ -51,8 +51,7 @@ class Tolerances:
     def validate(self) -> None:
         values = tuple(self.__dict__.values())
         if not all(
-            isinstance(value, float) and math.isfinite(value) and value > 0
-            for value in values
+            isinstance(value, float) and math.isfinite(value) and value > 0 for value in values
         ):
             raise ValueError("Every admission tolerance must be finite and positive")
         if self.repeat_multiplier < 1:
@@ -60,8 +59,10 @@ class Tolerances:
 
 
 def _digest(value: object, field: str) -> str:
-    if not isinstance(value, str) or len(value) != 64 or any(
-        character not in "0123456789abcdef" for character in value
+    if (
+        not isinstance(value, str)
+        or len(value) != 64
+        or any(character not in "0123456789abcdef" for character in value)
     ):
         raise ValueError(f"{field} must be a lowercase SHA-256")
     return value
@@ -106,9 +107,7 @@ def load_plan(path: Path) -> dict[str, Any]:
             raise ValueError(f"Resource gate must be a positive integer: {field}")
     if raw.get("candidate_policy") != "ENGINEERING_NON_CANDIDATE_DISCARD_OUTPUTS":
         raise ValueError("Engineering outputs must be declared non-candidates")
-    if not isinstance(raw.get("execution_receipt_path"), str) or not raw[
-        "execution_receipt_path"
-    ]:
+    if not isinstance(raw.get("execution_receipt_path"), str) or not raw["execution_receipt_path"]:
         raise ValueError("execution_receipt_path must be preregistered")
     _digest(raw.get("config_sha256"), "config_sha256")
     _digest(raw.get("protocol_sha256"), "protocol_sha256")
@@ -146,8 +145,10 @@ def load_plan(path: Path) -> dict[str, Any]:
         if selected_path.parent != resume_path.parent or selected_path.name != "selected.pt":
             raise ValueError(f"{name} selected checkpoint is not the resume sibling selected.pt")
         command = arm.get("command")
-        if not isinstance(command, list) or not command or not all(
-            isinstance(value, str) and value for value in command
+        if (
+            not isinstance(command, list)
+            or not command
+            or not all(isinstance(value, str) and value for value in command)
         ):
             raise ValueError(f"{name}.command must be a nonempty argv list")
         if int(arm["stop_after_update"]) - int(arm["start_update"]) != int(raw["updates"]):
@@ -193,9 +194,10 @@ def load_plan(path: Path) -> dict[str, Any]:
             raise ValueError(f"{runtime_role} scientific bindings differ from the plan")
         code = prereg.get("code_sha256")
         producer_key = f"scripts/{Path(binding_by_role[producer_role]['path']).name}"
-        if not isinstance(code, dict) or code.get(producer_key) != binding_by_role[producer_role][
-            "sha256"
-        ]:
+        if (
+            not isinstance(code, dict)
+            or code.get(producer_key) != binding_by_role[producer_role]["sha256"]
+        ):
             raise ValueError(f"{runtime_role} does not bind its declared producer bytes")
     for name in ARM_NAMES:
         command = arms[name]["command"]
@@ -214,9 +216,7 @@ def load_plan(path: Path) -> dict[str, Any]:
             "--stop-after-update": str(arms[name]["stop_after_update"]),
         }
         if name == "optimized":
-            expected_flags["--performance-config"] = binding_by_role["performance_config"][
-                "path"
-            ]
+            expected_flags["--performance-config"] = binding_by_role["performance_config"]["path"]
         for flag, expected in expected_flags.items():
             actual = _flag_value(command, flag)
             if flag == "--stop-after-update":
@@ -247,13 +247,15 @@ def validate_checkpoint_lineage(plan: Mapping[str, Any]) -> None:
             if checkpoint.get("protocol_sha256") != plan["protocol_sha256"]:
                 raise ValueError(f"{name}.{artifact} protocol differs from the plan")
             provenance = checkpoint.get("runtime_provenance")
-            if not isinstance(provenance, dict) or provenance.get(
-                "runtime_preregistration_sha256"
-            ) != prereg_by_arm[name]["sha256"]:
+            if (
+                not isinstance(provenance, dict)
+                or provenance.get("runtime_preregistration_sha256") != prereg_by_arm[name]["sha256"]
+            ):
                 raise ValueError(f"{name}.{artifact} runtime preregistration differs")
-            if artifact == "resume_checkpoint" and checkpoint.get("update") != plan["arms"][
-                name
-            ]["start_update"]:
+            if (
+                artifact == "resume_checkpoint"
+                and checkpoint.get("update") != plan["arms"][name]["start_update"]
+            ):
                 raise ValueError(f"{name} resume update differs from preregistered start_update")
 
 
@@ -311,10 +313,7 @@ def verify_numerical_metrics(plan: Mapping[str, Any]) -> dict[str, object]:
     while the ordinary admission remains non-passing.
     """
     count = int(plan["updates"])
-    rows = {
-        name: _records(Path(plan["arms"][name]["metrics_path"]), count)
-        for name in ARM_NAMES
-    }
+    rows = {name: _records(Path(plan["arms"][name]["metrics_path"]), count) for name in ARM_NAMES}
     for index in range(count):
         reference = rows["old_A"][index]
         expected_update = int(plan["arms"]["old_A"]["start_update"]) + index + 1
@@ -342,18 +341,12 @@ def verify_numerical_metrics(plan: Mapping[str, Any]) -> dict[str, object]:
             if index == 0
             else tolerance.later_loss_absolute_floor
         )
-        cap = (
-            tolerance.first_loss_absolute_cap
-            if index == 0
-            else tolerance.later_loss_absolute_cap
-        )
+        cap = tolerance.first_loss_absolute_cap if index == 0 else tolerance.later_loss_absolute_cap
         allowed = _ceiling(repeat, floor, cap, tolerance.repeat_multiplier)
         observed = abs(old_a - optimized)
         if observed > allowed:
             raise ValueError(f"Optimized loss drift exceeds preregistered ceiling at {index + 1}")
-        head_losses = {
-            name: rows[name][index].get("losses") for name in ARM_NAMES
-        }
+        head_losses = {name: rows[name][index].get("losses") for name in ARM_NAMES}
         if not all(isinstance(value, dict) for value in head_losses.values()):
             raise ValueError("Per-head losses are required for admission")
         typed_head_losses = {
@@ -416,10 +409,7 @@ def verify_metrics(plan: Mapping[str, Any]) -> dict[str, object]:
     """Compare exact inputs, bounded drift, and preregistered performance gates."""
     numerical_result = verify_numerical_metrics(plan)
     count = int(plan["updates"])
-    rows = {
-        name: _records(Path(plan["arms"][name]["metrics_path"]), count)
-        for name in ARM_NAMES
-    }
+    rows = {name: _records(Path(plan["arms"][name]["metrics_path"]), count) for name in ARM_NAMES}
     tolerance = Tolerances(**plan["tolerances"])
     halves = (range(0, count // 2), range(count // 2, count))
     speedups = []
@@ -451,8 +441,7 @@ def verify_metrics(plan: Mapping[str, Any]) -> dict[str, object]:
             or summary.get("final_update") != plan["arms"][name]["stop_after_update"]
             or summary.get("external_execution_stop_requested")
             != plan["arms"][name]["stop_after_update"]
-            or summary.get("stop_reason")
-            != "external_execution_stop_after_completed_update"
+            or summary.get("stop_reason") != "external_execution_stop_after_completed_update"
             or summary.get("config_sha256") != plan["config_sha256"]
             or summary.get("evaluation_protocol_sha256") != plan["protocol_sha256"]
             or not isinstance(summary.get("runtime_provenance"), dict)

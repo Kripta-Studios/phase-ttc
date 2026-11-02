@@ -464,12 +464,10 @@ def _main() -> None:
                 _as_int(item["peak_reserved_bytes"]) for item in aggregate[batch_size]
             ),
             "incremental_peak_allocated_bytes_max": max(
-                _as_int(item["incremental_peak_allocated_bytes"])
-                for item in aggregate[batch_size]
+                _as_int(item["incremental_peak_allocated_bytes"]) for item in aggregate[batch_size]
             ),
             "incremental_peak_reserved_bytes_max": max(
-                _as_int(item["incremental_peak_reserved_bytes"])
-                for item in aggregate[batch_size]
+                _as_int(item["incremental_peak_reserved_bytes"]) for item in aggregate[batch_size]
             ),
             "max_abs": max(
                 _as_float(item["outputs"]["max_abs"])  # type: ignore[index]

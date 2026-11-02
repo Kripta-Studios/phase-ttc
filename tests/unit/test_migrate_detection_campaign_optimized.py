@@ -11,9 +11,7 @@ import pytest
 
 def load_script():
     path = Path(__file__).parents[2] / "scripts/migrate_detection_campaign_optimized.py"
-    spec = importlib.util.spec_from_file_location(
-        "migrate_detection_campaign_optimized", path
-    )
+    spec = importlib.util.spec_from_file_location("migrate_detection_campaign_optimized", path)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -182,12 +180,10 @@ def test_intentional_stop_parent_uses_recovery_boundary_without_fake_summary(
             "status": "RECOVERY_BOUNDARY_FROM_INTENTIONAL_STOP",
             "final_update": 3072,
             "selected_checkpoint": None,
-        }
+        },
     ]
     assert summary["migration_lineage"]["source_summary_path"] is None
-    assert summary["migration_lineage"]["unfinished_preregistration_sha256"] == (
-        "7" * 64
-    )
+    assert summary["migration_lineage"]["unfinished_preregistration_sha256"] == ("7" * 64)
 
 
 def test_unfinished_preregistration_preserves_real_nonempty_parent_shape(

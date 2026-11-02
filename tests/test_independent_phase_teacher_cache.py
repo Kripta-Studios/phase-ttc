@@ -33,8 +33,10 @@ def _fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
     freeze_sha = teacher_cache.file_sha256(source / "TEACHER_FREEZE.json")
     tokens = np.asarray([f"g{i // 4}_track_{i:02d}" for i in range(8)])
     targets = (
-        np.arange(8 * 2 * 6 * 32 * 32, dtype=np.int64) % 1000
-    ).astype(np.float16).reshape(8, 2, 6, 32, 32)
+        (np.arange(8 * 2 * 6 * 32 * 32, dtype=np.int64) % 1000)
+        .astype(np.float16)
+        .reshape(8, 2, 6, 32, 32)
+    )
     valid = np.ones(targets.shape, dtype=np.bool_)
     rgb = np.full((8, 2), "a" * 64)
     shard = teacher / "shard_00000.npz"
@@ -122,9 +124,7 @@ def _fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
     _write_json(crosswalk_inventory, {"fixture": True})
     crosswalk_receipt = contract.parent / "TEACHER_CROSSWALK.json"
     _write_json(crosswalk_receipt, {"fixture": True})
-    _write_json(
-        contract.parent / "POPULATION.json", {"sample_token_set_sha256": "token-set"}
-    )
+    _write_json(contract.parent / "POPULATION.json", {"sample_token_set_sha256": "token-set"})
     row_locality = tmp_path / "ROW_LOCALITY.json"
     _write_json(
         row_locality,
@@ -222,9 +222,7 @@ def _fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
             "independent_contract_review_status": "SHIP",
             "conversion_only_no_fitting": True,
             "fold_contract_sha256": teacher_cache.file_sha256(contract),
-            "population_sha256": teacher_cache.file_sha256(
-                contract.parent / "population.parquet"
-            ),
+            "population_sha256": teacher_cache.file_sha256(contract.parent / "population.parquet"),
             "source_teacher_manifest_sha256": pins.manifest_sha256,
             "row_locality_receipt_sha256": pins.row_locality_receipt_sha256,
             "teacher_parent_sha256": pins.teacher_parent_sha256,
@@ -246,9 +244,7 @@ def _fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
     }
 
 
-def test_prepare_verify_and_role_whitelist(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_prepare_verify_and_role_whitelist(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     fixture = _fixture(tmp_path, monkeypatch)
     output = tmp_path / "cache"
     result = teacher_cache.prepare_teacher_cache(
@@ -262,16 +258,16 @@ def test_prepare_verify_and_role_whitelist(
     )
     assert result["rows"] == 5
     manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
-    assert manifest["teacher_crosswalk_receipt_sha256"] == fixture[
-        "pins"
-    ].crosswalk_receipt_sha256
-    assert teacher_cache.file_sha256(output / "teacher_crosswalk.parquet") == fixture[
-        "pins"
-    ].crosswalk_sha256
+    assert manifest["teacher_crosswalk_receipt_sha256"] == fixture["pins"].crosswalk_receipt_sha256
+    assert (
+        teacher_cache.file_sha256(output / "teacher_crosswalk.parquet")
+        == fixture["pins"].crosswalk_sha256
+    )
     converted_index = pd.read_parquet(output / "index.parquet")
-    assert converted_index["public_source_ordinal"].tolist() == fixture["population"][
-        "public_source_ordinal"
-    ].tolist()
+    assert (
+        converted_index["public_source_ordinal"].tolist()
+        == fixture["population"]["public_source_ordinal"].tolist()
+    )
     verified = teacher_cache.verify_teacher_cache(
         output / "MANIFEST.json",
         expected_manifest_sha256=result["manifest_sha256"],
@@ -328,9 +324,7 @@ def test_rejects_missing_root_review(tmp_path: Path, monkeypatch: pytest.MonkeyP
         )
 
 
-def test_rejects_source_crosswalk_mismatch(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_rejects_source_crosswalk_mismatch(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     fixture = _fixture(tmp_path, monkeypatch)
     population_path = fixture["contract"].parent / "population.parquet"
     population = pd.read_parquet(population_path)
@@ -377,9 +371,7 @@ def test_rejects_target_only_source_mutation_after_crosswalk_gate(
         )
 
 
-def test_rejects_corrupt_converted_shard(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_rejects_corrupt_converted_shard(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     fixture = _fixture(tmp_path, monkeypatch)
     output = tmp_path / "cache"
     result = teacher_cache.prepare_teacher_cache(
@@ -419,9 +411,7 @@ def _prepared_cache(
     return fixture, output, result
 
 
-def test_rejects_forged_index_location(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_rejects_forged_index_location(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     fixture, output, _result = _prepared_cache(tmp_path, monkeypatch)
     index_path = output / "index.parquet"
     index = pd.read_parquet(index_path)
@@ -470,9 +460,7 @@ def test_rejects_resealed_public_ordinal_mismatch(
         )
 
 
-def test_rejects_resealed_source_reference(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_rejects_resealed_source_reference(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     fixture, output, _result = _prepared_cache(tmp_path, monkeypatch)
     receipt_path = output / "shards/shard_00000.json"
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
@@ -614,9 +602,7 @@ def test_verify_only_cli_does_not_require_conversion_inputs(tmp_path: Path) -> N
 def test_owned_path_guard_rejects_root_and_external_path(tmp_path: Path) -> None:
     root = tmp_path / "independent_phase"
     root.mkdir()
-    accepted = prepare_independent_phase_teacher._require_owned_path(
-        root / "cache", root, "cache"
-    )
+    accepted = prepare_independent_phase_teacher._require_owned_path(root / "cache", root, "cache")
     assert accepted == (root / "cache").resolve()
     with pytest.raises(ValueError, match="must stay below"):
         prepare_independent_phase_teacher._require_owned_path(root, root, "root")

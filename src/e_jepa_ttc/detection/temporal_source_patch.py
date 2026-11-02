@@ -59,9 +59,7 @@ class TemporalSourceContract:
 def _mono_forward(source: str) -> ast.FunctionDef:
     tree = ast.parse(source)
     classes = [
-        node
-        for node in tree.body
-        if isinstance(node, ast.ClassDef) and node.name == "MonoDGP"
+        node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == "MonoDGP"
     ]
     if len(classes) != 1:
         raise ValueError("Expected exactly one MonoDGP class")

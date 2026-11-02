@@ -111,16 +111,12 @@ def main() -> None:
         "|---:|---:|---:|",
     ]
     curves = {
-        name: {r["update"]: r["AP"] for r in rows}
-        for name, rows in result["monitor"].items()
+        name: {r["update"]: r["AP"] for r in rows} for name, rows in result["monitor"].items()
     }
     if set(curves["r2"]) != set(curves["r2_rare"]):
         raise ValueError("Monitor grids differ")
     for update in sorted(curves["r2"]):
-        lines.append(
-            f"| {update} | {curves['r2'][update]:.8f} | "
-            f"{curves['r2_rare'][update]:.8f} |"
-        )
+        lines.append(f"| {update} | {curves['r2'][update]:.8f} | {curves['r2_rare'][update]:.8f} |")
     lines += [
         "",
         "La comparación principal usa checkpoints finales al mismo presupuesto. "

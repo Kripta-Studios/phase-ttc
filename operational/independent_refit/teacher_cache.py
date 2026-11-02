@@ -40,18 +40,12 @@ EXPECTED_SOURCE_ADMISSION_SHA256 = (
 EXPECTED_WEIGHT_FILE_SHA256 = "8bab82eaa133954d0557bebf70416e0b667fa417a19ea47b697683b34190633d"
 EXPECTED_ORDERED_STATE_SHA256 = "96ad081d5863ba14707d2e3bb734b7fa8dfbf3248cb67ddfcc74d86dd160d628"
 EXPECTED_MODEL_REVISION = "e959efa74c867491dcfe3ec3e4f97382e39025b3"
-EXPECTED_FOLD_CONTRACT_SHA256 = (
-    "ef67d27078a978cdfb94f0f99f660a44d64079fe5e9e2c1887841e751b6d81a4"
-)
+EXPECTED_FOLD_CONTRACT_SHA256 = "ef67d27078a978cdfb94f0f99f660a44d64079fe5e9e2c1887841e751b6d81a4"
 EXPECTED_ROW_LOCALITY_RECEIPT_SHA256 = (
     "9ed1ff47286f200407c18ea894cf760644238ae9977409ec1ad6b4c4fdbaac7e"
 )
-EXPECTED_MODEL_CONFIG_SHA256 = (
-    "cb33dd99f77a2a73806fa218df80782a15e81422eb6d6fb2816534a3cb620360"
-)
-EXPECTED_TEACHER_PARENT_SHA256 = (
-    "f9cdfb13ba99299de717423cc8d0334ded8e9628895e7a7f4921fcdb13584b75"
-)
+EXPECTED_MODEL_CONFIG_SHA256 = "cb33dd99f77a2a73806fa218df80782a15e81422eb6d6fb2816534a3cb620360"
+EXPECTED_TEACHER_PARENT_SHA256 = "f9cdfb13ba99299de717423cc8d0334ded8e9628895e7a7f4921fcdb13584b75"
 EXPECTED_TEACHER_REPOSITORY = "facebook/dinov3-convnext-large-pretrain-lvd1689m"
 EXPECTED_WEIGHT_BYTES = 784_957_976
 EXPECTED_TEACHER_SOURCE_SHA256 = "c03174474ddde846266b85356f7032f5ce18158e97af6cdf8dbf1634e7b77370"
@@ -99,8 +93,10 @@ def file_sha256(path: Path) -> str:
 
 
 def _is_digest(value: object) -> bool:
-    return isinstance(value, str) and len(value) == 64 and all(
-        character in "0123456789abcdef" for character in value
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(character in "0123456789abcdef" for character in value)
     )
 
 
@@ -296,11 +292,9 @@ def _validate_authorization(
         or authorization.get("fold_contract_sha256") != file_sha256(fold_contract_path)
         or authorization.get("population_sha256") != file_sha256(population_path)
         or authorization.get("source_teacher_manifest_sha256") != pins.manifest_sha256
-        or authorization.get("row_locality_receipt_sha256")
-        != pins.row_locality_receipt_sha256
+        or authorization.get("row_locality_receipt_sha256") != pins.row_locality_receipt_sha256
         or authorization.get("teacher_parent_sha256") != pins.teacher_parent_sha256
-        or authorization.get("teacher_crosswalk_receipt_sha256")
-        != pins.crosswalk_receipt_sha256
+        or authorization.get("teacher_crosswalk_receipt_sha256") != pins.crosswalk_receipt_sha256
         or authorization.get("teacher_crosswalk_sha256") != pins.crosswalk_sha256
         or authorization.get("teacher_crosswalk_inventory_sha256")
         != pins.crosswalk_inventory_sha256
@@ -356,8 +350,7 @@ def _verify_teacher_parent(
     parent = _json(path)
     if (
         parent.get("schema") != "independent_phase_frozen_teacher_parent_v1"
-        or parent.get("status")
-        != "AVAILABLE_FROZEN_NOT_EXTRACTED_FOR_INDEPENDENT_REFIT"
+        or parent.get("status") != "AVAILABLE_FROZEN_NOT_EXTRACTED_FOR_INDEPENDENT_REFIT"
         or parent.get("kind") != "frozen_dinov3_teacher_weights"
         or parent.get("fold_contract_sha256") != pins.fold_contract_sha256
         or parent.get("repository") != pins.teacher_repository
@@ -431,9 +424,7 @@ def _verify_source_header(
 
 def _verified_source_rows(
     manifest: Mapping[str, Any], directory: Path, pins: SourcePins
-) -> Iterator[
-    tuple[int, str, np.ndarray, np.ndarray, np.ndarray, dict[str, str | int]]
-]:
+) -> Iterator[tuple[int, str, np.ndarray, np.ndarray, np.ndarray, dict[str, str | int]]]:
     expected_ordinal = 0
     for reference in manifest["ordered_shards"]:
         if not isinstance(reference, dict):
@@ -520,9 +511,7 @@ def _verified_source_rows(
 
 def _write_output_shard(
     directory: Path,
-    rows: list[
-        tuple[dict[str, Any], np.ndarray, np.ndarray, np.ndarray, dict[str, str | int]]
-    ],
+    rows: list[tuple[dict[str, Any], np.ndarray, np.ndarray, np.ndarray, dict[str, str | int]]],
     shard_index: int,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     name = f"shard_{shard_index:05d}.npz"
@@ -643,11 +632,11 @@ def prepare_teacher_cache(
     ):
         raise ValueError("Teacher crosswalk artifacts differ from their pins")
     verify_teacher_crosswalk(teacher_crosswalk_receipt_path, fold_contract_path)
-    teacher_crosswalk = pd.read_parquet(crosswalk_path).sort_values(
-        "fit_ordinal", kind="stable"
-    )
-    if not teacher_crosswalk[INDEX_COLUMNS[:8]].reset_index(drop=True).equals(
-        population[INDEX_COLUMNS[:8]].reset_index(drop=True)
+    teacher_crosswalk = pd.read_parquet(crosswalk_path).sort_values("fit_ordinal", kind="stable")
+    if (
+        not teacher_crosswalk[INDEX_COLUMNS[:8]]
+        .reset_index(drop=True)
+        .equals(population[INDEX_COLUMNS[:8]].reset_index(drop=True))
     ):
         raise ValueError("Teacher crosswalk does not preserve TRAIN24 identity")
 
@@ -895,8 +884,7 @@ def verify_teacher_cache(
     if row_locality_path.name != "ROW_LOCALITY.json":
         raise ValueError("Teacher cache row-locality path differs")
     if (
-        manifest.get("row_locality_receipt_sha256")
-        != pins.row_locality_receipt_sha256
+        manifest.get("row_locality_receipt_sha256") != pins.row_locality_receipt_sha256
         or file_sha256(row_locality_path) != pins.row_locality_receipt_sha256
     ):
         raise ValueError("Teacher cache row-locality binding changed")
@@ -916,13 +904,10 @@ def verify_teacher_cache(
         crosswalk_receipt_path.name != "TEACHER_CROSSWALK.json"
         or file_sha256(crosswalk_receipt_path) != pins.crosswalk_receipt_sha256
         or file_sha256(root / "teacher_crosswalk.parquet") != pins.crosswalk_sha256
-        or file_sha256(root / "teacher_source_inventory.json")
-        != pins.crosswalk_inventory_sha256
-        or manifest.get("teacher_crosswalk_receipt_sha256")
-        != pins.crosswalk_receipt_sha256
+        or file_sha256(root / "teacher_source_inventory.json") != pins.crosswalk_inventory_sha256
+        or manifest.get("teacher_crosswalk_receipt_sha256") != pins.crosswalk_receipt_sha256
         or manifest.get("teacher_crosswalk_sha256") != pins.crosswalk_sha256
-        or manifest.get("teacher_crosswalk_inventory_sha256")
-        != pins.crosswalk_inventory_sha256
+        or manifest.get("teacher_crosswalk_inventory_sha256") != pins.crosswalk_inventory_sha256
     ):
         raise ValueError("Teacher cache crosswalk binding differs")
     verify_teacher_crosswalk(crosswalk_receipt_path, fold_contract_path)
@@ -1076,12 +1061,9 @@ def verify_teacher_cache(
                 or not np.array_equal(
                     public_ordinals, subset["public_source_ordinal"].to_numpy(dtype=np.int64)
                 )
-                or not np.array_equal(
-                    fit_ordinals, subset["fit_ordinal"].to_numpy(dtype=np.int64)
-                )
+                or not np.array_equal(fit_ordinals, subset["fit_ordinal"].to_numpy(dtype=np.int64))
                 or tokens.astype(str).tolist() != subset["sample_token"].astype(str).tolist()
-                or subset["cache_shard"].astype(str).tolist()
-                != [expected_name] * expected_rows
+                or subset["cache_shard"].astype(str).tolist() != [expected_name] * expected_rows
                 or subset["cache_row"].to_numpy(dtype=np.int64).tolist()
                 != list(range(expected_rows))
             ):
@@ -1152,9 +1134,7 @@ def load_teacher_role(
         pins=pins,
     )
     role_rows = load_rotation_role(fold_contract_path, rotation=rotation, role=role)
-    generation_rows = load_rotation_role(
-        fold_contract_path, rotation=rotation, role="generation"
-    )
+    generation_rows = load_rotation_role(fold_contract_path, rotation=rotation, role="generation")
     allowed = frozenset(role_rows["sample_token"].astype(str))
     generation_tokens = frozenset(generation_rows["sample_token"].astype(str))
     role_groups = sorted(set(role_rows["group_id"].astype(str)))
@@ -1168,9 +1148,9 @@ def load_teacher_role(
     ).reset_index(drop=True)
     if len(scoped) != len(allowed) or set(scoped["sample_token"].astype(str)) != set(allowed):
         raise ValueError("Teacher cache does not exactly cover the requested fit role")
-    ordered_tokens = role_rows.sort_values("fit_ordinal", kind="stable")[
-        "sample_token"
-    ].astype(str).tolist()
+    ordered_tokens = (
+        role_rows.sort_values("fit_ordinal", kind="stable")["sample_token"].astype(str).tolist()
+    )
     receipt = {
         "schema": "independent_phase_teacher_role_receipt_v1",
         "status": "PASS_EXACT_ROLE_FILTER",

@@ -132,17 +132,10 @@ def select_runtime_sources(
     development_relative = RUNTIME_MODULES[0][1]
     development_frozen = checkpoint_dir / "code" / development_relative
     development_path = (
-        development_frozen
-        if development_frozen.is_file()
-        else current_root / development_relative
+        development_frozen if development_frozen.is_file() else current_root / development_relative
     )
-    if (
-        not development_path.is_file()
-        or sha256(development_path) != recorded[development_relative]
-    ):
-        raise ValueError(
-            f"Runtime source does not match preregistration: {development_path}"
-        )
+    if not development_path.is_file() or sha256(development_path) != recorded[development_relative]:
+        raise ValueError(f"Runtime source does not match preregistration: {development_path}")
     if _imports_ap_runtime(development_path) and AP_RUNTIME_RELATIVE not in recorded:
         raise ValueError(f"Missing registered runtime hashes: ['{AP_RUNTIME_RELATIVE}']")
     result = []

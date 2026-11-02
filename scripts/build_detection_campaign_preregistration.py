@@ -90,9 +90,7 @@ def build(config_path: Path, performance_path: Path, output: Path) -> dict[str, 
             portable_source_sha256=portable_sha256,
             dataset_media_sha256=str(manifest["source_media_sha256"]),
             media_admission_receipt_sha256=str(admission["receipt_sha256"]),
-            media_admission_population_sha256=str(
-                admission["train_token_population_sha256"]
-            ),
+            media_admission_population_sha256=str(admission["train_token_population_sha256"]),
             runtime_extension=extension,
         )
         ordinary.write_json(
@@ -106,9 +104,7 @@ def build(config_path: Path, performance_path: Path, output: Path) -> dict[str, 
             "schema": "eap_detection_campaign_cpu_preregistration_v1",
             "status": "PASS",
             "config_sha256": config.sha256,
-            "runtime_preregistration_sha256": provenance[
-                "runtime_preregistration_sha256"
-            ],
+            "runtime_preregistration_sha256": provenance["runtime_preregistration_sha256"],
             "runtime_provenance": provenance,
             "cuda_or_model_constructed": False,
             "preflight_builder_sha256": sha256_file(Path(__file__)),

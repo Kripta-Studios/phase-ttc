@@ -21,8 +21,6 @@ def test_nested_comparison_reports_tensor_path_and_maximum() -> None:
     left = {"aux": [{"pred_velocity": torch.tensor([1.0, 2.0])}]}
     right = {"aux": [{"pred_velocity": torch.tensor([1.0, 2.25])}]}
     mismatches, maximum, tensors = _compare_nested(left, right)
-    assert mismatches == [
-        {"path": "output.aux[0].pred_velocity", "reason": "value", "max": 0.25}
-    ]
+    assert mismatches == [{"path": "output.aux[0].pred_velocity", "reason": "value", "max": 0.25}]
     assert maximum == 0.25
     assert tensors == 1

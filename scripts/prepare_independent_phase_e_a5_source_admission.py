@@ -84,20 +84,34 @@ def _metadata(args: argparse.Namespace) -> dict[str, Any]:
         "gpu_launch_authorized": False,
         "first_batch_admitted": False,
         "argv": [
-            "--output", str(args.fit_output.resolve()),
-            "--train40-protocol", str(args.train40_protocol.resolve(strict=True)),
-            "--rgb-recipe", str(args.rgb_recipe.resolve(strict=True)),
-            "--fold-contract", str(args.fold_contract.resolve(strict=True)),
-            "--raw-history", str(args.raw_history.resolve(strict=True)),
-            "--h5-preflight", str(args.h5_preflight.resolve(strict=True)),
-            "--h5-admission", str(args.h5_admission.resolve(strict=True)),
-            "--teacher-manifest", str(args.teacher_manifest.resolve(strict=True)),
-            "--teacher-role-receipt", str(args.teacher_role_receipt.resolve(strict=True)),
-            "--input-manifest", str(args.input_manifest.resolve(strict=True)),
-            "--input-root", str(args.input_root.resolve(strict=True)),
-            "--prepare-freeze", str(args.prepare_freeze.resolve(strict=True)),
-            "--crosswalk-receipt", str(args.crosswalk_receipt.resolve(strict=True)),
-            "--crosswalk", str(args.crosswalk.resolve(strict=True)),
+            "--output",
+            str(args.fit_output.resolve()),
+            "--train40-protocol",
+            str(args.train40_protocol.resolve(strict=True)),
+            "--rgb-recipe",
+            str(args.rgb_recipe.resolve(strict=True)),
+            "--fold-contract",
+            str(args.fold_contract.resolve(strict=True)),
+            "--raw-history",
+            str(args.raw_history.resolve(strict=True)),
+            "--h5-preflight",
+            str(args.h5_preflight.resolve(strict=True)),
+            "--h5-admission",
+            str(args.h5_admission.resolve(strict=True)),
+            "--teacher-manifest",
+            str(args.teacher_manifest.resolve(strict=True)),
+            "--teacher-role-receipt",
+            str(args.teacher_role_receipt.resolve(strict=True)),
+            "--input-manifest",
+            str(args.input_manifest.resolve(strict=True)),
+            "--input-root",
+            str(args.input_root.resolve(strict=True)),
+            "--prepare-freeze",
+            str(args.prepare_freeze.resolve(strict=True)),
+            "--crosswalk-receipt",
+            str(args.crosswalk_receipt.resolve(strict=True)),
+            "--crosswalk",
+            str(args.crosswalk.resolve(strict=True)),
         ],
     }
     receipt: dict[str, Any] = {
@@ -219,10 +233,7 @@ def _first_batch(args: argparse.Namespace) -> dict[str, Any]:
         "dinov3_relation_targets": [32, 2, 6, 32, 32],
         "dinov3_relation_valid": [32, 2, 6, 32, 32],
     }
-    tensors = {
-        name: getattr(batch, name)
-        for name in expected_shapes
-    }
+    tensors = {name: getattr(batch, name) for name in expected_shapes}
     if any(list(tensor.shape) != expected_shapes[name] for name, tensor in tensors.items()):
         raise ValueError("First E_A5 batch tensor shape differs")
     if (

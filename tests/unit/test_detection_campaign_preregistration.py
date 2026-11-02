@@ -29,6 +29,7 @@ def _smoke() -> Any:
     spec.loader.exec_module(module)
     return module
 
+
 def _source() -> dict[str, object]:
     return {
         "upstream_revision": "revision",

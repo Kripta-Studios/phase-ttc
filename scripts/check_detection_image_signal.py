@@ -268,9 +268,7 @@ def main() -> int:
     if args.output.exists():
         raise FileExistsError(f"Refusing to overwrite control receipt: {args.output}")
     report = analyze_results(load_results(args.train_results), load_results(args.selection_results))
-    report["source_sha256"] = receipt_source_sha256(
-        args.train_results, args.selection_results
-    )
+    report["source_sha256"] = receipt_source_sha256(args.train_results, args.selection_results)
     report["input_paths"] = {
         "train_results": str(args.train_results),
         "selection_results": str(args.selection_results),

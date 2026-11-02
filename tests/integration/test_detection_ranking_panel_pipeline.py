@@ -22,9 +22,9 @@ def _sha256(path: Path) -> str:
 
 
 def _canonical(value: object) -> str:
-    encoded = json.dumps(
-        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-    ).encode("utf-8")
+    encoded = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode(
+        "utf-8"
+    )
     return hashlib.sha256(encoded).hexdigest()
 
 
@@ -42,9 +42,7 @@ def _script_module(filename: str):
     return module
 
 
-def _predictor_artifacts(
-    root: Path, *, token: str, checkpoint_sha256: str
-) -> tuple[Path, Path]:
+def _predictor_artifacts(root: Path, *, token: str, checkpoint_sha256: str) -> tuple[Path, Path]:
     score = 0.8
     prediction = {
         "class_name": "car",

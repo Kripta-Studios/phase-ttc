@@ -47,9 +47,7 @@ def _checkpoint(
             "best_metric": 0.2,
             "config_sha256": config_sha256,
             "protocol_sha256": protocol_sha256,
-            "runtime_provenance": {
-                "runtime_preregistration_sha256": preregistration_sha256
-            },
+            "runtime_provenance": {"runtime_preregistration_sha256": preregistration_sha256},
         },
         path,
     )
@@ -182,11 +180,7 @@ def _plan(tmp_path: Path) -> dict[str, Any]:
                 str(output),
                 "--stop-after-update",
                 "116",
-                *(
-                    ["--performance-config", str(performance)]
-                    if name == "optimized"
-                    else []
-                ),
+                *(["--performance-config", str(performance)] if name == "optimized" else []),
             ],
             "start_update": 100,
             "stop_after_update": 116,
@@ -399,9 +393,7 @@ def test_new_c_plus_g_process_is_not_auto_whitelisted(monkeypatch: Any, tmp_path
     assert [row["pid"] for row in module._gpu_competitors(plan, set())] == [101]
 
 
-def test_protected_reused_c_plus_g_pid_uses_cim_fallback(
-    monkeypatch: Any, tmp_path: Path
-) -> None:
+def test_protected_reused_c_plus_g_pid_uses_cim_fallback(monkeypatch: Any, tmp_path: Path) -> None:
     script = Path(__file__).parents[2] / "scripts/detection_gpu_admission.py"
     spec = importlib.util.spec_from_file_location("gpu_reused_graphics_test", script)
     assert spec is not None and spec.loader is not None
@@ -420,9 +412,7 @@ def test_protected_reused_c_plus_g_pid_uses_cim_fallback(
     monkeypatch.setattr(
         module,
         "_gpu_processes",
-        lambda: [
-            {"pid": 100, "type": "C+G", "name": "replacement.exe", "used_memory": "N/A"}
-        ],
+        lambda: [{"pid": 100, "type": "C+G", "name": "replacement.exe", "used_memory": "N/A"}],
     )
     monkeypatch.setattr(module, "_process_snapshot", lambda: {})
     monkeypatch.setattr(module, "_cim_process_snapshot", lambda: {100: (1, 11)})

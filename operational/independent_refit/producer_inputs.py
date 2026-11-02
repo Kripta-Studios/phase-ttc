@@ -424,9 +424,8 @@ class IndependentEventProducerSource:
         shard = self._load_shard(str(identity["source_shard"]))
         row = int(identity["source_row"])
         token = str(identity["sample_token"])
-        if (
-            str(shard["tokens"][row]) != token
-            or int(shard["ordinals"][row]) != int(identity["teacher_ordinal"])
+        if str(shard["tokens"][row]) != token or int(shard["ordinals"][row]) != int(
+            identity["teacher_ordinal"]
         ):
             raise ValueError("ObjectEventV4 physical token coordinate differs")
         return {
@@ -472,10 +471,7 @@ class IndependentEventProducerSource:
             teacher.role_receipt_sha256 != self.teacher_role_receipt_sha256
             or file_sha256(teacher.role_receipt_path) != self.teacher_role_receipt_sha256
             or teacher.allowed_tokens
-            != (
-                frozenset(self.index["sample_token"].astype(str))
-                | self.history_invalid_tokens
-            )
+            != (frozenset(self.index["sample_token"].astype(str)) | self.history_invalid_tokens)
         ):
             raise ValueError("Producer teacher role identity differs")
         receipt = _json(teacher.role_receipt_path)
@@ -548,10 +544,9 @@ def open_event_producer_source(
     teacher_manifest_sha256 = file_sha256(teacher_manifest_path)
     teacher_role_sha256 = file_sha256(teacher_role_receipt_path)
     parent_sha = cast(Mapping[str, str], plan["parent_sha256"])
-    if (
-        teacher_manifest_sha256 != parent_sha.get("teacher_manifest")
-        or teacher_role_sha256 != parent_sha.get("teacher_role")
-    ):
+    if teacher_manifest_sha256 != parent_sha.get(
+        "teacher_manifest"
+    ) or teacher_role_sha256 != parent_sha.get("teacher_role"):
         raise ValueError("Producer teacher parents differ from verified plan")
     shards = verify_input_manifest(source_manifest_path, source_root, prepare_freeze_path)
     selected, invalid_tokens = _load_selected_index(

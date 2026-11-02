@@ -76,9 +76,7 @@ def prepare(draft_path: Path, output: Path) -> dict[str, Any]:
             raise ValueError(f"{name} command does not bind exact resume and stop update")
         required_command_paths = {
             binding_paths["config"],
-            binding_paths[
-                "optimized_producer" if name == "optimized" else "old_producer"
-            ],
+            binding_paths["optimized_producer" if name == "optimized" else "old_producer"],
             str(Path(arm["output"]).resolve()),
         }
         if name == "optimized":
@@ -261,8 +259,7 @@ def _gpu_competitors(plan: dict[str, Any], allowed_compute_pids: set[int]) -> li
     snapshot = _process_snapshot()
     cim_snapshot = _cim_process_snapshot()
     baseline = {
-        (int(row["pid"]), int(row["creation_time_us"]))
-        for row in plan["graphics_baseline"]
+        (int(row["pid"]), int(row["creation_time_us"])) for row in plan["graphics_baseline"]
     }
     competitors = []
     for row in _gpu_processes():
@@ -345,8 +342,7 @@ def _run_arm(plan: dict[str, Any], name: str) -> dict[str, object]:
         if time.perf_counter() >= next_process_check:
             allowed_pids = _descendant_pids(process.pid, launch_creation)
             concurrent_compute_observed.extend(
-                json.dumps(row, sort_keys=True)
-                for row in _gpu_competitors(plan, allowed_pids)
+                json.dumps(row, sort_keys=True) for row in _gpu_competitors(plan, allowed_pids)
             )
             next_process_check = time.perf_counter() + 2.0
         time.sleep(0.2)
@@ -440,6 +436,7 @@ def verify(plan_path: Path, output: Path) -> dict[str, object]:
         "evaluation_after_last_record_seconds",
         "finalize_after_evaluation_artifact_seconds",
     )
+
     def validate_resource_receipt(resource: object) -> None:
         if not isinstance(resource, dict) or not isinstance(
             resource.get("gpu_processes_by_driver_type"), list

@@ -20,9 +20,7 @@ def _inputs(
 
 
 def _model(channels: tuple[int, ...] = (4, 6)) -> CausalTemporalFeatureFusion:
-    return CausalTemporalFeatureFusion(
-        TemporalFusionSpec(channels=channels, bottleneck_channels=3)
-    )
+    return CausalTemporalFeatureFusion(TemporalFusionSpec(channels=channels, bottleneck_channels=3))
 
 
 def test_identity_initialization_and_single_frame_exactness() -> None:

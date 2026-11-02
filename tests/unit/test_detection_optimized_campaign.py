@@ -84,16 +84,10 @@ def test_transactional_stop_requires_durable_checkpoint() -> None:
         3, 4, required_evaluation_complete=False, checkpoint_durable=False
     )
     with pytest.raises(RuntimeError, match="evaluation completed"):
-        transactional_stop_due(
-            4, 4, required_evaluation_complete=False, checkpoint_durable=True
-        )
+        transactional_stop_due(4, 4, required_evaluation_complete=False, checkpoint_durable=True)
     with pytest.raises(RuntimeError, match="durable"):
-        transactional_stop_due(
-            4, 4, required_evaluation_complete=True, checkpoint_durable=False
-        )
-    assert transactional_stop_due(
-        4, 4, required_evaluation_complete=True, checkpoint_durable=True
-    )
+        transactional_stop_due(4, 4, required_evaluation_complete=True, checkpoint_durable=False)
+    assert transactional_stop_due(4, 4, required_evaluation_complete=True, checkpoint_durable=True)
 
 
 @pytest.mark.parametrize("evaluation_kind", ["scheduled", "unscheduled_diagnostic"])
@@ -101,13 +95,9 @@ def test_scheduled_and_unscheduled_stops_commit_after_evaluation(
     evaluation_kind: str,
 ) -> None:
     assert evaluation_kind
-    assert transactional_stop_due(
-        8, 8, required_evaluation_complete=True, checkpoint_durable=True
-    )
+    assert transactional_stop_due(8, 8, required_evaluation_complete=True, checkpoint_durable=True)
 
 
 def test_failed_required_evaluation_cannot_commit_stop() -> None:
     with pytest.raises(RuntimeError, match="evaluation completed"):
-        transactional_stop_due(
-            8, 8, required_evaluation_complete=False, checkpoint_durable=True
-        )
+        transactional_stop_due(8, 8, required_evaluation_complete=False, checkpoint_durable=True)

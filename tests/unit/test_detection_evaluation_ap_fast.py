@@ -28,11 +28,7 @@ def frozen_v2_ap101(
     return (
         sum(
             max(
-                (
-                    float(point["precision"])
-                    for point in curve
-                    if point["recall"] >= step / 100
-                ),
+                (float(point["precision"]) for point in curve if point["recall"] >= step / 100),
                 default=0.0,
             )
             for step in range(101)
@@ -51,10 +47,13 @@ def frozen_legacy_ap101(flags: list[int], count: int) -> float | None:
     for index, flag in enumerate(flags):
         correct += flag
         points.append((correct / count, correct / (index + 1)))
-    return sum(
-        max((precision for recall, precision in points if recall >= step / 100), default=0.0)
-        for step in range(101)
-    ) / 101
+    return (
+        sum(
+            max((precision for recall, precision in points if recall >= step / 100), default=0.0)
+            for step in range(101)
+        )
+        / 101
+    )
 
 
 def assert_exact_against_frozen(flags: list[int], count: int) -> None:

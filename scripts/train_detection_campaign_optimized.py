@@ -51,9 +51,7 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 def _build_store_contract(
     config: CampaignConfig, performance: PerformanceConfig
-) -> tuple[
-    dict[str, tuple[str, str, str]], dict[str, str], dict[str, object]
-]:
+) -> tuple[dict[str, tuple[str, str, str]], dict[str, str], dict[str, object]]:
     manifest = validate_campaign_manifest(config)
     metadata = validate_manifest_against_metadata(manifest, config)
     admitted = dict(metadata["media_admission"])
@@ -85,15 +83,19 @@ def _build_store_contract(
     inventory = _load_json(inventory_path)["files"]
     shards = {value[0] for value in ownership.values()}
     shard_hashes = {path: str(inventory[path]["sha256"]) for path in shards}
-    return ownership, shard_hashes, {
-        "schema": "eap_detection_indexed_runtime_v1",
-        "performance_config_sha256": performance.sha256,
-        "indexed_reader_sha256": performance.expected_indexed_reader_sha256,
-        "indexed_store_sha256": performance.expected_indexed_store_sha256,
-        "union_count": len(union),
-        "union_sha256": canonical_sha256(list(union)),
-        "prefetch_batches": 0,
-    }
+    return (
+        ownership,
+        shard_hashes,
+        {
+            "schema": "eap_detection_indexed_runtime_v1",
+            "performance_config_sha256": performance.sha256,
+            "indexed_reader_sha256": performance.expected_indexed_reader_sha256,
+            "indexed_store_sha256": performance.expected_indexed_store_sha256,
+            "union_count": len(union),
+            "union_sha256": canonical_sha256(list(union)),
+            "prefetch_batches": 0,
+        },
+    )
 
 
 def _build_store(

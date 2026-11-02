@@ -58,9 +58,7 @@ def test_candidate_admission_binds_tar_and_member_bytes(tmp_path: Path) -> None:
     raw = png_bytes()
     relative, member = make_tar(tmp_path, raw)
     tar_path = tmp_path / relative
-    expected = {
-        relative: {"size_bytes": tar_path.stat().st_size, "sha256": sha256_file(tar_path)}
-    }
+    expected = {relative: {"size_bytes": tar_path.stat().st_size, "sha256": sha256_file(tar_path)}}
     evidence = _admit_candidate(
         root=tmp_path.resolve(),
         row={
@@ -81,9 +79,7 @@ def test_candidate_admission_rejects_truncated_png(tmp_path: Path) -> None:
     raw = png_bytes()[:100]
     relative, member = make_tar(tmp_path, raw)
     tar_path = tmp_path / relative
-    expected = {
-        relative: {"size_bytes": tar_path.stat().st_size, "sha256": sha256_file(tar_path)}
-    }
+    expected = {relative: {"size_bytes": tar_path.stat().st_size, "sha256": sha256_file(tar_path)}}
     with pytest.raises(OSError):
         _admit_candidate(
             root=tmp_path.resolve(),

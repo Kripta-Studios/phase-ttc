@@ -47,9 +47,7 @@ def _artifact(path: Path) -> dict[str, Any]:
         "path": str(resolved),
         "sha256": sha256_file(resolved),
         "bytes": resolved.stat().st_size,
-        "last_write_time_utc": datetime.fromtimestamp(
-            resolved.stat().st_mtime, tz=UTC
-        ).isoformat(),
+        "last_write_time_utc": datetime.fromtimestamp(resolved.stat().st_mtime, tz=UTC).isoformat(),
     }
 
 
@@ -104,8 +102,8 @@ def prepare(original_plan_path: Path, output_dir: Path, optimized_output: Path) 
                 '{"status":"BUDGET_STOPPED","final_update":1040}\n'
                 "RuntimeError: Concurrent compute appeared during old_B; run is "
                 "inadmissible: "
-                "['{\"name\": \"\", \"pid\": 72640, \"type\": \"C+G\", "
-                "\"used_memory\": \"N/A\"}']"
+                '[\'{"name": "", "pid": 72640, "type": "C+G", '
+                '"used_memory": "N/A"}\']'
             ),
             "transcription_captured_after_execution": True,
             "old_b_last_metric_observed_at": "2026-10-29T22:39:00.875+01:00",
@@ -136,9 +134,7 @@ def prepare(original_plan_path: Path, output_dir: Path, optimized_output: Path) 
     return manifest
 
 
-def _load_preregistration(
-    path: Path, expected_sha256: str, plan: dict[str, Any]
-) -> dict[str, Any]:
+def _load_preregistration(path: Path, expected_sha256: str, plan: dict[str, Any]) -> dict[str, Any]:
     if sha256_file(path) != expected_sha256:
         raise ValueError("Recovery preregistration hash differs")
     prereg = json.loads(path.read_text(encoding="utf-8"))
@@ -182,8 +178,7 @@ def verify(
         or receipt.get("status") != "OPTIMIZED_COMPLETED_PENDING_NUMERICAL_VERIFICATION"
         or receipt.get("plan_sha256") != plan["plan_sha256"]
         or receipt.get("preregistration_sha256") != preregistration_sha256
-        or receipt.get("original_aggregate_status")
-        != "NONPASS_INTERRUPTED_RESOURCE_ADMISSION"
+        or receipt.get("original_aggregate_status") != "NONPASS_INTERRUPTED_RESOURCE_ADMISSION"
         or receipt.get("performance_comparison") != "INCONCLUSIVE"
         or receipt.get("memory_comparison") != "INCONCLUSIVE"
     ):
@@ -269,17 +264,14 @@ def continuation_receipt(output: Path) -> dict[str, Any]:
     command = [
         str(python.resolve(strict=True)),
         str(
-            (optimized / "code/scripts/train_detection_campaign_optimized.py").resolve(
-                strict=True
-            )
+            (optimized / "code/scripts/train_detection_campaign_optimized.py").resolve(strict=True)
         ),
         "--config",
         str(config.resolve(strict=True)),
         "--performance-config",
         str(
             (
-                optimized
-                / "code/configs/detection_campaign/performance/indexed_shared_v1.json"
+                optimized / "code/configs/detection_campaign/performance/indexed_shared_v1.json"
             ).resolve(strict=True)
         ),
         "--output",

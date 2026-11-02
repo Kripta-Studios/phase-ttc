@@ -396,9 +396,7 @@ def _feed(digest: _Digest, value: object) -> None:
         _feed(digest, tuple(tensor.shape))
         _feed(digest, tuple(tensor.stride()))
         _feed(digest, tensor.requires_grad)
-        logical = (
-            tensor.detach().cpu().contiguous().reshape(-1).view(_TORCH_UINT8).numpy()
-        )
+        logical = tensor.detach().cpu().contiguous().reshape(-1).view(_TORCH_UINT8).numpy()
         _length_prefixed(digest, logical.tobytes())
         return
     if isinstance(value, Mapping):
@@ -699,8 +697,10 @@ def _hash_mapping(value: object, field: str) -> dict[str, str]:
     for raw_path, raw_digest in value.items():
         if not isinstance(raw_path, str) or not raw_path or Path(raw_path).is_absolute():
             raise ValueError(f"{field} contains an unsafe path")
-        if not isinstance(raw_digest, str) or len(raw_digest) != 64 or any(
-            char not in "0123456789abcdef" for char in raw_digest
+        if (
+            not isinstance(raw_digest, str)
+            or len(raw_digest) != 64
+            or any(char not in "0123456789abcdef" for char in raw_digest)
         ):
             raise ValueError(f"{field}.{raw_path} is not a SHA-256")
         result[raw_path] = raw_digest
@@ -762,9 +762,7 @@ def verify_runtime_transition(
     if set(target_code) != optimized | parent_extras:
         raise ValueError("Target code population differs from the shared optimized authority")
     changed = {
-        path
-        for path in set(old_code) & set(target_code)
-        if old_code[path] != target_code[path]
+        path for path in set(old_code) & set(target_code) if old_code[path] != target_code[path]
     }
     if changed != _ALLOWED_CHANGED_RUNTIME_PATHS:
         raise ValueError(f"Changed runtime paths leave the allowlist: {sorted(changed)}")
@@ -791,9 +789,7 @@ def verify_runtime_transition(
     }
 
 
-def runtime_provenance_from_file(
-    path: Path, prereg: Mapping[str, object]
-) -> dict[str, object]:
+def runtime_provenance_from_file(path: Path, prereg: Mapping[str, object]) -> dict[str, object]:
     """Derive checkpoint provenance from the exact preregistration bytes."""
     return build_runtime_provenance(sha256_file(path), prereg)
 
@@ -840,9 +836,7 @@ def verify_evaluation_boundary(
                 if (root / "evaluation" / name).is_file()
             ]
             if len(present) != 1 or present[0] != path:
-                raise ValueError(
-                    f"Required evaluation ownership is missing or duplicated: {name}"
-                )
+                raise ValueError(f"Required evaluation ownership is missing or duplicated: {name}")
             payload = _load_json(path)
             metrics = payload.get("metrics_v2")
             if not isinstance(metrics, Mapping):

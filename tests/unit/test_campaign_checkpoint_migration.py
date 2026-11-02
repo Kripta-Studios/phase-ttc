@@ -82,9 +82,7 @@ def write_json(path: Path, value: object) -> None:
 def test_typed_hash_distinguishes_types_order_stride_and_metadata() -> None:
     assert typed_state_sha256([1, 23]) != typed_state_sha256([12, 3])
     assert typed_state_sha256([1, 2]) != typed_state_sha256((1, 2))
-    assert typed_state_sha256({"a": 1, "b": 2}) != typed_state_sha256(
-        {"b": 2, "a": 1}
-    )
+    assert typed_state_sha256({"a": 1, "b": 2}) != typed_state_sha256({"b": 2, "a": 1})
     contiguous = torch.arange(12).reshape(3, 4)
     transposed = contiguous.t()
     assert typed_state_sha256(contiguous) != typed_state_sha256(transposed)
@@ -198,9 +196,7 @@ def test_evaluation_gate_requires_monitor_pilot_full_and_selected_consistency(
 ) -> None:
     provenance = {"runtime_preregistration_sha256": "1" * 64}
     last = checkpoint(provenance, update=4096, best=0.5)
-    selected = checkpoint_selection_identity(
-        checkpoint(provenance, update=4096, best=0.5)
-    )
+    selected = checkpoint_selection_identity(checkpoint(provenance, update=4096, best=0.5))
     for update, value in ((1024, 0.4), (2048, 0.3), (4096, 0.5)):
         write_json(
             tmp_path / f"evaluation/selection_update_{update:06d}.json",
@@ -238,9 +234,7 @@ def test_evaluation_gate_requires_monitor_pilot_full_and_selected_consistency(
 def test_evaluation_gate_uses_first_strict_max_for_selected(tmp_path: Path) -> None:
     provenance = {"runtime_preregistration_sha256": "1" * 64}
     last = checkpoint(provenance, update=2048, best=0.5)
-    selected = checkpoint_selection_identity(
-        checkpoint(provenance, update=1024, best=0.5)
-    )
+    selected = checkpoint_selection_identity(checkpoint(provenance, update=1024, best=0.5))
     for update in (1024, 2048):
         for panel in ("selection", "pilot_parity"):
             write_json(
@@ -263,9 +257,7 @@ def test_resumed_evaluation_boundary_unions_ancestor_and_current_without_duplica
 ) -> None:
     provenance = {"runtime_preregistration_sha256": "1" * 64}
     last = checkpoint(provenance, update=3072, best=0.6)
-    selected = checkpoint_selection_identity(
-        checkpoint(provenance, update=3072, best=0.6)
-    )
+    selected = checkpoint_selection_identity(checkpoint(provenance, update=3072, best=0.6))
     ancestor = tmp_path / "r0_1024"
     current = tmp_path / "r0_8192"
     for panel in ("selection", "pilot_parity"):
@@ -288,9 +280,7 @@ def test_resumed_evaluation_boundary_unions_ancestor_and_current_without_duplica
         evaluation_root_by_update={1024: ancestor, 2048: current, 3072: current},
     )
     assert receipt["selected_update"] == 3072
-    assert receipt["files"]["selection_update_001024.json"]["root"] == str(
-        ancestor.resolve()
-    )
+    assert receipt["files"]["selection_update_001024.json"]["root"] == str(ancestor.resolve())
     write_json(
         current / "evaluation/selection_update_001024.json",
         metric_payload("b" * 64, 0.4),
@@ -558,6 +548,7 @@ def test_stopped_receipt_rejects_unrelated_command_missing_evidence_and_stale_su
     with pytest.raises(ValueError, match="evidence fields"):
         verify_source_state_receipt(receipt_path, source_run=source_run)
 
+
 def test_completed_segment_binds_queue_summary_and_no_live_owner(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -607,9 +598,7 @@ def test_completed_segment_binds_queue_summary_and_no_live_owner(
     monkeypatch.setattr(
         migration,
         "_live_windows_processes",
-        lambda: [
-            {"ProcessId": 21, "CommandLine": subprocess.list2cmdline(active_command)}
-        ],
+        lambda: [{"ProcessId": 21, "CommandLine": subprocess.list2cmdline(active_command)}],
     )
     assert (
         verify_source_state_receipt(receipt, source_run=source_run)["status"]
@@ -661,18 +650,15 @@ def test_stopped_receipt_rejects_wrong_pid_while_real_owner_is_alive(
         candidates = [
             migration._windows_command_line_to_argv(str(row["CommandLine"]))
             for row in migration._live_windows_processes()
-            if isinstance(row.get("CommandLine"), str)
-            and producer.name in str(row["CommandLine"])
+            if isinstance(row.get("CommandLine"), str) and producer.name in str(row["CommandLine"])
         ]
         assert candidates, "sleeping producer is absent from process inventory"
         assert any(
-            len(argv) > 1 and Path(argv[1]).resolve() == producer.resolve()
-            for argv in candidates
+            len(argv) > 1 and Path(argv[1]).resolve() == producer.resolve() for argv in candidates
         ), candidates
         assert any(
             "--output" in argv
-            and Path(argv[argv.index("--output") + 1]).resolve()
-            == source_run.resolve()
+            and Path(argv[argv.index("--output") + 1]).resolve() == source_run.resolve()
             for argv in candidates
         ), candidates
         with pytest.raises(RuntimeError, match="still owns"):

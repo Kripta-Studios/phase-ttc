@@ -234,9 +234,7 @@ def main() -> int:
             "authorization_sha256": _sha256(args.authorization),
             "fold_contract_sha256": _sha256(args.fold_contract),
             "row_locality_receipt_sha256": _sha256(args.row_locality_receipt),
-            "teacher_crosswalk_receipt_sha256": _sha256(
-                args.teacher_crosswalk_receipt
-            ),
+            "teacher_crosswalk_receipt_sha256": _sha256(args.teacher_crosswalk_receipt),
             "source_manifest_sha256": _sha256(args.source_root / "TEACHER_MANIFEST.json"),
             "weight_file_sha256": _sha256(args.weight_path),
             "manifest_sha256": result["manifest_sha256"],

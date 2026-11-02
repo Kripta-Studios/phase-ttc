@@ -22,9 +22,7 @@ def features(batch: int = 3) -> tuple[torch.Tensor, ...]:
     )
 
 
-def observables(
-    counts: list[float], durations: list[float]
-) -> EventFusionObservables:
+def observables(counts: list[float], durations: list[float]) -> EventFusionObservables:
     return EventFusionObservables(torch.tensor(counts), torch.tensor(durations))
 
 
@@ -49,10 +47,7 @@ def test_zero_initialized_event_residual_is_exact_rgb_baseline() -> None:
         observables=observables([100.0, 200.0], [50_000.0, 50_000.0]),
     )
     assert all(torch.equal(output, source) for output, source in zip(result, current, strict=True))
-    assert all(
-        not projection.weight.count_nonzero()
-        for projection in module.output_projections()
-    )
+    assert all(not projection.weight.count_nonzero() for projection in module.output_projections())
 
 
 def test_valid_empty_and_missing_samples_fall_back_after_residual_is_enabled() -> None:

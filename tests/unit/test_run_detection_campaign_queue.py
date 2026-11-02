@@ -102,9 +102,7 @@ def test_exact_resume_summary_gate_accepts_only_bound_checkpoint(tmp_path: Path)
         expected_start_update=1024,
         resume_sha256=resume_sha256,
     )
-    assert verified["last_checkpoint_sha256"] == module.sha256_file(
-        output / "checkpoints/last.pt"
-    )
+    assert verified["last_checkpoint_sha256"] == module.sha256_file(output / "checkpoints/last.pt")
     with pytest.raises(ValueError, match="checkpoint identity"):
         module.verify_summary(
             output,

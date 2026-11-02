@@ -144,13 +144,13 @@ def test_exact_input_manifest_and_record_are_role_scoped(
         }
     )
     source = subject.IndependentEventProducerSource(
-            source_root=root,
-            shards=shards,
-            index=index,
-            history_invalid_tokens=frozenset(),
-            teacher_manifest_sha256="1" * 64,
-            teacher_role_receipt_sha256="2" * 64,
-            max_cached_shards=1,
+        source_root=root,
+        shards=shards,
+        index=index,
+        history_invalid_tokens=frozenset(),
+        teacher_manifest_sha256="1" * 64,
+        teacher_role_receipt_sha256="2" * 64,
+        max_cached_shards=1,
     )
     assert len(source) == 2
     assert source.record(1)["sample_token"] == "token-2"
@@ -276,18 +276,12 @@ def test_real_teacher_role_equals_history_valid_plus_exact_invalid_mask() -> Non
     from operational.independent_refit.lineage import load_rotation_role
 
     root = Path(__file__).resolve().parents[1]
-    fold_path = (
-        root / "output/independent_phase/train24_population_v2/FOLD_CONTRACT.json"
-    )
-    preflight_root = (
-        root / "output/independent_phase/raw_history_h5_metadata_preflight_v4"
-    )
+    fold_path = root / "output/independent_phase/train24_population_v2/FOLD_CONTRACT.json"
+    preflight_root = root / "output/independent_phase/raw_history_h5_metadata_preflight_v4"
     role_mask = pd.read_parquet(preflight_root / "roles/rotation_0_producer.parquet")
     nominal = load_rotation_role(fold_path, rotation=0, role="producer")
     nominal_tokens = frozenset(nominal["sample_token"].astype(str))
-    valid_tokens = frozenset(
-        role_mask.loc[role_mask["history_valid"], "sample_token"].astype(str)
-    )
+    valid_tokens = frozenset(role_mask.loc[role_mask["history_valid"], "sample_token"].astype(str))
     invalid_tokens = frozenset(
         role_mask.loc[~role_mask["history_valid"], "sample_token"].astype(str)
     )

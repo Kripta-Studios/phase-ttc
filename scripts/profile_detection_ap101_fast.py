@@ -97,9 +97,7 @@ def memory_bytes() -> tuple[int, int]:
     )
     psapi.GetProcessMemoryInfo.restype = ctypes.c_int
     handle = kernel32.GetCurrentProcess()
-    ok = psapi.GetProcessMemoryInfo(
-        handle, ctypes.byref(counters), counters.cb
-    )
+    ok = psapi.GetProcessMemoryInfo(handle, ctypes.byref(counters), counters.cb)
     if not ok:
         raise OSError("GetProcessMemoryInfo failed")
     return int(counters.WorkingSetSize), int(counters.PeakWorkingSetSize)
@@ -114,8 +112,7 @@ def require_rss(stage: str) -> int:
     observed, peak = memory_bytes()
     if observed >= MAX_RSS_BYTES or peak >= MAX_RSS_BYTES:
         raise MemoryError(
-            f"RSS gate failed at {stage}: current={observed}, peak={peak}, "
-            f"limit={MAX_RSS_BYTES}"
+            f"RSS gate failed at {stage}: current={observed}, peak={peak}, limit={MAX_RSS_BYTES}"
         )
     return observed
 
@@ -211,9 +208,7 @@ def profile_call(
     try:
         started = time.perf_counter()
         profiler.enable()
-        result = evaluation_v2.evaluate_detections_v2(
-            predictions, ground_truth, protocol=protocol
-        )
+        result = evaluation_v2.evaluate_detections_v2(predictions, ground_truth, protocol=protocol)
         profiler.disable()
         elapsed = time.perf_counter() - started
     finally:
@@ -247,12 +242,8 @@ def main() -> int:
         ground_truth_all = {
             token: ground_truth_from_dict(payload["ground_truth_v2"][token]) for token in tokens
         }
-        expected_gt_hashes = payload["metrics_v2"]["population"][
-            "ground_truth_sha256_by_token"
-        ]
-        if any(
-            ground_truth_all[token].sha256 != expected_gt_hashes[token] for token in tokens
-        ):
+        expected_gt_hashes = payload["metrics_v2"]["population"]["ground_truth_sha256_by_token"]
+        if any(ground_truth_all[token].sha256 != expected_gt_hashes[token] for token in tokens):
             raise ValueError("Reconstructed retained ground truth hash mismatch")
         require_rss("payload_load")
 
@@ -317,12 +308,8 @@ def main() -> int:
                 "fast_helper_sha256": sha256_file(
                     ROOT / "src/e_jepa_ttc/detection/evaluation_ap_fast.py"
                 ),
-                "frozen_v2_sha256": sha256_file(
-                    FROZEN_V2
-                ),
-                "frozen_legacy_sha256": sha256_file(
-                    FROZEN_LEGACY
-                ),
+                "frozen_v2_sha256": sha256_file(FROZEN_V2),
+                "frozen_legacy_sha256": sha256_file(FROZEN_LEGACY),
                 "integrated_v2_sha256": sha256_file(
                     ROOT / "src/e_jepa_ttc/detection/evaluation_v2.py"
                 ),

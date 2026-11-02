@@ -38,9 +38,7 @@ def _identity() -> FoundationIdentity:
 
 
 @pytest.mark.parametrize("modality", ["event", "rgb"])
-def test_engineering_smoke_checkpoint_has_internal_identity(
-    tmp_path: Path, modality: str
-) -> None:
+def test_engineering_smoke_checkpoint_has_internal_identity(tmp_path: Path, modality: str) -> None:
     checkpoint = tmp_path / f"{modality}.pt"
     result = write_engineering_smoke_checkpoint(
         checkpoint,

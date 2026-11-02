@@ -20,7 +20,7 @@ from e_jepa_ttc.detection.temporal_source_patch import (
 
 
 def _fake_source() -> str:
-    return '''import torch
+    return """import torch
 from torch import nn
 from e_jepa_ttc.detection.velocity_extension import matched_velocity_l1
 
@@ -52,7 +52,7 @@ class MonoDGP(nn.Module):
     def backbone(self, images):
         mask = torch.zeros(images.shape[0], images.shape[2], images.shape[3], dtype=torch.bool)
         return [(images, mask)], [images.new_tensor(3.0)]
-'''
+"""
 
 
 def _contract(source: str) -> TemporalSourceContract:
@@ -64,9 +64,7 @@ def _canonical_sha256(value: object) -> str:
     return hashlib.sha256(encoded).hexdigest()
 
 
-def _fake_preregistration(
-    source_root: Path, path: Path, source: str
-) -> TemporalSourceContract:
+def _fake_preregistration(source_root: Path, path: Path, source: str) -> TemporalSourceContract:
     tree = portable_tree_hashes(source_root)
     tree_manifest = _canonical_sha256(tree)
     payload = {
@@ -108,9 +106,10 @@ def test_fake_forward_split_preserves_outputs_and_state_dict() -> None:
 
 
 def test_real_r0_source_transforms_deterministically() -> None:
-    source_path = Path(
-        "output/detection_campaign/r0_d4096_seed7_v2/stage1/code/portable_source/"
-    ) / MONODGP_RELATIVE_PATH
+    source_path = (
+        Path("output/detection_campaign/r0_d4096_seed7_v2/stage1/code/portable_source/")
+        / MONODGP_RELATIVE_PATH
+    )
     source = source_path.read_text(encoding="utf-8")
     assert hashlib.sha256(source.encode()).hexdigest() == R0_MONODGP_SHA256
     first = transform_monodgp_source(source)
@@ -223,9 +222,7 @@ def test_active_portable_destination_is_rejected_before_copy(tmp_path: Path) -> 
         "aliased_receipts",
     ],
 )
-def test_path_containment_and_receipt_aliases_fail_before_copy(
-    tmp_path: Path, case: str
-) -> None:
+def test_path_containment_and_receipt_aliases_fail_before_copy(tmp_path: Path, case: str) -> None:
     source = _fake_source()
     outer = tmp_path / "outer"
     source_root = outer / "source"
@@ -260,6 +257,7 @@ def test_path_containment_and_receipt_aliases_fail_before_copy(
             forbidden_destination=tmp_path / "forbidden",
             contract=contract,
         )
-    assert portable_tree_hashes(source_root)[MONODGP_RELATIVE_PATH.as_posix()] == hashlib.sha256(
-        source.encode()
-    ).hexdigest()
+    assert (
+        portable_tree_hashes(source_root)[MONODGP_RELATIVE_PATH.as_posix()]
+        == hashlib.sha256(source.encode()).hexdigest()
+    )
