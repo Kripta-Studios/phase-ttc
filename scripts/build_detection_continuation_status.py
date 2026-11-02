@@ -25,6 +25,7 @@ def main() -> None:
     parser.add_argument("--semantic-root", type=Path)
     parser.add_argument("--ensemble-root", type=Path)
     parser.add_argument("--competitor-root", type=Path)
+    parser.add_argument("--monocop-run", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     inputs: dict[str, str] = {}
@@ -450,7 +451,7 @@ def main() -> None:
             lines.extend(
                 ["MonoCoP GPU: no hay todavía un STATUS de ejecución en el destino registrado.", ""]
             )
-        screen = args.competitor_root / "monocop_screen_v1"
+        screen = args.monocop_run or args.competitor_root / "monocop_screen_v1"
         screen_plan_path = args.competitor_root / "monocop_screen_plan_v2/PLAN.json"
         if screen_plan_path.is_file():
             screen_plan = read(screen_plan_path)
@@ -481,6 +482,7 @@ def main() -> None:
                     except psutil.NoSuchProcess:
                         pass
                 lines += [
+                    f"Run activo o cerrado: `{screen.as_posix()}`. "
                     f"Estado screening: `{json.dumps(current, ensure_ascii=False)}`. "
                     f"Escritor vivo con identidad coincidente: {writer_alive}.",
                     "",

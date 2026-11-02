@@ -1,0 +1,23 @@
+{
+  "inputs": {
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v2/PLAN.json": "0de2cecd5306dd9f6317dc5494da3aa7436c1dd1564e70d2e97ab64177a22806",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_plan_v2/screen.json": "4f1924fb10a8102c34cb7abe77549588fed3999c9159234e16dc99bd3453cf97",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/STATUS.json": "2e82b9e7ab6b82111b4cf448a040e996350ada8388c625dc7b6168ca570590ef",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/CONTRACT.json": "c0ab817f97072295833b8921193f9a25cbe520dfec73a49a26b095b56202a9b4",
+    "D:/PHASE_TTC_PRETRAINED_20261101/kitti_screen_report_v1/RESULTS.json": "64406c665fa64f0093da5477b20a679e4f9e0b2457fed96bcfd6ae6f0a5f0ebf",
+    "D:/PHASE_TTC_RANGE_20261101/screen_config_v1/population.json": "481ac9c0adc9f31a8555928a6fed4dc5784b38485e170833ac3e510bd01e645b",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/evaluation/000000.json": "f95590a728f869b22a903e4611bdeb9e73d2ad9c2b62564d2604a69a865b1173",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/evaluation/000512.json": "d9357e7639c92e6c230f1b3eea9a60f833e37c998646cee987b952e6570b398b",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/evaluation/001024.json": "8036b593b89d78822ffbf8bb1b0718036284b6eb5d7d8c6776d52e628093d793",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/evaluation/001536.json": "9ec925fd8e49b55d0cdcb254c558aebe59b945f809ec7cabeefeffdc46fc76b9",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/evaluation/002048.json": "d4b9a5833c960b25122b2cd99192afda7ef3e50e82bc3235ef35a1cd51258fdc",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_resume_v1/metrics.jsonl": "b11b555d65500ea3941a6c60334ffaa4c6285e0bed1bc93db04f3b0df7c49278",
+    "D:/PHASE_TTC_COMPETITOR_20261101/monocop_recovery_predecessor_v1/RECOVERY.json": "5357515218776fe56e0f3231c61d8869b964bf613bfc5b4870ba734f412c587b"
+  },
+  "files": {
+    "build_detection_pretrained_result.py": "d04336e4abf1c52ff746e13c66530e77d6cf185ff206a1977a1b28bc5df6e156",
+    "build_monocop_screen_result.py": "9d34365bb31fe0b3e4565fffa9fbce4bcd4ff620e227bcc1f8d49eeba40a4072",
+    "REPORT.md": "207e3c06951d113c1a68478bb8094b8cccce729253242f8b30d4daa9297fedfe",
+    "RESULTS.json": "0b1ed1a08dd01cff28dbec6bb993052264b712d32749a99a1d1318ef61ce0376"
+  }
+}

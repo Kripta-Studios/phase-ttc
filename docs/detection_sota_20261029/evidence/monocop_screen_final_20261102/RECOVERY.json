@@ -1,0 +1,33 @@
+{
+  "schema": "phase_monocop_host_restart_recovery_v1",
+  "original_run": "D:/PHASE_TTC_COMPETITOR_20261101/monocop_screen_v1",
+  "old_writer": {
+    "pid": 46560,
+    "created_epoch": 1793573736.3784566
+  },
+  "boot_epoch": 1793576796.2351134,
+  "old_writer_absent": true,
+  "original_status_sha256": "480c52f030d9e55cec53a16e454ffe8f12b56b9d93a0dadd28f226af89393195",
+  "original_status_condition": "all bytes are zero; original preserved",
+  "restored_update": 1792,
+  "selected_update": 1536,
+  "last_logged_update": 1858,
+  "replayed_logged_updates": 66,
+  "replayed_logged_exposures": 132,
+  "reserved_consumed_seconds": 3120,
+  "budget_policy": "ceil(reboot_epoch - original_process_creation) + 60; no budget extension",
+  "original_maximum_seconds": 7200.0,
+  "checkpoint_cpu_load_and_finite_verified": true,
+  "files": {
+    "CONTRACT.json": "c0ab817f97072295833b8921193f9a25cbe520dfec73a49a26b095b56202a9b4",
+    "ENVIRONMENT.json": "3796d4bfa62bf8fc29dbc339c03bcdfa1126eebce301aaa32c590d0bae9f36cc",
+    "metrics.jsonl": "df075cfe143214b8ea20d01b24cf1fa75c1389a9ec91b37d0ad00eb59e8e919b",
+    "checkpoints/last.pt": "e7954e661ae8908042cd5e2bf381e551ff2f28e8034d3c5f47e90f1ca5a32153",
+    "checkpoints/selected.pt": "0e257b75d3fda7cc222099fe30fb231f71d8f71c03c4d32cd9582eca23cd181f",
+    "evaluation/000000.json": "f95590a728f869b22a903e4611bdeb9e73d2ad9c2b62564d2604a69a865b1173",
+    "evaluation/000512.json": "d9357e7639c92e6c230f1b3eea9a60f833e37c998646cee987b952e6570b398b",
+    "evaluation/001024.json": "8036b593b89d78822ffbf8bb1b0718036284b6eb5d7d8c6776d52e628093d793",
+    "evaluation/001536.json": "9ec925fd8e49b55d0cdcb254c558aebe59b945f809ec7cabeefeffdc46fc76b9"
+  },
+  "recovery_script_sha256": "7a6756b078bd37323c345fd9c04d281a7921effae66c3e89dc436626135c51b5"
+}

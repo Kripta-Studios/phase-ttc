@@ -26,6 +26,7 @@ def main() -> None:
     parser.add_argument("--run", type=Path, required=True)
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--recovery", type=Path)
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError("Require a new report destination")
@@ -103,6 +104,31 @@ def main() -> None:
         raise ValueError("Training history is incomplete")
     timing_fields = [key for key in history[0] if key.endswith("_seconds")]
     means = {key: sum(row[key] for row in history) / len(history) for key in timing_fields}
+    recovery = None
+    if args.recovery is not None:
+        recovery = read(args.recovery / "RECOVERY.json")
+        for name, expected in recovery["files"].items():
+            if digest(args.recovery / name) != expected:
+                raise ValueError(f"Recovered predecessor changed: {name}")
+        previous = [
+            json.loads(line) for line in (args.recovery / "metrics.jsonl").read_text().splitlines()
+        ]
+        resumed_at = recovery["restored_update"]
+        if history[:resumed_at] != previous[:resumed_at]:
+            raise ValueError("Restored history differs from its predecessor")
+        replayed = previous[resumed_at:]
+        if any(
+            a["sample_tokens"] != b["sample_tokens"]
+            for a, b in zip(replayed, history[resumed_at:], strict=False)
+        ):
+            raise ValueError("Resumed data ordering differs")
+        recovery["replayed_losses_bitwise_equal"] = all(
+            a["loss"] == b["loss"] for a, b in zip(replayed, history[resumed_at:], strict=False)
+        )
+        recovery["logical_exposures"] = cfg.updates * contract["technical_config"]["batch_size"]
+        recovery["minimum_executed_exposures_including_lost_work"] = (
+            recovery["logical_exposures"] + recovery["replayed_logged_exposures"]
+        )
     result = {
         "schema": "phase_completed_monocop_screen_v1",
         "status": status,
@@ -130,6 +156,7 @@ def main() -> None:
         "full_selection_measured": False,
         "promotion": False,
         "goal_complete": False,
+        "host_restart_recovery": recovery,
     }
     lines = [
         "# Resultado del primer screening MonoCoP",
@@ -185,6 +212,24 @@ def main() -> None:
         "",
         f"Checkpoint SHA-256: `{result['selected_checkpoint_sha256']}`.",
     ]
+    if recovery is not None:
+        lines += [
+            "",
+            "Hubo un reinicio del host. Se preservó el STATUS dañado y se verificaron "
+            "en CPU el modelo y el optimizador de ambos checkpoints recuperados. "
+            f"Reanudación desde {recovery['restored_update']}; "
+            f"{recovery['replayed_logged_updates']} updates registrados se perdieron "
+            "y se repitieron con los mismos tokens. "
+            f"Losses repetidas bit a bit: {recovery['replayed_losses_bitwise_equal']}.",
+            "",
+            f"Exposiciones lógicas: {recovery['logical_exposures']}; "
+            "ejecutadas como mínimo incluyendo trabajo perdido: "
+            f"{recovery['minimum_executed_exposures_including_lost_work']}. "
+            f"Se reservaron {recovery['reserved_consumed_seconds']} s del presupuesto "
+            "original para todo el trabajo anterior al reinicio. Por ello, elapsed_seconds "
+            "incluye una reserva conservadora; no es una medición exacta del tiempo "
+            "de cómputo. No se amplió el límite de 7.200 s ni el de 2.048 updates lógicos.",
+        ]
     args.output.mkdir()
     write_json(args.output / "RESULTS.json", result)
     (args.output / "REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
