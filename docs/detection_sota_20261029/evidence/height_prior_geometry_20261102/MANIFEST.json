@@ -1,0 +1,14 @@
+{
+  "audit": "D:/PHASE_TTC_GEOMETRY_PRIOR_20261102/train_panel_v2",
+  "files": {
+    "build_detection_height_prior_report.py": "fbcfdd687972b689480d32b095b8463db436178130a7225740e75dcb4c44973c",
+    "REPORT.md": "0b73c3efddfea67102bafaea6847cf2086031ece11b52ab2c9f62da873212673",
+    "RESULTS.json": "ec738c3c98518e8fefc0002b9441cc2be1ab70947e0a689a018e22af8d89faf7",
+    "code/scripts/audit_detection_height_prior.py": "075a53100e6ce89259e6f4bfe1a554a90417ae484be70775f9ef24e76d5409b6",
+    "code/src/e_jepa_ttc/detection/cuboid_edge_depth.py": "d2495827c979df91516a47de002c71ac63ba74c4b09b6315ea2fb40e353cbe71",
+    "code/src/e_jepa_ttc/detection/eap_rgb_data.py": "fa670aa09f021465e2b47de5d7a2d787098be592b664822babf95ecae1a6cb55",
+    "code/src/e_jepa_ttc/detection/geometry_contract.py": "ad0355871fa9743d464284c1a3131a8fd9f89cac33556c18855e82f2afd6d79f",
+    "code/src/e_jepa_ttc/detection/monodgp_eap_adapter.py": "9492aef2af662b232c2397b6775685135dddda48ff73879b9ad474e29399e71d"
+  },
+  "promotion": false
+}

@@ -1,0 +1,6 @@
+{
+  "cause": "Prepared calibration is 3x4; diagnostic requires its intrinsic 3x3 block",
+  "gpu_training_changed": false,
+  "status": "FAILED_BEFORE_FIRST_RESULT",
+  "error": "Expected eight offsets, 3x3 intrinsic, UV and four edge distances"
+}
