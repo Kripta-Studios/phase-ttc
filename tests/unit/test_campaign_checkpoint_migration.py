@@ -595,6 +595,13 @@ def test_completed_segment_binds_queue_summary_and_no_live_owner(
         "--resume",
         str(source_run / "checkpoints/last.pt"),
     ]
+    duplicate = [*command, "--output", str(active_output)]
+    # Both OS boundaries are doubles in this ownership test. Native Windows
+    # parsing is exercised separately by the live-owner integration test below.
+    parsed_commands = {
+        subprocess.list2cmdline(argv): argv for argv in (command, active_command, duplicate)
+    }
+    monkeypatch.setattr(migration, "_windows_command_line_to_argv", parsed_commands.__getitem__)
     monkeypatch.setattr(
         migration,
         "_live_windows_processes",
@@ -611,7 +618,6 @@ def test_completed_segment_binds_queue_summary_and_no_live_owner(
     )
     with pytest.raises(RuntimeError, match="still owns"):
         verify_source_state_receipt(receipt, source_run=source_run)
-    duplicate = [*command, "--output", str(active_output)]
     monkeypatch.setattr(
         migration,
         "_live_windows_processes",
