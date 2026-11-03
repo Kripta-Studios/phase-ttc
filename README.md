@@ -6,6 +6,18 @@ PHASE-TTC estimates signed time-to-contact from causal event streams and RGB
 frames. Each modality measures motion separately; temporal refiners and a
 compact RGB-anchored fusion head combine the resulting phase estimates.
 
+## Architecture explainer
+
+[![PHASE-TTC architecture explainer: real RGB frames and event streams](docs/media/phase-ttc-architecture-explainer.png)](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)
+
+**[Watch or download the video — 3:40, 1080p, 60 fps](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)** ·
+[English subtitles](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_EN.srt)
+
+An English narrated walkthrough follows real EvTTC RGB frames and event inputs
+through preprocessing, A5, C2F, PAIR, temporal GRUs and fusion to signed TTC.
+Animated diagrams and numerical examples explain each transformation; the later
+quality adapter is presented separately from the original nine-component system.
+
 ## Research article and current implementation
 
 **[PHASE-TTC: From Motion to Time](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)**
