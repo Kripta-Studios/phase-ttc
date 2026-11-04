@@ -4,7 +4,7 @@ This appendix details input construction and timing for the original 434-query c
 
 \subsection{Frozen models and causal input construction}
 
-We use the public Hugging Face full, event-only, and visual-only checkpoints with their released configurations and source revision. Strict state-dictionary loading and float32 inference keep each model fixed. The release identifies the checkpoint bytes but does not document complete training membership, so the evaluation represents frozen-checkpoint adaptation rather than a claim of clean zero-shot transfer.
+I use the public Hugging Face full, event-only, and visual-only checkpoints with their released configurations and source revision. Strict state-dictionary loading and float32 inference keep each model fixed. The release identifies the checkpoint bytes but does not document complete training membership, so the evaluation represents frozen-checkpoint adaptation rather than a claim of clean zero-shot transfer.
 
 Garl-TTC predicts the ratio of object heights at two endpoints and converts it to TTC as
 \begin{equation}

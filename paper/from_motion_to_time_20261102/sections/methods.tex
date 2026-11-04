@@ -35,6 +35,40 @@ Object-centred experiments use a common square region that covers both endpoint 
 
 The eAP adapter reconstructs local targets from public three-dimensional tracks, whereas the benchmark uses private smoothed labels. Results therefore keep reconstructed eAP targets, EvTTC labels, and official GarlTTC labels in separate evaluation populations. \evidence{M01}
 
+\subsection{Real temporal crops and event input planes}
+\label{sec:real-inputs}
+
+Figure~\ref{fig:real-evttc-triplets} follows the same EvTTC vehicle at three recorded queries. Each row shows three causal endpoints in a shared object-centred coordinate system for its modality. The RGB square covers the last two supplied boxes with a 25\% margin; event crops use the manifest's event-camera square. Coordinates are shared across endpoints within each modality, not across the two physical cameras. The displayed triplets are input excerpts, not the complete 650\,ms context history.
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{@{}p{.485\linewidth}@{\hspace{.03\linewidth}}p{.485\linewidth}@{}}
+    \centering\small\textbf{RGB endpoint crops} & \centering\arraybackslash\small\textbf{Event endpoint crops} \\
+    \multicolumn{2}{@{}l@{}}{\small Query 00: anchor $t=14.350374$\,s} \\
+    \includegraphics[width=\linewidth]{figures/evttc_query-00-rgb.jpg} &
+    \includegraphics[width=\linewidth]{figures/evttc_query-00-events.png} \\[5pt]
+    \multicolumn{2}{@{}l@{}}{\small Query 07: anchor $t=16.800436$\,s} \\
+    \includegraphics[width=\linewidth]{figures/evttc_query-07-rgb.jpg} &
+    \includegraphics[width=\linewidth]{figures/evttc_query-07-events.png} \\[5pt]
+    \multicolumn{2}{@{}l@{}}{\small Query 15: anchor $t=20.450520$\,s} \\
+    \includegraphics[width=\linewidth]{figures/evttc_query-15-rgb.jpg} &
+    \includegraphics[width=\linewidth]{figures/evttc_query-15-events.png}
+  \end{tabular}
+  \caption{\textbf{Actual temporal inputs from the EvTTC road excerpt.} Each strip contains three $128\!\times\!128$ crops, ordered from oldest to newest. Event windows end at $t-200\,\mathrm{ms}$, $t-100\,\mathrm{ms}$, and $t$, where $t$ is the stated anchor; each accumulates the preceding 100\,ms. The RGB frame timestamps differ from the corresponding event endpoints by at most 7\,$\mu$s in these examples; exact times are preserved in the source sidecar. Turquoise and coral denote positive and negative event counts with per-crop log display scaling. RGB crops preserve the frozen runtime's stored channel order; JPEG images are visual encodings, not lossless tensors. Source: EvTTC \citep{evttc}, \texttt{CCRm-low-0-overlap-0}; queries are selected illustrations from the previously exposed transfer cohort.}
+  \label{fig:real-evttc-triplets}
+\end{figure}
+
+Figure~\ref{fig:real-evttc-channels} separates the latest event crop of query 07 into the planes produced by the runtime encoder. This distinguishes the polarity display used above from the actual twelve-channel representation. The voxel planes retain temporal structure within the accumulation window; count and rate planes provide additional support measurements. These are preprocessing outputs, not learned feature maps or neural activations.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/evttc_query-07-channels.png}
+  \caption{\textbf{Twelve event input channels from a real measurement.} Query 07, window $[16.700436,16.800436)$\,s. Reading left to right across the upper row gives positive voxel bins 1--5 and negative bin 1; the lower row gives negative bins 2--5, log event count, and log event rate. Each tile is $128\!\times\!128$ pixels. Display values are clipped to $[0,2]$ for voxel planes and $[0,20]$ for count/rate planes, then colorized; the saved sidecar retains the unclipped per-plane minimum, maximum, and mean. The two support planes appear nearly uniform at this display scale. Source: EvTTC \citep{evttc}; extracted with the frozen runtime's \texttt{map\_roi\_lut} and \texttt{encode\_mapped\_lut}.}
+  \label{fig:real-evttc-channels}
+\end{figure}
+
+The source package preserves the website's extraction script, exact query and sensor timestamps, original source-byte hashes, runtime-code hashes, asset checksums, and dataset attribution in \path{data/real_sensor_excerpt/}. The excerpt derives from \texttt{2024-08-08-10-49-53.hdf5}; raw HDF5 and annotations are not included. It reproduces the existing website material without running inference or selecting a new model. The supplied EvTTC attribution and Clear BSD license notice accompany the images; dataset rights remain with their authors.
+
 \subsection{Predictive embedding learning}
 The generic JEPA implementation encodes a context representation with an online encoder $f_\theta$ and predicts a future latent conditioned on a horizon identifier:
 \begin{equation}

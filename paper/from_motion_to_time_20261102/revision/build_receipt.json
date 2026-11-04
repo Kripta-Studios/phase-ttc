@@ -1,5 +1,5 @@
 {
-  "built_at_utc": "2026-11-02T22:43:19.214044+00:00",
+  "built_at_utc": "2026-11-04T10:45:49.952457+00:00",
   "scope": "Result-ledger validation and reproducible saved-prediction analysis; no training or sensor inference",
   "python": "3.14.2",
   "numpy_version": "2.3.5",
@@ -7,10 +7,10 @@
   "bibtex_executable": "bibtex.EXE",
   "main_tex": "PHASE_TTC_From_Motion_to_Time_Expanded.tex",
   "pdf": "PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
-  "pdf_sha256": "09fbf449acee1c5214ead60aece1c4bfa0450a74f6922a9ac37dbe639b34bf9b",
-  "tex_sha256": "aa186c4a8c419c4789faea46f9f42685f1240009e3fca34e6aaa71132159cf9d",
-  "pages": 65,
-  "numbered_figures": 25,
+  "pdf_sha256": "cad440c788ec37403adc888a58aa1fb88b47ef6260a2cd6a5e1678869f5cc654",
+  "tex_sha256": "bb987a64cd17e146fe46b25cb6719ccbb5296e3e2257d8717be4e5b335632362",
+  "pages": 68,
+  "numbered_figures": 28,
   "numbered_tables": 30,
   "regenerated_figure_sources": [
     "figures\\rev_architecture.tex",
@@ -54,28 +54,5 @@
     "undefined_references_or_citations": 0,
     "latex_warnings": 0
   },
-  "visual_review": "PASS: Poppler-rendered cover inspected; contact links legible, no logo, clipping or overlap. All body pages remain pixel-identical to the reviewed prior PDF.",
-  "author_contact_update": {
-    "pdf": "PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
-    "pdf_sha256": "09fbf449acee1c5214ead60aece1c4bfa0450a74f6922a9ac37dbe639b34bf9b",
-    "previous_pdf_sha256": "e569a424e7b53aa19f1557590f4484244063e46a7ecff2176d460e43a9eb2589",
-    "pages": 65,
-    "words": 26677,
-    "changed_pages_at_72dpi": [
-      1
-    ],
-    "body_pages_pixel_identical": true,
-    "modular_consolidated_text_identical": true,
-    "all_fonts_embedded": true,
-    "visible_evocon_mentions": 0,
-    "old_email_mentions": 0,
-    "author_contact_links": [
-      "mailto:alvaro@schwiedop.com",
-      "https://schwiedop.com/PHASE-TTC",
-      "https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/",
-      "https://github.com/Kripta-Studios/phase-ttc"
-    ],
-    "immutable_asset_hashes_verified": 114,
-    "visual_review": "PASS: Poppler-rendered cover inspected; contact links legible, no logo, clipping or overlap. All body pages remain pixel-identical to the reviewed prior PDF."
-  }
+  "visual_review": "Requires visual inspection of the exact compiled output."
 }

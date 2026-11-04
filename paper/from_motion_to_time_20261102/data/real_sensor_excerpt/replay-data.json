@@ -1,0 +1,3476 @@
+{
+  "sequence_id": "CCRm-low-0-overlap-0",
+  "dataset": "EvTTC",
+  "fps": 20,
+  "duration_s": 6.15,
+  "sensor_duration_s": 6.100146,
+  "start_timestamp_us": 14350374,
+  "video_url": "/assets/research/replay-ccrm/replay.mp4",
+  "poster_url": "/assets/research/replay-ccrm/poster.jpg",
+  "provenance_url": "/assets/research/replay-ccrm/provenance.json",
+  "channel_names": [
+    "positive_bin_1",
+    "positive_bin_2",
+    "positive_bin_3",
+    "positive_bin_4",
+    "positive_bin_5",
+    "negative_bin_1",
+    "negative_bin_2",
+    "negative_bin_3",
+    "negative_bin_4",
+    "negative_bin_5",
+    "log_event_count",
+    "log_event_rate"
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "source_frame_index": 287,
+      "time_s": 0.0,
+      "sensor_elapsed_s": 0.0,
+      "timestamp_us": 14350374,
+      "event_count": 1364667,
+      "event_window_us": [
+        14250374,
+        14350374
+      ]
+    },
+    {
+      "index": 1,
+      "source_frame_index": 288,
+      "time_s": 0.05,
+      "sensor_elapsed_s": 0.049999,
+      "timestamp_us": 14400373,
+      "event_count": 1374835,
+      "event_window_us": [
+        14300373,
+        14400373
+      ]
+    },
+    {
+      "index": 2,
+      "source_frame_index": 289,
+      "time_s": 0.1,
+      "sensor_elapsed_s": 0.100007,
+      "timestamp_us": 14450381,
+      "event_count": 1314280,
+      "event_window_us": [
+        14350381,
+        14450381
+      ]
+    },
+    {
+      "index": 3,
+      "source_frame_index": 290,
+      "time_s": 0.15,
+      "sensor_elapsed_s": 0.150006,
+      "timestamp_us": 14500380,
+      "event_count": 1318452,
+      "event_window_us": [
+        14400380,
+        14500380
+      ]
+    },
+    {
+      "index": 4,
+      "source_frame_index": 291,
+      "time_s": 0.2,
+      "sensor_elapsed_s": 0.200005,
+      "timestamp_us": 14550379,
+      "event_count": 1357607,
+      "event_window_us": [
+        14450379,
+        14550379
+      ]
+    },
+    {
+      "index": 5,
+      "source_frame_index": 292,
+      "time_s": 0.25,
+      "sensor_elapsed_s": 0.250004,
+      "timestamp_us": 14600378,
+      "event_count": 1380859,
+      "event_window_us": [
+        14500378,
+        14600378
+      ]
+    },
+    {
+      "index": 6,
+      "source_frame_index": 293,
+      "time_s": 0.3,
+      "sensor_elapsed_s": 0.300003,
+      "timestamp_us": 14650377,
+      "event_count": 1378185,
+      "event_window_us": [
+        14550377,
+        14650377
+      ]
+    },
+    {
+      "index": 7,
+      "source_frame_index": 294,
+      "time_s": 0.35,
+      "sensor_elapsed_s": 0.350011,
+      "timestamp_us": 14700385,
+      "event_count": 1366298,
+      "event_window_us": [
+        14600385,
+        14700385
+      ]
+    },
+    {
+      "index": 8,
+      "source_frame_index": 295,
+      "time_s": 0.4,
+      "sensor_elapsed_s": 0.40001,
+      "timestamp_us": 14750384,
+      "event_count": 1319884,
+      "event_window_us": [
+        14650384,
+        14750384
+      ]
+    },
+    {
+      "index": 9,
+      "source_frame_index": 296,
+      "time_s": 0.45,
+      "sensor_elapsed_s": 0.450009,
+      "timestamp_us": 14800383,
+      "event_count": 1232536,
+      "event_window_us": [
+        14700383,
+        14800383
+      ]
+    },
+    {
+      "index": 10,
+      "source_frame_index": 297,
+      "time_s": 0.5,
+      "sensor_elapsed_s": 0.500009,
+      "timestamp_us": 14850383,
+      "event_count": 1242829,
+      "event_window_us": [
+        14750383,
+        14850383
+      ]
+    },
+    {
+      "index": 11,
+      "source_frame_index": 298,
+      "time_s": 0.55,
+      "sensor_elapsed_s": 0.550017,
+      "timestamp_us": 14900391,
+      "event_count": 1322817,
+      "event_window_us": [
+        14800391,
+        14900391
+      ]
+    },
+    {
+      "index": 12,
+      "source_frame_index": 299,
+      "time_s": 0.6,
+      "sensor_elapsed_s": 0.600016,
+      "timestamp_us": 14950390,
+      "event_count": 1330489,
+      "event_window_us": [
+        14850390,
+        14950390
+      ]
+    },
+    {
+      "index": 13,
+      "source_frame_index": 300,
+      "time_s": 0.65,
+      "sensor_elapsed_s": 0.650015,
+      "timestamp_us": 15000389,
+      "event_count": 1332873,
+      "event_window_us": [
+        14900389,
+        15000389
+      ]
+    },
+    {
+      "index": 14,
+      "source_frame_index": 301,
+      "time_s": 0.7,
+      "sensor_elapsed_s": 0.700014,
+      "timestamp_us": 15050388,
+      "event_count": 1403471,
+      "event_window_us": [
+        14950388,
+        15050388
+      ]
+    },
+    {
+      "index": 15,
+      "source_frame_index": 302,
+      "time_s": 0.75,
+      "sensor_elapsed_s": 0.750022,
+      "timestamp_us": 15100396,
+      "event_count": 1461937,
+      "event_window_us": [
+        15000396,
+        15100396
+      ]
+    },
+    {
+      "index": 16,
+      "source_frame_index": 303,
+      "time_s": 0.8,
+      "sensor_elapsed_s": 0.800021,
+      "timestamp_us": 15150395,
+      "event_count": 1513482,
+      "event_window_us": [
+        15050395,
+        15150395
+      ]
+    },
+    {
+      "index": 17,
+      "source_frame_index": 304,
+      "time_s": 0.85,
+      "sensor_elapsed_s": 0.85002,
+      "timestamp_us": 15200394,
+      "event_count": 1596493,
+      "event_window_us": [
+        15100394,
+        15200394
+      ]
+    },
+    {
+      "index": 18,
+      "source_frame_index": 305,
+      "time_s": 0.9,
+      "sensor_elapsed_s": 0.900019,
+      "timestamp_us": 15250393,
+      "event_count": 1659365,
+      "event_window_us": [
+        15150393,
+        15250393
+      ]
+    },
+    {
+      "index": 19,
+      "source_frame_index": 306,
+      "time_s": 0.95,
+      "sensor_elapsed_s": 0.950027,
+      "timestamp_us": 15300401,
+      "event_count": 1627307,
+      "event_window_us": [
+        15200401,
+        15300401
+      ]
+    },
+    {
+      "index": 20,
+      "source_frame_index": 307,
+      "time_s": 1.0,
+      "sensor_elapsed_s": 1.000026,
+      "timestamp_us": 15350400,
+      "event_count": 1523380,
+      "event_window_us": [
+        15250400,
+        15350400
+      ]
+    },
+    {
+      "index": 21,
+      "source_frame_index": 308,
+      "time_s": 1.05,
+      "sensor_elapsed_s": 1.050025,
+      "timestamp_us": 15400399,
+      "event_count": 1392794,
+      "event_window_us": [
+        15300399,
+        15400399
+      ]
+    },
+    {
+      "index": 22,
+      "source_frame_index": 309,
+      "time_s": 1.1,
+      "sensor_elapsed_s": 1.100024,
+      "timestamp_us": 15450398,
+      "event_count": 1308911,
+      "event_window_us": [
+        15350398,
+        15450398
+      ]
+    },
+    {
+      "index": 23,
+      "source_frame_index": 310,
+      "time_s": 1.15,
+      "sensor_elapsed_s": 1.150032,
+      "timestamp_us": 15500406,
+      "event_count": 1278179,
+      "event_window_us": [
+        15400406,
+        15500406
+      ]
+    },
+    {
+      "index": 24,
+      "source_frame_index": 311,
+      "time_s": 1.2,
+      "sensor_elapsed_s": 1.200031,
+      "timestamp_us": 15550405,
+      "event_count": 1231585,
+      "event_window_us": [
+        15450405,
+        15550405
+      ]
+    },
+    {
+      "index": 25,
+      "source_frame_index": 312,
+      "time_s": 1.25,
+      "sensor_elapsed_s": 1.250031,
+      "timestamp_us": 15600405,
+      "event_count": 1204056,
+      "event_window_us": [
+        15500405,
+        15600405
+      ]
+    },
+    {
+      "index": 26,
+      "source_frame_index": 313,
+      "time_s": 1.3,
+      "sensor_elapsed_s": 1.30003,
+      "timestamp_us": 15650404,
+      "event_count": 1230656,
+      "event_window_us": [
+        15550404,
+        15650404
+      ]
+    },
+    {
+      "index": 27,
+      "source_frame_index": 314,
+      "time_s": 1.35,
+      "sensor_elapsed_s": 1.350028,
+      "timestamp_us": 15700402,
+      "event_count": 1260632,
+      "event_window_us": [
+        15600402,
+        15700402
+      ]
+    },
+    {
+      "index": 28,
+      "source_frame_index": 315,
+      "time_s": 1.4,
+      "sensor_elapsed_s": 1.400037,
+      "timestamp_us": 15750411,
+      "event_count": 1262032,
+      "event_window_us": [
+        15650411,
+        15750411
+      ]
+    },
+    {
+      "index": 29,
+      "source_frame_index": 316,
+      "time_s": 1.45,
+      "sensor_elapsed_s": 1.450036,
+      "timestamp_us": 15800410,
+      "event_count": 1274443,
+      "event_window_us": [
+        15700410,
+        15800410
+      ]
+    },
+    {
+      "index": 30,
+      "source_frame_index": 317,
+      "time_s": 1.5,
+      "sensor_elapsed_s": 1.500035,
+      "timestamp_us": 15850409,
+      "event_count": 1329696,
+      "event_window_us": [
+        15750409,
+        15850409
+      ]
+    },
+    {
+      "index": 31,
+      "source_frame_index": 318,
+      "time_s": 1.55,
+      "sensor_elapsed_s": 1.550043,
+      "timestamp_us": 15900417,
+      "event_count": 1419258,
+      "event_window_us": [
+        15800417,
+        15900417
+      ]
+    },
+    {
+      "index": 32,
+      "source_frame_index": 319,
+      "time_s": 1.6,
+      "sensor_elapsed_s": 1.600042,
+      "timestamp_us": 15950416,
+      "event_count": 1485345,
+      "event_window_us": [
+        15850416,
+        15950416
+      ]
+    },
+    {
+      "index": 33,
+      "source_frame_index": 320,
+      "time_s": 1.65,
+      "sensor_elapsed_s": 1.650041,
+      "timestamp_us": 16000415,
+      "event_count": 1507027,
+      "event_window_us": [
+        15900415,
+        16000415
+      ]
+    },
+    {
+      "index": 34,
+      "source_frame_index": 321,
+      "time_s": 1.7,
+      "sensor_elapsed_s": 1.70004,
+      "timestamp_us": 16050414,
+      "event_count": 1564723,
+      "event_window_us": [
+        15950414,
+        16050414
+      ]
+    },
+    {
+      "index": 35,
+      "source_frame_index": 322,
+      "time_s": 1.75,
+      "sensor_elapsed_s": 1.750039,
+      "timestamp_us": 16100413,
+      "event_count": 1648034,
+      "event_window_us": [
+        16000413,
+        16100413
+      ]
+    },
+    {
+      "index": 36,
+      "source_frame_index": 323,
+      "time_s": 1.8,
+      "sensor_elapsed_s": 1.800047,
+      "timestamp_us": 16150421,
+      "event_count": 1710735,
+      "event_window_us": [
+        16050421,
+        16150421
+      ]
+    },
+    {
+      "index": 37,
+      "source_frame_index": 324,
+      "time_s": 1.85,
+      "sensor_elapsed_s": 1.850046,
+      "timestamp_us": 16200420,
+      "event_count": 1844395,
+      "event_window_us": [
+        16100420,
+        16200420
+      ]
+    },
+    {
+      "index": 38,
+      "source_frame_index": 325,
+      "time_s": 1.9,
+      "sensor_elapsed_s": 1.900045,
+      "timestamp_us": 16250419,
+      "event_count": 1885055,
+      "event_window_us": [
+        16150419,
+        16250419
+      ]
+    },
+    {
+      "index": 39,
+      "source_frame_index": 326,
+      "time_s": 1.95,
+      "sensor_elapsed_s": 1.950044,
+      "timestamp_us": 16300418,
+      "event_count": 1785760,
+      "event_window_us": [
+        16200418,
+        16300418
+      ]
+    },
+    {
+      "index": 40,
+      "source_frame_index": 327,
+      "time_s": 2.0,
+      "sensor_elapsed_s": 2.000052,
+      "timestamp_us": 16350426,
+      "event_count": 1787178,
+      "event_window_us": [
+        16250426,
+        16350426
+      ]
+    },
+    {
+      "index": 41,
+      "source_frame_index": 328,
+      "time_s": 2.05,
+      "sensor_elapsed_s": 2.050052,
+      "timestamp_us": 16400426,
+      "event_count": 1927879,
+      "event_window_us": [
+        16300426,
+        16400426
+      ]
+    },
+    {
+      "index": 42,
+      "source_frame_index": 329,
+      "time_s": 2.1,
+      "sensor_elapsed_s": 2.10005,
+      "timestamp_us": 16450424,
+      "event_count": 2124598,
+      "event_window_us": [
+        16350424,
+        16450424
+      ]
+    },
+    {
+      "index": 43,
+      "source_frame_index": 330,
+      "time_s": 2.15,
+      "sensor_elapsed_s": 2.150049,
+      "timestamp_us": 16500423,
+      "event_count": 2236711,
+      "event_window_us": [
+        16400423,
+        16500423
+      ]
+    },
+    {
+      "index": 44,
+      "source_frame_index": 331,
+      "time_s": 2.2,
+      "sensor_elapsed_s": 2.200058,
+      "timestamp_us": 16550432,
+      "event_count": 2123016,
+      "event_window_us": [
+        16450432,
+        16550432
+      ]
+    },
+    {
+      "index": 45,
+      "source_frame_index": 332,
+      "time_s": 2.25,
+      "sensor_elapsed_s": 2.250056,
+      "timestamp_us": 16600430,
+      "event_count": 1932921,
+      "event_window_us": [
+        16500430,
+        16600430
+      ]
+    },
+    {
+      "index": 46,
+      "source_frame_index": 333,
+      "time_s": 2.3,
+      "sensor_elapsed_s": 2.300056,
+      "timestamp_us": 16650430,
+      "event_count": 1805626,
+      "event_window_us": [
+        16550430,
+        16650430
+      ]
+    },
+    {
+      "index": 47,
+      "source_frame_index": 334,
+      "time_s": 2.35,
+      "sensor_elapsed_s": 2.350055,
+      "timestamp_us": 16700429,
+      "event_count": 1663687,
+      "event_window_us": [
+        16600429,
+        16700429
+      ]
+    },
+    {
+      "index": 48,
+      "source_frame_index": 335,
+      "time_s": 2.4,
+      "sensor_elapsed_s": 2.400054,
+      "timestamp_us": 16750428,
+      "event_count": 1594258,
+      "event_window_us": [
+        16650428,
+        16750428
+      ]
+    },
+    {
+      "index": 49,
+      "source_frame_index": 336,
+      "time_s": 2.45,
+      "sensor_elapsed_s": 2.450062,
+      "timestamp_us": 16800436,
+      "event_count": 1509340,
+      "event_window_us": [
+        16700436,
+        16800436
+      ]
+    },
+    {
+      "index": 50,
+      "source_frame_index": 337,
+      "time_s": 2.5,
+      "sensor_elapsed_s": 2.500061,
+      "timestamp_us": 16850435,
+      "event_count": 1416011,
+      "event_window_us": [
+        16750435,
+        16850435
+      ]
+    },
+    {
+      "index": 51,
+      "source_frame_index": 338,
+      "time_s": 2.55,
+      "sensor_elapsed_s": 2.55006,
+      "timestamp_us": 16900434,
+      "event_count": 1404889,
+      "event_window_us": [
+        16800434,
+        16900434
+      ]
+    },
+    {
+      "index": 52,
+      "source_frame_index": 339,
+      "time_s": 2.6,
+      "sensor_elapsed_s": 2.600068,
+      "timestamp_us": 16950442,
+      "event_count": 1333938,
+      "event_window_us": [
+        16850442,
+        16950442
+      ]
+    },
+    {
+      "index": 53,
+      "source_frame_index": 340,
+      "time_s": 2.65,
+      "sensor_elapsed_s": 2.650067,
+      "timestamp_us": 17000441,
+      "event_count": 1306137,
+      "event_window_us": [
+        16900441,
+        17000441
+      ]
+    },
+    {
+      "index": 54,
+      "source_frame_index": 341,
+      "time_s": 2.7,
+      "sensor_elapsed_s": 2.700066,
+      "timestamp_us": 17050440,
+      "event_count": 1305621,
+      "event_window_us": [
+        16950440,
+        17050440
+      ]
+    },
+    {
+      "index": 55,
+      "source_frame_index": 342,
+      "time_s": 2.75,
+      "sensor_elapsed_s": 2.750065,
+      "timestamp_us": 17100439,
+      "event_count": 1368087,
+      "event_window_us": [
+        17000439,
+        17100439
+      ]
+    },
+    {
+      "index": 56,
+      "source_frame_index": 343,
+      "time_s": 2.8,
+      "sensor_elapsed_s": 2.800064,
+      "timestamp_us": 17150438,
+      "event_count": 1367124,
+      "event_window_us": [
+        17050438,
+        17150438
+      ]
+    },
+    {
+      "index": 57,
+      "source_frame_index": 344,
+      "time_s": 2.85,
+      "sensor_elapsed_s": 2.850072,
+      "timestamp_us": 17200446,
+      "event_count": 1300897,
+      "event_window_us": [
+        17100446,
+        17200446
+      ]
+    },
+    {
+      "index": 58,
+      "source_frame_index": 345,
+      "time_s": 2.9,
+      "sensor_elapsed_s": 2.900071,
+      "timestamp_us": 17250445,
+      "event_count": 1368577,
+      "event_window_us": [
+        17150445,
+        17250445
+      ]
+    },
+    {
+      "index": 59,
+      "source_frame_index": 346,
+      "time_s": 2.95,
+      "sensor_elapsed_s": 2.95007,
+      "timestamp_us": 17300444,
+      "event_count": 1347888,
+      "event_window_us": [
+        17200444,
+        17300444
+      ]
+    },
+    {
+      "index": 60,
+      "source_frame_index": 347,
+      "time_s": 3.0,
+      "sensor_elapsed_s": 3.000069,
+      "timestamp_us": 17350443,
+      "event_count": 1346045,
+      "event_window_us": [
+        17250443,
+        17350443
+      ]
+    },
+    {
+      "index": 61,
+      "source_frame_index": 348,
+      "time_s": 3.05,
+      "sensor_elapsed_s": 3.050077,
+      "timestamp_us": 17400451,
+      "event_count": 1351516,
+      "event_window_us": [
+        17300451,
+        17400451
+      ]
+    },
+    {
+      "index": 62,
+      "source_frame_index": 349,
+      "time_s": 3.1,
+      "sensor_elapsed_s": 3.100077,
+      "timestamp_us": 17450451,
+      "event_count": 1370022,
+      "event_window_us": [
+        17350451,
+        17450451
+      ]
+    },
+    {
+      "index": 63,
+      "source_frame_index": 350,
+      "time_s": 3.15,
+      "sensor_elapsed_s": 3.150076,
+      "timestamp_us": 17500450,
+      "event_count": 1522354,
+      "event_window_us": [
+        17400450,
+        17500450
+      ]
+    },
+    {
+      "index": 64,
+      "source_frame_index": 351,
+      "time_s": 3.2,
+      "sensor_elapsed_s": 3.200075,
+      "timestamp_us": 17550449,
+      "event_count": 1587991,
+      "event_window_us": [
+        17450449,
+        17550449
+      ]
+    },
+    {
+      "index": 65,
+      "source_frame_index": 352,
+      "time_s": 3.25,
+      "sensor_elapsed_s": 3.250083,
+      "timestamp_us": 17600457,
+      "event_count": 1648657,
+      "event_window_us": [
+        17500457,
+        17600457
+      ]
+    },
+    {
+      "index": 66,
+      "source_frame_index": 353,
+      "time_s": 3.3,
+      "sensor_elapsed_s": 3.300082,
+      "timestamp_us": 17650456,
+      "event_count": 1735844,
+      "event_window_us": [
+        17550456,
+        17650456
+      ]
+    },
+    {
+      "index": 67,
+      "source_frame_index": 354,
+      "time_s": 3.35,
+      "sensor_elapsed_s": 3.350081,
+      "timestamp_us": 17700455,
+      "event_count": 1757800,
+      "event_window_us": [
+        17600455,
+        17700455
+      ]
+    },
+    {
+      "index": 68,
+      "source_frame_index": 355,
+      "time_s": 3.4,
+      "sensor_elapsed_s": 3.40008,
+      "timestamp_us": 17750454,
+      "event_count": 1761452,
+      "event_window_us": [
+        17650454,
+        17750454
+      ]
+    },
+    {
+      "index": 69,
+      "source_frame_index": 356,
+      "time_s": 3.45,
+      "sensor_elapsed_s": 3.450079,
+      "timestamp_us": 17800453,
+      "event_count": 1710676,
+      "event_window_us": [
+        17700453,
+        17800453
+      ]
+    },
+    {
+      "index": 70,
+      "source_frame_index": 357,
+      "time_s": 3.5,
+      "sensor_elapsed_s": 3.500087,
+      "timestamp_us": 17850461,
+      "event_count": 1589553,
+      "event_window_us": [
+        17750461,
+        17850461
+      ]
+    },
+    {
+      "index": 71,
+      "source_frame_index": 358,
+      "time_s": 3.55,
+      "sensor_elapsed_s": 3.550086,
+      "timestamp_us": 17900460,
+      "event_count": 1492356,
+      "event_window_us": [
+        17800460,
+        17900460
+      ]
+    },
+    {
+      "index": 72,
+      "source_frame_index": 359,
+      "time_s": 3.6,
+      "sensor_elapsed_s": 3.600085,
+      "timestamp_us": 17950459,
+      "event_count": 1463480,
+      "event_window_us": [
+        17850459,
+        17950459
+      ]
+    },
+    {
+      "index": 73,
+      "source_frame_index": 360,
+      "time_s": 3.65,
+      "sensor_elapsed_s": 3.650093,
+      "timestamp_us": 18000467,
+      "event_count": 1371881,
+      "event_window_us": [
+        17900467,
+        18000467
+      ]
+    },
+    {
+      "index": 74,
+      "source_frame_index": 361,
+      "time_s": 3.7,
+      "sensor_elapsed_s": 3.700092,
+      "timestamp_us": 18050466,
+      "event_count": 1350063,
+      "event_window_us": [
+        17950466,
+        18050466
+      ]
+    },
+    {
+      "index": 75,
+      "source_frame_index": 362,
+      "time_s": 3.75,
+      "sensor_elapsed_s": 3.750091,
+      "timestamp_us": 18100465,
+      "event_count": 1363023,
+      "event_window_us": [
+        18000465,
+        18100465
+      ]
+    },
+    {
+      "index": 76,
+      "source_frame_index": 363,
+      "time_s": 3.8,
+      "sensor_elapsed_s": 3.80009,
+      "timestamp_us": 18150464,
+      "event_count": 1373240,
+      "event_window_us": [
+        18050464,
+        18150464
+      ]
+    },
+    {
+      "index": 77,
+      "source_frame_index": 364,
+      "time_s": 3.85,
+      "sensor_elapsed_s": 3.85009,
+      "timestamp_us": 18200464,
+      "event_count": 1436852,
+      "event_window_us": [
+        18100464,
+        18200464
+      ]
+    },
+    {
+      "index": 78,
+      "source_frame_index": 365,
+      "time_s": 3.9,
+      "sensor_elapsed_s": 3.900098,
+      "timestamp_us": 18250472,
+      "event_count": 1434661,
+      "event_window_us": [
+        18150472,
+        18250472
+      ]
+    },
+    {
+      "index": 79,
+      "source_frame_index": 366,
+      "time_s": 3.95,
+      "sensor_elapsed_s": 3.950097,
+      "timestamp_us": 18300471,
+      "event_count": 1479152,
+      "event_window_us": [
+        18200471,
+        18300471
+      ]
+    },
+    {
+      "index": 80,
+      "source_frame_index": 367,
+      "time_s": 4.0,
+      "sensor_elapsed_s": 4.000096,
+      "timestamp_us": 18350470,
+      "event_count": 1520487,
+      "event_window_us": [
+        18250470,
+        18350470
+      ]
+    },
+    {
+      "index": 81,
+      "source_frame_index": 368,
+      "time_s": 4.05,
+      "sensor_elapsed_s": 4.050095,
+      "timestamp_us": 18400469,
+      "event_count": 1512936,
+      "event_window_us": [
+        18300469,
+        18400469
+      ]
+    },
+    {
+      "index": 82,
+      "source_frame_index": 369,
+      "time_s": 4.1,
+      "sensor_elapsed_s": 4.100103,
+      "timestamp_us": 18450477,
+      "event_count": 1487517,
+      "event_window_us": [
+        18350477,
+        18450477
+      ]
+    },
+    {
+      "index": 83,
+      "source_frame_index": 370,
+      "time_s": 4.15,
+      "sensor_elapsed_s": 4.150102,
+      "timestamp_us": 18500476,
+      "event_count": 1421974,
+      "event_window_us": [
+        18400476,
+        18500476
+      ]
+    },
+    {
+      "index": 84,
+      "source_frame_index": 371,
+      "time_s": 4.2,
+      "sensor_elapsed_s": 4.200101,
+      "timestamp_us": 18550475,
+      "event_count": 1377775,
+      "event_window_us": [
+        18450475,
+        18550475
+      ]
+    },
+    {
+      "index": 85,
+      "source_frame_index": 372,
+      "time_s": 4.25,
+      "sensor_elapsed_s": 4.2501,
+      "timestamp_us": 18600474,
+      "event_count": 1400991,
+      "event_window_us": [
+        18500474,
+        18600474
+      ]
+    },
+    {
+      "index": 86,
+      "source_frame_index": 373,
+      "time_s": 4.3,
+      "sensor_elapsed_s": 4.300108,
+      "timestamp_us": 18650482,
+      "event_count": 1470696,
+      "event_window_us": [
+        18550482,
+        18650482
+      ]
+    },
+    {
+      "index": 87,
+      "source_frame_index": 374,
+      "time_s": 4.35,
+      "sensor_elapsed_s": 4.350107,
+      "timestamp_us": 18700481,
+      "event_count": 1518869,
+      "event_window_us": [
+        18600481,
+        18700481
+      ]
+    },
+    {
+      "index": 88,
+      "source_frame_index": 375,
+      "time_s": 4.4,
+      "sensor_elapsed_s": 4.400106,
+      "timestamp_us": 18750480,
+      "event_count": 1473666,
+      "event_window_us": [
+        18650480,
+        18750480
+      ]
+    },
+    {
+      "index": 89,
+      "source_frame_index": 376,
+      "time_s": 4.45,
+      "sensor_elapsed_s": 4.450105,
+      "timestamp_us": 18800479,
+      "event_count": 1414037,
+      "event_window_us": [
+        18700479,
+        18800479
+      ]
+    },
+    {
+      "index": 90,
+      "source_frame_index": 377,
+      "time_s": 4.5,
+      "sensor_elapsed_s": 4.500113,
+      "timestamp_us": 18850487,
+      "event_count": 1439075,
+      "event_window_us": [
+        18750487,
+        18850487
+      ]
+    },
+    {
+      "index": 91,
+      "source_frame_index": 378,
+      "time_s": 4.55,
+      "sensor_elapsed_s": 4.550112,
+      "timestamp_us": 18900486,
+      "event_count": 1531222,
+      "event_window_us": [
+        18800486,
+        18900486
+      ]
+    },
+    {
+      "index": 92,
+      "source_frame_index": 379,
+      "time_s": 4.6,
+      "sensor_elapsed_s": 4.600111,
+      "timestamp_us": 18950485,
+      "event_count": 1689033,
+      "event_window_us": [
+        18850485,
+        18950485
+      ]
+    },
+    {
+      "index": 93,
+      "source_frame_index": 380,
+      "time_s": 4.65,
+      "sensor_elapsed_s": 4.65011,
+      "timestamp_us": 19000484,
+      "event_count": 1818750,
+      "event_window_us": [
+        18900484,
+        19000484
+      ]
+    },
+    {
+      "index": 94,
+      "source_frame_index": 381,
+      "time_s": 4.7,
+      "sensor_elapsed_s": 4.700118,
+      "timestamp_us": 19050492,
+      "event_count": 1910096,
+      "event_window_us": [
+        18950492,
+        19050492
+      ]
+    },
+    {
+      "index": 95,
+      "source_frame_index": 382,
+      "time_s": 4.75,
+      "sensor_elapsed_s": 4.750118,
+      "timestamp_us": 19100492,
+      "event_count": 2004686,
+      "event_window_us": [
+        19000492,
+        19100492
+      ]
+    },
+    {
+      "index": 96,
+      "source_frame_index": 383,
+      "time_s": 4.8,
+      "sensor_elapsed_s": 4.800116,
+      "timestamp_us": 19150490,
+      "event_count": 1983326,
+      "event_window_us": [
+        19050490,
+        19150490
+      ]
+    },
+    {
+      "index": 97,
+      "source_frame_index": 384,
+      "time_s": 4.85,
+      "sensor_elapsed_s": 4.850116,
+      "timestamp_us": 19200490,
+      "event_count": 1940973,
+      "event_window_us": [
+        19100490,
+        19200490
+      ]
+    },
+    {
+      "index": 98,
+      "source_frame_index": 385,
+      "time_s": 4.9,
+      "sensor_elapsed_s": 4.900115,
+      "timestamp_us": 19250489,
+      "event_count": 1905523,
+      "event_window_us": [
+        19150489,
+        19250489
+      ]
+    },
+    {
+      "index": 99,
+      "source_frame_index": 386,
+      "time_s": 4.95,
+      "sensor_elapsed_s": 4.950123,
+      "timestamp_us": 19300497,
+      "event_count": 1766146,
+      "event_window_us": [
+        19200497,
+        19300497
+      ]
+    },
+    {
+      "index": 100,
+      "source_frame_index": 387,
+      "time_s": 5.0,
+      "sensor_elapsed_s": 5.000122,
+      "timestamp_us": 19350496,
+      "event_count": 1683001,
+      "event_window_us": [
+        19250496,
+        19350496
+      ]
+    },
+    {
+      "index": 101,
+      "source_frame_index": 388,
+      "time_s": 5.05,
+      "sensor_elapsed_s": 5.050121,
+      "timestamp_us": 19400495,
+      "event_count": 1607488,
+      "event_window_us": [
+        19300495,
+        19400495
+      ]
+    },
+    {
+      "index": 102,
+      "source_frame_index": 389,
+      "time_s": 5.1,
+      "sensor_elapsed_s": 5.10012,
+      "timestamp_us": 19450494,
+      "event_count": 1485587,
+      "event_window_us": [
+        19350494,
+        19450494
+      ]
+    },
+    {
+      "index": 103,
+      "source_frame_index": 390,
+      "time_s": 5.15,
+      "sensor_elapsed_s": 5.150128,
+      "timestamp_us": 19500502,
+      "event_count": 1403753,
+      "event_window_us": [
+        19400502,
+        19500502
+      ]
+    },
+    {
+      "index": 104,
+      "source_frame_index": 391,
+      "time_s": 5.2,
+      "sensor_elapsed_s": 5.200127,
+      "timestamp_us": 19550501,
+      "event_count": 1300586,
+      "event_window_us": [
+        19450501,
+        19550501
+      ]
+    },
+    {
+      "index": 105,
+      "source_frame_index": 392,
+      "time_s": 5.25,
+      "sensor_elapsed_s": 5.250126,
+      "timestamp_us": 19600500,
+      "event_count": 1206266,
+      "event_window_us": [
+        19500500,
+        19600500
+      ]
+    },
+    {
+      "index": 106,
+      "source_frame_index": 393,
+      "time_s": 5.3,
+      "sensor_elapsed_s": 5.300125,
+      "timestamp_us": 19650499,
+      "event_count": 1190574,
+      "event_window_us": [
+        19550499,
+        19650499
+      ]
+    },
+    {
+      "index": 107,
+      "source_frame_index": 394,
+      "time_s": 5.35,
+      "sensor_elapsed_s": 5.350133,
+      "timestamp_us": 19700507,
+      "event_count": 1212289,
+      "event_window_us": [
+        19600507,
+        19700507
+      ]
+    },
+    {
+      "index": 108,
+      "source_frame_index": 395,
+      "time_s": 5.4,
+      "sensor_elapsed_s": 5.400132,
+      "timestamp_us": 19750506,
+      "event_count": 1231105,
+      "event_window_us": [
+        19650506,
+        19750506
+      ]
+    },
+    {
+      "index": 109,
+      "source_frame_index": 396,
+      "time_s": 5.45,
+      "sensor_elapsed_s": 5.450131,
+      "timestamp_us": 19800505,
+      "event_count": 1237793,
+      "event_window_us": [
+        19700505,
+        19800505
+      ]
+    },
+    {
+      "index": 110,
+      "source_frame_index": 397,
+      "time_s": 5.5,
+      "sensor_elapsed_s": 5.500131,
+      "timestamp_us": 19850505,
+      "event_count": 1261641,
+      "event_window_us": [
+        19750505,
+        19850505
+      ]
+    },
+    {
+      "index": 111,
+      "source_frame_index": 398,
+      "time_s": 5.55,
+      "sensor_elapsed_s": 5.550139,
+      "timestamp_us": 19900513,
+      "event_count": 1286069,
+      "event_window_us": [
+        19800513,
+        19900513
+      ]
+    },
+    {
+      "index": 112,
+      "source_frame_index": 399,
+      "time_s": 5.6,
+      "sensor_elapsed_s": 5.600137,
+      "timestamp_us": 19950511,
+      "event_count": 1279631,
+      "event_window_us": [
+        19850511,
+        19950511
+      ]
+    },
+    {
+      "index": 113,
+      "source_frame_index": 400,
+      "time_s": 5.65,
+      "sensor_elapsed_s": 5.650137,
+      "timestamp_us": 20000511,
+      "event_count": 1290364,
+      "event_window_us": [
+        19900511,
+        20000511
+      ]
+    },
+    {
+      "index": 114,
+      "source_frame_index": 401,
+      "time_s": 5.7,
+      "sensor_elapsed_s": 5.700136,
+      "timestamp_us": 20050510,
+      "event_count": 1265050,
+      "event_window_us": [
+        19950510,
+        20050510
+      ]
+    },
+    {
+      "index": 115,
+      "source_frame_index": 402,
+      "time_s": 5.75,
+      "sensor_elapsed_s": 5.750144,
+      "timestamp_us": 20100518,
+      "event_count": 1215253,
+      "event_window_us": [
+        20000518,
+        20100518
+      ]
+    },
+    {
+      "index": 116,
+      "source_frame_index": 403,
+      "time_s": 5.8,
+      "sensor_elapsed_s": 5.800143,
+      "timestamp_us": 20150517,
+      "event_count": 1218224,
+      "event_window_us": [
+        20050517,
+        20150517
+      ]
+    },
+    {
+      "index": 117,
+      "source_frame_index": 404,
+      "time_s": 5.85,
+      "sensor_elapsed_s": 5.850142,
+      "timestamp_us": 20200516,
+      "event_count": 1243012,
+      "event_window_us": [
+        20100516,
+        20200516
+      ]
+    },
+    {
+      "index": 118,
+      "source_frame_index": 405,
+      "time_s": 5.9,
+      "sensor_elapsed_s": 5.900141,
+      "timestamp_us": 20250515,
+      "event_count": 1255764,
+      "event_window_us": [
+        20150515,
+        20250515
+      ]
+    },
+    {
+      "index": 119,
+      "source_frame_index": 406,
+      "time_s": 5.95,
+      "sensor_elapsed_s": 5.95014,
+      "timestamp_us": 20300514,
+      "event_count": 1267040,
+      "event_window_us": [
+        20200514,
+        20300514
+      ]
+    },
+    {
+      "index": 120,
+      "source_frame_index": 407,
+      "time_s": 6.0,
+      "sensor_elapsed_s": 6.000148,
+      "timestamp_us": 20350522,
+      "event_count": 1263393,
+      "event_window_us": [
+        20250522,
+        20350522
+      ]
+    },
+    {
+      "index": 121,
+      "source_frame_index": 408,
+      "time_s": 6.05,
+      "sensor_elapsed_s": 6.050147,
+      "timestamp_us": 20400521,
+      "event_count": 1262254,
+      "event_window_us": [
+        20300521,
+        20400521
+      ]
+    },
+    {
+      "index": 122,
+      "source_frame_index": 409,
+      "time_s": 6.1,
+      "sensor_elapsed_s": 6.100146,
+      "timestamp_us": 20450520,
+      "event_count": 1289852,
+      "event_window_us": [
+        20350520,
+        20450520
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:14350374",
+      "index": 0,
+      "time_s": 0.0,
+      "sensor_elapsed_s": 0.0,
+      "timestamp_us": 14350374,
+      "frame_index": 287,
+      "gt_ttc": 5.696177,
+      "rgb_ttc": 4.9776692390441895,
+      "event_ttc": 5.410682678222656,
+      "fused_ttc": 4.803236961364746,
+      "crops_url": "/assets/research/replay-ccrm/query-00-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-00-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-00-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-00-events.png",
+      "rgb_timestamps_us": [
+        14150369,
+        14250376,
+        14350374
+      ],
+      "event_windows_us": [
+        [
+          14050374,
+          14150374
+        ],
+        [
+          14150374,
+          14250374
+        ],
+        [
+          14250374,
+          14350374
+        ]
+      ],
+      "rgb_square_xyxy": [
+        746.0,
+        513.5,
+        896.0,
+        663.5
+      ],
+      "event_square_xyxy": [
+        459.0570356398582,
+        301.70797026119465,
+        566.0329603286862,
+        408.6838949500226
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 0.7371553778648376,
+          "mean": 0.005777731537818909
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 0.9136312007904053,
+          "mean": 0.016878914088010788
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 1.0479552745819092,
+          "mean": 0.02592065930366516
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 2.4223968982696533,
+          "mean": 0.06953117251396179
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 1.0504003763198853,
+          "mean": 0.007559352088719606
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 1.3905928134918213,
+          "mean": 0.007999339140951633
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 1.1449317932128906,
+          "mean": 0.01979801058769226
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 1.7587659358978271,
+          "mean": 0.025861185044050217
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 2.4257545471191406,
+          "mean": 0.07012554258108139
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 0.9828336834907532,
+          "mean": 0.00926671177148819
+        },
+        {
+          "name": "log_event_count",
+          "min": 9.195023536682129,
+          "max": 9.195023536682129,
+          "mean": 9.195023536682129
+        },
+        {
+          "name": "log_event_rate",
+          "min": 11.497517585754395,
+          "max": 11.497517585754395,
+          "mean": 11.497517585754395
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:14700385",
+      "index": 1,
+      "time_s": 0.35,
+      "sensor_elapsed_s": 0.350011,
+      "timestamp_us": 14700385,
+      "frame_index": 294,
+      "gt_ttc": 5.287132,
+      "rgb_ttc": 5.074122428894043,
+      "event_ttc": 4.693362712860107,
+      "fused_ttc": 4.576491832733154,
+      "crops_url": "/assets/research/replay-ccrm/query-01-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-01-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-01-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-01-events.png",
+      "rgb_timestamps_us": [
+        14500380,
+        14600378,
+        14700385
+      ],
+      "event_windows_us": [
+        [
+          14400385,
+          14500385
+        ],
+        [
+          14500385,
+          14600385
+        ],
+        [
+          14600385,
+          14700385
+        ]
+      ],
+      "rgb_square_xyxy": [
+        730.25,
+        504.75,
+        896.75,
+        671.25
+      ],
+      "event_square_xyxy": [
+        447.8670821275217,
+        295.53233961761066,
+        566.5621821736042,
+        414.2274396636932
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.3211239576339722,
+          "mean": 0.03328690677881241
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 1.9970649480819702,
+          "mean": 0.038847655057907104
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 1.453224778175354,
+          "mean": 0.027396228164434433
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 1.7314788103103638,
+          "mean": 0.038287580013275146
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 1.6727313995361328,
+          "mean": 0.04829491674900055
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 1.7656980752944946,
+          "mean": 0.040588244795799255
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 2.735560655593872,
+          "mean": 0.0501822829246521
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 2.191581964492798,
+          "mean": 0.029136374592781067
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 2.376800060272217,
+          "mean": 0.05441603809595108
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 2.219801902770996,
+          "mean": 0.05495622381567955
+        },
+        {
+          "name": "log_event_count",
+          "min": 9.37576961517334,
+          "max": 9.37576961517334,
+          "mean": 9.375768661499023
+        },
+        {
+          "name": "log_event_rate",
+          "min": 11.678278923034668,
+          "max": 11.678278923034668,
+          "mean": 11.678279876708984
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:15050388",
+      "index": 2,
+      "time_s": 0.7,
+      "sensor_elapsed_s": 0.700014,
+      "timestamp_us": 15050388,
+      "frame_index": 301,
+      "gt_ttc": 4.932393,
+      "rgb_ttc": 4.436408519744873,
+      "event_ttc": 4.064864158630371,
+      "fused_ttc": 4.036296844482422,
+      "crops_url": "/assets/research/replay-ccrm/query-02-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-02-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-02-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-02-events.png",
+      "rgb_timestamps_us": [
+        14850383,
+        14950390,
+        15050388
+      ],
+      "event_windows_us": [
+        [
+          14750388,
+          14850388
+        ],
+        [
+          14850388,
+          14950388
+        ],
+        [
+          14950388,
+          15050388
+        ]
+      ],
+      "rgb_square_xyxy": [
+        716.25,
+        499.25,
+        888.75,
+        671.75
+      ],
+      "event_square_xyxy": [
+        437.89828468837726,
+        291.64957388230806,
+        560.9027366140745,
+        414.6540258080053
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.1147738695144653,
+          "mean": 0.017790239304304123
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 1.4459220170974731,
+          "mean": 0.019142508506774902
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 2.7628862857818604,
+          "mean": 0.0476100891828537
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 1.986388921737671,
+          "mean": 0.045517269521951675
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 0.8361241817474365,
+          "mean": 0.009849301539361477
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 1.5484179258346558,
+          "mean": 0.023181576281785965
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 2.37113618850708,
+          "mean": 0.029884306713938713
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 3.8854637145996094,
+          "mean": 0.06737354397773743
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 2.778618335723877,
+          "mean": 0.051522981375455856
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 0.7195469737052917,
+          "mean": 0.009278679266571999
+        },
+        {
+          "name": "log_event_count",
+          "min": 9.03788948059082,
+          "max": 9.03788948059082,
+          "mean": 9.037888526916504
+        },
+        {
+          "name": "log_event_rate",
+          "min": 11.340368270874023,
+          "max": 11.340368270874023,
+          "mean": 11.340367317199707
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:15400399",
+      "index": 3,
+      "time_s": 1.05,
+      "sensor_elapsed_s": 1.050025,
+      "timestamp_us": 15400399,
+      "frame_index": 308,
+      "gt_ttc": 4.594941,
+      "rgb_ttc": 4.603827476501465,
+      "event_ttc": 4.366280555725098,
+      "fused_ttc": 4.2539238929748535,
+      "crops_url": "/assets/research/replay-ccrm/query-03-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-03-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-03-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-03-events.png",
+      "rgb_timestamps_us": [
+        15200394,
+        15300401,
+        15400399
+      ],
+      "event_windows_us": [
+        [
+          15100399,
+          15200399
+        ],
+        [
+          15200399,
+          15300399
+        ],
+        [
+          15300399,
+          15400399
+        ]
+      ],
+      "rgb_square_xyxy": [
+        694.5,
+        494.5,
+        883.5,
+        683.5
+      ],
+      "event_square_xyxy": [
+        422.46667605887876,
+        288.3357287051002,
+        557.1872583755215,
+        423.056311021743
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.6244677305221558,
+          "mean": 0.02804499864578247
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 2.53867769241333,
+          "mean": 0.03971303254365921
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.2639219760894775,
+          "mean": 0.09507369995117188
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 1.7772787809371948,
+          "mean": 0.04706178978085518
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 0.9326572418212891,
+          "mean": 0.013550810515880585
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.4430601596832275,
+          "mean": 0.03278152644634247
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 3.993142604827881,
+          "mean": 0.04503019154071808
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 4.44935417175293,
+          "mean": 0.11190858483314514
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 3.825071334838867,
+          "mean": 0.0495133213698864
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 2.409642219543457,
+          "mean": 0.018573524430394173
+        },
+        {
+          "name": "log_event_count",
+          "min": 9.882978439331055,
+          "max": 9.882978439331055,
+          "mean": 9.882979393005371
+        },
+        {
+          "name": "log_event_rate",
+          "min": 12.185518264770508,
+          "max": 12.185518264770508,
+          "mean": 12.185517311096191
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:15750411",
+      "index": 4,
+      "time_s": 1.4,
+      "sensor_elapsed_s": 1.400037,
+      "timestamp_us": 15750411,
+      "frame_index": 315,
+      "gt_ttc": 4.248436,
+      "rgb_ttc": 4.106156349182129,
+      "event_ttc": 3.631286144256592,
+      "fused_ttc": 3.680453300476074,
+      "crops_url": "/assets/research/replay-ccrm/query-04-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-04-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-04-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-04-events.png",
+      "rgb_timestamps_us": [
+        15550405,
+        15650404,
+        15750411
+      ],
+      "event_windows_us": [
+        [
+          15450411,
+          15550411
+        ],
+        [
+          15550411,
+          15650411
+        ],
+        [
+          15650411,
+          15750411
+        ]
+      ],
+      "rgb_square_xyxy": [
+        670.5,
+        491.5,
+        877.5,
+        698.5
+      ],
+      "event_square_xyxy": [
+        405.42047033786446,
+        286.2343831015022,
+        552.9931326739867,
+        433.8070454376244
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 2.729625940322876,
+          "mean": 0.03942064195871353
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 2.6974854469299316,
+          "mean": 0.04217615723609924
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 2.65692400932312,
+          "mean": 0.04817439615726471
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 2.8400826454162598,
+          "mean": 0.045108769088983536
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.4472389221191406,
+          "mean": 0.021022329106926918
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 4.40868616104126,
+          "mean": 0.04786459356546402
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 3.577998161315918,
+          "mean": 0.05257647484540939
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 6.210395812988281,
+          "mean": 0.05816657096147537
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 8.175580024719238,
+          "mean": 0.06132886931300163
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 2.998802661895752,
+          "mean": 0.01970783807337284
+        },
+        {
+          "name": "log_event_count",
+          "min": 9.697139739990234,
+          "max": 9.697139739990234,
+          "mean": 9.697141647338867
+        },
+        {
+          "name": "log_event_rate",
+          "min": 11.999669075012207,
+          "max": 11.999669075012207,
+          "mean": 11.99966812133789
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:16100413",
+      "index": 5,
+      "time_s": 1.75,
+      "sensor_elapsed_s": 1.750039,
+      "timestamp_us": 16100413,
+      "frame_index": 322,
+      "gt_ttc": 3.9582,
+      "rgb_ttc": 3.5292410850524902,
+      "event_ttc": 3.5613980293273926,
+      "fused_ttc": 3.2885594367980957,
+      "crops_url": "/assets/research/replay-ccrm/query-05-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-05-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-05-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-05-events.png",
+      "rgb_timestamps_us": [
+        15900417,
+        16000415,
+        16100413
+      ],
+      "event_windows_us": [
+        [
+          15800413,
+          15900413
+        ],
+        [
+          15900413,
+          16000413
+        ],
+        [
+          16000413,
+          16100413
+        ]
+      ],
+      "rgb_square_xyxy": [
+        646.25,
+        485.75,
+        872.75,
+        712.25
+      ],
+      "event_square_xyxy": [
+        388.19115245564205,
+        282.17899433576304,
+        549.6814913864544,
+        443.6693332665752
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 2.2076616287231445,
+          "mean": 0.046183232218027115
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 2.297238826751709,
+          "mean": 0.04113250970840454
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 2.656562328338623,
+          "mean": 0.04188239946961403
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 3.1217708587646484,
+          "mean": 0.044349730014801025
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 1.8735297918319702,
+          "mean": 0.016538649797439575
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 3.382448673248291,
+          "mean": 0.05159251391887665
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 4.049083232879639,
+          "mean": 0.04806825518608093
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 5.020476818084717,
+          "mean": 0.05216183513402939
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 5.39633846282959,
+          "mean": 0.060732223093509674
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 3.6105878353118896,
+          "mean": 0.016721654683351517
+        },
+        {
+          "name": "log_event_count",
+          "min": 9.791549682617188,
+          "max": 9.791549682617188,
+          "mean": 9.791549682617188
+        },
+        {
+          "name": "log_event_rate",
+          "min": 12.094084739685059,
+          "max": 12.094084739685059,
+          "mean": 12.094084739685059
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:16450424",
+      "index": 6,
+      "time_s": 2.1,
+      "sensor_elapsed_s": 2.10005,
+      "timestamp_us": 16450424,
+      "frame_index": 329,
+      "gt_ttc": 3.700992,
+      "rgb_ttc": 2.9963271617889404,
+      "event_ttc": 3.407280921936035,
+      "fused_ttc": 2.903200387954712,
+      "crops_url": "/assets/research/replay-ccrm/query-06-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-06-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-06-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-06-events.png",
+      "rgb_timestamps_us": [
+        16250419,
+        16350426,
+        16450424
+      ],
+      "event_windows_us": [
+        [
+          16150424,
+          16250424
+        ],
+        [
+          16250424,
+          16350424
+        ],
+        [
+          16350424,
+          16450424
+        ]
+      ],
+      "rgb_square_xyxy": [
+        619.5,
+        464.0,
+        868.5,
+        713.0
+      ],
+      "event_square_xyxy": [
+        369.0999099382311,
+        266.7439063347741,
+        546.6749164807259,
+        444.3189128772689
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.8889590501785278,
+          "mean": 0.031187649816274643
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.308297872543335,
+          "mean": 0.05658857151865959
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.3762471675872803,
+          "mean": 0.06909112632274628
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 3.0203118324279785,
+          "mean": 0.04548261687159538
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.3410449028015137,
+          "mean": 0.033267583698034286
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.2528440952301025,
+          "mean": 0.036910321563482285
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 5.801731586456299,
+          "mean": 0.06600800156593323
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 4.9901509284973145,
+          "mean": 0.0799642950296402
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 3.542661428451538,
+          "mean": 0.05706004798412323
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 3.8574020862579346,
+          "mean": 0.03763153776526451
+        },
+        {
+          "name": "log_event_count",
+          "min": 10.193878173828125,
+          "max": 10.193878173828125,
+          "mean": 10.193878173828125
+        },
+        {
+          "name": "log_event_rate",
+          "min": 12.496429443359375,
+          "max": 12.496429443359375,
+          "mean": 12.496429443359375
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:16800436",
+      "index": 7,
+      "time_s": 2.45,
+      "sensor_elapsed_s": 2.450062,
+      "timestamp_us": 16800436,
+      "frame_index": 336,
+      "gt_ttc": 3.452173,
+      "rgb_ttc": 2.9947054386138916,
+      "event_ttc": 2.7678141593933105,
+      "fused_ttc": 2.7324821949005127,
+      "crops_url": "/assets/research/replay-ccrm/query-07-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-07-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-07-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-07-events.png",
+      "rgb_timestamps_us": [
+        16600430,
+        16700429,
+        16800436
+      ],
+      "event_windows_us": [
+        [
+          16500436,
+          16600436
+        ],
+        [
+          16600436,
+          16700436
+        ],
+        [
+          16700436,
+          16800436
+        ]
+      ],
+      "rgb_square_xyxy": [
+        590.0,
+        463.5,
+        866.0,
+        739.5
+      ],
+      "event_square_xyxy": [
+        348.2106609868566,
+        266.47067148873555,
+        544.9521571892616,
+        463.2121676911405
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.7961642742156982,
+          "mean": 0.0415019765496254
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.1496598720550537,
+          "mean": 0.08293981850147247
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 2.468292236328125,
+          "mean": 0.061968497931957245
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 2.4414987564086914,
+          "mean": 0.06315378844738007
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.0229132175445557,
+          "mean": 0.04578116536140442
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.5255327224731445,
+          "mean": 0.048267804086208344
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 3.9195556640625,
+          "mean": 0.09671847522258759
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 3.5363004207611084,
+          "mean": 0.07128637284040451
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 3.3567399978637695,
+          "mean": 0.07148817926645279
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 2.6155128479003906,
+          "mean": 0.0549590140581131
+        },
+        {
+          "name": "log_event_count",
+          "min": 11.20006275177002,
+          "max": 11.20006275177002,
+          "mean": 11.20006275177002
+        },
+        {
+          "name": "log_event_rate",
+          "min": 13.50263500213623,
+          "max": 13.50263500213623,
+          "mean": 13.502635955810547
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:17150438",
+      "index": 8,
+      "time_s": 2.8,
+      "sensor_elapsed_s": 2.800064,
+      "timestamp_us": 17150438,
+      "frame_index": 343,
+      "gt_ttc": 3.116077,
+      "rgb_ttc": 2.846221685409546,
+      "event_ttc": 2.8929429054260254,
+      "fused_ttc": 2.711052656173706,
+      "crops_url": "/assets/research/replay-ccrm/query-08-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-08-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-08-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-08-events.png",
+      "rgb_timestamps_us": [
+        16950442,
+        17050440,
+        17150438
+      ],
+      "event_windows_us": [
+        [
+          16850438,
+          16950438
+        ],
+        [
+          16950438,
+          17050438
+        ],
+        [
+          17050438,
+          17150438
+        ]
+      ],
+      "rgb_square_xyxy": [
+        552.75,
+        455.75,
+        860.25,
+        763.25
+      ],
+      "event_square_xyxy": [
+        321.71532250677694,
+        260.95668166051996,
+        540.9994100459543,
+        480.2407691996973
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 0.9545855522155762,
+          "mean": 0.014059473760426044
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 2.836561918258667,
+          "mean": 0.0598730742931366
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.473468780517578,
+          "mean": 0.08972135186195374
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 1.3528263568878174,
+          "mean": 0.026450570672750473
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 1.9457323551177979,
+          "mean": 0.020591236650943756
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 1.2402015924453735,
+          "mean": 0.016745980829000473
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 3.041757583618164,
+          "mean": 0.06333697587251663
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 5.437398910522461,
+          "mean": 0.0948786735534668
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 2.917367696762085,
+          "mean": 0.03796408325433731
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 3.3820462226867676,
+          "mean": 0.027097957208752632
+        },
+        {
+          "name": "log_event_count",
+          "min": 10.533721923828125,
+          "max": 10.533721923828125,
+          "mean": 10.533721923828125
+        },
+        {
+          "name": "log_event_rate",
+          "min": 12.836282730102539,
+          "max": 12.836282730102539,
+          "mean": 12.836284637451172
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:17500450",
+      "index": 9,
+      "time_s": 3.15,
+      "sensor_elapsed_s": 3.150076,
+      "timestamp_us": 17500450,
+      "frame_index": 350,
+      "gt_ttc": 2.845438,
+      "rgb_ttc": 2.5228097438812256,
+      "event_ttc": 2.5797371864318848,
+      "fused_ttc": 2.312230110168457,
+      "crops_url": "/assets/research/replay-ccrm/query-09-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-09-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-09-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-09-events.png",
+      "rgb_timestamps_us": [
+        17300444,
+        17400451,
+        17500450
+      ],
+      "event_windows_us": [
+        [
+          17200450,
+          17300450
+        ],
+        [
+          17300450,
+          17400450
+        ],
+        [
+          17400450,
+          17500450
+        ]
+      ],
+      "rgb_square_xyxy": [
+        506.25,
+        441.25,
+        858.75,
+        793.75
+      ],
+      "event_square_xyxy": [
+        288.67108595953704,
+        250.73658110405205,
+        539.9980858695451,
+        502.06358101406016
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.6126646995544434,
+          "mean": 0.044757358729839325
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 2.6201987266540527,
+          "mean": 0.0680934488773346
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.017935276031494,
+          "mean": 0.05673607811331749
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 2.2169508934020996,
+          "mean": 0.06122501939535141
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 1.3823703527450562,
+          "mean": 0.04706612229347229
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.0995051860809326,
+          "mean": 0.05033712834119797
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 3.757874011993408,
+          "mean": 0.08093340694904327
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 4.005861759185791,
+          "mean": 0.06378497183322906
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 2.8166775703430176,
+          "mean": 0.07751951366662979
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 2.539262533187866,
+          "mean": 0.05850829929113388
+        },
+        {
+          "name": "log_event_count",
+          "min": 11.220699310302734,
+          "max": 11.220699310302734,
+          "mean": 11.220701217651367
+        },
+        {
+          "name": "log_event_rate",
+          "min": 13.523272514343262,
+          "max": 13.523272514343262,
+          "mean": 13.523270606994629
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:18200464",
+      "index": 10,
+      "time_s": 3.85,
+      "sensor_elapsed_s": 3.85009,
+      "timestamp_us": 18200464,
+      "frame_index": 364,
+      "gt_ttc": 2.392155,
+      "rgb_ttc": 2.1706671714782715,
+      "event_ttc": 2.346494197845459,
+      "fused_ttc": 2.039980173110962,
+      "crops_url": "/assets/research/replay-ccrm/query-10-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-10-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-10-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-10-events.png",
+      "rgb_timestamps_us": [
+        18000467,
+        18100465,
+        18200464
+      ],
+      "event_windows_us": [
+        [
+          17900464,
+          18000464
+        ],
+        [
+          18000464,
+          18100464
+        ],
+        [
+          18100464,
+          18200464
+        ]
+      ],
+      "rgb_square_xyxy": [
+        357.25,
+        382.75,
+        841.75,
+        867.25
+      ],
+      "event_square_xyxy": [
+        182.7002320472597,
+        209.3815655818733,
+        528.1255754518331,
+        554.8069089864468
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.5956342220306396,
+          "mean": 0.03643554821610451
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.2398760318756104,
+          "mean": 0.09571217000484467
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.1511142253875732,
+          "mean": 0.07302885502576828
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 2.9630231857299805,
+          "mean": 0.07674338668584824
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.1442625522613525,
+          "mean": 0.05160922929644585
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.4623870849609375,
+          "mean": 0.045684367418289185
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 4.508234977722168,
+          "mean": 0.11159934103488922
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 4.690698623657227,
+          "mean": 0.08260088413953781
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 4.576584339141846,
+          "mean": 0.08997339010238647
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 3.4245009422302246,
+          "mean": 0.06009649112820625
+        },
+        {
+          "name": "log_event_count",
+          "min": 12.097835540771484,
+          "max": 12.097835540771484,
+          "mean": 12.097837448120117
+        },
+        {
+          "name": "log_event_rate",
+          "min": 14.400415420532227,
+          "max": 14.400415420532227,
+          "mean": 14.40041732788086
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:18850487",
+      "index": 11,
+      "time_s": 4.5,
+      "sensor_elapsed_s": 4.500113,
+      "timestamp_us": 18850487,
+      "frame_index": 377,
+      "gt_ttc": 2.032793,
+      "rgb_ttc": 1.9213367700576782,
+      "event_ttc": 2.3198678493499756,
+      "fused_ttc": 1.875907063484192,
+      "crops_url": "/assets/research/replay-ccrm/query-11-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-11-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-11-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-11-events.png",
+      "rgb_timestamps_us": [
+        18650482,
+        18750480,
+        18850487
+      ],
+      "event_windows_us": [
+        [
+          18550487,
+          18650487
+        ],
+        [
+          18650487,
+          18750487
+        ],
+        [
+          18750487,
+          18850487
+        ]
+      ],
+      "rgb_square_xyxy": [
+        113.75,
+        303.25,
+        787.25,
+        976.75
+      ],
+      "event_square_xyxy": [
+        9.503465440862016,
+        153.24666784712272,
+        489.80286491154334,
+        633.546067317804
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 2.1207175254821777,
+          "mean": 0.04566674679517746
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.9719395637512207,
+          "mean": 0.10051749646663666
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.5045557022094727,
+          "mean": 0.09674283862113953
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 3.5894694328308105,
+          "mean": 0.09563654661178589
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.4183104038238525,
+          "mean": 0.05311289057135582
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.7357327938079834,
+          "mean": 0.04962490499019623
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 4.759099960327148,
+          "mean": 0.11275863647460938
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 4.912121772766113,
+          "mean": 0.10981051623821259
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 4.896801948547363,
+          "mean": 0.10795989632606506
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 3.302396297454834,
+          "mean": 0.058438077569007874
+        },
+        {
+          "name": "log_event_count",
+          "min": 12.782475471496582,
+          "max": 12.782475471496582,
+          "mean": 12.782474517822266
+        },
+        {
+          "name": "log_event_rate",
+          "min": 15.085058212280273,
+          "max": 15.085058212280273,
+          "mean": 15.08505630493164
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:19200490",
+      "index": 12,
+      "time_s": 4.85,
+      "sensor_elapsed_s": 4.850116,
+      "timestamp_us": 19200490,
+      "frame_index": 384,
+      "gt_ttc": 1.893934,
+      "rgb_ttc": 1.7126286029815674,
+      "event_ttc": 1.7172797918319702,
+      "fused_ttc": 1.5929176807403564,
+      "crops_url": "/assets/research/replay-ccrm/query-12-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-12-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-12-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-12-events.png",
+      "rgb_timestamps_us": [
+        19000484,
+        19100492,
+        19200490
+      ],
+      "event_windows_us": [
+        [
+          18900490,
+          19000490
+        ],
+        [
+          19000490,
+          19100490
+        ],
+        [
+          19100490,
+          19200490
+        ]
+      ],
+      "rgb_square_xyxy": [
+        -58.5,
+        246.5,
+        754.5,
+        1059.5
+      ],
+      "event_square_xyxy": [
+        -113.10401429086596,
+        113.13381368271803,
+        466.81570664911237,
+        693.0535346226964
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 1.9614156484603882,
+          "mean": 0.03529077768325806
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.480987548828125,
+          "mean": 0.07026125490665436
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 5.027824401855469,
+          "mean": 0.08897410333156586
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 4.085330486297607,
+          "mean": 0.0805896520614624
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.052727460861206,
+          "mean": 0.036591388285160065
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 3.210176706314087,
+          "mean": 0.04107634723186493
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 4.465572834014893,
+          "mean": 0.0789131224155426
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 4.829056739807129,
+          "mean": 0.10112246125936508
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 4.990615367889404,
+          "mean": 0.08891088515520096
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 2.9614367485046387,
+          "mean": 0.039067238569259644
+        },
+        {
+          "name": "log_event_count",
+          "min": 12.900548934936523,
+          "max": 12.900548934936523,
+          "mean": 12.90054702758789
+        },
+        {
+          "name": "log_event_rate",
+          "min": 15.203131675720215,
+          "max": 15.203131675720215,
+          "mean": 15.203128814697266
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:19650499",
+      "index": 13,
+      "time_s": 5.3,
+      "sensor_elapsed_s": 5.300125,
+      "timestamp_us": 19650499,
+      "frame_index": 393,
+      "gt_ttc": 1.756048,
+      "rgb_ttc": 1.8477826118469238,
+      "event_ttc": 2.2275474071502686,
+      "fused_ttc": 1.9054946899414062,
+      "crops_url": "/assets/research/replay-ccrm/query-13-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-13-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-13-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-13-events.png",
+      "rgb_timestamps_us": [
+        19450494,
+        19550501,
+        19650499
+      ],
+      "event_windows_us": [
+        [
+          19350499,
+          19450499
+        ],
+        [
+          19450499,
+          19550499
+        ],
+        [
+          19550499,
+          19650499
+        ]
+      ],
+      "rgb_square_xyxy": [
+        -138.5,
+        287.0,
+        692.5,
+        1118.0
+      ],
+      "event_square_xyxy": [
+        -169.86266672724565,
+        142.0580580043781,
+        423.11276218689255,
+        735.0334869185162
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 2.4793241024017334,
+          "mean": 0.03689279034733772
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.7401583194732666,
+          "mean": 0.07391665875911713
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 4.8668975830078125,
+          "mean": 0.07044413685798645
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 4.304315090179443,
+          "mean": 0.07558762282133102
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.758373260498047,
+          "mean": 0.03607062250375748
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.34669828414917,
+          "mean": 0.0351526215672493
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 4.282378196716309,
+          "mean": 0.06962505728006363
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 3.920638084411621,
+          "mean": 0.06794270873069763
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 5.21461820602417,
+          "mean": 0.07241571694612503
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 3.6979568004608154,
+          "mean": 0.03359123691916466
+        },
+        {
+          "name": "log_event_count",
+          "min": 12.92070198059082,
+          "max": 12.92070198059082,
+          "mean": 12.920701026916504
+        },
+        {
+          "name": "log_event_rate",
+          "min": 15.223285675048828,
+          "max": 15.223285675048828,
+          "mean": 15.223282814025879
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:20050510",
+      "index": 14,
+      "time_s": 5.7,
+      "sensor_elapsed_s": 5.700136,
+      "timestamp_us": 20050510,
+      "frame_index": 401,
+      "gt_ttc": 1.74797,
+      "rgb_ttc": 2.624210834503174,
+      "event_ttc": 2.1705377101898193,
+      "fused_ttc": 2.331590414047241,
+      "crops_url": "/assets/research/replay-ccrm/query-14-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-14-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-14-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-14-events.png",
+      "rgb_timestamps_us": [
+        19850505,
+        19950511,
+        20050510
+      ],
+      "event_windows_us": [
+        [
+          19750510,
+          19850510
+        ],
+        [
+          19850510,
+          19950510
+        ],
+        [
+          19950510,
+          20050510
+        ]
+      ],
+      "rgb_square_xyxy": [
+        -122.5,
+        364.0,
+        612.5,
+        1099.0
+      ],
+      "event_square_xyxy": [
+        -158.65130434661756,
+        196.62310507359587,
+        366.69420681057403,
+        721.9686162307875
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 2.006985664367676,
+          "mean": 0.03775254637002945
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.596513509750366,
+          "mean": 0.06780801713466644
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.3235795497894287,
+          "mean": 0.06933706253767014
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 3.465121269226074,
+          "mean": 0.07026399672031403
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.33891224861145,
+          "mean": 0.031350307166576385
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.2157318592071533,
+          "mean": 0.036344386637210846
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 3.1927390098571777,
+          "mean": 0.07011762261390686
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 3.208082675933838,
+          "mean": 0.07449214160442352
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 3.4939160346984863,
+          "mean": 0.07240920513868332
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 1.8886923789978027,
+          "mean": 0.03307037055492401
+        },
+        {
+          "name": "log_event_count",
+          "min": 12.878887176513672,
+          "max": 12.878887176513672,
+          "mean": 12.878890037536621
+        },
+        {
+          "name": "log_event_rate",
+          "min": 15.181469917297363,
+          "max": 15.181469917297363,
+          "mean": 15.181471824645996
+        }
+      ]
+    },
+    {
+      "id": "EXTENDED:CCRm-low-0-overlap-0:20450520",
+      "index": 15,
+      "time_s": 6.1,
+      "sensor_elapsed_s": 6.100146,
+      "timestamp_us": 20450520,
+      "frame_index": 409,
+      "gt_ttc": 2.112478,
+      "rgb_ttc": 2.4608592987060547,
+      "event_ttc": 5.015646934509277,
+      "fused_ttc": 2.59952712059021,
+      "crops_url": "/assets/research/replay-ccrm/query-15-crops.jpg",
+      "channels_url": "/assets/research/replay-ccrm/query-15-channels.png",
+      "rgb_triplet_url": "/assets/research/replay-ccrm/query-15-rgb.jpg",
+      "event_triplet_url": "/assets/research/replay-ccrm/query-15-events.png",
+      "rgb_timestamps_us": [
+        20250515,
+        20350522,
+        20450520
+      ],
+      "event_windows_us": [
+        [
+          20150520,
+          20250520
+        ],
+        [
+          20250520,
+          20350520
+        ],
+        [
+          20350520,
+          20450520
+        ]
+      ],
+      "rgb_square_xyxy": [
+        -239.5,
+        292.5,
+        663.5,
+        1195.5
+      ],
+      "event_square_xyxy": [
+        -241.3374340703111,
+        146.33112608588112,
+        402.6329208834967,
+        790.301481039689
+      ],
+      "history_rgb_observations": 5,
+      "history_event_observations": 4,
+      "channel_stats": [
+        {
+          "name": "positive_bin_1",
+          "min": 0.0,
+          "max": 2.1966092586517334,
+          "mean": 0.022529583424329758
+        },
+        {
+          "name": "positive_bin_2",
+          "min": 0.0,
+          "max": 3.4296951293945312,
+          "mean": 0.04945804923772812
+        },
+        {
+          "name": "positive_bin_3",
+          "min": 0.0,
+          "max": 3.5656371116638184,
+          "mean": 0.04477294534444809
+        },
+        {
+          "name": "positive_bin_4",
+          "min": 0.0,
+          "max": 3.3153393268585205,
+          "mean": 0.04595267400145531
+        },
+        {
+          "name": "positive_bin_5",
+          "min": 0.0,
+          "max": 2.1023707389831543,
+          "mean": 0.02280096337199211
+        },
+        {
+          "name": "negative_bin_1",
+          "min": 0.0,
+          "max": 2.229231119155884,
+          "mean": 0.026180632412433624
+        },
+        {
+          "name": "negative_bin_2",
+          "min": 0.0,
+          "max": 4.164388656616211,
+          "mean": 0.05743199959397316
+        },
+        {
+          "name": "negative_bin_3",
+          "min": 0.0,
+          "max": 3.0916249752044678,
+          "mean": 0.05059785768389702
+        },
+        {
+          "name": "negative_bin_4",
+          "min": 0.0,
+          "max": 3.0298025608062744,
+          "mean": 0.05042911320924759
+        },
+        {
+          "name": "negative_bin_5",
+          "min": 0.0,
+          "max": 1.885847806930542,
+          "mean": 0.02583988383412361
+        },
+        {
+          "name": "log_event_count",
+          "min": 12.730378150939941,
+          "max": 12.730378150939941,
+          "mean": 12.730378150939941
+        },
+        {
+          "name": "log_event_rate",
+          "min": 15.032960891723633,
+          "max": 15.032960891723633,
+          "mean": 15.032959938049316
+        }
+      ]
+    }
+  ],
+  "prediction_policy": "Sixteen frozen recorded queries; no prediction interpolation or new inference.",
+  "evaluation_scope": "Development-exposed EvTTC transfer study. Scalar scenario TTC, not per-object ground truth.",
+  "display_policy": "Camera playback swaps channels 0 and 2 to match the publisher visualization; the stored channel encoding is not declared in the HDF5 metadata. Model input crops preserve the frozen runtime channel order. RGB and events remain in separate camera coordinate systems. Events show preceding half-open 100 ms windows. Movie uses 20 Hz CFR; sidecar preserves each exact sensor timestamp. Input channels are preprocessing measurements, not learned activations."
+}

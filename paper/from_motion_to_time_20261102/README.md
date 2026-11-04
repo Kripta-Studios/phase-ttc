@@ -16,6 +16,8 @@ python scripts/build_expanded.py
 
 El constructor verifica los hashes y las proyecciones numéricas de la evidencia histórica, regenera las tablas nuevas desde JSON y compila las dos fuentes. Requiere Python con NumPy, Matplotlib, Pillow y PyMuPDF, además de pdfLaTeX y BibTeX con XCharter, newtxmath, TikZ, tcolorbox y los paquetes habituales. No entrena modelos ni realiza inferencia ni acceso de red. Las figuras históricas se conservan sin alteraciones.
 
+La revisión del 4 de noviembre incorpora tres figuras con datos reales de EvTTC usados en la web del proyecto: escena RGB/eventos, recortes temporales del vehículo y los doce canales de entrada de eventos. Las imágenes conservan sus bytes originales, sus timestamps, la atribución y los hashes de extracción en `data/real_sensor_excerpt/`. El constructor comprueba estos archivos con `scripts/verify_sensor_excerpt.py`; `ASSETS.md` explica las transformaciones de visualización. La ampliación visual no añade experimentos ni modifica resultados.
+
 La fuente consolidada también compila con tres pasadas de pdfLaTeX sin BibTeX. `scripts/package_expanded.py` empaqueta la entrega desde el checkout original y verifica la conservación de los archivos de partida. `SOURCE_MANIFEST.json` autentica las fuentes, la evidencia y el PDF final; excluye los auxiliares de compilación, las imágenes temporales de inspección y el duplicado `main.pdf`. El `.bbl` se regenera con BibTeX al construir la fuente modular.
 
 ## Qué se amplía
@@ -27,7 +29,7 @@ La fuente consolidada también compila con tres pasadas de pdfLaTeX sin BibTeX. 
 - Detección eAP como tarea distinta, incluyendo evaluación alineada, diagnóstico geométrico ideal y resultado negativo con predicciones.
 - Cronología, discusión, conclusiones, poblaciones y registro de fuentes actualizados.
 
-Los nuevos identificadores N01–N07 complementan los históricos; no reemplazan E01–E08. `updates/` conserva los JSON, hashes y revisiones del consejo, así como la cobertura de 241 commits y 411 rutas Markdown: 406 revisadas por contenido o fuentes y cinco índices históricos verificados estructuralmente.
+Los nuevos identificadores N01–N07 complementan los históricos; no reemplazan E01–E08. `updates/` conserva los JSON, hashes y comprobaciones de evidencia, así como la cobertura de 241 commits y 411 rutas Markdown: 406 revisadas por contenido o fuentes y cinco índices históricos verificados estructuralmente.
 
 ## Tipografía y continuidad estética
 

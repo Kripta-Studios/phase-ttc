@@ -1,0 +1,319 @@
+{
+  "schema": "phase_ttc_web_real_excerpt_v1",
+  "dataset": "EvTTC",
+  "project_url": "https://nail-hnu.github.io/EvTTC/",
+  "license": "BSD-3-Clause-Clear",
+  "license_url": "https://spdx.org/licenses/BSD-3-Clause-Clear.html",
+  "attribution_file": "ATTRIBUTION.txt",
+  "sequence_id": "CCRm-low-0-overlap-0",
+  "source_file": "2024-08-08-10-49-53.hdf5",
+  "source_bytes": 7290398940,
+  "source_frame_range_inclusive": [
+    287,
+    409
+  ],
+  "rgb_dataset": "blackflys/left/data",
+  "rgb_timestamp_dataset": "blackflys/left/ts",
+  "event_group": "prophesee/event_cam_left",
+  "rgb_used_bytes_sha256": "17adeb21c9e294de9228d46001e12ed87b5cb287b7ab46108092a4930f8b3e52",
+  "event_window_used_bytes_sha256": "6572e7c29078ed3479dd7872a2889bee0689fbad8d670e9d882af72be1dc39d7",
+  "query_manifest_sha256": "9a87a31a435d7922c22c479fe3a8e425e6227b8fab55109c9a2f85a91bb34d31",
+  "query_results_sha256": "2fd4c33716a6c48e50aab581b3a6f172e5492d9136d408433868f63a71431621",
+  "query_manifest_repository_path": "artifacts/final_train40_transfer_20261027/QUERY_MANIFEST.json",
+  "query_results_repository_path": "paper/data/transfer_queries.csv",
+  "extraction_code_sha256": "93e29cbd26027f7d3717e320f6da08dd7c9dd7766b9096930d876e2417b93610",
+  "runtime_source_sha256": {
+    "operational/train40_runtime/encoding.py": "5ba5953422f32a4552f109f50daad53605e7580fb90882ad8a322b060ac22d33",
+    "operational/rgb_port_revision/transfer_inputs.py": "1bb1e3b2b876988171c031f2f14ba76515f7e0d777f111501e9d34d3dc19c0ad",
+    "src/e_jepa_ttc/data/event_v4_geometry.py": "4476f01232c08dd4c120258ae5761643701e08fcdecdd24311e3c39483ebf68b",
+    "src/e_jepa_ttc/representations/voxel_grid.py": "2669d0eda1b56ad2c404c162577c0ccc6870ba61c68984781f79fb0c445edf08",
+    "src/e_jepa_ttc/rgb_port/data.py": "a33a0ddeb62b7a668d25e9d2e8f880261cc7e325d8bcfe953bcee18e4b0410ec"
+  },
+  "transformations": [
+    "Camera display swaps channels 0 and 2 to match the publisher visualization and downsamples with Lanczos to 512x320; no frame interpolation. The stored channel encoding is not declared in the HDF5 metadata. Original stored bytes are hashed. Publisher visualization used for display comparison: https://raw.githubusercontent.com/NAIL-HNU/EvTTC/main/assets/gif/CCRm.gif",
+    "Native event coordinates accumulated by polarity over [timestamp-100000,timestamp); log1p counts scaled by occupied95th percentile for display, then downsampled512x288 and letterboxed.",
+    "128x128 RGB crops call crop_uint8_roi_first with common_square_from_boxes over the last two manifest boxes and preserve the raw runtime channel order. JPEG contact sheets are display encodings, not lossless tensors.",
+    "Exact12channel event tensor calls map_roi_lut and encode_mapped_lut using manifest square and native100ms window.",
+    "Channel visualizations clip values to[0,2] for ten normalized voxel planes and[0,20] for the two logcount/lograte planes; actual min/max/mean values retained in sidecar."
+  ],
+  "caveats": [
+    "Selected research illustration is not representative benchmark evidence.",
+    "Recorded predictions are frozen TRAIN40 transfer outputs on previously exposed data.",
+    "Spatial RGB/event registration uses separate sensor frames; no overlay claims.",
+    "Raw HDF5 and annotations are not redistributed."
+  ],
+  "assets": {
+    "ATTRIBUTION.txt": {
+      "bytes": 2129,
+      "sha256": "21b9cec232e76179a6f11b243f0ca55d5079059f8f98b1c691580c5db2961c28"
+    },
+    "poster.jpg": {
+      "bytes": 103510,
+      "sha256": "90936557c1b5b53fd5edbedff51d5242981bff7ee5aeeecbb8c556d282b5dc26"
+    },
+    "query-00-channels.png": {
+      "bytes": 48039,
+      "sha256": "7032cd3ad7a92bc1a51b1a4f3dfc8912f9984df6411fab9101e0d910693e3bbd"
+    },
+    "query-00-crops.jpg": {
+      "bytes": 60461,
+      "sha256": "8f8ee2386badd0518cd5d727d564b25e09d5e25a54201dc454d1c92851767cff"
+    },
+    "query-00-events.png": {
+      "bytes": 30058,
+      "sha256": "c90af55a8435f0fd5773ef1a34b94bec5abc465d2bdb7b69ba94dda20fdb417e"
+    },
+    "query-00-rgb.jpg": {
+      "bytes": 22578,
+      "sha256": "5482c4feb922fc012a57d19f566fc45a754abdf8e7ba10262f7608a793033196"
+    },
+    "query-01-channels.png": {
+      "bytes": 59352,
+      "sha256": "f8083b2d0bd537f4c7b5ea334771d4380da180ddf1cdaacef5a769440cbffbe2"
+    },
+    "query-01-crops.jpg": {
+      "bytes": 58974,
+      "sha256": "e9a0debff0b61de0aa256800b588cacaa0088a0c909ceb34b7439f36a51cb581"
+    },
+    "query-01-events.png": {
+      "bytes": 28041,
+      "sha256": "de3111ced2cd8de41253b6f087b61bd5722290833293f0a82fa6ee45630c4f34"
+    },
+    "query-01-rgb.jpg": {
+      "bytes": 22696,
+      "sha256": "454d4d0daff2a955fc906cca48d873e6272113109b8d50aeb1269422608a5e7a"
+    },
+    "query-02-channels.png": {
+      "bytes": 51118,
+      "sha256": "cbc44ebff4c0e23f67095fd21633dbb20183b073cc085b716d6520ed910bb545"
+    },
+    "query-02-crops.jpg": {
+      "bytes": 61157,
+      "sha256": "486f8053ad2edbb56ed03531956d915b7fc2b3a13d5ead905e56fdb4d0affa5a"
+    },
+    "query-02-events.png": {
+      "bytes": 31912,
+      "sha256": "476e8960c3a0d72b2e1faf6c79a1dc0ffce3c8461ebdccb410a3877ceaf2ef8b"
+    },
+    "query-02-rgb.jpg": {
+      "bytes": 22666,
+      "sha256": "1112e0c2790d821691076ba9aaffa34a62dfd49b81f37ab4598c61f1ffefe573"
+    },
+    "query-03-channels.png": {
+      "bytes": 74793,
+      "sha256": "e2ae562c824ebb7b2354bf9ae06336ae56d04d339bac4fdb1dc4249a598e09ef"
+    },
+    "query-03-crops.jpg": {
+      "bytes": 60365,
+      "sha256": "d9e9d4216317d6539682901f4d63ec442f6918a531cca621a866acac5b11f911"
+    },
+    "query-03-events.png": {
+      "bytes": 28255,
+      "sha256": "8d42d729f9adbb2867d004430e6a2a31d75ab84b129d08405da9c2d93b4a9c49"
+    },
+    "query-03-rgb.jpg": {
+      "bytes": 22786,
+      "sha256": "1086b1b4a320b74bcd95992e7c846e1843437aa82023811e4db7f9335997b813"
+    },
+    "query-04-channels.png": {
+      "bytes": 67260,
+      "sha256": "3fb55808e97c8a9470c4e09204dae4ce1850f3b07d4562cc40d9b7641aa5ca7e"
+    },
+    "query-04-crops.jpg": {
+      "bytes": 62744,
+      "sha256": "7fcbf9c0618edda9e6b9b74557d9c1158f3e0e849ddd6fc3a5ec9ef6f990e7fd"
+    },
+    "query-04-events.png": {
+      "bytes": 33842,
+      "sha256": "c6b7a03e1053d851230c0fe7107048b38483d0c98d86e70004fb23558f469a4b"
+    },
+    "query-04-rgb.jpg": {
+      "bytes": 23015,
+      "sha256": "6792c281bf2d0fa30e3f2f016bc27bd4b48cf662febd89cb8bd8d079543cfcf2"
+    },
+    "query-05-channels.png": {
+      "bytes": 69210,
+      "sha256": "3891352234669fc4a9644b188777b7b0e2995b313a9a4e9502698e221817c445"
+    },
+    "query-05-crops.jpg": {
+      "bytes": 59017,
+      "sha256": "86ecf19ba8f1a96a351ca8aac90cbeb5cbc3628feaae00c8463a2e5dcf78a51f"
+    },
+    "query-05-events.png": {
+      "bytes": 32327,
+      "sha256": "5414f092783205ce899e88284d4c06ab74986a30ffaa765d84e27f4b8696ec09"
+    },
+    "query-05-rgb.jpg": {
+      "bytes": 22904,
+      "sha256": "dfb302a78c1302b8d83dc3bd0a96b9a71b8290ea2e803a9b754d4dac209ba8e4"
+    },
+    "query-06-channels.png": {
+      "bytes": 82621,
+      "sha256": "e744627e841c5c08ee718f6ae6705fa3b1d6c89444d72bd4d10780d9ba47db89"
+    },
+    "query-06-crops.jpg": {
+      "bytes": 62542,
+      "sha256": "f19cedefa798e1e38b8f59b0ae234e6747968b094f0f090f5ea3459c4c7dd726"
+    },
+    "query-06-events.png": {
+      "bytes": 45539,
+      "sha256": "ffcdd05e583e30b1bf7675d813880ead733d0630e011f4e9ef4189d525c1883b"
+    },
+    "query-06-rgb.jpg": {
+      "bytes": 23291,
+      "sha256": "68e123b38dfc5a1d39b099cf8723929c74412172a4695b8407dd71bb1f12b75a"
+    },
+    "query-07-channels.png": {
+      "bytes": 103587,
+      "sha256": "ef90effa66e67de5ad14588867661572a9a87f40fea8467fe1097e49b3a5f8d9"
+    },
+    "query-07-crops.jpg": {
+      "bytes": 59630,
+      "sha256": "6ad70893dba2ee5b290b821c345534f30f4abda3374015e5749c4dc4d7262d31"
+    },
+    "query-07-events.png": {
+      "bytes": 55741,
+      "sha256": "1030e1976d622d3c8185c605b7fe39821ecbb3f74be806d3138f571d66bde59c"
+    },
+    "query-07-rgb.jpg": {
+      "bytes": 23363,
+      "sha256": "e2e419976347251af1b5ed025b35c2eca946695f01874c07fa5db5f470d142b0"
+    },
+    "query-08-channels.png": {
+      "bytes": 83342,
+      "sha256": "51536d4ffb06bbb06c5b2c68d8206afeceee2eb833e8c348bc80eb32a8c36a24"
+    },
+    "query-08-crops.jpg": {
+      "bytes": 64223,
+      "sha256": "6310bcc1d9b3ab9f0c21a6553e2a2f43ef7a0b65915ee5b6e8d38c8fd306a827"
+    },
+    "query-08-events.png": {
+      "bytes": 58409,
+      "sha256": "d31484d35c947b94e8f14adc7aef0b13d9ac6cb7bbbe53fd6ee3fb516c7610a0"
+    },
+    "query-08-rgb.jpg": {
+      "bytes": 24073,
+      "sha256": "8e7f9066e2907627a3a6cd1736740ca2cd62a4ca05461477c4538c1523489ee1"
+    },
+    "query-09-channels.png": {
+      "bytes": 102016,
+      "sha256": "b9314da7bd5a8261a0bf3a5391a64d858c91c6e7176c7f5b05b796ceca3361fd"
+    },
+    "query-09-crops.jpg": {
+      "bytes": 62301,
+      "sha256": "302910249128cd99d922ecfd075c2e6751db70ce53a1061bf033b5e7b09c4b1c"
+    },
+    "query-09-events.png": {
+      "bytes": 62255,
+      "sha256": "93a93961555b1443de0f36cb99f5fdec6bbf2419339eae91811125ae610b4e25"
+    },
+    "query-09-rgb.jpg": {
+      "bytes": 24279,
+      "sha256": "801435f04d80ed2124c6442410d6b3c1a31540a3ea0e68380fe13853a9dbf864"
+    },
+    "query-10-channels.png": {
+      "bytes": 125400,
+      "sha256": "5baf1fc71e0b1a466cadb23a057de7f95df5ea456787dce325bbafc20436a27d"
+    },
+    "query-10-crops.jpg": {
+      "bytes": 64969,
+      "sha256": "f19dcd397b5d7c8387ec2242e2db1f642dd3b65ae622c1d624f6143b48206c99"
+    },
+    "query-10-events.png": {
+      "bytes": 78776,
+      "sha256": "fd1f65fa7bfbc24c5003c11782f59d72262f74f70d82f9b4315c7f34c44c09a3"
+    },
+    "query-10-rgb.jpg": {
+      "bytes": 25337,
+      "sha256": "1f56e2969e7f590e3a96f5b938d832aafbc7cf2ec6f77852c97c56b6518d779a"
+    },
+    "query-11-channels.png": {
+      "bytes": 138472,
+      "sha256": "7343f56ebb0f375887569c9430a10e8818ce88992e91a07c8eef0eea191ca62e"
+    },
+    "query-11-crops.jpg": {
+      "bytes": 65520,
+      "sha256": "d4fb84d34c3b8ff4d232ebc276a224e5f2248e8a5b9c3b22f398d175b858b2e5"
+    },
+    "query-11-events.png": {
+      "bytes": 80179,
+      "sha256": "d7f85baecd32c5aa4af16b5ff05967096a63e5241e08696ded215f882e6a8368"
+    },
+    "query-11-rgb.jpg": {
+      "bytes": 26206,
+      "sha256": "0a762b44d5462b7e2938ca370c79e6bc9ae99473ab47c60f56e21da70ebb82aa"
+    },
+    "query-12-channels.png": {
+      "bytes": 112227,
+      "sha256": "2ba793ca6e7eb59fb16795d45902d9415afb6da1612b7a5b4e57a05e4e9a43d7"
+    },
+    "query-12-crops.jpg": {
+      "bytes": 59157,
+      "sha256": "9beff3a6b3955129653da22bd03fd45b0551ecac8ff2c9b6924aeb1231dba554"
+    },
+    "query-12-events.png": {
+      "bytes": 66625,
+      "sha256": "cdf99db3ef13d943ff200c3c867b1fa2be751655f45ab784221784d8a6e89423"
+    },
+    "query-12-rgb.jpg": {
+      "bytes": 26243,
+      "sha256": "7512f9c5cdffd95a7f95e1b35659ada6c0cf146704414d924f0b3f3e68557713"
+    },
+    "query-13-channels.png": {
+      "bytes": 100437,
+      "sha256": "49f87d995cf33132fc6cd86f5dece31f58d1a14eac367a13016bd4f1bb0e0984"
+    },
+    "query-13-crops.jpg": {
+      "bytes": 57632,
+      "sha256": "548ba6dae20a64ef5f1ec5c800b8dddeb19d94e13d7832924e700be0b486911f"
+    },
+    "query-13-events.png": {
+      "bytes": 60670,
+      "sha256": "b088d382a31125bee2a7f93fe5b3a4821178f992c532fd943965129184379ada"
+    },
+    "query-13-rgb.jpg": {
+      "bytes": 26172,
+      "sha256": "cee6ff5e60931300c01d16fc4f11a6bb6caee0a5c83bb5ba9bd56bffd51b1c77"
+    },
+    "query-14-channels.png": {
+      "bytes": 100196,
+      "sha256": "920c3f95df7411171568efbf6db1991b694e13620541f9e388ffea4bba618626"
+    },
+    "query-14-crops.jpg": {
+      "bytes": 57613,
+      "sha256": "2ddd6e2bddeb90843bb29e8066aab2f10ea905746399d802e93b1cbe05f73e77"
+    },
+    "query-14-events.png": {
+      "bytes": 60630,
+      "sha256": "3fc3de77e4fba20ba3d15fbabfc09bb903ccd215e4083b951e254906fae13063"
+    },
+    "query-14-rgb.jpg": {
+      "bytes": 26257,
+      "sha256": "8767461ebd7d60f503285cc925666250e493361420727ce0bcce8ed6862c2927"
+    },
+    "query-15-channels.png": {
+      "bytes": 78803,
+      "sha256": "f23462ac0231a116f5020978b8476a1816213ea589dae34f802d2b750a1380f8"
+    },
+    "query-15-crops.jpg": {
+      "bytes": 54764,
+      "sha256": "5e07ceae07d5eae7cb1e555a79fae2f99f52f819d8355fe90145a5a6094f2b04"
+    },
+    "query-15-events.png": {
+      "bytes": 52613,
+      "sha256": "636c968ea8efaa77019184f5891e4589bca0f8b79a93722524bb80ac40c19885"
+    },
+    "query-15-rgb.jpg": {
+      "bytes": 26482,
+      "sha256": "d8a171e82854e4e7f073ea51b24a1a0244e80e9d6857f97cfa9d5f620a594ea6"
+    },
+    "replay-data.json": {
+      "bytes": 86862,
+      "sha256": "2cda6182844951fbd8b605c1eaef909f2517a3c3fe16928f12a0ecbf195a2f64"
+    },
+    "replay.mp4": {
+      "bytes": 2766478,
+      "sha256": "7c2c8a13c881d2ec3753c1ab0699facef08f82359efbeca8682c0c7dd6cc762e"
+    }
+  }
+}

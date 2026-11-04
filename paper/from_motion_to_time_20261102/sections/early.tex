@@ -20,7 +20,7 @@ Global A0 remained preferable to Dense A1 in the matched EvTTC comparison. Five 
 \label{tab:early-evttc}
 \end{table}
 
-Dense A1 reduced mean absolute error, but increased both relative error and the registered composite selection score. It also used 2.16 times A0's measured latency and 1.58 times its training time. We retained the smaller global model. \evidence{E01}
+Dense A1 reduced mean absolute error, but increased both relative error and the registered composite selection score. It also used 2.16 times A0's measured latency and 1.58 times its training time. I retained the smaller global model. \evidence{E01}
 
 Attention residuals, temporal KDA/Object-KDA, object-conditioned crops, and FlowMimic-style alignment all failed their selection gates. Because those screens used different data or criteria, they do not extend the matched A0/A1 ranking.
 
@@ -40,7 +40,7 @@ Object Event v4 placed three causal endpoints in one common crop, preserving app
 
 \subsection{Physical tests of the scale operator}
 
-The frozen v4.31 matcher passed representation-stability checks but failed the zoom, reversal, and translation requirements. We also found uncommitted source changes and a missing evidence stage, so the run was ineligible for selection. Its foreground, height, pseudoflow, and correspondence diagnostics motivated a new scale estimator.
+The frozen v4.31 matcher passed representation-stability checks but failed the zoom, reversal, and translation requirements. I also found uncommitted source changes and a missing evidence stage, so the run was ineligible for selection. Its foreground, height, pseudoflow, and correspondence diagnostics motivated a new scale estimator.
 
 For two apparent heights $h_{t-1}$ and $h_t$ separated by $\Delta t$, the Causal Scale operator defines
 \begin{equation}
@@ -57,7 +57,7 @@ The derivative grows without bound as $r_t$ approaches zero. Output clipping can
 
 The learned foreground failed to reproduce the ideal operator on held-out synthetic data. Causal Scale v5 reached correlation $0.92$ with translation leakage $0.027$, missing both requirements. V7 reduced leakage to $0.0034$ and symmetric TTC error to $0.25$, but correlation stayed at $0.92$ and the validation result did not transfer to the new synthetic group. \evidence{E13,E14}
 
-Causal Scale v8 selected on both mean and worst-group performance across independent synthetic groups. Fixed symmetric smoothing supported sparse endpoints, and a final CVaR loss emphasized large ratio errors. Correlation remained below the gate in every group. We nevertheless continued to a real-data screen, treating it as exploratory. \evidence{E15}
+Causal Scale v8 selected on both mean and worst-group performance across independent synthetic groups. Fixed symmetric smoothing supported sparse endpoints, and a final CVaR loss emphasized large ratio errors. Correlation remained below the gate in every group. I nevertheless continued to a real-data screen, treating it as exploratory. \evidence{E15}
 
 \subsection{Foreground supervision in the first eAP screens}
 
@@ -76,7 +76,7 @@ A4 distilled local spatial relations from a frozen DINOv3 RGB teacher into an ev
 
 \subsection{Scientific Recovery V5: fold-specific producer training}
 
-The first grouped-development run inherited an A4 parent trained on all nine development sequences, including each held-out outer group. We excluded it from promotion and retrained A4 inside every outer fold. The corrected study initialized A6 and A8.0 from the matching fold-local parent and trained Garl from scratch. \evidence{E03}
+The first grouped-development run inherited an A4 parent trained on all nine development sequences, including each held-out outer group. I excluded it from promotion and retrained A4 inside every outer fold. The corrected study initialized A6 and A8.0 from the matching fold-local parent and trained Garl from scratch. \evidence{E03}
 
 The comparison matched samples, targets, training budget, metric, and oracle-ROI access. The E-JEPA-family branch used three endpoints and twelve channels; Garl used two endpoints and forty channels. Checkpoint selection still used the outer-development split, and TTC buckets shaped the initial 8,192-token sample. Thus, the correction removed parent exposure without turning the study into a blind test or a target-free sample. \evidence{E03}
 
@@ -106,7 +106,7 @@ V7 tested soft geometric distillation, coarse-to-fine transport, extra temporal 
 
 Every V7 arm failed at least one mechanism, geometry, or confirmation gate, and none advanced to confirmation seeds. More temporal bins, capacity, and partial freezing did not close the comparator gap. The JEPA objective was inactive in these runs, so their results provide no evidence about JEPA pretraining. \evidence{E07,E08,E09,E10,E11}
 
-A post-hoc A5/C2F analysis found complementary errors. We separated a deployable feature-based router from a target-aware oracle and used the result only to design V8's prospective nested-routing test.
+A post-hoc A5/C2F analysis found complementary errors. I separated a deployable feature-based router from a target-aware oracle and used the result only to design V8's prospective nested-routing test.
 
 \subsection{Scientific Recovery V8: nested routing and JEPA attribution}
 
@@ -132,7 +132,7 @@ A post-training path replay located the trained model's dependence. The analytic
 \label{tab:early-factorial}
 \end{table}
 
-The H2 diagnosis was shortcut/residual dominance: the analytic height path did not explain the trained model's advantage. We next tested a measurement interface with less dependence on explicit height estimation. The diagnosis did not rule out useful geometry or transport features. \evidence{E22}
+The H2 diagnosis was shortcut/residual dominance: the analytic height path did not explain the trained model's advantage. I next tested a measurement interface with less dependence on explicit height estimation. The diagnosis did not rule out useful geometry or transport features. \evidence{E22}
 
 V8 tested JEPA attribution through D0--D4. The meta-router had no single transferable encoder, so A5 supplied the downstream reference. D2 froze the JEPA encoder, D3 fine-tuned part of it, and scratch, random-frozen, and shuffled-future arms controlled for downstream capacity and temporal correspondence. \evidence{E24}
 

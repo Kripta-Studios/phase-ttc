@@ -30,7 +30,7 @@ def main() -> None:
         (
             "Published Garl EvTTC",
             f"{competition['literature']['reported_sequences']} sequences",
-            r"Published RTE; target/query correspondence to our run unverified. \evidence{T02}",
+            r"Published RTE; target/query correspondence to this run unverified. \evidence{T02}",
         ),
         (
             "EvTTC competition snapshot",

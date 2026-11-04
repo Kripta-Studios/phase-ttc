@@ -37,6 +37,9 @@ docs/train40_runtime_council_20261028/*_GENERATED.* -text -whitespace
 # The publication bundle contains SHA-256-bound inputs with original line endings.
 paper/** -text whitespace=cr-at-eol
 
+# Preserve the hash-bound EvTTC license notice, including its original final blank line.
+paper/from_motion_to_time_20261102/data/real_sensor_excerpt/ATTRIBUTION.txt whitespace=cr-at-eol,-blank-at-eof
+
 # Frozen A5 V3 file_sha256 was observed on the original CRLF bytes.
 artifacts/metrics/a5_transport_preflight_v3_confirm/a5_transport_preflight_v3_confirm.json binary
 

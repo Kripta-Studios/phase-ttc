@@ -5,7 +5,7 @@
 
 Five rotations of eight-sequence blocks generate leakage-controlled inputs for the upper stages. In each rotation, twenty-four groups fit the four producers and two PAIR heads, eight different groups fit the context refiners and normalizers, and the remaining eight groups generate out-of-fold features. A query group never contributes to supervised fitting of the models that generate its upper-stage features. \evidence{M23}
 
-We pool PHASE17 RGB and event features across the out-of-fold rotations to train the context heads and normalizers. Those models then generate the PHASE20 features, expressed through the 340-coordinate container, for fusion-head training. Rotations pool named fields with shared semantics, while learned hidden coordinates stay within their originating models. Targets join the data only after out-of-fold feature generation. \evidence{M23}
+I pool PHASE17 RGB and event features across the out-of-fold rotations to train the context heads and normalizers. Those models then generate the PHASE20 features, expressed through the 340-coordinate container, for fusion-head training. Rotations pool named fields with shared semantics, while learned hidden coordinates stay within their originating models. Targets join the data only after out-of-fold feature generation. \evidence{M23}
 
 \begin{figure}[htbp]
 \centering\includegraphics[width=\linewidth]{figures/rev_oof.pdf}
@@ -21,7 +21,7 @@ Producer training combines relational DINO teacher signals, foreground geometry 
 
 
 \subsection{Metrics and target coordinates}
-TTC error in seconds, inverse-TTC error, benchmark phase error, and detection of urgent risk measure different aspects of behaviour. We use the signed benchmark phase
+TTC error in seconds, inverse-TTC error, benchmark phase error, and detection of urgent risk measure different aspects of behaviour. I use the signed benchmark phase
 \begin{equation}
 \phi(T)=-\log\!\left(1-\frac{0.1\,\mathrm{s}}{T}\right),\qquad T<0\;\text{or}\;T>0.1\,\mathrm{s}.
 \end{equation}
@@ -31,7 +31,7 @@ Negative TTC denotes recession. The interval $[0,0.1]$\,s is outside this transf
  -\log\left(1-\frac{0.1}{\widehat T}\right)\right|
  =10^4|\phi(\widehat T)-\phi(T)|.
 \end{equation}
-MiD measures phase displacement. At large positive $T$, the first-order approximation $\phi(T)\simeq0.1/T$ compresses differences in seconds, while sensitivity rises near the positive domain boundary. We therefore report MAE in seconds alongside MiD. \evidence{M10,M15}
+MiD measures phase displacement. At large positive $T$, the first-order approximation $\phi(T)\simeq0.1/T$ compresses differences in seconds, while sensitivity rises near the positive domain boundary. I therefore report MAE in seconds alongside MiD. \evidence{M10,M15}
 
 The scorer groups target TTC into four right-closed intervals: crucial $c:(0,3]$\,s, small $s:(3,6]$\,s, large $l:(6,10]$\,s, and negative $n:(-10,0]$\,s. The grouping includes zero in the negative band, although the phase transform is undefined at zero; metric validity is checked separately. Targets outside these bands do not contribute to the band-weighted score.
 
@@ -42,7 +42,7 @@ The scorer computes the band-weighted score
 \end{equation}
 and a sample-weighted mean MiD. Missing bands remain missing, without weight redistribution. The complete band-weighted score requires targets in all four bands. The evaluation fixes the scorer by SHA-256 and tests a perfect four-band example, a hand-computed crucial-band error, and an absent negative band. \evidence{M15}
 
-Metric reductions retain failures explicitly. The wrapper records invalid predictions by band and leaves its strict mean unavailable when any row is invalid. The official failure rate differs from the false-negative rate for urgent collision warnings. We therefore report prediction coverage, invalid-MiD count, and risk recall with their respective metrics. A finite saturated TTC may still carry an unsupported-measurement flag.
+Metric reductions retain failures explicitly. The wrapper records invalid predictions by band and leaves its strict mean unavailable when any row is invalid. The official failure rate differs from the false-negative rate for urgent collision warnings. I therefore report prediction coverage, invalid-MiD count, and risk recall with their respective metrics. A finite saturated TTC may still carry an unsupported-measurement flag.
 
 \subsection{Official benchmark and exploratory evaluations}
 

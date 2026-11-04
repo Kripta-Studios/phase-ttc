@@ -10,15 +10,15 @@ This evaluation uses labeled EvTTC sequences and the earlier frozen Garl adapter
 Both differ from the 434-query competition experiment in
 Section~\ref{sec:evttc-competition}.
 
-We froze the final candidate before evaluating transfer on EvTTC, with no further fitting or checkpoint selection. We registered sixteen uniformly spaced query times in each of thirty-two sequences with compatible sensors and object annotations, and retained forty-six queries from the earlier evaluation. Removing four duplicates left 554 physical queries. Predictions were fixed before using TTC labels for scoring. The selected query times differ from those in the earlier 946- and 3,640-query H8 evaluations, including on shared sequences.
+I froze the final candidate before evaluating transfer on EvTTC, with no further fitting or checkpoint selection. I registered sixteen uniformly spaced query times in each of thirty-two sequences with compatible sensors and object annotations, and retained forty-six queries from the earlier evaluation. Removing four duplicates left 554 physical queries. Predictions were fixed before using TTC labels for scoring. The selected query times differ from those in the earlier 946- and 3,640-query H8 evaluations, including on shared sequences.
 
-Each query received the nearest public TTC label within 50\,ms, with the earlier timestamp breaking ties. Forty queries had no label within that tolerance. We scored Historical46 and Extended-new separately, using 46 and 468 labeled queries. Their query identities are disjoint after duplicate removal, although all three Historical46 sequences also appear among the thirty-two Extended-new sequences. All retained TTC labels are positive.
+Each query received the nearest public TTC label within 50\,ms, with the earlier timestamp breaking ties. Forty queries had no label within that tolerance. I scored Historical46 and Extended-new separately, using 46 and 468 labeled queries. Their query identities are disjoint after duplicate removal, although all three Historical46 sequences also appear among the thirty-two Extended-new sequences. All retained TTC labels are positive.
 
 Relative time error was defined as
 \begin{equation}
 \mathrm{RTE}=100\,\frac{|\widehat T-T|}{|T|},
 \end{equation}
-without clipping the signed nonzero target. Pooled summaries give each query equal weight; sequence-macro summaries give each physical sequence equal weight. We resample whole sequences for confidence intervals to preserve correlation between nearby query times. EvTTC had already informed development, so the evaluation is exploratory. Inputs also use annotated boxes, and temporal support differs: PHASE-TTC can use up to 650\,ms, while Garl uses two frames and event segments separated by 0.1\,s. Both use float32 tensors, but backend settings were not matched.
+without clipping the signed nonzero target. Pooled summaries give each query equal weight; sequence-macro summaries give each physical sequence equal weight. I resample whole sequences for confidence intervals to preserve correlation between nearby query times. EvTTC had already informed development, so the evaluation is exploratory. Inputs also use annotated boxes, and temporal support differs: PHASE-TTC can use up to 650\,ms, while Garl uses two frames and event segments separated by 0.1\,s. Both use float32 tensors, but backend settings were not matched.
 
 \input{tables/late_transfer}
 
@@ -39,7 +39,7 @@ The ordering changes farther into the saved error distribution. RGB also has the
 \end{figure}
 
 \subsection{Error exceedance and paired uncertainty}
-The saved predictions contain fewer moderately large fusion errors but more extreme ones. PHASE-TTC has fewer absolute errors above 3\,s (29 versus 37) and 5\,s (9 versus 13), yet more above 10\,s (5 versus 2). Its maximum error reaches 32.5\,s, nearly twice RGB's 16.6\,s. We computed these threshold counts post hoc, retaining every eligible prediction in Figure~\ref{fig:transfer-exceedance}. \evidence{R01,L46}
+The saved predictions contain fewer moderately large fusion errors but more extreme ones. PHASE-TTC has fewer absolute errors above 3\,s (29 versus 37) and 5\,s (9 versus 13), yet more above 10\,s (5 versus 2). Its maximum error reaches 32.5\,s, nearly twice RGB's 16.6\,s. I computed these threshold counts post hoc, retaining every eligible prediction in Figure~\ref{fig:transfer-exceedance}. \evidence{R01,L46}
 
 \begin{figure}[htbp]
 \centering\includegraphics[width=\linewidth]{figures/rev_exceedance.pdf}

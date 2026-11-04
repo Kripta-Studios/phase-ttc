@@ -1,0 +1,25 @@
+{
+  "revision_date": "2026-11-04",
+  "pages": 68,
+  "figure_pages": {
+    "Real RGB and event observations": 5,
+    "Actual temporal inputs": 30,
+    "Twelve event input channels": 31
+  },
+  "modular_and_consolidated_pdf_text_identical": true,
+  "authorship_wording_check": "No council, agent, assistant, committee, reviewer or first-person plural wording in manuscript TeX or PDF",
+  "pdf_sha256": "cad440c788ec37403adc888a58aa1fb88b47ef6260a2cd6a5e1678869f5cc654",
+  "tex_sha256": "bb987a64cd17e146fe46b25cb6719ccbb5296e3e2257d8717be4e5b335632362",
+  "latex_checks": {
+    "overfull_boxes": 0,
+    "missing_glyphs": 0,
+    "undefined_references_or_citations": 0,
+    "latex_warnings": 0
+  },
+  "sensor_asset_validation": "real_sensor_excerpt_validation.json",
+  "visual_review_pages": [
+    5,
+    30,
+    31
+  ]
+}

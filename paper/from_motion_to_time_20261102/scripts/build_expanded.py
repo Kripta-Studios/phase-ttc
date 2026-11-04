@@ -59,6 +59,7 @@ def render() -> None:
 
 
 def main() -> None:
+    subprocess.run([sys.executable, str(ROOT / "scripts/verify_sensor_excerpt.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "updates/build_evidence.py")], check=True)
     build_final.STEM = STEM
     # Preserve the original published vectors and statistical analyses. Their

@@ -3,7 +3,7 @@
 This appendix describes data separation, causal checks, and runtime measurement in detail.
 
 \subsection{The unit of independence}
-Windows from one trajectory share appearance, geometry, object identity, and adjacent event history. We therefore partition complete sequence groups and resample at the sequence level. Small disjoint splits remain development evidence when the project has reused their sequences for diagnosis. \evidence{M16}
+Windows from one trajectory share appearance, geometry, object identity, and adjacent event history. I therefore partition complete sequence groups and resample at the sequence level. Small disjoint splits remain development evidence when the project has reused their sequences for diagnosis. \evidence{M16}
 
 Recovery experiments keep every learned parent fold-local. Outer-development rows stay outside encoder fitting, teacher-derived caches, feature normalizers, and expert parents that feed the downstream model. A frozen parent still carries its prior exposure, so the analysis follows sample membership through preprocessing, checkpoints, cached features, normalization, and model selection.
 

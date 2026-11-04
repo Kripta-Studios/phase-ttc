@@ -1073,3 +1073,26 @@ The [alignment report](detection_sota_20261029/BENCHMARK_LOCAL_ALIGNMENT_2026110
 documents the comparison, reproduction command, 36 passing focused tests and
 remaining private-scorer equivalence limit. New training decisions must use the
 explicit new profile; historical frozen runners retain their original semantics.
+
+## 2026-11-04 — Real EvTTC illustrations and single-author manuscript
+
+Updated the expanded From Motion to Time article requested for delivery. Added
+three figures from the existing website's real CCRm-low-0-overlap-0 excerpt:
+full RGB/event scene (page 5), actual temporal crop triplets (page 30), and the
+twelve event input planes (page 31). Retained byte-identical media, dataset
+attribution/license, extraction source, exact timestamps and original hashes.
+The new sensor verifier checks ten distributed assets, the extraction script,
+three query timing records, and linkage to the archived transfer CSV.
+
+Removed council/assistant process language from the article and changed the
+first-person plural to singular throughout the expanded manuscript, including
+the generated population-table wording. Historical evidence files remain intact.
+No model was trained and no scientific metric was changed.
+
+Validation: `python paper/from_motion_to_time_20261102/scripts/build_expanded.py`
+completed with 68 pages, 28 figures and 30 tables; zero LaTeX warnings, overfull
+boxes, missing glyphs, or unresolved references. All fonts are embedded. Modular
+and consolidated PDF text match exactly. TeX and PDF wording scans passed, the
+illustration pages were inspected, Ruff passed for the changed build scripts,
+and `git diff --check` passed. Exact PDF/TeX hashes and QA checks are recorded in
+`paper/from_motion_to_time_20261102/updates/review/real_sensor_revision_validation.json`.

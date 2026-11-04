@@ -1,6 +1,19 @@
 \section{The final PHASE-TTC system}
 \label{sec:train40}
 
+\subsection{Real sensor observations}
+
+Figure~\ref{fig:real-evttc-scene} shows the appearance of the two sensor streams on an actual EvTTC road recording \citep{evttc}. The RGB frame records scene appearance, whereas the event view accumulates signed brightness changes during the preceding 100\,ms. Vehicle outlines, road markings, and background motion therefore appear differently in the two modalities. These are recorded observations rather than schematic renderings. The separate camera views are displayed side by side; the illustration does not assert pixelwise registration.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/evttc_ccrm_poster.jpg}
+  \caption{\textbf{Real RGB and event observations from EvTTC.} Left: Blackfly left-camera frame 287 at $t=14.350374$\,s in recording \texttt{CCRm-low-0-overlap-0}. Right: Prophesee left-camera events in $[t-100\,\mathrm{ms},t)$, with positive counts in turquoise and negative counts in coral; overlap can appear pale. Counts use log scaling and an occupied-pixel 95th-percentile display scale. The RGB display swaps stored channels 0 and 2 to match the dataset publisher's visualization; the model-input crops preserve the runtime channel order. Images are resized for display and retain separate sensor coordinates. Source: EvTTC, Sun et al.\ \citep{evttc}; the same excerpt is used in the project website.}
+  \label{fig:real-evttc-scene}
+\end{figure}
+
+The model operates on supplied object regions rather than the full views above. Appendix~\ref{sec:real-inputs} shows real temporal crop triplets and the event encoder's twelve input channels, with exact timestamps and extraction provenance. This selected, development-exposed recording illustrates the measurement interface; it supplies no additional accuracy or generalization result.
+
 \subsection{Deployed model composition}
 
 PHASE-TTC deploys a causal chain of nine fitted components derived from the V16 PHASE-ONLY family: four modality-specific producers, two PAIR heads, two context refiners, and one fusion head. RGB and events each use an A5 baseline producer and a coarse-to-fine C2F producer. The PAIR readouts extract phase features from their A5 representations, after which the context refiners incorporate temporal history. The fusion head anchors its correction on the refined RGB estimate. Figure~\ref{fig:deployed-architecture} traces this path; the five auxiliary rotations serve training only. \evidence{M22,M23}

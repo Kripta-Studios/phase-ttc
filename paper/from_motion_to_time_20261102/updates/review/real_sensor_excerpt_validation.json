@@ -1,0 +1,50 @@
+{
+  "scope": "Byte-identical real sensor illustrations; no inference or new evaluation",
+  "sequence_id": "CCRm-low-0-overlap-0",
+  "verified_assets": {
+    "figures/evttc_ccrm_poster.jpg": "90936557c1b5b53fd5edbedff51d5242981bff7ee5aeeecbb8c556d282b5dc26",
+    "figures/evttc_query-00-rgb.jpg": "5482c4feb922fc012a57d19f566fc45a754abdf8e7ba10262f7608a793033196",
+    "figures/evttc_query-00-events.png": "c90af55a8435f0fd5773ef1a34b94bec5abc465d2bdb7b69ba94dda20fdb417e",
+    "figures/evttc_query-07-rgb.jpg": "e2e419976347251af1b5ed025b35c2eca946695f01874c07fa5db5f470d142b0",
+    "figures/evttc_query-07-events.png": "1030e1976d622d3c8185c605b7fe39821ecbb3f74be806d3138f571d66bde59c",
+    "figures/evttc_query-15-rgb.jpg": "d8a171e82854e4e7f073ea51b24a1a0244e80e9d6857f97cfa9d5f620a594ea6",
+    "figures/evttc_query-15-events.png": "636c968ea8efaa77019184f5891e4589bca0f8b79a93722524bb80ac40c19885",
+    "figures/evttc_query-07-channels.png": "ef90effa66e67de5ad14588867661572a9a87f40fea8467fe1097e49b3a5f8d9",
+    "data/real_sensor_excerpt/ATTRIBUTION.txt": "21b9cec232e76179a6f11b243f0ca55d5079059f8f98b1c691580c5db2961c28",
+    "data/real_sensor_excerpt/replay-data.json": "2cda6182844951fbd8b605c1eaef909f2517a3c3fe16928f12a0ecbf195a2f64"
+  },
+  "extraction_code_sha256": "93e29cbd26027f7d3717e320f6da08dd7c9dd7766b9096930d876e2417b93610",
+  "query_results_sha256": "2fd4c33716a6c48e50aab581b3a6f172e5492d9136d408433868f63a71431621",
+  "queries": [
+    {
+      "index": 0,
+      "query_id": "EXTENDED:CCRm-low-0-overlap-0:14350374",
+      "anchor_us": 14350374,
+      "rgb_minus_event_endpoint_us": [
+        -5,
+        2,
+        0
+      ]
+    },
+    {
+      "index": 7,
+      "query_id": "EXTENDED:CCRm-low-0-overlap-0:16800436",
+      "anchor_us": 16800436,
+      "rgb_minus_event_endpoint_us": [
+        -6,
+        -7,
+        0
+      ]
+    },
+    {
+      "index": 15,
+      "query_id": "EXTENDED:CCRm-low-0-overlap-0:20450520",
+      "anchor_us": 20450520,
+      "rgb_minus_event_endpoint_us": [
+        -5,
+        2,
+        0
+      ]
+    }
+  ]
+}

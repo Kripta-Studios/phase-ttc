@@ -34,7 +34,7 @@ RAW-L1 failed Stage64's preregistered gates at 162.2 MiD. COUNT-L1 scored 157.2,
 
 SIMPLEX17 improved on frozen RISK17 by 2.0 MiD points, but both uncertainty intervals crossed zero. Its score was 144.0, with hierarchical 95\% interval $[-5.5,1.2]$ and sequence-only interval $[-4.7,0.3]$ for the difference. SIMPLEX8GATE, UNCONSTRAINED17, and PAIRPERM scored 143.9, 144.5, and 149.2. The four arms completed 12 fits and 18,000 CPU float64 updates across three folds, with endpoints frozen before outer evaluation. SIMPLEX17 remained primary and failed the utility gate. \evidence{M_STAGE67_DIAGNOSTICS,M_STAGE67_DECISION}
 
-Stage68 stopped before fitting because the normal-flow estimator supplied too little valid geometry. Only 368 of 8,192 tokens had any valid window; 583 of 16,384 windows supported the full-affine fit, and none supported the reduced-isotropic fit. Fold support rates of 4.9\%, 5.6\%, and 3.0\% all missed the fixed 20\% threshold. We skipped both the ridge and Stage69 neural fits. The failed support gate applies to this estimator, not to event motion information in general. \evidence{M_GEOMETRY}
+Stage68 stopped before fitting because the normal-flow estimator supplied too little valid geometry. Only 368 of 8,192 tokens had any valid window; 583 of 16,384 windows supported the full-affine fit, and none supported the reduced-isotropic fit. Fold support rates of 4.9\%, 5.6\%, and 3.0\% all missed the fixed 20\% threshold. I skipped both the ridge and Stage69 neural fits. The failed support gate applies to this estimator, not to event motion information in general. \evidence{M_GEOMETRY}
 
 \subsection{SIMPLEX-T: residual phase refinement}
 
@@ -81,15 +81,15 @@ The transfer studies answer different questions from OLD\_DEV and TRAIN40. OLD\_
 
 The earlier H8/TRAIN40 route predates the final refit in Section~\ref{sec:train40}. A5 and C2F each received 49,932 updates, the pair head 6,840, and each of three H8 heads 2,500. Its 88,744 training predictions diagnose fit but cannot estimate unseen-scene performance. Inference used events, while training also used an RGB teacher and geometric supervision. \evidence{M_SCIENCE_AUDIT}
 
-The initial EvTTC evaluation had 946 valid targets among 1,024 queries from 32 sequences; the expansion had 3,640 among 3,947. FCWD contributed 597 eligible targets among 630 queries from three previously exposed sequences. We left rows without ground truth unscored, and all reported methods returned finite predictions on the eligible rows. Full RGB/event Garl was omitted from FCWD because the RGB-to-event mapping had not been verified. \evidence{M_V12_EVTTC_946,M_V12_EVTTC_3640,M_V12_FCWD_597}
+The initial EvTTC evaluation had 946 valid targets among 1,024 queries from 32 sequences; the expansion had 3,640 among 3,947. FCWD contributed 597 eligible targets among 630 queries from three previously exposed sequences. I left rows without ground truth unscored, and all reported methods returned finite predictions on the eligible rows. Full RGB/event Garl was omitted from FCWD because the RGB-to-event mapping had not been verified. \evidence{M_V12_EVTTC_946,M_V12_EVTTC_3640,M_V12_FCWD_597}
 
 \subsection{Input and output conditions}
 
 H8 used retrospective event history and supplied oracle ROI metadata. Garl event-only used its native pair of event windows, while Garl full added RGB. The systems differed in context and input construction. EvTTC projected RGB to events with calibrated rotation but no depth-dependent parallax correction. These transfer adapters do not reproduce the published benchmark protocol.
 
-We corrected RGB synchronization before running full Garl. Selected images had to lie within 1\,ms of each event endpoint and about 100\,ms apart; the largest admitted offset was 453\,$\mu$s. The runner strictly loaded the released checkpoint and upstream normalization. Because we designed the RGB extension after inspecting event-only results, this comparison remains exploratory even though the weights stayed frozen. \evidence{M_TRANSFER_REPORT}
+I corrected RGB synchronization before running full Garl. Selected images had to lie within 1\,ms of each event endpoint and about 100\,ms apart; the largest admitted offset was 453\,$\mu$s. The runner strictly loaded the released checkpoint and upstream normalization. Because I designed the RGB extension after inspecting event-only results, this comparison remains exploratory even though the weights stayed frozen. \evidence{M_TRANSFER_REPORT}
 
-H8 bounds TTC at $\pm60$ seconds. Garl keeps its native scale-ratio division, which emits very large finite values when the estimated scales nearly match. We retained those predictions in the full-population metrics.
+H8 bounds TTC at $\pm60$ seconds. Garl keeps its native scale-ratio division, which emits very large finite values when the estimated scales nearly match. I retained those predictions in the full-population metrics.
 
 \subsection{Transfer results and metric-dependent rankings}
 
@@ -109,6 +109,6 @@ Prepared-input CPU profiling measured three rotated-order blocks of 500 batch-on
 
 The shared-GPU route was much slower than the isolated heads. Across 1,728 supplied-ROI requests from 64 TRAIN queries, H8 p95 was 9.35 and 8.48 seconds in two warm blocks; H16 reached 13.20 and 15.30 seconds. The application reopened HDF5 inputs between cold measurements, while the operating system could retain cached pages. \evidence{M_ROUTE_COST}
 
-ROI/voxel reading and preparation consumed 85.5\% of H8's measured time and 90.4\% of H16's in the second warm block. We focused V12 on preparation, bounded caching, and transfer scheduling rather than head speed alone. \evidence{M_ROUTE_REPORT}
+ROI/voxel reading and preparation consumed 85.5\% of H8's measured time and 90.4\% of H16's in the second warm block. I focused V12 on preparation, bounded caching, and transfer scheduling rather than head speed alone. \evidence{M_ROUTE_REPORT}
 
 CUDA graphs reduced recorded A5 launches from 5,877 to 1,270 while preserving the tested outputs, losses, RNG state, and gradients. A later window measured 41.78 versus 32.89 updates/min, but host load and data wait also changed, so the run did not isolate graph speedup. Adaptive caching reached 26.31 updates/min against a 36.75 reference and failed its throughput test. \evidence{M_ENGINEERING}

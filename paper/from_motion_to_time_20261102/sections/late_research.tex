@@ -44,7 +44,7 @@ V17 tested frozen geometry from several angles. A bypass exposed geometry and tr
 
 The geometry bypass carried a useful but unstable downstream signal. On V, its three-seed mean improved crucial MiD from 157.1 to 148.4 and aggregate MiD from 106.5 to 102.8, while MAE worsened. The effect was stronger on H than V, and the three heads shared encoders rather than repeating representation training. \evidence{L50}
 
-The first height-regression arm emitted predictions outside the admissible MiD domain. We kept those rows and left its aggregate missing instead of clipping them away. Temporal supervision restored coverage but not competitive TTC accuracy. Preserving vertical positions improved training height fit while worsening H TTC, and the nonlinear readout also failed. The tested frozen-feature calibration was insufficient, though the bypass result still showed usable geometric signal.
+The first height-regression arm emitted predictions outside the admissible MiD domain. I kept those rows and left its aggregate missing instead of clipping them away. Temporal supervision restored coverage but not competitive TTC accuracy. Preserving vertical positions improved training height fit while worsening H TTC, and the nonlinear readout also failed. The tested frozen-feature calibration was insufficient, though the bypass result still showed usable geometric signal.
 
 Removing gradient clipping changed little. Learned precision improved crucial-band error in every head seed, but missed the required magnitude and safeguards. The recorded gradient norms describe one loss component rather than the full-dataset objective. None of V17's nine research lines produced a candidate. \evidence{L51,L52}
 

@@ -17,19 +17,19 @@ supervision, navigation conditioning, and rollout probes tested other forms of
 temporal information.
 
 Centered derivatives gave the geometric baseline access to future observations.
-We replaced them with past-only derivatives and reported this annotation-assisted
+I replaced them with past-only derivatives and reported this annotation-assisted
 baseline on its supported queries, separate from models with different inputs or
 coverage.
 
-On 13 July, we reclassified the inspected CPLA-high results as reused-test
+On 13 July, I reclassified the inspected CPLA-high results as reused-test
 diagnostics (\texttt{26480260}). Their three fine-tuning seeds shared one SSL
 initialization, so the spread reflects downstream optimization conditional on
-that parent. We removed the runs from final-test claims and added checkpoint,
+that parent. I removed the runs from final-test claims and added checkpoint,
 cache-version, nested-subset, and matched-scratch checks. No repartition of the
 inspected sequences could recreate a blind holdout.
 
 An eAP smoke-validation defect wrote success markers without running the matrix
-(\texttt{1f9e2f99}). We replaced the faulty path with the matrix invocation and
+(\texttt{1f9e2f99}). I replaced the faulty path with the matrix invocation and
 added a regression test; the old markers were discarded as evidence.
 
 \subsection{August: geometry, transport and fold-local parents}
@@ -41,7 +41,7 @@ DINOv3 relational distillation. A4 used an RGB teacher; A5 learned local
 cross-time transport on disjoint training rows. These stages no longer tested
 the original label-free JEPA objective alone.
 
-On 13 August, we found that several grouped runs inherited an A4 parent trained
+On 13 August, I found that several grouped runs inherited an A4 parent trained
 on their held-out outer groups (\texttt{de3349fd}). Those summaries remain
 parent-exposed diagnostics. The corrected study trained A4 inside each outer
 fold, keeping the held-out group out of both representation learning and
