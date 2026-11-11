@@ -1,0 +1,23 @@
+{
+  "pdf_sha256": "a1d595913c9d652ce109914e26a71f03ba9696c49e82d73828a0c881d041fd93",
+  "pages": 81,
+  "changes": [
+    "Final affine-layer terminology",
+    "Paired-difference confidence interval terminology",
+    "Exact pooled fixed-minus-router interval from saved results",
+    "Supplement coverage through 11 November 2026"
+  ],
+  "visually_inspected_pages": [
+    5,
+    13,
+    15,
+    18
+  ],
+  "changed_text_pages": [
+    5,
+    13,
+    15,
+    18
+  ],
+  "layout": "No clipping, overlap or reference errors; 81 pages preserved."
+}

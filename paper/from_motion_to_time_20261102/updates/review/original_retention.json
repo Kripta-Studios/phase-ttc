@@ -81,7 +81,7 @@
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "5a871a21e4d49f087bdef8242daceaddf0cf502fad72ee67c185e08ac983f67b",
+      "expanded_sha256": "a4323b164a8dcc2afcf787a3761c9a41deaff64032db50dceee50e641107b715",
       "changed": true
     },
     {
@@ -111,7 +111,7 @@
     {
       "path": "sections\\final_model.tex",
       "original_sha256": "ee946529c93a4985d3612d356949e05c68965065c3d51083644b0540142d6181",
-      "expanded_sha256": "1a6dbe76716bf6af7c31fb21ade447999f7b1a67b9e43142175536555dea920e",
+      "expanded_sha256": "cdd8bfb2accb99f828076f7cbbfa7d193eccf9dc5d7baa3fcf8aa85779a1a774",
       "changed": true
     },
     {

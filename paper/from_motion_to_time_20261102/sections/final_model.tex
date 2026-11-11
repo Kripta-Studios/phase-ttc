@@ -51,7 +51,7 @@ Its 1,955 parameters include the affine maps and both LayerNorms. Given the RGB 
  \ell_F&=\ell_R+\alpha c_0,\\
  [\sigma_l,\sigma_u]^\top&=\alpha\operatorname{softplus}(\mathbf w_R+[c_1,c_2]^\top).
 \end{align}
-Zero initialization of $W_3$ and $\mathbf b_3$ starts optimization at the RGB anchor. The factor $\alpha$ scales the residual; it imposes no bound on $c_0$. The widths parameterize phase-interval endpoints and require empirical calibration before a probabilistic interpretation.
+Zero initialization of the final affine layer's weights and bias starts optimization at the RGB anchor. The factor $\alpha$ scales the residual; it imposes no bound on $c_0$. The widths parameterize phase-interval endpoints and require empirical calibration before a probabilistic interpretation.
 
 For a finite emitted prediction, we first clamp $\ell_F$ to $[\phi_{\min},\phi_{\max}]$, where $\phi_{\min}=-\log 2+10^{-6}$ and $\phi_{\max}=8$, then compute
 \begin{equation}
