@@ -1,0 +1,35 @@
+{
+  "schema": "phase_ttc_final_head_controls_v1",
+  "scope": "Matched final-recipe head retraining; exposed cross-dataset development evaluation",
+  "training": {
+    "population": "Original 88744 eAP TRAIN40 five-rotation physical OOF features only",
+    "exclude_domain": "evttc",
+    "arms": ["phase_true", "phase_zero_event", "inverse_residual"],
+    "seeds": [7, 13, 21],
+    "parameters_per_head": 1955,
+    "updates": 12044,
+    "batch_size": 128,
+    "sampling": "Identical torch.randint row schedules per seed in all arms",
+    "objective": "Original fusion_loss: group-balanced phase MAE plus 0.1 quantile loss",
+    "optimizer": "AdamW lr 0.0003, weight_decay 0.001, betas 0.9/0.999, eps 1e-8, foreach false",
+    "schedule": "Original final-head warmup/cosine schedule, gradient norm clipped at 1",
+    "initialization": "Identical random initialization per seed, zero output layer",
+    "endpoint": "Last fixed update; no early stopping or validation selection",
+    "inverse_residual": "Transform five phase fields per branch to d0*inverse_TTC; correct RGB inverse TTC by 0.3*c0, map to phase for the unchanged objective. Widths remain in phase units."
+  },
+  "calibrated_simple_fusion": {
+    "coordinate": "phase",
+    "event_weight_grid": {"start": 0.0, "stop": 1.0, "count": 101},
+    "selection": "Minimize group-balanced training phase absolute error only; first minimum",
+    "intercept": false
+  },
+  "evaluation": {
+    "population": "Corrected 460-query transfer cohort, exact identities and frozen feature shards",
+    "feature_gate": "Reproduce released-head archived predictions before fitting controls; report numerical tolerance",
+    "no_evttc_fit_labels": true,
+    "report_all_seeds": true,
+    "primary_summary": "Mean per-query absolute error across the three seeds, not TTC ensembling",
+    "bootstrap": "10000 draws over 32 complete recordings, seed 20261111; seeds kept together",
+    "limitations": ["Historical development exposure", "Upstream estimates and temporal history held fixed", "No matched hidden-feature fusion comparison", "No new official benchmark score"]
+  }
+}
