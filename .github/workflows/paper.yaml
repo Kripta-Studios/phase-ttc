@@ -38,6 +38,10 @@ jobs:
           python-version: "3.11"
           cache: pip
           cache-dependency-path: paper/requirements-paper.txt
+      - name: Verify committed manuscript packages
+        run: |
+          python scripts/ci_paper_validation.py --verify-package-only
+          python paper/from_motion_to_time_20261102/scripts/verify_publication.py
       - name: Install TeX Live
         run: |
           sudo apt-get update

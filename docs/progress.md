@@ -1237,3 +1237,8 @@ Verification: full MP4 decode passes (15,600 frames), all narration/subtitle/TTS
 Unified the current paper, teaser, README, model card, Hub pages, website EN/ES and video to Rank 1 while retaining the archived evaluation date and unchanged metrics. Added linked GitHub and LinkedIn brand icons beside the existing Hugging Face resource. Preserved dated prior editions and review receipts.
 
 The 81-page PDF changes text only on pages 1 and 8. LaTeX reports no warnings, overflow or missing references; publication verification passes 377 inputs and three artifacts. All 22 publication-binding and HF-release tests pass, and changed Python files pass Ruff. Reviewed title/result pages and desktop/mobile resource links. Deployed the PDF, TeX and source ZIP with both website languages; all 14 public file hashes match HTTPS downloads. Hub README manifests match, with unchanged inference weights and pins. The revised 4:20 video passes complete decoding, narration/subtitle parity and 358-frame layout preflight. Publication receipt: docs/releases/rank1_social_icons_20261111.json.
+
+
+### 2026-11-11 — Manuscript CI source-package repair
+
+Reproduced the paper workflow failure at commit 6d8e67e0: the original manuscript README had new resource icons while its source manifest and complete-source ZIP still contained the earlier bytes. Updated only that README entry and the archive manifest; the other 199 archive members are unchanged. Both manuscript package validators now pass. Added the existing package checks before TeX Live installation so stale deliveries fail early. The Actions artifact-service error will be checked in the new remote run.
