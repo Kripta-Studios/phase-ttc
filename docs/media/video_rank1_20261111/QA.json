@@ -1,0 +1,109 @@
+{
+  "status": "PASS",
+  "duration_seconds": 260,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 60,
+  "frames": 15600,
+  "file_bytes": 66416803,
+  "video_sha256": "3fa9436cdbb2b694dbab5061a73517580e5fd7aa9fb545a774d634ddb4bfd568",
+  "source_tensor_sha256": "99eb69f8b1cb551243998c4bf8e6bdcf44000fee509580437e71a7d4c1752538",
+  "annotation_example": {
+    "sequence": "CCRs1-medium",
+    "rows": [
+      12,
+      14
+    ],
+    "heights": [
+      172.0,
+      179.0
+    ],
+    "delta_seconds": 0.100007,
+    "illustrative_current_ttc_seconds": 2.457314857142853,
+    "archived_reference": 2.4611229825999996
+  },
+  "title_region_encode_psnr_db": [
+    48.55,
+    48.35,
+    48.46,
+    48.41,
+    48.52,
+    48.45,
+    48.49,
+    48.36,
+    48.08,
+    48.06,
+    48.32,
+    48.29,
+    48.43,
+    48.26,
+    48.38,
+    48.33
+  ],
+  "minimum_title_psnr_db": 48.06,
+  "decode_errors": [],
+  "audio_levels": [
+    "[Parsed_volumedetect_0 @ 0000022cf2ba2b80] mean_volume: -17.3 dB",
+    "[Parsed_volumedetect_0 @ 0000022cf2ba2b80] max_volume: -1.4 dB"
+  ],
+  "caption_cues": 66,
+  "visual_review_frames_seconds": [
+    6.05,
+    18.7,
+    33.8,
+    50.9,
+    66.7,
+    85.1,
+    103.25,
+    118.25,
+    134.9,
+    152.35,
+    168.25,
+    183.8,
+    199.25,
+    218.1,
+    237.9,
+    253.7
+  ],
+  "notes": [
+    "native 1080p composition; not an upscale of the prior video",
+    "exact model input tensors; schematic internal states explicitly labeled",
+    "native lossless right-camera RGB extractions",
+    "corrected target ledger and exact archived prediction joins",
+    "full audio sample count and full encoded-stream decode passed"
+  ],
+  "narration_subtitle_and_tts_word_parity": "PASS",
+  "audio_alignment_samples_at_48khz": 1024,
+  "audio_source_correlations_by_scene": [
+    0.9999803993038916,
+    0.9999827369005038,
+    0.9999862040309667,
+    0.9999872209235866,
+    0.9999839640436023,
+    0.9999853160052861,
+    0.999985634633489,
+    0.9999843377429054,
+    0.999982725089334,
+    0.999981842881723,
+    0.9999810571891868,
+    0.9999842809278524,
+    0.9999859518382817,
+    0.999985585274867,
+    0.999983980647985,
+    0.9999859595763363
+  ],
+  "publication_metric_sources_verified": {
+    "paper\\from_motion_to_time_20261102\\tables\\consolidation_statistics.json": "ce01103489874744affdbc8ed0c3ba63dd03b1abae68f1baa178d9900637a3b4",
+    "paper\\from_motion_to_time_20261102\\data\\consolidation\\matched_results.json": "727b34ba5e49d041bc5296bf621cfee1c157847a82a8763b0275fed1cfeaa4e8",
+    "paper\\data\\official_benchmark.json": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532"
+  },
+  "source_media_parity": {
+    "unchanged_asset_files": 108,
+    "prepared_tensor_bytes_unchanged": true
+  },
+  "preflight_dynamic_frames_checked": 358,
+  "rank_wording": "Rank 1",
+  "rendering": "Scene 13 rendered anew; reviewed scenes retained at native resolution and re-encoded with updated narration."
+}

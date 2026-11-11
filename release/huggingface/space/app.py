@@ -162,7 +162,7 @@ with gr.Blocks(title="PHASE-TTC | Try the released models", delete_cache=(3600, 
         "[Input format](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC/blob/main/INPUT_FORMAT.md)."
     )
     gr.Markdown(
-        "## Results and scope\nThe original model ranked first among three displayed entries "
+        "## Results and scope\nThe original model achieved Rank 1 "
         "in the archived GarlTTC Test leaderboard on 28 October 2026: 35.80 Overall MiD, "
         "20.49% below Garl-TTC. The adaptation has separate local EvTTC results and no verified "
         "official leaderboard score. This demo runs inference on CPU; its response time is "

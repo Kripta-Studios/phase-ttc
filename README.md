@@ -9,6 +9,8 @@
 
 <a href="https://huggingface.co/AlvaroSchwiedop/PHASE-TTC"><img src="docs/media/huggingface-logo.png" width="22" height="22" alt="Hugging Face"></a> **Hugging Face:** [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) · [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) · [Recorded demo](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC)
 
+<a href="https://github.com/Kripta-Studios/phase-ttc"><img src="docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
+
 PHASE-TTC estimates signed time-to-contact (TTC) from event streams and RGB
 frames. Independent motion estimators process each modality; temporal refiners
 summarize their causal histories, and a compact residual head corrects an RGB
@@ -17,7 +19,7 @@ anchor using phase, timing and observation-support descriptors.
 The complete system achieves **35.8015 Overall Motion-in-Depth (MiD) error** on
 GarlTTC Test, a **20.49% reduction** relative to the reported Garl-TTC reference
 of 45.03, with **0% scorer-defined failures** across **6,762 scored tokens**.
-The paper documents rank **1 among three displayed submissions** in the archived
+The paper documents **Rank 1** in the archived
 leaderboard evaluation. This result measures the complete system; the component
 studies below examine which parts account for its performance.
 
@@ -239,10 +241,10 @@ to `output/pdf/`.
 
 ## Architecture video
 
-[![PHASE-TTC architecture explainer: real RGB frames and event streams](docs/media/phase-ttc-architecture-explainer.png)](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111/PHASE_TTC_Architecture_260s_1080p.mp4)
+[![PHASE-TTC architecture explainer: real RGB frames and event streams](docs/media/phase-ttc-architecture-explainer.png)](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111-rank1/PHASE_TTC_Architecture_260s_1080p.mp4)
 
-**[Watch or download: 4:20, 1080p, 60 fps](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111/PHASE_TTC_Architecture_260s_1080p.mp4)** ·
-[English subtitles](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111/PHASE_TTC_Detailed_EN.srt)
+**[Watch or download: 4:20, 1080p, 60 fps](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111-rank1/PHASE_TTC_Architecture_260s_1080p.mp4)** ·
+[English subtitles](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111-rank1/PHASE_TTC_Detailed_EN.srt)
 
 The narrated walkthrough follows real EvTTC observations through preprocessing,
 motion estimation, temporal refinement and signed TTC prediction. Connected

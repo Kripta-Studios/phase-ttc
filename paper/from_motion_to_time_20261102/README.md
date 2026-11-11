@@ -2,6 +2,8 @@
 
 **Causal Event–RGB Fusion for Signed Time-to-Contact Estimation**
 
+<a href="https://github.com/Kripta-Studios/phase-ttc"><img src="../../docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="../../docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
+
 Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; entrega corregida del 11 de noviembre de 2026
 
 Esta es la actualización y ampliación del artículo original de 52 páginas. Conserva sus 19 archivos de secciones, las figuras, los datos publicados, los métodos completos, las ablations históricas, las trazas por secuencia y el índice de evidencia. El artículo breve de siete páginas preparado antes no lo sustituye.

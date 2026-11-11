@@ -1230,3 +1230,10 @@ The rebuilt 81-page PDF changes text only on its title page. Publication verific
 Rebuilt the walkthrough as 16 scenes over 4:20, native 1080p60, with corrected motion/temporal/fusion/router connections, updated narration and 66 synchronized subtitles. Closing tables use the current signed adaptation and matched controls, including uncertainty, development exposure and execution limits. Updated the README video link and poster; preserved the earlier release and review.
 
 Verification: full MP4 decode passes (15,600 frames), all narration/subtitle/TTS text agrees, scene audio correlations exceed 0.99998, and 342 preflight times have no text overflow. Reviewed all scenes and detailed diagram states visually. All 108 source display assets and prepared tensors retain their hashes. Correction receipt and QA: docs/media/video_20261111/. Production source ZIP documents external sensor dependencies.
+
+
+### 2026-11-11 — Rank 1 wording and resource icons
+
+Unified the current paper, teaser, README, model card, Hub pages, website EN/ES and video to Rank 1 while retaining the archived evaluation date and unchanged metrics. Added linked GitHub and LinkedIn brand icons beside the existing Hugging Face resource. Preserved dated prior editions and review receipts.
+
+The 81-page PDF changes text only on pages 1 and 8. LaTeX reports no warnings, overflow or missing references; publication verification passes 377 inputs and three artifacts. All 22 publication-binding and HF-release tests pass, and changed Python files pass Ruff. Reviewed title/result pages and desktop/mobile resource links. Deployed the PDF, TeX and source ZIP with both website languages; all 14 public file hashes match HTTPS downloads. Hub README manifests match, with unchanged inference weights and pins. The revised 4:20 video passes complete decoding, narration/subtitle parity and 358-frame layout preflight. Publication receipt: docs/releases/rank1_social_icons_20261111.json.

@@ -1,0 +1,18 @@
+{
+  "graphics.py": "4e7aec662e4ecba541981a11efd097061d98062c275eb643bf677b0f0388aff3",
+  "network_scenes.py": "55e6225719052e0f64a0e2f757639c06c80d375ccab921f605e3c7b5a1774a1f",
+  "render.py": "fbbe5e0270a103104faf8236a31be057cef7a31ecf7fcc00c31d265bdf29a356",
+  "render_rank_update.py": "f11de1584096c5b70f77d7892cd9544901f2e3119eab1f5ae38f7a558023ca4b",
+  "narrate.py": "25ed18ad7bc77f6cd8749a8548053bbf1ce56929a31c87c2f9742fa7026f1bcc",
+  "finalize.py": "156d6b45c004b49f73577b55f38a5945fa8b5c909b1a09c146af727da3211ea4",
+  "verify.py": "4c7cb5f455ade5983ed632199f579467a801e458bd492f2f783064b36a1b8216",
+  "verify_revision.py": "09a23a86a0648c41792fe137dccc9c2518d380fabc8c119145d2f4b65250ba8b",
+  "Narration_EN.txt": "416099f0c482fd76cbaf34f3f9d4b35cb5da15ed13b0f59afd31372cd95ec8d8",
+  "PHASE_TTC_Detailed_EN.srt": "799f302597fc212225051ff81e547a89a0d40a18ee82bf62b92c47c67476ecec",
+  "storyboard.json": "e827f0c65f505fad050e1984d054ac7f095d1dd04edd4b7374f593f69db425f0",
+  "publication_values.json": "b1c300ac97803bfb22c76c238beb26d93b0e356e3d907e4c66e200af253bcb25",
+  "model_inputs.json": "0140e21ebb6cc5a1a75eba73cefe06688e93a04267e9228140c9f053863d0a11",
+  "source_media_parity.json": "fa026c651cf263d1c6c48bbe669523e993e34ab72d66feb10ecda7c737b0df36",
+  "PRODUCTION_NOTES.txt": "a62191201c955cdf371c3dfae9bf9a59b95826093f56dd4dcae05fa868613dae",
+  "audio/narration.wav": "f2b54592b4a14968711a710846b9f819203571a0810d29432576b562cab7957e"
+}

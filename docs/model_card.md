@@ -6,7 +6,7 @@ PHASE-TTC estimates signed time-to-contact from causal event/RGB observations an
 
 | Download | Model identity and result scope |
 |---|---|
-| [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) | Original frozen nine-component system. Archived 28 October [GarlTTC Test rank 1](https://www.codabench.org/competitions/17289/#/results-tab) among three displayed entries: Overall MiD 35.80145 versus 45.03, 20.49% reduction, 6,762 scored tokens, 0% scorer-defined failure. |
+| [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) | Original frozen nine-component system. Archived 28 October [GarlTTC Test rank 1](https://www.codabench.org/competitions/17289/#/results-tab): Overall MiD 35.80145 versus 45.03, 20.49% reduction, 6,762 scored tokens, 0% scorer-defined failure. |
 | [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) | Original system plus three 688-parameter geometric quality routers trained on 2,608 development queries. Separate 434-query local evaluation; no verified official adapted score. |
 | [Recorded demo](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC) | Recorded examples and download commands; live inference runs locally with the supplied CLI or Gradio app. |
 

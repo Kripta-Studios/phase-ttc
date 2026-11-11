@@ -1,0 +1,34 @@
+{
+  "scope": "Rank 1 wording and linked GitHub/LinkedIn icons across the current publication, project pages and Hub documentation.",
+  "website_release": "/var/www/schwiedop/releases/20261111T200934Z-rank1-icons",
+  "website_sha256": {
+    "public/index.html": "1c823b5e57083723585ad7e80e6e02c56c81f9bdf1af2cf0029679d936d209c0",
+    "public/assets/paper-viewer.js": "5a6bb6cbf5af3e4a1c45f642e7c1ff72950767777aeb2b1378078e8c58c2f2b5",
+    "public/es/index.html": "c493653b8bbff0345eadfe8bd7804a1a08523daa846f51c8e5ac80ac31498ed6",
+    "public/PHASE-TTC/index.html": "ec4e733bda4250231a0db16ba88a1ad67fa2962d55e2220673bc4ed2314deace",
+    "public/papers/phase-ttc/expanded-edition.json": "1646b0c6bd5b474f16bb3d0e820e4714c94f371499c5a7f04da3388fd3914ac5",
+    "public/papers/phase-ttc/index.html": "ad4bf5fbb49dee0543ffa6abbbf8ea46bf34825a7a1db1365fea845816824097",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.pdf": "147016ac79ff0926941332b852df3aba59aaa48d3556450f9ec74315c95ce381",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.tex": "d9400693959588f4b2b3290b93c4fbcb8dcd607aecde49793439390edc31d554",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip": "2617575f0a1400baed0e7ca38d336997e1fce24d18fff2ef19908510dfa72225",
+    "public/es/PHASE-TTC/index.html": "34a1b36c3be0cda9c2bb1ab7db10acffa69e0386c1b20f13a9dadc2eb6c0422e",
+    "public/es/papers/phase-ttc/index.html": "e32720f1ca9cc5018ceba90d23a633de9218b233c613ca7971fca8fece8836d1",
+    "public/assets/brand/github-logo.png": "c0e3c4311e9e52ae42a54cdbf2dc4c53ff239372d3a1da790122a1be8358ecba",
+    "public/assets/brand/huggingface-logo.png": "9cf16f4f32604eaf76dabbdf47701eea5a768ebcc7296acc1d1758181f71db73",
+    "public/assets/brand/linkedin-logo.png": "db06c6da6b31100ac016f45d8e66a9744a68b90e50f250870a642c2d68492a8f"
+  },
+  "huggingface_models": {
+    "PHASE-TTC": "ac806236dbd8e6acd8454137b56d054632efcd86",
+    "PHASE-TTC-Adapt": "abb3efc19185a145220bcf5f35bec02cd976a61f"
+  },
+  "inference_weights_and_revision_pins": "unchanged",
+  "paper_pages": 81,
+  "paper_text_changed_pages": [
+    1,
+    8
+  ],
+  "targeted_tests_passed": 22,
+  "huggingface_space": "faeede03f2316ef1bacc08f4e026969ccde645ca",
+  "video_release": "phase-ttc-architecture-video-20261111-rank1",
+  "video_sha256": "3fa9436cdbb2b694dbab5061a73517580e5fd7aa9fb545a774d634ddb4bfd568"
+}

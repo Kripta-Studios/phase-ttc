@@ -18,6 +18,8 @@ PHASE-TTC estimates signed time-to-contact (TTC) from causal event-camera observ
 
 [Paper and interactive reader](https://schwiedop.com/papers/phase-ttc/) · [Project](https://schwiedop.com/PHASE-TTC/) · [Code](https://github.com/Kripta-Studios/phase-ttc) · [Official leaderboard](https://www.codabench.org/competitions/17289/#/results-tab) · [Explore recorded examples](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC)
 
+<a href="https://github.com/Kripta-Studios/phase-ttc"><img src="https://raw.githubusercontent.com/Kripta-Studios/phase-ttc/main/docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="https://raw.githubusercontent.com/Kripta-Studios/phase-ttc/main/docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
+
 {{VARIANT}}
 
 ## Download and run

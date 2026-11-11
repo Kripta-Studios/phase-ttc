@@ -1,0 +1,44 @@
+PHASE-TTC: Inside the Architecture — corrected production
+
+Duration: 260 seconds (4:20), 16 scenes, native 1920x1080 at 60 fps.
+Narration: English; synchronized burned-in captions and a separate SRT.
+
+Corrections address every item in docs/video_review_20261111.txt:
+- Complete A5, C2F, PAIR, temporal, residual-anchor and quality-router connections.
+- Separate expert values from router weights; keep modality states separate.
+- Remove label collisions; label replay axes, units and query timestamps.
+- Identify two recordings, cropped-region activity statistics and up-to-two-bin interpolation.
+- State assumptions behind illustrative box expansion.
+- Identify raw phase and the positive width transform, without claiming calibration.
+- Report 0.824/0.347 s signed 434-query MAE, current matched head controls,
+  common-support geometry comparisons, recording-bootstrap intervals and scope.
+- Preserve the 29.14 ms full-response deadline failure and full-replay discrepancy.
+
+The original 220-second video remains an archived release. This production does
+not replace research model weights, saved predictions, targets or official scores.
+All 108 native-image/tensor-display files and the prepared tensor archive are
+byte-identical to the reviewed production assets. Schematics remain labeled.
+
+Production source archive:
+The Python scripts, storyboard, narration, SRT, publication-value projection,
+input-source manifest and source hashes describe this exact rendering. Rendering
+requires the materialized sensor excerpts in assets/, the prepared
+model_inputs_q40.npz, and ../phase_ttc_explainer/{assets/,evidence.json}.
+These data dependencies are identified by the input-source and media manifests;
+they require the separately obtained EvTTC recordings and original extraction.
+The archive includes the finalized narration.wav for exact audio reuse.
+
+Use Python with Pillow and NumPy, Segoe UI fonts, FFmpeg/FFprobe and an NVIDIA
+NVENC encoder. Recreating speech additionally requires edge-tts. Run render.py
+--preview, inspect the scenes, run render.py, then finalize.py. Verification
+checks full decoding, duration, frames, tensor identities, numerical examples,
+subtitle bounds and encoded title sharpness. It does not retrain the models.
+
+Rank 1 wording update:
+The benchmark overlay, narration and subtitles use Rank 1. render.py supports
+a complete native-resolution render. The delivered revision instead uses
+render_rank_update.py to replace scene 13 and retain reviewed scene frames,
+then re-encodes the timeline and remuxes the updated narration. That incremental
+path additionally requires the prior corrected MP4, SHA-256
+553f1f2410a5fe6d05135f06583e8ec4060f946a947d339de697ff6332c16010,
+from the phase-ttc-architecture-video-20261111 GitHub release.

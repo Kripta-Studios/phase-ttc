@@ -1,0 +1,23 @@
+{
+  "scope": "Rank 1 wording and linked GitHub/LinkedIn brand icons; scientific results unchanged.",
+  "pdf_sha256": "147016ac79ff0926941332b852df3aba59aaa48d3556450f9ec74315c95ce381",
+  "pages": 81,
+  "text_changed_pages": [
+    1,
+    8
+  ],
+  "title_page_links": [
+    "mailto:alvaro@schwiedop.com",
+    "https://schwiedop.com/PHASE-TTC",
+    "https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/",
+    "https://github.com/Kripta-Studios/phase-ttc",
+    "https://huggingface.co/AlvaroSchwiedop/PHASE-TTC"
+  ],
+  "latex_validation": {
+    "overfull_boxes": 0,
+    "missing_glyphs": 0,
+    "undefined_references_or_citations": 0,
+    "latex_warnings": 0
+  },
+  "visual_review": "Title page, Rank 1 teaser, publication result paragraph, desktop project links and mobile paper resource links inspected."
+}
