@@ -2,581 +2,287 @@
 
 **Causal Event–RGB Fusion for Time-to-Contact Estimation**
 
-PHASE-TTC estimates signed time-to-contact from causal event streams and RGB
-frames. Each modality measures motion separately; temporal refiners and a
-compact RGB-anchored fusion head combine the resulting phase estimates.
+[Paper](https://schwiedop.com/papers/phase-ttc/) ·
+[Project website](https://schwiedop.com/PHASE-TTC/) ·
+[Leaderboard](https://www.codabench.org/competitions/17289/#/results-tab) ·
+[Reproduction guide](docs/reproducibility.md)
 
-## Architecture explainer
+<a href="https://huggingface.co/AlvaroSchwiedop/PHASE-TTC"><img src="docs/media/huggingface-logo.png" width="22" height="22" alt="Hugging Face"></a> **Hugging Face:** [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) · [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) · [Recorded demo](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC)
 
-[![PHASE-TTC architecture explainer: real RGB frames and event streams](docs/media/phase-ttc-architecture-explainer.png)](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)
+PHASE-TTC estimates signed time-to-contact (TTC) from event streams and RGB
+frames. Independent motion estimators process each modality; temporal refiners
+summarize their causal histories, and a compact residual head corrects an RGB
+anchor using phase, timing and observation-support descriptors.
 
-**[Watch or download the video — 3:40, 1080p, 60 fps](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)** ·
-[English subtitles](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_EN.srt)
+The complete system achieves **35.8015 Overall Motion-in-Depth (MiD) error** on
+GarlTTC Test, a **20.49% reduction** relative to the reported Garl-TTC reference
+of 45.03, with **0% scorer-defined failures** across **6,762 scored tokens**.
+The paper documents rank **1 among three displayed submissions** in the archived
+leaderboard evaluation. This result measures the complete system; the component
+studies below examine which parts account for its performance.
 
-An English narrated walkthrough follows real EvTTC RGB frames and event inputs
-through preprocessing, A5, C2F, PAIR, temporal GRUs and fusion to signed TTC.
-Animated diagrams and numerical examples explain each transformation; the later
-quality adapter is presented separately from the original nine-component system.
-
-## Research article and current implementation
+## Paper
 
 **[PHASE-TTC: From Motion to Time](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)**
-documents the final TRAIN40 system, the experiments that led to it, and its
-evaluation. The revised edition of **11 November 2026** incorporates the corrected
-460-query transfer evaluation, quality adaptation, canonical-cadence studies,
-and physical and detection controls with reviewed diagrams and source bindings.
-The implementation and public research evidence are maintained together on
-`main`.
+describes the architecture, official benchmark result, matched readout controls,
+geometric adaptation and execution measurements.
 
-- [Expanded article PDF](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)
-- [Expanded LaTeX source and build instructions](paper/from_motion_to_time_20261102/README.md)
-- [Original 28 October article and source bundle](paper/README.md)
+- [Read online](https://schwiedop.com/papers/phase-ttc/)
+- [Download the PDF](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)
+- [LaTeX source](paper/from_motion_to_time_20261102/main.tex)
+- [Download the source bundle](https://schwiedop.com/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
+- [Matched-comparison data and protocols](paper/from_motion_to_time_20261102/data/consolidation)
 
-The scientific consolidation adds nine matched final-head fits and common-support
-geometry baselines. On the inspected transfer cohort, events do not consistently
-improve the equal-capacity correction head, and phase and inverse-TTC corrections
-perform similarly. The official complete-system score is unchanged. See the
-[revision findings and unresolved requirements](docs/scientific_consolidation_20261111.json)
-and [recomputable evidence](paper/from_motion_to_time_20261102/data/consolidation).
+The PDF contains a 17-page main article, including references, followed by a
+64-page supplement with implementation details, additional experiments and
+reproduction records.
 
-- [Scientific and engineering history](docs/engineering_history_20261027/README.md)
+## Architecture
 
-As of **28 October 2026**, PHASE-TTC ranks first among the three displayed
-[GarlTTC Test submissions](https://www.codabench.org/competitions/17289/#/results-tab): **35.80 Overall MiD**, compared with **45.03** for
-Garl-TTC, a **20.49% reduction** across **6,762 scored tokens** with **0% scorer-defined
-failures**. The TRAIN40 submission uses up to **650 ms of causal event–RGB
-history**. The [distributed scoring records](paper/data/official_benchmark.json)
-and article specify the protocol and comparison scope.
+The released base model executes one nine-component inference chain. Training
+uses grouped out-of-fold features; inference does not execute an ensemble of
+the training folds.
 
-The corrected transfer analysis covers **460 eligible queries from 508 fixed
-candidates across 32 sequences**. The separate local EvTTC competition comparison
-uses **434 query correspondences**. Fusion has a mixed error profile against RGB
-alone, and the 250-update replay's 29.14 ms p95 response exceeds the 20 ms target.
-
-**Download and try the current models:** [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC),
-[PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt), and the
-[recorded demo Space](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC).
-See the [current model card](docs/model_card.md), [data overview](docs/dataset_card.md)
-and [reproduction commands](docs/reproducibility.md). The downloads include the
-frozen weights, custom runtime, examples, evaluation evidence and training recipes.
-
-**EvTTC research status, 1 November 2026:** the
-[current research index](docs/research_progress_20261101/README.md) separates the
-original submission, the adapted model and subsequent diagnostic experiments.
-
-| Version | Status |
+| Components | Role |
 |---|---|
-| Original PHASE-TTC, 28 October | Frozen TRAIN40 system; organizers reported evaluating all 434 EvTTC predictions. The local evaluator reproduces nine rounded sequence scores; Slider-750 remains unresolved. |
-| PHASE-TTC-Adapt-20261031 | Experimental three-seed fusion-router ensemble fitted on 2,608 development queries. The original nine components remain frozen. Historical benchmark exposure is disclosed; official evaluation of this version is not established by the retained evidence. |
-| Canonical PAIR and later router refit | F0 passes the fixed local development screens, but the router interventions fail their respective controls. No replacement model is approved. |
+| Four motion backbones | Separate transport-trained and coarse-to-fine estimators for RGB and events. |
+| Two pairwise readouts | Convert modality-specific pair features and timing into phase estimates. |
+| Two temporal refiners | Summarize up to eight observations per modality, within a maximum 650 ms causal information span. |
+| One residual fusion head | Combine 20 phase, timing and support descriptors to correct the RGB estimate. |
 
-The [corrected evaluator audit](docs/research_log_20261031_sign_safe/README.md)
-covers **434 public targets** after repairing the CCRs1-low/medium source mapping.
-Under the same local evaluator and negative-output interpolation, mean relative
-error across those queries is **49.89% for the original and 17.25% for the adapted
-model**. These are local diagnostics, not official adapted scores or evidence of
-independent SOTA. The [submission comparison](docs/research_progress_20261101/03_ENTREGA_ADAPTADA_Y_COMPARACION.md)
-records the exact model and ZIP identities, denominators and remaining discrepancy.
+The **1,955-parameter fusion head** contains two hidden layers of width 32 with
+LayerNorm and SiLU. This count describes the head, not the full system. The phase
+coordinate links apparent scale change to inverse TTC; the output policy
+preserves approaching and receding motion and bounds emitted TTC magnitudes.
+The 650 ms history describes past information, not inference latency.
 
-The complete local eAP sensitivity audit covers 5,805 physical queries and 6,762
-aliases, with no new missing predictions or sign changes for F0 and the frozen
-router. It does not establish Test12 accuracy preservation: private-target
-evaluation and historical producer parity remain unresolved. The
-[latest measured results](docs/research_progress_20261101/v1/README.md) retain the
-failed controls and the unchanged model identity. Integrating this research code
-does not promote an experimental model or change the article's frozen system.
+Inputs require synchronized event/RGB observations and supplied object regions.
+The released estimator does not include an autonomous object detector or
+calibrated collision probabilities. The paper specifies the sensor preparation,
+timing conventions and signed output policy.
 
-**Author:** Álvaro Schwiedop Souto
+**PHASE-TTC-Adapt** adds causal box-expansion estimates and three quality routers
+of 688 parameters each. It keeps the original nine components frozen and
+averages the three adapted TTC predictions. This is a separate model with a
+local evaluation, not a replacement for the benchmarked submission.
 
-**Academic status:** undergraduate student at the University of Santiago de
-Compostela, as supplied by the author for the benchmark correspondence.
+## Results
 
-**Detailed research log, 29–31 October 2026:** the
-[Spanish technical dossier](docs/research_log_20261029_31/README.md) reconstructs
-the data audit, trained models, grouped experiments, rejected trials, CUDA Graphs
-and cache optimization, test evidence, and the final adapted EvTTC submission.
-The [historical submission report](docs/evttc_submission_20261031/REPORT.md)
-preserves its earlier 423-target evaluation; the corrected 434-target audit
-linked above supersedes that local scoring snapshot. The
-[research release and artifact inventory](docs/research_log_20261029_31/09_PUBLICACION_E_INVENTARIO.md)
-provide the versioned model packages and checksums. The local attachment was
-renamed from `results.zip` to `PHASE-TTC-Adapt.zip` without changing its bytes;
-historical receipts retain the original filename.
+### Official benchmark
 
-[Email](mailto:alvaro@schwiedop.com) ·
-[Website](https://schwiedop.com/PHASE-TTC) ·
-[LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/) ·
-[GitHub](https://github.com/Kripta-Studios/phase-ttc)
+| System | Overall MiD ↓ | Scorer-defined failure rate ↓ |
+|---|---:|---:|
+| Garl-TTC reference | 45.03 | 0% |
+| PHASE-TTC | **35.8015** | **0%** |
 
-Formerly **E-JEPA-TTC**. JEPA remains part of the documented research history.
+The evaluation uses private test labels and 6,762 submission tokens, including
+aliases of physical queries. The [scoring records](paper/data/official_benchmark.json)
+and paper document the submission, TTC bands and failure criterion. The reported
+rank refers to that recorded evaluation; it is not a claim about the live
+leaderboard or all published TTC methods.
 
-Repository: [Kripta-Studios/phase-ttc](https://github.com/Kripta-Studios/phase-ttc).
-The Python distribution and preferred command are `phase-ttc`. The `e_jepa_ttc`
-import namespace and `e-jepa-ttc` command remain compatible with existing scripts
-and checkpoints. Historical artifacts retain their original identifiers.
-See [the naming decision](docs/decisions/ADR-0042-phase-ttc-name.md).
+### Transfer and matched readout controls
 
-## RGB detector development candidate
+The transfer study evaluates 460 eligible queries across 32 recordings.
+Released fusion has a mean absolute error of **0.813 s**, compared with
+**0.851 s** for the RGB branch. Fusion improves the mean and upper-tail point
+estimates, while RGB has lower median and mean relative error. The paired
+recording-bootstrap intervals for the mean, median and p95 differences include
+zero.
 
-The [1 November detector candidate](docs/detection_sota_20261029/RELEASE_CANDIDATE_20261101.md)
-packages the completed Dfull RGB detector with a TRAIN-fitted ranking model.
-On the same 23,958 development-selection frames, local AP improves from
-0.16474566 to 0.18502078. Temporal and event screening did not pass the
-predefined promotion margin. The package has verified replay parity and a
-functional multiobject PHASE replay; these results do not establish official
-3D-detection SOTA, production readiness, or new TTC accuracy.
+Matched experiments keep upstream models and histories fixed and fit
+equal-capacity heads using source-domain features. Each learned variant uses
+three seeds.
 
-The [first official eAP detection result](docs/detection_sota_20261029/evidence/official_benchmark_20261101/ANALYSIS.md),
-returned on 1 November 2026, reports **mAP 0.05129508** and **eAP score 0.13980148**
-on all 35,940 test frames. Four classes have zero official AP. The returned
-configuration applies minimum recall/precision of 0.1; the local development
-protocol and population differ. The development AP above is not an estimate of
-this official test score or evidence of eight-class production readiness.
+| Readout | Transfer MAE, mean ± standard deviation ↓ |
+|---|---:|
+| Phase correction with real events | 0.847 ± 0.038 s |
+| Phase correction with zero events | 0.838 ± 0.021 s |
+| Inverse-TTC correction with real events | 0.847 ± 0.041 s |
+| Source-calibrated scalar phase mixture | 0.996 s |
 
-The [benchmark-aligned local reevaluation](docs/detection_sota_20261029/BENCHMARK_LOCAL_ALIGNMENT_20261101.md)
-retains all 190,469 public selection annotations and uses the organizer-returned
-AP/TP configuration with reference matching. On the same 23,958 frames, mAP is
-**0.05701726 without ranking and 0.06204229 with ranking**. This additive profile
-preserves the historical results; equivalence to the private scorer is unverified.
-No new training or inference was needed.
+The learned corrections outperform the tested scalar mixture. These controls
+show no consistent incremental advantage from event access or from phase over
+inverse-TTC parameterization on this cohort. The recordings had influenced
+earlier development, so these comparisons provide component analysis rather
+than independent confirmation. The experimental heads do not replace the
+released weights.
 
-For continuation, read the [eAP state and artifact handoff](docs/detection_sota_20261029/ESTADO_RESULTADOS_Y_ARTEFACTOS_EAP_20261101.md)
-and the [research plan with a ready-to-use Codex prompt](docs/detection_sota_20261029/PLAN_INVESTIGACION_Y_PROMPT_CODEX_EAP_20261101.md).
-The plan separates completed evidence from proposed experiments and starts with
-geometry, target coverage and proposal diagnostics before further long training.
+### Geometric adaptation
 
-## Historical development notes
+The adaptation study separates box geometry from learned routing. All rows
+below use the same geometry-valid queries and signed predictions.
 
-The dated notes below preserve the status at each research checkpoint. The
-article and current summary above supersede earlier submission-status notes.
+| Estimator | MAE: 424 common queries ↓ | MAE: 357 road queries ↓ |
+|---|---:|---:|
+| Original fusion | 0.793 s | 0.282 s |
+| Geometry alone | 1.158 s | 1.343 s |
+| Fixed inverse-TTC mixture | **0.289 s** | 0.221 s |
+| Learned router | 0.304 s | **0.159 s** |
 
-**Cierre de runtime del 28 de octubre de 2026:** el [handoff del consejo de
-agentes](docs/train40_runtime_council_20261028/HANDOFF.md) conserva los ensayos,
-fallos y comandos de continuación. El mejor replay de un objeto entregó 250/250
-actualizaciones con paridad y sin descartes durante cinco segundos, con p95 de
-respuesta completa de 29,14 ms. **50 Hz sostenidos, menos de 20 ms y ausencia de
-acumulación siguen pendientes.** El perfil por defecto conserva PIL y adopta
-la configuración verificada de ese replay; pesos y normalizadores no cambian.
+The router improves road MAE over the fixed mixture by 0.062 s, with a 95%
+recording-bootstrap interval of [0.014, 0.120] s. Its pooled advantage is
+unresolved: the fixed-minus-router difference is −0.0146 s, with interval
+[−0.1704, 0.0943] s. Across all 434 queries, including geometry fallbacks,
+original/adapted signed MAE is **0.824/0.347 s**. These development-exposed local
+results do not establish a new official adapted score.
 
-**Actualización del 27 de octubre de 2026:** candidato multimodal TRAIN40 con
-entradas fuera de muestra, nueve componentes identificados y 6.762 predicciones
-Test12 preparadas; todavía no enviado a CodaBench. La comparación EvTTC final,
-sus límites y las mediciones de latencia están documentados. V18 conserva su
-cierre histórico `NO_CANDIDATE`.
+### Execution and reproducibility
 
-La [historia científica y de ingeniería de junio a octubre](docs/engineering_history_20261027/README.md)
-recoge entrenamientos, CUDA Graphs, BF16, cachés, prefetch, concurrencia,
-recuperación, migración Runpod y preservación de resultados en diez capítulos.
-La [evaluación final frente a Garl](docs/final_train40_transfer_20261027/REPORT.md)
-incluye resultados por secuencia; no se afirma SOTA oficial.
-Los estados fechados que siguen son históricos.
+A five-second, single-object replay paced at 50 Hz completes all **250 updates**
+with numerical parity and no drops. Scheduled-arrival response reaches
+**29.14 ms at p95**; 201 responses meet or exceed 20 ms. The replay therefore
+does not satisfy the 20 ms response deadline. RAW data are preloaded and disk
+I/O is excluded. Starting the clock after input preparation still gives a p95
+of 25.25 ms, so preparation alone does not explain the missed deadline.
 
-> Actualización V14 del 12 de octubre de 2026:
-> [informes RANGE-TRANSFER y resultados](docs/range_transfer_results_20261012/README.md).
-> Seis fits event-only completos y evaluación interna V: **NO_CANDIDATE**.
-> Las mejoras de TTC corto incumplen salvaguardas de otros rangos; no hay réplicas
-> ni transferencia nueva. Se conservan pesos, predicciones, diagnósticos y fallos.
-> V13 permanece intacto. Los estados fechados debajo son históricos.
+The released head agrees with saved transfer predictions within 2.87 × 10⁻⁶ s
+when replayed on recovered features. Full historical inference has a separate
+unresolved discrepancy: 504 of 5,805 native-replay queries exceed the original
+tolerance, with a maximum TTC difference of 0.4968 s. The archived submission
+and official score remain distinct from local reproduction.
 
-> Actualización del 8 de octubre de 2026:
-> [informes del 4–8 de octubre](docs/research_review_20261004_08/README.md), con
-> TRAIN40 completo, comparación EvTTC congelada frente a Garl event-only y
-> RGB+eventos, predicciones, costes y evidencia verificable. R1 sigue pendiente
-> en el corte publicado. No se afirma SOTA. Los estados fechados debajo son históricos.
+## Download and run
 
-> Estado vigente (2026-08-14): V7 terminó sin candidato. SOFT, T20, CAP-S y el
-> control partial-freeze empeoran A5; C2F queda compatible con efecto nulo. Ninguno
-> preserva geometría. No se ejecutan seeds 13/23 ni ablation JEPA. Un diagnóstico
-> post hoc A5/C2F-MoE obtiene 153,519 MiD, pero requiere confirmación prospectiva.
-> Acta:
-> [Scientific Recovery V7](docs/SCIENTIFIC_RECOVERY_V7_STATUS.md). Contrato y
-> gates: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+The Hugging Face repositories contain frozen weights, normalizers, custom
+runtime code, example inputs, evaluation records and training recipes.
 
-> Estado vigente (2026-08-13): Scientific Recovery V6 cerró seis entrenamientos
-> fold-locales. V6.1 radio 2 mejora A8.0 de 197,69 a 194,12 MiD, pero su IC95%
-> incluye cero y falla el gate 175. A5 causal obtiene 155,47 y es el mejor E-JEPA
-> TTC limpio, aunque no es promocionable porque no preserva geometría. Garl mantiene
-> 144,35 y cero failures. Public validation y private/test permanecen cerrados.
-> Estado canónico: [Scientific Recovery V6](docs/SCIENTIFIC_RECOVERY_V6_STATUS.md).
-> Contrato operativo V7/V8:
-> [CODEX_HANDOFF.md](CODEX_HANDOFF.md). V7 mantiene test y CodaBench cerrados.
+| Repository | Contents |
+|---|---|
+| [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) | The benchmarked nine-component base system. |
+| [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) | The base system plus the three-router geometric adaptation. |
+| [Demo Space](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC) | Recorded examples and instructions for local inference. |
 
-> Estado event-only (2026-08-10): Garl matched desde cero fija la métrica a batir
-> en MiD macro 203,63. A0 obtuvo 382,19, A1 geometry-only 346,83 y A3
-> SAM-distilled 353,64. A3 empeora A1; no existe claim SOTA.
+Use a fresh **Python 3.12** environment:
 
-El diagnóstico de A0 localiza el defecto antes de la física: la expansión bbox sí
-correlaciona con TTC (`r=.760`), pero la expansión extraída del mapa no correlaciona
-con bbox (`r=.015`) ni TTC (`r=.037`). La inversión TTC agrava ratios cercanos a
-cero, pero no crea el error. A1 probó de forma aislada la hipótesis weak-box: la
-altura absoluta mejoró, pero anchura, centros y cambio temporal siguieron débiles.
-La weak-box no era la explicación suficiente.
-
-El preprocessing oficial del baseline Garl matched ya está materializado y firmado
-(`92af2810…f564b52`): 2.048 train/2.048 validation, event-only FP32, sin pesos
-release ni fuentes selladas.
-
-Ese baseline matched ya terminó: Garl obtiene MiD macro `203,63` y `0%` failures,
-frente a A0 `382,19` y `12,30%`. La ventaja aparece en las tres secuencias y el
-IC95% agrupado por secuencia de A0−Garl es `[131,74, 215,31]`. Garl matched,
-sin embargo, no modela receding: todas sus predicciones son positivas y su MiD
-negative es `437,60`; esta limitación sigue visible.
-
-A1 se congeló antes del run: mismo CNN y prediction path, sin weak-box densa, con
-supervisión training-only de `h,w,cx,cy`, pair-ratio cero y sin parámetros nuevos.
-Terminó best 18/18 con MiD `346,83`, failure `9,96%` y Pearson log-ratio `.111`.
-`log h` alcanza `.471`, pero `log w/cx/cy` solo `.079/.064/.032`; `delta log h`
-contra bbox es `.059`. El siguiente control actuará sobre representación densa
-event-native, no sobre clipping ni la inversión TTC.
-
-La auditoría por endpoint confirma que la anchura bbox no es constante, pero el
-decoder separable no la sigue en t1/t2 (`r=.048/.105`). Como la masa absoluta de
-eventos es difusa en casi todo el ROI y el decoder actual usa `amax` por eje, el
-siguiente control cambia solo a convolución full-resolution 2-D. DINO, SAM, JEPA y
-pair-ratio permanecen fuera para no contaminar la ablation.
-
-Ese control full-resolution ya terminó y fue negativo: MiD macro `380,22`, failure
-`28,76%` y Pearson log-ratio `-.018`. La estructura 2-D superficial sobre eventos
-crudos no basta. El siguiente paso probará si el foreground debe consumir features
-profundas del encoder (`resize_conv`) antes de recurrir a pretraining RGB/event.
-Ese brazo A1-DF se preregistró antes de ejecutarse. Su run terminó con más señal
-temporal (`r=.186`) pero MiD macro `350,30` y
-`21,09%` failures: no supera A1 ni Garl matched. El ratio aprendido está
-subescalado, por lo que el siguiente control aislado será supervisarlo directamente
-sin cambiar arquitectura. A1-DF-R está preregistrado con peso train-normalized
-`5.0`. Terminó con macro `349,86` y `19,82%` failures: mejora marginalmente A1-DF,
-pero dos de tres secuencias empeoran y no supera A1. Se cierra sin sweep/escalado.
-
-La auditoría material posterior descarta el uso inmediato de máscaras oficiales:
-las 88.744 filas de train declaran 177.488 referencias `.npy` (64.629 únicas), pero
-ninguna existe bajo los seis roots locales auditados. En cambio, los 64.629 frames
-RGB únicos están presentes dentro de 135 TAR. Los snapshots locales SAM ViT-L y
-DINOv3 ConvNeXt-Tiny tienen config, processor, licencia y pesos verificados por hash.
-Esto permite preregistrar un smoke SAM con bbox prompts **solo sobre train**, pero el
-brazo resultante se llamará `event-only inference with RGB distillation`; no es
-event-only puro y no puede generar targets teacher en validation. Artefacto firmado:
-`artifacts/metrics/garl_foreground_resource_audit_v2.json`, identidad
-`6e910ec2…f1e246`.
-
-El smoke preregistrado posterior pasó en `cuda:0`: una bbox train real produjo tres
-máscaras finitas; la seleccionada ocupa `6,63%` de la imagen, con score IoU interno
-`1,0`, inferencia `0,421 s` y peak VRAM `1.691 MiB`. Es solo un gate de viabilidad,
-no una evaluación de calidad ni una métrica TTC. Identidad firmada
-`be097e6c…2af5e9`.
-
-El audit train-only posterior cubrió las nueve secuencias (36 pares/72 endpoints)
-y pasó los gates congelados: bbox–mask IoU mediana `.576`, cambio de área Pearson
-`.647`, signo `.829` y una máscara degenerada. Autoriza precomputar únicamente las
-2.048 filas train exactas, con filtros explícitos; no autoriza generar teachers en
-validation ni afirmar calidad de segmentación.
-
-La materialización exacta ya terminó: 4.096 endpoints en 32 shards, `94,92%`
-válidos individualmente y `78,22%` de pares válidos después del filtro temporal.
-El cache packbits ocupa ~2,18 MB, conserva cada rechazo y mantiene cobertura en las
-nueve secuencias. Preprocessing total `1.784,6 s`, inferencia media `.1711 s`, peak
-VRAM `1.691,9 MiB`. Manifest firmado `aaa60090…0426b0`; sigue siendo train-only y
-la materialización por sí sola no era evidencia TTC. A3 se implementó/preregistró sin cambiar
-la arquitectura A1: añade BCE `1.0` + Dice `.5` solo sobre las 3.204 máscaras
-aceptadas y mantiene geometry-only en las demás. Validation no carga el cache.
-Config SHA-256 `83e8c716…9b7754`. A3 terminó best 8/13 con MiD macro `353,64`,
-failure `10,89%` y ratio Pearson `.105`: peor que A1 en las tres secuencias. Solo
-mejora negative; su IC95% A3−A1 por secuencia es `[1,55,10,64]`. Se cierra sin
-sweep, escalado ni seeds adicionales. La siguiente rama será event-native y no
-añadirá otra dependencia de máscara RGB.
-
-Pipeline reproducible para estimar Time-to-Contact/Time-to-Collision a partir de
-cámaras de eventos, con una ruta event-only high-resolution y una futura ablación
-RGB-E multimodal.
-
-Estado: Causal Scale V8 alcanza Pearson sintético multigrupo `.94621` con CVaR pero
-falla el gate `.95`; sus tests permanecen sellados. El screen eAP/Garl
-train/validation de 2.048/2.048 completó A0, Garl matched y A1. La hipótesis
-científica todavía no está demostrada. No existe claim SOTA ni resultado oficial
-eAP/CodaBench. Consulta el
-[estado operativo](STATUS.md) antes de ejecutar experimentos largos.
-
-## Qué produce
-
-- TTC continuo firmado en segundos;
-- logits de riesgo por horizontes configurables;
-- incertidumbre cuando la cabeza correspondiente está activa;
-- embeddings globales/densos y diagnósticos de colapso;
-- métricas macro por secuencia, robustez, calibración y latencia;
-- checkpoints auditables, export ONNX, demo offline e informe regenerable.
-
-## Instalación
-
-Requisitos recomendados: Python 3.11, `uv`, PyTorch con CUDA para entrenamiento y
-una GPU de consumo con aproximadamente 12 GiB de VRAM.
-
-```powershell
-uv sync --locked --all-groups --no-editable
-uv run --no-sync python -m e_jepa_ttc --help
+```bash
+pip install huggingface_hub
+hf download AlvaroSchwiedop/PHASE-TTC --local-dir PHASE-TTC
+cd PHASE-TTC
+pip install -r requirements.txt
+python predict.py --input examples/synthetic_looming.npz --verify examples/synthetic_expected.json
+python evaluate_saved.py
 ```
 
-Validación completa:
+CPU execution is the default; CUDA requires a compatible PyTorch installation.
+To run the adapted model, replace both the Hub repository and local directory
+with `PHASE-TTC-Adapt`. Pin `hf download --revision <commit>` for repeatable
+downloads. The inference scripts verify file checksums before loading weights.
 
-```powershell
+The synthetic example executes the selected inference graph.
+`evaluate_saved.py` recomputes published local summaries from saved predictions;
+it does not rerun private-label benchmark scoring. For real sensor inputs,
+obtain the dataset separately and follow the bundle's `INPUT_FORMAT.md` and
+the [reproduction guide](docs/reproducibility.md).
+
+## Research code and data
+
+Install the repository and development tools with `uv`:
+
+```bash
+git clone https://github.com/Kripta-Studios/phase-ttc.git
+cd phase-ttc
+uv sync --locked --all-groups --no-editable
+uv run --no-sync phase-ttc --help
+```
+
+The research package supports Python 3.11–3.13. The standalone Hub inference
+bundles have a tested Python 3.12 environment and their own requirements.
+
+| Directory | Contents |
+|---|---|
+| `src/e_jepa_ttc/` | Data handling, representations, models, training and evaluation. |
+| `operational/final_refit/` | Grouped fitting, final refit and inference procedures. |
+| `operational/evttc_competition/` | Sensor preparation and EvTTC inference runtime. |
+| `configs/` | Model, data and experiment configurations. |
+| `tests/` | Unit, integration and regression checks. |
+| `paper/from_motion_to_time_20261102/` | Current article, figures, result tables and build scripts. |
+
+eAP/GarlTTC and EvTTC data must be obtained under their respective terms.
+Raw datasets and intermediate training caches are not included in Git.
+Full original retraining requires the external data, path configuration and
+reconstruction of intermediate caches; a complete retraining has not been
+performed as part of the public packaging validation. The adapted bundle
+includes derived training features and its fixed three-seed router recipe.
+See the [dataset card](docs/dataset_card.md) and
+[reproduction guide](docs/reproducibility.md) for requirements.
+
+The final model uses supervised motion estimation and phase fusion. Predictive
+JEPA experiments form part of the supplementary research; they did not establish
+a pretraining benefit in the tested settings. Existing checkpoints and scripts
+retain the `e_jepa_ttc` import namespace and compatible `e-jepa-ttc` command.
+
+Run the repository checks with:
+
+```bash
 uv run --no-sync ruff check .
 uv run --no-sync ruff format --check .
 uv run --no-sync pyright
 uv run --no-sync pytest -q
 ```
 
-## Datos
+## Build the paper
 
-Las rutas locales nunca se hardcodean en el paquete. Las fuentes principales son:
+From the repository root:
 
-```text
-EAP_ROOT=E:\eAP_dataset
-GARLTTC_ROOT=E:\GarlTTC_dataset
-GARLTTC_RELEASE_ROOT=E:\Garl-TTC
+```bash
+python paper/from_motion_to_time_20261102/scripts/build_expanded.py
+python paper/from_motion_to_time_20261102/scripts/verify_publication.py
+python paper/from_motion_to_time_20261102/scripts/package_expanded.py
 ```
 
-- EvTTC-32 local se usa para desarrollo, grouped CV y evaluación controlada.
-- El benchmark EvTTC permanece sellado hasta congelar candidato.
-- eAP/Garl se lee bajo demanda desde HDF5/parquet.
-- CARLA se retiró del camino activo tras una transferencia negativa.
+The build requires NumPy, Matplotlib, Pillow, PyMuPDF, pdfLaTeX and BibTeX,
+including the XCharter, newtxmath and TikZ packages. It regenerates result tables
+from the accompanying evidence and checks that the compiled PDF matches its
+source inputs. The packager writes the PDF, consolidated LaTeX and source ZIP
+to `output/pdf/`.
 
-## Object Event TTC v4
+## Architecture video
 
-V4 corrige los fallos falsados por las auditorías v3:
+[![PHASE-TTC architecture explainer: real RGB frames and event streams](docs/media/phase-ttc-architecture-explainer.png)](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)
 
-```text
-eventos t0/t1/t2
-  -> una sola ROI cuadrada común (unión temporal + margen)
-  -> 12 canales activos, sin el tail de 9 canales constantes
-  -> encoder event-only online + target encoder EMA
-  -> predicción JEPA local de tokens futuros, sin cajas ni motion embedding
-  -> cabeza de expansión event-only exactamente antisimétrica
-  -> cabeza motion-only independiente
-  -> fusión tardía con gate event mínimo
-  -> TTC firmado derivado de g = delta_t / TTC
+**[Watch or download: 3:40, 1080p, 60 fps](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)** ·
+[English subtitles](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_EN.srt)
+
+The narrated walkthrough shows real EvTTC observations, preprocessing, motion
+estimation, temporal refinement and signed TTC prediction. The video predates
+the current matched readout and geometry controls. Its closing adapter MAE
+uses offline interpolation; the current paper and tables above report signed
+runtime predictions and distinguish the evaluation protocols.
+
+## Scope and limitations
+
+PHASE-TTC is a research estimator for supplied object regions. The official
+complete-system result does not isolate the benefit of the phase interface,
+event inputs or temporal history. Secondary studies reuse recordings inspected
+during development, and additional head seeds share upstream models.
+
+Independent transfer validation, reconciliation of the Slider-750 evaluator
+discrepancy and historical inference parity remain open. Sustained physical-camera
+operation, autonomous localization, multiobject latency and calibrated warning
+probabilities are outside the demonstrated result. The system is not validated
+for safety-critical control.
+
+## Citation and license
+
+**Álvaro Schwiedop Souto** · University of Santiago de Compostela
+
+Please cite the [paper](https://schwiedop.com/papers/phase-ttc/) and use
+[CITATION.cff](CITATION.cff) for software citation metadata. Pin the repository
+and model revisions used in experiments. Code and released weights use the
+[MIT license](LICENSE); external datasets retain their own licenses.
+
+```bibtex
+@misc{schwiedop2026phasettc,
+  title = {PHASE-TTC: From Motion to Time -- Causal Event--RGB Fusion for Signed Time-to-Contact Estimation},
+  author = {Schwiedop Souto, {\'A}lvaro},
+  year = {2026},
+  howpublished = {Research preprint},
+  url = {https://schwiedop.com/papers/phase-ttc/}
+}
 ```
 
-El trainer aplica warm-up event-only y dropout de modalidad. Un checkpoint no se
-selecciona si los eventos pueden ponerse a cero o barajarse sin degradación
-medible. V4 conserva scratch, Level-transfer y cada rama por separado en las
-métricas; no permite presentar el atajo geométrico como aprendizaje visual.
-
-Screen completo:
-
-```powershell
-uv run --no-sync python scripts/run_e_jepa_object_event_v4.py `
-  --profile screen `
-  --stages preflight cache scratch level `
-  --eap-root 'E:\eAP_dataset' `
-  --garlttc-root 'E:\GarlTTC_dataset' `
-  --pretrained artifacts\runs\level_dynamics_pilot256\pretrain\level\seed-7\checkpoint.pt `
-  --device cuda
-```
-
-Consulta [el contrato y los gates de v4](docs/object_event_v4.md) antes de
-escalar a full o abrir EvTTC.
-
-## Causal Scale TTC v5
-
-V4.31 falsó el matcher congelado. V5 reemplaza su mecanismo por un contrato común
-para event-only, RGB-only y fusión tardía RGB-E:
-
-```text
-foreground causal -> altura visible -> log-ratio firmado
-                   -> TTC + incertidumbre + riesgo derivados físicamente
-```
-
-El primer core event-only está implementado sin coordenadas bbox, categoría o ID de
-secuencia como inputs. Su residual es antisimétrico y acotado; la cabeza TTC libre es
-solo auxiliar. El gate ideal-foreground versionado pasó. Nueve diagnósticos de
-aprendizaje train/validation llevaron el candidato a Pearson `.9560`, pendiente
-`.9686`, signo `.9957`, IoU `.8640` y error TTC simétrico `.2639`; sigue no promovido
-porque leakage de traslación `.02399` falla el gate `.02`. El test sintético se abrió
-una vez desde el commit limpio `d9d20af` y confirmó el fallo: Pearson `.92135` y
-translation `.02749`. Todos los datos reales permanecen cerrados.
-
-V6 no reutiliza ese test: una cabeza foreground separable sin strides, evaluada solo
-en train/validation 401/502, reduce translation leakage a `.00462` y alcanza IoU
-`.89323`. Pearson `.92042` sigue por debajo de `.95`, por lo que test 603 no se abre.
-La comparación firmada está documentada en [Causal Scale v6](docs/causal_scale_v6.md).
-
-V7 transporta causalmente el TTC del par anterior y lo combina con el par actual sin
-añadir parámetros. En validation 502 pasa todos los gates: Pearson `.96126`, TTC
-`.24345` y translation `.00351`. El test limpio 603 posterior falló Pearson `.92014`;
-todos los demás gates pasaron. V7 queda cerrado y real-data continúa sellado.
-
-V8 mantiene esa arquitectura y el presupuesto, pero selecciona checkpoints sobre
-tres grupos validation mediante media macro y peor grupo. Las seeds test 901/902/903
-están preregistradas y selladas. El primer diagnóstico da Pearson macro `.80631` y
-CVaR+consenso lo eleva a `.94621`; sigue sin ser pass y test no se abrió. Detalles en
-[Causal Scale v8](docs/causal_scale_v8.md).
-
-```powershell
-uv run --no-sync python scripts/evaluate_causal_scale_v5_operator.py --require-clean
-```
-
-Consulta [el contrato, resultado y siguiente gate](docs/causal_scale_v5.md).
-
-## Screen eAP/Garl causal-scale event-only
-
-El protocolo autorizado abre solo train/validation públicos y compara modalidades
-event-only sobre los mismos tokens. Config, trainer y runner:
-
-```text
-configs/experiment/e_jepa_garl_event_causal_scale_eap_screen_v1.yaml
-src/e_jepa_ttc/training/causal_scale_eap.py
-scripts/train_causal_scale_eap_screen.py
-```
-
-```powershell
-uv run python scripts/train_causal_scale_eap_screen.py `
-  --config configs/experiment/e_jepa_garl_event_causal_scale_eap_screen_v1.yaml `
-  --output-dir artifacts/runs/causal_scale_eap_screen_v1_seed7 `
-  --device cuda
-```
-
-Usa early stopping validation-only, CVaR top 10%, límite 6 h y checkpoints atómicos.
-Para reanudar se repite el comando con `--resume`; la equivalencia continua/resume
-está probada end-to-end. Tras el run,
-`scripts/build_garl_validation_subset_from_predictions.py` crea el subset Garl exacto
-y firmado por tokens. Las cajas oficiales son supervisión weak-box y crop oracle,
-nunca entrada del modelo. Ese screen se completó históricamente; Scientific Recovery
-V5 lo sustituyó por cadenas fold-locales autocontenidas. Véase
-[el protocolo del screen](docs/causal_scale_eap_screen.md) y
-[el handoff](CODEX_HANDOFF.md).
-
-## Entrenamiento high-resolution histórico
-
-Preflight del perfil full, sin reservar GPU:
-
-```powershell
-uv run --no-sync python scripts/run_e_jepa_garl_final.py `
-  --profile full --stages train freeze `
-  --eap-root 'E:\eAP_dataset' `
-  --garlttc-root 'E:\GarlTTC_dataset' `
-  --dry-run
-```
-
-Screen corto y acotado:
-
-```powershell
-uv run --no-sync python scripts/run_e_jepa_garl_final.py `
-  --profile screen --stages train `
-  --eap-root 'E:\eAP_dataset' `
-  --garlttc-root 'E:\GarlTTC_dataset' `
-  --output-root artifacts/runs/e_jepa_garl_event_screen_v1
-```
-
-El perfil full exige un commit limpio. Omitir `--max-samples-per-split` es parte
-del contrato: usa todas las filas válidas del split firmado. `--resume` restaura
-el checkpoint y el orden de muestras se deriva de seed+época.
-
-## EvTTC Tabla VI y submission
-
-El runner mantiene separados:
-
-```text
-train -> freeze -> evttc-predict -> evttc-score -> submission-validate
-```
-
-`evttc-predict` no puede abrir TTC/depth/categoría/máscaras. `evttc-score` recibe
-los targets en otro proceso. La creación del manifest EvTTC real y el paquete
-eAP/CodaBench siguen pendientes.
-
-## Evidencia actual
-
-| Evidencia | Resultado | Decisión |
-|---|---:|---|
-| BASE histórico EvTTC | 8,1554 % error relativo | ancla, no SOTA |
-| A0 grouped CV 5x3 | 30,25 % ± 0,52 | arquitectura EvTTC histórica |
-| A1 Dense grouped CV | 30,55 % ± 0,06 | rechazado |
-| bbox-ROI / AttnRes / KDA | regresión o gate fallido | rechazados |
-| high-res raw smoke 16/16 | MiD macro 1868,3186 | integración solamente |
-| Object Expansion v3 | usa casi exclusivamente motion | falsado como event-TTC |
-| Object Event v4 | v4.30 OOF negativo; v4.31 train-only estable pero no físicamente equivariante | no promocionado; full cerrado |
-| Causal Scale v5 | test sintético: Pearson .92135, translation .02749; gates fallidos | no promovido; real-data cerrado |
-| Causal Scale v6 | validation: Pearson .92042, translation .00462, IoU .89323 | test 603 sellado; no promovido |
-| Causal Scale v7 | test: Pearson .92014 (falla), TTC .24576, translation .00338 | no promovido; seed 603 consumida |
-| Causal Scale v8 | validation Pearson .94621 con CVaR; falla por .00379 | test 901/902/903 nunca abierto |
-| Scientific Recovery V5 A8.0 | grouped-dev fold-local MiD 197,69 vs A6 211,51 y Garl 144,35 | mejora A6, falla gate 175; no promovido |
-
-El smoke high-resolution valida integración, no precisión. Los resultados v3
-muestran que la expansión firmada y la supervisión de ratio son útiles, pero
-que el crop independiente, la ausencia de t0 y el atajo de cajas impiden
-atribuir el resultado a eventos. V4 existe precisamente para falsar o corregir
-esa ruta.
-
-## Arquitectura base
-
-```text
-eventos raw HDF5
-  -> voxel temporal causal [T,C,H,W]
-  -> patch embedding high-resolution
-  -> atención espacial por ventanas
-  -> merge 2x2 opcional
-  -> mixer temporal block-causal
-  -> query pooling / tokens densos
-  -> cabeza TTC firmada
-```
-
-KDA permanece como resultado negativo. La configuración RGB-E existe como
-contrato de investigación, pero el trainer event-only la rechaza hasta que la
-fusión causal esté implementada y probada.
-
-## Estructura útil
-
-- `src/e_jepa_ttc/`: datos, modelos, pérdidas, evaluación e inferencia;
-- `scripts/build_eap_object_event_v4_cache.py`: caché común t0/t1/t2;
-- `scripts/train_e_jepa_object_event_v4.py`: trainer y gates v4;
-- `scripts/run_e_jepa_object_event_v4.py`: orquestación screen/full;
-- `configs/experiment/e_jepa_garl_object_event_{screen,full}_v4.yaml`: perfiles v4;
-- `data/protocols/garl_evttc_table_vi_v1.yaml`: frontera predict/score;
-- `artifacts/metrics/`: evidencia compacta versionada;
-- `PLAN.md`: plan científico y gates;
-- `STATUS.md`: handoff operativo actual.
-
-`artifacts/runs`, `artifacts/features`, datasets y caches son locales/ignorados y
-se pueden regenerar. No deben subirse a Git.
-
-## Integridad científica
-
-- splits por secuencia, nunca aleatorios por ventana;
-- selección de modelo macro por secuencia;
-- pretraining SSL sin etiquetas TTC;
-- EvTTC no se usa para seleccionar el supuesto zero-shot;
-- resultados negativos y fallos relevantes se conservan;
-- no se declara SOTA desde smokes, una semilla o cifras copiadas de artículos;
-- v4 exige dependencia observable de eventos antes de congelar candidato.
-
-## Documentación
-
-- [estado canónico Scientific Recovery V5](docs/SCIENTIFIC_RECOVERY_V5_STATUS.md)
-- [auditoría científica y de código V5](docs/E_JEPA_TTC_V5_SCIENTIFIC_CODE_AUDIT.md)
-
-### v4.30 authoritative negative result and v4.31 next action
-
-The authoritative full v4.30 SHA256 is `9722202A4D33F6B5D1B933EEDA1F9143E13E4E2FD64B21356E93783AFAA1C689`, status `completed_oof_gate_failed`. Stabilization passed `.0010116798/.0423071422/.1308624286`; rank-only winner `stable_multiscale_similarity` has no champion. Its best-arm Pearson `.4791568608`, negative accuracy `0`, balanced `.5`, std ratio `.3731916487`, slope `.1788173388`, high-bucket Pearson `-.1972577670`, and ratios `.92439/.58893/.48926/.30467` failed the frozen objective; both arms failed with no sealed data opened. The target-free saved-NPZ post-hoc audit (not preregistered) found forward-vs-swap `log_eta` correlation `+.53338`, zero sign flips, and 95.8% coverage at `|log_eta| >= .005`. The next action after Sol's rethink is a TTC-label-free but train-box-conditioned common-object-ROI v4.31 redesign: TTC/sign/bucket-independent selection, immutable sequence/time-disjoint train-only stabilization/audit pools, sanitized event/ROI-only artifacts, exact physical reversal controls, and no development/test/EvTTC. The direct full-frame v4.31 draft was rejected before execution and is not evidence.
-
-The v4.31 implementation and negative 512-row diagnostic are documented in [the causal-audit handoff](docs/object_event_v4_31.md).  Cache preflight passed and no sealed data were opened.  Stability passed, but the operator failed analytic zoom, slope, sign, oddness, translation leakage and swap coverage; stage 2 was absent and the recorded worktree was dirty, so the result is explicitly non-selectable and non-authoritative.  Full remains closed.
-
-### Superseded historical v4.30 executable protocol
-
-The following is superseded diagnostic history, not current v4.30 state. A 96-row post-fix train-only diagnostic was `diagnostic_only`: JS median `.010237284936010838` passed; JS p95 `.19495552778244019` and BASE-pixel displacement p95 `.5500071191315064` failed. The earlier `D9DE07…` diagnostic is superseded. The authoritative completed v4.30 summary is the SHA and negative result stated above; historical diagnostics cannot modify it.
-
-- [plan de ejecución](PLAN.md)
-- [estado actual](STATUS.md)
-- [protocolo experimental](docs/experimental_protocol.md)
-- [Object Event TTC v4](docs/object_event_v4.md)
-- [Object Event TTC v4.29 preregistration](docs/object_event_v4_29.md)
-- [Object Event TTC v4.30 stable similarity preregistration](docs/object_event_v4_30.md)
-- [Object Event TTC v4.31 causal audit handoff](docs/object_event_v4_31.md)
-- [Causal Scale TTC v5](docs/causal_scale_v5.md)
-- [Causal Scale TTC v6](docs/causal_scale_v6.md)
-- [Causal Scale TTC v7](docs/causal_scale_v7.md)
-- [ADR-0001: geometry-bound causal scale](docs/decisions/ADR-0001-causal-scale-v5.md)
-- [dataset card](docs/dataset_card.md)
-- [model card](docs/model_card.md)
-- [limitaciones](docs/limitations.md)
-- [reproducibilidad](docs/reproducibility.md)
-- [informe técnico](docs/technical_report.md)
-- [informe PDF](docs/e_jepa_ttc_paper.pdf)
-
-El sistema es experimental y no está validado para control de seguridad.
+[Email](mailto:alvaro@schwiedop.com) ·
+[Website](https://schwiedop.com/PHASE-TTC/) ·
+[LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/) ·
+[Model card](docs/model_card.md)

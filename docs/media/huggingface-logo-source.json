@@ -1,0 +1,6 @@
+{
+  "asset": "huggingface-logo.png",
+  "source": "https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.png",
+  "brand_page": "https://huggingface.co/brand",
+  "use": "Unmodified official Hugging Face logo linking to the project's public model repository."
+}

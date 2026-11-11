@@ -1,0 +1,135 @@
+PHASE-TTC architecture video: technical and visual review
+Reviewed: 11 November 2026
+
+Asset: PHASE_TTC_Detailed_220s_1080p.mp4 (3:40, 1920x1080, 60 fps)
+Release: phase-ttc-architecture-video-20261103
+SHA-256: c064b40715543e09d1fe4e37059fb2b2ac61ef0b38395a3e1bbbeed1603d7fd9
+
+ASSESSMENT
+The central computations, model dimensions and recorded examples agree with
+implementation and saved evidence. The video needs scientific-summary and
+diagram corrections before it can represent the current paper in full.
+The existing published video was reviewed, not edited or replaced.
+
+REVIEW COVERAGE
+- Entire 220-second video/audio stream decoded with FFmpeg error checking.
+- Visual review of 220 one-second samples and 28 detailed scene/state frames,
+  including all 14 scenes, three A5 stages, both phase signs and eight replay states.
+- All 57 subtitle cues match the complete narration source after normalization.
+- All 14 narration scripts match their content-addressed TTS word-boundary records.
+- Final AAC audio matches the source narration after the 1,024-sample encoder
+  delay at 48 kHz: per-scene waveform correlation 0.999982 to 0.999989.
+  This is a source/audio correspondence check, not an independent listening test.
+- All 93 saved query records match target and prediction ledgers. All 93 RGB
+  images match extraction from the native sensor source, pixel for pixel.
+- Five source-ledger checksums, native sensor source hashes, selected input
+  tensors, query causality, model shapes and numerical examples were checked.
+- Published video checksum matches the local reviewed asset.
+These checks do not reproduce full training or private-label benchmark scoring.
+
+REQUIRED CORRECTIONS
+
+1. 03:26-03:40: identify the adapter scoring protocol and update the conclusion.
+   The displayed MAE 0.825 -> 0.336 s is real, but uses organizer-style offline
+   interpolation of negative outputs. It is not raw signed runtime MAE.
+   Use 0.824 -> 0.347 s for the primary 434-query signed comparison, or label
+   the older numbers explicitly as offline-interpolated scores.
+   Add the current matched-head result: no consistent benefit from event access
+   or phase versus inverse-TTC on the inspected transfer cohort.
+   Add the geometry result: fixed mixture/router common-support MAE 0.289/0.304 s;
+   road-only MAE 0.221/0.159 s. The road comparison favors routing, while the
+   pooled difference interval includes zero. Avoid attributing the complete
+   benchmark gain to a uniquely superior phase/event interface.
+   Replace the outdated paper-edition footer with the current paper link.
+
+2. 01:13-01:35: complete the A5 diagram connections.
+   Pooled features and the pair token lack clear output paths. The foreground
+   stage should show its dependency on encoder features, rather than leaving
+   a raw-image arrow that can imply a decoder bypassing the encoder.
+
+3. 01:35-01:50: complete the coarse-to-fine routing diagram.
+   Both fine and coarse estimates must feed the weighted blend. The current
+   outgoing arrow comes from the coarse side and terminates between boxes.
+   Show the router weight feeding the blend separately from the two estimates.
+   The formula w*fine + (1-w)*coarse and search dimensions are correct.
+
+4. 02:05-02:23: correct the temporal-refiner layout.
+   Connect the causal history and feature inputs to both modality GRUs.
+   Move the RGB/Event state captions below the bars with clear spacing.
+   Current captions overlap the lower bar area. Keep the existing indication
+   that these bars are schematic, not measured hidden activations.
+
+5. 02:23-02:40: draw the residual anchor explicitly.
+   Connect the MLP correction and the raw RGB anchor to the addition operation.
+   Keep the anchor distinct from the policy-clamped emitted RGB TTC.
+   The 20-input, 32/32-hidden, three-output, 1,955-parameter head is correct.
+   If width outputs are explained, include their RGB width-logit anchors and
+   positive transform; two outputs alone are not calibrated confidence intervals.
+
+6. 03:11-03:26: separate router inputs, weights and expert estimates.
+   The four expert values need direct paths into the inverse-TTC blend, with
+   quality features going to the router and learned weights going to the blend.
+   The existing diagram sends experts toward the router but omits their direct
+   value paths. Three-router averaging in seconds is correctly described.
+
+7. 00:00-00:11: correct the recording count.
+   'Follow one real recording' conflicts with the two recordings used across
+   the video. Use 'Follow real recordings through the prediction pipeline.'
+
+SMALLER PRESENTATION CORRECTIONS
+- 00:41-00:59: say 'up to two temporal bins'; an event exactly at a bin center
+  has a nonzero contribution in only one bin. The 40/60% example is correct.
+- 00:59-01:13: clarify that count/rate refer to the cropped ROI, not the full
+  sensor image. The actual tensor has ten polarity/time planes and two
+  constant activity planes, with 12x128x128 spatial input per endpoint.
+- 00:25-00:41 and 01:50-02:05: state the rigid frontal constant-speed assumption
+  behind the illustrative box-expansion TTC calculation.
+- 02:55-03:11: add units and a legend to the miniature prediction chart. Keep
+  the changing query timestamp within its image caption; some later timestamps
+  approach or cross the image's lower edge and neighboring caption text.
+
+SCENE-BY-SCENE FINDINGS
+00:00-00:11  Real RGB/events: authentic sources; correct the recording count.
+00:11-00:25  Causality: correct. A 650 ms past span is distinct from latency.
+00:25-00:41  Shared crop and expansion: correct example. Heights 172/179 px,
+             dt 0.100007 s, log ratio 0.03989133, TTC 2.45731486 s versus
+             reference 2.46112298 s. Approximate camera overlay is labeled.
+00:41-00:59  Voxel interpolation: correct example; qualify 'two bins'.
+00:59-01:13  Input planes: correct dimensions and measured count/rate values.
+01:13-01:35  A5: convolution sizes, channels, pooling and transport agree with
+             code/checkpoints; diagram connections need clarification.
+01:35-01:50  C2F: fine radius 1 and pooled coarse radius 2, weighted blend and
+             18 motion fields agree with code; connect both branches.
+01:50-02:05  PAIR: 128 token + 3 clock + 2 support fields = 133 inputs; clock
+             examples 4% growth over 100/50 ms yield 2.5/1.25 s as stated.
+02:05-02:23  Temporal refinement: 17 measurement + 4 timing fields, two GRU
+             layers per branch, hidden width 160; correct dimensions.
+02:23-02:40  Fusion: ten descriptors per branch, 20 total, RGB + 0.03*c0;
+             correct parameter count, incomplete graphical residual path.
+02:40-02:55  Phase inverse: +0.051293 gives +2 s and -0.048790 gives -2 s.
+             The 60 s finite bound and zero-phase convention agree with code.
+02:55-03:11  Recorded predictions: all eight displayed states match the saved
+             evidence; missing RGB at the initial query is labeled unavailable.
+03:11-03:26  Adapter: four experts, 33->18->4 routers, 688 parameters per router,
+             three seeds averaged in seconds. Query 47: 2.1192224 -> 1.7054390 s,
+             reference 1.5988215 s. Correct example; incomplete value paths.
+03:26-03:40  Official score and latency: correct archived values and deadline
+             limitation. Local MAE needs protocol label and current controls.
+
+SOURCE LOCATIONS
+Video construction and narration:
+  output/video/phase_ttc_explainer_detailed/{render.py,network_scenes.py,
+  storyboard.json,Narration_EN.txt,PHASE_TTC_Detailed_EN.srt,model_inputs.json}
+Model implementation:
+  src/e_jepa_ttc/models/causal_scale_ttc.py
+  src/e_jepa_ttc/simplex_t/model.py
+  src/e_jepa_ttc/representations/voxel_grid.py
+  src/e_jepa_ttc/data/eap_representation.py
+  operational/final_refit/training.py
+  operational/evttc_competition/{prepare.py,runtime.py}
+Scientific evidence:
+  paper/data/official_benchmark.json
+  paper/from_motion_to_time_20261102/data/consolidation/
+Audit working files:
+  output/video_audit_20261111/{technical_checks.json,source_checks.json,
+  inspect_video.py,check_sources.py,frames/}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-11",
+  "change": "Add official Hugging Face logo and clickable model repository to title links",
+  "pdf_pages": 81,
+  "text_changed_pages": [
+    1
+  ],
+  "title_link_uris": [
+    "mailto:alvaro@schwiedop.com",
+    "https://schwiedop.com/PHASE-TTC",
+    "https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/",
+    "https://github.com/Kripta-Studios/phase-ttc",
+    "https://huggingface.co/AlvaroSchwiedop/PHASE-TTC"
+  ],
+  "logo_source": "https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.png",
+  "logo_sha256": "9cf16f4f32604eaf76dabbdf47701eea5a768ebcc7296acc1d1758181f71db73",
+  "readme_local_links": "PASS",
+  "scientific_text_unchanged_beyond_title_links": true
+}
