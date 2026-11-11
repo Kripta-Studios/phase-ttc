@@ -123,7 +123,7 @@
     {
       "path": "sections\\introduction.tex",
       "original_sha256": "2ea165727c8fe22993ffd76dbcad20188bfba40a2f0f076097ba3703b4b91f89",
-      "expanded_sha256": "39c103a301f073b1bd855c7d93509f45972abb5f44d2617219ef074471637138",
+      "expanded_sha256": "6b603f895fefbebfcd3b58fa153712db2b22bdb4653b7e643d809b4dcdc078b1",
       "changed": true
     },
     {
@@ -153,7 +153,7 @@
     {
       "path": "sections\\protocol.tex",
       "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
-      "expanded_sha256": "8dc23aaa2ae424be6f618e8cf8ca237b96e25fc74230e4ad37aa8f40728d953e",
+      "expanded_sha256": "27338e3259651ee3b84e7dba798ce66e3f6d72de4dbd25726c297d55b2e8848d",
       "changed": true
     },
     {
@@ -165,7 +165,7 @@
     {
       "path": "sections\\runtime.tex",
       "original_sha256": "87869c87692f4189fc6ccb9163df44d2499bbee7ce6511432797e5bb4aca1289",
-      "expanded_sha256": "e7fb6c8256fb5b0b5ebc51b48bcb53ca4dc00fb0deb54618471ba59daa9f0b58",
+      "expanded_sha256": "d4471aa45b88edf22bfc7b96214fd766b8c6c405140912746c7a8adc5e6fba2d",
       "changed": true
     },
     {

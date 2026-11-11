@@ -57,5 +57,5 @@ Splits and resampling units are specified separately for each experiment. Histor
 
 Three head seeds quantify optimization variability conditional on their parents; they do not independently replicate the upstream representation. The additional transfer bootstrap is post hoc: it resamples saved paired predictions without changing a model, split, or historical interval (Appendix~\ref{app:derived-transfer}).
 
-For the new matched readout and geometry studies, 10,000 complete-recording resamples use seed 20261111. We specify arms, budgets, fixed mixture weights, and reductions before executing these analyses. This freezes the retrospective comparison; it does not remove prior exposure to its evaluation recordings.
+For the new matched readout and geometry studies, 10,000 complete-recording resamples use seed 20261111. We fixed the model variants, training schedules, baseline mixture weights, and metric aggregation before running the comparisons, so their evaluation results could not guide these choices. These retrospective studies use the development-inspected recordings described above.
 \FloatBarrier

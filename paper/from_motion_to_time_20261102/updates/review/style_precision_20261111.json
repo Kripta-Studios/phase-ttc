@@ -1,0 +1,25 @@
+{
+  "pdf_sha256": "e7700c99ce50bae61d097d0bfa66d2b4f5b2e5b339259e76fb28a9a7f6d3d4c3",
+  "pages": 81,
+  "changed_text_pages": [
+    1,
+    2,
+    8,
+    13
+  ],
+  "visually_inspected_pages": [
+    1,
+    2,
+    8,
+    13
+  ],
+  "layout": "No clipping, overlap or reference errors.",
+  "scope": "Clarify abstract, contributions, retrospective protocol and runtime explanation. No new experiments or changed findings.",
+  "preserved_limits": [
+    "Archived rank among three displayed entries, not universal SOTA",
+    "No consistent event or phase benefit in matched controls",
+    "Development-inspected transfer cohorts",
+    "Road MAE reduction is approximately 43.6%, not 50%",
+    "Post-preparation p95 still exceeds 20 ms; copying alone is not an established cause"
+  ]
+}

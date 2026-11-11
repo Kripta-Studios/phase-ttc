@@ -1,7 +1,7 @@
 \section{Runtime and causal service}
 \label{sec:runtime}
 
-A 50\,Hz response budget allows 20\,ms for the complete prediction path, including preparation, scheduling, neural computation, and delivery to the host. We evaluate that path with a five-second paced replay: all 250 updates complete with numerical parity, and scheduled-arrival response reaches 29.14\,ms at p95. Even when timing begins after RAW acquisition, copy, and payload sealing, p95 is 25.25\,ms. Meeting the deadline therefore requires optimizing the remaining service path as well as input preparation. The measurements below separate this persistent replay from the sensor-preparation path used by the local adapter.
+We evaluate end-to-end execution with a five-second replay paced at 50\,Hz. All 250 updates complete with numerical parity, with a scheduled-arrival response of 29.14\,ms at p95. Sustaining this rate within a 20\,ms response deadline requires accounting for preparation, scheduling, neural computation, and delivery to the host. Starting the clock after RAW acquisition, copy, and payload sealing still gives a p95 of 25.25\,ms, so preparation alone cannot explain the missed deadline. We therefore profile the complete service path and distinguish this persistent replay from the sensor-preparation path used by the local adapter.
 
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{figures/publication_runtime_clock.pdf}
