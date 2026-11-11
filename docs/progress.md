@@ -1223,3 +1223,10 @@ Pre-push validation: global Ruff lint/format, maintained-module and paper-entry-
 Replaced the root README development chronology with an English project reference covering the published architecture, current matched controls, geometric baselines, supported downloads, reproducibility and limitations. Removed superseded model instructions and internal handoffs; added a preprint BibTeX citation. Added the official Hugging Face logo and model URL to the paper title and README; GitHub About now links to the original model.
 
 The rebuilt 81-page PDF changes text only on its title page. Publication verification passes 375 source inputs and three artifacts; all 12 publication-binding tests pass. Deployed PDF, consolidated TeX and source ZIP to the website; HTTPS SHA-256 checks match the local delivery. Video review covers all 14 scenes, 57 subtitle cues, complete stream decoding, 93 saved query records and native RGB images. The review records required diagram and result-protocol corrections in docs/video_review_20261111.txt; the video itself was not changed.
+
+
+### 2026-11-11 — Corrected architecture video
+
+Rebuilt the walkthrough as 16 scenes over 4:20, native 1080p60, with corrected motion/temporal/fusion/router connections, updated narration and 66 synchronized subtitles. Closing tables use the current signed adaptation and matched controls, including uncertainty, development exposure and execution limits. Updated the README video link and poster; preserved the earlier release and review.
+
+Verification: full MP4 decode passes (15,600 frames), all narration/subtitle/TTS text agrees, scene audio correlations exceed 0.99998, and 342 preflight times have no text overflow. Reviewed all scenes and detailed diagram states visually. All 108 source display assets and prepared tensors retain their hashes. Correction receipt and QA: docs/media/video_20261111/. Production source ZIP documents external sensor dependencies.

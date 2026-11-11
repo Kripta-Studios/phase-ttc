@@ -1,0 +1,47 @@
+0s | From motion to time
+PHASE T T C estimates when an approaching object would reach us. Follow two real recordings, from color images and asynchronous events to a signed time in seconds.
+
+11s | Two sensors. One causal query.
+Color frames describe appearance. Events report brightness changes with position, time, and polarity. Only past observations enter a query. Historical support is different from processing latency.
+
+25s | Preserve the change in scale
+Supplied boxes locate the object. A common crop preserves scale across endpoints. Here, annotated height grows by seven pixels in one tenth of a second. Independent tight resizing would erase that growth.
+
+41s | An event reaches up to two bins
+Five temporal bins preserve when brightness changed within a window. An event at forty milliseconds falls between bins two and three. Linear interpolation assigns forty percent to one and sixty percent to the other, at the same pixel.
+
+59s | The actual network input
+Five positive and five negative channels preserve polarity. Two constant planes add log count and log rate within the cropped object region. These are actual twelve channel inputs. Color frames supply three channels.
+
+73s | A5: from pixels to motion
+A five encodes each endpoint with convolutions and residual blocks. Dense features support local matching. A foreground decoder estimates soft object extent. Changes in estimated height, motion diagnostics, and a learned correction produce an initial motion estimate. A separate pair token summarizes the comparison.
+
+95s | C2F: search at two scales
+The coarse to fine producer runs alongside A five. Fine features search nearby cells. A pooled coarse grid covers larger displacement. A learned router blends their motion summaries using match quality and consistency.
+
+110s | PAIR: give the comparison a clock
+PAIR combines A five's token with elapsed time and observation support. It predicts another phase estimate. The same four percent growth over fifty milliseconds implies half the current contact time of growth over one hundred milliseconds.
+
+125s | GRU: refine each sensor through time
+Raw sensor statistics, motion diagnostics, expert phases, and disagreements form seventeen features per modality. Four timing fields accompany them. Two recurrent layers update a hidden state across up to eight valid observations, placing noisy or stale measurements in temporal context.
+
+143s | Fusion: exchange named measurements
+Hidden states remain separate. Each branch exposes five phases, four timing values, and history support. Twenty inputs drive a residual correction of raw color phase and width logits. The intervals are uncalibrated.
+
+160s | Convert phase back into seconds
+Corrected phase becomes inverse T T C, then seconds. This example produces two seconds: positive for approach, negative for recession. The sixty second saturation is a numerical convention.
+
+175s | Compare the recorded outputs
+Compare saved color, event, and fused estimates at the same query. The corrected reference reveals the error. Fusion can move beyond either branch's value because it learns a phase correction, rather than averaging seconds.
+
+191s | A separate quality adapter
+The later adapter freezes the nine components. A causal box expansion expert joins three neural estimates. Quality routers weight inverse T T C; their outputs are averaged in seconds. This is a separate extension.
+
+206s | Benchmark and matched controls
+The complete system ranks first among three archived benchmark entries. Matched transfer controls tell a narrower story: learned corrections outperform a scalar mixture, but real events do not consistently improve the readout, and phase and inverse time parameterizations perform similarly. These recordings had influenced development.
+
+228s | What does geometric routing add?
+On signed predictions, adaptation reduces local error from point eight two four to point three four seven seconds. On common support, a fixed mixture slightly outperforms learned routing overall. Road recordings favor the router. These are development exposed comparisons, not a new official score.
+
+246s | Execution and remaining limits
+All two hundred fifty updates complete, but response latency exceeds twenty milliseconds. Historical pipeline reproduction still has discrepancies. Independent validation and sustained camera operation remain open.

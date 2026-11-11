@@ -1,0 +1,108 @@
+{
+  "head_rows": [
+    [
+      "Phase correction · real events",
+      "0.847 ± 0.038"
+    ],
+    [
+      "Phase correction · zero events",
+      "0.838 ± 0.021"
+    ],
+    [
+      "Inverse-TTC correction · real events",
+      "0.847 ± 0.041"
+    ],
+    [
+      "Source-calibrated scalar mixture",
+      "0.996"
+    ]
+  ],
+  "geometry_rows": [
+    [
+      "Original fusion",
+      "0.793 s",
+      "0.282 s"
+    ],
+    [
+      "Geometry alone",
+      "1.158 s",
+      "1.343 s"
+    ],
+    [
+      "Fixed inverse-TTC mixture",
+      "0.289 s",
+      "0.221 s"
+    ],
+    [
+      "Learned router",
+      "0.304 s",
+      "0.159 s"
+    ]
+  ],
+  "signed_MAE": {
+    "replayed_original": 0.8244062243161187,
+    "released_router": 0.3469702937988789
+  },
+  "paired": {
+    "all_rows": {
+      "delta_MAE_s": -0.014588444958594054,
+      "recording_macro_delta_MAE_s": -0.009880336748441599,
+      "recordings": 10,
+      "queries": 424,
+      "resampling_unit": "recording",
+      "draws": 10000,
+      "seed": 20261111,
+      "ci95": [
+        -0.17040344391831408,
+        0.09427239604416025
+      ],
+      "interpretation": "Descriptive interval on historically inspected recordings"
+    },
+    "road": {
+      "delta_MAE_s": 0.06230492565445723,
+      "recording_macro_delta_MAE_s": 0.06315440738218497,
+      "recordings": 8,
+      "queries": 357,
+      "resampling_unit": "recording",
+      "draws": 10000,
+      "seed": 20261111,
+      "ci95": [
+        0.014359075599900106,
+        0.11968040861269033
+      ],
+      "interpretation": "Descriptive interval on historically inspected recordings"
+    }
+  },
+  "official": {
+    "MiDc": 43.5189935425749,
+    "FRc": 0.0,
+    "MiDs": 28.25675232393477,
+    "FRs": 0.0,
+    "MiDl": 25.71789700925724,
+    "FRl": 0.0,
+    "MiDn": 29.931394114302854,
+    "FRn": 0.0,
+    "mean_MiD": 29.298890906303914,
+    "overall_MiD": 35.80145158082389,
+    "num_samples": 6762,
+    "failed_rate": 0.0
+  },
+  "reference": {
+    "overall_MiD": 45.03,
+    "MiDc": 53.13,
+    "FRc": 0.0,
+    "MiDs": 37.58,
+    "FRs": 0.0,
+    "MiDl": 40.61,
+    "FRl": 0.0,
+    "MiDn": 31.29,
+    "FRn": 0.0,
+    "failed_rate": 0.0,
+    "num_samples": 6762.0
+  },
+  "source_sha256": {
+    "paper\\from_motion_to_time_20261102\\tables\\consolidation_statistics.json": "ce01103489874744affdbc8ed0c3ba63dd03b1abae68f1baa178d9900637a3b4",
+    "paper\\from_motion_to_time_20261102\\data\\consolidation\\matched_results.json": "727b34ba5e49d041bc5296bf621cfee1c157847a82a8763b0275fed1cfeaa4e8",
+    "paper\\data\\official_benchmark.json": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532"
+  }
+}

@@ -239,16 +239,16 @@ to `output/pdf/`.
 
 ## Architecture video
 
-[![PHASE-TTC architecture explainer: real RGB frames and event streams](docs/media/phase-ttc-architecture-explainer.png)](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)
+[![PHASE-TTC architecture explainer: real RGB frames and event streams](docs/media/phase-ttc-architecture-explainer.png)](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111/PHASE_TTC_Architecture_260s_1080p.mp4)
 
-**[Watch or download: 3:40, 1080p, 60 fps](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_220s_1080p.mp4)** ·
-[English subtitles](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261103/PHASE_TTC_Detailed_EN.srt)
+**[Watch or download: 4:20, 1080p, 60 fps](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111/PHASE_TTC_Architecture_260s_1080p.mp4)** ·
+[English subtitles](https://github.com/Kripta-Studios/phase-ttc/releases/download/phase-ttc-architecture-video-20261111/PHASE_TTC_Detailed_EN.srt)
 
-The narrated walkthrough shows real EvTTC observations, preprocessing, motion
-estimation, temporal refinement and signed TTC prediction. The video predates
-the current matched readout and geometry controls. Its closing adapter MAE
-uses offline interpolation; the current paper and tables above report signed
-runtime predictions and distinguish the evaluation protocols.
+The narrated walkthrough follows real EvTTC observations through preprocessing,
+motion estimation, temporal refinement and signed TTC prediction. Connected
+diagrams distinguish expert values, routing weights and the RGB residual anchor.
+The closing sections present the current matched readout controls, signed
+geometric-adaptation results and measured execution limits.
 
 ## Scope and limitations
 

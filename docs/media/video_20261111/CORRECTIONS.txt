@@ -1,0 +1,37 @@
+PHASE-TTC architecture video: correction receipt
+11 November 2026
+
+Published replacement: phase-ttc-architecture-video-20261111
+Video: PHASE_TTC_Architecture_260s_1080p.mp4
+Duration: 4:20; native 1920x1080, 60 fps; 16 scenes and 66 subtitle cues.
+
+All required and smaller corrections in docs/video_review_20261111.txt are
+addressed. The old 3:40 release remains archived, with a replacement link.
+
+Diagram changes complete the A5, C2F, PAIR, temporal, residual-anchor and
+adapter paths. Labels distinguish expert values, quality inputs and weights.
+The replay chart has units, a legend and an inset timestamp. ROI statistics,
+recording count, interpolation support and physical assumptions are explicit.
+
+The closing evidence follows the current paper: signed 434-query adaptation,
+matched event/coordinate controls, common-support geometric comparisons and
+recording-bootstrap uncertainty. The complete-system leaderboard result is
+separate from component attribution. Runtime and historical replay limitations
+remain visible. Models, recorded predictions and official scores are unchanged.
+
+Verification:
+- Full encoded-stream decode: no errors; 260 seconds and 15,600 video frames.
+- Visual inspection of all 16 scenes, detailed diagram states and final encoded
+  closing tables; 342 preflight times checked for text overflow.
+- All 66 subtitles match narration and content-addressed TTS word records.
+- Encoded AAC/source narration correlation exceeds 0.99998 in every scene.
+  This verifies source/audio correspondence, not independent human listening.
+- All 108 image/tensor-display assets and the prepared tensor archive retain
+  their original byte identities. Current numerical sources are hash-checked.
+- Final MP4 SHA-256:
+  553f1f2410a5fe6d05135f06583e8ec4060f946a947d339de697ff6332c16010
+
+QA.json contains the detailed checks. Production scripts and finalized audio
+are available as a release ZIP. External sensor dependencies are documented
+in PRODUCTION_NOTES.txt; the ZIP alone is not a raw-data reproduction bundle.
+These media checks do not rerun training or the private-label benchmark.
