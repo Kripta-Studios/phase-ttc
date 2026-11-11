@@ -1,0 +1,82 @@
+{
+  "protocol": {
+    "schema": "phase_ttc_final_head_controls_v1",
+    "scope": "Matched final-recipe head retraining; exposed cross-dataset development evaluation",
+    "training": {
+      "population": "Original 88744 eAP TRAIN40 five-rotation physical OOF features only",
+      "exclude_domain": "evttc",
+      "arms": [
+        "phase_true",
+        "phase_zero_event",
+        "inverse_residual"
+      ],
+      "seeds": [
+        7,
+        13,
+        21
+      ],
+      "parameters_per_head": 1955,
+      "updates": 12044,
+      "batch_size": 128,
+      "sampling": "Identical torch.randint row schedules per seed in all arms",
+      "objective": "Original fusion_loss: group-balanced phase MAE plus 0.1 quantile loss",
+      "optimizer": "AdamW lr 0.0003, weight_decay 0.001, betas 0.9/0.999, eps 1e-8, foreach false",
+      "schedule": "Original final-head warmup/cosine schedule, gradient norm clipped at 1",
+      "initialization": "Identical random initialization per seed, zero output layer",
+      "endpoint": "Last fixed update; no early stopping or validation selection",
+      "inverse_residual": "Transform five phase fields per branch to d0*inverse_TTC; correct RGB inverse TTC by 0.3*c0, map to phase for the unchanged objective. Widths remain in phase units."
+    },
+    "calibrated_simple_fusion": {
+      "coordinate": "phase",
+      "event_weight_grid": {
+        "start": 0.0,
+        "stop": 1.0,
+        "count": 101
+      },
+      "selection": "Minimize group-balanced training phase absolute error only; first minimum",
+      "intercept": false
+    },
+    "evaluation": {
+      "population": "Corrected 460-query transfer cohort, exact identities and frozen feature shards",
+      "feature_gate": "Reproduce released-head archived predictions before fitting controls; report numerical tolerance",
+      "no_evttc_fit_labels": true,
+      "report_all_seeds": true,
+      "primary_summary": "Mean per-query absolute error across the three seeds, not TTC ensembling",
+      "bootstrap": "10000 draws over 32 complete recordings, seed 20261111; seeds kept together",
+      "limitations": [
+        "Historical development exposure",
+        "Upstream estimates and temporal history held fixed",
+        "No matched hidden-feature fusion comparison",
+        "No new official benchmark score"
+      ]
+    }
+  },
+  "bindings": {
+    "training_npz_sha256": "96498f7c99181ecb45e8c53957b05482fd3eef6e93eac0eccb5a92c68fb43a86",
+    "restoration_sha256": "008d8ab2cb60b352015eb89f5734e924f37eea0003b72de582647aaf7b0b5a10",
+    "original_oof_receipt_sha256": "b11036f1c2949a4fcc4bc67e8b876da344fe1b1366c2234870f44fa6fa70f01a",
+    "transfer_projection_sha256": "f44e07b865b32e9a6805041a9c4aa0c23f8822a2d39c52d23456f5fbfb2b7e37",
+    "released_checkpoint_sha256": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+    "frozen_head_reproduction_max_abs_s": 2.86102294921875e-06,
+    "frozen_head_reproduction_rtol": 1e-05,
+    "frozen_head_reproduction_atol": 1e-05,
+    "training_rows": 88744,
+    "training_groups": 40,
+    "evaluation_rows": 460,
+    "evaluation_groups": 32,
+    "evaluation_features_sha256": "42ef16cce48edaabb0cc167a442e21861202cde1f06efbdfed68e872db211ca3"
+  },
+  "started_utc": "2026-11-11T17:47:29.428938+00:00",
+  "git_commit": "787a1780bc9b8448d72666f5a16974a3f569a396",
+  "python": "3.12.13",
+  "torch": "2.10.0+cpu",
+  "numpy": "2.5.0",
+  "device": "cpu",
+  "host": "DESKTOP-2N393IP",
+  "sources": {
+    "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\scripts\\run_final_head_controls.py": "c3c8f141ab3003861b0354323939b0546407c627dea2d01f0b54cd45e1678fb4",
+    "operational\\scientific_revision_heads.py": "a8ab8eb7115e634d6b920360ea337b160532d715090a920c42e0235f7fdeaa87",
+    "operational\\final_refit\\training.py": "cddb650c637e3627bf711ad3571dd9454baecfc997e09cb0ce3675d5cf3a54a4",
+    "src\\e_jepa_ttc\\rgb_port\\fusion.py": "3aafc191fad82d389f199cfb9a36905fba966ef9230ec6b5570af5e4cb6f4085"
+  }
+}

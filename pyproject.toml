@@ -71,6 +71,7 @@ target-version = "py311"
 extend-exclude = [
   # Executed manuscript evidence is hash-bound data, not maintained source.
   "paper/from_motion_to_time_20261102/audit_20261104/sources",
+  "paper/from_motion_to_time_20261102/data/consolidation/executed_*.py",
   "paper/from_motion_to_time_20261102/data/real_sensor_excerpt/extract-real-replay.py",
   "docs/range_transfer_handoff_20261010",
   "docs/joint_measurement_handoff_20261012",

@@ -31,6 +31,14 @@ The implementation and public research evidence are maintained together on
 - [Expanded article PDF](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)
 - [Expanded LaTeX source and build instructions](paper/from_motion_to_time_20261102/README.md)
 - [Original 28 October article and source bundle](paper/README.md)
+
+The scientific consolidation adds nine matched final-head fits and common-support
+geometry baselines. On the inspected transfer cohort, events do not consistently
+improve the equal-capacity correction head, and phase and inverse-TTC corrections
+perform similarly. The official complete-system score is unchanged. See the
+[revision findings and unresolved requirements](docs/scientific_consolidation_20261111.json)
+and [recomputable evidence](paper/from_motion_to_time_20261102/data/consolidation).
+
 - [Scientific and engineering history](docs/engineering_history_20261027/README.md)
 
 As of **28 October 2026**, PHASE-TTC ranks first among the three displayed

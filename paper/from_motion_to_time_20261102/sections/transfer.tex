@@ -16,20 +16,12 @@ Relative time error remains $100|\widehat T-T|/|T|$. Pooled summaries weight que
 
 Fusion MAE is \AuditFusionMAE{}\,s against RGB's \AuditRgbMAE{}\,s; its empirical p95 is \AuditFusionPninetyfive{}\,s against \AuditRgbPninetyfive{}\,s. RGB retains lower median error, \AuditRgbMedian{} versus \AuditFusionMedian{}\,s, and slightly lower RTE, \AuditRgbRTE{} versus \AuditFusionRTE{}.  \evidence{GT01}
 
-\begin{figure}[H]
-\centering\includegraphics[width=.94\linewidth]{figures/audit_transfer_summary.pdf}
-\caption{\textbf{Corrected frozen-transfer error summaries.} PHASE-TTC and RGB use the same \AuditTransferCount{} eligible queries after reassociating all 508 candidates. Lower point mean and p95 favor fusion; lower median favors RGB. Paired intervals are reported separately in Table~\ref{tab:audit-transfer-bootstrap}.}
-\label{fig:transfer-tradeoff}
-\end{figure}
+
 
 \subsection{Exceedance and paired uncertainty}
-The full corrected distribution retains signed predictions, including large errors. Figure~\ref{fig:transfer-exceedance} shows the fraction at or above each absolute-error threshold. Maximum absolute error is \AuditFusionMax{}\,s for fusion and \AuditRgbMax{}\,s for RGB. These are query-level errors under the corrected labels, not scorer-defined invalid predictions.
+The full corrected distribution retains signed predictions, including large errors. Appendix~\ref{app:extra-diagnostics} shows the fraction at or above each absolute-error threshold. Maximum absolute error is \AuditFusionMax{}\,s for fusion and \AuditRgbMax{}\,s for RGB. These are query-level errors under the corrected labels, not scorer-defined invalid predictions.
 
-\begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{figures/audit_transfer_exceedance.pdf}
-\caption{\textbf{Corrected absolute-error exceedance.} Curves include all \AuditTransferCount{} eligible transfer queries with equal query weights. No signed prediction is clipped and no extreme error is removed.}
-\label{fig:transfer-exceedance}
-\end{figure}
+
 
 The PHASE-minus-RGB mean difference is \AuditMeanDelta{}\,s with interval $[\AuditMeanLow,\AuditMeanHigh]$\,s; the p95 difference is \AuditPninetyfiveDelta{}\,s with interval $[\AuditPninetyfiveLow,\AuditPninetyfiveHigh]$\,s. All three paired intervals include zero. The procedure uses 10,000 complete-sequence resamples with linear quantiles and the same frozen models. Appendix~\ref{app:derived-transfer} gives complete sequence results and distinguishes this corrected analysis from the historical one.
 \input{tables/audit_transfer_bootstrap}

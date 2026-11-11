@@ -61,6 +61,7 @@ def render() -> None:
 
 def main() -> None:
     for script in (
+        "build_consolidation.py",
         "verify_audit_sources.py",
         "build_transfer_revision.py",
         "make_population_table.py",

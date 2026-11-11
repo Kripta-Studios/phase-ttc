@@ -8,11 +8,7 @@ As of 28 October 2026, PHASE-TTC ranks first among the three displayed submissio
 
 The scorer returns Overall MiD \OfficialPhaseOverallMiD{} at full precision, consistent with the rounded public entry. Relative to Garl-TTC's published \OfficialGarlOverallMiD{}, PHASE-TTC reduces the ranking metric by \OfficialOverallRelativeGain{}. All four TTC bands improve (Table~\ref{tab:official-benchmark}); the large positive-TTC band has the largest relative reduction and the negative band the smallest. Percentage reductions combine the unrounded PHASE-TTC values with Garl-TTC's published two-decimal scores. \evidence{B01,B02}
 
-\begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{figures/rev_hero.pdf}
-\caption{\textbf{Archived GarlTTC Test results, 28 October 2026.} Overall MiD and the four TTC bands compare the complete PHASE-TTC and Garl-TTC submissions. Both report 0\% scorer-defined failures across 6,762 tokens.}
-\label{fig:official}
-\end{figure}
+
 \input{tables/official_benchmark}
 
 \subsection{Where the weighted difference comes from}
@@ -21,12 +17,7 @@ For band $b$, the additive contribution is $w_b(\mathrm{MiD}^{\mathrm{Garl}}_b-\
 
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.92\linewidth]{figures/rev_weighted.pdf}
-\caption{\textbf{Bandwise contributions to the Overall MiD difference.} Crucial and small TTC account for about 82\% under the benchmark's $0.5/0.3/0.1/0.1$ weights. Table~\ref{tab:official-weighted-contributions} gives the rounding reconciliation. \evidence{B01,B02}}
-\label{fig:official-weighted-contributions}
-\end{figure}
+
 
 \subsection{Metric and evaluation population}
 

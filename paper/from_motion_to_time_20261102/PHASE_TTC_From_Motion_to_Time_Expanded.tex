@@ -328,7 +328,7 @@ Random initialization & 0.03719641 \\
 \begin{document}
 \papertitle{PHASE-TTC}{From Motion to Time}{Causal Event--RGB Fusion\\for Signed Time-to-Contact Estimation}{\'Alvaro Schwiedop Souto}
 \begin{abstract}
-Estimating time-to-contact from vision requires measuring how an object's apparent scale changes. Event cameras record rapid brightness changes, while RGB frames provide scene appearance; combining them requires reconciling different temporal and visual representations. We introduce PHASE-TTC, which estimates motion independently in each modality and combines those estimates in a shared phase coordinate. A compact residual head corrects the RGB estimate using phase, timing, and observation-support features from causal history. On the archived GarlTTC Test leaderboard of 28 October 2026, the submitted system ranks first among three displayed entries, with Overall Motion-in-Depth error \OfficialPhasePublishedOverallMiD{}, a \OfficialOverallRelativeGain{} reduction relative to Garl-TTC and zero scorer-defined failures. Local EvTTC experiments show a more mixed modality comparison and motivate an extension that combines neural estimates with apparent box expansion. Controlled representation studies find no predictive-pretraining benefit in the tested settings, highlighting the need to evaluate motion information separately from latent prediction loss. A paced replay delivers all 250 predictions with numerical parity, but its 29.14\,ms p95 response exceeds the 20\,ms target. These results support phase-based fusion as a practical design while identifying the generalization and execution questions that require further testing.
+Estimating time-to-contact from vision requires measuring how an object's apparent scale changes. Event cameras record rapid brightness changes, while RGB frames provide scene appearance; combining them requires reconciling different temporal and visual representations. We introduce PHASE-TTC, which estimates motion independently in each modality and combines those estimates in a shared phase coordinate. A compact residual head corrects the RGB estimate using phase, timing, and observation-support features from causal history. On the archived GarlTTC Test leaderboard of 28 October 2026, the submitted system ranks first among three displayed entries, with Overall Motion-in-Depth error \OfficialPhasePublishedOverallMiD{}, a \OfficialOverallRelativeGain{} reduction relative to Garl-TTC and zero scorer-defined failures. Matched readout experiments hold the final upstream models and temporal histories fixed. Learned corrections improve on simple mixtures, but three-seed controls show no consistent transfer advantage from event access or from phase rather than inverse-TTC parameterization. A geometric extension improves local road accuracy beyond a fixed mixture, while its pooled advantage remains uncertain. These secondary evaluations reuse development-inspected recordings. A paced replay delivers all 250 predictions with numerical parity, but its 29.14\,ms p95 response exceeds the 20\,ms target. The evidence supports the complete system's benchmark performance and bounds the component and deployment claims.
 \end{abstract}
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{figures/publication_teaser.pdf}
@@ -343,37 +343,23 @@ RGB frames provide texture and spatial context, while event cameras report async
 
 In PHASE-TTC, each branch supplies phase estimates together with timing and support information to a small residual network that adjusts an RGB anchor. The signed phase coordinate gives the branches a common description of approach and recession over a reference interval, allowing each to keep its own hidden representation. We preserve apparent expansion through common object coordinates and use temporal refiners to incorporate observations available before each query.
 
-This design leads to three questions. Does the complete estimator improve benchmark accuracy? When do event measurements add information beyond RGB? And does predicting a latent future preserve the scale changes that TTC requires? We address the first through the official benchmark, the second through modality comparisons and matched development controls, and the third through predictive-pretraining and nuisance-dynamics experiments. Execution measurements then test whether the full prediction path fits a 20\,ms response budget.
+We evaluate PHASE-TTC as a complete TTC system, then examine its readout with matched controls. The private benchmark establishes system performance. To investigate the contribution of fusion, we hold the final upstream estimators and temporal histories fixed, compare simple combinations of their outputs, and train equally sized correction heads with or without event information. A separate local experiment asks whether learned routing adds value once apparent box expansion is available.
 
 \subsection{Contributions}
-In this work, we present:
+We present a causal event--RGB estimator with three experimentally testable contributions:
 \begin{enumerate}
-\item \textbf{A causal phase-fusion architecture.} Independent modality estimators feed twenty phase, timing, and support features to a 1,955-parameter RGB-anchored correction head. Grouped feature generation trains the context and fusion interfaces (Sections~\ref{sec:train40}--\ref{sec:protocol}).
-\item \textbf{Benchmark and modality evidence.} The complete system achieves \OfficialPhasePublishedOverallMiD{} Overall MiD on the archived GarlTTC Test leaderboard, improving on Garl-TTC by \OfficialOverallRelativeGain{}. Frozen-modality transfer and matched event controls examine where complementarity holds (Sections~\ref{sec:official}, \ref{sec:late-transfer}, and~\ref{sec:design-analysis}).
-\item \textbf{A quality-conditioned geometric extension.} A compact router combines frozen neural estimates and causal apparent expansion. Local comparisons quantify the combined adapter's gain and the controls still needed to attribute it (Section~\ref{sec:quality-adaptation}).
-\item \textbf{Tests of motion representation and execution.} Predictive-learning controls distinguish latent predictability from useful expansion information; paced replay measures complete prediction delivery against the response deadline (Sections~\ref{sec:design-analysis}--\ref{sec:runtime}).
+\item \textbf{A specified system and training procedure.} Nine fitted components estimate motion, refine temporal context, and combine twenty named physical and timing fields through an RGB-anchored residual head. Table~\ref{tab:component-contracts} describes the complete computation and its supervision.
+\item \textbf{A benchmark result with matched readout controls.} The submitted system achieves \OfficialPhasePublishedOverallMiD{} Overall MiD on the archived GarlTTC Test leaderboard. We complement this complete-system result with equal-capacity, equal-history head comparisons and simple fusion baselines on fixed final-model features (Sections~\ref{sec:official}--\ref{sec:design-analysis}).
+\item \textbf{An analysis of adaptation and execution limits.} Common-support geometry comparisons identify where a learned router helps beyond a fixed mixture. Timed replay measures delivery and deadline compliance separately (Sections~\ref{sec:quality-adaptation}--\ref{sec:runtime}).
 \end{enumerate}
-The main text follows these questions. The supplement supplies implementation details, unsuccessful variants, and the source records needed to reproduce the measurements. \evidence{M22,M23,N01--N06,L40}
+The supplement retains the earlier predictive-learning, temporal, and physical-model investigations. They explain the design's development without serving as substitutes for the final-system comparisons.
 
 \subsection{Relation to prior work}
-Event-based TTC methods recover motion through geometric fitting and spatio-temporal registration \citep{eventaided}. EvTTC provides synchronized observations and a dedicated TTC benchmark \citep{evttc}; DSEC illustrates event--frame acquisition in demanding driving conditions \citep{dsec}. The eAP study introduces geometry-aware representations and the Garl models used here \citep{eap}. PHASE-TTC combines separately trained modality estimates through named physical and temporal quantities. The official comparison evaluates complete systems, whose temporal support and supervision differ.
+Event-based TTC methods recover motion through geometric fitting and spatio-temporal registration \citep{eventaided}. EvTTC provides synchronized observations and a dedicated TTC benchmark \citep{evttc}; DSEC illustrates event--frame acquisition in demanding driving conditions \citep{dsec}. The eAP study introduces geometry-aware representations, the logarithmic motion-in-depth metric, and early and late event--RGB fusion in the Garl models \citep{eap}. Our contribution is the particular estimator interface: named motion estimates, timing, and support drive a residual correction around RGB. The phase coordinate itself comes from the benchmark geometry. Relative to feature-level late fusion, the interface exposes the meanings of its inputs and allows separate producer fitting. The matched tests below measure the utility of this readout under fixed producers; a matched hidden-feature fusion comparison is still needed to establish superiority over that alternative.
 
 I-JEPA predicts target representations from context \citep{ijepa}, while VICReg regularizes representation variance and covariance \citep{vicreg}. These methods motivate our predictive-learning controls. Work on slow features shows that predictable distractors can dominate a learned state \citep{slowfeatures}; our experiments test how nuisance dynamics affect the information available for TTC. They support conclusions about the tested objectives and settings rather than a general impossibility of predictive learning.
 \section{PHASE-TTC: independent estimates, shared phase}
 \label{sec:train40}
-
-\subsection{Real sensor observations}
-
-Figure~\ref{fig:real-evttc-scene} shows the appearance of the two sensor streams on an actual EvTTC road recording \citep{evttc}. The RGB frame records scene appearance, whereas the event view accumulates signed brightness changes during the preceding 100\,ms. Vehicle outlines, road markings, and background motion therefore appear differently in the two modalities. These are recorded observations rather than schematic renderings. The side-by-side views retain the coordinates of their respective cameras.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{figures/evttc_ccrm_poster.jpg}
-  \caption{\textbf{Real RGB and event observations from EvTTC.} Left: Blackfly left-camera frame 287 at $t=14.350374$\,s in recording \texttt{CCRm-low-0-overlap-0}. Right: Prophesee left-camera events in $[t-100\,\mathrm{ms},t)$, with positive counts in turquoise and negative counts in coral; overlap can appear pale. Counts use log scaling and an occupied-pixel 95th-percentile display scale. The RGB display swaps stored channels 0 and 2 to match the dataset publisher's visualization; the model-input crops preserve the runtime channel order. Images are resized for display and retain separate sensor coordinates. Source: EvTTC, Sun et al.\ \citep{evttc}; the same excerpt is used in the project website.}
-  \label{fig:real-evttc-scene}
-\end{figure}
-
-The RGB view preserves scene appearance while event polarities reveal moving contours and contrast boundaries. The model receives localized object crops in a common coordinate frame across causal endpoints, preserving apparent scale change. Appendix~\ref{sec:real-inputs} shows the temporal crop triplets and twelve event input planes for this recording, with their timestamps and extraction provenance.
 
 \subsection{Deployed model composition}
 
@@ -385,6 +371,23 @@ PHASE-TTC deploys a causal chain of nine fitted components comprising four modal
   \caption{\textbf{Causal nine-component inference graph.} Supplied object regions feed parallel RGB and event producers, pairwise temporal heads, and temporal refiners. Twenty named fields enter the final RGB-anchored fusion head. \evidence{M03,M22,M23}}
   \label{fig:deployed-architecture}
 \end{figure}
+
+\begin{table}[htbp]
+\centering\scriptsize
+\caption{The nine fitted components in the submitted inference chain. RGB and event branches share the listed functional roles but have separate fitted weights. All targets and privileged supervision belong to fitting; inference uses sensor observations and supplied object regions.}
+\label{tab:component-contracts}
+\begin{tabularx}{\linewidth}{@{}p{.15\linewidth}p{.23\linewidth}p{.26\linewidth}X@{}}
+\toprule
+Components & Inputs & Architecture and outputs & Fitting signal \\
+\midrule
+Two transport producers & Shared-region temporal crops; observed endpoint intervals & Convolutional endpoint encoder, local feature correlation and scale residual; dense features, geometry and TTC & TTC, foreground/box geometry and RGB-derived relational distillation \\
+Two coarse-to-fine producers & Same modality-specific crop contract & Two-scale local transport with a learned gate; alternate motion estimate & Producer objective with geometric and relational supervision \\
+Two pairwise readouts & 133 fields derived from each transport producer's endpoints & LayerNorm, width-128 GELU MLP and scalar phase output & Smooth-L1 phase regression \\
+Two context refiners & 17 fields per observation, four timing fields and validity mask & Two-layer width-160 GRU; phase correction around current expert median and phase widths & Group-weighted phase error, quantile losses and expert-relative costs \\
+One fusion head & Ten named fields per modality; RGB anchor and width logits & Two width-32 layers with LayerNorm/SiLU; location and width corrections & Group-weighted phase error and quantile losses on out-of-fold features \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \subsection{Object coordinates and causal history}
 
@@ -414,12 +417,10 @@ Each modality $m\in\{R,E\}$ exposes a vector $\mathbf{x}_m\in\mathbb{R}^{10}$: a
 \end{equation}
 Thus corresponding coordinates have the same meaning across modalities, while timing and support keep their native scaling. Appendix~\ref{sec:physical-fusion-fields} defines the timing fields precisely.
 
-The residual network $g_\theta:\mathbb{R}^{20}\to\mathbb{R}^{3}$ has two hidden layers of width 32:
-\begin{align}
- \mathbf{h}_1&=\operatorname{SiLU}(\operatorname{LN}_1(W_1\mathbf{z}+\mathbf{b}_1)),\\
- \mathbf{h}_2&=\operatorname{SiLU}(\operatorname{LN}_2(W_2\mathbf{h}_1+\mathbf{b}_2)),\\
- \mathbf{c}&=W_3\mathbf{h}_2+\mathbf{b}_3=g_\theta(\mathbf{z}).
-\end{align}
+The residual network $g_\theta:\mathbb{R}^{20}\to\mathbb{R}^{3}$ uses two width-32 layers with LayerNorm and SiLU activations:
+\begin{equation}
+ \mathbf c=g_\theta(\mathbf z).
+\end{equation}
 Its 1,955 parameters include the affine maps and both LayerNorms. Given the RGB raw-location anchor $\ell_R$ and width logits $\mathbf w_R$, the corrected location and widths are
 \begin{align}
  \ell_F&=\ell_R+\alpha c_0,\\
@@ -444,7 +445,7 @@ Here $\operatorname{sgn}_{+}(0)=1$, so zero phase emits $+60\,\mathrm{s}$. The r
 
 The official submission contains finite predictions without fallback for 6,762 query tokens across twelve sequences: 5,805 physical queries and 957 aliases. Aliases identify repeated physical queries and do not represent additional inference work.
 
-Section~\ref{sec:official} reports the test result for this graph. The matched event controls in Section~\ref{sec:design-analysis} evaluate a separate adaptation variant. \evidence{L44,B01,B02}
+Section~\ref{sec:official} reports the test result for this graph. Section~\ref{sec:design-analysis} holds the final upstream features fixed and refits matched correction heads to test their use of event information. \evidence{L44,B01,B02}
 \FloatBarrier
 \section{Training and evaluation}
 \label{sec:protocol}
@@ -469,11 +470,7 @@ Producer training combines relational DINO teacher signals, foreground geometry 
 
 
 \subsection{Metrics and target coordinates}
-TTC error in seconds, inverse-TTC error, benchmark phase error, and detection of urgent risk measure different aspects of behaviour. The signed benchmark phase is
-\begin{equation}
-\phi(T)=-\log\!\left(1-\frac{0.1\,\mathrm{s}}{T}\right),\qquad T<0\;\text{or}\;T>0.1\,\mathrm{s}.
-\end{equation}
-Negative TTC denotes recession. The interval $[0,0.1]$\,s is outside this transform's domain. The official benchmark scorer defines motion-in-depth (MiD) error as
+TTC error in seconds, inverse-TTC error, benchmark phase error, and detection of urgent risk measure different aspects of behaviour. We evaluate phase using Equation~\ref{eq:phase-main}. Negative TTC denotes recession. The interval $[0,0.1]$\,s is outside this transform's domain. The official benchmark scorer defines motion-in-depth (MiD) error as
 \begin{equation}
  \mathrm{MiD}(\widehat T,T)=10^4\left|\log\left(1-\frac{0.1}{T}\right)
  -\log\left(1-\frac{0.1}{\widehat T}\right)\right|
@@ -518,18 +515,14 @@ The official GarlTTC Test submission covers twelve sequences and uses forty-sequ
 For local adaptation on EvTTC, we evaluate 434 corrected query correspondences across ten sequences using query-weighted MAE and mean relative error. We score the signed predictions and, separately, apply the organizer-described offline interpolation of negative predictions between valid outputs to both models. Their archived outputs contain two and one negative values, respectively. Interpolation may use later valid predictions and belongs only to offline scoring. Section~\ref{sec:quality-adaptation} reports the paired results and the sequence-specific scoring discrepancy. \evidence{N01}
 
 
-The cadence experiment has a separate population: 2,531 queries from twenty-four road recordings and 77 from Slider-500. Its primary summaries average recordings equally within each domain, preserve signed predictions without clipping, and use relative denominator $\max(|T|,10^{-6})$. Availability is reported independently of paired error, including the frozen F0 route's one missing Slider output. The protocol requires preserved coverage, no worsening of MAE or relative error in either domain, and an improvement in at least one metric. A failed fixed 149-query screen remains a failure even when the larger-population aggregate improves.
-
-The final quality-router fit uses the same 2,608 development queries, excluding the ten evaluation recordings from optimizer updates. Those recordings had informed earlier design choices, so we interpret the results as local adaptation on a development-used cohort. The paired refit and canonical-cadence experiments evaluate separate variants. The base model passes the numerical cadence criteria, whereas the downstream router and refit fail their selection gates; the delivered adapter is unchanged. Appendix~\ref{sec:canonical-cadence} gives the controls and native replay comparison. \evidence{N02,N03,N01}
-
+The final quality-router fit excludes the ten evaluation recordings from its optimizer updates, but those recordings informed earlier design choices. The 460-query head comparisons likewise reuse inspected EvTTC recordings, while fitting only on source-domain eAP features. We interpret both as development evidence. Appendix~\ref{sec:canonical-cadence} retains the separate cadence and downstream selection experiments.
 
 \subsection{Independence and paired comparisons}
 Splits and resampling units are specified separately for each experiment. Historical V5--V7 intervals resample sequence--track clusters; later studies use complete sequence groups, a sequence-to-track hierarchy, or scenario families. A sample-weighted sequence bootstrap carries all rows from each sampled group into the replicate and recomputes the ratio of summed losses to summed counts; sequence-macro summaries weight groups equally. A sequence-macro point estimate does not imply that its archived interval used sequence-level resampling. All reductions inherit any development exposure. Appendix~\ref{app:evaluation-details} identifies the study-specific units and gives the lineage, causality, and latency checks. \evidence{M15--M20,P02}
 
 Three head seeds quantify optimization variability conditional on their parents; they do not independently replicate the upstream representation. The additional transfer bootstrap is post hoc: it resamples saved paired predictions without changing a model, split, or historical interval (Appendix~\ref{app:derived-transfer}).
 
-For canonical cadence, 10,000 paired road-recording bootstrap replicates with seed 7 estimate descriptive intervals over the twenty-four development recordings. The intervals retain the cohort's historical exposure. Slider-500 is one recording reused from the screen and receives no between-recording confidence interval. The eight-fold, three-seed, two-arm router comparison contains 48 fits on the same development population.
-\evidence{N02,N03}
+For the new matched readout and geometry studies, 10,000 complete-recording resamples use seed 20261111. We specify arms, budgets, fixed mixture weights, and reductions before executing these analyses. This freezes the retrospective comparison; it does not remove prior exposure to its evaluation recordings.
 \FloatBarrier
 \FloatBarrier
 \section{Official GarlTTC benchmark result}
@@ -541,11 +534,7 @@ As of 28 October 2026, PHASE-TTC ranks first among the three displayed submissio
 
 The scorer returns Overall MiD \OfficialPhaseOverallMiD{} at full precision, consistent with the rounded public entry. Relative to Garl-TTC's published \OfficialGarlOverallMiD{}, PHASE-TTC reduces the ranking metric by \OfficialOverallRelativeGain{}. All four TTC bands improve (Table~\ref{tab:official-benchmark}); the large positive-TTC band has the largest relative reduction and the negative band the smallest. Percentage reductions combine the unrounded PHASE-TTC values with Garl-TTC's published two-decimal scores. \evidence{B01,B02}
 
-\begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{figures/rev_hero.pdf}
-\caption{\textbf{Archived GarlTTC Test results, 28 October 2026.} Overall MiD and the four TTC bands compare the complete PHASE-TTC and Garl-TTC submissions. Both report 0\% scorer-defined failures across 6,762 tokens.}
-\label{fig:official}
-\end{figure}
+
 \begin{table}[H]
 \centering\small
 \caption{Official GarlTTC Test scores on 28 October 2026 (lower is better). PHASE-TTC scores are shown to four decimals and Garl-TTC at published precision. Relative reductions use unrounded PHASE-TTC scores. Both entries have 6,762 scored tokens and 0\% scorer-defined failures. \evidence{B01,B02}}
@@ -569,12 +558,7 @@ For band $b$, the additive contribution is $w_b(\mathrm{MiD}^{\mathrm{Garl}}_b-\
 
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.92\linewidth]{figures/rev_weighted.pdf}
-\caption{\textbf{Bandwise contributions to the Overall MiD difference.} Crucial and small TTC account for about 82\% under the benchmark's $0.5/0.3/0.1/0.1$ weights. Table~\ref{tab:official-weighted-contributions} gives the rounding reconciliation. \evidence{B01,B02}}
-\label{fig:official-weighted-contributions}
-\end{figure}
+
 
 \subsection{Metric and evaluation population}
 
@@ -626,20 +610,12 @@ Historical46: Garl full & 46 & 0.250 & 0.186 & 0.561 & 13.327 & 0.282 & 14.649 \
 
 Fusion MAE is \AuditFusionMAE{}\,s against RGB's \AuditRgbMAE{}\,s; its empirical p95 is \AuditFusionPninetyfive{}\,s against \AuditRgbPninetyfive{}\,s. RGB retains lower median error, \AuditRgbMedian{} versus \AuditFusionMedian{}\,s, and slightly lower RTE, \AuditRgbRTE{} versus \AuditFusionRTE{}.  \evidence{GT01}
 
-\begin{figure}[H]
-\centering\includegraphics[width=.94\linewidth]{figures/audit_transfer_summary.pdf}
-\caption{\textbf{Corrected frozen-transfer error summaries.} PHASE-TTC and RGB use the same \AuditTransferCount{} eligible queries after reassociating all 508 candidates. Lower point mean and p95 favor fusion; lower median favors RGB. Paired intervals are reported separately in Table~\ref{tab:audit-transfer-bootstrap}.}
-\label{fig:transfer-tradeoff}
-\end{figure}
+
 
 \subsection{Exceedance and paired uncertainty}
-The full corrected distribution retains signed predictions, including large errors. Figure~\ref{fig:transfer-exceedance} shows the fraction at or above each absolute-error threshold. Maximum absolute error is \AuditFusionMax{}\,s for fusion and \AuditRgbMax{}\,s for RGB. These are query-level errors under the corrected labels, not scorer-defined invalid predictions.
+The full corrected distribution retains signed predictions, including large errors. Appendix~\ref{app:extra-diagnostics} shows the fraction at or above each absolute-error threshold. Maximum absolute error is \AuditFusionMax{}\,s for fusion and \AuditRgbMax{}\,s for RGB. These are query-level errors under the corrected labels, not scorer-defined invalid predictions.
 
-\begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{figures/audit_transfer_exceedance.pdf}
-\caption{\textbf{Corrected absolute-error exceedance.} Curves include all \AuditTransferCount{} eligible transfer queries with equal query weights. No signed prediction is clipped and no extreme error is removed.}
-\label{fig:transfer-exceedance}
-\end{figure}
+
 
 The PHASE-minus-RGB mean difference is \AuditMeanDelta{}\,s with interval $[\AuditMeanLow,\AuditMeanHigh]$\,s; the p95 difference is \AuditPninetyfiveDelta{}\,s with interval $[\AuditPninetyfiveLow,\AuditPninetyfiveHigh]$\,s. All three paired intervals include zero. The procedure uses 10,000 complete-sequence resamples with linear quantiles and the same frozen models. Appendix~\ref{app:derived-transfer} gives complete sequence results and distinguishes this corrected analysis from the historical one.
 \begin{table}[htbp]
@@ -666,116 +642,97 @@ Historical46 & PHASE minus Garl & Macro RTE\_pct & -6.230 & [-8.682, -4.767] \\
 \label{tab:audit-transfer-bootstrap}
 \end{table}
 \FloatBarrier
-\section{Quality-conditioned adaptation of the frozen system}
-\label{sec:quality-adaptation}
-\cohortline{LOCAL ADAPTATION / 2,608 fitting queries / 434 corrected evaluation queries / historical exposure retained}
-
-The base fusion model supplies several estimates of the same signed quantity: its final fused TTC, the RGB context estimate, and the event context estimate. Their errors need not agree, and their reliability changes with temporal support and apparent motion. PHASE-TTC-Adapt leaves all nine upstream components frozen and learns a small router over those three outputs and a causal box-expansion estimate. The experiment adapts the fusion rule over fixed representations; Section~\ref{sec:canonical-cadence} evaluates temporal normalization as a separate intervention. \evidence{N01}
-
-The adapter uses the frozen base model, denoted F0 in the source archive. Earlier fine-tuned heads and quality-gate candidates are separate models; Appendix~\ref{app:adaptation-lineage} documents their populations, unsuccessful controls, and interval coverage. In particular, the delivered router does not use the fine-tuned weights affected by the earlier target-source assignment.
-
-\subsection{Causal box geometry and its quality descriptors}
-For each query, the geometric branch admits supplied boxes with timestamps in the preceding 650\,ms, rejects nonfinite or nonpositive extents, and requires strictly increasing observation times. It fits three apparent sizes: width, height, and square root of area. Let $s_i$ denote one such size, $s_n$ its latest value, and $u_i$ time relative to the query in seconds. The branch constructs $\rho_i=s_n/s_i$ and estimates a line using median pair slopes,
-\begin{align}
- b &= \operatorname{median}_{i<j}\frac{\rho_j-\rho_i}{u_j-u_i},
- &a &= \operatorname{median}_i(\rho_i-bu_i),\\
- q_s&=-b/a \quad (a>0).
-\end{align}
-The median of the three $q_s$ values supplies the geometric inverse TTC. This is an apparent-scale model with a query-time intercept; it does not recover metric depth or compensate for arbitrary rotation, occlusion, or annotation jitter. At least two boxes spanning 10\,ms are needed for a fit. Near-zero expansion, nonfinite descriptors, or an endpoint older than 150\,ms makes the geometric estimate unavailable. A two-point zero residual is not interpreted as zero uncertainty. \evidence{N01}
-
-Twenty descriptors expose the conditions of that fit: the three axis/area rates, their median and short-history counterpart, rate disagreement, residual and residual-to-motion ratio, temporal span, normalized box count, admitted-box fraction, endpoint age, quantization support, short/long disagreement, aspect ratio and its change, center motion, and slope scatter. Absolute coordinates and absolute clock time are absent. We use supplied object regions to evaluate the fusion rule under known localization. Autonomous deployment will require testing a causal detector together with the estimator, including the effects of its box errors and delay.
-
-The intersensor projection uses calibrated rotation without depth-dependent translation, and Slider extrinsics remain provisional. The annotated-region contract and these projection limits also apply to the adaptation comparison; they should accompany any interpretation of its geometric input. \evidence{A03,A07}
-
-\subsection{Router architecture and exact output policy}
-Each quality router receives 33 values. Thirteen describe the three neural magnitudes, their availability, pairwise sign agreements, geometric availability, and neural/geometric sign agreement. The remaining twenty are the geometric quality descriptors, with the first five rate coordinates replaced by their magnitudes. This design lets the weights respond to agreement and support without supplying a sequence identifier or a target-derived error. After fitted normalization and componentwise clipping to $[-8,8]$, the gate computes $g(\mathbf x)=W_2\tanh(W_1\mathbf x+\mathbf b_1)+\mathbf b_2$, with hidden width 18 and four output logits. Its two affine maps contain 688 trainable parameters. The final affine weights start at zero with bias $(2,0,0,0)$, favoring F0 when other experts are available without forcing an exact initial F0 output. \evidence{N01}
-
-Let $m_j$ indicate an available expert and let $g_j(\mathbf x)$ be its gate logit. The router forms normalized masked weights
-\begin{equation}
- w_j=\frac{m_j\exp g_j(\mathbf x)}{\sum_k m_k\exp g_k(\mathbf x)},
- \qquad \widehat q=\sum_{j:m_j=1}\frac{w_j}{\widetilde T_j},
- \label{eq:adapt-inverse-fusion}
-\end{equation}
-where $\widetilde T_j$ preserves the expert sign and limits its magnitude to $[0.1,60]$\,s. The implementation excludes zero-valued experts from inverse-coordinate fusion. It applies a rate-magnitude floor of $1/60$\,s$^{-1}$ before inversion, yielding a finite signed output with magnitude at most 60\,s. Exact cancellation, $\widehat q=0$, returns the original fused prediction F0 rather than choosing an approach direction.
-
-The delivered ensemble contains routers trained with three random seeds, for $3\times688=2,064$ learned router parameters. Each router performs Equation~\ref{eq:adapt-inverse-fusion} and emits seconds; the ensemble then averages those three TTC predictions in seconds. It does not average their inverse rates. The ensemble returns F0 exactly when no valid box history is supplied, when endpoint age is nonfinite, or when the latest box is older than 150\,ms. A valid geometric estimate is a separate requirement: a fresh but too-short box history can leave geometry unavailable while allowing the router to combine available neural estimates. These distinctions preserve the implemented fallback semantics. \evidence{N01}
-
-\subsection{Fitting and local evaluation}
-The router fit uses 2,608 queries: 2,531 from twenty-four road recordings and 77 from Slider-500. Each of three seeds runs 300 AdamW updates with learning rate and weight decay both 0.01. The evaluation recordings are excluded from these optimizer updates, but they informed earlier development; the comparison therefore measures local adaptation under the protocol in Section~\ref{sec:protocol}.
-
-\subsection{Corrected evaluation of the delivered adapter}
-\EvidenceAdaptTable
-The evaluation contains 434 corrected target correspondences. We report both signed runtime predictions and the organizer-described offline interpolation of negative outputs. The latter may use later valid predictions and is never part of the causal forward path. Appendix~\ref{app:target-association} and the source records document target correction; the scoring policy is fixed in Section~\ref{sec:protocol}. \evidence{N01}
-
-Both scoring contracts favor the adapter. With the original signed outputs retained, F0/adapted MAE is 0.8244/0.3470\,s and RAE is 49.73/17.79\%. After organizer-style interpolation, the corresponding pairs are 0.8250/0.3359\,s and 49.89/17.25\%. The MAE reductions are 57.91\% and 59.28\%, respectively.  \evidence{N01}
-
-Over all 434 queries, MAE decreases from 0.8250 to 0.3359\,s and mean relative error from 49.89\% to 17.25\%. The respective relative reductions are 59.28\% and 65.43\%. Both errors decrease in each of the ten sequences under this evaluator. On the 365 road queries, MAE falls from 0.3054 to 0.1852\,s, showing improvement across the road domain as well as the pooled population. These query-weighted reductions use a different aggregation from the recording-macro cadence summaries in Appendix~\ref{sec:canonical-cadence}.
-
-\begin{figure}[htbp]
-\centering\includegraphics[width=.72\linewidth]{updates/figures/adaptation.pdf}
-\caption{\textbf{Local effect of quality adaptation.} The corrected evaluator compares the original and adapted outputs on the same queries. A logarithmic vertical axis separates the road and Slider error scales. This figure reports exposed development evidence, with organizer-style negative-output interpolation applied to both variants. \evidence{N01}}
-\label{fig:quality-adaptation}
-\end{figure}
-
-\paragraph{Comparison with organizer scores.}
-\label{par:local-score-correspondence}
-Our reconstruction matches the organizer-provided original relative error for nine of ten sequences after rounding. For Slider-750, we obtain 283.9\% rather than the organizer's 132\%; the adapted model scores 76.1\% under our local evaluator. The available records leave the source of this discrepancy unresolved. Reconciliation requires the organizer-aligned targets and exact evaluator version, so we report the adaptation gains under the local scoring contract. Appendix~\ref{app:competition-details} records the target correspondence and evaluation boundary.
-
-
-\subsection{What explains the adaptation gain?}
-The final adapter changes both the available experts and their learned combination. An earlier equal-parameter control favored quality descriptors for its own gate and population, but its geometry-only and gated outputs covered different queries (Appendix~\ref{app:geometry-attribution}). To attribute the final adapter's gain, the next comparison must evaluate geometry alone, geometry with base-model fallback, a fixed mixture, and learned routing on common support with matched timing. The present result measures the combined adapter. \evidence{A03,N01}
-
-\FloatBarrier
-\section{Design analysis and controlled ablations}
+\section{Matched tests of the final fusion readout}
 \label{sec:design-analysis}
-Three findings shaped PHASE-TTC: preserving scale change mattered more than representation stability alone; correcting an expert's phase could improve on selecting an expert; and changing the loss often traded one TTC range against another. The studies below used different data splits and pretrained models. Appendices~\ref{sec:early}, \ref{sec:temporal-recovery}, and~\ref{sec:late} give the full configurations and unsuccessful variants.
+The official result compares complete systems. Here we isolate readout choices while holding the final RGB and event producers, temporal refiners, supplied regions, and causal histories fixed. We use the same 460 corrected transfer queries throughout. These recordings informed earlier development; the new comparisons quantify conditional effects on that cohort.
 
-\subsection{Preserve the motion variable before predicting it}
-Using a common object region preserves apparent expansion across observations. Independently resizing each endpoint can remove that signal before the network sees it (Figure~\ref{fig:crop}). An explicit object query also distinguishes objects that share one full-frame input but have different TTC targets. The estimator consequently requires externally supplied localization. \evidence{M03}
+\subsection{Simple combinations of identical branch outputs}
+We first replace the released fusion head with equal mixtures of the two final branch predictions, combining them in phase, inverse TTC, or seconds. Each mixture receives the same branch outputs and temporal support. All emit finite TTC under their specified numerical policies. Table~\ref{tab:revision-fixed} shows that learned fusion improves mean error over these fixed combinations. Its comparison with the strong RGB branch remains uncertain (Section~\ref{sec:late-transfer}).
+\begin{table}[htbp]
+\centering\small\begin{tabular}{lrrr}
+\toprule
+Frozen readout & MAE (s) & Median (s) & p95 (s) \\
+\midrule
+Released fusion & 0.813 & 0.446 & 2.742 \\
+RGB context & 0.851 & 0.390 & 3.038 \\
+Event context & 1.376 & 0.844 & 3.707 \\
+Equal phase mixture & 0.997 & 0.519 & 2.759 \\
+Equal inverse-TTC mixture & 1.007 & 0.518 & 2.762 \\
+Equal TTC mixture & 1.050 & 0.614 & 3.192 \\
+\bottomrule
+\end{tabular}
+\caption{Frozen final-branch readouts on the identical 460 queries. Equal mixtures have no fitted parameters; the released head has 1,955. This comparison holds upstream information fixed but does not match readout capacity.}
+\label{tab:revision-fixed}
+\end{table}
 
-The geometry experiments exposed a related difficulty: stable foreground maps and accurate absolute heights did not ensure accurate changes in scale. Some models also received RGB-derived SAM masks or DINOv3 relations during training, even when their inference inputs contained only events.
+\subsection{Equal-capacity heads with matched fitting}
+To distinguish event access from added correction capacity, we fit three heads: the original phase readout; an identical head whose ten event fields are zero during fitting and evaluation; and a residual readout expressed in inverse TTC. All contain 1,955 parameters, start with a zero final affine map, and retain the RGB anchor. The zero-event head still receives RGB timing and support. Upstream weights are frozen throughout.
 
-Removing paths from a trained V8 model identified which inputs its prediction used. Analytic scale alone scored 373.18 MiD, and adding the residual without transport gave 373.60. Restoring transport reduced the score to 163.23; restoring history reduced it further to 155.82. The weights remained fixed throughout these tests. \evidence{E02,E12,E25,E26,E21,E23,E24}
+Each arm uses the same 88,744 source-domain out-of-fold feature rows from forty eAP recordings, the same seeded minibatch sequence, and 12,044 AdamW updates at batch size 128. We retain the original warmup/cosine schedule, weight decay, clipping, and phase-error plus quantile objective. Seeds 7, 13, and 21 vary only the correction-head fit. EvTTC queries and targets are excluded from fitting and checkpoint selection; every arm uses its final update. The inverse-TTC arm replaces phase inputs with normalized rates and predicts an RGB rate correction before conversion to the common phase loss. Appendix~\ref{app:consolidation-reproduction} specifies the transforms and archived source bindings.
 
-\subsection{Predictive embeddings and dynamic scale}
-Predicting a future embedding and estimating expansion are different objectives. A representation can make the future easy to predict by retaining persistent appearance, yet discard the small changes needed to recover $\dot s/s$. Conversely, preventing collapse by maintaining variance says little about which physical variable supplies that variance. This distinction motivates evaluating TTC and geometric increments alongside prediction loss.
+We also fit a single scalar phase-mixture weight on the source training rows alone. Searching the specified 101-point grid gives event weight 0.31. This is a train-calibrated simple baseline, evaluated once on EvTTC.
+\begin{table}[htbp]
+\centering\small\begin{tabular}{lrr}
+\toprule
+Readout & MAE (s) & Relative error (\%) \\
+\midrule
+Phase correction, real events & $0.847\pm0.038$ & $30.92\pm2.05$ \\
+Phase correction, zero events & $0.838\pm0.021$ & $29.12\pm1.16$ \\
+Inverse-TTC correction, real events & $0.847\pm0.041$ & $30.80\pm2.14$ \\
+Source-calibrated scalar phase mixture & 0.996 & 36.23 \\
+\bottomrule
+\end{tabular}
+\caption{Matched final-head fitting. Values are the mean and sample standard deviation of the three seed-level scores; predictions are not ensembled. The scalar mixture has one fitted coefficient and no seed-dependent optimization.}
+\label{tab:revision-heads}
+\end{table}
 
-In the synthetic controls, a temporal-residual objective recovered more dynamics than variance regularization when nuisance features changed slowly. Making those nuisances vary independently across frames reversed the ordering. By varying nuisance dynamics independently of the target motion, this controlled construction shows how the choice of predictable signal changes the ordering of the objectives, consistent with the slow-feature concern raised by \citet{slowfeatures}. Testing that mechanism on real driving data requires interventions on the nuisance signal. \evidence{E02,E12}
+\subsection{What the controlled comparison establishes}
+Real events improve MAE over the zero-event control for one seed and worsen it for two. The mean zero-minus-real difference is $-0.0094$\,s, with a descriptive recording-bootstrap interval spanning zero. Inverse-TTC and phase corrections are also indistinguishable at this resolution. We average paired losses over the three fixed seeds before resampling complete recordings, preserving query correspondence; seeds do not multiply the number of independent recordings.
+\begin{table}[htbp]
+\centering\small\begin{tabular}{lrr}
+\toprule
+Paired contrast & $\Delta$MAE (s) & 95\% interval (s) \\
+\midrule
+Zero events minus real events & -0.0094 & $[-0.0780,+0.0630]$ \\
+Inverse TTC minus phase & -0.0003 & $[-0.0061,+0.0058]$ \\
+Calibrated mixture minus phase & +0.1492 & $[+0.0064,+0.3762]$ \\
+\bottomrule
+\end{tabular}
+\caption{Paired differences after averaging query losses over fixed head seeds; 10,000 complete-recording resamples across 32 recordings. These intervals describe the inspected cohort and condition on the shared upstream models.}
+\label{tab:revision-paired}
+\end{table}
 
-On real data, the V8 frozen and partially fine-tuned JEPA encoders failed the benefit criterion against scratch, random-frozen, and shuffled-future controls. A separate fixed-teacher pilot reduced future-state loss while worsening teacher-increment loss and failed to outperform both static and shuffled-future controls on annotated log-height change. Across these tests, predictive pretraining fell short of the prescribed benefit criteria. The role of background appearance in the real-data result is an open attribution question. Appendices~\ref{sec:early}, \ref{sec:methods}, and~\ref{app:physics-followup} give the objective definitions and controls. \evidence{E23,E24,N04}
+The learned readouts improve on the calibrated scalar mixture, but the tests give no consistent incremental benefit from event access and no observed advantage of phase over the tested inverse-TTC parameterization. A useful RGB correction, rather than event complementarity alone, can therefore account for the readout's gain on this cohort. The prior positive event control used a different adapted model; Appendix~\ref{app:design-history} preserves that result without transferring its attribution to the submitted system. A matched hidden-feature fusion model and genuinely unused recordings remain necessary to compare broader fusion designs.
+\FloatBarrier
+\section{Does learned routing add value beyond box geometry?}
+\label{sec:quality-adaptation}
+The geometric extension combines the frozen fused, RGB, and event estimates with apparent expansion from supplied box history. We fit inverse TTC from width, height, and square root of area over the preceding 650\,ms, using median pair slopes and a query-time intercept. A 688-parameter gate uses fit quality and expert agreement to weight the four inverse-TTC estimates; the delivered adapter averages three independently seeded gate outputs in seconds. Its fit uses 2,608 queries from 24 road recordings and Slider-500. Appendix~\ref{app:quality-complete} gives the geometry, 33 input fields, training recipe, and fallback rules.
 
-These findings motivate measuring expansion directly at the fusion interface and checking it at the TTC output. They leave open whether other predictive targets, sampling schemes, or training budgets can learn a better motion representation.
+\subsection{Matched experts, timing, and coverage}
+We compare the original model, geometry alone, geometry with original-model fallback, a fixed half-and-half inverse-TTC mixture, and the released router. All use the same saved causal inputs and 434 corrected target correspondences. The fixed weight is specified before calculating these comparisons. Geometry is available on 424 queries, including 357 of 365 road queries. Table~\ref{tab:revision-geometry} reports both available coverage and identical geometry-valid support; an abstention never silently changes a comparator's denominator. We retain signed outputs and the shared finite emission policy. Organizer-style interpolation appears only in the separate supplementary analysis.
 
-\subsection{Correct phase rather than only selecting an expert}
-A hard router is limited to the predictions its experts already make. SIMPLEX-T can move beyond them by learning a correction around their median phase from masked temporal context. The auxiliary cost head describes the original experts; evaluating the corrected prediction's risk requires a corresponding risk target. Phase quantiles also need empirical calibration before use as collision probabilities. \evidence{M_TEMPORAL_MODEL,M_PHASE_CONTRACT}
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Estimator & Coverage & Available & Common & Road common \\
+\midrule
+Original fusion & 434/434 & 0.824 & 0.793 & 0.282 \\
+Geometry only & 424/434 & 1.158 & 1.158 & 1.343 \\
+Geometry with original fallback & 434/434 & 1.181 & 1.158 & 1.343 \\
+Fixed inverse-TTC mixture & 434/434 & 0.333 & 0.289 & 0.221 \\
+Learned router & 434/434 & 0.347 & 0.304 & 0.159 \\
+\bottomrule
+\end{tabular}
+\caption{Matched adaptation errors in seconds. Available-support MAE uses the displayed coverage;
+the common column uses the same 424 queries for every arm, and road common uses the same 357.
+Predictions retain their signs.}
+\label{tab:revision-geometry}
+\end{table}
 
-Extending the context from eight history slots (H8) to sixteen (H16) lowered MiD for each of three head seeds on the initial exploration cohort. The paired interval across all seeds excludes zero. However, one seed had already informed exploration; the two new seeds alone give a difference of $-2.42$ MiD with interval $[-5.24,0.04]$. All heads shared the same upstream producers. Figure~\ref{fig:main-h16} shows both summaries; H8 remained the selected candidate. \evidence{M_SIMPLEX}
-\begin{figure}[htbp]
-\centering\includegraphics[width=.97\linewidth]{figures/rev_h16.pdf}
-\caption{\textbf{H16 minus H8 on nine development sequences.} Points show paired MiD differences and lines show the recorded hierarchical 95\% intervals. The highlighted estimate uses only the two new head seeds; its interval includes zero. \evidence{M_SIMPLEX}}
-\label{fig:main-h16}
-\end{figure}
+On common support, geometry alone has lower median error but large outliers, yielding mean error 1.158\,s. A fixed mixture reduces MAE to 0.289\,s, compared with the router's 0.304\,s; their paired difference interval includes zero. The road-only comparison changes that conclusion: the router reduces MAE from the fixed mixture's 0.221 to 0.159\,s, with a fixed-minus-router difference of 0.062\,s and a recording-bootstrap interval of $[0.014,0.120]$\,s. Excluding Slider-750 also favors the router, by 0.057\,s with interval $[0.008,0.111]$\,s across nine recordings. These are descriptive comparisons on development-used data.
 
-Keeping all experts produced the lowest score in the removal study: FULL-C0 reached 121.40 MiD, compared with 127.79 for A5-only, 126.70 for C2F-only, and 124.67 for A5 plus PAIR.
-
-In the temporal-aggregation comparison, set aggregation with age gave 122.44 MiD; removing explicit time gave 123.69. Because the frozen experts can already encode temporal information, the remaining differences cannot be assigned to recurrence alone.
-
-Transport probes improved on destructive controls, but stronger calibrated or pooled alternatives narrowed that advantage. \evidence{M_SIMPLEX,M_STAGE61,M_STAGE62}
-
-\subsection{Adaptation trades error between TTC ranges}
-Changes to the readout often improved imminent-contact estimates at the expense of receding motion. The band-reweighted phase-loss arm (V14 M1--L0) reduced crucial MiD from 156.83 to 134.47 but increased negative MiD from 61.38 to 84.21. V17's geometry bypass lowered the aggregate score on the development-used V split from 106.545 to 102.762 while worsening MAE; its head seeds shared encoders. Across V14--V17, loss reweighting, residual range, sampling, numerical precision, clipping, geometry bypasses, and height readouts failed to meet all acceptance criteria. Invalid height-derived predictions were retained in scoring. The next experiments therefore allowed the measurement model itself to adapt. \evidence{L02,L50--L52}
-
-V18 full adaptation reduced aggregate MiD on H from 112.29 to 78.92 and crucial MiD from 157.27 to 95.85, while negative MiD rose from 65.52 to 87.09. The model passed the overall sign criterion but remained inaccurate in the magnitude of receding TTC. V19 increased the training weight on negative targets and recovered some negative-range accuracy and MAE, at the cost of aggregate and crucial-range error. \evidence{L10,L24,L25,L30}
-
-\subsection{Events help in the matched V18 comparison}
-Supplying real events improved V18 C1 relative to its equal-capacity ZERO control. TRUE-event fusion achieved aggregate MiD $87.29\pm0.87$, compared with $92.47\pm0.16$; dispersion is the sample standard deviation of the scalar scores across seeds. The paired comparison over complete groups also favored TRUE. Each seed repeated C1 adaptation and head fitting from the same A5 initialization and RGB context model. This experiment uses V18 C1, whereas the final forty-sequence system derives from V16. \evidence{L03,L31--L33}
-\begin{figure}[htbp]
-\centering\includegraphics[width=.97\linewidth]{figures/rev_v18.pdf}
-\caption{\textbf{Real versus zeroed events in V18 C1.} Each line pairs TRUE and ZERO scores for one adaptation/head seed. The models share the A5 initialization and RGB context model, and TRUE uses the observed event features. \evidence{L03}}
-\label{fig:main-v18}
-\end{figure}
-
-Section~\ref{sec:v16-selection} separates the historical V16 selection and its four-fold context cross-fit from the later five-rotation TRAIN40 refit. The V18 crucial-band gain remained below its registered threshold. Its comparison with the preserved V16 model gave an interval of approximately $[-3.69,0.14]$, and no V18 candidate met all acceptance criteria. Testing ZERO events and equal temporal support in the final forty-sequence recipe would be needed to extend the attribution result to the submitted system.
+Thus adding geometry explains much of the pooled improvement, while learned routing adds value on the road subset by controlling unreliable geometric estimates. The evidence supports this conditional benefit; the pooled result alone would conceal it. The original model's locally reconstructed organizer-style score still disagrees for Slider-750. Appendix~\ref{par:local-score-correspondence} gives the exact discrepancy, without attributing it to an unverified physical cause. Independent recordings with detector-produced boxes are needed to test whether the routing benefit persists under new geometry errors.
 \FloatBarrier
 \section{Runtime and causal service}
 \label{sec:runtime}
@@ -826,39 +783,25 @@ The measurement excludes disk I/O and covers one object over five seconds. It th
 \end{figure}
 \FloatBarrier
 \section{Discussion and limitations}
-\subsection{A shared measurement interface for independent modalities}
-PHASE-TTC combines modalities at the level of phase, timing, and support rather than requiring hidden-feature alignment. This interface supports a small RGB-anchored correction head and a first-place result on the archived GarlTTC Test leaderboard. The benchmark evaluates the complete forty-sequence system; matched ablations are needed to separate the effects of the interface, history length, and upstream estimators. The later quality adapter and canonical-cadence variants have their own local evaluations. \evidence{M22,M23,N01--N03}
+\subsection{System performance and component attribution}
+The private benchmark supports PHASE-TTC as a complete causal TTC system: its archived score improves all four TTC bands relative to the displayed Garl-TTC reference. Our matched transfer tests narrow the explanation. Learned residual readouts outperform equal mixtures and the source-calibrated scalar mixture, yet real-event and zero-event heads have overlapping paired intervals, and phase and inverse-TTC corrections give nearly identical mean errors. We therefore treat named phase fields as an implementable design choice whose universal advantage has not been established.
 
-Grouped feature generation gives the upper stages inputs from sequences excluded from their generating models' fits. Deployment then expands producer fitting from twenty-four to forty groups. Evaluating this training-population shift alongside the fusion design would help explain how well the stacked model transfers.
+The interface still offers a concrete engineering property: each coordinate has a defined meaning across separately fitted producers and out-of-fold rotations. This permits grouped fitting without requiring hidden coordinates to align. Testing whether that property improves accuracy over a matched feature-level fusion model requires an additional comparison. The current benchmark difference also includes changes in upstream estimators, supervision, and temporal history.
 
-\subsection{Complementarity depends on the error regime}
-Correcting the low/medium target sources changes both the cohort and the modality comparison. On \AuditTransferCount{} eligible queries, fusion has lower point MAE (\AuditFusionMAE{} versus \AuditRgbMAE{}\,s) and p95 (\AuditFusionPninetyfive{} versus \AuditRgbPninetyfive{}\,s), while RGB retains lower median and relative error. Both routes have one error above ten seconds. Paired sequence-bootstrap intervals for mean, median, and p95 differences include zero. The revised evidence motivates quality-dependent corrections rather than an unconditional modality ranking. \evidence{GT01,L02,L30}
+\subsection{Adaptation depends on the error regime}
+The geometry experiment separates two effects. Adding apparent expansion allows a fixed mixture to recover much of the pooled gain. Learned routing further improves the road subset, where geometric outliers make an unconditional geometric estimate unreliable. Neither aggregate should stand in for the other. The supplied boxes and simplified intersensor projection remain part of this evaluation contract; detector jitter, occlusion, and calibration errors may change the result on new acquisitions.
 
-Range experiments show a related trade-off: improving imminent-contact phase error can worsen receding TTC. MiD, error in seconds, and warning behavior weight these cases differently. Positive-TTC transfer queries characterize approaching motion; evaluating a warning policy also requires the signed domain and an explicit risk protocol.
+\subsection{Generalization, reproducibility, and execution}
+The private benchmark supplies the independent test result. The secondary experiments reuse development-inspected recordings, including the new matched controls. Their three head seeds share the source features and upstream weights. We have no confirmed unused synchronized event--RGB recordings with compatible object-level TTC labels for a new independent test. Additional fits or resampling cannot replace those acquisitions.
 
-The competition input comparison uses a separate Garl visual checkpoint and measures availability and disagreement. It should be distinguished from the corrected local adaptation scores and Garl's published three-sequence evaluation. \evidence{T01,T02,N01}
+For the new 460-query comparison, replaying the released head on recovered features agrees with its saved predictions within $2.87\times10^{-6}$\,s. This local check has a narrower scope than historical full-system reproduction: 504 of 5,805 native-replay queries exceed the original tolerance, with a maximum difference of 0.4968\,s. The original submission and its score remain separately archived. The replay discrepancy still requires investigation of the original execution environment and per-query intermediate states; repeatability on the current platform alone cannot resolve it.
 
-\subsection{Adaptation and temporal normalization}
-The geometric quality adapter reduces local MAE from 0.825 to 0.336\,s, including a decrease from 0.305 to 0.185\,s across 365 road queries. These results motivate testing quality-conditioned corrections on new recordings, where box jitter, occlusion, and intersensor alignment may change the reliability of apparent expansion. The development-used evaluation here identifies a promising adaptation rule; independent acquisitions are the next test of its generalization. \evidence{N01}
+The paced five-second replay delivers all 250 predictions, but 201 responses meet or exceed 20\,ms and p95 is 29.14\,ms. This falls short of the declared deadline. Sustained physical-camera operation, multiple objects, upstream detection, and calibrated warning probabilities remain outside the demonstrated result.
 
-Canonical cadence addresses the units and temporal conditioning of the PAIR readout. Its small road effect has a descriptive interval containing zero, while one exposed Slider recording improves. Carrying the correction into the quality router and paired refit worsens the fixed road screen, despite better full-population aggregates. The supplied adapter is therefore retained. Physical consistency at one interface must be tested through the downstream nonlinear estimator. \evidence{N02,N03}
-
-\subsection{Predicting appearance versus measuring expansion}
-The representation experiments suggest evaluating motion increments alongside prediction loss. Changing synthetic nuisance dynamics reverses the ordering of the tested objectives, and the real-data pilot combines lower future-state loss with worse teacher-increment error and an unmet expansion-probe criterion. Together with the JEPA controls, these observations identify what a useful predictive target must preserve: the changes in scale needed by the TTC readout. \evidence{E02,E12,E23,E24,N04}
-
-The physical auxiliaries make a related point: correct equations require valid measurements. Algebraic observability can coexist with wrong expansion signs, and ideal cuboid inversion can coexist with poor depth from predicted geometry. The supplement reports the availability and matched TTC comparisons needed to interpret these failures. \evidence{N05,N06}
-
-\subsection{Generalization and deployment}
-The evaluations condition on supplied object regions, and several development comparisons share upstream models or reuse sequences. Repeating a head across seeds measures optimization variability conditional on those inputs. New acquisitions, independent retraining, causal detection, and depth-aware cross-sensor alignment would extend the evaluation beyond the current conditions.
-
-The 1,955-parameter fusion head sits within a larger computation whose cost includes upstream networks and data preparation. Although the paced replay returns every prediction with numerical parity, its response distribution exceeds the 20\,ms budget (Section~\ref{sec:runtime}). Per-query timing of preparation, queueing, and GPU execution would guide the next optimization, followed by sustained physical-camera and multiple-object tests. Probability estimates require a separate calibration study of the phase widths and propagated variances.
-
-Native replay distinguishes current-platform repeatability from historical parity. Intermediate states differ from the archived execution on 5,805 queries, with 504 TTC differences outside the historical tolerance. The original/canonical pairing measures local output sensitivity; private Test12 targets are needed to assess candidate accuracy. \evidence{L40--L42,N03}
+Earlier predictive-learning studies are informative negative experiments, rather than a mechanism explaining the benchmark gain. The recovered scratch, random-frozen, JEPA, and shuffled-future controls appear together in Appendix~\ref{sec:early}. They support the reported failure to demonstrate a JEPA benefit in those settings; they do not identify background appearance as its cause on real data.
 
 \section{Conclusion}
-PHASE-TTC fuses causal event and RGB measurements through a compact phase-based correction head. The submitted system ranks first in the archived GarlTTC Test leaderboard of 28 October 2026, reducing Overall MiD by \OfficialOverallRelativeGain{} relative to Garl-TTC. After target-source correction, the 460-query modality comparison gives fusion lower point mean and p95 errors, RGB lower median and relative errors, and paired difference intervals containing zero.
-
-A small geometric quality adapter reduces local EvTTC error on corrected targets. Temporal and representation controls show why an improved intermediate loss or physically consistent transform must also improve the complete TTC estimator. The central design is to combine interpretable motion measurements while allowing each sensor its own representation. Its next tests are independent adaptation data, matched final-system ablations, and sustained operation within the response deadline.
+PHASE-TTC combines modality-specific motion estimates and temporal context in a compact RGB-anchored readout. Its complete submitted system improves the archived GarlTTC ranking metric by \OfficialOverallRelativeGain{}. Matched final-head experiments show that a learned correction helps relative to simple mixtures, while event access and phase parameterization offer no resolved advantage over their matched controls on the inspected transfer cohort. Geometry-based adaptation adds a separate conditional benefit: learned routing improves road performance beyond a fixed mixture, although the pooled comparison remains uncertain. These results define an evaluated system and identify the measurements needed to establish broader fusion and deployment claims.
 \FloatBarrier
 \clearpage
 \begingroup\small
@@ -963,7 +906,9 @@ Kaizhen Sun, Jinghang Li, Kuan Dai, Bangyan Liao, Wei Xiong, and Yi~Zhou.
 \appendixdivider
 \appendix
 \publicationmodefalse
+\begingroup\small
 \tableofcontents
+\endgroup
 \clearpage
 \section{Implementation and source correspondence}
 \label{app:implementation}
@@ -998,14 +943,9 @@ Zero initialization of the last affine layer makes the initial fusion output equ
 \end{align}
 The native bounds are \(\phi_{\min}=-\log 2+10^{-6}\) and \(\phi_{\max}=8\). For the point prediction, the inverse map clamps \(\ell_F\) to these bounds, computes \(q=-\operatorname{expm1}(-\phi)/0.1\), and emits \(\operatorname{sgn}_{+}(q)/\max(|q|,1/60)\) seconds, where \(\operatorname{sgn}_{+}(0)=1\). Thus the emitted magnitude is at most 60\,s and zero phase maps to \(+60\)\,s. The reported point phase is recomputed from this finite TTC; the learned-width phase-interval endpoints are clamped separately. The rate floor keeps inversion finite near zero expansion, imposing a nominal signed horizon of 60\,s. \evidence{M22,R02}
 
-The compact fusion head contains 1,955 trainable parameters: \(672+64+1{,}056+64+99\) across three affine layers and two LayerNorms. Figure~\ref{fig:fusion-layout} summarizes the named-field and anchor paths. \evidence{M22}
+The compact fusion head contains 1,955 trainable parameters: \(672+64+1{,}056+64+99\) across three affine layers and two LayerNorms. Figure~\ref{fig:fusion-interface} summarizes the named-field and anchor paths. \evidence{M22}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{figures/publication_fusion.pdf}
-  \caption{\textbf{Named-feature fusion interface.} The twenty selected coordinates enter the correction network. RGB location and width logits bypass that network and combine with its three outputs. \evidence{M22}}
-  \label{fig:fusion-layout}
-\end{figure}
+
 
 
 \subsection{Transfer target association and eligibility}\label{app:target-association}
@@ -1091,7 +1031,7 @@ The grouped F1 experiment also measures substantial undercoverage. Its nominal 8
 
 \subsection{Geometry controls and support differences}
 \label{app:geometry-attribution}
-F0 versus the final router changes both the available experts and the learned combination. The older 401-parameter capacity control establishes a benefit of quality descriptors only within its own experiment. Its Slider-750 geometry observer has MAE 0.1976\,s on 49/51 outputs, versus 3.3157\,s for that gate on 51/51; Slider-1000 gives 0.0374\,s on 16/18 versus 0.2757\,s on 18/18. Different masks prevent a direct attribution from these aggregates. The archived corrected 434-query evaluator does not provide a complete matched geometry-only, geometry-with-F0-fallback, fixed-mixture, and final-router comparison with common support and timing. A matched comparison is needed to separate the contribution of geometry from that of learned routing; the present gain belongs to the combined adapter. \evidence{A03,N01}
+F0 versus the final router changes both the available experts and the learned combination. The older 401-parameter capacity control establishes a benefit of quality descriptors only within its own experiment. Its Slider-750 geometry observer has MAE 0.1976\,s on 49/51 outputs, versus 3.3157\,s for that gate on 51/51; Slider-1000 gives 0.0374\,s on 16/18 versus 0.2757\,s on 18/18. Different masks prevent a direct attribution from these aggregates. The new common-support comparison in Section~\ref{sec:quality-adaptation} now evaluates geometry, fallback, fixed mixture, and the final router on these saved inputs. It supplies the matched attribution that the earlier aggregate records lacked. \evidence{A03,N01}
 \section{Canonical cadence as a controlled intervention}
 \label{sec:canonical-cadence}
 \cohortline{FROZEN-GRAPH INTERVENTION / 149-query screen and 2,608-query development population / candidate not promoted}
@@ -1365,7 +1305,7 @@ Public-validation paired audit & 108 sequence--track clusters; 2,048 rows & 5,00
 V5--V7 grouped development & 422 sequence--track clusters; nine sequences, 8,192 rows & 5,000 & Seed-7 models; bootstrap seed 20260813. Seeds are not extra clusters. \\
 V12 H16--H8 replication & Nine sequences, then tracks within sampled sequences & 8,192 accepted hierarchical draws & Per-query losses averaged across fixed matched head seeds; separate exact sequence comparison. \\
 V16 PHASE-ONLY selection & Eight V sequence groups & 4,000 & Bootstrap seed 20261012; group-macro bucket MiD contrasts separately for head seeds 7/13/23. \\
-V18 TRUE/ZERO fusion & Eight H sequence groups & 2,000 & Bootstrap seed 12345; groupwise MiD averaged over fixed seeds 7/13/23; no TTC ensembling. \\
+V18 TRUE/ZERO fusion & Eight V sequence groups & 2,000 & Bootstrap seed 12345; groupwise MiD averaged over fixed seeds 7/13/23; no TTC ensembling. \\
 Grouped F1 adaptation & Seven scenario families; 24 recordings & 2,000 & Bootstrap seed 7; recording-macro RAE differences separately for head seeds 7/13/21. \\
 401-parameter gate confirmation & Four CCRm recordings within one family & 2,000 & Bootstrap seed 7; query-weighted RAE difference for the fixed three-seed ensemble. \\
 Startup router comparison & Five road scenario families & 5,000 & Bootstrap seed 7; query-weighted RAE differences for fixed three-seed ensembles. \\
@@ -1626,6 +1566,149 @@ For Slider-750, the corrected local evaluator gives 283.9\% relative error for t
 \FloatBarrier
 
 \clearpage
+\section{Historical design analysis and controlled ablations}
+\label{app:design-history}
+Three findings shaped PHASE-TTC: preserving scale change mattered more than representation stability alone; correcting an expert's phase could improve on selecting an expert; and changing the loss often traded one TTC range against another. The studies below used different data splits and pretrained models. Appendices~\ref{sec:early}, \ref{sec:temporal-recovery}, and~\ref{sec:late} give the full configurations and unsuccessful variants.
+
+\subsection{Preserve the motion variable before predicting it}
+Using a common object region preserves apparent expansion across observations. Independently resizing each endpoint can remove that signal before the network sees it (Figure~\ref{fig:crop}). An explicit object query also distinguishes objects that share one full-frame input but have different TTC targets. The estimator consequently requires externally supplied localization. \evidence{M03}
+
+The geometry experiments exposed a related difficulty: stable foreground maps and accurate absolute heights did not ensure accurate changes in scale. Some models also received RGB-derived SAM masks or DINOv3 relations during training, even when their inference inputs contained only events.
+
+Removing paths from a trained V8 model identified which inputs its prediction used. Analytic scale alone scored 373.18 MiD, and adding the residual without transport gave 373.60. Restoring transport reduced the score to 163.23; restoring history reduced it further to 155.82. The weights remained fixed throughout these tests. \evidence{E02,E12,E25,E26,E21,E23,E24}
+
+\subsection{Predictive embeddings and dynamic scale}
+Predicting a future embedding and estimating expansion are different objectives. A representation can make the future easy to predict by retaining persistent appearance, yet discard the small changes needed to recover $\dot s/s$. Conversely, preventing collapse by maintaining variance says little about which physical variable supplies that variance. This distinction motivates evaluating TTC and geometric increments alongside prediction loss.
+
+In the synthetic controls, a temporal-residual objective recovered more dynamics than variance regularization when nuisance features changed slowly. Making those nuisances vary independently across frames reversed the ordering. By varying nuisance dynamics independently of the target motion, this controlled construction shows how the choice of predictable signal changes the ordering of the objectives, consistent with the slow-feature concern raised by \citet{slowfeatures}. Testing that mechanism on real driving data requires interventions on the nuisance signal. \evidence{E02,E12}
+
+On real data, the V8 frozen and partially fine-tuned JEPA encoders failed the benefit criterion against scratch, random-frozen, and shuffled-future controls. A separate fixed-teacher pilot reduced future-state loss while worsening teacher-increment loss and failed to outperform both static and shuffled-future controls on annotated log-height change. Across these tests, predictive pretraining fell short of the prescribed benefit criteria. The role of background appearance in the real-data result is an open attribution question. Appendices~\ref{sec:early}, \ref{sec:methods}, and~\ref{app:physics-followup} give the objective definitions and controls. \evidence{E23,E24,N04}
+
+These findings motivate measuring expansion directly at the fusion interface and checking it at the TTC output. They leave open whether other predictive targets, sampling schemes, or training budgets can learn a better motion representation.
+
+\subsection{Correct phase rather than only selecting an expert}
+A hard router is limited to the predictions its experts already make. SIMPLEX-T can move beyond them by learning a correction around their median phase from masked temporal context. The auxiliary cost head describes the original experts; evaluating the corrected prediction's risk requires a corresponding risk target. Phase quantiles also need empirical calibration before use as collision probabilities. \evidence{M_TEMPORAL_MODEL,M_PHASE_CONTRACT}
+
+Extending the context from eight history slots (H8) to sixteen (H16) lowered MiD for each of three head seeds on the initial exploration cohort. The paired interval across all seeds excludes zero. However, one seed had already informed exploration; the two new seeds alone give a difference of $-2.42$ MiD with interval $[-5.24,0.04]$. All heads shared the same upstream producers. Figure~\ref{fig:middle-h16} shows both summaries; H8 remained the selected candidate. \evidence{M_SIMPLEX}
+
+
+Keeping all experts produced the lowest score in the removal study: FULL-C0 reached 121.40 MiD, compared with 127.79 for A5-only, 126.70 for C2F-only, and 124.67 for A5 plus PAIR.
+
+In the temporal-aggregation comparison, set aggregation with age gave 122.44 MiD; removing explicit time gave 123.69. Because the frozen experts can already encode temporal information, the remaining differences cannot be assigned to recurrence alone.
+
+Transport probes improved on destructive controls, but stronger calibrated or pooled alternatives narrowed that advantage. \evidence{M_SIMPLEX,M_STAGE61,M_STAGE62}
+
+\subsection{Adaptation trades error between TTC ranges}
+Changes to the readout often improved imminent-contact estimates at the expense of receding motion. The band-reweighted phase-loss arm (V14 M1--L0) reduced crucial MiD from 156.83 to 134.47 but increased negative MiD from 61.38 to 84.21. V17's geometry bypass lowered the aggregate score on the development-used V split from 106.545 to 102.762 while worsening MAE; its head seeds shared encoders. Across V14--V17, loss reweighting, residual range, sampling, numerical precision, clipping, geometry bypasses, and height readouts failed to meet all acceptance criteria. Invalid height-derived predictions were retained in scoring. The next experiments therefore allowed the measurement model itself to adapt. \evidence{L02,L50--L52}
+
+V18 full adaptation reduced aggregate MiD on H from 112.29 to 78.92 and crucial MiD from 157.27 to 95.85, while negative MiD rose from 65.52 to 87.09. The model passed the overall sign criterion but remained inaccurate in the magnitude of receding TTC. V19 increased the training weight on negative targets and recovered some negative-range accuracy and MAE, at the cost of aggregate and crucial-range error. \evidence{L10,L24,L25,L30}
+
+\subsection{Events help in the matched V18 comparison}
+Supplying real events improved V18 C1 relative to its equal-capacity ZERO control. TRUE-event fusion achieved aggregate MiD $87.29\pm0.87$, compared with $92.47\pm0.16$; dispersion is the sample standard deviation of the scalar scores across seeds. The paired comparison over complete groups also favored TRUE. Each seed repeated C1 adaptation and head fitting from the same A5 initialization and RGB context model. This experiment uses V18 C1, whereas the final forty-sequence system derives from V16. \evidence{L03,L31--L33}
+
+
+Section~\ref{sec:v16-selection} separates the historical V16 selection and its four-fold context cross-fit from the later five-rotation TRAIN40 refit. The V18 crucial-band gain remained below its registered threshold. Its comparison with the preserved V16 model gave an interval of approximately $[-3.69,0.14]$, and no V18 candidate met all acceptance criteria. Section~\ref{sec:design-analysis} reports new equal-capacity final-head controls on fixed source-domain out-of-fold features. Those controls keep the temporal support of the final refiners; they do not compare against retrained Garl producers.
+\FloatBarrier
+\section{Geometric adapter implementation and earlier evaluation}
+\label{app:quality-complete}
+\cohortline{LOCAL ADAPTATION / 2,608 fitting queries / 434 corrected evaluation queries / historical exposure retained}
+
+The base fusion model supplies several estimates of the same signed quantity: its final fused TTC, the RGB context estimate, and the event context estimate. Their errors need not agree, and their reliability changes with temporal support and apparent motion. PHASE-TTC-Adapt leaves all nine upstream components frozen and learns a small router over those three outputs and a causal box-expansion estimate. The experiment adapts the fusion rule over fixed representations; Section~\ref{sec:canonical-cadence} evaluates temporal normalization as a separate intervention. \evidence{N01}
+
+The adapter uses the frozen base model, denoted F0 in the source archive. Earlier fine-tuned heads and quality-gate candidates are separate models; Appendix~\ref{app:adaptation-lineage} documents their populations, unsuccessful controls, and interval coverage. In particular, the delivered router does not use the fine-tuned weights affected by the earlier target-source assignment.
+
+\subsection{Causal box geometry and its quality descriptors}
+For each query, the geometric branch admits supplied boxes with timestamps in the preceding 650\,ms, rejects nonfinite or nonpositive extents, and requires strictly increasing observation times. It fits three apparent sizes: width, height, and square root of area. Let $s_i$ denote one such size, $s_n$ its latest value, and $u_i$ time relative to the query in seconds. The branch constructs $\rho_i=s_n/s_i$ and estimates a line using median pair slopes,
+\begin{align}
+ b &= \operatorname{median}_{i<j}\frac{\rho_j-\rho_i}{u_j-u_i},
+ &a &= \operatorname{median}_i(\rho_i-bu_i),\\
+ q_s&=-b/a \quad (a>0).
+\end{align}
+The median of the three $q_s$ values supplies the geometric inverse TTC. This is an apparent-scale model with a query-time intercept; it does not recover metric depth or compensate for arbitrary rotation, occlusion, or annotation jitter. At least two boxes spanning 10\,ms are needed for a fit. Near-zero expansion, nonfinite descriptors, or an endpoint older than 150\,ms makes the geometric estimate unavailable. A two-point zero residual is not interpreted as zero uncertainty. \evidence{N01}
+
+Twenty descriptors expose the conditions of that fit: the three axis/area rates, their median and short-history counterpart, rate disagreement, residual and residual-to-motion ratio, temporal span, normalized box count, admitted-box fraction, endpoint age, quantization support, short/long disagreement, aspect ratio and its change, center motion, and slope scatter. Absolute coordinates and absolute clock time are absent. We use supplied object regions to evaluate the fusion rule under known localization. Autonomous deployment will require testing a causal detector together with the estimator, including the effects of its box errors and delay.
+
+The intersensor projection uses calibrated rotation without depth-dependent translation, and Slider extrinsics remain provisional. The annotated-region contract and these projection limits also apply to the adaptation comparison; they should accompany any interpretation of its geometric input. \evidence{A03,A07}
+
+\subsection{Router architecture and exact output policy}
+Each quality router receives 33 values. Thirteen describe the three neural magnitudes, their availability, pairwise sign agreements, geometric availability, and neural/geometric sign agreement. The remaining twenty are the geometric quality descriptors, with the first five rate coordinates replaced by their magnitudes. This design lets the weights respond to agreement and support without supplying a sequence identifier or a target-derived error. After fitted normalization and componentwise clipping to $[-8,8]$, the gate computes $g(\mathbf x)=W_2\tanh(W_1\mathbf x+\mathbf b_1)+\mathbf b_2$, with hidden width 18 and four output logits. Its two affine maps contain 688 trainable parameters. The final affine weights start at zero with bias $(2,0,0,0)$, favoring F0 when other experts are available without forcing an exact initial F0 output. \evidence{N01}
+
+Let $m_j$ indicate an available expert and let $g_j(\mathbf x)$ be its gate logit. The router forms normalized masked weights
+\begin{equation}
+ w_j=\frac{m_j\exp g_j(\mathbf x)}{\sum_k m_k\exp g_k(\mathbf x)},
+ \qquad \widehat q=\sum_{j:m_j=1}\frac{w_j}{\widetilde T_j},
+ \label{eq:adapt-inverse-fusion}
+\end{equation}
+where $\widetilde T_j$ preserves the expert sign and limits its magnitude to $[0.1,60]$\,s. The implementation excludes zero-valued experts from inverse-coordinate fusion. It applies a rate-magnitude floor of $1/60$\,s$^{-1}$ before inversion, yielding a finite signed output with magnitude at most 60\,s. Exact cancellation, $\widehat q=0$, returns the original fused prediction F0 rather than choosing an approach direction.
+
+The delivered ensemble contains routers trained with three random seeds, for $3\times688=2,064$ learned router parameters. Each router performs Equation~\ref{eq:adapt-inverse-fusion} and emits seconds; the ensemble then averages those three TTC predictions in seconds. It does not average their inverse rates. The ensemble returns F0 exactly when no valid box history is supplied, when endpoint age is nonfinite, or when the latest box is older than 150\,ms. A valid geometric estimate is a separate requirement: a fresh but too-short box history can leave geometry unavailable while allowing the router to combine available neural estimates. These distinctions preserve the implemented fallback semantics. \evidence{N01}
+
+\subsection{Fitting and local evaluation}
+The router fit uses 2,608 queries: 2,531 from twenty-four road recordings and 77 from Slider-500. Each of three seeds runs 300 AdamW updates with learning rate and weight decay both 0.01. The evaluation recordings are excluded from these optimizer updates, but they informed earlier development; the comparison therefore measures local adaptation under the protocol in Section~\ref{sec:protocol}.
+
+\subsection{Corrected evaluation of the delivered adapter}
+\EvidenceAdaptTable
+The evaluation contains 434 corrected target correspondences. We report both signed runtime predictions and the organizer-described offline interpolation of negative outputs. The latter may use later valid predictions and is never part of the causal forward path. Appendix~\ref{app:target-association} and the source records document target correction; the scoring policy is fixed in Section~\ref{sec:protocol}. \evidence{N01}
+
+Both scoring contracts favor the adapter. With the original signed outputs retained, F0/adapted MAE is 0.8244/0.3470\,s and RAE is 49.73/17.79\%. After organizer-style interpolation, the corresponding pairs are 0.8250/0.3359\,s and 49.89/17.25\%. The MAE reductions are 57.91\% and 59.28\%, respectively.  \evidence{N01}
+
+Over all 434 queries, MAE decreases from 0.8250 to 0.3359\,s and mean relative error from 49.89\% to 17.25\%. The respective relative reductions are 59.28\% and 65.43\%. Both errors decrease in each of the ten sequences under this evaluator. On the 365 road queries, MAE falls from 0.3054 to 0.1852\,s, showing improvement across the road domain as well as the pooled population. These query-weighted reductions use a different aggregation from the recording-macro cadence summaries in Appendix~\ref{sec:canonical-cadence}.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=.72\linewidth]{updates/figures/adaptation.pdf}
+\caption{\textbf{Local effect of quality adaptation.} The corrected evaluator compares the original and adapted outputs on the same queries. A logarithmic vertical axis separates the road and Slider error scales. This figure reports exposed development evidence, with organizer-style negative-output interpolation applied to both variants. \evidence{N01}}
+\label{fig:quality-adaptation}
+\end{figure}
+
+\paragraph{Comparison with organizer scores.}
+\label{par:local-score-correspondence}
+Our reconstruction matches the organizer-provided original relative error for nine of ten sequences after rounding. For Slider-750, we obtain 283.9\% rather than the organizer's 132\%; the adapted model scores 76.1\% under our local evaluator. The available records leave the source of this discrepancy unresolved. Reconciliation requires the organizer-aligned targets and exact evaluator version, so we report the adaptation gains under the local scoring contract. Appendix~\ref{app:competition-details} records the target correspondence and evaluation boundary.
+
+
+\subsection{Matched attribution follow-up}
+Section~\ref{sec:quality-adaptation} adds geometry-only, fallback, fixed-mixture, and router comparisons on identical query support. The earlier protocol above is retained to distinguish raw signed inference from organizer-style offline interpolation.
+\FloatBarrier
+\section{Additional sensor and benchmark illustrations}
+\label{app:extra-diagnostics}
+The following figures supply the sensor detail and score decompositions behind the compact main-text tables.
+\subsection{Real sensor observations}
+
+Figure~\ref{fig:real-evttc-scene} shows the appearance of the two sensor streams on an actual EvTTC road recording \citep{evttc}. The RGB frame records scene appearance, whereas the event view accumulates signed brightness changes during the preceding 100\,ms. Vehicle outlines, road markings, and background motion therefore appear differently in the two modalities. These are recorded observations rather than schematic renderings. The side-by-side views retain the coordinates of their respective cameras.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/evttc_ccrm_poster.jpg}
+  \caption{\textbf{Real RGB and event observations from EvTTC.} Left: Blackfly left-camera frame 287 at $t=14.350374$\,s in recording \texttt{CCRm-low-0-overlap-0}. Right: Prophesee left-camera events in $[t-100\,\mathrm{ms},t)$, with positive counts in turquoise and negative counts in coral; overlap can appear pale. Counts use log scaling and an occupied-pixel 95th-percentile display scale. The RGB display swaps stored channels 0 and 2 to match the dataset publisher's visualization; the model-input crops preserve the runtime channel order. Images are resized for display and retain separate sensor coordinates. Source: EvTTC, Sun et al.\ \citep{evttc}; the same excerpt is used in the project website.}
+  \label{fig:real-evttc-scene}
+\end{figure}
+
+The RGB view preserves scene appearance while event polarities reveal moving contours and contrast boundaries. The model receives localized object crops in a common coordinate frame across causal endpoints, preserving apparent scale change. Appendix~\ref{sec:real-inputs} shows the temporal crop triplets and twelve event input planes for this recording, with their timestamps and extraction provenance.
+
+
+\subsection{Benchmark score decompositions}
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{figures/rev_hero.pdf}
+\caption{\textbf{Archived GarlTTC Test results, 28 October 2026.} Overall MiD and the four TTC bands compare the complete PHASE-TTC and Garl-TTC submissions. Both report 0\% scorer-defined failures across 6,762 tokens.}
+\label{fig:official}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.92\linewidth]{figures/rev_weighted.pdf}
+\caption{\textbf{Bandwise contributions to the Overall MiD difference.} Crucial and small TTC account for about 82\% under the benchmark's $0.5/0.3/0.1/0.1$ weights. Table~\ref{tab:official-weighted-contributions} gives the rounding reconciliation. \evidence{B01,B02}}
+\label{fig:official-weighted-contributions}
+\end{figure}
+
+\subsection{Transfer error distributions}
+\begin{figure}[H]
+\centering\includegraphics[width=.94\linewidth]{figures/audit_transfer_summary.pdf}
+\caption{\textbf{Corrected frozen-transfer error summaries.} PHASE-TTC and RGB use the same \AuditTransferCount{} eligible queries after reassociating all 508 candidates. Lower point mean and p95 favor fusion; lower median favors RGB. Paired intervals are reported separately in Table~\ref{tab:audit-transfer-bootstrap}.}
+\label{fig:transfer-tradeoff}
+\end{figure}
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{figures/audit_transfer_exceedance.pdf}
+\caption{\textbf{Corrected absolute-error exceedance.} Curves include all \AuditTransferCount{} eligible transfer queries with equal query weights. No signed prediction is clipped and no extreme error is removed.}
+\label{fig:transfer-exceedance}
+\end{figure}
 \section{The initial representation-learning programme}
 \label{sec:early}
 
@@ -1828,15 +1911,20 @@ V8 tested JEPA attribution through D0--D4. The meta-router had no single transfe
 \toprule
 Arm & 1\% & 5\% & 10\% & 25\% & 100\% \\
 \midrule
-D2 & 379.95 & 379.88 & 379.94 & 379.79 & 379.99 \\
-D3 & 379.52 & 379.38 & 379.39 & 379.32 & 379.67 \\
+Scratch (D0) & 265.20 & 286.35 & 277.40 & 270.97 & 276.35 \\
+Random frozen (D1) & 379.82 & 369.40 & 361.68 & 370.87 & 365.44 \\
+JEPA frozen (D2) & 380.09 & 380.01 & 380.04 & 379.97 & 380.12 \\
+JEPA partial fine-tuning (D3) & 379.51 & 379.40 & 379.41 & 379.26 & 379.62 \\
+Shuffled future (D4) & 379.02 & 379.01 & 378.89 & 378.89 & 379.12 \\
 \bottomrule
 \end{tabular}
-\caption{V8 JEPA probe results across nominal label fractions for the frozen-encoder (D2) and partially fine-tuned (D3) arms. The scratch, random-frozen, and shuffled-future controls from the wider D0--D4 comparison are not tabulated here.}
+\caption{V8 seed-7 controls on the same three-fold OOF queries, recomputed from the recovered signed prediction artifacts with one sequence-macro evaluator. All five arms and nominal label fractions appear together. Historical aggregate values for D2/D3 are retained in the source data; their small discrepancy from this recomputation is documented below.}
 \label{tab:early-jepa}
 \end{table}
 
 D2 and D3 produced finite predictions with no recorded failures, but neither passed the causal-benefit criterion against scratch, random-frozen, and shuffled-future controls. V8 provided no positive JEPA attribution, and the next experiments focused on the measurement interface and feature usefulness. \evidence{E23}
+
+The recovered aggregate matches the archived E23 file hash, but rescoring its associated predictions differs by up to 0.177 MiD for D2/D3. Table~\ref{tab:early-jepa} therefore uses the recomputed predictions for all arms rather than mixing cached aggregates with newly calculated controls. Scratch remains substantially better than either JEPA arm at every fraction. The origin of the small cached-aggregate discrepancy is unresolved; it does not alter that ordering. Only seed 7 completed this attribution study.
 \section{Temporal information and phase refinement}
 \label{sec:temporal-recovery}
 
@@ -2700,7 +2788,7 @@ Numerical checks cover transfer and fusion, runtime, eAP detection, and physical
 measurement. Equation checks, metric units, evaluation populations, and causal
 input boundaries constrain the interpretation of these records. These checks
 do not constitute independent experimental replications. The preparation of
-this expanded article involved no new training or official benchmark submission.
+that 2 November evidence expansion involved no new training or official benchmark submission.
 \clearpage
 \section{Scientific revision: sources and remaining experiments}
 \label{app:scientific-revision}
@@ -2753,7 +2841,7 @@ Official TRAIN40 & Score, component identities, code snapshots, training account
 Historical and corrected transfer & Fixed predictions, both target assignments, corrected eligibility, bootstrap builder & Pinned public curves and query manifest for repeating the full target join \\
 T6, V16 and A4-S1 & Original reports, accounting, controls and source revisions & Original features, splits and initializations for repeated training \\
 All-32 F1 & Cache ancestry and affected target-source identities & Corrected supervised cache and three new fits \\
-Grouped F1 and quality gates & Population, fit results, calibration summaries and weight lineage & Per-variant inputs and checkpoints; final matched geometric controls remain pending \\
+Grouped F1 and quality gates & Population, fit results, calibration summaries and weight lineage & Per-variant inputs and checkpoints; matched final geometric controls now appear in Section~\ref{sec:quality-adaptation} \\
 Runtime and test checks & Original timing summary, derived timing checks and original M21 receipts & Exact hardware/runtime for a new latency run; test environment for a fresh execution \\
 \bottomrule
 \end{tabularx}
@@ -2762,5 +2850,31 @@ Runtime and test checks & Original timing summary, derived timing checks and ori
 \subsection{Experiments that remain outstanding}
 The all-32 F1 checkpoints depend on 239 admitted low/medium targets under the old assignment. Their supervised cache and eligibility must be rebuilt before refitting seeds 7, 13, and 21. The source audit verifies that the delivered quality router uses the original F0 experts instead of those F1 weights; the two weight lineages remain distinct. \evidence{A01,A03,A04,A07}
 
-The final adapter still requires a matched 434-query comparison of geometry alone, geometry with fallback, a fixed mixture, and the learned router to isolate learned weighting from geometric information. Independent recordings, a reconciled Slider-750 evaluator, calibrated intervals for the delivered all-data router, and sustained physical-camera execution also remain separate experimental requirements. Historical results from earlier gates and different populations are not substituted for these comparisons. \evidence{N01,A03,A04,A07}
+Section~\ref{sec:quality-adaptation} now supplies the matched 434-query comparison of geometry alone, fallback, a fixed mixture, and the learned router. Independent recordings, a reconciled Slider-750 evaluator, calibrated intervals for the delivered all-data router, and sustained physical-camera execution also remain separate experimental requirements. Historical results from earlier gates and different populations are not substituted for these comparisons. \evidence{N01,A03,A04,A07}
+\section{Reproduction of the matched revision experiments}
+\label{app:consolidation-reproduction}
+The new comparisons use frozen source features and saved causal predictions. Their protocols, complete query outputs, source snapshots, seed traces, and result bindings are distributed under \path{data/consolidation/}. The nine source-only head fits are additional experiments; they do not replace the released weights or receive a new official benchmark score. Running \path{scripts/build_consolidation.py} regenerates their main-text tables.
+
+\subsection{Identity and missing-feature recovery}
+We join transfer rows by query identity, requiring exactly 460 eligible queries with no duplicates or omissions. The original local feature cache contains 457 of them. Its obsolete target prefilter excluded three queries before feature extraction. We recover those three from their sensor observations with the unchanged sealed nine-component graph, capturing the final head inputs without reading TTC labels. The released head reproduces all 460 saved predictions within absolute and relative tolerance $10^{-5}$; the maximum absolute difference is $2.8610\times10^{-6}$\,s. This validates the features for the head comparison and does not resolve the separate historical full-inference discrepancy.
+
+\subsection{Training and coordinate control}
+The source cache contains 88,744 eAP out-of-fold rows from forty recordings plus separate local EvTTC rows. Only the eAP rows enter these fits; domain, identities, group counts, cache hash, and original feature ancestry are checked before training. Zero-event heads erase all ten event descriptor fields both during training and evaluation. They retain the same twenty-input network, RGB skip connection, widths, parameter count, objective, schedule, and seeded minibatch order as the real-event arm.
+
+For the inverse-TTC variant, each of the ten phase inputs becomes $(1-e^{-\phi})/0.03$, with the native phase clamp applied first. Timing and support fields are unchanged. Its point rate is $q_R+0.3c_0$, where $q_R=(1-e^{-\ell_R})/0.1$; the native rate bounds are applied before conversion back to phase. Quantile-width corrections and the loss remain in phase coordinates. This compares a specified inverse-rate parameterization at the original budget, rather than tuning each coordinate family for its own best score.
+
+All three head arms receive 12,044 updates with AdamW, batch size 128, weight decay 0.001, gradient-norm clip 1, and a learning-rate schedule warming to $3\times10^{-4}$ then decaying to $3\times10^{-5}$. The final affine layer starts at zero. Every seed's final checkpoint is evaluated; there is no EvTTC-based early stopping or seed selection. Seed means describe separately scored models. For paired intervals, we average each query's loss difference over seeds, resample all rows of complete recordings, and recompute the query-weighted mean. We never average TTC predictions to obtain the head-comparison scores.
+
+The scalar mixture uses 101 equally spaced event weights between zero and one. Its selected weight minimizes source-training recording-balanced absolute phase error. Evaluation targets do not enter calibration. The fixed mixtures and geometric comparison use their specified equal weights without fitting.
+
+\subsection{Coverage and local scoring}
+The geometric comparison includes 434 queries, 424 with a valid geometric estimate. Missing geometry stays unavailable in the geometry-only arm; fallback and fixed-mixture arms return the original fused output on those rows. Primary comparisons retain signed runtime predictions. A separate saved analysis applies offline negative interpolation only where its stated endpoint and finite-support requirements hold, recording unavailable rows rather than inventing a scoring rule. The published primary table uses raw signed outputs throughout.
+
+\subsection{Corrections and unresolved reproduction questions}
+The V18 replication record identifies its evaluation cohort as V. Table~\ref{tab:audit-bootstrap-units} corrects the previous H label while preserving the archived numbers and bootstrap protocol. The H normalization and fitting population belongs to a different stage.
+
+The V8 result archive supplies signed predictions for all five controls and three folds. Its aggregate matches the manuscript's original E23 digest; recomputation from associated predictions differs from the cached D2/D3 values by at most 0.1772 MiD. The complete recomputed table exposes that discrepancy and retains the original aggregate. Neither this small inconsistency nor the 504 historical native-replay tolerance failures is treated as resolved by current-platform repeatability.
+
+\subsection{Requirements for independent confirmation}
+The author reports no known unused recordings with synchronized events, RGB, and compatible TTC labels. The public FCWD data have already appeared in the project's development record. The public $T^2$CEF tooling derives dense TTC and ego-flow from M3ED poses and depth; this does not directly supply the object-track TTC and localization contract used here. Adapting that data would require a new target-association protocol before evaluating predictions. It is a potential separate study, not an independent confirmation included in these results. The public source assessment is recorded with links in the revision disposition file. No new independent recording is claimed by the present revision.
 \end{document}

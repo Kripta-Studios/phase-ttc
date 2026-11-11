@@ -1,0 +1,26 @@
+{
+  "pdf_sha256": "63f03d59f2e430bcbf62db0a0201f32bf30c31c71ea07aaae5d21f84f65ada7d",
+  "pages": 81,
+  "main_including_references": 17,
+  "all_pages_contact_sheet_review": true,
+  "full_size_diagram_pages": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    14,
+    27,
+    28
+  ],
+  "new_table_pages": [
+    4,
+    11,
+    12,
+    13,
+    55
+  ],
+  "findings": "No clipping, crossed or unexplained signal arrows, table collisions, or missing references. TOC fits one page. Source-only packaging fix leaves manuscript content unchanged.",
+  "independent_review": "No critical numerical, leakage, or control-semantic defects. Two stale historical statements corrected; packaging manifest fix reviewed and accepted.",
+  "tests": "31 targeted tests passed; additional packaging regression observed fail-before/pass-after; publication suite12passed; Ruff lint/format clean; Pyright checked configured maintained modules using healthy CPU environment with zero diagnostics."
+}

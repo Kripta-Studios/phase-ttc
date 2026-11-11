@@ -31,14 +31,9 @@ Zero initialization of the last affine layer makes the initial fusion output equ
 \end{align}
 The native bounds are \(\phi_{\min}=-\log 2+10^{-6}\) and \(\phi_{\max}=8\). For the point prediction, the inverse map clamps \(\ell_F\) to these bounds, computes \(q=-\operatorname{expm1}(-\phi)/0.1\), and emits \(\operatorname{sgn}_{+}(q)/\max(|q|,1/60)\) seconds, where \(\operatorname{sgn}_{+}(0)=1\). Thus the emitted magnitude is at most 60\,s and zero phase maps to \(+60\)\,s. The reported point phase is recomputed from this finite TTC; the learned-width phase-interval endpoints are clamped separately. The rate floor keeps inversion finite near zero expansion, imposing a nominal signed horizon of 60\,s. \evidence{M22,R02}
 
-The compact fusion head contains 1,955 trainable parameters: \(672+64+1{,}056+64+99\) across three affine layers and two LayerNorms. Figure~\ref{fig:fusion-layout} summarizes the named-field and anchor paths. \evidence{M22}
+The compact fusion head contains 1,955 trainable parameters: \(672+64+1{,}056+64+99\) across three affine layers and two LayerNorms. Figure~\ref{fig:fusion-interface} summarizes the named-field and anchor paths. \evidence{M22}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{figures/publication_fusion.pdf}
-  \caption{\textbf{Named-feature fusion interface.} The twenty selected coordinates enter the correction network. RGB location and width logits bypass that network and combine with its three outputs. \evidence{M22}}
-  \label{fig:fusion-layout}
-\end{figure}
+
 
 
 \subsection{Transfer target association and eligibility}\label{app:target-association}

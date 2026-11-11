@@ -9,7 +9,7 @@
 \begin{document}
 \papertitle{PHASE-TTC}{From Motion to Time}{Causal Event--RGB Fusion\\for Signed Time-to-Contact Estimation}{\'Alvaro Schwiedop Souto}
 \begin{abstract}
-Estimating time-to-contact from vision requires measuring how an object's apparent scale changes. Event cameras record rapid brightness changes, while RGB frames provide scene appearance; combining them requires reconciling different temporal and visual representations. We introduce PHASE-TTC, which estimates motion independently in each modality and combines those estimates in a shared phase coordinate. A compact residual head corrects the RGB estimate using phase, timing, and observation-support features from causal history. On the archived GarlTTC Test leaderboard of 28 October 2026, the submitted system ranks first among three displayed entries, with Overall Motion-in-Depth error \OfficialPhasePublishedOverallMiD{}, a \OfficialOverallRelativeGain{} reduction relative to Garl-TTC and zero scorer-defined failures. Local EvTTC experiments show a more mixed modality comparison and motivate an extension that combines neural estimates with apparent box expansion. Controlled representation studies find no predictive-pretraining benefit in the tested settings, highlighting the need to evaluate motion information separately from latent prediction loss. A paced replay delivers all 250 predictions with numerical parity, but its 29.14\,ms p95 response exceeds the 20\,ms target. These results support phase-based fusion as a practical design while identifying the generalization and execution questions that require further testing.
+Estimating time-to-contact from vision requires measuring how an object's apparent scale changes. Event cameras record rapid brightness changes, while RGB frames provide scene appearance; combining them requires reconciling different temporal and visual representations. We introduce PHASE-TTC, which estimates motion independently in each modality and combines those estimates in a shared phase coordinate. A compact residual head corrects the RGB estimate using phase, timing, and observation-support features from causal history. On the archived GarlTTC Test leaderboard of 28 October 2026, the submitted system ranks first among three displayed entries, with Overall Motion-in-Depth error \OfficialPhasePublishedOverallMiD{}, a \OfficialOverallRelativeGain{} reduction relative to Garl-TTC and zero scorer-defined failures. Matched readout experiments hold the final upstream models and temporal histories fixed. Learned corrections improve on simple mixtures, but three-seed controls show no consistent transfer advantage from event access or from phase rather than inverse-TTC parameterization. A geometric extension improves local road accuracy beyond a fixed mixture, while its pooled advantage remains uncertain. These secondary evaluations reuse development-inspected recordings. A paced replay delivers all 250 predictions with numerical parity, but its 29.14\,ms p95 response exceeds the 20\,ms target. The evidence supports the complete system's benchmark performance and bounds the component and deployment claims.
 \end{abstract}
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{figures/publication_teaser.pdf}
@@ -23,8 +23,8 @@ Estimating time-to-contact from vision requires measuring how an object's appare
 \input{sections/protocol}
 \input{sections/official_results}
 \input{sections/transfer}
-\input{sections/quality_adaptation}
 \input{sections/design_analysis}
+\input{sections/quality_adaptation}
 \input{sections/runtime}
 \input{sections/discussion}
 \clearpage
@@ -36,7 +36,9 @@ Estimating time-to-contact from vision requires measuring how an object's appare
 \appendixdivider
 \appendix
 \publicationmodefalse
+\begingroup\small
 \tableofcontents
+\endgroup
 \clearpage
 \input{sections/implementation_details}
 \input{sections/evttc_competition}
@@ -46,6 +48,9 @@ Estimating time-to-contact from vision requires measuring how an object's appare
 \input{sections/evaluation_details}
 \input{sections/derived_transfer}
 \input{sections/competition_details}
+\input{sections/design_history}
+\input{sections/quality_details}
+\input{sections/extra_diagnostics}
 \input{sections/early}
 \input{sections/middle}
 \input{sections/late_research}
@@ -56,4 +61,5 @@ Estimating time-to-contact from vision requires measuring how an object's appare
 \input{sections/evidence_index}
 \input{sections/update_evidence}
 \input{sections/scientific_revision}
+\input{sections/consolidation_details}
 \end{document}

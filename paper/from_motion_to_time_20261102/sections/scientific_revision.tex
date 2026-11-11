@@ -22,7 +22,7 @@ Official TRAIN40 & Score, component identities, code snapshots, training account
 Historical and corrected transfer & Fixed predictions, both target assignments, corrected eligibility, bootstrap builder & Pinned public curves and query manifest for repeating the full target join \\
 T6, V16 and A4-S1 & Original reports, accounting, controls and source revisions & Original features, splits and initializations for repeated training \\
 All-32 F1 & Cache ancestry and affected target-source identities & Corrected supervised cache and three new fits \\
-Grouped F1 and quality gates & Population, fit results, calibration summaries and weight lineage & Per-variant inputs and checkpoints; final matched geometric controls remain pending \\
+Grouped F1 and quality gates & Population, fit results, calibration summaries and weight lineage & Per-variant inputs and checkpoints; matched final geometric controls now appear in Section~\ref{sec:quality-adaptation} \\
 Runtime and test checks & Original timing summary, derived timing checks and original M21 receipts & Exact hardware/runtime for a new latency run; test environment for a fresh execution \\
 \bottomrule
 \end{tabularx}
@@ -31,4 +31,4 @@ Runtime and test checks & Original timing summary, derived timing checks and ori
 \subsection{Experiments that remain outstanding}
 The all-32 F1 checkpoints depend on 239 admitted low/medium targets under the old assignment. Their supervised cache and eligibility must be rebuilt before refitting seeds 7, 13, and 21. The source audit verifies that the delivered quality router uses the original F0 experts instead of those F1 weights; the two weight lineages remain distinct. \evidence{A01,A03,A04,A07}
 
-The final adapter still requires a matched 434-query comparison of geometry alone, geometry with fallback, a fixed mixture, and the learned router to isolate learned weighting from geometric information. Independent recordings, a reconciled Slider-750 evaluator, calibrated intervals for the delivered all-data router, and sustained physical-camera execution also remain separate experimental requirements. Historical results from earlier gates and different populations are not substituted for these comparisons. \evidence{N01,A03,A04,A07}
+Section~\ref{sec:quality-adaptation} now supplies the matched 434-query comparison of geometry alone, fallback, a fixed mixture, and the learned router. Independent recordings, a reconciled Slider-750 evaluator, calibrated intervals for the delivered all-data router, and sustained physical-camera execution also remain separate experimental requirements. Historical results from earlier gates and different populations are not substituted for these comparisons. \evidence{N01,A03,A04,A07}

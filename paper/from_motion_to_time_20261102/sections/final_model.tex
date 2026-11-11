@@ -1,19 +1,6 @@
 \section{PHASE-TTC: independent estimates, shared phase}
 \label{sec:train40}
 
-\subsection{Real sensor observations}
-
-Figure~\ref{fig:real-evttc-scene} shows the appearance of the two sensor streams on an actual EvTTC road recording \citep{evttc}. The RGB frame records scene appearance, whereas the event view accumulates signed brightness changes during the preceding 100\,ms. Vehicle outlines, road markings, and background motion therefore appear differently in the two modalities. These are recorded observations rather than schematic renderings. The side-by-side views retain the coordinates of their respective cameras.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{figures/evttc_ccrm_poster.jpg}
-  \caption{\textbf{Real RGB and event observations from EvTTC.} Left: Blackfly left-camera frame 287 at $t=14.350374$\,s in recording \texttt{CCRm-low-0-overlap-0}. Right: Prophesee left-camera events in $[t-100\,\mathrm{ms},t)$, with positive counts in turquoise and negative counts in coral; overlap can appear pale. Counts use log scaling and an occupied-pixel 95th-percentile display scale. The RGB display swaps stored channels 0 and 2 to match the dataset publisher's visualization; the model-input crops preserve the runtime channel order. Images are resized for display and retain separate sensor coordinates. Source: EvTTC, Sun et al.\ \citep{evttc}; the same excerpt is used in the project website.}
-  \label{fig:real-evttc-scene}
-\end{figure}
-
-The RGB view preserves scene appearance while event polarities reveal moving contours and contrast boundaries. The model receives localized object crops in a common coordinate frame across causal endpoints, preserving apparent scale change. Appendix~\ref{sec:real-inputs} shows the temporal crop triplets and twelve event input planes for this recording, with their timestamps and extraction provenance.
-
 \subsection{Deployed model composition}
 
 PHASE-TTC deploys a causal chain of nine fitted components comprising four modality-specific producers, two pairwise temporal heads, two context refiners, and one fusion head. RGB and events each use a transport-trained baseline producer (A5) and a coarse-to-fine producer (C2F). The pairwise readouts extract phase features from their A5 representations, after which the context refiners incorporate temporal history. The fusion head anchors its correction on the refined RGB estimate. Figure~\ref{fig:deployed-architecture} traces this path; the five auxiliary rotations serve training only. \evidence{M22,M23}
@@ -24,6 +11,8 @@ PHASE-TTC deploys a causal chain of nine fitted components comprising four modal
   \caption{\textbf{Causal nine-component inference graph.} Supplied object regions feed parallel RGB and event producers, pairwise temporal heads, and temporal refiners. Twenty named fields enter the final RGB-anchored fusion head. \evidence{M03,M22,M23}}
   \label{fig:deployed-architecture}
 \end{figure}
+
+\input{tables/component_contracts}
 
 \subsection{Object coordinates and causal history}
 
@@ -53,12 +42,10 @@ Each modality $m\in\{R,E\}$ exposes a vector $\mathbf{x}_m\in\mathbb{R}^{10}$: a
 \end{equation}
 Thus corresponding coordinates have the same meaning across modalities, while timing and support keep their native scaling. Appendix~\ref{sec:physical-fusion-fields} defines the timing fields precisely.
 
-The residual network $g_\theta:\mathbb{R}^{20}\to\mathbb{R}^{3}$ has two hidden layers of width 32:
-\begin{align}
- \mathbf{h}_1&=\operatorname{SiLU}(\operatorname{LN}_1(W_1\mathbf{z}+\mathbf{b}_1)),\\
- \mathbf{h}_2&=\operatorname{SiLU}(\operatorname{LN}_2(W_2\mathbf{h}_1+\mathbf{b}_2)),\\
- \mathbf{c}&=W_3\mathbf{h}_2+\mathbf{b}_3=g_\theta(\mathbf{z}).
-\end{align}
+The residual network $g_\theta:\mathbb{R}^{20}\to\mathbb{R}^{3}$ uses two width-32 layers with LayerNorm and SiLU activations:
+\begin{equation}
+ \mathbf c=g_\theta(\mathbf z).
+\end{equation}
 Its 1,955 parameters include the affine maps and both LayerNorms. Given the RGB raw-location anchor $\ell_R$ and width logits $\mathbf w_R$, the corrected location and widths are
 \begin{align}
  \ell_F&=\ell_R+\alpha c_0,\\
@@ -83,4 +70,4 @@ Here $\operatorname{sgn}_{+}(0)=1$, so zero phase emits $+60\,\mathrm{s}$. The r
 
 The official submission contains finite predictions without fallback for 6,762 query tokens across twelve sequences: 5,805 physical queries and 957 aliases. Aliases identify repeated physical queries and do not represent additional inference work.
 
-Section~\ref{sec:official} reports the test result for this graph. The matched event controls in Section~\ref{sec:design-analysis} evaluate a separate adaptation variant. \evidence{L44,B01,B02}
+Section~\ref{sec:official} reports the test result for this graph. Section~\ref{sec:design-analysis} holds the final upstream features fixed and refits matched correction heads to test their use of event information. \evidence{L44,B01,B02}

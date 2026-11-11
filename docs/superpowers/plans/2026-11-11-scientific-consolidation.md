@@ -33,11 +33,11 @@ Frame the article as an evaluated system. A universal superiority claim for the 
 
 ## Tasks
 
-- [ ] 1. Freeze comparison protocol and identify available final-model features, runtime evidence and control results.
-- [ ] 2. Implement and test common-support evaluation; run the 434-query geometry/fallback/fixed-mixture/router comparison, including road-only, sequence-level and leave-Slider-750-out summaries.
-- [ ] 3. Run matched final-pipeline fusion comparisons using identical upstream outputs. Recover final-fit features for equal-capacity head controls where available; distinguish inference interventions from retrained controls.
-- [ ] 4. Reconcile V18 populations, recover the V8 controls, investigate historical numerical drift, and audit public-data options for genuinely independent evaluation.
-- [ ] 5. Rewrite the main narrative, add a component input/output/supervision table, consolidate repeated material, and integrate the new results without claiming unmeasured superiority.
+- [x] 1. Freeze comparison protocol and identify available final-model features, runtime evidence and control results.
+- [x] 2. Implement and test common-support evaluation; run the 434-query geometry/fallback/fixed-mixture/router comparison, including road-only, sequence-level and leave-Slider-750-out summaries.
+- [x] 3. Run matched final-pipeline fusion comparisons using identical upstream outputs. Recover final-fit features for equal-capacity head controls where available; distinguish inference interventions from retrained controls.
+- [x] 4. Reconcile V18 populations, recover the V8 controls, investigate historical numerical drift, and audit public-data options for genuinely independent evaluation.
+- [x] 5. Rewrite the main narrative, add a component input/output/supervision table, consolidate repeated material, and integrate the new results without claiming unmeasured superiority.
 - [ ] 6. Regenerate numerical tables, compile and visually inspect the complete PDF, verify source package and tests, obtain final review, and update the authorized GitHub delivery.
 
 ## Execution record
@@ -45,3 +45,11 @@ Frame the article as an evaluated system. A universal superiority claim for the 
 Baseline: `7ec20a12f4df0526c556c31e1bbde5e3f5215497`; all three GitHub workflows passed. Existing environment `output/huggingface-check` uses CPU PyTorch and the locked pandas/numpy versions after the CI investigation. The original GPU environment must be checked separately before sensor inference.
 
 Ruling: retain the existing workspace because the sealed experiment assets are rooted here; use a revision branch and separate output directories. Historical outputs will not be overwritten.
+
+Completed nine head fits and all specified local comparisons. New results support
+conditional system claims, not unconditional phase/event superiority. No unused
+recordings were confirmed. Recovered V8 controls expose a small cached-aggregate
+mismatch; historical native parity and organizer-score discrepancies remain
+explicit. A fresh independent review found no critical numerical/leakage/control
+defect and identified two stale historical statements, both corrected. The first
+PDF render passed all layout checks and was visually inspected throughout.

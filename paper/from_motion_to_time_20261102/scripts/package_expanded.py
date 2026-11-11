@@ -57,6 +57,23 @@ def write_source_manifest(files: list[Path]) -> Path:
     return manifest_path
 
 
+def original_assets(directory: str) -> list[Path]:
+    """Check published assets, excluding previews and TeX products from local rebuilds."""
+    manifest = json.loads((ORIGINAL / "SOURCE_MANIFEST.json").read_text(encoding="utf-8"))
+    paths = []
+    for entry in manifest["files"]:
+        relative = Path(entry["path"])
+        if not relative.parts or relative.parts[0] != directory:
+            continue
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ValueError("Unsafe original source-manifest path")
+        path = ORIGINAL / relative
+        if not path.is_file() or digest(path) != entry["sha256"]:
+            raise ValueError(f"Original published asset changed: {relative}")
+        paths.append(path)
+    return sorted(paths)
+
+
 def main() -> None:
     # Fail before copying files or writing a new manifest for an obsolete PDF.
     binding = verify_publication.verify(ROOT)
@@ -72,7 +89,7 @@ def main() -> None:
         raise ValueError("An original manuscript section is missing")
     unchanged = {}
     for directory in ["figures", "data", "research"]:
-        names = [p for p in (ORIGINAL / directory).rglob("*") if p.is_file()]
+        names = original_assets(directory)
         for path in names:
             if digest(path) != digest(ROOT / path.relative_to(ORIGINAL)):
                 raise ValueError(f"Original asset changed: {path}")

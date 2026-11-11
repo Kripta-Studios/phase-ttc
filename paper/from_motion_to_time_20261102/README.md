@@ -6,6 +6,23 @@
 
 Esta es la actualización y ampliación del artículo original de 52 páginas. Conserva sus 19 archivos de secciones, las figuras, los datos publicados, los métodos completos, las ablations históricas, las trazas por secuencia y el índice de evidencia. El artículo breve de siete páginas preparado antes no lo sustituye.
 
+## Consolidación científica del 11 de noviembre
+
+La versión actual incorpora nueve ajustes de cabezas de igual capacidad, con
+productores e historial fijos, y los controles geométricos sobre soporte común.
+El resultado oficial corresponde al sistema completo: los controles nuevos no
+muestran una mejora consistente al añadir eventos ni una ventaja de fase sobre
+TTC inverso en la cohorte de desarrollo inspeccionada. Las cabezas experimentales
+no sustituyen los pesos publicados ni tienen una nueva puntuación oficial.
+
+`data/consolidation/` contiene predicciones, protocolos, trazas y fuentes ejecutadas.
+`scripts/build_consolidation.py` regenera las tablas. `disposition.json` identifica
+lo corregido y los requisitos aún pendientes: nuevos datos independientes,
+reconciliación del evaluador, reproducción histórica y cumplimiento de latencia.
+Los controles V8 recuperados se presentan juntos; su pequeña discrepancia con el
+agregado antiguo queda documentada. Las declaraciones de ausencia de nuevos
+experimentos en revisiones anteriores describen aquellas ediciones históricas.
+
 ## Archivos y construcción
 
 `main.tex` es la fuente modular. `PHASE_TTC_From_Motion_to_Time_Expanded.tex` consolida estilo, texto, tablas y bibliografía; necesita las carpetas de figuras incluidas en el ZIP. El PDF correspondiente contiene el artículo y el suplemento completos.

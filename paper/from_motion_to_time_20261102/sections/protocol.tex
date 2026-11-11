@@ -21,11 +21,7 @@ Producer training combines relational DINO teacher signals, foreground geometry 
 
 
 \subsection{Metrics and target coordinates}
-TTC error in seconds, inverse-TTC error, benchmark phase error, and detection of urgent risk measure different aspects of behaviour. The signed benchmark phase is
-\begin{equation}
-\phi(T)=-\log\!\left(1-\frac{0.1\,\mathrm{s}}{T}\right),\qquad T<0\;\text{or}\;T>0.1\,\mathrm{s}.
-\end{equation}
-Negative TTC denotes recession. The interval $[0,0.1]$\,s is outside this transform's domain. The official benchmark scorer defines motion-in-depth (MiD) error as
+TTC error in seconds, inverse-TTC error, benchmark phase error, and detection of urgent risk measure different aspects of behaviour. We evaluate phase using Equation~\ref{eq:phase-main}. Negative TTC denotes recession. The interval $[0,0.1]$\,s is outside this transform's domain. The official benchmark scorer defines motion-in-depth (MiD) error as
 \begin{equation}
  \mathrm{MiD}(\widehat T,T)=10^4\left|\log\left(1-\frac{0.1}{T}\right)
  -\log\left(1-\frac{0.1}{\widehat T}\right)\right|
@@ -54,16 +50,12 @@ The official GarlTTC Test submission covers twelve sequences and uses forty-sequ
 For local adaptation on EvTTC, we evaluate 434 corrected query correspondences across ten sequences using query-weighted MAE and mean relative error. We score the signed predictions and, separately, apply the organizer-described offline interpolation of negative predictions between valid outputs to both models. Their archived outputs contain two and one negative values, respectively. Interpolation may use later valid predictions and belongs only to offline scoring. Section~\ref{sec:quality-adaptation} reports the paired results and the sequence-specific scoring discrepancy. \evidence{N01}
 
 
-The cadence experiment has a separate population: 2,531 queries from twenty-four road recordings and 77 from Slider-500. Its primary summaries average recordings equally within each domain, preserve signed predictions without clipping, and use relative denominator $\max(|T|,10^{-6})$. Availability is reported independently of paired error, including the frozen F0 route's one missing Slider output. The protocol requires preserved coverage, no worsening of MAE or relative error in either domain, and an improvement in at least one metric. A failed fixed 149-query screen remains a failure even when the larger-population aggregate improves.
-
-The final quality-router fit uses the same 2,608 development queries, excluding the ten evaluation recordings from optimizer updates. Those recordings had informed earlier design choices, so we interpret the results as local adaptation on a development-used cohort. The paired refit and canonical-cadence experiments evaluate separate variants. The base model passes the numerical cadence criteria, whereas the downstream router and refit fail their selection gates; the delivered adapter is unchanged. Appendix~\ref{sec:canonical-cadence} gives the controls and native replay comparison. \evidence{N02,N03,N01}
-
+The final quality-router fit excludes the ten evaluation recordings from its optimizer updates, but those recordings informed earlier design choices. The 460-query head comparisons likewise reuse inspected EvTTC recordings, while fitting only on source-domain eAP features. We interpret both as development evidence. Appendix~\ref{sec:canonical-cadence} retains the separate cadence and downstream selection experiments.
 
 \subsection{Independence and paired comparisons}
 Splits and resampling units are specified separately for each experiment. Historical V5--V7 intervals resample sequence--track clusters; later studies use complete sequence groups, a sequence-to-track hierarchy, or scenario families. A sample-weighted sequence bootstrap carries all rows from each sampled group into the replicate and recomputes the ratio of summed losses to summed counts; sequence-macro summaries weight groups equally. A sequence-macro point estimate does not imply that its archived interval used sequence-level resampling. All reductions inherit any development exposure. Appendix~\ref{app:evaluation-details} identifies the study-specific units and gives the lineage, causality, and latency checks. \evidence{M15--M20,P02}
 
 Three head seeds quantify optimization variability conditional on their parents; they do not independently replicate the upstream representation. The additional transfer bootstrap is post hoc: it resamples saved paired predictions without changing a model, split, or historical interval (Appendix~\ref{app:derived-transfer}).
 
-For canonical cadence, 10,000 paired road-recording bootstrap replicates with seed 7 estimate descriptive intervals over the twenty-four development recordings. The intervals retain the cohort's historical exposure. Slider-500 is one recording reused from the screen and receives no between-recording confidence interval. The eight-fold, three-seed, two-arm router comparison contains 48 fits on the same development population.
-\evidence{N02,N03}
+For the new matched readout and geometry studies, 10,000 complete-recording resamples use seed 20261111. We specify arms, budgets, fixed mixture weights, and reductions before executing these analyses. This freezes the retrospective comparison; it does not remove prior exposure to its evaluation recordings.
 \FloatBarrier

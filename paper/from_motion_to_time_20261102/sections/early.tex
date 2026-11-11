@@ -140,9 +140,11 @@ V8 tested JEPA attribution through D0--D4. The meta-router had no single transfe
 
 \begin{table}[htbp]
 \centering\small
-\input{data/early_table_jepa.tex}
-\caption{V8 JEPA probe results across nominal label fractions for the frozen-encoder (D2) and partially fine-tuned (D3) arms. The scratch, random-frozen, and shuffled-future controls from the wider D0--D4 comparison are not tabulated here.}
+\input{tables/consolidation_v8.tex}
+\caption{V8 seed-7 controls on the same three-fold OOF queries, recomputed from the recovered signed prediction artifacts with one sequence-macro evaluator. All five arms and nominal label fractions appear together. Historical aggregate values for D2/D3 are retained in the source data; their small discrepancy from this recomputation is documented below.}
 \label{tab:early-jepa}
 \end{table}
 
 D2 and D3 produced finite predictions with no recorded failures, but neither passed the causal-benefit criterion against scratch, random-frozen, and shuffled-future controls. V8 provided no positive JEPA attribution, and the next experiments focused on the measurement interface and feature usefulness. \evidence{E23}
+
+The recovered aggregate matches the archived E23 file hash, but rescoring its associated predictions differs by up to 0.177 MiD for D2/D3. Table~\ref{tab:early-jepa} therefore uses the recomputed predictions for all arms rather than mixing cached aggregates with newly calculated controls. Scratch remains substantially better than either JEPA arm at every fraction. The origin of the small cached-aggregate discrepancy is unresolved; it does not alter that ordering. Only seed 7 completed this attribution study.

@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering\scriptsize
+\caption{The nine fitted components in the submitted inference chain. RGB and event branches share the listed functional roles but have separate fitted weights. All targets and privileged supervision belong to fitting; inference uses sensor observations and supplied object regions.}
+\label{tab:component-contracts}
+\begin{tabularx}{\linewidth}{@{}p{.15\linewidth}p{.23\linewidth}p{.26\linewidth}X@{}}
+\toprule
+Components & Inputs & Architecture and outputs & Fitting signal \\
+\midrule
+Two transport producers & Shared-region temporal crops; observed endpoint intervals & Convolutional endpoint encoder, local feature correlation and scale residual; dense features, geometry and TTC & TTC, foreground/box geometry and RGB-derived relational distillation \\
+Two coarse-to-fine producers & Same modality-specific crop contract & Two-scale local transport with a learned gate; alternate motion estimate & Producer objective with geometric and relational supervision \\
+Two pairwise readouts & 133 fields derived from each transport producer's endpoints & LayerNorm, width-128 GELU MLP and scalar phase output & Smooth-L1 phase regression \\
+Two context refiners & 17 fields per observation, four timing fields and validity mask & Two-layer width-160 GRU; phase correction around current expert median and phase widths & Group-weighted phase error, quantile losses and expert-relative costs \\
+One fusion head & Ten named fields per modality; RGB anchor and width logits & Two width-32 layers with LayerNorm/SiLU; location and width corrections & Group-weighted phase error and quantile losses on out-of-fold features \\
+\bottomrule
+\end{tabularx}
+\end{table}

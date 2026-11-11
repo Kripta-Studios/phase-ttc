@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-11",
+  "scope": "Scientific consolidation; original released weights and official score preserved",
+  "central_claim": "Evaluated complete TTC system; phase-interface or event superiority is not established by the matched transfer controls",
+  "completed": [
+    "Frozen same-query final-output mixtures on 460 queries and geometry attribution on 434 queries",
+    "Nine equal-capacity head fits: three arms x three seeds, 88744 eAP OOF training rows, no EvTTC fitting or selection",
+    "Recovered three missing sensor-only evaluation states; released head matches all460 saved outputs within 2.8611e-6 seconds",
+    "Geometry-only, geometry fallback, fixed inverse mixture and released router on common434/424 and road365/357 support",
+    "Recovered signed V8 D0-D4 prediction artifacts; complete recomputed five-arm table",
+    "Corrected V18 bootstrap population label from H to V",
+    "Focused main article, component contracts table, historical investigations and redundant charts moved to supplement"
+  ],
+  "findings": {
+    "phase_true_MAE_mean_sd": [
+      0.846992403,
+      0.0379750337
+    ],
+    "zero_event_MAE_mean_sd": [
+      0.8375549727,
+      0.0212142967
+    ],
+    "inverse_MAE_mean_sd": [
+      0.8466534504,
+      0.0409120421
+    ],
+    "zero_minus_true_CI95": [
+      -0.0780309553,
+      0.0629910733
+    ],
+    "interpretation": "No consistent event-access benefit or phase-over-inverse advantage on this inspected cohort. The source-calibrated scalar mixture is worse than learned corrections.",
+    "geometry": "Fixed combination recovers much of pooled gain; learned routing has lower road MAE on common support."
+  },
+  "unresolved": [
+    {
+      "issue": "Independent evaluation",
+      "status": "No confirmed unused compatible recordings; user reports none available. Existing development cohorts remain exposed."
+    },
+    {
+      "issue": "Feature-level fusion and history attribution",
+      "status": "No matched hidden-feature fusion or complete upstream retraining across history budgets performed; broad architectural superiority claim withdrawn."
+    },
+    {
+      "issue": "Historical native numerical parity",
+      "status": "504 of5805 tolerance failures remain; new head-only parity is a separate narrower check. Original environment/intermediate replay needed."
+    },
+    {
+      "issue": "V8 cached aggregate mismatch",
+      "status": "Recovered E23 aggregate hash matches but associated signed predictions rescore differently by up to0.1772MiD. All controls now use one evaluator; discrepancy retained."
+    },
+    {
+      "issue": "Organizer Slider750 discrepancy",
+      "status": "Local original RTE283.9% versus organizer132% unreconciled; no new official adapter score."
+    },
+    {
+      "issue": "20ms response deadline",
+      "status": "Still missed:201/250 responses >=20ms, p95 29.14ms. No real-time50Hz claim."
+    }
+  ],
+  "public_data_assessment": [
+    {
+      "url": "https://github.com/anthonytec2/EV-TTC/blob/main/TTCEF/README.md",
+      "finding": "T2CEF derives dense TTC/ego-flow from M3ED poses and depth; source notes no independent-object optical flow. A compatible object-track target/localization protocol must precede PHASE-TTC evaluation."
+    },
+    {
+      "url": "https://nail-hnu.github.io/EventAidedTTC/",
+      "finding": "Public FCWD/Slider assets exist but these data already occur in project development; not accepted as unused validation."
+    }
+  ],
+  "recompute": "python paper/from_motion_to_time_20261102/scripts/build_consolidation.py",
+  "training": "python -m scripts.run_final_head_controls --output <new-empty-output-directory>",
+  "matched_diagnostics": "python -m scripts.run_scientific_revision --output <new-empty-output-directory>"
+}

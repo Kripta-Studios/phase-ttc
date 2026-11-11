@@ -1,51 +1,34 @@
-\section{Design analysis and controlled ablations}
+\section{Matched tests of the final fusion readout}
 \label{sec:design-analysis}
-Three findings shaped PHASE-TTC: preserving scale change mattered more than representation stability alone; correcting an expert's phase could improve on selecting an expert; and changing the loss often traded one TTC range against another. The studies below used different data splits and pretrained models. Appendices~\ref{sec:early}, \ref{sec:temporal-recovery}, and~\ref{sec:late} give the full configurations and unsuccessful variants.
+The official result compares complete systems. Here we isolate readout choices while holding the final RGB and event producers, temporal refiners, supplied regions, and causal histories fixed. We use the same 460 corrected transfer queries throughout. These recordings informed earlier development; the new comparisons quantify conditional effects on that cohort.
 
-\subsection{Preserve the motion variable before predicting it}
-Using a common object region preserves apparent expansion across observations. Independently resizing each endpoint can remove that signal before the network sees it (Figure~\ref{fig:crop}). An explicit object query also distinguishes objects that share one full-frame input but have different TTC targets. The estimator consequently requires externally supplied localization. \evidence{M03}
+\subsection{Simple combinations of identical branch outputs}
+We first replace the released fusion head with equal mixtures of the two final branch predictions, combining them in phase, inverse TTC, or seconds. Each mixture receives the same branch outputs and temporal support. All emit finite TTC under their specified numerical policies. Table~\ref{tab:revision-fixed} shows that learned fusion improves mean error over these fixed combinations. Its comparison with the strong RGB branch remains uncertain (Section~\ref{sec:late-transfer}).
+\begin{table}[htbp]
+\centering\small\input{tables/consolidation_fixed}
+\caption{Frozen final-branch readouts on the identical 460 queries. Equal mixtures have no fitted parameters; the released head has 1,955. This comparison holds upstream information fixed but does not match readout capacity.}
+\label{tab:revision-fixed}
+\end{table}
 
-The geometry experiments exposed a related difficulty: stable foreground maps and accurate absolute heights did not ensure accurate changes in scale. Some models also received RGB-derived SAM masks or DINOv3 relations during training, even when their inference inputs contained only events.
+\subsection{Equal-capacity heads with matched fitting}
+To distinguish event access from added correction capacity, we fit three heads: the original phase readout; an identical head whose ten event fields are zero during fitting and evaluation; and a residual readout expressed in inverse TTC. All contain 1,955 parameters, start with a zero final affine map, and retain the RGB anchor. The zero-event head still receives RGB timing and support. Upstream weights are frozen throughout.
 
-Removing paths from a trained V8 model identified which inputs its prediction used. Analytic scale alone scored 373.18 MiD, and adding the residual without transport gave 373.60. Restoring transport reduced the score to 163.23; restoring history reduced it further to 155.82. The weights remained fixed throughout these tests. \evidence{E02,E12,E25,E26,E21,E23,E24}
+Each arm uses the same 88,744 source-domain out-of-fold feature rows from forty eAP recordings, the same seeded minibatch sequence, and 12,044 AdamW updates at batch size 128. We retain the original warmup/cosine schedule, weight decay, clipping, and phase-error plus quantile objective. Seeds 7, 13, and 21 vary only the correction-head fit. EvTTC queries and targets are excluded from fitting and checkpoint selection; every arm uses its final update. The inverse-TTC arm replaces phase inputs with normalized rates and predicts an RGB rate correction before conversion to the common phase loss. Appendix~\ref{app:consolidation-reproduction} specifies the transforms and archived source bindings.
 
-\subsection{Predictive embeddings and dynamic scale}
-Predicting a future embedding and estimating expansion are different objectives. A representation can make the future easy to predict by retaining persistent appearance, yet discard the small changes needed to recover $\dot s/s$. Conversely, preventing collapse by maintaining variance says little about which physical variable supplies that variance. This distinction motivates evaluating TTC and geometric increments alongside prediction loss.
+We also fit a single scalar phase-mixture weight on the source training rows alone. Searching the specified 101-point grid gives event weight 0.31. This is a train-calibrated simple baseline, evaluated once on EvTTC.
+\begin{table}[htbp]
+\centering\small\input{tables/consolidation_heads}
+\caption{Matched final-head fitting. Values are the mean and sample standard deviation of the three seed-level scores; predictions are not ensembled. The scalar mixture has one fitted coefficient and no seed-dependent optimization.}
+\label{tab:revision-heads}
+\end{table}
 
-In the synthetic controls, a temporal-residual objective recovered more dynamics than variance regularization when nuisance features changed slowly. Making those nuisances vary independently across frames reversed the ordering. By varying nuisance dynamics independently of the target motion, this controlled construction shows how the choice of predictable signal changes the ordering of the objectives, consistent with the slow-feature concern raised by \citet{slowfeatures}. Testing that mechanism on real driving data requires interventions on the nuisance signal. \evidence{E02,E12}
+\subsection{What the controlled comparison establishes}
+Real events improve MAE over the zero-event control for one seed and worsen it for two. The mean zero-minus-real difference is $-0.0094$\,s, with a descriptive recording-bootstrap interval spanning zero. Inverse-TTC and phase corrections are also indistinguishable at this resolution. We average paired losses over the three fixed seeds before resampling complete recordings, preserving query correspondence; seeds do not multiply the number of independent recordings.
+\begin{table}[htbp]
+\centering\small\input{tables/consolidation_paired}
+\caption{Paired differences after averaging query losses over fixed head seeds; 10,000 complete-recording resamples across 32 recordings. These intervals describe the inspected cohort and condition on the shared upstream models.}
+\label{tab:revision-paired}
+\end{table}
 
-On real data, the V8 frozen and partially fine-tuned JEPA encoders failed the benefit criterion against scratch, random-frozen, and shuffled-future controls. A separate fixed-teacher pilot reduced future-state loss while worsening teacher-increment loss and failed to outperform both static and shuffled-future controls on annotated log-height change. Across these tests, predictive pretraining fell short of the prescribed benefit criteria. The role of background appearance in the real-data result is an open attribution question. Appendices~\ref{sec:early}, \ref{sec:methods}, and~\ref{app:physics-followup} give the objective definitions and controls. \evidence{E23,E24,N04}
-
-These findings motivate measuring expansion directly at the fusion interface and checking it at the TTC output. They leave open whether other predictive targets, sampling schemes, or training budgets can learn a better motion representation.
-
-\subsection{Correct phase rather than only selecting an expert}
-A hard router is limited to the predictions its experts already make. SIMPLEX-T can move beyond them by learning a correction around their median phase from masked temporal context. The auxiliary cost head describes the original experts; evaluating the corrected prediction's risk requires a corresponding risk target. Phase quantiles also need empirical calibration before use as collision probabilities. \evidence{M_TEMPORAL_MODEL,M_PHASE_CONTRACT}
-
-Extending the context from eight history slots (H8) to sixteen (H16) lowered MiD for each of three head seeds on the initial exploration cohort. The paired interval across all seeds excludes zero. However, one seed had already informed exploration; the two new seeds alone give a difference of $-2.42$ MiD with interval $[-5.24,0.04]$. All heads shared the same upstream producers. Figure~\ref{fig:main-h16} shows both summaries; H8 remained the selected candidate. \evidence{M_SIMPLEX}
-\begin{figure}[htbp]
-\centering\includegraphics[width=.97\linewidth]{figures/rev_h16.pdf}
-\caption{\textbf{H16 minus H8 on nine development sequences.} Points show paired MiD differences and lines show the recorded hierarchical 95\% intervals. The highlighted estimate uses only the two new head seeds; its interval includes zero. \evidence{M_SIMPLEX}}
-\label{fig:main-h16}
-\end{figure}
-
-Keeping all experts produced the lowest score in the removal study: FULL-C0 reached 121.40 MiD, compared with 127.79 for A5-only, 126.70 for C2F-only, and 124.67 for A5 plus PAIR.
-
-In the temporal-aggregation comparison, set aggregation with age gave 122.44 MiD; removing explicit time gave 123.69. Because the frozen experts can already encode temporal information, the remaining differences cannot be assigned to recurrence alone.
-
-Transport probes improved on destructive controls, but stronger calibrated or pooled alternatives narrowed that advantage. \evidence{M_SIMPLEX,M_STAGE61,M_STAGE62}
-
-\subsection{Adaptation trades error between TTC ranges}
-Changes to the readout often improved imminent-contact estimates at the expense of receding motion. The band-reweighted phase-loss arm (V14 M1--L0) reduced crucial MiD from 156.83 to 134.47 but increased negative MiD from 61.38 to 84.21. V17's geometry bypass lowered the aggregate score on the development-used V split from 106.545 to 102.762 while worsening MAE; its head seeds shared encoders. Across V14--V17, loss reweighting, residual range, sampling, numerical precision, clipping, geometry bypasses, and height readouts failed to meet all acceptance criteria. Invalid height-derived predictions were retained in scoring. The next experiments therefore allowed the measurement model itself to adapt. \evidence{L02,L50--L52}
-
-V18 full adaptation reduced aggregate MiD on H from 112.29 to 78.92 and crucial MiD from 157.27 to 95.85, while negative MiD rose from 65.52 to 87.09. The model passed the overall sign criterion but remained inaccurate in the magnitude of receding TTC. V19 increased the training weight on negative targets and recovered some negative-range accuracy and MAE, at the cost of aggregate and crucial-range error. \evidence{L10,L24,L25,L30}
-
-\subsection{Events help in the matched V18 comparison}
-Supplying real events improved V18 C1 relative to its equal-capacity ZERO control. TRUE-event fusion achieved aggregate MiD $87.29\pm0.87$, compared with $92.47\pm0.16$; dispersion is the sample standard deviation of the scalar scores across seeds. The paired comparison over complete groups also favored TRUE. Each seed repeated C1 adaptation and head fitting from the same A5 initialization and RGB context model. This experiment uses V18 C1, whereas the final forty-sequence system derives from V16. \evidence{L03,L31--L33}
-\begin{figure}[htbp]
-\centering\includegraphics[width=.97\linewidth]{figures/rev_v18.pdf}
-\caption{\textbf{Real versus zeroed events in V18 C1.} Each line pairs TRUE and ZERO scores for one adaptation/head seed. The models share the A5 initialization and RGB context model, and TRUE uses the observed event features. \evidence{L03}}
-\label{fig:main-v18}
-\end{figure}
-
-Section~\ref{sec:v16-selection} separates the historical V16 selection and its four-fold context cross-fit from the later five-rotation TRAIN40 refit. The V18 crucial-band gain remained below its registered threshold. Its comparison with the preserved V16 model gave an interval of approximately $[-3.69,0.14]$, and no V18 candidate met all acceptance criteria. Testing ZERO events and equal temporal support in the final forty-sequence recipe would be needed to extend the attribution result to the submitted system.
+The learned readouts improve on the calibrated scalar mixture, but the tests give no consistent incremental benefit from event access and no observed advantage of phase over the tested inverse-TTC parameterization. A useful RGB correction, rather than event complementarity alone, can therefore account for the readout's gain on this cohort. The prior positive event control used a different adapted model; Appendix~\ref{app:design-history} preserves that result without transferring its attribution to the submitted system. A matched hidden-feature fusion model and genuinely unused recordings remain necessary to compare broader fusion designs.
 \FloatBarrier

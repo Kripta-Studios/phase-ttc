@@ -51,7 +51,11 @@ def prepare(root: Path) -> tuple[dict, dict, dict]:
         ]
     wanted = {r["query_id"] for r in rows}
     shards = {}
-    for path in (base / "shards").glob("*.json"):
+    shard_paths = list((base / "shards").glob("*.json"))
+    shard_paths += list(
+        (root / "output/scientific_revision_20261111/recovered_features").glob("*.json")
+    )
+    for path in shard_paths:
         record = read(path)
         token = record["query_id"]
         if token in wanted:

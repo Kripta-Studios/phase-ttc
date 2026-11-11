@@ -1,6 +1,8 @@
 """A manuscript package must not silently deliver a stale scientific build."""
 
+import hashlib
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -95,3 +97,35 @@ def test_source_archive_keeps_audited_logs_but_excludes_latex_logs(tmp_path, mon
     actual = {p.relative_to(tmp_path).as_posix() for p in package.publication_files()}
     assert kept <= actual
     assert actual.isdisjoint(excluded)
+
+
+def test_original_asset_inventory_uses_manifest_not_local_build_products(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(SCRIPT.parent))
+    package_spec = importlib.util.spec_from_file_location(
+        "paper_package_inventory", SCRIPT.with_name("package_expanded.py")
+    )
+    package = importlib.util.module_from_spec(package_spec)
+    package_spec.loader.exec_module(package)
+    monkeypatch.setattr(package, "ORIGINAL", tmp_path)
+    figures = tmp_path / "figures"
+    figures.mkdir()
+    asset = figures / "diagram.pdf"
+    asset.write_bytes(b"published figure")
+    (figures / "diagram.png").write_bytes(b"local preview")
+    (figures / "diagram.aux").write_bytes(b"local TeX product")
+    (tmp_path / "SOURCE_MANIFEST.json").write_text(
+        json.dumps(
+            {
+                "files": [
+                    {
+                        "path": "figures/diagram.pdf",
+                        "sha256": hashlib.sha256(asset.read_bytes()).hexdigest(),
+                    }
+                ]
+            }
+        )
+    )
+    assert package.original_assets("figures") == [asset]
+    asset.write_bytes(b"changed published figure")
+    with pytest.raises(ValueError, match="Original published asset changed"):
+        package.original_assets("figures")

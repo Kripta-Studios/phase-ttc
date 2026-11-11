@@ -1,0 +1,191 @@
+{
+  "archive_sha256": "8abab43e0fbef70252e7c3fd00111e11ca77daba908fc0507ae36876334602ac",
+  "members": {
+    "artifacts/scientific_recovery_v8/jepa/aggregate_seed7.json": "bc540cc21ddb317f48d4d026103f8e0b9cbf211b0b7eb2a5d75665881541c378",
+    "artifacts/scientific_recovery_v8/jepa/d0/fold0/seed7/oof_predictions.json": "fbe9fd7d7e4861f89ef4e97b90fd86ee6049e32f911964f045b5eb9ed43dbee7",
+    "artifacts/scientific_recovery_v8/jepa/d0/fold1/seed7/oof_predictions.json": "268d5b30c6ae8ecff07ce7abe5a50e77a93eb9b451c5ebf7eefb32956673ea34",
+    "artifacts/scientific_recovery_v8/jepa/d0/fold2/seed7/oof_predictions.json": "79f57612fd03e24510a88dca2d09c397318de0d39a3eae9fb607301e584a19da",
+    "artifacts/scientific_recovery_v8/jepa/d1/fold0/seed7/oof_predictions.json": "bd58a58f3c9fc34ca0b0fe6cb71ab4e3ac3dd972ccc6081c481d8dfcbaa2d108",
+    "artifacts/scientific_recovery_v8/jepa/d1/fold1/seed7/oof_predictions.json": "f4827ff3f49636b47bafad5ad1de07c90a1f45081f987d9d6d7255f9fff2b178",
+    "artifacts/scientific_recovery_v8/jepa/d1/fold2/seed7/oof_predictions.json": "d700d6b225e5d4c9c1d5ed3e0df54268ac9bcf6ba747e36ad6351fced50a7351",
+    "artifacts/scientific_recovery_v8/jepa/d2/fold0/seed7/oof_predictions.json": "794152fa94962645239aa19a2a94887536cd43f9527de9589fa4fcfff743ae13",
+    "artifacts/scientific_recovery_v8/jepa/d2/fold1/seed7/oof_predictions.json": "86f05ebb5e0addb820b14cd834688ea50a2df672215c1310c70a159215b36329",
+    "artifacts/scientific_recovery_v8/jepa/d2/fold2/seed7/oof_predictions.json": "1efcdd55af543dbd3468f47df987ed1f6b1627a886ccb3df8cb16fc94dc873b3",
+    "artifacts/scientific_recovery_v8/jepa/d3/fold0/seed7/oof_predictions.json": "c6d2e2b3b2e4fd8f1b8cf2a38201333ef64c58dbe1a7c20a0dc19b89ca9a6fa8",
+    "artifacts/scientific_recovery_v8/jepa/d3/fold1/seed7/oof_predictions.json": "36f4efb84c34c9d0a8df1de0146a6d445db47ce4400012d1a5d89ab9f0fe7b55",
+    "artifacts/scientific_recovery_v8/jepa/d3/fold2/seed7/oof_predictions.json": "a38c9939d9b7f4a2c1a5f6c81947fb2d40a663ee510f945775042de9efda9eca",
+    "artifacts/scientific_recovery_v8/jepa/d4/fold0/seed7/oof_predictions.json": "ab933cb83f3e22d851296d767fe4f6ea4aff64ad032b93a4bc0312b7916bedcc",
+    "artifacts/scientific_recovery_v8/jepa/d4/fold1/seed7/oof_predictions.json": "adb5bb30b2b9afd679c70ac87192e55f7faca0da210bec7a4038c4c30b90b1d3",
+    "artifacts/scientific_recovery_v8/jepa/d4/fold2/seed7/oof_predictions.json": "d92334b4c19444e051c16d798ffaee06ba7c8c3828409c7ef08fe057295f297b"
+  },
+  "seed": 7,
+  "folds": 3,
+  "groups": 9,
+  "metric": "sequence_macro_paper_MiD_overall",
+  "scores": {
+    "D0": {
+      "0.01": 265.19844328963075,
+      "0.05": 286.34750633312103,
+      "0.1": 277.4024343583944,
+      "0.25": 270.97228489931217,
+      "1.0": 276.35482485597265
+    },
+    "D1": {
+      "0.01": 379.8185609598713,
+      "0.05": 369.40210235375775,
+      "0.1": 361.6761076485349,
+      "0.25": 370.86855202080346,
+      "1.0": 365.4361269359513
+    },
+    "D2": {
+      "0.01": 380.0908865466206,
+      "0.05": 380.00698977230076,
+      "0.1": 380.0415504762062,
+      "0.25": 379.9695905631838,
+      "1.0": 380.1151544704478
+    },
+    "D3": {
+      "0.01": 379.51114923297644,
+      "0.05": 379.39517853611403,
+      "0.1": 379.40723529772185,
+      "0.25": 379.26422758161596,
+      "1.0": 379.62429360013476
+    },
+    "D4": {
+      "0.01": 379.01811891127824,
+      "0.05": 379.0125499330351,
+      "0.1": 378.88837047311773,
+      "0.25": 378.8938326849793,
+      "1.0": 379.1200906936665
+    }
+  },
+  "original_E23_scores": {
+    "D2": {
+      "arm": "D2",
+      "bootstrap": {
+        "candidate_mid": {
+          "finite_draw_fraction": 1.0,
+          "lower_95": 356.97583032325446,
+          "median": 380.3288393994834,
+          "upper_95": 404.217764516643
+        },
+        "delta_candidate_minus_reference": {
+          "finite_draw_fraction": 1.0,
+          "lower_95": 89.74744192046785,
+          "median": 120.96742392270544,
+          "probability_candidate_lower_mid": 0.0,
+          "upper_95": 147.37431428932084
+        },
+        "method": "hierarchical_sequence_then_track_cluster_bootstrap",
+        "resamples": 5000,
+        "seed": 20260814,
+        "sequence_count": 9
+      },
+      "gate_decision": {
+        "causally_positive": false,
+        "contract": "scientific_recovery_v8_jepa_causal_gate_v1",
+        "gate_config": {
+          "contract": "scientific_recovery_v8_jepa_causal_gate_v1",
+          "fractions": [
+            0.01,
+            0.05,
+            0.1,
+            0.25,
+            1.0
+          ],
+          "max_full_label_regression_mid": 3.0,
+          "required_failure_rate": 0.0,
+          "required_paired_ci95_high": 0.0
+        },
+        "gates": {
+          "all_finite": true,
+          "better_than_d1": false,
+          "better_than_d4": false,
+          "better_than_scratch": false,
+          "full_label_regression_within_3_mid": false,
+          "paired_ci95_below_zero_vs_scratch": false,
+          "zero_failure_rate": true
+        },
+        "interpretation": "no causal JEPA claim permitted"
+      },
+      "low_label_auc_mid": 91.1722359457638,
+      "mid_by_fraction": {
+        "0.01": 379.94785474934366,
+        "0.05": 379.88479399856993,
+        "0.1": 379.94027133276495,
+        "0.25": 379.79247983419714,
+        "1.0": 379.9878117604988
+      }
+    },
+    "D3": {
+      "arm": "D3",
+      "bootstrap": {
+        "candidate_mid": {
+          "finite_draw_fraction": 1.0,
+          "lower_95": 356.6650448390385,
+          "median": 379.9477135304901,
+          "upper_95": 403.52289667904506
+        },
+        "delta_candidate_minus_reference": {
+          "finite_draw_fraction": 1.0,
+          "lower_95": 88.86634406072349,
+          "median": 120.4920994811082,
+          "probability_candidate_lower_mid": 0.0,
+          "upper_95": 147.0505708228181
+        },
+        "method": "hierarchical_sequence_then_track_cluster_bootstrap",
+        "resamples": 5000,
+        "seed": 20260814,
+        "sequence_count": 9
+      },
+      "gate_decision": {
+        "causally_positive": false,
+        "contract": "scientific_recovery_v8_jepa_causal_gate_v1",
+        "gate_config": {
+          "contract": "scientific_recovery_v8_jepa_causal_gate_v1",
+          "fractions": [
+            0.01,
+            0.05,
+            0.1,
+            0.25,
+            1.0
+          ],
+          "max_full_label_regression_mid": 3.0,
+          "required_failure_rate": 0.0,
+          "required_paired_ci95_high": 0.0
+        },
+        "gates": {
+          "all_finite": true,
+          "better_than_d1": false,
+          "better_than_d4": false,
+          "better_than_scratch": false,
+          "full_label_regression_within_3_mid": false,
+          "paired_ci95_below_zero_vs_scratch": false,
+          "zero_failure_rate": true
+        },
+        "interpretation": "no causal JEPA claim permitted"
+      },
+      "low_label_auc_mid": 91.05025051528933,
+      "mid_by_fraction": {
+        "0.01": 379.52246708405386,
+        "0.05": 379.3797236863657,
+        "0.1": 379.38982093597247,
+        "0.25": 379.31642018832736,
+        "1.0": 379.66899763291104
+      }
+    }
+  },
+  "recomputed_minus_E23": {
+    "D2_0.01": 0.14303179727693305,
+    "D2_0.05": 0.12219577373082302,
+    "D2_0.1": 0.10127914344127475,
+    "D2_0.25": 0.1771107289866336,
+    "D2_1.0": 0.12734270994900498,
+    "D3_0.01": -0.011317851077421892,
+    "D3_0.05": 0.01545484974832334,
+    "D3_0.1": 0.017414361749388263,
+    "D3_0.25": -0.05219260671140091,
+    "D3_1.0": -0.044704032776280656
+  },
+  "reproduces_E23": false
+}
