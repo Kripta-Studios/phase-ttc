@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-11",
+  "scientific_revision_commit": "72e18ae53ccced7d276c3a73b1799deee28e0991",
+  "paper": {
+    "pages": 81,
+    "main_pages_including_references": 17,
+    "pdf_sha256": "63f03d59f2e430bcbf62db0a0201f32bf30c31c71ea07aaae5d21f84f65ada7d",
+    "tex_sha256": "8a721139246837ffbaf98db77853be341107e34c859729fb26ede756ec764462",
+    "source_zip_sha256": "111e545e8c340a905889312bc33e8ee715fc5d76ffbbd41712a26f8ec032c9d0",
+    "scientific_inputs_verified": 374,
+    "source_archive_files": 475,
+    "visual_review": "paper/from_motion_to_time_20261102/updates/review/scientific_consolidation_20261111.json"
+  },
+  "website": {
+    "release": "20261111-scientific-consolidation",
+    "project_url": "https://schwiedop.com/PHASE-TTC/",
+    "paper_url": "https://schwiedop.com/papers/phase-ttc/",
+    "download_bytes_verified_over_https": ["pdf", "tex", "source_zip"],
+    "viewer_loaded_pages": 81,
+    "updated_languages": ["en", "es"]
+  },
+  "revision_checks": {
+    "ci": "https://github.com/Kripta-Studios/phase-ttc/actions/runs/43074782907",
+    "paper": "https://github.com/Kripta-Studios/phase-ttc/actions/runs/43074782857",
+    "conclusion": "success"
+  },
+  "scope": "Completed available-data comparisons and manuscript consolidation. Released official-model weights and official score are unchanged.",
+  "remaining_scientific_requirements": "docs/scientific_consolidation_20261111.json"
+}

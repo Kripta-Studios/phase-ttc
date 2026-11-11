@@ -38,7 +38,7 @@ Frame the article as an evaluated system. A universal superiority claim for the 
 - [x] 3. Run matched final-pipeline fusion comparisons using identical upstream outputs. Recover final-fit features for equal-capacity head controls where available; distinguish inference interventions from retrained controls.
 - [x] 4. Reconcile V18 populations, recover the V8 controls, investigate historical numerical drift, and audit public-data options for genuinely independent evaluation.
 - [x] 5. Rewrite the main narrative, add a component input/output/supervision table, consolidate repeated material, and integrate the new results without claiming unmeasured superiority.
-- [ ] 6. Regenerate numerical tables, compile and visually inspect the complete PDF, verify source package and tests, obtain final review, and update the authorized GitHub delivery.
+- [x] 6. Regenerate numerical tables, compile and visually inspect the complete PDF, verify source package and tests, obtain final review, and update the authorized GitHub delivery.
 
 ## Execution record
 
@@ -53,3 +53,10 @@ mismatch; historical native parity and organizer-score discrepancies remain
 explicit. A fresh independent review found no critical numerical/leakage/control
 defect and identified two stale historical statements, both corrected. The first
 PDF render passed all layout checks and was visually inspected throughout.
+
+Final delivery: 81-page PDF (17-page main article including references), source
+archive and all 374 scientific inputs verified. GitHub revision CI and paper
+workflows passed at `72e18ae5`. Website English/Spanish copy and downloadable
+PDF/TeX/ZIP updated; downloaded hashes match local files. Delivery receipt:
+`docs/scientific_revision_delivery_20261111.json`. Unresolved scientific
+requirements remain in `docs/scientific_consolidation_20261111.json`.
