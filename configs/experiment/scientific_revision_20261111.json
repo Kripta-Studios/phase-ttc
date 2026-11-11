@@ -1,0 +1,31 @@
+{
+  "schema": "phase_ttc_scientific_revision_v1",
+  "scope": "Retrospective matched development diagnostics; no independent-test claim",
+  "base_commit": "7ec20a12f4df0526c556c31e1bbde5e3f5215497",
+  "adaptation": {
+    "population": "434 corrected public-target competition correspondences",
+    "arms": ["historical_original", "replayed_original", "geometry_only", "geometry_with_original_fallback", "fixed_half_inverse_rate", "released_router"],
+    "fixed_mixture_weight": 0.5,
+    "mixture_coordinate": "inverse TTC; bounded emitted TTC at 60 seconds",
+    "fallback": "same-replay original output whenever geometric estimate is unavailable",
+    "masks": ["all_rows", "common_geometry_support", "road", "without_Slider750", "each_recording"],
+    "processing": ["raw_signed", "organizer_style_offline_negative_interpolation"],
+    "primary": "raw signed MAE on common geometry support; full-coverage fallback MAE also mandatory"
+  },
+  "fusion": {
+    "population": "460 corrected transfer queries from 32 historically inspected recordings",
+    "arms": ["released_fusion", "rgb_context", "event_context", "fixed_half_phase", "fixed_half_inverse_rate", "fixed_half_ttc"],
+    "fixed_mixture_weight": 0.5,
+    "same_upstream_predictions": true,
+    "interpretation": "Readout comparisons conditional on the frozen final producers and their temporal support; not equal-capacity retraining or a latent-fusion test"
+  },
+  "statistics": {
+    "metrics": ["MAE_s", "median_AE_s", "p95_AE_s", "RTE_pct", "coverage"],
+    "bootstrap_unit": "whole recording",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261111,
+    "interval": "paired percentile 95%; descriptive and conditional on the inspected cohort"
+  },
+  "selection": "None: all declared arms and populations are reported",
+  "independent_data": "User reports no known unused recordings; public compatibility audit required"
+}
