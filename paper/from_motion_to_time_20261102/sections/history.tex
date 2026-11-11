@@ -1,90 +1,39 @@
-\section{Experimental chronology}
+\section{Evolution of experimental methodology and integrity controls}
 \label{sec:history}
 
-Development began in June 2026 with the E-JEPA-TTC hypothesis: predictive latent
-learning might improve event-based TTC estimation. The research then moved
-through geometry and cross-time transport to temporal context and RGB--event
-fusion. Several evaluation corrections changed which results could support a
-claim.
+PHASE-TTC developed from predictive event representations into geometric motion estimation, phase-domain temporal refinement, and event--RGB fusion. The methodological changes below explain how evaluation controls evolved alongside the model. Historical experiment identifiers and configurations remain in the evidence registry; Table~\ref{tab:source-revisions} collects the associated code revisions.
 
-\subsection{June--July: predictive learning and evaluation corrections}
+\subsection{Predictive representations and causal measurements}
+Initial experiments established indexed EvTTC access, voxel representations, a supervised TinyCNN, and geometric and event-rate references. Multihorizon predictive learning, frozen-encoder probes, and low-label comparisons tested the original E-JEPA-TTC hypothesis. Token transformers, tubelets, navigation conditioning, and rollout probes extended the temporal models.
 
-The first experiments established indexed EvTTC access, voxel representations,
-a TinyCNN, and geometric/event-rate baselines. JEPA pretraining with
-latent-variance regularization led to multihorizon prediction, frozen-encoder
-probes, and low-label comparisons. Token transformers, tubelets, deep token
-supervision, navigation conditioning, and rollout probes tested other forms of
-temporal information.
+Causal validity required changes to both the measurements and evaluation procedure. Centered geometric derivatives used future observations and were replaced with past-only derivatives. This annotation-assisted reference was evaluated on its supported queries, with coverage reported separately from methods using different inputs. The same distinction later informed the separation of sensor support, prediction availability, and complete-system accuracy.
 
-Centered derivatives gave the geometric baseline access to future observations.
-I replaced them with past-only derivatives and reported this annotation-assisted
-baseline on its supported queries, separate from models with different inputs or
-coverage.
+\subsection{Sequence isolation and initialization dependence}
+The early CPLA-high comparisons reused inspected sequences and shared one self-supervised initialization across three fine-tuning seeds. They consequently measure downstream optimization variability on development data. Checkpoint provenance, cache versions, nested label subsets, and matched-scratch comparisons were added to the protocol, and these runs were excluded from independent-test conclusions.
 
-On 13 July, I reclassified the inspected CPLA-high results as reused-test
-diagnostics (\texttt{26480260}). Their three fine-tuning seeds shared one SSL
-initialization, so the spread reflects downstream optimization conditional on
-that parent. I removed the runs from final-test claims and added checkpoint,
-cache-version, nested-subset, and matched-scratch checks. No repartition of the
-inspected sequences could recreate a blind holdout.
+A separate validation-path error recorded completion without executing the intended evaluation matrix. The corrected path executes the matrix and checks its results; the earlier completion markers provide no experimental evidence. This correction distinguishes verified evaluation outputs from the status of a software run.
 
-An eAP smoke-validation defect wrote success markers without running the matrix
-(\texttt{1f9e2f99}). I replaced the faulty path with the matrix invocation and
-added a regression test; the old markers were discarded as evidence.
+The first grouped geometry study also initialized held-out folds from a representation trained on all nine development sequences. Fold-specific producer training removed that overlap before downstream fitting. Checkpoint selection and earlier sequence exposure still define these studies as development comparisons. \evidence{E03}
 
-\subsection{August: geometry, transport and fold-local parents}
+\subsection{Geometry, transport, and controlled model selection}
+Object-centred experiments separated absolute geometry from changes in apparent scale. Foreground supervision, RGB-derived segmentation masks, and relational distillation tested spatial information; cross-time transport tested motion correspondence. Their supervision sources are recorded separately from their inference modalities.
 
-August introduced physics-constrained FlowMimic, dense LevelDynamics,
-object-centric representations, and matched Garl comparisons. The A-series
-varied foreground geometry and decoder capacity, then added SAM supervision and
-DINOv3 relational distillation. A4 used an RGB teacher; A5 learned local
-cross-time transport on disjoint training rows. These stages no longer tested
-the original label-free JEPA objective alone.
+Scaling the relationally distilled student from 2,048 to 8,192 training examples while increasing its train-selected distillation weight reduced MiD from 322.7 to 262.8 at unchanged capacity. The missing same-size $\lambda=4$ control prevents separate attribution to data and loss weight. This single-seed result preceded the fold-local recovery studies. \evidence{H_A4_S1}
 
-On 13 August, I found that several grouped runs inherited an A4 parent trained
-on their held-out outer groups (\texttt{de3349fd}). Those summaries remain
-parent-exposed diagnostics. The corrected study trained A4 inside each outer
-fold, keeping the held-out group out of both representation learning and
-downstream fitting.
+The fold-local transport studies compared accuracy and geometric retention under matched samples and optimization budgets. No model in the two initial recovery campaigns met all selection criteria. Complementary errors between the baseline and coarse-to-fine producers then motivated a prospective nested-routing comparison, accompanied by frozen, partial-finetuning, random, scratch, and shuffled-future predictive-learning controls. \evidence{E03--E11,E16--E24}
 
-V6 and V7 produced no promoted model. A post-hoc A5/C2F routing result from V7
-became a prospective V8 hypothesis. V8 then tested temporal mechanisms and
-nested routing after correcting ROI quantization, timestamp bins, and bounded
-HDF5 reads. Unsupported predictions stayed in the evaluation as named failures.
+\subsection{Temporal context and multimodal estimation}
+Phase-domain studies examined incremental transport information, raw timing, expert routing, risk estimation, and context with fixed optimization budgets. The original residual-context campaign completed 72 fits and 180,000 saved updates. Its eight-slot history improved on the current-observation head by 11.3 MiD across three head seeds, with a hierarchical 95\% difference interval of $[-16.2,-6.6]$ on reused development data. Trained reversal, repeated-current, selection, and latent-input controls constrain the mechanism interpretation (Table~\ref{tab:original-t6}). A later extension completed 24 fits and 60,000 updates, reusing original H8 endpoints; the two totals describe distinct campaigns. Short- and long-history heads shared upstream producers. Capacity comparisons retained incomplete training endpoints as partial records. \evidence{H_T6,M_SIMPLEX}
 
-\subsection{September--October: context and multimodal measurement}
+Efficient input preparation and the RGB port added native sensor clocks and transfer evaluation.
 
-X0/X1 and Stages 61--76 tested phase dynamics, raw timing, routing, risk, and
-context under fixed optimization budgets. Nested producers excluded held-out
-groups from training, and incomplete runs were not promoted to completed
-evaluations.
+The intervening multimodal selection campaign completed 32 fits and 80,000 updates. Its phase-only correction passed the original 2\% band safeguards in three head seeds, retaining seed 7. This historical selection used in-sample stacking on H; a separate four-fold H cross-fitting experiment failed the MAE criterion. Both differ from the subsequent five-rotation TRAIN40 refit. Section~\ref{sec:v16-selection} records their roles and the different event controls used in V16 and V18. \evidence{H_V16}
 
-SIMPLEX-T completed 24 head fits and 60,000 updates. Its H8/H16 comparisons
-retrained heads while sharing upstream producers. Efficient-context work then
-addressed TRAIN40 inputs and execution cost; the RGB port added native sensor
-clocks and transfer studies. The record also retains failed geometry, clipping,
-and nonlinear-readout controls from the range and representation studies.
+Later range and representation studies tested clipping, nonlinear readouts, geometry bypasses, encoder adaptation, and loss weighting. Several variants improved individual TTC bands while worsening receding-motion estimates or another selection metric. None of the joint-measurement variants met the complete selection criteria. The earlier phase-correction recipe remained the reference for the final refit, while these unsuccessful variants motivated separate negative-range controls. \evidence{M_SIMPLEX,L02,L10,L24,L25,L30}
 
-The multimodal V16 phase-correction family supplied the final-refit recipe.
-V18 tested joint measurement, correspondence, geometric readout, predictor
-capacity, and encoder adaptation. Some arms improved individual bands, but none
-passed every promotion criterion; V18 closed as \texttt{NO\_CANDIDATE}. V19
-then tested negative-loss weighting and fixed expert selection.
+\subsection{Final refitting, adaptation, and execution}
+The submitted TRAIN40 lineage follows the phase-correction recipe, using group-separated auxiliary models for out-of-fold fitting and all forty sequences for deployed producers. The official GarlTTC Test evaluation covers the resulting complete system (Section~\ref{sec:official}).
 
-\subsection{October: final refit and causal runtime}
+Runtime studies examined persistent histories, exact normalization, graph execution, crop reuse, and multiple objects. Timing separates initialization from measured arrivals and successful outputs from failed requests. Smaller event packets preserved numerical parity in the tested setting; throughput requires a separate paced measurement.
 
-The final TRAIN40 refit used group-separated auxiliary producers for
-out-of-fold inputs and full-TRAIN40 producers for deployment. It followed the
-V16 recipe but trained a new model lineage. The submission preserved query-token
-identity and complete prediction coverage, and its official score placed
-PHASE-TTC first on the public GarlTTC Test leaderboard on 28 October 2026
-(Section~\ref{sec:official}).
-
-Runtime experiments covered persistent histories, exact normalization, graph
-execution, crop reuse, and multiobject replay. Timing reports separated startup
-from measured arrivals and counted valid TTC outputs separately from failed acknowledgements.
-The 5\,ms ingestion experiment kept 20\,ms output queries and established
-numerical parity for that setting; it did not measure throughput.
-
-\subsection{29 October--2 November: adaptation and controlled follow-ups}
-The subsequent work recovered target correspondence for all 434 EvTTC queries, fitted a compact quality adapter over frozen TRAIN40 components, and tested canonical elapsed-time handling. The delivered adapter and the later rejected canonical refits remain distinct. Physical-measurement and fixed-teacher predictive-learning experiments produced negative controls; a separate eAP detection branch investigated localization, evaluation alignment and geometric priors. Sections~\ref{sec:quality-adaptation} and~\ref{sec:canonical-cadence}, together with Appendices~\ref{app:physics-followup} and~\ref{app:detection-followup}, describe these additions with their own evidence and exposure histories.
+Subsequent work recovered all 434 local EvTTC targets, fitted the quality-conditioned adapter, and tested canonical cadence throughout the frozen estimator. The adapter and later cadence refits remain separate variants. Predictive-learning and physical-measurement controls, together with a separate detection study, examine the remaining representation and localization dependencies. Sections~\ref{sec:quality-adaptation} and~\ref{sec:canonical-cadence}, and Appendices~\ref{app:physics-followup} and~\ref{app:detection-followup}, report their protocols and outcomes.

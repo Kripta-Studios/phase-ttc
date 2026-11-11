@@ -1,0 +1,40 @@
+{
+  "edited_sections": [
+    "paper/from_motion_to_time_20261102/sections/quality_adaptation.tex",
+    "paper/from_motion_to_time_20261102/sections/runtime.tex",
+    "paper/from_motion_to_time_20261102/sections/canonical_cadence.tex",
+    "paper/from_motion_to_time_20261102/sections/physics_followup.tex"
+  ],
+  "main_tex_integration_required": false,
+  "new_evidence_ids_reserved_by_parent": {
+    "A01": "F1 all32 refit, local TARGET_LEDGER/COMPLETE/three-seed START/checkpoint-hash ancestry and preparation/training scripts",
+    "A02": "Grouped F1 seven-family/three-seed results, long-TTC regression, nominal80 observed coverage, Slider500 regression",
+    "A03": "Older401 gates evaluated versus all_data_refit, equal-capacity control and geometric support limits",
+    "A04": "117 startup fits,688 inverse route, population/exposure change, regression and calibration",
+    "A05": "312 completed head fits,96+48+24+48+48+48, six failed-launch fits outside total, promotion rejected",
+    "A06": "Direct event-expansion negative,62/77 availability, matched geometry, full fallback comparison, GPU76/77 then hybrid77/77",
+    "A07": "Final2608 fit excluded road/Slider groups, originalF0 expert lineage,1.740290s decomposition and hardware/clock scope",
+    "A08": "Native historical parity5,805 comparisons,504 failures, median/p95/p99/max magnitudes"
+  },
+  "existing_evidence_ids_reused": {
+    "N01": "Exact original evaluator_audit.json source with both raw and offline-processed434 statistics",
+    "L40": "Original250 arrival_receipts and250 object_records; per-response recomputation"
+  },
+  "generated_read_only_derivatives": {
+    "all32_cache_ancestry.json": "Bounded projection of249 affected candidate rows (239used,10excluded), exact source receipt hashes, all3F1 seeds, verified distinctF0 upstreams",
+    "runtime_recomputed.json": "250-record p95=29.143155ms;201 responses >=20ms; arrival/availability clocks",
+    "raw_processed_434.json": "Four exact aggregate score dictionaries from evaluator_audit.json",
+    "source_tables.json": "All source Markdown table cells copied programmatically, with numeric precision retained",
+    "provenance.json": "Source copies with raw SHA256, audit baseline commit SHA256 and CRLF-normalized equality",
+    "source_copies/": "Exact source bytes and small local receipts; full15MB population and full target ledger not copied"
+  },
+  "regeneration_command": ".venv-transfer/Scripts/python.exe tmp/paper_audit_20261104/adaptation/collect_evidence.py",
+  "remaining_scientific_work": [
+    "F1 all32 source assignment is confirmed old; regenerate supervised cache and eligibility then retrain seeds7/13/21 before corrected-weight claims. No retraining performed.",
+    "401/startup/final688 expert weights bind original F0, not contaminated F1. Identified all32 contamination does not propagate through that weight lineage.",
+    "Final434 geometry-only common-support, geometry+fallback full support, fixed mixture and final router matched-cost attribution remains pending.",
+    "No validated probabilistic interval for final2608 router.",
+    "Official Slider750 score reconciliation remains unresolved."
+  ],
+  "validation_scope": "Read-only source extraction and hash/identity checks; git diff --check; no training, inference, compilation, packaging, commits, pushes, downloads, or original-ledger mutations."
+}

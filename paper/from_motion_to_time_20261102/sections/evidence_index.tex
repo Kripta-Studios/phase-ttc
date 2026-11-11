@@ -187,7 +187,7 @@ D13 & \path{data/evttc_competition_predictions.csv} & \path{5e58c4155d90cf5e} \\
 \endgroup
 
 \subsection{Post-hoc paired transfer analysis}
-R01 maps \path{revision/derived_transfer_analysis.json} and the complete paired-bootstrap differences to \path{scripts/prepare_revision.py}. The analysis uses the L46 transfer-query predictions and retains their source digest. Appendix~\ref{app:derived-transfer} gives the sequence-resampling procedure and numerical cases.
+R01 maps the historical \path{revision/derived_transfer_analysis.json} and its paired-bootstrap differences to \path{scripts/prepare_revision.py}. It retains the L46 predictions under the former 468-query target assignment. GT01 and GT02 identify the corrected 460-query projection and analysis under \path{audit_20261104/}. Appendix~\ref{app:derived-transfer} gives the current sequence-resampling procedure and distinguishes the archived historical figures and numerical cases.
 
 \subsection{Deployment metadata and output map}
 R02 maps \path{revision/deployment_contract.json} to the native phase-output transformation and L40 paced-run configuration. It records original source digests, the executed code revision, model identities, hardware, precision, and initialization boundaries. R02 contains metadata from the recorded run rather than a new performance measurement. The build verifies its full digest before regenerating Table~\ref{tab:runtime-setup}.

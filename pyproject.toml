@@ -69,6 +69,9 @@ line-length = 100
 target-version = "py311"
 # Preserve the received handoff byte-for-byte; executable integration lives in src/operational.
 extend-exclude = [
+  # Executed manuscript evidence is hash-bound data, not maintained source.
+  "paper/from_motion_to_time_20261102/audit_20261104/sources",
+  "paper/from_motion_to_time_20261102/data/real_sensor_excerpt/extract-real-replay.py",
   "docs/range_transfer_handoff_20261010",
   "docs/joint_measurement_handoff_20261012",
   "docs/range_readout_handoff_20261012",
@@ -119,6 +122,8 @@ select = ["E", "F", "I", "B", "UP", "N", "ANN"]
 [tool.ruff.format]
 # These files are bound by V18 registration/admission records; lint still applies.
 exclude = [
+  # Preserve the source bytes bound to the published corrected manuscript.
+  "paper/from_motion_to_time_20261102/scripts/build_transfer_revision.py",
   # Detection receipts bind these exact bytes; see ADR-0045 and regression tests.
   "scripts/audit_monocop_gpu_smoke.py",
   "scripts/preflight_detection_rgb_assets.py",

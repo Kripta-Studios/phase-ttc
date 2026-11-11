@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Cohort / model & $n$ & MAE & Median & p95 & RTE (\%) & Macro MAE & Macro RTE (\%) \\
+\midrule
+Corrected extended: PHASE-TTC & 460 & 0.813 & 0.446 & 2.742 & 29.112 & 0.827 & 30.016 \\
+Corrected extended: RGB context & 460 & 0.851 & 0.390 & 3.038 & 29.017 & 0.859 & 29.368 \\
+Corrected extended: Event context & 460 & 1.376 & 0.844 & 3.707 & 58.154 & 1.377 & 57.764 \\
+Corrected extended: Garl full & 460 & 3.166 & 0.635 & 4.781 & 131.268 & 3.041 & 126.366 \\
+Historical46: PHASE-TTC & 46 & 0.141 & 0.136 & 0.250 & 7.748 & 0.159 & 8.419 \\
+Historical46: RGB context & 46 & 0.113 & 0.099 & 0.264 & 6.387 & 0.114 & 6.246 \\
+Historical46: Event context & 46 & 0.286 & 0.241 & 0.692 & 15.822 & 0.289 & 15.566 \\
+Historical46: Garl full & 46 & 0.250 & 0.186 & 0.561 & 13.327 & 0.282 & 14.649 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Corrected-label transfer: 460 eligible of 508 extended candidates across 32 sequences. Historical46 remains separate (46 queries, three sequences). Absolute errors are seconds; macro gives equal weight to sequences.}
+\label{tab:audit-transfer-summary}
+\end{table}

@@ -1,0 +1,170 @@
+{
+  "scope": "Exact archived reports/code and result snapshots; no training, inference, or downloads",
+  "T6": {
+    "fits": 72,
+    "saved_updates": 180000,
+    "queries": 8192,
+    "sequences": 9,
+    "folds": 3,
+    "MiD_by_archived_arm": {
+      "TPR-D0-H1-C64@7": 137.40793338286844,
+      "TPR-D0-H1-C160@7": 139.87523036235734,
+      "TPR-D0-H8-C64@7": 135.35941009423107,
+      "TPR-D0-H8-C160@7": 136.96098632029526,
+      "TPR-D1-H1-C64@7": 134.61892846963258,
+      "TPR-D1-H1-C160@7": 132.83161914274606,
+      "TPR-D1-H8-C64@7": 125.47750398809649,
+      "TPR-D1-H8-C160@7": 121.64633225755644,
+      "PAST_REVERSED-D1-H8-C160@7": 121.2248640871761,
+      "REPEAT_CURRENT-D1-H8-C160@7": 131.21119698206098,
+      "SELECTOR-D1-H8-C160@7": 143.5037302399502,
+      "FREE-D1-H8-C160@7": 121.37467574825402,
+      "TPR-DENSE_OLD-H8-C160@7": 131.5048688866804,
+      "TPR-DIVERSE_MATCHED-H8-C160@7": 122.00733371090608,
+      "TPR-D1-H4-C160@7": 127.17936209238624,
+      "TPR-D1-H16-C160@7": 118.8657389102478,
+      "TRANSFORMER-D1-H8-C128@7": 126.8146846512566,
+      "LATENT-D1-H1-C160@7": 171.05733318368743,
+      "LATENT-D1-H8-C160@7": 184.07229955443705,
+      "LATENT_ZERO-D1-H8-C160@7": 120.9104157782313,
+      "TPR-D1-H1-C160@13": 133.3789883717453,
+      "TPR-D1-H1-C160@23": 133.05934658817205,
+      "TPR-D1-H8-C160@13": 121.8409520461135,
+      "TPR-D1-H8-C160@23": 121.86478063534273,
+      "CURRENT_MEDIAN@fixed": 157.95404121750835,
+      "EWMA_0P3S_H8@fixed": 159.2787954311209,
+      "RISK17@7": 146.0394511387526,
+      "SIMPLEX17@7": 144.02118652894222
+    },
+    "three_head_seed_h8_minus_h1": {
+      "seeds": [
+        7,
+        13,
+        23
+      ],
+      "delta": -11.305963054550181,
+      "hierarchical_ci95": [
+        -16.21443152230172,
+        -6.590477869051094
+      ],
+      "scope": "Paired losses conditioned on shared-producer head seeds and OLD_DEV"
+    },
+    "later_extension": {
+      "fits": 24,
+      "saved_updates": 60000,
+      "reuses_original_H8": true
+    }
+  },
+  "V16": {
+    "fits": 32,
+    "scientific_updates": 80000,
+    "phase_only_replication": {
+      "rows": [
+        {
+          "seed": 7,
+          "MiD": 89.22296001782607,
+          "MAE": 1.869603584397337,
+          "original_2pct_all_gates": true,
+          "large_degradation_pct": -2.648003720520131,
+          "paired_ci95": [
+            -5.737922430198823,
+            -1.3022189428427402
+          ],
+          "source_sha256": "6a74b5773cd742844ce152a02fbd4c7634aa8270793bdafd47dce62fcb255c4a"
+        },
+        {
+          "seed": 13,
+          "MiD": 89.19887466085854,
+          "MAE": 1.8587178099532364,
+          "original_2pct_all_gates": true,
+          "large_degradation_pct": -1.5949340396421596,
+          "paired_ci95": [
+            -5.734940908789747,
+            -1.3502580619471518
+          ],
+          "source_sha256": "a7d2b1754e505aa2578f4d3a0401798a21768c7f1135456fa72513bf70f32adc"
+        },
+        {
+          "seed": 23,
+          "MiD": 89.22002829003586,
+          "MAE": 1.86233693463625,
+          "original_2pct_all_gates": true,
+          "large_degradation_pct": -1.256831266809899,
+          "paired_ci95": [
+            -5.685388400273993,
+            -1.3988404845532494
+          ],
+          "source_sha256": "51364c81ea490e34497e0c0f1f44d9f82d3e093be7e674fb10fa69e9a988b3e3"
+        }
+      ],
+      "all_three_pass_original_2pct": true,
+      "mean_MiD": 89.21395432290683,
+      "std_MiD": 0.013141381684466094,
+      "scope": "Fixed-producer head seeds; exposed V; not complete producer replications or official SOTA"
+    },
+    "crossfit": {
+      "H_folds": 4,
+      "context_fits": 8,
+      "readout_fits": 2,
+      "updates": 25000,
+      "group_macro_bucket_MiD": 90.4129119828427,
+      "MAE_s": 1.8930967126798102,
+      "event_minus_zero": {
+        "delta": -4.505157416969705,
+        "ci95": [
+          -6.766187951416511,
+          -2.2671398803971003
+        ],
+        "draws": 4000
+      },
+      "candidate": null,
+      "event_gates": {
+        "checks": {
+          "aggregate_vs_RGB": true,
+          "mae_vs_RGB": false,
+          "aggregate_vs_fusion": true,
+          "mae_vs_fusion": true,
+          "sign": true,
+          "no_failures": true,
+          "crucial": true,
+          "small": true,
+          "large": true,
+          "negative": true
+        },
+        "eligible": false
+      }
+    },
+    "selection": "Historical same-H stacking; frozen seed7 by protocol; distinct later five-rotation TRAIN40 refit"
+  },
+  "A4_S1": {
+    "parameters": 355118,
+    "seed": 7,
+    "epochs": 18,
+    "selected_epoch": 15,
+    "A4": {
+      "train": 2048,
+      "lambda": 4,
+      "validation": 2048,
+      "sequence_macro_MiD": 322.6813364242674,
+      "failure_pct": 11.083984375,
+      "log_ratio_pearson": 0.2600980103
+    },
+    "S1": {
+      "train": 8192,
+      "lambda": 8,
+      "validation": 2048,
+      "sequence_macro_MiD": 262.8249876110039,
+      "failure_pct": 8.59375,
+      "log_ratio_pearson": 0.4477787018
+    },
+    "matched_Garl": {
+      "sequence_macro_MiD": 203.6341709373319,
+      "failure_pct": 0.0
+    },
+    "8192_lambda4_control": "Preregistered; unexecuted at session closure"
+  },
+  "zero_controls": {
+    "V16": "RGBAnchor zeroes features[:,170:335]; PhaseOnlyAnchor selects [160:170,330:340], preserving event timing/count coordinates [335:340] and zeroing five predictive fields [330:335]",
+    "V18": "RGBAnchorComplement replaces the entire selected-row event_features tensor with zeros; missing-RGB rows retain event_ttc fallback"
+  }
+}

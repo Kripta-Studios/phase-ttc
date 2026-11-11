@@ -1,0 +1,86 @@
+{
+  "revision_date": "2026-11-11",
+  "scope": "Material manuscript corrections and synchronized delivery; no new training, sensor inference or official submission",
+  "pdf_sha256": "fd5c1bc4a5aa0320401b470384563fffde3de4309d55c37aa18befab7deec32a",
+  "tex_sha256": "41c6adc9457439379e724169b4ac44c85fb004d33ad6e8b6e4b441317599b70d",
+  "pages": 77,
+  "captioned_figures": 28,
+  "captioned_tables": 36,
+  "modular_and_consolidated_pdf_text_identical": true,
+  "scientific_content_checks": {
+    "corrected_460_query_abstract": true,
+    "corrected_mean_and_p95": true,
+    "no_superseded_mean_ranking_in_abstract": true,
+    "fold_local_phase20": true,
+    "no_old_fusion_training_description": true,
+    "study_specific_bootstrap": true,
+    "no_universal_sequence_bootstrap_claim": true,
+    "affected_f1_disclosed": true,
+    "pending_matched_geometry_controls": true,
+    "slider_discrepancy_retained": true,
+    "native_and_offline_scoring_distinguished": true,
+    "historical_468_explicitly_superseded": true,
+    "corrected_sequence_figure_caption": true,
+    "no_unresolved_references": true
+  },
+  "verified_additional_source_files": 90,
+  "publication_binding": {
+    "status": "PASS",
+    "scientific_inputs": 315,
+    "artifacts": 3
+  },
+  "latex_checks": {
+    "overfull_boxes": 0,
+    "missing_glyphs": 0,
+    "undefined_references_or_citations": 0,
+    "latex_warnings": 0
+  },
+  "all_fonts_embedded": true,
+  "visual_review": {
+    "all_page_contact_sheets_inspected": true,
+    "pages": 77,
+    "detailed_pages": [
+      1,
+      7,
+      12,
+      13,
+      14,
+      39,
+      42,
+      76,
+      77
+    ],
+    "final_page_text_and_render_hashes_match_inspected_version": true
+  },
+  "focused_tests": {
+    "passed": 19,
+    "failed": 0,
+    "files": [
+      "test_paper_publication_binding.py",
+      "test_corrected_transfer_statistics.py",
+      "test_transfer_target_revision.py"
+    ]
+  },
+  "historical_editorial_receipts": "Earlier dated receipts refer to their own PDF hashes; this receipt covers the corrected delivery",
+  "remaining_experimental_limits": [
+    "Development exposure remains",
+    "Slider-750 official equivalence unresolved",
+    "Matched final geometry/router controls pending",
+    "All-32 F1 requires corrected refitting",
+    "No independently validated final-router intervals",
+    "Sustained physical-camera deadline compliance unproven"
+  ],
+  "standalone_source_archive_validation": {
+    "compiled_in_isolated_directory": true,
+    "pdf_text_identical": true,
+    "page_renders_identical": true,
+    "scientific_inputs_identical": true,
+    "latex_checks": {
+      "overfull_boxes": 0,
+      "missing_glyphs": 0,
+      "undefined_references_or_citations": 0,
+      "latex_warnings": 0
+    },
+    "passes": 3
+  }
+}

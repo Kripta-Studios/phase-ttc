@@ -94,7 +94,10 @@ def main() -> None:
             },
         },
     )
-    torch.jit.script(model).save(str(out / "training/router.ts"))
+    # Python handles Unicode Windows paths that the native TorchScript writer rejects.
+    export_buffer = io.BytesIO()
+    torch.jit.save(torch.jit.script(model), export_buffer)
+    (out / "training/router.ts").write_bytes(export_buffer.getvalue())
     loaded = torch.jit.load(io.BytesIO((out / "training/router.ts").read_bytes()))
     with torch.inference_mode():
         np.testing.assert_array_equal(prediction, loaded(*inputs).numpy())

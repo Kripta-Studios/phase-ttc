@@ -1,0 +1,727 @@
+{
+  "schema": "phase_ttc_scientific_audit_sources_v1",
+  "baseline_commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+  "scope": "Exact commit sources or explicitly identified local-cache derivations; no new training",
+  "sources": [
+    {
+      "evidence_id": "H_T6",
+      "commit": "1a686e338a1145c6794bec0704bdae4cda95f06d",
+      "original_path": "docs/efficient_context_handoff_20261004/evidence/T6_FINAL_REPORT.md",
+      "bundled_path": "audit_20261104/sources/H_T6/c0cfd9408e_T6_FINAL_REPORT.md",
+      "sha256": "c0cfd9408e83dc6b1d8c6e64c118e84290d39b85b6e96c4a46f290e74c251a1e",
+      "bytes": 15619
+    },
+    {
+      "evidence_id": "H_V16",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "docs/multimodal_results_20261012/INFORME_DETALLADO.md",
+      "bundled_path": "audit_20261104/sources/H_V16/1c2df47edb_INFORME_DETALLADO.md",
+      "sha256": "1c2df47edb76457a5e3122238f435c106cb8fa0b57afcc4efc955d96f3b65b8d",
+      "bytes": 24590
+    },
+    {
+      "evidence_id": "H_A4_S1",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/archive/E_JEPA_TTC_A4_S1_SESSION_HANDOFF_20260811.md",
+      "bundled_path": "audit_20261104/sources/H_A4_S1/eb5ff76ea1_E_JEPA_TTC_A4_S1_SESSION_HANDOFF_20260811.md",
+      "sha256": "eb5ff76ea1b41b50f6d8220ff9506b8a68c9a5aa7781d1fa1b3fff18e2a7eab7",
+      "bytes": 30423
+    },
+    {
+      "evidence_id": "H_V16_ZERO",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "operational/multimodal_research/model.py",
+      "bundled_path": "audit_20261104/sources/H_V16_ZERO/0ac640ba42_model.py",
+      "sha256": "0ac640ba421c82e54005dc4cf7ae2baa042e72d6d18f21b1e80919141b204cef",
+      "bytes": 3273
+    },
+    {
+      "evidence_id": "H_V16_ZERO",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "operational/multimodal_research/phase_units.py",
+      "bundled_path": "audit_20261104/sources/H_V16_ZERO/0cd65eea9c_phase_units.py",
+      "sha256": "0cd65eea9c8e8a2e01b7512570dc3e31c8cbcc2def468b9f4b64e3ab3edb6021",
+      "bytes": 5542
+    },
+    {
+      "evidence_id": "H_V16_ZERO",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "operational/multimodal_research/phase_only_anchor.py",
+      "bundled_path": "audit_20261104/sources/H_V16_ZERO/d6c3016dc7_phase_only_anchor.py",
+      "sha256": "d6c3016dc7c08b0bdb37964c1eff9cd046c88d52d1bb4b1a281dad0412496514",
+      "bytes": 794
+    },
+    {
+      "evidence_id": "H_V16_ZERO",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "operational/multimodal_research/phase_only_readout.py",
+      "bundled_path": "audit_20261104/sources/H_V16_ZERO/a312c8d739_phase_only_readout.py",
+      "sha256": "a312c8d739d4393be4b878d4576ceff5ce54e2cb535a80dc626b5746b1ae4705",
+      "bytes": 5289
+    },
+    {
+      "evidence_id": "H_V18_ZERO",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/joint_measurement/fusion_model.py",
+      "bundled_path": "audit_20261104/sources/H_V18_ZERO/3fca5727e0_fusion_model.py",
+      "sha256": "3fca5727e0aa747f8122a2c3170412b73de8fddd944fcd4dc8eafe5e653ff2ef",
+      "bytes": 5077
+    },
+    {
+      "evidence_id": "H_V16",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "docs/multimodal_results_20261012/artifacts/multimodal_research_20261012/ACCOUNTING.json",
+      "bundled_path": "audit_20261104/sources/H_V16/f025cfaa55_ACCOUNTING.json",
+      "sha256": "f025cfaa5587738f9e416b12b988af979115ff49793002362567d7ee2bbf9569",
+      "bytes": 10688
+    },
+    {
+      "evidence_id": "H_V16",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "docs/multimodal_results_20261012/artifacts/multimodal_research_20261012/PHASE_ONLY_REPLICATION_SUMMARY.json",
+      "bundled_path": "audit_20261104/sources/H_V16/981c753fa0_PHASE_ONLY_REPLICATION_SUMMARY.json",
+      "sha256": "981c753fa0a19530d8bba0a7dae1206cb81c301ef78ed92daef9fea771b8212c",
+      "bytes": 1364
+    },
+    {
+      "evidence_id": "H_V16",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "docs/multimodal_results_20261012/artifacts/multimodal_research_20261012/studies/GROUP_CROSSFIT/S7/V_RESULTS.json",
+      "bundled_path": "audit_20261104/sources/H_V16/9d4ed9c288_V_RESULTS.json",
+      "sha256": "9d4ed9c288c88d1174988b77cd0d1e2ecd5e85c368422996eeb59123b2c09096",
+      "bytes": 17031
+    },
+    {
+      "evidence_id": "H_V16",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "docs/multimodal_results_20261012/artifacts/multimodal_research_20261012/studies/PHASE_ONLY/S7/V_RESULTS.json",
+      "bundled_path": "audit_20261104/sources/H_V16/6a74b5773c_V_RESULTS.json",
+      "sha256": "6a74b5773cd742844ce152a02fbd4c7634aa8270793bdafd47dce62fcb255c4a",
+      "bytes": 17029
+    },
+    {
+      "evidence_id": "H_V16",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "docs/multimodal_results_20261012/artifacts/multimodal_research_20261012/studies/PHASE_ONLY_REPLICATION/S13/V_RESULTS.json",
+      "bundled_path": "audit_20261104/sources/H_V16/a7d2b1754e_V_RESULTS.json",
+      "sha256": "a7d2b1754e505aa2578f4d3a0401798a21768c7f1135456fa72513bf70f32adc",
+      "bytes": 17040
+    },
+    {
+      "evidence_id": "H_V16",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "docs/multimodal_results_20261012/artifacts/multimodal_research_20261012/studies/PHASE_ONLY_REPLICATION/S23/V_RESULTS.json",
+      "bundled_path": "audit_20261104/sources/H_V16/51364c81ea_V_RESULTS.json",
+      "sha256": "51364c81ea490e34497e0c0f1f44d9f82d3e093be7e674fb10fa69e9a988b3e3",
+      "bytes": 17043
+    },
+    {
+      "evidence_id": "P01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/final_refit/scientific_oof_pipeline.py",
+      "bundled_path": "audit_20261104/sources/P01/f20f567b12_scientific_oof_pipeline.py",
+      "sha256": "f20f567b128e636ef6d20f7056168b1c160f6ed1845fadadf420db2f9d473021",
+      "bytes": 20970
+    },
+    {
+      "evidence_id": "P01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/final_refit/scientific_oof_final.py",
+      "bundled_path": "audit_20261104/sources/P01/1a1c71fbb1_scientific_oof_final.py",
+      "sha256": "1a1c71fbb1f87c6c351cc94ef4f72f083170ed39c3b3907e8f9b7947cbf69d64",
+      "bytes": 59144
+    },
+    {
+      "evidence_id": "P01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/final_refit/scientific_oof_features.py",
+      "bundled_path": "audit_20261104/sources/P01/088d17c402_scientific_oof_features.py",
+      "sha256": "088d17c4029622f76001a379bf4f39035cec4c03f2dba3b048ea2723d0882f81",
+      "bytes": 30283
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/SCIENTIFIC_RECOVERY_V5_STATUS.md",
+      "bundled_path": "audit_20261104/sources/P02/aea0b1db74_SCIENTIFIC_RECOVERY_V5_STATUS.md",
+      "sha256": "aea0b1db74eba101fdf0aa396003b73bd9cede22d6d0fb221eb711dc1a299c92",
+      "bytes": 7631
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/SCIENTIFIC_RECOVERY_V7_STATUS.md",
+      "bundled_path": "audit_20261104/sources/P02/b948b05455_SCIENTIFIC_RECOVERY_V7_STATUS.md",
+      "sha256": "b948b054558aae93b877b196b791afe71bbb0c1ddd082c0fd76376680f1ff05f",
+      "bytes": 5829
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/E_JEPA_TTC_V5_SCIENTIFIC_CODE_AUDIT.md",
+      "bundled_path": "audit_20261104/sources/P02/fb017959a3_E_JEPA_TTC_V5_SCIENTIFIC_CODE_AUDIT.md",
+      "sha256": "fb017959a3474afca3167865c9f19437ebfcf56df51aad9bb5d87b9b7e9f7938",
+      "bytes": 11706
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/final_refit_20261017/LEAKAGE_AUDIT.md",
+      "bundled_path": "audit_20261104/sources/P02/a1fe8cb396_LEAKAGE_AUDIT.md",
+      "sha256": "a1fe8cb396d3c0da7d73a9476534f4148203f2b9e41fafe56333ced3317e4374",
+      "bytes": 7380
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/paired_cluster_bootstrap.py",
+      "bundled_path": "audit_20261104/sources/P02/71756e213a_paired_cluster_bootstrap.py",
+      "sha256": "71756e213afb8e4b160dfcbbba75e332ee5d0e176cc133801b4b432fb3cef814",
+      "bytes": 11277
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/paired_grouped_bootstrap.py",
+      "bundled_path": "audit_20261104/sources/P02/4dce54f88c_paired_grouped_bootstrap.py",
+      "sha256": "4dce54f88c32cc88f7e1d1e6d48707342adf74928fdf5f7a35f1f8da36778694",
+      "bytes": 5722
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/simplex_t_h16_replication/register.py",
+      "bundled_path": "audit_20261104/sources/P02/d8cf463569_register.py",
+      "sha256": "d8cf463569c3ec03d1ed7f1c1e07ea4e347097830def87a37a19cdcebc39ef47",
+      "bytes": 6994
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/simplex_t_closure/runtime.py",
+      "bundled_path": "audit_20261104/sources/P02/871d94da95_runtime.py",
+      "sha256": "871d94da9509ffd9206f44a74722c2a1913c5383c3914d3fe3de91a89a11b17a",
+      "bytes": 10719
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/joint_measurement/bootstrap.py",
+      "bundled_path": "audit_20261104/sources/P02/db9eb3bbc3_bootstrap.py",
+      "sha256": "db9eb3bbc36a4a58117f08e63face89befe3438e757e09c444f3a6f452298459",
+      "bytes": 3753
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/joint_measurement_20261012/evidence_20261016/FUSION_REPLICATION.json",
+      "bundled_path": "audit_20261104/sources/P02/4af996900a_FUSION_REPLICATION.json",
+      "sha256": "4af996900a99c585f8e4a86fae5eba89a28e3f49cf9e2307f1298209850d747c",
+      "bytes": 46019
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/phase_campaign/evaluation.py",
+      "bundled_path": "audit_20261104/sources/P02/29bde5ab03_evaluation.py",
+      "sha256": "29bde5ab0376446b45d8b3685f43f09addb8628f0f984f2ccecc9710439fc3df",
+      "bytes": 4179
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/train_phase_campaign_cv.py",
+      "bundled_path": "audit_20261104/sources/P02/e2f62b48e8_train_phase_campaign_cv.py",
+      "sha256": "e2f62b48e87c0f2ebc09ee8e9f5e55a93c73be583c5339b5b2ddc5a02b8b0ca4",
+      "bytes": 9603
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/train_phase_robust.py",
+      "bundled_path": "audit_20261104/sources/P02/128649eb27_train_phase_robust.py",
+      "sha256": "128649eb2721b19489790278fc00ee7aa9b9e6bf02b43ac1114e03704e8e45c5",
+      "bytes": 12901
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/report_phase_startup.py",
+      "bundled_path": "audit_20261104/sources/P02/689182d40d_report_phase_startup.py",
+      "sha256": "689182d40db0826303cb4f9f25c4f6bdfc176e531b3cf95f3811490fea277b29",
+      "bytes": 17460
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_transfer_v2/evidence/phase_campaign/SUMMARY.json",
+      "bundled_path": "audit_20261104/sources/P02/2f8cc6309f_SUMMARY.json",
+      "sha256": "2f8cc6309fc7b49bdad56cc3a7de3d203ae72399f6c404549c9d42a1eb32904b",
+      "bytes": 4730
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_transfer_v2/evidence/phase_robust/training/CONFIRMATION.json",
+      "bundled_path": "audit_20261104/sources/P02/8e552a8dff_CONFIRMATION.json",
+      "sha256": "8e552a8dffd4764c371175010cb708b4bfeb817c1964d8ea47c920d44698b0a4",
+      "bytes": 11699
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_transfer_v2/evidence/phase_startup/RESULTS.json",
+      "bundled_path": "audit_20261104/sources/P02/9f59b704ca_RESULTS.json",
+      "sha256": "9f59b704ca866b42aaffe06edae071002c67fadc028d091a6e80dd7ee07bbdd7",
+      "bytes": 359390
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "operational/multimodal_research/evaluate_phase_only.py",
+      "bundled_path": "audit_20261104/sources/P02/57f502c487_evaluate_phase_only.py",
+      "sha256": "57f502c4875097e1778f7a95424e998888a43478f4836194ed3a77dda674227b",
+      "bytes": 6916
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+      "original_path": "operational/multimodal_research/evaluate_phase_only_replication.py",
+      "bundled_path": "audit_20261104/sources/P02/5d1d45d0dd_evaluate_phase_only_replication.py",
+      "sha256": "5d1d45d0ddea27bf4768fa151ad2ade296087ed5dffee79de70b224ca7382c1c",
+      "bytes": 6920
+    },
+    {
+      "evidence_id": "P03",
+      "commit": "0821d6c405af0cf9967ddd8cacc57f1475c6ad54",
+      "original_path": "operational/decision_recovery/training.py",
+      "bundled_path": "audit_20261104/sources/P03/7b623e6513_training.py",
+      "sha256": "7b623e6513eb9adb4ed23b320d75c71d190db9a8f199e3e3a33738c12c623781",
+      "bytes": 40510
+    },
+    {
+      "evidence_id": "P04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/final_refit/features.py",
+      "bundled_path": "audit_20261104/sources/P04/c2b1290e6a_features.py",
+      "sha256": "c2b1290e6a55648ef84be8c26c20281c2d9a4377cab98f97724337ebdcfcaf09",
+      "bytes": 39853
+    },
+    {
+      "evidence_id": "P04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/final_refit/training.py",
+      "bundled_path": "audit_20261104/sources/P04/cddb650c63_training.py",
+      "sha256": "cddb650c637e3627bf711ad3571dd9454baecfc997e09cb0ce3675d5cf3a54a4",
+      "bytes": 27012
+    },
+    {
+      "evidence_id": "P04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/final_refit/oof_stitch.py",
+      "bundled_path": "audit_20261104/sources/P04/ea97e5af43_oof_stitch.py",
+      "sha256": "ea97e5af433b786848d2426cc09a069c4a8f6bc07a433f6f1c8565ee06504b2e",
+      "bytes": 21162
+    },
+    {
+      "evidence_id": "P04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "src/e_jepa_ttc/simplex_t/history.py",
+      "bundled_path": "audit_20261104/sources/P04/d190f672b2_history.py",
+      "sha256": "d190f672b2be5e1e4a85bf9ca39827c448862a2766074bddf0189fd53ad9405d",
+      "bytes": 6773
+    },
+    {
+      "evidence_id": "P04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "src/e_jepa_ttc/simplex_t/model.py",
+      "bundled_path": "audit_20261104/sources/P04/4c26ad5ecf_model.py",
+      "sha256": "4c26ad5ecf9e83541e29d748d4eace4e457fbeda28ff61bd30a1b954bb44d8dd",
+      "bytes": 6868
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/phase_adapt_final.md",
+      "bundled_path": "audit_20261104/sources/A01/1745050c67_phase_adapt_final.md",
+      "sha256": "1745050c670ce8c7aaf37f9c32e1a2ba64a36499b964de701f3287c0604781d0",
+      "bytes": 7019
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/prepare_phase_adapt.py",
+      "bundled_path": "audit_20261104/sources/A01/2dc82d1aef_prepare_phase_adapt.py",
+      "sha256": "2dc82d1aef98f2af164b1ad2e7d541de4f49e99a5d81fd497a8961e665439ad6",
+      "bytes": 13965
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/train_phase_adapt.py",
+      "bundled_path": "audit_20261104/sources/A01/36f3a39cc4_train_phase_adapt.py",
+      "sha256": "36f3a39cc4a36058cbff4ef5aa4bb4655a2f315c50015fecc51e541496908350",
+      "bytes": 9309
+    },
+    {
+      "evidence_id": "A02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_transfer_v2/CAMPAIGN_RESULTS.md",
+      "bundled_path": "audit_20261104/sources/A02/ca57d0ce2b_CAMPAIGN_RESULTS.md",
+      "sha256": "ca57d0ce2bf85f8d1b642e27191ca870552f9512bba55615af4e90911298e4a7",
+      "bytes": 5971
+    },
+    {
+      "evidence_id": "A03",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_transfer_v2/evidence/phase_robust/report/REPORT.md",
+      "bundled_path": "audit_20261104/sources/A03/0d27d876d6_REPORT.md",
+      "sha256": "0d27d876d633c623e30c91309ba35044cdbddb18089f196a346ced07ef39efea",
+      "bytes": 7718
+    },
+    {
+      "evidence_id": "A03",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/train_phase_robust.py",
+      "bundled_path": "audit_20261104/sources/A03/128649eb27_train_phase_robust.py",
+      "sha256": "128649eb2721b19489790278fc00ee7aa9b9e6bf02b43ac1114e03704e8e45c5",
+      "bytes": 12901
+    },
+    {
+      "evidence_id": "A03",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/phase_robust/bundle.py",
+      "bundled_path": "audit_20261104/sources/A03/6237ef620d_bundle.py",
+      "sha256": "6237ef620d78af6ca8c1ed9ec5d3589ba0d07ea6ff2e8083df455ab87ed726f2",
+      "bytes": 3875
+    },
+    {
+      "evidence_id": "A04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_transfer_v2/evidence/phase_startup/REPORT.md",
+      "bundled_path": "audit_20261104/sources/A04/42ebd0d30a_REPORT.md",
+      "sha256": "42ebd0d30af60d03dc0c522efa7da2d98363e0d016cb76b349edc40a632ec48a",
+      "bytes": 7434
+    },
+    {
+      "evidence_id": "A04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/train_phase_startup.py",
+      "bundled_path": "audit_20261104/sources/A04/61c530944a_train_phase_startup.py",
+      "sha256": "61c530944a7320bdeb836eaf2f63c0f23a4c1e39d574d18e5186561dcc1e4ee4",
+      "bytes": 14679
+    },
+    {
+      "evidence_id": "A04",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/phase_startup/runtime.py",
+      "bundled_path": "audit_20261104/sources/A04/3b3f9ee1c2_runtime.py",
+      "sha256": "3b3f9ee1c215dd7c30e46a98b8c7f5a921db1522fb99e68471ac2e8330f14238",
+      "bytes": 6103
+    },
+    {
+      "evidence_id": "A05",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/handoff_20261031_pause/01_TRABAJO_Y_RESULTADOS.md",
+      "bundled_path": "audit_20261104/sources/A05/7152e04004_01_TRABAJO_Y_RESULTADOS.md",
+      "sha256": "7152e04004ccd2a7948cf880c652f28df3ca0100844f92aa2665f17b311793ae",
+      "bytes": 11021
+    },
+    {
+      "evidence_id": "A06",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/research_log_20261031_event_expansion/README.md",
+      "bundled_path": "audit_20261104/sources/A06/e19f01bff4_README.md",
+      "sha256": "e19f01bff493b32d5617e1455656a3a0d2745e5cee55cc46557c4aa5802b1a78",
+      "bytes": 8739
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_submission_20261031/REPORT.md",
+      "bundled_path": "audit_20261104/sources/A07/eb07b6e589_REPORT.md",
+      "sha256": "eb07b6e589d0ebff93fa9deae785f02c63c66f2c8aadced79bae456deebf9888",
+      "bytes": 4966
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/train_phase_submission.py",
+      "bundled_path": "audit_20261104/sources/A07/db7647d149_train_phase_submission.py",
+      "sha256": "db7647d149daa633e226effb3d8f63cfec6c92fdba3dbc7d590884e704299c14",
+      "bytes": 5924
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "operational/phase_submission/runtime.py",
+      "bundled_path": "audit_20261104/sources/A07/bd2762811c_runtime.py",
+      "sha256": "bd2762811c9cc39b88def78d894e8d00fd7c5b71ac4199752410359cda813ac4",
+      "bytes": 1570
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_submission_20261031/evidence/FIT_CONFIG.json",
+      "bundled_path": "audit_20261104/sources/A07/e1286706ab_FIT_CONFIG.json",
+      "sha256": "e1286706ab164886d2059d9fb02c58cd9c5492b19478edecaaa861a13dd40e5d",
+      "bytes": 2509
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/evttc_submission_20261031/evidence/MODEL.json",
+      "bundled_path": "audit_20261104/sources/A07/fe1460c407_MODEL.json",
+      "sha256": "fe1460c407ccd08fc670c1955435b0fe9b4719737e22e3dec7534a57e66bb005",
+      "bytes": 989
+    },
+    {
+      "evidence_id": "A08",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/release_research_implementation_20261031/native_parity_distribution_v1/RESULTS.json",
+      "bundled_path": "audit_20261104/sources/A08/0443ad5658_RESULTS.json",
+      "sha256": "0443ad5658bc27060449b33bdca206cfbf9dd724866c2c58049a3d845a396999",
+      "bytes": 2206
+    },
+    {
+      "evidence_id": "N01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/research_progress_20261101/v1/evidence/evaluator_audit.json",
+      "bundled_path": "audit_20261104/sources/N01/af97200329_evaluator_audit.json",
+      "sha256": "af97200329206304d21aa7d16c740ef28340899d495cca533744c76f65437733",
+      "bytes": 22367
+    },
+    {
+      "evidence_id": "L40",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/train40_runtime_council_20261028/evidence/council_v1/artifacts/train40_runtime_council_20261028/paced/memory_cache_overlap_reverse1_250_v1/summary.json",
+      "bundled_path": "audit_20261104/sources/L40/c27d5d980f_summary.json",
+      "sha256": "c27d5d980f2bb1c163b073f0f71d66b3aab887ce73f98c6b19c3d6ef4bcf322d",
+      "bytes": 2444292
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/data_v3/COMPLETE.json",
+      "bundled_path": "audit_20261104/sources/A01/e0a1e214e3_COMPLETE.json",
+      "sha256": "e0a1e214e3a46d553dd5d3408317d3fdaa3b130454b39bf8681f10ab029ed130",
+      "bytes": 711
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/model/FINAL_MODEL/BUNDLE.json",
+      "bundled_path": "audit_20261104/sources/A01/73cb209a92_BUNDLE.json",
+      "sha256": "73cb209a923589c3ba83f753167e704405ba8402c2b40123dcff32cf740d5505",
+      "bytes": 5212
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "data/manifests/evttc_all32_local.yaml",
+      "bundled_path": "audit_20261104/sources/A01/607f8faa2a_evttc_all32_local.yaml",
+      "sha256": "607f8faa2aebeaa95ac7b61fb5bbcbe105c9e3606152ee6584e2e8cb4621722c",
+      "bytes": 18792
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/model/seed_7/START.json",
+      "bundled_path": "audit_20261104/sources/A01/3d46a1b221_START.json",
+      "sha256": "3d46a1b221094ba4b34be5a045b1b0469f9e3f1d3857fee31c162dbd9c7df250",
+      "bytes": 162191
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/model/seed_7/COMPLETE.json",
+      "bundled_path": "audit_20261104/sources/A01/431a39753d_COMPLETE.json",
+      "sha256": "431a39753d4241f79681133fd5bcd132258cba910063c2cf95b2842c099f4579",
+      "bytes": 1757
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/model/seed_13/START.json",
+      "bundled_path": "audit_20261104/sources/A01/bfd8905c58_START.json",
+      "sha256": "bfd8905c58a3fc12d61298ea71dd962685ab21bfed29e62fc80ef5d89ad0315f",
+      "bytes": 162192
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/model/seed_13/COMPLETE.json",
+      "bundled_path": "audit_20261104/sources/A01/06b4d50c87_COMPLETE.json",
+      "sha256": "06b4d50c87e108b3cd6d5a5b3998184e49d858396dc6e2b4ba8fb429129d932a",
+      "bytes": 1758
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/model/seed_21/START.json",
+      "bundled_path": "audit_20261104/sources/A01/5085871dab_START.json",
+      "sha256": "5085871dab0e5c9a78cfc308eb4ead9b443c8bd768ab0d1c7dc9c949d76306f5",
+      "bytes": 162192
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_adapt_final/model/seed_21/COMPLETE.json",
+      "bundled_path": "audit_20261104/sources/A01/bf43014150_COMPLETE.json",
+      "sha256": "bf430141503c07080a1dc8bfddd2545fb81d4a33aa5b5b3c6ebb5033cc5ef558",
+      "bytes": 1755
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "local-cache-bound",
+      "original_path": "output/phase_robust/FINAL_MODEL/BUNDLE.json",
+      "bundled_path": "audit_20261104/sources/A07/dbb95f68ce_BUNDLE.json",
+      "sha256": "dbb95f68ce861a72bb9b8169677a96442523cb256fb1d45c412acee46a07677d",
+      "bytes": 3655
+    },
+    {
+      "evidence_id": "GT01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "scripts/audit_phase_safe_evaluator.py",
+      "bundled_path": "audit_20261104/sources/GT01/abb0f3b116_audit_phase_safe_evaluator.py",
+      "sha256": "abb0f3b1163424256c7cd213098708dfde99b11c3e0bef736cdf1272cf016d43",
+      "bytes": 16594
+    },
+    {
+      "evidence_id": "GT01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/superpowers/plans/evidence/2026-10-30-evttc-audit.json",
+      "bundled_path": "audit_20261104/sources/GT01/4342cad998_2026-10-30-evttc-audit.json",
+      "sha256": "4342cad998e1dd48b004da7d74c8ed53a18308a9eac447626c54da39c5f97165",
+      "bytes": 170435
+    },
+    {
+      "evidence_id": "GT01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/final_train40_transfer_20261027/RESULTS.json",
+      "bundled_path": "audit_20261104/sources/GT01/9136babd4a_RESULTS.json",
+      "sha256": "9136babd4a07411e96cc4458856128cc0f6e1b11e424dd2e389ec91efdc9da11",
+      "bytes": 1770669
+    },
+    {
+      "evidence_id": "GT01",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/engineering_history_20261027/07_EVALUATION_METRICS_AND_LATENCY.md",
+      "bundled_path": "audit_20261104/sources/GT01/ff1bd81825_07_EVALUATION_METRICS_AND_LATENCY.md",
+      "sha256": "ff1bd818254c062d5e4ffc5d2ae9a473e9c299804657da6faa160631c215f31c",
+      "bytes": 14623
+    },
+    {
+      "evidence_id": "GT01",
+      "commit": "current-source",
+      "original_path": "scripts/audit_transfer_target_revision.py",
+      "bundled_path": "audit_20261104/sources/GT01/bf1a853fff_audit_transfer_target_revision.py",
+      "sha256": "bf1a853fff39a78f029cdd62ac5e62ddc8ae558c260f149036c798e7e3bded41",
+      "bytes": 9761
+    },
+    {
+      "evidence_id": "A01",
+      "commit": "derived-local-audit",
+      "original_path": "all32_cache_ancestry.json",
+      "bundled_path": "audit_20261104/sources/A01/50f7a9a91e_all32_cache_ancestry.json",
+      "sha256": "50f7a9a91e0df2a78b1b90a98dfaa5bc77481a64a1e5fe51cbeae7164711ff9d",
+      "bytes": 80492
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "derived-local-audit",
+      "original_path": "runtime_recomputed.json",
+      "bundled_path": "audit_20261104/sources/A07/ab85cd6094_runtime_recomputed.json",
+      "sha256": "ab85cd6094d88cf34234308b2d24c4b42156c2b2c2850cec0fb6136d87e2e237",
+      "bytes": 1060
+    },
+    {
+      "evidence_id": "A07",
+      "commit": "derived-local-audit",
+      "original_path": "raw_processed_434.json",
+      "bundled_path": "audit_20261104/sources/A07/d8e9ecac23_raw_processed_434.json",
+      "sha256": "d8e9ecac23f7607673cbf23fcd9539e809b8319ae9d5d24387f3a320596ab498",
+      "bytes": 838
+    },
+    {
+      "evidence_id": "A02",
+      "commit": "derived-local-audit",
+      "original_path": "source_tables.json",
+      "bundled_path": "audit_20261104/sources/A02/c12282b77e_source_tables.json",
+      "sha256": "c12282b77ec5164a79c0f2273cfcdb36353cd1de152a0eec3cf1d688622e6f5c",
+      "bytes": 17139
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "d80991544cd06045cf90c1a54a51b8064e83977a",
+      "original_path": "docs/SCIENTIFIC_RECOVERY_V6_STATUS.md",
+      "bundled_path": "audit_20261104/sources/P02/b6c6978ffa_SCIENTIFIC_RECOVERY_V6_STATUS.md",
+      "sha256": "b6c6978ffaad0aeefe3a1cc908e79c3aa370f21d0f7b093f2b45e4864435a716",
+      "bytes": 6085
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "local-preserved-original",
+      "original_path": "artifacts/scientific_recovery_v5/results/paired_a8_0_vs_a6_outer_dev.json",
+      "bundled_path": "audit_20261104/sources/P02/6fe8c8761d_paired_a8_0_vs_a6_outer_dev.json",
+      "sha256": "6fe8c8761d0a14fb92fc8e7570b85a1c96a399822631beb1fb117bbb6d883c0a",
+      "bytes": 3208
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "local-preserved-original",
+      "original_path": "artifacts/scientific_recovery_v6/results/paired_a5_causal_vs_garl_outer_dev.json",
+      "bundled_path": "audit_20261104/sources/P02/c2cd80d9de_paired_a5_causal_vs_garl_outer_dev.json",
+      "sha256": "c2cd80d9debb117083c858508567acd11c47b33f224a32174e3a428a121c5d72",
+      "bytes": 3190
+    },
+    {
+      "evidence_id": "P02",
+      "commit": "local-preserved-original",
+      "original_path": "artifacts/scientific_recovery_v6/results/paired_v6_1_vs_garl_outer_dev.json",
+      "bundled_path": "audit_20261104/sources/P02/5e874e6b6d_paired_v6_1_vs_garl_outer_dev.json",
+      "sha256": "5e874e6b6d87d567d5dd10b95162c3af2d53b92dd2fb9e7ccd2e9887d41beedc",
+      "bytes": 3172
+    },
+    {
+      "evidence_id": "M21",
+      "commit": "local-preserved-original",
+      "original_path": "output/pdf/e_jepa_ttc_paper/data/verification_architecture.log",
+      "bundled_path": "audit_20261104/sources/M21/ebf5c3331c_verification_architecture.log",
+      "sha256": "ebf5c3331cc9b87820e048e8a377b20f608895d10be4238e4b8e3c020491c243",
+      "bytes": 2462
+    },
+    {
+      "evidence_id": "M21",
+      "commit": "local-preserved-original",
+      "original_path": "output/pdf/e_jepa_ttc_paper/data/verification_architecture.xml",
+      "bundled_path": "audit_20261104/sources/M21/7f6e8f3ce4_verification_architecture.xml",
+      "sha256": "7f6e8f3ce4a16d428cab55b8786df37ef5ac5573bfa221c72b5800389b9c972a",
+      "bytes": 11321
+    },
+    {
+      "evidence_id": "M21",
+      "commit": "local-preserved-original",
+      "original_path": "output/pdf/e_jepa_ttc_paper/data/verification_protocol.log",
+      "bundled_path": "audit_20261104/sources/M21/2528c4db4d_verification_protocol.log",
+      "sha256": "2528c4db4d4762fb320b7463096641a3bc34613cde6c2a381bed034f9e6d9bb0",
+      "bytes": 184
+    },
+    {
+      "evidence_id": "M21",
+      "commit": "local-preserved-original",
+      "original_path": "output/pdf/e_jepa_ttc_paper/data/verification_protocol.xml",
+      "bundled_path": "audit_20261104/sources/M21/865dd55d80_verification_protocol.xml",
+      "sha256": "865dd55d804d86b1cb5c789eb24e084c61c54ac3375a4316b407213fc65e1021",
+      "bytes": 16396
+    },
+    {
+      "evidence_id": "GT02",
+      "commit": "current-source",
+      "original_path": "scripts/build_transfer_revision.py",
+      "bundled_path": "audit_20261104/sources/GT02/836f4c9471_build_transfer_revision.py",
+      "sha256": "836f4c94716176185d08c46d368425ea85ba43b4aca0e4e47e87a5ab17cdfd86",
+      "bytes": 17551
+    }
+  ]
+}

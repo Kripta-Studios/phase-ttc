@@ -1,0 +1,333 @@
+{
+  "scope": "Methodological corrections only; no training, inference or result re-estimation",
+  "source_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+  "evidence_sources": {
+    "P01": [
+      {
+        "path": "operational/final_refit/scientific_oof_pipeline.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "f20f567b128e636ef6d20f7056168b1c160f6ed1845fadadf420db2f9d473021",
+        "bytes": 20970,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/final_refit/scientific_oof_final.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "1a1c71fbb1f87c6c351cc94ef4f72f083170ed39c3b3907e8f9b7947cbf69d64",
+        "bytes": 59144,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/final_refit/scientific_oof_features.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "088d17c4029622f76001a379bf4f39035cec4c03f2dba3b048ea2723d0882f81",
+        "bytes": 30283,
+        "local_bytes_match_git_blob": true
+      }
+    ],
+    "P02": [
+      {
+        "path": "docs/SCIENTIFIC_RECOVERY_V5_STATUS.md",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "aea0b1db74eba101fdf0aa396003b73bd9cede22d6d0fb221eb711dc1a299c92",
+        "bytes": 7631,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "docs/SCIENTIFIC_RECOVERY_V7_STATUS.md",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "b948b054558aae93b877b196b791afe71bbb0c1ddd082c0fd76376680f1ff05f",
+        "bytes": 5829,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "docs/E_JEPA_TTC_V5_SCIENTIFIC_CODE_AUDIT.md",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "fb017959a3474afca3167865c9f19437ebfcf56df51aad9bb5d87b9b7e9f7938",
+        "bytes": 11706,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "docs/final_refit_20261017/LEAKAGE_AUDIT.md",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "a1fe8cb396d3c0da7d73a9476534f4148203f2b9e41fafe56333ced3317e4374",
+        "bytes": 7380,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "scripts/paired_cluster_bootstrap.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "71756e213afb8e4b160dfcbbba75e332ee5d0e176cc133801b4b432fb3cef814",
+        "bytes": 11277,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "scripts/paired_grouped_bootstrap.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "4dce54f88c32cc88f7e1d1e6d48707342adf74928fdf5f7a35f1f8da36778694",
+        "bytes": 5722,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/simplex_t_h16_replication/register.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "d8cf463569c3ec03d1ed7f1c1e07ea4e347097830def87a37a19cdcebc39ef47",
+        "bytes": 6994,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/simplex_t_closure/runtime.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "871d94da9509ffd9206f44a74722c2a1913c5383c3914d3fe3de91a89a11b17a",
+        "bytes": 10719,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/joint_measurement/bootstrap.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "db9eb3bbc36a4a58117f08e63face89befe3438e757e09c444f3a6f452298459",
+        "bytes": 3753,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "docs/joint_measurement_20261012/evidence_20261016/FUSION_REPLICATION.json",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "4af996900a99c585f8e4a86fae5eba89a28e3f49cf9e2307f1298209850d747c",
+        "bytes": 46019,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/phase_campaign/evaluation.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "29bde5ab0376446b45d8b3685f43f09addb8628f0f984f2ccecc9710439fc3df",
+        "bytes": 4179,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "scripts/train_phase_campaign_cv.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "e2f62b48e87c0f2ebc09ee8e9f5e55a93c73be583c5339b5b2ddc5a02b8b0ca4",
+        "bytes": 9603,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "scripts/train_phase_robust.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "128649eb2721b19489790278fc00ee7aa9b9e6bf02b43ac1114e03704e8e45c5",
+        "bytes": 12901,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "scripts/report_phase_startup.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "689182d40db0826303cb4f9f25c4f6bdfc176e531b3cf95f3811490fea277b29",
+        "bytes": 17460,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "docs/evttc_transfer_v2/evidence/phase_campaign/SUMMARY.json",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "2f8cc6309fc7b49bdad56cc3a7de3d203ae72399f6c404549c9d42a1eb32904b",
+        "bytes": 4730,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "docs/evttc_transfer_v2/evidence/phase_robust/training/CONFIRMATION.json",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "8e552a8dffd4764c371175010cb708b4bfeb817c1964d8ea47c920d44698b0a4",
+        "bytes": 11699,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "docs/evttc_transfer_v2/evidence/phase_startup/RESULTS.json",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "9f59b704ca866b42aaffe06edae071002c67fadc028d091a6e80dd7ee07bbdd7",
+        "bytes": 359390,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/multimodal_research/evaluate_phase_only.py",
+        "git_revision": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+        "sha256": "57f502c4875097e1778f7a95424e998888a43478f4836194ed3a77dda674227b",
+        "bytes": 6916,
+        "local_bytes_match_git_blob": false
+      },
+      {
+        "path": "operational/multimodal_research/evaluate_phase_only_replication.py",
+        "git_revision": "9d0af59dd3fd507490712512b0dbfc4f6c651b39",
+        "sha256": "5d1d45d0ddea27bf4768fa151ad2ade296087ed5dffee79de70b224ca7382c1c",
+        "bytes": 6920,
+        "local_bytes_match_git_blob": false
+      },
+      {
+        "path": "docs/SCIENTIFIC_RECOVERY_V6_STATUS.md",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "b6c6978ffaad0aeefe3a1cc908e79c3aa370f21d0f7b093f2b45e4864435a716",
+        "bytes": 6085,
+        "local_bytes_match_git_blob": true
+      }
+    ],
+    "P03": [
+      {
+        "path": "operational/decision_recovery/training.py",
+        "git_revision": "0821d6c405af0cf9967ddd8cacc57f1475c6ad54",
+        "sha256": "7b623e6513eb9adb4ed23b320d75c71d190db9a8f199e3e3a33738c12c623781",
+        "bytes": 40510,
+        "local_bytes_match_git_blob": false
+      }
+    ],
+    "P04": [
+      {
+        "path": "operational/final_refit/features.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "c2b1290e6a55648ef84be8c26c20281c2d9a4377cab98f97724337ebdcfcaf09",
+        "bytes": 39853,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/final_refit/training.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "cddb650c637e3627bf711ad3571dd9454baecfc997e09cb0ce3675d5cf3a54a4",
+        "bytes": 27012,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "operational/final_refit/oof_stitch.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "ea97e5af433b786848d2426cc09a069c4a8f6bc07a433f6f1c8565ee06504b2e",
+        "bytes": 21162,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "src/e_jepa_ttc/simplex_t/history.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "d190f672b2be5e1e4a85bf9ca39827c448862a2766074bddf0189fd53ad9405d",
+        "bytes": 6773,
+        "local_bytes_match_git_blob": true
+      },
+      {
+        "path": "src/e_jepa_ttc/simplex_t/model.py",
+        "git_revision": "d80991544cd06045cf90c1a54a51b8064e83977a",
+        "sha256": "4c26ad5ecf9e83541e29d748d4eace4e457fbeda28ff61bd30a1b954bb44d8dd",
+        "bytes": 6868,
+        "local_bytes_match_git_blob": true
+      }
+    ]
+  },
+  "M21_original_receipts": [
+    {
+      "path": "output/pdf/e_jepa_ttc_paper/data/verification_architecture.log",
+      "sha256": "ebf5c3331cc9b87820e048e8a377b20f608895d10be4238e4b8e3c020491c243",
+      "bytes": 2462,
+      "distributed_copy": "paper/from_motion_to_time_20261102/data/verification_architecture.log",
+      "copy_sha256": "ebf5c3331cc9b87820e048e8a377b20f608895d10be4238e4b8e3c020491c243"
+    },
+    {
+      "path": "output/pdf/e_jepa_ttc_paper/data/verification_architecture.xml",
+      "sha256": "7f6e8f3ce4a16d428cab55b8786df37ef5ac5573bfa221c72b5800389b9c972a",
+      "bytes": 11321,
+      "distributed_copy": "paper/from_motion_to_time_20261102/data/verification_architecture.xml",
+      "copy_sha256": "7f6e8f3ce4a16d428cab55b8786df37ef5ac5573bfa221c72b5800389b9c972a",
+      "testsuite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "4",
+        "tests": "70",
+        "time": "11.084",
+        "timestamp": "2026-10-28T13:26:46.589237+01:00",
+        "hostname": "DESKTOP-2N393IP"
+      }
+    },
+    {
+      "path": "output/pdf/e_jepa_ttc_paper/data/verification_protocol.log",
+      "sha256": "2528c4db4d4762fb320b7463096641a3bc34613cde6c2a381bed034f9e6d9bb0",
+      "bytes": 184,
+      "distributed_copy": "paper/from_motion_to_time_20261102/data/verification_protocol.log",
+      "copy_sha256": "2528c4db4d4762fb320b7463096641a3bc34613cde6c2a381bed034f9e6d9bb0"
+    },
+    {
+      "path": "output/pdf/e_jepa_ttc_paper/data/verification_protocol.xml",
+      "sha256": "865dd55d804d86b1cb5c789eb24e084c61c54ac3375a4316b407213fc65e1021",
+      "bytes": 16396,
+      "distributed_copy": "paper/from_motion_to_time_20261102/data/verification_protocol.xml",
+      "copy_sha256": "865dd55d804d86b1cb5c789eb24e084c61c54ac3375a4316b407213fc65e1021",
+      "testsuite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "112",
+        "time": "10.248",
+        "timestamp": "2026-10-28T13:27:54.237916+01:00",
+        "hostname": "DESKTOP-2N393IP"
+      }
+    }
+  ],
+  "notes": [
+    "PHASE20 fusion training inputs are rotation-local context outputs, distinct from final deployment context outputs.",
+    "V5/V7 resampling is sequence+track; sequence-macro estimand does not change bootstrap units.",
+    "Physical acquisition-session independence is not established by distinct sequence IDs.",
+    "V19 FULL changes encoder weights; fixed architecture and shared initialization do not imply frozen weights.",
+    "Later JEPA pilot distributed summary gives eight sequence groups and seeds kept together, but does not report its replicate count.",
+    "Corrected transfer count460/groups32/reps10000/seed20261028 supplied by parent recomputation; historical468 retained separately.",
+    "V16 PHASE_ONLY validation intervals resample eight V group losses with 4,000 draws and numpy seed 20261012; each head seed is evaluated separately.",
+    "Grouped F1 bootstrap uses 7 scenario families, 2,000 replicates, seed 7 on recording-level RAE differences separately for seeds 7/13/21.",
+    "401-parameter gate confirmation bootstrap uses 4 CCRm recordings, 2,000 replicates, seed 7 on querywise RAE differences of a fixed ensemble.",
+    "Startup road comparison bootstrap uses 5 scenario families, 5,000 replicates, seed 7 on querywise RAE differences of fixed ensembles."
+  ],
+  "additional_local_originals_checked": [
+    {
+      "path": "artifacts/scientific_recovery_v5/results/paired_a8_0_vs_a6_outer_dev.json",
+      "sha256": "6fe8c8761d0a14fb92fc8e7570b85a1c96a399822631beb1fb117bbb6d883c0a",
+      "bytes": 3208,
+      "settings": {
+        "rows": 8192,
+        "clusters": 422,
+        "resamples": 5000,
+        "seed": 20260813,
+        "cluster_definition": "sequence_id+track_id_verified_external_metadata"
+      },
+      "distributed_copy_created_by_this_agent": false
+    },
+    {
+      "path": "artifacts/scientific_recovery_v6/results/paired_a5_causal_vs_garl_outer_dev.json",
+      "sha256": "c2cd80d9debb117083c858508567acd11c47b33f224a32174e3a428a121c5d72",
+      "bytes": 3190,
+      "settings": {
+        "rows": 8192,
+        "clusters": 422,
+        "resamples": 5000,
+        "seed": 20260813,
+        "cluster_definition": "sequence_id+track_id_verified_external_metadata"
+      },
+      "distributed_copy_created_by_this_agent": false
+    },
+    {
+      "path": "artifacts/scientific_recovery_v6/results/paired_v6_1_vs_garl_outer_dev.json",
+      "sha256": "5e874e6b6d87d567d5dd10b95162c3af2d53b92dd2fb9e7ccd2e9887d41beedc",
+      "bytes": 3172,
+      "settings": {
+        "rows": 8192,
+        "clusters": 422,
+        "resamples": 5000,
+        "seed": 20260813,
+        "cluster_definition": "sequence_id+track_id_verified_external_metadata"
+      },
+      "distributed_copy_created_by_this_agent": false
+    }
+  ],
+  "followup_review": {
+    "P04_units": "The first five fields per modality are dimensionless phases, divided by 0.03 for the fusion MLP; four current timing values are seconds, support is valid_count/8. The RGB raw_location and two native rgb_width_logits also anchor the output outside the correction MLP.",
+    "P04_timing_fields": [
+      "(query.anchor_us-observation.anchor_us)/1e6",
+      "(query.available_us-observation.available_us)/1e6",
+      "(observation.anchor_us-previous_retained.anchor_us)/1e6, or zero at first retained slot",
+      "(observation.available_us-observation.anchor_us)/1e6"
+    ],
+    "P04_selection_zero_based": "RGB160:170 then event330:340. PHASE17 mean/std normalizers fit only unique valid observations in permitted role; timing channels remain separate.",
+    "M21_counts": "Architecture 70 total =66 passed+4 skipped; protocol112 total=112 passed+0 skipped. Combined178 passed+4 skipped,0errors,0failures. Dates28October2026.",
+    "OOF_global_wording_recommendation": "Use context and fusion stages rather than all stacked stages or all successive stages. Final PAIR uses its all-TRAIN40 A5 representation; historical V16 selection was in-sample stacking, with GROUP_CROSSFIT separate.",
+    "remaining_recorded_gap": "The later JEPA pilot closure summary retains8sequence groups and fixed seeds7/13/21 but omits bootstrap replicate count. No count was invented."
+  }
+}

@@ -79,3 +79,7 @@ configs/local/*.yaml
 
 # Local browser inspection snapshots.
 /.playwright-mcp/
+
+# Local editorial guidance, excluded from the scientific release.
+paper/from_motion_to_time_20261102/GUIA_REESCRITURA_NATURAL_PAPEL.pdf
+paper/from_motion_to_time_20261102/GUIA_REESCRITURA_NATURAL_PAPEL.tex

@@ -1,0 +1,15 @@
+{
+  "pages": 78,
+  "words": 33116,
+  "figures": 30,
+  "tables": 36,
+  "all_fonts_embedded": true,
+  "pdf_sha256": "d387dd9bdc7da3e213871d3a201dbe3796b77d45e0d9e8b311000094d9580a7d",
+  "latex_checks": {
+    "overfull_boxes": 0,
+    "missing_glyphs": 0,
+    "undefined_references_or_citations": 0,
+    "latex_warnings": 0
+  },
+  "visual_review": "Review rendered pages before delivery."
+}

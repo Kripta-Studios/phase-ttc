@@ -10,3 +10,5 @@ __pycache__/
 *.fdb_latexmk
 *.synctex.gz
 /main.pdf
+!data/verification_architecture.log
+!data/verification_protocol.log

@@ -4,7 +4,8 @@ message: "Cite this software when using PHASE-TTC (formerly E-JEPA-TTC)."
 repository-code: "https://github.com/Kripta-Studios/phase-ttc"
 type: software
 authors:
-  - family-names: "KriptaStudios"
+  - family-names: "Schwiedop Souto"
+    given-names: "Álvaro"
 version: "0.1.0"
-date-released: "2026-06-30"
+date-released: "2026-11-11"
 license: "MIT"

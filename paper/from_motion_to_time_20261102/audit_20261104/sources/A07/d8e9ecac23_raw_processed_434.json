@@ -1,0 +1,30 @@
+{
+  "original_raw": {
+    "population": 434,
+    "scored": 434,
+    "relative_error_pct": 49.725868296801174,
+    "mae_seconds": 0.8244062243161187,
+    "rmse_seconds": 3.7639472594616192
+  },
+  "original_email_processed": {
+    "population": 434,
+    "scored": 434,
+    "relative_error_pct": 49.89424239376255,
+    "mae_seconds": 0.8249759271589365,
+    "rmse_seconds": 3.6331527356259437
+  },
+  "frozen_submission_raw": {
+    "population": 434,
+    "scored": 434,
+    "relative_error_pct": 17.785520266172078,
+    "mae_seconds": 0.3469702937988789,
+    "rmse_seconds": 1.325565053082194
+  },
+  "frozen_submission_email_processed": {
+    "population": 434,
+    "scored": 434,
+    "relative_error_pct": 17.249803112310904,
+    "mae_seconds": 0.33589880629301444,
+    "rmse_seconds": 1.2679187409263255
+  }
+}

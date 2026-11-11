@@ -26,12 +26,14 @@
     "sections/protocol",
     "sections/official_results",
     "sections/transfer",
-    "sections/evttc_competition",
     "sections/quality_adaptation",
-    "sections/canonical_cadence",
     "sections/design_analysis",
     "sections/runtime",
     "sections/discussion",
+    "sections/implementation_details",
+    "sections/evttc_competition",
+    "sections/adaptation_details",
+    "sections/canonical_cadence",
     "sections/methods",
     "sections/evaluation_details",
     "sections/derived_transfer",
@@ -44,7 +46,8 @@
     "sections/history",
     "sections/reproducibility",
     "sections/evidence_index",
-    "sections/update_evidence"
+    "sections/update_evidence",
+    "sections/scientific_revision"
   ],
   "all_original_sections_retained": true,
   "byte_identical_original_assets": {
@@ -56,115 +59,115 @@
     {
       "path": "sections\\competition_details.tex",
       "original_sha256": "46763122043303fdd4ef94dfd5d6973bd6a32f474db59aafebe2d306eda680e4",
-      "expanded_sha256": "b8cadbd599fc0c059f9e9f5205b1f5c9e4a87723f2618a5c9a92160bc8071f6b",
+      "expanded_sha256": "9459184b7b330da1e4246fc4ff053bbdd291c7f1e0a6a955842d3031a80bf376",
       "changed": true
     },
     {
       "path": "sections\\derived_transfer.tex",
       "original_sha256": "966ee8df2f8271084c231555f9303d116126b0596c905127f3d183e88744ecd6",
-      "expanded_sha256": "4fef64185d39ab01014636b2373bc8fd8248c589494a1d88b217930550eb5989",
+      "expanded_sha256": "a215d27273abcd40b55ad5400f6a01488d9d24dd5c434a87765f7c656d6dfad0",
       "changed": true
     },
     {
       "path": "sections\\design_analysis.tex",
       "original_sha256": "67629432090dd30a07c5f74cb3bd570ba946f764ae33a3ebbcf4545ff0c05368",
-      "expanded_sha256": "1f10b5a4d30af5a6443dd30879b8daee9b84729ab3bac9d291d0e2a05149f9df",
+      "expanded_sha256": "13040c4edc4d25ffe99a6bd2f4b3134a6aa40843808bb5196a121547700f47a0",
       "changed": true
     },
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "ca6ebba9bc3c238d8c84eeffc1a8eedaff119018066687b8b766f05f5c791f7a",
+      "expanded_sha256": "513c401b185e026fe6e67f876194b11b89090f9b1f19f82d610b11b8b2a76e53",
       "changed": true
     },
     {
       "path": "sections\\early.tex",
       "original_sha256": "c7aac90b3a93c3bd269702b8be743f27c3a04032fcfc1c7f7946bc5f36cea88a",
-      "expanded_sha256": "a78319c11cbec9495d26b54d35fe3f5f4d5602c4c6d19d331ab42d6ec4cb90a0",
+      "expanded_sha256": "22cd96b80ce0fd5b65eff841284d2d0d1e7f7bdaef0377d4ffffb2f30fd99de6",
       "changed": true
     },
     {
       "path": "sections\\evaluation_details.tex",
       "original_sha256": "e7e0d10930fc535d4660d67d68bf0c70f0d4d98071d2d2e3111480814467383b",
-      "expanded_sha256": "72f63a161fb6cc0480e46330b2c3ce66c6870db9e8bcd9108bfa10dacef392fe",
+      "expanded_sha256": "2e365bf61106a0dbe763e16e817010989bee5530465ee275e096a331f5b09de9",
       "changed": true
     },
     {
       "path": "sections\\evidence_index.tex",
       "original_sha256": "78a3f570ae15feacd2b26be83031f1af95162f5e2587b152656c8842b69aa0ae",
-      "expanded_sha256": "78a3f570ae15feacd2b26be83031f1af95162f5e2587b152656c8842b69aa0ae",
-      "changed": false
+      "expanded_sha256": "5bafc61449121a8111e0d36bca283fe048e3a80dceed9a1fbcb108939e855cf4",
+      "changed": true
     },
     {
       "path": "sections\\evttc_competition.tex",
       "original_sha256": "f8630c9917ce710196cd9f7b7840291ce536d3a6fba8cef2e12b33a6b9993d2b",
-      "expanded_sha256": "69eb17e2337d3b3d100e9a7814dff411e2fd94bf99bb6583ff7d56dd64903152",
+      "expanded_sha256": "96f33d1d950fb3a5a3a8fa357c4719b93d19f5140b4d63ab5c9637eb869f0da7",
       "changed": true
     },
     {
       "path": "sections\\final_model.tex",
       "original_sha256": "ee946529c93a4985d3612d356949e05c68965065c3d51083644b0540142d6181",
-      "expanded_sha256": "c4721cc12b8a9ed15bcf448bd1618cdeb1e7b529c8e110df13dfe13dfeeba307",
+      "expanded_sha256": "ae7b77d93ab46024968d880157ecaa2f33dcf331d9a7a8ee33e2f0f57374f64c",
       "changed": true
     },
     {
       "path": "sections\\history.tex",
       "original_sha256": "c376203118f9aebe52403c495a2967d185c48aa2441adde62a1233816e375522",
-      "expanded_sha256": "f2c49983f361d77df425f3d57997c0104c44d80178343c9a1d517be28dc37685",
+      "expanded_sha256": "0a1460ee8251a010298a8c8b6dc5c17ee3f567510abb04a0e9978f2b098c238b",
       "changed": true
     },
     {
       "path": "sections\\introduction.tex",
       "original_sha256": "2ea165727c8fe22993ffd76dbcad20188bfba40a2f0f076097ba3703b4b91f89",
-      "expanded_sha256": "1fed179bfa0eec8f816624253f788cf1d933357e9b88db9d98d3eee0ef7bc23c",
+      "expanded_sha256": "58e3fbc2eec1846e20ffc0fe06e532a7aacce753d3886cd2646ee1cbaf9ab6c9",
       "changed": true
     },
     {
       "path": "sections\\late_research.tex",
       "original_sha256": "d448cec89086dc1d847e737d8305dbaed340570aeb05ac7bbd06ce4e376e4992",
-      "expanded_sha256": "28ae0264a65129efd08790c23031aad83400ff9e51484b5c3a1a570f85a56728",
+      "expanded_sha256": "6ae468dc020d91ab71c42d9e39fa6e5c1c8b3db1d74b8b9346b8ed0590d6a0c6",
       "changed": true
     },
     {
       "path": "sections\\methods.tex",
       "original_sha256": "bd58d2c11d810846437a08f3ad5e6437eac9bc80a7f45a1ee1d3194a5b9f7b6b",
-      "expanded_sha256": "a1dd0decd36cc239802e0109b4c934b0bb2736a5b903dda657336d467aad02ff",
+      "expanded_sha256": "5bb7de3475009b825eb395b6ef7f47068bedbc3b33efe53fca000cdaf92fa6ae",
       "changed": true
     },
     {
       "path": "sections\\middle.tex",
       "original_sha256": "192b783e448da66715287c8acdef43fe35e5fff95fd9873beedde0f6e365e661",
-      "expanded_sha256": "b867aa75e86ff3ab94fd5f87818511fd64ab9be744379741f19ca3eeb3722d88",
+      "expanded_sha256": "d192a5a80152735ab9cbc4b4f6f3527f2705928905408da39aaea6a9fbdbe2f3",
       "changed": true
     },
     {
       "path": "sections\\official_results.tex",
       "original_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
-      "expanded_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
-      "changed": false
+      "expanded_sha256": "dc4424fcc12f7f74d2fbcb6056802f6097c6f0d5826ffd4cdfd6dbe53a135401",
+      "changed": true
     },
     {
       "path": "sections\\protocol.tex",
       "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
-      "expanded_sha256": "55f34ba50abf31fd383978f0a2bba49a6aa30f3d1554dcd890eafa848a919a8d",
+      "expanded_sha256": "d6321fcd14ea762600799ff18d0ebcabfdc892945ddfe0a26399a6ceaadfea8b",
       "changed": true
     },
     {
       "path": "sections\\reproducibility.tex",
       "original_sha256": "722db763c91ed181eaea46374c7597d8a0cb9b88f30cd142f74484695a6cd59e",
-      "expanded_sha256": "904386ff08a788fa41531d3f6e21f85df81574238a28bdf6ab0cf00548b2fadd",
+      "expanded_sha256": "7ab6df65d5205260a9ccef8073bec01e68112c0aaa03b703eba3eafbf180bd35",
       "changed": true
     },
     {
       "path": "sections\\runtime.tex",
       "original_sha256": "87869c87692f4189fc6ccb9163df44d2499bbee7ce6511432797e5bb4aca1289",
-      "expanded_sha256": "341d58143b0a657a2048f727b78c2c72334355fdefe6cbcb4c881e814365ac08",
+      "expanded_sha256": "e7fb6c8256fb5b0b5ebc51b48bcb53ca4dc00fb0deb54618471ba59daa9f0b58",
       "changed": true
     },
     {
       "path": "sections\\transfer.tex",
       "original_sha256": "4130fe890f7ab78a2cacd1047a1abd13fb89dc3099b10dc646dcdb1823fe1b07",
-      "expanded_sha256": "9dd34051955811f5e6c6fec8c77124e522b0b2c20620c7a5b36bc5fe36a4cd9d",
+      "expanded_sha256": "24c469ce25ee1650a4f03dce594b1289cb60765bc348285f3a7479c4ad1d584d",
       "changed": true
     }
   ]

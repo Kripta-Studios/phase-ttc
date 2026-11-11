@@ -4,10 +4,15 @@
 
 \subsection{Public ranking and bandwise accuracy}
 
-As of 28 October 2026, PHASE-TTC ranks first among the three displayed submissions on the official GarlTTC Test leaderboard. Submission \OfficialPhaseSubmissionID{}, listed as \emph{PHASE-TTC (TRAIN40, 650 ms causal history)}, records Overall MiD \OfficialPhasePublishedOverallMiD{} over \OfficialSampleCount{} scored tokens with a 0\% scorer-defined failure rate. The next displayed score is \OfficialGarlOverallMiD{} for the Garl-TTC reference. \citep{codabench2026} \evidence{B01}
+As of 28 October 2026, PHASE-TTC ranks first among the three displayed submissions on the official GarlTTC Test leaderboard. Submission \OfficialPhaseSubmissionID{}, listed as \emph{PHASE-TTC (TRAIN40, 650 ms causal history)}, records Overall MiD \OfficialPhasePublishedOverallMiD{} over \OfficialSampleCount{} scored tokens with a 0\% scorer-defined failure rate. The next displayed score is \OfficialGarlOverallMiD{} for the Garl-TTC reference. \citep{codabench2026}
 
 The scorer returns Overall MiD \OfficialPhaseOverallMiD{} at full precision, consistent with the rounded public entry. Relative to Garl-TTC's published \OfficialGarlOverallMiD{}, PHASE-TTC reduces the ranking metric by \OfficialOverallRelativeGain{}. All four TTC bands improve (Table~\ref{tab:official-benchmark}); the large positive-TTC band has the largest relative reduction and the negative band the smallest. Percentage reductions combine the unrounded PHASE-TTC values with Garl-TTC's published two-decimal scores. \evidence{B01,B02}
 
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{figures/rev_hero.pdf}
+\caption{\textbf{Archived GarlTTC Test results, 28 October 2026.} Overall MiD and the four TTC bands compare the complete PHASE-TTC and Garl-TTC submissions. Both report 0\% scorer-defined failures across 6,762 tokens.}
+\label{fig:official}
+\end{figure}
 \input{tables/official_benchmark}
 
 \subsection{Where the weighted difference comes from}
@@ -31,7 +36,7 @@ The \OfficialSampleCount{} scored tokens represent 5,805 distinct physical queri
 
 \subsection{Scope of the comparison}
 
-The submission declares RGB and event inputs, TRAIN40 fitting, and up to 650\,ms of causal history. Because the evaluator scores submitted TTC values, the leaderboard compares complete systems with their own temporal support, localization, supervision, and runtime choices. Section~\ref{sec:design-analysis} examines modality and temporal dependencies within the tested development configurations.
+The official result establishes the accuracy of the complete forty-sequence event--RGB system with up to 650\,ms of causal history. Its gains span all four TTC bands; the high weights on imminent and short-horizon contact make these bands responsible for \OfficialCrucialSmallContributionShare{} of the weighted improvement. Systems on the leaderboard retain their own localization, supervision, and runtime choices. Section~\ref{sec:design-analysis} examines modality and temporal dependencies through controlled development comparisons.
 
 The official result measures the submitted system on private test targets. The exploratory EvTTC transfer compares frozen routes on development-exposed, positive-TTC sequences with annotated object regions. Section~\ref{sec:runtime} evaluates execution time separately, including deadline misses.
 \FloatBarrier

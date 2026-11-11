@@ -1,0 +1,1845 @@
+{
+  "scope": "read-only inspection; no training or inference",
+  "cache_path": "output/phase_adapt_final/data_v3",
+  "complete_sha256": "e0a1e214e3a46d553dd5d3408317d3fdaa3b130454b39bf8681f10ab029ed130",
+  "complete": {
+    "binding_sha256": "39b96b395ac0cabdc0c375074a0186f396782a9676bceb79553204844cc858ca",
+    "eap_rows": 88744,
+    "evttc_recordings": 32,
+    "evttc_rows": 3571,
+    "evttc_sensor_eligible": 3828,
+    "independent_test": false,
+    "official_equivalence": "unverified",
+    "population_sha256": "d976c31c9110c06c75a0b8925aa5c0852acc53440424eb8a6880e8dd095856b8",
+    "role": "all_compatible_local_refit",
+    "rows": 92315,
+    "status": "COMPLETE",
+    "targets_sha256": "1ea975bfb5fc1d1fb7c0f0a5a55f08db28a81080aeb365d7b09426d09aaeaa8a",
+    "train40_restore_sha256": "008d8ab2cb60b352015eb89f5734e924f37eea0003b72de582647aaf7b0b5a10",
+    "training_npz_sha256": "96498f7c99181ecb45e8c53957b05482fd3eef6e93eac0eccb5a92c68fb43a86"
+  },
+  "verified_cache_binding_hashes": {
+    "TARGET_LEDGER.json": true,
+    "training.npz": true,
+    "BINDING.json": true,
+    "POPULATION.json": true
+  },
+  "affected_groups": [
+    {
+      "group": "CCRs-1-low-100-overlap-100",
+      "assigned_ttc_path_suffix": "CCRs-1/low-100/overlap-100/ttc.csv",
+      "assigned_ttc_sha256": "780ee30ff9775da8452102bbbb9f5120ae903055007348096ecbc24b594b8c76",
+      "status_counts": {
+        "used": 98,
+        "unsupported_local_target": 2
+      },
+      "all_admitted_rows_present_once_in_training_npz": true,
+      "rows": [
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:9950461",
+          "shard": "17b6d7a35784da874fb575de4d9d03251cafb8fc92c2067814bfff617cbfd881.npz",
+          "status": "used",
+          "target_ttc": 4.923029172
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10000460",
+          "shard": "ef83db25716c0dc1e35f2399f54372688e73303268d1b5daac9b207b2d8a09e8.npz",
+          "status": "used",
+          "target_ttc": 4.861626340999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10050459",
+          "shard": "be7bc7c2b62453395c890cd1cca8833c18f8069e7b8ffd175e4ba7e14ab51e64.npz",
+          "status": "used",
+          "target_ttc": 4.8270765735
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10100467",
+          "shard": "04d88043a5e6ff56ec45692f43d5858613434c8289eee9fb76b2523334109ad9.npz",
+          "status": "used",
+          "target_ttc": 4.773341910300001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10150466",
+          "shard": "0aedf0ab884a6f79d30e025669445f19b7cb645cec69420b1a53fbfead8cdbd8.npz",
+          "status": "used",
+          "target_ttc": 4.728541096
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10200465",
+          "shard": "fb52be7c1cd62a402f8b431d2fc50b738c7f0d879fd6d7d879fb2d642d53ddca.npz",
+          "status": "used",
+          "target_ttc": 4.682145617500001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10250464",
+          "shard": "33f690b9d443f4cb110a5c71aa2e66412b7150580bdd0891faa4937a70927aa1.npz",
+          "status": "used",
+          "target_ttc": 4.633336824000001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10300463",
+          "shard": "49de9aeaa9713aca446f5f550b3b0f9a341345b542db95cc1cbf107548a57f22.npz",
+          "status": "used",
+          "target_ttc": 4.5906530581
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10350471",
+          "shard": "d122a6b20700722f14ef39cccc8346828fc5f99f91f600bbb4762eb4b01ada7d.npz",
+          "status": "used",
+          "target_ttc": 4.540730954100001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10400471",
+          "shard": "d46e24f2ec1987becd86ab9f07997184b805bb94c1c0cb98243c0533097fbedf.npz",
+          "status": "used",
+          "target_ttc": 4.4856360548000005
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10450469",
+          "shard": "dec84ea5c3ceb0e66d3bb3b291e84d7e0c29469d2bd102a1b9d835d14294724d.npz",
+          "status": "used",
+          "target_ttc": 4.4430281825
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10500469",
+          "shard": "95ea1ea46fae058e40fc2b2785b918274abca0b33757aad617550f06dfbba0bf.npz",
+          "status": "used",
+          "target_ttc": 4.392000940800001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10550477",
+          "shard": "86b8199a17171a9f0d7e4e149cc874d4c5e28ba12e7119181cd2164ebf4229ce.npz",
+          "status": "used",
+          "target_ttc": 4.3317837616
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10600476",
+          "shard": "6f89a148479b027c1894330f385ffe2128a98e0fc1f59145d48016aa5b57545a.npz",
+          "status": "used",
+          "target_ttc": 4.2797101346
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10650475",
+          "shard": "eddab86e512f5822754f65df87f7425cd36ad257f3423a224fc7bef9bf6008f1.npz",
+          "status": "used",
+          "target_ttc": 4.217323287
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10700474",
+          "shard": "738d9a35c6d6d7f6f9cda3925b3bdd1c000096ff00b410b4c066727d73077291.npz",
+          "status": "used",
+          "target_ttc": 4.1475893600000004
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10750482",
+          "shard": "cb5bae965a2c26f1d9fbc0ea983558d0e6279e98992d0d48672d3cc349bba070.npz",
+          "status": "used",
+          "target_ttc": 4.0865152784
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10800481",
+          "shard": "86252600e15d8252529f93175aa5303dc84f3578bfa2e8cc1fa013d3716288f1.npz",
+          "status": "used",
+          "target_ttc": 4.0131100037
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10850480",
+          "shard": "76b96a190b2facb057c8ef8f3489a032a3bcb0a74a95ee4801410a89ae395ce5.npz",
+          "status": "used",
+          "target_ttc": 3.94188925
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10900479",
+          "shard": "c6e41ca45f6659ce187effd95c34d43f27cfc4f45283cec3d76dd13b7a3dd96b.npz",
+          "status": "used",
+          "target_ttc": 3.8867895634
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:10950487",
+          "shard": "b881a16e743369e096bbe8446f69cf75192709011fea82cd430c93be160b6c56.npz",
+          "status": "used",
+          "target_ttc": 3.8268589334
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11000486",
+          "shard": "59ce7e6bf3343f2b1e5dd61f7c681872bb0cf9185036ac23023487477a52ed44.npz",
+          "status": "used",
+          "target_ttc": 3.7460851904
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11050485",
+          "shard": "a67e8bc65bae0c8547055b53150edcaad68f1f3b917e834677b322c744318615.npz",
+          "status": "used",
+          "target_ttc": 3.704891352
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11100485",
+          "shard": "0f480a1b421893fe04cd0efa75bd2884c23723a1cc801d2a059a6b27565c668f.npz",
+          "status": "used",
+          "target_ttc": 3.6370064625
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11150493",
+          "shard": "4d36fa8e6aa74f19ab88db6c715d82b5aed7ba135518b89d7039a7c0d672f7b6.npz",
+          "status": "used",
+          "target_ttc": 3.5788141270000002
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11200492",
+          "shard": "b6e56692b00996d155489c033ee22bf9a8ef212fd7574162246e1827d8db59ee.npz",
+          "status": "used",
+          "target_ttc": 3.5152343492
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11250491",
+          "shard": "f2b31b8514780c2a82644c18ed5d38190b6ae81ad83b53d1b9d35500dd728194.npz",
+          "status": "used",
+          "target_ttc": 3.4493480143000004
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11300490",
+          "shard": "8fd2d79b086668ab1038256411ce7006131bbfdacab37e5f96be91255b43f029.npz",
+          "status": "used",
+          "target_ttc": 3.392719772
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11350498",
+          "shard": "2a97b3ca2173390652e293a54be0d99c527276778eed5395192317eff92261c3.npz",
+          "status": "used",
+          "target_ttc": 3.3216422096
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11400497",
+          "shard": "1e03d5a26b970164aa2acb600686616eb4c9f1cb593bfc48ee0cd00ff032e7d3.npz",
+          "status": "used",
+          "target_ttc": 3.2540936496
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11450496",
+          "shard": "f5ca181e2c7390da84cd7bd61ce027dd60d888d058b7230696bcab644078a320.npz",
+          "status": "used",
+          "target_ttc": 3.1868942742
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11500495",
+          "shard": "5c693ccd12891d8cb2af343469c3378268da427c362835b4e9b44b89637aec37.npz",
+          "status": "used",
+          "target_ttc": 3.1274320810000003
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11550503",
+          "shard": "c4f6002895772ccf1ed51ff894b9b5a9f99cf1e215e367af0668f4813b7b15cd.npz",
+          "status": "used",
+          "target_ttc": 3.0696128112000003
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11600502",
+          "shard": "744497e62673d31c7cfc4480fce9ac7197620a69f08637f6bc4c501f611a4691.npz",
+          "status": "used",
+          "target_ttc": 2.9985131128000004
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11650501",
+          "shard": "ad64b702a6f93d36fa8a7bd0512ce03995ef98ba0dbfde2af3d74f0d7b5a3efb.npz",
+          "status": "used",
+          "target_ttc": 2.9375906996
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11700501",
+          "shard": "e885ee40c68a43306c5835309d2693074129f02639fbd5d24e799cde1965f8f3.npz",
+          "status": "used",
+          "target_ttc": 2.8788407568
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11750509",
+          "shard": "efb4edac94508c01573fcda9f7d8c0512bcc5f4a148b253963282e2db9674057.npz",
+          "status": "used",
+          "target_ttc": 2.8342253228
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11800507",
+          "shard": "cb898e1e4ba63ddb6707f265ab497233b0e0899701951e9db15e64bd43356cce.npz",
+          "status": "used",
+          "target_ttc": 2.7804879193
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11850507",
+          "shard": "b9c3a86745d6c6ec68aa67d645e245bb3d4fa13de32cd7de76acfe4254a6580d.npz",
+          "status": "used",
+          "target_ttc": 2.7165644611
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11900505",
+          "shard": "e1bd53313f3b96852b7046aba325db35f32c660a625be92e46e3042b20d516bc.npz",
+          "status": "used",
+          "target_ttc": 2.6641709899999997
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:11950514",
+          "shard": "76173cf43047c9f4c95ac95537df575e5cca6c1168df3540aaad479cb2baba91.npz",
+          "status": "used",
+          "target_ttc": 2.6097122176000003
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12000513",
+          "shard": "187eb1a1a1a77e6a27923f156a2d02965beee2ec8319c269c6ae72a737cee2de.npz",
+          "status": "used",
+          "target_ttc": 2.5679426334000004
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12050512",
+          "shard": "8a875d2528de26497c15eef4c933fd6132aeb224f912e2872d7aef46d8a7061d.npz",
+          "status": "used",
+          "target_ttc": 2.5182372896
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12100511",
+          "shard": "8ddee9b9db93aa883a92c4cf9d613e03a0fa664f047a0564af19eb815a8ca57d.npz",
+          "status": "used",
+          "target_ttc": 2.4609368301999996
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12150519",
+          "shard": "4bdf03dd387e286ad0e9f8973bda184410938fa25c77e1e5d5095a6dddd8f318.npz",
+          "status": "used",
+          "target_ttc": 2.4158671408000005
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12200518",
+          "shard": "26313929dc33fd738b23384a09b3094a9506122bd610a4e73c1cb24a2cada9f9.npz",
+          "status": "used",
+          "target_ttc": 2.3684202751999996
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12250517",
+          "shard": "4acdf226a40eb25c93b222ca0506a63165cc3555f566a46407bfd54971d324a6.npz",
+          "status": "used",
+          "target_ttc": 2.315773193
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12300516",
+          "shard": "d033570d24303f79ffa5d727203baaaa00ed6a9cc9a39d372ef46f3fcbea6268.npz",
+          "status": "used",
+          "target_ttc": 2.2682358674
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12350524",
+          "shard": "d75131a4864a436f361186adfddce2cb9b6de655c53c1fca91d6ab6b3b4e831d.npz",
+          "status": "used",
+          "target_ttc": 2.2192690859999997
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12400524",
+          "shard": "c6c38428aaf6727e7ae31608a43219d5cfe36ee0558316c3525cd71993ee84a0.npz",
+          "status": "used",
+          "target_ttc": 2.1715128404
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12450523",
+          "shard": "6aebccdbd5377302a99b64ca59828c84d514fe7141ae6d9a72a92bdc65b71eb5.npz",
+          "status": "used",
+          "target_ttc": 2.1230018018
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12500521",
+          "shard": "202835a18ac68da5edd48c596475d5adaa02a83e1f067f172213d8a6b7134466.npz",
+          "status": "used",
+          "target_ttc": 2.0714073401
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12550521",
+          "shard": "6f3b8f058cb7f13a760c7b516373480843f50083d8743a8d54da7277eacd87a0.npz",
+          "status": "used",
+          "target_ttc": 2.0177868551
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12600529",
+          "shard": "7a054fde6a7b6da27a1f4b1918666e7b106a5fb80d142ffdad481f4c2adfc3a1.npz",
+          "status": "used",
+          "target_ttc": 1.9697427933
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12650528",
+          "shard": "b28a61e93b275ca8736e97afbd680def5e4ac933a9fa3942d70b053fd23160ed.npz",
+          "status": "used",
+          "target_ttc": 1.9139174723999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12700527",
+          "shard": "e910717e3c671d45fdb765b1e541fa315909654b6b4885551c06f73a47e94c61.npz",
+          "status": "used",
+          "target_ttc": 1.8718165415999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12750535",
+          "shard": "f8a048728905e6c0aefb47e81e341b98a1f2764874c2660f65976f39d4f3c779.npz",
+          "status": "used",
+          "target_ttc": 1.8190737595
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12800534",
+          "shard": "e25e9b02cbbb045b39bee595767856fa1e41b25ceac7f31a66610861d1c3c427.npz",
+          "status": "used",
+          "target_ttc": 1.7666330799999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12850533",
+          "shard": "eb7c1bbdc4200e29adb5ea2abc6c2ea6b9566486051a46685d69edeaeb1c86cb.npz",
+          "status": "used",
+          "target_ttc": 1.7171750130999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12900532",
+          "shard": "c51ee60497b8e92b17040c0b22f67bc2b1f2e707b1ac3e472f36f6000c2dac60.npz",
+          "status": "used",
+          "target_ttc": 1.6647081314
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:12950540",
+          "shard": "faaa980dd9b1a5f03665c9df7e72565652d559ad8fac7da572c44dcffd7d6781.npz",
+          "status": "used",
+          "target_ttc": 1.6204192320000002
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13000539",
+          "shard": "f60e85a5521f8479493876c62a397b83dd23356c585066564b7f3126a2785801.npz",
+          "status": "used",
+          "target_ttc": 1.5729857922000001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13050539",
+          "shard": "2b5988a9459e8d4790cae2d71a73392441c21412793465f94625891eca29ce63.npz",
+          "status": "used",
+          "target_ttc": 1.5190967380999998
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13100537",
+          "shard": "d089f108b104fdde698ec488e3d45c1e7e524e86f361902c14a969d16d125c3e.npz",
+          "status": "used",
+          "target_ttc": 1.4749544123
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13150537",
+          "shard": "03e41ccafac3f17abbb3dd89fe04d4bd562f9deef2f3cb49a756de20eed08b5e.npz",
+          "status": "used",
+          "target_ttc": 1.4230901631
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13200545",
+          "shard": "09a09b0ce3c81b34d9c0f9bb9dcfc4acf8715feceef674e9b71aea059da3285f.npz",
+          "status": "used",
+          "target_ttc": 1.3737385979999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13250544",
+          "shard": "c03fb5abb7cc7ce16142b77feb2058284efbf0232c071381a7adf9859045ba72.npz",
+          "status": "used",
+          "target_ttc": 1.3257299513999998
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13300543",
+          "shard": "45dbaae5843be3e73be011960f7854c99260dc080aba2fdcea8fabc1ae18131d.npz",
+          "status": "used",
+          "target_ttc": 1.2751227485
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13350542",
+          "shard": "685595ba572363d2b7416275409976c050ca2281140100f8f67fed1b2ceb798f.npz",
+          "status": "used",
+          "target_ttc": 1.2270738824
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13400550",
+          "shard": "ce5134fd8726357b9782702fef4b2dd88c553dceefae040598d24e1226756cd1.npz",
+          "status": "used",
+          "target_ttc": 1.18455575
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13450549",
+          "shard": "82bd95322fe27d0d89db4c4ab1bf57f0d1c377ac71d28d871e066ee06c904a17.npz",
+          "status": "used",
+          "target_ttc": 1.1461539
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13500548",
+          "shard": "60a5b5df014408a65303d682636d0a964b2df3c925f1dc997c184e03f51adc09.npz",
+          "status": "used",
+          "target_ttc": 1.1166981820000002
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13550547",
+          "shard": "b716903c013fa2c91c8bd8a3197c4d6b84f644793367487b5b54b5bc0207a1f4.npz",
+          "status": "used",
+          "target_ttc": 1.0874638974000002
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13600555",
+          "shard": "2816d900416670018d38731149362765a18545946c184434dd34d1faf95cffa8.npz",
+          "status": "used",
+          "target_ttc": 1.064457005
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13650554",
+          "shard": "307a35ba3addf4d6c30af7802ed043ab7550ce489ddf4dbd0007540e524de402.npz",
+          "status": "used",
+          "target_ttc": 1.042386092
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13700553",
+          "shard": "8c1328eb0d4951743e4b54758cb1f585ba6204cc757fad43177a1d2dfeef83fe.npz",
+          "status": "used",
+          "target_ttc": 1.0214275142
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13750553",
+          "shard": "f583fb10a7134c0825ac4cf68a710533a5eb6a7fc4a09cdbf5c09b1a0d7bb681.npz",
+          "status": "used",
+          "target_ttc": 1.0003451729
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13800561",
+          "shard": "7adf03589088d9623bc9af11016b19937a21b91667fef5e343eef131d9d40175.npz",
+          "status": "used",
+          "target_ttc": 0.9840899985999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13850560",
+          "shard": "c33ef7501b7498d03fbf2b9d754d71087cb89db89b823f587e0273b4723214d2.npz",
+          "status": "used",
+          "target_ttc": 0.9642553749999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13900559",
+          "shard": "b692f841579fc2ebc4e0da476034b5bacff89a2de898d3c0794668e77aad4200.npz",
+          "status": "used",
+          "target_ttc": 0.9438783757
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:13950558",
+          "shard": "dee839bcaa09f681b37b775bafb220b2944182a55b37c2fa238514e3e2d5aa13.npz",
+          "status": "used",
+          "target_ttc": 0.9257470651999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14000566",
+          "shard": "ba08b219c3fd726e758e02e1f1cad7c2718c4a84b961fa3b68d76244b0fbc2b2.npz",
+          "status": "used",
+          "target_ttc": 0.910668666
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14050565",
+          "shard": "3f1e8c00361868980dcd7fa208b560f834d6a928e30ddf24fc11190479e72d4a.npz",
+          "status": "used",
+          "target_ttc": 0.8930978665000001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14100564",
+          "shard": "d2bd7ffa8d42eb19e3f686210c438ba092dc5c1288fd195f2e3ee84878809a7b.npz",
+          "status": "used",
+          "target_ttc": 0.8766958286
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14150563",
+          "shard": "e26156663b8239f21cb02fddbc76474b2a34013bd1acdc627a181ad34d260893.npz",
+          "status": "used",
+          "target_ttc": 0.8657546752999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14200571",
+          "shard": "0e032ad144871c45e71924f26ddd2596038d8203ed6d69f2ffb1b52d9d9a8223.npz",
+          "status": "used",
+          "target_ttc": 0.8578531806999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14250571",
+          "shard": "86ee566745250755bedffab2f77161ed941a78b7782d356fbc85ff40cc8629cb.npz",
+          "status": "used",
+          "target_ttc": 0.8502192439999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14300569",
+          "shard": "1190413695f72659f14169457942f9d83b13d533ed375ef27550ad29ba314418.npz",
+          "status": "used",
+          "target_ttc": 0.8461592155000001
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14350568",
+          "shard": "26f03c6e7c1941e4c012dac6719fbcebb4ca20e3857fa4c1fe4b2ee85e5d8e4d.npz",
+          "status": "used",
+          "target_ttc": 0.8426917348
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14400577",
+          "shard": "49b572d5266cfb00f5d33278256c92826e6e46d6c0b937f0c89276874fb411d8.npz",
+          "status": "used",
+          "target_ttc": 0.8454799531999999
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14450576",
+          "shard": "14f73846082459f88648ab18770ca9bb7dee40f6293cbfed7dc640582f0a8e5c.npz",
+          "status": "used",
+          "target_ttc": 0.8525213052
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14500575",
+          "shard": "e9f4c97b2d58d7ec7ea50df83579056cb3d8671f5f9fb2d90eaf6f5676aca060.npz",
+          "status": "used",
+          "target_ttc": 0.8640878625
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14550574",
+          "shard": "1363c2360fc87b73ea0a6c5420b6b56619296b16c87f58a5efc73e00c3a39ad9.npz",
+          "status": "used",
+          "target_ttc": 0.8786233388
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14650581",
+          "shard": "a4e8e426b9a092b5345f7691b513364ae56e154f27538b957a31c9e38319908e.npz",
+          "status": "used",
+          "target_ttc": 0.935707982
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14750579",
+          "shard": "2d5fb7415c0ffca0adc27563caf6dff38476bd0bc909a5f477e48caad1579bae.npz",
+          "status": "used",
+          "target_ttc": 1.0456914566000002
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14850586",
+          "shard": "6a169d313af4280f33cfeb0a8677e4eeec146b755eb7b9cb9f3c75f5728e5d90.npz",
+          "status": "used",
+          "target_ttc": 1.2423656664
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14900585",
+          "shard": "28d4c4d5b91db64926a0276239903915c75442fe9801f54f9dd89a75b1596f0e.npz",
+          "status": "used",
+          "target_ttc": 1.4013522874999997
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:14950585",
+          "shard": "e53d10eeffcd61dc743ae8095cff3fccafcc6b8778edb6e2daaa5295f41cd0f4.npz",
+          "status": "used",
+          "target_ttc": 1.6417998835
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:15000593",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-low-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-low-100-overlap-100:15050592",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        }
+      ]
+    },
+    {
+      "group": "CCRs-1-medium-100-overlap-100",
+      "assigned_ttc_path_suffix": "CCRs-1/medium-100/overlap-100/ttc.csv",
+      "assigned_ttc_sha256": "1c5adba8667acb8096eb80c26e9a9229ca3a7d76d0a6d998085c2d9b4e820fed",
+      "status_counts": {
+        "used": 141,
+        "unsupported_local_target": 8
+      },
+      "all_admitted_rows_present_once_in_training_npz": true,
+      "rows": [
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:5950352",
+          "shard": "96c84c331d585f31e46334e64189cf5cd7df6535d1313c976f55587af7c2d50c.npz",
+          "status": "used",
+          "target_ttc": 6.7641627045
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6000360",
+          "shard": "095657fb009dae287afca7aec62af6497f5a24f5d53f2c0ea681000d8e6c22cc.npz",
+          "status": "used",
+          "target_ttc": 6.707646909499999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6050359",
+          "shard": "c041ac16cab2d0a6d0d727224bbdf54249725c1a99674e7775e5a663712b9bdf.npz",
+          "status": "used",
+          "target_ttc": 6.664335843199999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6100358",
+          "shard": "062f033da706f7273584376129f515f923c17627b84bf8fd76f7e9b65c404c64.npz",
+          "status": "used",
+          "target_ttc": 6.615283574599999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6150357",
+          "shard": "288c75f9ec3f420a6bec7728300681d060768096b6409fa314287d714533e5f8.npz",
+          "status": "used",
+          "target_ttc": 6.56058984
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6200365",
+          "shard": "db83dbfa0afe0c8e960f0468c68889e51a282d956e46c2d0050b5571d9c7eb76.npz",
+          "status": "used",
+          "target_ttc": 6.520134291000001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6250364",
+          "shard": "c0b706f9740b5a87e740ba9f2787fd8a45cebadbf6472b4b5944db517b5dea16.npz",
+          "status": "used",
+          "target_ttc": 6.4580276162
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6300363",
+          "shard": "d9d38e50329cfdc78846930b7674f153f6b5ffaab4c25b30ab02c322a5ae17ee.npz",
+          "status": "used",
+          "target_ttc": 6.4026586628
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6350362",
+          "shard": "db4729f8007714eb6fe9b24c205dbb2915e9c0a27061a1627a3ea896dc9022d8.npz",
+          "status": "used",
+          "target_ttc": 6.354256477
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6400361",
+          "shard": "7a458e8b93a29cca6757173a00c024b5791b820a0894ed3de28770daef4db5d7.npz",
+          "status": "used",
+          "target_ttc": 6.3018501306
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6450369",
+          "shard": "856b589097139fa4dc229cd34834b180e932c1e20552351b18ffed03e8f30471.npz",
+          "status": "used",
+          "target_ttc": 6.2413675376
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6500368",
+          "shard": "84386e1b850a0f6e9fb00c6a8b284c9af840025a56ef3964f4f6dfd203aca74f.npz",
+          "status": "used",
+          "target_ttc": 6.2130054881
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6550367",
+          "shard": "2e18490380c026b538ddc27be4e2b91f34400da3dbf5a54680bd7e70342c2a5e.npz",
+          "status": "used",
+          "target_ttc": 6.162817592
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6600366",
+          "shard": "571928a30990e401d42276000a44699fc9f4df1243a422de53e4799035bc308d.npz",
+          "status": "used",
+          "target_ttc": 6.100765609400001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6650374",
+          "shard": "9c2dd253c09e98de04f8302a052892bcf7daffb494dd11b5a438e8688544b309.npz",
+          "status": "used",
+          "target_ttc": 6.0712435062
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6700374",
+          "shard": "a85f22733ab742164d1043d6f5f85237043e622baa817bffd2b1c885b469d513.npz",
+          "status": "used",
+          "target_ttc": 6.0094417045
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6750372",
+          "shard": "059151c05767f26e82c5878097389c58d9962ead231791cdeb204d13ecf65114.npz",
+          "status": "used",
+          "target_ttc": 5.9578593600000005
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6800380",
+          "shard": "9f0740df4c3a478eaaf2613303338b5d54bc7f733f56fac055d6cd46be199657.npz",
+          "status": "used",
+          "target_ttc": 5.9320715309
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6850380",
+          "shard": "1ed4458f8fef64c5a685109c9cca6f85700abef663ea1b651c7256c70472f5aa.npz",
+          "status": "used",
+          "target_ttc": 5.875333770299999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6900379",
+          "shard": "9c5f47fc3c9e9ff3e8d1147b405f1f113278340c0afb5aa70a57e3df9d389712.npz",
+          "status": "used",
+          "target_ttc": 5.81235811
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:6950378",
+          "shard": "935db4dab0bce2a8488c42df8a351f0cb790c22d384db8e22791890755e089e8.npz",
+          "status": "used",
+          "target_ttc": 5.769678665299999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7000377",
+          "shard": "216f70cf9aded0f67de3cf375bb820a096b8cf5b5bb8c1800d0a870d8c0fcda1.npz",
+          "status": "used",
+          "target_ttc": 5.72087132
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7050385",
+          "shard": "47ed09e5e3e1c1314ddae166e2c6193bd35334a6f532f8ea5a6e42e23e5667a0.npz",
+          "status": "used",
+          "target_ttc": 5.6764425764
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7100384",
+          "shard": "b9ad704dc6abb61d5f947bff325209d13fd2e5b0b5ccc8bef1bf44dacdb19051.npz",
+          "status": "used",
+          "target_ttc": 5.6413851492000004
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7150383",
+          "shard": "a422589aae16bb91b31dda202a94dd8a6b622fbc40e8427adc4e497dd7945d8a.npz",
+          "status": "used",
+          "target_ttc": 5.5772896
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7200382",
+          "shard": "ad3c0cdceaf0c6d0008c95bafd9645bf78f3cc2eb9d809c7321e4bbcec418ce6.npz",
+          "status": "used",
+          "target_ttc": 5.5395629374999995
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7250390",
+          "shard": "822474c75cfccbdcbe29e1050e73dd65b327e7870539370780574136cc8baafc.npz",
+          "status": "used",
+          "target_ttc": 5.5020538446
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7300389",
+          "shard": "3a50bf2c2458bfe0769c8c3c263513a585ac6ba8ef29098f11e74b471ef52607.npz",
+          "status": "used",
+          "target_ttc": 5.4539675186
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7350388",
+          "shard": "5d14d2ece0189dcc7230ccdbfbfd445613b78b15c9acfeb2af06890efa9f3cfc.npz",
+          "status": "used",
+          "target_ttc": 5.4147793121
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7400387",
+          "shard": "fc55921dbbc200b18ecad5eecc9055ba1af1351cd2201c5dd8d6b3a1d91d07f4.npz",
+          "status": "used",
+          "target_ttc": 5.370414362
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7450395",
+          "shard": "5490a664b2b00533577f3634834fab06e38a28a3924df14ebdef747a9e7f16d7.npz",
+          "status": "used",
+          "target_ttc": 5.3280252063999995
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7500395",
+          "shard": "ba935b0ba454169db460bb11a043c5bdf2f0a10667586fd29ffb2bd7221be2c7.npz",
+          "status": "used",
+          "target_ttc": 5.288856624
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7550394",
+          "shard": "3581279a2820eb4e27b7a05e6c06ef93a4a667169814242d66769ffbb79444dd.npz",
+          "status": "used",
+          "target_ttc": 5.245637181599999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7600393",
+          "shard": "2cf8c03f6d361d08aab295806c527892103636035caf41015503666bb4f7a5e3.npz",
+          "status": "used",
+          "target_ttc": 5.2157175979999995
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7650401",
+          "shard": "5d23495a85e9b2db75fcc35893afd4aa1c8ab62a84bcdb984c844581b08a0bfb.npz",
+          "status": "used",
+          "target_ttc": 5.1685904028
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7700400",
+          "shard": "2030011bb390603408dea2a169b7bca3a29067bef0a25a90a1153f5b9e5b6a57.npz",
+          "status": "used",
+          "target_ttc": 5.1103053226
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7750399",
+          "shard": "e7eb9154ce11dd7d8fcbc6431a7ac16985f87133010a79c91b7d524e389b90ae.npz",
+          "status": "used",
+          "target_ttc": 5.0935858896
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7800398",
+          "shard": "b32ce235e9a6b83157ca6ac414b2e6380bba4e0a6bc99ded2de585586cc843d9.npz",
+          "status": "used",
+          "target_ttc": 5.056034373799999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7850406",
+          "shard": "e8470491c82599e8d82de5e956f2033517b50a0c6cf15f6735d247c91b0997c0.npz",
+          "status": "used",
+          "target_ttc": 4.9982792409000005
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7900405",
+          "shard": "a4421d8ce98a4e6ab07dacb21219fb2a36a9e08d4129bb02d1d656d006e559aa.npz",
+          "status": "used",
+          "target_ttc": 4.972555184800001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:7950404",
+          "shard": "0ef3974e633a928b0e2ef66880e4a44d7f81b24274507f06bd40c61496770b5e.npz",
+          "status": "used",
+          "target_ttc": 4.9393971419
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8000403",
+          "shard": "856acefcbad3073f4679e79c4a3057f6d24c6a3742b9a94abdd390209257fc14.npz",
+          "status": "used",
+          "target_ttc": 4.8768577228000005
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8050411",
+          "shard": "29d472982a57e6397cc83c644b1765ff945f1381fe550550f8099785e5400223.npz",
+          "status": "used",
+          "target_ttc": 4.835544614
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8100410",
+          "shard": "4a80007c693a75f2d9139a74b4e01b190792bb4ea1d5e7c8cf8669ae21848131.npz",
+          "status": "used",
+          "target_ttc": 4.805120949699999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8150409",
+          "shard": "72bd0dba36a404dc958a505a9cecdef69b377b6e40f1e801007eb5b85043a0d0.npz",
+          "status": "used",
+          "target_ttc": 4.754823467
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8200409",
+          "shard": "2138b480117b2d1e5688c1934624896633c4b4e663e825ce227e34b8b719e2ce.npz",
+          "status": "used",
+          "target_ttc": 4.708720275200001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8250417",
+          "shard": "1df8ef15a2ac638504a7fc752cae71c357017bd84c9ba1ce6a9a97abc58a9bd8.npz",
+          "status": "used",
+          "target_ttc": 4.660896957
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8300416",
+          "shard": "66f5b46c1d881218e46905e5362082a42613d081ef55dd0f127a24ab8ea9f8a2.npz",
+          "status": "used",
+          "target_ttc": 4.6308300654
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8350415",
+          "shard": "a7bd0b0b3678718282b4bb1f665910fb018c30ccc7284ebe6a257e520dd207a8.npz",
+          "status": "used",
+          "target_ttc": 4.5966788704
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8400414",
+          "shard": "dd4eed1ebd06fb4d7ffffa7fd2c81a7afd8e2f7d79062518eab5154d45d65302.npz",
+          "status": "used",
+          "target_ttc": 4.554587676600001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8450422",
+          "shard": "eea0ac4e9c29beeeff9fbfcdcac48f89abd76bcd249efe1b40ad667c564f828b.npz",
+          "status": "used",
+          "target_ttc": 4.542586467
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8500421",
+          "shard": "1270e5f4cc5facd73eadbbf550cbd2295aad21a7450fdf35934c0424a290fad5.npz",
+          "status": "used",
+          "target_ttc": 4.499736824999999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8550420",
+          "shard": "1e87893d59f7766700eb75eb5a24978b87fe74722126555a295f1c2bd095826f.npz",
+          "status": "used",
+          "target_ttc": 4.428932300900001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8600419",
+          "shard": "5f30b9bf7c1e19f8deefdcf73fe4149a3b758ec64894389394704b773f1653ea.npz",
+          "status": "used",
+          "target_ttc": 4.3989281791999995
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8650427",
+          "shard": "87515b80d81a51c8ecfefb4420495c400e35cfd7d66d2434d19a8fae9c7ac40e.npz",
+          "status": "used",
+          "target_ttc": 4.350966508000001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8700426",
+          "shard": "17a4720db45454377dfac346f0e1a21fb74c4f30c8f1378c8a1450c62c129707.npz",
+          "status": "used",
+          "target_ttc": 4.3064130751
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8750425",
+          "shard": "2caad7fcb4f53f94cbaa6bd72c3eb9d01a8f29c92cb870b9e9e22097e0abd99b.npz",
+          "status": "used",
+          "target_ttc": 4.2812646366
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8800424",
+          "shard": "8003a74df8f4bac5141af930a09d69bc8c0c104aac31640667f155aaea494929.npz",
+          "status": "used",
+          "target_ttc": 4.2345806093
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8850433",
+          "shard": "dbeda1c8c8c852c25c0c99aaef96967d15883c083153a0f994a105414336f984.npz",
+          "status": "used",
+          "target_ttc": 4.1788814348
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8900431",
+          "shard": "7ea49ee9f104d2c28c83d4d49bfad8328a8ec24f1ce46e7ccbdc3925772c7fba.npz",
+          "status": "used",
+          "target_ttc": 4.167967144
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:8950430",
+          "shard": "d4971c80aac849de197ca6b60b85b3fd5cf01e377bb0b589a43df0d0d2229144.npz",
+          "status": "used",
+          "target_ttc": 4.1010769576
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9000430",
+          "shard": "5a62372ff73cdfeb9cc8c68eeffb0aecf6583433c63fe826070bdd6445de7000.npz",
+          "status": "used",
+          "target_ttc": 4.0590390538
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9050437",
+          "shard": "ad59ba24bdd9737a6c7ae46b91ec6df52d3252b1c98bd6e23eb1e01240b93295.npz",
+          "status": "used",
+          "target_ttc": 4.017833143999999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9100437",
+          "shard": "03759ba19e4590415a1c0ca60a8dde4da9979704c637d9e38275f6edcff708a3.npz",
+          "status": "used",
+          "target_ttc": 3.9736731929999998
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9150436",
+          "shard": "b03e99360da3141687626c74517e60693d6e6e9ecbd117a072ae586b1746e8ee.npz",
+          "status": "used",
+          "target_ttc": 3.9475127199999998
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9200435",
+          "shard": "24d1ba4f590b57ca2444810b0ffadaebacf1f64c347ceeef7b58e61fd3db73fc.npz",
+          "status": "used",
+          "target_ttc": 3.9092678667999996
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9250443",
+          "shard": "a29418685c03dc345b44a4b17c09e7fd232fdd6b39a6385b07697c2f1aff3735.npz",
+          "status": "used",
+          "target_ttc": 3.8432043344
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9300442",
+          "shard": "79250e7082c36f74e0faf6c42931ec12672c1d32c6b18cf01367d954d78c9d09.npz",
+          "status": "used",
+          "target_ttc": 3.8186369895
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9350441",
+          "shard": "5cc0493b3d9225595b3e143d05deb8ceaa8fda99a1942ba5a8cd6ab2526e6737.npz",
+          "status": "used",
+          "target_ttc": 3.782641022
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9400440",
+          "shard": "5ec94430ffa7262ead1578418ac85df14c465212bcca12976a2b1cf7cdfb052f.npz",
+          "status": "used",
+          "target_ttc": 3.7324231727
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9450439",
+          "shard": "751b662348f528d3eca6e023c04f1cb90c1323eee361c8648e2fe838e4d38f0f.npz",
+          "status": "used",
+          "target_ttc": 3.6933580896
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9500447",
+          "shard": "d9f1bca21f8f9d42ffaf78f5d285ad713b590ea1ee8469be5baa11f3914af91f.npz",
+          "status": "used",
+          "target_ttc": 3.6405289759999997
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9550446",
+          "shard": "0fa09d49ebf17afcc1dd030a774ddfdc9c0341c2897eaf506295e7f0ee09ff3b.npz",
+          "status": "used",
+          "target_ttc": 3.6000088636000003
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9600445",
+          "shard": "86bbc94dfb23b25c954636dbde5554fe337dbb8613af6c290312a8c05a003028.npz",
+          "status": "used",
+          "target_ttc": 3.56878417
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9650454",
+          "shard": "261ba22a93adf29e111d8d02ad6cf01437893137bc763ae1b9ae966602f76e5a.npz",
+          "status": "used",
+          "target_ttc": 3.5260441413
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9700452",
+          "shard": "cb19a070331c06baf53f0aa06a7af8cea657481e4afce435292535695edf0a28.npz",
+          "status": "used",
+          "target_ttc": 3.4723756000000003
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9750451",
+          "shard": "273c4b5f1dd28913f62973f37130ddc0666a5af50cefb4e4c61fd9c4e2360e95.npz",
+          "status": "used",
+          "target_ttc": 3.439134448
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9800451",
+          "shard": "266ea1f592632db8b7efb42f3bfa65ab95140ca57fb613b5cfb0cb062e3e8363.npz",
+          "status": "used",
+          "target_ttc": 3.3902538656
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9850459",
+          "shard": "f3e02d2000d471dc0567d2fc0554c093c072df27a837b30eae5ca900a65e4f04.npz",
+          "status": "used",
+          "target_ttc": 3.3505214352
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9900458",
+          "shard": "837879910292df9b0d2ac0e0b5656bbd07992c1cde13204b9d1153aaec7b19af.npz",
+          "status": "used",
+          "target_ttc": 3.2963108185999994
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:9950457",
+          "shard": "1a1ee8b2a338588d17b19c6a86d122eba5591c77b090d79367374d02e0b5f14f.npz",
+          "status": "used",
+          "target_ttc": 3.250973685
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10000456",
+          "shard": "fc1d58f349fe96bfacee278f4ec07c30f3d1f0b1029bf5c96254b93d97cf3610.npz",
+          "status": "used",
+          "target_ttc": 3.2054002461
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10050455",
+          "shard": "3df816b35e910aa112a870f62af35473c14f687460f0d734ba9da597656f5558.npz",
+          "status": "used",
+          "target_ttc": 3.1580850576
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10100463",
+          "shard": "59062b2c735b5af750f9172f6a9be5be293c31cc13f11af3b5e042a340d0c9f7.npz",
+          "status": "used",
+          "target_ttc": 3.1166591104
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10150462",
+          "shard": "15e822fc7c4d6151c036720679af7b83476781229c5fe03aad71ff3ecbbd3e93.npz",
+          "status": "used",
+          "target_ttc": 3.080947494
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10200461",
+          "shard": "a6629cefb9156fe6e29d3ab89b4d33186480d821ba89f24b4ea33eaa8aa9e166.npz",
+          "status": "used",
+          "target_ttc": 3.0192908685999997
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10250460",
+          "shard": "0f11f71debc668a25774f57df610b6484e13b3fa34b289c744cd288290105bae.npz",
+          "status": "used",
+          "target_ttc": 2.9812670810999995
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10300468",
+          "shard": "f5f01b10492daf0cafc6d075ab62776a13949073209e0833e8c2cac4d13f92fd.npz",
+          "status": "used",
+          "target_ttc": 2.9368153835
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10350468",
+          "shard": "74d636e40f677a6013fda2b6a76d51493890b4b4fa789fb347472526b5f5fd05.npz",
+          "status": "used",
+          "target_ttc": 2.8880194194000004
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10400466",
+          "shard": "023a27e95a09a79f37fa72362afa8adf3244722bf34717198c468f7a9f5cf0aa.npz",
+          "status": "used",
+          "target_ttc": 2.8381981334
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10450466",
+          "shard": "f9261173486456c787032f96da10561e7e7c9480b006d72f5289fdc993d8a497.npz",
+          "status": "used",
+          "target_ttc": 2.8063510739
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10500474",
+          "shard": "11d41e0014c5e01826dc4a83de0ad3e25cfb15ecaa8bf658f3efcf99aa3207c6.npz",
+          "status": "used",
+          "target_ttc": 2.763534458
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10550472",
+          "shard": "e4940f43de450f0c598c617ba1000575e6b91fc7fbb8e86e731fc764b4ac1842.npz",
+          "status": "used",
+          "target_ttc": 2.710783177
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10600472",
+          "shard": "7ab61019bd6831cd6aad50069d93e0ab490ac505523427301ddfa91728d7c29d.npz",
+          "status": "used",
+          "target_ttc": 2.667699376
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10650471",
+          "shard": "160f3e80ecb24c2e9f5efb8699e27e0106fff93f2f24a6fcbaede3e237bdf216.npz",
+          "status": "used",
+          "target_ttc": 2.6215755392
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10700479",
+          "shard": "a0192c3e4731cb5546e2c15b276b7754919fce7e43db1b42921ce5c7894bf941.npz",
+          "status": "used",
+          "target_ttc": 2.5670277967999997
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10750478",
+          "shard": "8aefd88fe5e01767eded5d9657e23cba434f8738811658ea5114fd82cbb75c47.npz",
+          "status": "used",
+          "target_ttc": 2.5351586403999997
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10800477",
+          "shard": "1340169dbda5877ca03c2d27e1b86a8fc5953a0c7e932335c3af41e44c0dd30b.npz",
+          "status": "used",
+          "target_ttc": 2.480170943
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10850476",
+          "shard": "c47e1b8257f4de111c7c1a7ac66ce77c380d6f8faa055b761a18e653a0a935aa.npz",
+          "status": "used",
+          "target_ttc": 2.4331103476
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10900484",
+          "shard": "9a4f7c96178cb79d5be7aa433040374a2ec8e4c0866d5a5d00d9d85775e3381a.npz",
+          "status": "used",
+          "target_ttc": 2.4008558329999996
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:10950483",
+          "shard": "068494289eb39b7a2d7d486df00b23b0e3a86328509fb546a0c4e6d246a5d970.npz",
+          "status": "used",
+          "target_ttc": 2.3473759192
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11000482",
+          "shard": "f4f736fe1703b7fca7712087bc115fb42e651ed17399cf43f15b5c9f06bdb8ba.npz",
+          "status": "used",
+          "target_ttc": 2.2922019225000003
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11050481",
+          "shard": "98a60044c84554ee4870c852526f1fe77d2c4d86fdbf11c9139313de57cd6175.npz",
+          "status": "used",
+          "target_ttc": 2.2518543024
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11100489",
+          "shard": "0ad103d371a634aff16a4819decae1738f34855beb8dce0c71a2a3e919dd6e09.npz",
+          "status": "used",
+          "target_ttc": 2.202969634
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11150488",
+          "shard": "dff534141b7d91595837a1309c85295f76260795674df49c369560f6e0353048.npz",
+          "status": "used",
+          "target_ttc": 2.1526392095
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11200487",
+          "shard": "ea77c5fe08cb5d99fbbfe0e515b3cb0718ff429ff67b8e519f11b657e94ceda1.npz",
+          "status": "used",
+          "target_ttc": 2.1110828
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11250487",
+          "shard": "3c40125b92dd5b2597ba5372ec67362fa99d5f74e7f3b8aea71961d9a88034f7.npz",
+          "status": "used",
+          "target_ttc": 2.0698333040000003
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11300495",
+          "shard": "35d0a214f20c07dbccba464efdfffa73ecd380c9b40621ec0fbc4c9b6123de94.npz",
+          "status": "used",
+          "target_ttc": 2.0149045464
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11350494",
+          "shard": "a8660b65d8378217de257d0df2d311579a0cc400e672d9eb982ff1f3b0fd549a.npz",
+          "status": "used",
+          "target_ttc": 1.973494793
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11400493",
+          "shard": "c1aea2c553e1aeba2d475cb1e11790d476e94548c42aaeaff41c68ad7691758c.npz",
+          "status": "used",
+          "target_ttc": 1.9258655864
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11450492",
+          "shard": "f7a3d7302117ef4458830b596238e4b69342a3363726789b1720c1cd02b545a2.npz",
+          "status": "used",
+          "target_ttc": 1.8729275285
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11500500",
+          "shard": "815f0d844c6457d063d90b4b5dc2b3a9d708af766abba5d157970cc1d621892b.npz",
+          "status": "used",
+          "target_ttc": 1.8265545937
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11550499",
+          "shard": "25ccd3f30ae9d6e410e469892618998ec8f60a8f6a1273fdcbc17fa71be8b038.npz",
+          "status": "used",
+          "target_ttc": 1.7837926123999996
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11600498",
+          "shard": "782ca52a3ea4171b75e9e76d58da50e9edcdb657e518787e5bcb1941decbd1f1.npz",
+          "status": "used",
+          "target_ttc": 1.7382919220999997
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11650497",
+          "shard": "bd65dc02561eb05456d0542203b4ea2d2c298a4333083ecdfc313b7a1a39d5ca.npz",
+          "status": "used",
+          "target_ttc": 1.69138037
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11700505",
+          "shard": "2918f1b0dd4c3aa44d4f764ef2affb6814bc43b56075ac61480b36e6e7e3d4d0.npz",
+          "status": "used",
+          "target_ttc": 1.6423259378
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11750504",
+          "shard": "4c03f2fc00a61882e13c3939705065a011e0750d107fd0217cc2e1ad6477cec7.npz",
+          "status": "used",
+          "target_ttc": 1.5985915615000001
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11800503",
+          "shard": "07148918640bbcf1f19f7ed6aa2960ba122d9c0dc0c748c597043d1227a1f539.npz",
+          "status": "used",
+          "target_ttc": 1.5530417183999998
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11850502",
+          "shard": "c5d690cbe3dc9f9be7f23dc44391a44bc270733219baf7491c86607d9aa2a7b3.npz",
+          "status": "used",
+          "target_ttc": 1.5042996565
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11900510",
+          "shard": "fefd1c516607a6c85f1cda0c130a85b89274989f0c0e9b6eea5193f73bfa3169.npz",
+          "status": "used",
+          "target_ttc": 1.4574353723000002
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:11950510",
+          "shard": "6672f6f9afaca058c37c0a7ab13ee2f902ad9a11177c27babb8105119302de96.npz",
+          "status": "used",
+          "target_ttc": 1.4096612838000002
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12000509",
+          "shard": "cd4431096a2dc3c217c775550dad5c733f8ea4981adffd25e23b8060a4dfcb35.npz",
+          "status": "used",
+          "target_ttc": 1.3617327540000002
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12050508",
+          "shard": "a4e297f256c4b8007921878d9f58ab08f4c92eb6d67424836644f9b662b8877c.npz",
+          "status": "used",
+          "target_ttc": 1.3137610315
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12100516",
+          "shard": "3033ca820dc97d87118525df351ceada176ca22949397d50eec2207bb02e0a07.npz",
+          "status": "used",
+          "target_ttc": 1.2755519657
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12150515",
+          "shard": "85e28e306a8ef3f7d5d17295ebf1663b7dfc3d054f46a289ee4366c36b243d7d.npz",
+          "status": "used",
+          "target_ttc": 1.2499837488
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12200514",
+          "shard": "08a26bfb44834e506b22216abef9e907c0f31aa34ce842da90bb6d493f0db4e6.npz",
+          "status": "used",
+          "target_ttc": 1.2318476304
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12250513",
+          "shard": "918dc3f56df6feff4de4a6e0c0abed05094441d759bf63f5a85a05e456209013.npz",
+          "status": "used",
+          "target_ttc": 1.2161466374
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12300521",
+          "shard": "6e5cca2705619e0abdbaf13be1b7031532567612eef704c3506944a103a3a4e3.npz",
+          "status": "used",
+          "target_ttc": 1.2080457756
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12350520",
+          "shard": "c4a889bc298991690aae0dc86a3e85d50c0598917a13e58cb3883c61174512ed.npz",
+          "status": "used",
+          "target_ttc": 1.2017068070999999
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12400519",
+          "shard": "61c3050eebeb3f6ebbf069b395925f90b89e9125a062d25e09a5af7a992f21ec.npz",
+          "status": "used",
+          "target_ttc": 1.199449912
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12450518",
+          "shard": "da7952d321a3625a083b462b2b7f5194e6bf247730bbce7294a5bb7654e37d28.npz",
+          "status": "used",
+          "target_ttc": 1.2072237517
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12500526",
+          "shard": "9a2f74fcf674f3d60dcb384019d73394591aacc3de078d55b494445756e7d0c7.npz",
+          "status": "used",
+          "target_ttc": 1.2203415480000002
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12550525",
+          "shard": "6c41ad3a1fc78d0f735da54215668a18ca86dbf43282e4c9e9c0f10c020c0d1c.npz",
+          "status": "used",
+          "target_ttc": 1.2400108652
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12600524",
+          "shard": "fc99daa227236f762d318d2ff84dab685f3a4c539bf89c4aa7fdedd21cb6d833.npz",
+          "status": "used",
+          "target_ttc": 1.2667053066
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12650523",
+          "shard": "4c569ad7c19991d9d5427cc9de9336875c66906e0f11c5d9435495b0314f430c.npz",
+          "status": "used",
+          "target_ttc": 1.3001024728
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12700531",
+          "shard": "18e8203be2f7d55439bf67b677f7af01fe9612a74efbca3638b13871dfe78fdb.npz",
+          "status": "used",
+          "target_ttc": 1.3498707792
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12750531",
+          "shard": "bb689589615847b65e2bb00e2a0dfec4bb1f3e24334d06716af491afaa46453a.npz",
+          "status": "used",
+          "target_ttc": 1.4037335624000002
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12800529",
+          "shard": "f64009502a95eaedb49d44d9c2d1a9ff8c558d614a50f3fb137b4fa21dadcb57.npz",
+          "status": "used",
+          "target_ttc": 1.497923003
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12850529",
+          "shard": "d701b45b84ee54ca622eb5f7446d043ac63986ef6359176fb3f50752f1922e74.npz",
+          "status": "used",
+          "target_ttc": 1.5991708882000002
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12900537",
+          "shard": "da5c43fc0c2ba76df7739ef5894476e3e8c584534f9de1b7612a7ed697309527.npz",
+          "status": "used",
+          "target_ttc": 1.7188328619999997
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:12950536",
+          "shard": "1cab928a2f60d7ca38b7263d357ff8640eab7b0466a6b0bb3aa83d3895094cce.npz",
+          "status": "used",
+          "target_ttc": 1.9184621486999998
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13000535",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13050534",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13100542",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13150541",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13200540",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13250539",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13300538",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        },
+        {
+          "group": "CCRs-1-medium-100-overlap-100",
+          "query_id": "EXTENDED:CCRs-1-medium-100-overlap-100:13350546",
+          "shard": null,
+          "status": "unsupported_local_target",
+          "target_ttc": null
+        }
+      ]
+    }
+  ],
+  "affected_admitted_rows": 239,
+  "affected_exclusions": 10,
+  "f1_weight_descendants_requiring_corrected_refit": [
+    {
+      "seed": 7,
+      "data_receipt_sha256": "e0a1e214e3a46d553dd5d3408317d3fdaa3b130454b39bf8681f10ab029ed130",
+      "checkpoint_sha256": "e2f21190e354f042a61851e028a6953e63b7f155fde0541595a33cee71312295",
+      "epochs": 2,
+      "updates": 1444
+    },
+    {
+      "seed": 13,
+      "data_receipt_sha256": "e0a1e214e3a46d553dd5d3408317d3fdaa3b130454b39bf8681f10ab029ed130",
+      "checkpoint_sha256": "1a479e5e80614cae7fbaae2be0d668e3234c552b1ce03acce91c88fb676dee1d",
+      "epochs": 2,
+      "updates": 1444
+    },
+    {
+      "seed": 21,
+      "data_receipt_sha256": "e0a1e214e3a46d553dd5d3408317d3fdaa3b130454b39bf8681f10ab029ed130",
+      "checkpoint_sha256": "6e90b9c9e93840e28bd45392380e73fbb6d5c1cfdcf534aeb4daaeafd8a0bbfe",
+      "epochs": 2,
+      "updates": 1444
+    }
+  ],
+  "quality_startup_submission_upstream": [
+    {
+      "bundle": "output/phase_robust/FINAL_MODEL/BUNDLE.json",
+      "bundle_sha256": "dbb95f68ce861a72bb9b8169677a96442523cb256fb1d45c412acee46a07677d",
+      "verified_component_count": 13,
+      "head_sha256": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+      "all_component_hashes_verified": true
+    },
+    {
+      "bundle": "output/phase_startup/FINAL_MODEL/upstream/BUNDLE.json",
+      "bundle_sha256": "dbb95f68ce861a72bb9b8169677a96442523cb256fb1d45c412acee46a07677d",
+      "verified_component_count": 13,
+      "head_sha256": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+      "all_component_hashes_verified": true
+    },
+    {
+      "bundle": "output/phase_submission/FINAL_MODEL/upstream/BUNDLE.json",
+      "bundle_sha256": "dbb95f68ce861a72bb9b8169677a96442523cb256fb1d45c412acee46a07677d",
+      "verified_component_count": 13,
+      "head_sha256": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+      "all_component_hashes_verified": true
+    }
+  ],
+  "conclusion": "All32 F1 uses old source assignment. Quality401/startup688/finalsubmitted688 use original F0 head, not the all32 F1 weights; the identified all32 contamination does not descend into those upstream experts."
+}

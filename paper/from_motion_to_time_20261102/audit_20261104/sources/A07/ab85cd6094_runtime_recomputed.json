@@ -1,0 +1,30 @@
+{
+  "source": "docs/train40_runtime_council_20261028/evidence/council_v1/artifacts/train40_runtime_council_20261028/paced/memory_cache_overlap_reverse1_250_v1/summary.json",
+  "source_sha256": "c27d5d980f2bb1c163b073f0f71d66b3aab887ce73f98c6b19c3d6ef4bcf322d",
+  "arrivals": 250,
+  "objects": 250,
+  "clock": {
+    "wait_strategy": "sleep",
+    "wait_primitive": "time.sleep",
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "deadline_clock": "time.perf_counter_ns",
+    "clock_implementation": "QueryPerformanceCounter()",
+    "clock_monotonic": true,
+    "clock_adjustable": false,
+    "clock_resolution_seconds": 1e-07,
+    "sleep_stop_poll_seconds": 0.01,
+    "deadlines_absolute": true,
+    "busy_spin": false,
+    "scheduler_lateness_subtracted": false
+  },
+  "deadline_response_ms_p50_p95_p99_max": [
+    24.538,
+    29.143155,
+    32.41420899999999,
+    35.3326
+  ],
+  "availability_response_ms_p95": 25.252989999999997,
+  "deadline_ge20ms": 201
+}

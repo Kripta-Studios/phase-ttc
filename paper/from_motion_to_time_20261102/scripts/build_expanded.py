@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 import build_final
+import verify_publication
 
 ROOT = Path(__file__).resolve().parents[1]
 STEM = "PHASE_TTC_From_Motion_to_Time_Expanded"
@@ -59,6 +60,13 @@ def render() -> None:
 
 
 def main() -> None:
+    for script in (
+        "verify_audit_sources.py",
+        "build_transfer_revision.py",
+        "make_population_table.py",
+        "build_publication_diagrams.py",
+    ):
+        subprocess.run([sys.executable, str(ROOT / "scripts" / script)], check=True)
     subprocess.run([sys.executable, str(ROOT / "scripts/verify_sensor_excerpt.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "updates/build_evidence.py")], check=True)
     build_final.STEM = STEM
@@ -66,8 +74,17 @@ def main() -> None:
     # data hashes and numerical projections are still verified by build_final.
     if "--skip-regenerate" not in sys.argv:
         sys.argv.append("--skip-regenerate")
+    sources = verify_publication.source_hashes(ROOT)
     build_final.main()
     render()
+    receipt_path = ROOT / "revision/build_receipt.json"
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    receipt["new_analysis"] = "audit_20261104/corrected_transfer_statistics.json"
+    receipt["historical_analysis"] = "revision/derived_transfer_analysis.json"
+    receipt["publication_binding"] = "revision/publication_contract.json"
+    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    verify_publication.record_build(ROOT, sources)
+    print(json.dumps(verify_publication.verify(ROOT)))
 
 
 if __name__ == "__main__":

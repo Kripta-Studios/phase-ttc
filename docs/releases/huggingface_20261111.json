@@ -1,0 +1,19 @@
+{
+  "models": {
+    "PHASE-TTC": "692c102a5a05336b4f05c7a297a93499d4afe18e",
+    "PHASE-TTC-Adapt": "4b6f1f21c3b17cbb71d3e81749d3acb6b1f79c9c"
+  },
+  "space": "f7f6c5792428be82070273c44cb63f762605544a",
+  "space_mode": "static recorded examples; Gradio app downloadable",
+  "validation": "fresh downloads: synthetic, real query and saved metrics pass for both models",
+  "manifests": {
+    "PHASE-TTC": "820533fcc7bb71257eceba6712b1ee5a2f4b321dee3f600616f2e0a7d3b33bae",
+    "PHASE-TTC-Adapt": "f2bc1c0860b64510834b2459f2f30e05c9f5f5b02d548ec39ecb0800e3a09f90"
+  },
+  "anonymous_public_verification": {
+    "models": "both accessible; manifests match",
+    "space": "RUNNING; result and Gradio revision pins match",
+    "test_suite": "38 passed, 1 skipped (sealed CUDA candidate env not configured); separate released CPU/CUDA inference passed",
+    "review": "all material findings resolved"
+  }
+}

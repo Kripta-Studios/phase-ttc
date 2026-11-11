@@ -1,0 +1,54 @@
+\section{Implementation and source correspondence}
+\label{app:implementation}
+The main text uses descriptive component names. The source archive uses A5 for the transport-trained producer, C2F for the coarse-to-fine producer, PAIR for the pairwise temporal readout, and TRAIN40 for the final forty-sequence fit. F0 identifies the frozen base fusion model; F1 identifies a separately fine-tuned fusion head. PHASE17 denotes the context input, whereas PHASE20 denotes the twenty-coordinate fusion interface. These identifiers name different interfaces and are not interchangeable.
+
+\subsection{Final training population and optimization}
+Final fitting uses 88,744 TRAIN40 queries from forty sequences. The former P, H, and V groups all contribute to this refit, so their earlier scores characterize development rather than independent validation of the deployed chain. Each producer receives 49,932 updates, equivalent to eighteen epochs at effective batch size 32. The event producers carry forward the earlier TRAIN40 weights; RGB training resumes to the same endpoint. \evidence{L43}
+
+Training comprised 690,934 auxiliary endpoint updates and 58,660 final-head updates across forty-five fits. Final PAIR endpoints used 11,264 updates; each context model and the final head used 12,044. Schedulers and warmup scaled with the fitting population. Update counts describe optimization exposure rather than wall-clock GPU effort.
+
+\subsection{Exact fusion layout and emission policy}
+
+Each context refiner is represented for final fusion by a constructed 170-coordinate block. Coordinates 0--159 are its learned hidden state. Coordinates 160--169 are an explicit interface containing, in order, one raw location, one emitted phase, three expert phases, four current timing values, and one valid-history count divided by eight. Concatenating the RGB block followed by the event block gives the 340-coordinate container
+\begin{equation}
+  \mathbf{s}=\left[\mathbf{s}_{R}^{170};\mathbf{s}_{E}^{170}\right]\in\mathbb{R}^{340}.
+\end{equation}
+Fusion reads \(\mathbf{s}_{160:170}\) and \(\mathbf{s}_{330:340}\), yielding twenty named phase, timing, and support inputs while the 160-dimensional hidden states remain within their modality branches. Within each ten-coordinate block, the first five phase coordinates are divided by \(0.03\); timing and support keep their native scaling. The shared interface aligns quantities with consistent meanings across the separately fitted refiners. \evidence{M22}
+
+The selected vector passes through
+\begin{equation}
+  20\rightarrow 32\;[\mathrm{LayerNorm},\mathrm{SiLU}]
+  \rightarrow 32\;[\mathrm{LayerNorm},\mathrm{SiLU}]
+  \rightarrow 3.
+\end{equation}
+Zero initialization of the last affine layer makes the initial fusion output equal to the RGB anchor. If \(c_0,c_1,c_2\) are the three head outputs, \(\ell_R\) is the RGB raw-location anchor, and \(\mathbf{w}_R\) is the separately supplied pair of RGB width logits, the deployed computation is
+\begin{align}
+  \ell_F &= \ell_R + 0.03c_0, \\
+  \boldsymbol{\sigma}_F &= 0.03\,\operatorname{softplus}\!\left(\mathbf{w}_R+[c_1,c_2]\right), \\
+  \widehat{\mathrm{TTC}} &= \operatorname{phase\_to\_ttc}(\ell_F), \\
+  q_{10}^{\phi} &= \operatorname{clip}(\ell_F-\sigma_{F,0},\,\phi_{\min},\phi_{\max}), \\
+  q_{90}^{\phi} &= \operatorname{clip}(\ell_F+\sigma_{F,1},\,\phi_{\min},\phi_{\max}).
+\end{align}
+The native bounds are \(\phi_{\min}=-\log 2+10^{-6}\) and \(\phi_{\max}=8\). For the point prediction, the inverse map clamps \(\ell_F\) to these bounds, computes \(q=-\operatorname{expm1}(-\phi)/0.1\), and emits \(\operatorname{sgn}_{+}(q)/\max(|q|,1/60)\) seconds, where \(\operatorname{sgn}_{+}(0)=1\). Thus the emitted magnitude is at most 60\,s and zero phase maps to \(+60\)\,s. The reported point phase is recomputed from this finite TTC; the learned-width phase-interval endpoints are clamped separately. The rate floor keeps inversion finite near zero expansion, imposing a nominal signed horizon of 60\,s. \evidence{M22,R02}
+
+The compact fusion head contains 1,955 trainable parameters: \(672+64+1{,}056+64+99\) across three affine layers and two LayerNorms. Figure~\ref{fig:fusion-layout} summarizes the named-field and anchor paths. \evidence{M22}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/publication_fusion.pdf}
+  \caption{\textbf{Named-feature fusion interface.} The twenty selected coordinates enter the correction network. RGB location and width logits bypass that network and combine with its three outputs. \evidence{M22}}
+  \label{fig:fusion-layout}
+\end{figure}
+
+
+\subsection{Transfer target association and eligibility}\label{app:target-association}
+The historical transfer registered sixteen uniformly spaced queries in each of thirty-two EvTTC sequences, together with forty-six earlier queries. Four duplicate identities were removed, leaving 554 saved candidates: 46 Historical46 and 508 Extended-new. The associated object is the primary annotated object matched to the scenario's scalar TTC series; the public projection does not establish arbitrary per-object TTC correspondence.
+
+The original assignment interchanged the low-100 and medium-100 TTC sources for the two CCRs-1 recordings. The later public-source audit fixes their identities by download mapping and SHA-256. An independent RGB-identity record links the competition extracts to the same native recordings, matching all 50 low and 43 medium frames with constant competition-to-native offsets. Transfer queries already use native microseconds, so no additional offset is fitted or applied. \evidence{GT01}
+
+All 508 Extended-new candidates are reassociated, including the forty previously excluded queries. The matching rule remains nearest public TTC within 50\,ms, with the earlier timestamp breaking ties. The low and medium groups each contributed fifteen previously scored queries; they now contribute ten and twelve. Historical46 does not contain these groups and retains its 46 eligible queries.
+
+Table~\ref{tab:audit-transfer-eligibility} lists the candidate and eligibility counts for every sequence group.
+
+The revised Extended-new denominator is therefore \AuditTransferCount{}, with 48 exclusions across the original 508 candidates. All retained targets are positive. Every query anchor and every model prediction remains unchanged. The historical 468-query ledger is preserved in \path{data/transfer_queries.csv}; current results use \path{audit_20261104/corrected_transfer_candidates.csv}. The associated receipt records the original and corrected source hashes and the neighboring label timestamps for each reassociation. \evidence{GT01}
+

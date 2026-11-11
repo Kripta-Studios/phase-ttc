@@ -1096,3 +1096,124 @@ and consolidated PDF text match exactly. TeX and PDF wording scans passed, the
 illustration pages were inspected, Ruff passed for the changed build scripts,
 and `git diff --check` passed. Exact PDF/TeX hashes and QA checks are recorded in
 `paper/from_motion_to_time_20261102/updates/review/real_sensor_revision_validation.json`.
+
+## 2026-11-04 — Editorial revision from the supplied LaTeX guide
+
+Rewrote the expanded article's abstract and contributions around causal
+multimodal phase fusion, the official benchmark, local geometric adaptation,
+and controlled representation/runtime studies. Replaced first-person execution
+narration with academic prose; reorganized the chronology around methodological
+controls and moved source revisions into a reproducibility table. Added meaning
+to internal variant names, rounded 66 prose values, and grouped evidence markers
+by topic. Original result tables, numerical macros, source ledgers, sensor
+images, and 36 displayed equations remain unchanged.
+
+The guide contains unsupported exemplar statements. The revision retains the
+measured 35.80 versus 45.03 MiD and 20.49% reduction, historical exposure of EvTTC
+cohorts, sequence-bootstrap uncertainty, unresolved Slider-750 scoring, and the
+laptop-GPU/preloaded replay boundary. It adds no ADAS horizon standard, invented
+release tag, independent peer audit, significant tail-protection claim, or
+universal explanation of JEPA behavior. Raw-time controls follow the implemented
+rate/count/state interventions, and risk-router exclusion reflects missing
+validation controls rather than an invented optimization-instability diagnosis.
+
+The local editorial guide is preserved and excluded from the scientific source
+ZIP. The current build and editorial validation receipts document the resulting
+PDF, consolidated source, source preservation, and visual checks.
+
+Validation of the final editorial delivery: 68 pages, 28 figures and 31 tables;
+zero LaTeX warnings, unresolved references, missing glyphs or overfull boxes.
+Modular and consolidated PDF text are identical and all fonts are embedded.
+Evidence-marker occurrences in section sources decreased from 194 to 154 while
+retaining thematic source mappings. The 293-entry publication manifest and all
+ZIP entries match their SHA-256 values; delivery PDF/TeX copies match exactly.
+The source ZIP excludes the untouched local guide. Ruff and `git diff --check`
+pass. The current receipt is
+`paper/from_motion_to_time_20261102/updates/review/editorial_revision_validation.json`.
+
+## 2026-11-11 — Material scientific corrections and synchronized paper delivery
+
+Incorporated the previously uncompiled scientific source audit into the expanded
+PDF and consolidated TeX. Current transfer uses 460 eligible queries from 508
+fixed candidates, with PHASE/RGB MAE 0.813/0.851 s and p95 2.742/3.038 s; paired
+sequence intervals include zero. The historical 468-query evidence remains
+unchanged and is explicitly superseded. The manuscript now distinguishes
+fold-local PHASE20 feature generation from deployed context fitting, identifies
+study-specific bootstrap units, documents affected historical F1 supervision,
+and retains the final router's separate F0 lineage and outstanding experiments.
+
+Fixed a moving-argument LaTeX error, a long-token overflow, and two figure/text
+descriptions that did not precisely match the plotted quantities. Updated the
+edition date and entry-point documentation. Historical editorial receipts retain
+their original PDF identities; the new review receipt covers this delivery.
+
+Added a build-input/artifact hash binding and a package preflight that rejects
+stale builds or missing scientific inputs. The archive now preserves the two
+audited M21 logs as well as their distributed copies, while excluding temporary
+LaTeX logs and the local editorial guide. Nineteen focused tests pass, including
+regressions observed failing before the new guards and archive filter fixes.
+Ruff and whitespace checks pass for this change.
+
+Both manuscript forms compile to 77 pages, 28 captioned figures and 36 captioned
+tables, with zero LaTeX warnings, unresolved references, missing glyphs or
+overfull boxes. All fonts are embedded. All-page contact sheets and detailed
+corrected pages were visually inspected. The delivered PDF and TeX match the
+source artifacts; the source archive contains 413 entries (412 manifested files
+plus the manifest), with all hashes checked. The extracted consolidated TeX
+compiles independently in three passes, reproducing identical text and rendered
+pages. No models were trained, no sensor inference was run, and nothing was
+published or submitted externally.
+
+Current evidence: `paper/from_motion_to_time_20261102/revision/publication_contract.json`
+and `paper/from_motion_to_time_20261102/updates/review/material_corrections_20261111.json`.
+Delivery: `output/pdf/PHASE_TTC_From_Motion_to_Time_Expanded.pdf` and its source ZIP.
+
+
+### 2026-11-11 — Reestructuración del paper y revisión gráfica
+
+- Aplicada la guía de humanización: narrativa problema–método–evidencia, abstract accesible, notación funcional y subsección de aprendizaje predictivo.
+- Trasladadas genealogía de checkpoints, auditoría detallada de targets y cadencia al suplemento; etiquetas de evidencia ocultas en el cuerpo y visibles en el suplemento.
+- Redibujados los diagramas de arquitectura, OOF, fusión, historia y relojes; nueva portada conceptual con datos reales y cifras vinculadas a macros verificadas.
+- Revisados los gráficos utilizados y sus flechas; aclarado el reloj posterior a adquisición/copia/sellado del payload, también en la leyenda de latencia.
+- Conservados datos, predicciones, activos originales y limitaciones: ni fallo universal de JEPA, ni eliminación de singularidades, ni cumplimiento del plazo de 20 ms.
+- Verificación y hashes finales en `paper/from_motion_to_time_20261102/updates/review/humanization_visual_20261111.json`.
+
+
+### 2026-11-11 — Segunda pasada de fluidez del paper
+
+- Releída la guía editorial disponible y aplicadas las observaciones posteriores del autor.
+- Una única mención de Slider-750 en la prosa principal; los valores y registros técnicos siguen disponibles en tablas y suplemento.
+- Eliminadas las fórmulas repetidas «does not / did not / fails to establish» del cuerpo principal; límites y resultados negativos expresados de forma específica.
+- Introducción más integrada y análisis de latencia basado en los dos relojes medidos, sin tiempos ni explicaciones causales inventados.
+- Entrega y comprobaciones en `updates/review/editorial_refinement_20261111.json`.
+
+
+### Web publication — 11 November 2026
+
+Published the reviewed 78-page manuscript and matching LaTeX/source ZIP at schwiedop.com/papers/phase-ttc/. Updated EN/ES project articles, reader metadata, portfolio paper cards, four manuscript diagrams and corrected transfer results (460 eligible queries). Verified all 18 changed public files against local SHA-256 hashes, the live reader through page 78, and all 16 replay queries against corrected records.
+
+Active release: `/var/www/schwiedop/releases/20261111T154425Z-paper-revised`; rollback release: `/var/www/schwiedop/releases/20261111T113419Z-framing`. Maintained website generators and assets synchronized under `/home/kripta/schwiedop-site`; originals backed up in `/home/kripta/schwiedop-paper-update-20261111T154425Z/source-before`. Deployment review: `tmp/site-paper-update/deployment-review.json` and VPS `schwiedop-site/checks/paper-publication-20261111.json`.
+
+
+### Hugging Face release — 11 November 2026
+
+Published `AlvaroSchwiedop/PHASE-TTC` and `AlvaroSchwiedop/PHASE-TTC-Adapt` with unchanged frozen checkpoints, normalizers, bound runtime source, CPU/CUDA CLI, synthetic inputs, a real-query extraction command, corrected transfer projections, source archive and reproduction instructions. Updated current model/data/reproducibility cards and README; preserved previous cards under `docs/history/pre_hf_release_20261111/`. Corrected citation author/date. Full original retraining still requires external data and reconstructed caches; this boundary is explicit.
+
+Fresh downloads passed synthetic and real-query inference checks and recomputed the 460-query transfer summaries. CPU/CUDA agree within 1e-5 tolerances; the real CPU query differs from the archived replay by at most 2.861e-6 s. Refit of the 2,608-row adaptation reproduces all parameters exactly for seeds 7/13/21 and has exact eager/TorchScript parity on all fit rows. Fixed the maintained trainer's Unicode Windows-path export via a byte buffer without changing distributed original weights.
+
+Final checks: 38 targeted tests passed, one sealed-candidate CUDA test skipped for missing environment configuration; separate released-weight CUDA tests passed. Ruff passes. Independent review findings resolved, including extra executable-file rejection, clean staging, source verification before extraction and separate original/adapted validation values.
+
+The public Space `AlvaroSchwiedop/PHASE-TTC` uses free static hosting and explicitly displays recorded results. Live Gradio hosting was rejected by HF (402, PRO required for cpu-basic); the tested Gradio app is downloadable with fixed model revisions. Verified desktop/mobile layout, both selectors, copy command, public results/ZIP revision bindings, and anonymous model manifest checks. No paid resources were created. The pasted credential was not used; the existing OAuth session supplied write access.
+
+Publication receipt: `docs/releases/huggingface_20261111.json`.
+
+
+### 2026-11-11 — Official leaderboard links
+
+Added the requested Codabench results-tab link beside the original first-place score in both public HF model cards, the static Space (visible button), and maintained README/model-card sources. Preserved the dated 28 October record and distinction from the unscored adaptation. Codabench currently presents an anti-bot challenge; no new leaderboard snapshot was claimed. Verified public cards, README checksum bindings and live Space link. Documentation commits: `docs/releases/huggingface_leaderboard_links_20261111.json`. Inference revision pins unchanged.
+
+### 2026-11-11 — Main integration and CI lint repair
+
+The failed GitHub CI run 41816724429 linted a byte-bound historical sensor extraction script as maintained code. Scoped Ruff exclusions now preserve that replay evidence and the new immutable audit snapshots; the hash-bound transfer builder remains linted, with formatting excluded. Formatted the new statistics test, included all publication-bound logs, and synchronized the legacy source ZIP and manifest with its README link to the revised manuscript.
+
+Pre-push validation: global Ruff lint/format, maintained-module and paper-entry-point Pyright, PowerShell syntax, wheel build, both CLI aliases, and 29 new release/manuscript tests pass. The legacy manuscript compiles to 52 pages without unresolved references, and the revised publication verifier passes 332 inputs and three artifacts. Independent review verified all 431 expanded-manuscript index hashes and the exact legacy source ZIP inventory. The local full-suite attempt was interrupted without a completed result; the complete Linux suite and paper workflow will be checked on the pushed commit.

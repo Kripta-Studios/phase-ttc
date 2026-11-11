@@ -142,8 +142,7 @@ def main() -> None:
         "EvidenceAdaptTable",
         "Corrected local EvTTC comparison on historically exposed data. MAE is in seconds; "
         "RAE is a percentage. Both columns apply the organizer-described interpolation of "
-        "negative predictions for scoring only. These are query-weighted local scores, not "
-        "new official results. Slider-750 remains unresolved against the organizer's score.",
+        "negative predictions for scoring only. Values are query-weighted local scores.",
         "tab:adapt",
         "lrrrrr",
         "Population & $n$ & MAE orig. & MAE adapt. & RAE orig. & RAE adapt.",

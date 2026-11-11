@@ -89,7 +89,7 @@ The V8 attribution experiment copies the \texttt{CausalScaleTTC} endpoint encode
  +\mathcal L_{\cos}(\widehat g_2,g_2^\star)
  +\mathcal L_{\mathrm{SL1}}(\widehat F_2,F_2^\star)\right).
 \end{equation}
-The scalar foreground-logit view uses Smooth-L1 because one-dimensional cosine similarity is almost everywhere constant. A frozen target encoder processes the future endpoint in evaluation mode under \texttt{no\_grad}. TTC, boxes, masks, category, metadata, geometry losses, contrastive losses, VICReg, and router outputs remain outside this objective. \evidence{M05}
+The scalar foreground-logit view uses Smooth-L1 because one-dimensional cosine similarity is almost everywhere constant. A gradient-stopped, EMA-updated target encoder processes the future endpoint in evaluation mode under \texttt{no\_grad}. TTC, boxes, masks, category, metadata, geometry losses, contrastive losses, VICReg, and router outputs remain outside this objective. \evidence{M05}
 
 V8 schedules EMA momentum by cosine interpolation between configured endpoints. It measures dispersion, effective rank, covariance trace, intersample similarity, and norm for the dense, global, and foreground views. A persistent-collapse rule aborts training when these diagnostics remain below their thresholds. Downstream probes then measure TTC utility.
 
@@ -165,6 +165,21 @@ The temporal refiner predicts a correction from a bounded feature history and fo
  \widehat\phi=\operatorname{median}(\phi_1,\phi_2,\phi_3)+0.03\,a_\theta(H).
 \end{equation}
 Separate heads predict phase-quantile widths and relative costs for the original experts; the latter do not estimate risk for the corrected output. Training combines phase absolute error, pinball losses, and relative-cost regression. Globally defined query mass supplies the weights without minibatch renormalization. Sparse-history variants retain selected slots from a longer history and recompute timing gaps from integer anchors, preserving cold starts and the original query population. \evidence{M12}
+
+\subsection{Physical fields and temporal coordinates at the fusion interface}
+\label{sec:physical-fusion-fields}
+For each modality, the PHASE-ONLY input selects ten ordered fields from its context state: raw phase location (\texttt{raw\_location}), emitted point phase (\texttt{point\_phase}), the current A5, C2F, and PAIR expert phases, four current timing fields, and the number of valid history slots divided by eight. The twenty selected fields concatenate RGB first and events second. The first five fields are dimensionless signed-phase coordinates. The 160 learned hidden coordinates per modality are outside this input. Raw location precedes the native output guard, while emitted phase includes that guard. \evidence{M22,P04}
+
+Let $a_j$ be the integer-microsecond anchor of retained observation $j$, $v_j$ its availability timestamp, and $q$ the current query. The four history timing fields, in order, are
+\begin{equation}
+ \left(\frac{a_q-a_j}{10^6},\quad
+       \frac{v_q-v_j}{10^6},\quad
+       \frac{a_j-a_{j^-}}{10^6},\quad
+       \frac{v_j-a_j}{10^6}\right)\quad\mathrm{seconds}.
+\end{equation}
+The third field is zero for the first retained observation; missing prefixes are zero-padded and masked. Differences are formed as integers before conversion to seconds. The fusion interface takes the fields at the current slot, so its first two timing values are zero and its third describes the gap to the previous retained anchor. Availability denotes the latest admitted sensor or annotation dependency, not measured detector runtime; the final field is availability minus the observation's label anchor, without consuming a TTC value. \evidence{P04}
+
+Context heads receive PHASE17 fields standardized by per-coordinate means and population standard deviations fitted on unique valid observations in the allowed fitting population; a standard deviation at most $10^{-6}$ is replaced by one. Padding remains zero. Their four timing channels are separate, expressed in seconds. At the subsequent PHASE-ONLY input, each modality's first five phase-valued fields are divided by $0.03$; the four timing fields remain in seconds and support remains valid-count$/8$. No fold-specific hidden-state standardization aligns latent coordinates. The RGB raw location also bypasses the correction MLP as its residual anchor, and the two native RGB width logits bypass it separately as quantile-width anchors. Zero correction therefore reproduces the RGB context prediction and widths. \evidence{M22,M23,P04}
 
 \subsection{Multimodal complement and uncertainty boundaries}
 The later joint-measurement complement anchors on RGB phase and learns a correction from RGB features, event features, and the RGB phase itself:

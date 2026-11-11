@@ -1,81 +1,53 @@
-\section{Reproducibility}
+\section{Open science and reproducibility}
 \label{app:reproduction}
 
-The release contains the manuscript source, analysis scripts, derived-result
-ledgers, and selected query-level predictions needed to regenerate the reported
-tables and figures. Repeating model training or sensor inference also requires
-the datasets, checkpoints, and experiment configurations listed in the evidence
-registry.
+The manuscript sources, analysis scripts, result ledgers, and selected query-level predictions are available in \href{https://github.com/Kripta-Studios/phase-ttc}{Kripta-Studios/phase-ttc}. The source package supports regeneration of the reported tables and figures. Repeating training or sensor inference additionally requires the datasets, checkpoints, and configurations identified in the evidence registry.
 
 \subsection{Manuscript and result regeneration}
-
-Install Python, NumPy, Matplotlib, and a LaTeX distribution. From the manuscript
-source root, run:
+Install Python with NumPy, Matplotlib, Pillow, and PyMuPDF, together with pdfLaTeX and BibTeX. From the manuscript source root, run:
 \begin{lstlisting}
 python scripts/build_expanded.py
+python scripts/verify_publication.py
 \end{lstlisting}
-The script verifies the distributed files, checks the preserved historical figures and tables, regenerates the new tables, and
-runs pdfLaTeX, BibTeX, and the required cross-reference passes. Once the
-dependencies are installed, the build uses bundled ledgers and requires neither
-network access nor raw sensor data.
+The builder verifies the distributed inputs, preserves historical figures, regenerates the expanded result tables, and compiles both modular and consolidated sources. After dependency installation, this process uses bundled data without network access or raw sensor files. A publication receipt binds the scientific inputs, compiled PDF, consolidated source, and build validation by SHA-256. Packaging rejects changed inputs or artifacts until the manuscript is rebuilt. Earlier editorial receipts identify their historical PDF hashes and do not validate the corrected delivery.
 
-Each ledger records the evaluation population, source key, and measured value.
-The verification scripts match source identities and recompute metrics from the
-distributed query-level predictions. Hardware-specific inference parity requires
-the corresponding checkpoints, inputs, and runtime environment.
+Each result ledger identifies its evaluation population and measured quantities. Verification scripts recompute the distributed query-level metrics and check their source identities. Hardware-specific parity requires the corresponding inputs, checkpoints, and runtime environment.
 
-\subsection{Numerical verification}
-The verification suite checks 13 data-file hashes, eight transfer summaries, twelve official-scorer fields, and weighted Overall MiD. The competition verifier recomputes coverage, signed ranges, disagreements, and timing summaries from all 1,736 model--query rows. The dated leaderboard snapshot supplies the official ranking.
+\subsection{Numerical and software verification}
+The source checks cover thirteen data-file hashes, eight transfer summaries, twelve official-scorer fields, and weighted Overall MiD. The competition verifier recomputes coverage, signed ranges, disagreement, and timing summaries across 1,736 model--query rows. Official scores reconcile with the dated leaderboard after rounding.
 
 \input{tables/official_weighted_contributions}
 
-The transfer analysis recomputes mean, median, p95, and relative error for four Extended-new methods from 468 eligible rows. It then constructs error-exceedance curves and paired complete-sequence bootstrap intervals. The fixed seed, quantile convention, bootstrap differences, and source-file digest reside under \path{revision/}. This post-hoc analysis uses fixed predictions and does not repeat model training or inference.
+The historical transfer analysis under \path{revision/} uses 468 eligible Extended-new rows under the original target-source assignment. Correcting the CCRs1 low/medium sources and recomputing eligibility yields 460 eligible rows from the same 508 candidates; the corrected analysis and source map are retained separately under \path{audit_20261104/}. Both analyses retain the saved predictions and use complete sequence groups for paired bootstrap resampling. Their fixed seed, quantile convention, paired differences, and source digests distinguish corrected analysis from the historical snapshot.
 
-\subsection{Paced-run configuration}
-The L40 receipts identify the final model and component digests used for the PHASE-TTC competition inference, while recording a separate replay input and timing protocol. Synthetic startup priming used no raw observations or targets and made no optimizer updates. The update clock includes unexpected shape preparation. The receipts omit the CPU model and GPU-driver version. \evidence{L40,R02}
+The recorded software checks cover event representations, target updates, causal prefixes, label rejection, source tracking, fusion fallbacks, and paced-runtime accounting. With Python 3.11.15, PyTorch 2.11.0+cu128, and pytest 9.1.1, two batches passed 178 tests with four skips. The original M21 XML receipts record 70 cases with four skips and 112 cases without skips, respectively, with no errors or failures; the corresponding logs and XML files are distributed as \path{data/verification_architecture.*} and \path{data/verification_protocol.*}. These files retain the SHA-256 identities in the architecture source index and report the historical runs of 28 October 2026. Rebuilding the paper does not rerun these tests. Four further tests passed against the fixed official evaluator, covering four-band perfect predictions, imminent-contact weighting, missing bands, and invalid outputs. \evidence{M21,M24}
+
+The competition adapter and verifier passed 41 focused tests; the CPU suite skipped one CUDA-dependent case. A separate CUDA check confirmed strict loading and native-model forward parity for all three public Garl checkpoints. Validation also checked the 1,302 Garl outputs, 434 PHASE predictions, query identities, input timing, signed height-ratio conversion, and result completeness. These are the archived execution results, separate from rebuilding the manuscript. \evidence{M21,M24,T01}
+
+\subsection{Source revisions and methodological corrections}
+Table~\ref{tab:source-revisions} centralizes code revisions associated with the scientific record. The evidence registry identifies 95 original result snapshots by SHA-256 and records their available numerical projections. Entries containing only source identity require the corresponding original artifacts for metric recomputation. The archived scorer JSON and public leaderboard identify the official result; the scorer JSON does not contain a submitted-prediction digest.
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Source revisions for reproduction and protocol corrections. Historical identifiers remain unchanged in the repository.}
+\label{tab:source-revisions}
+\begin{tabularx}{\linewidth}{@{}p{.36\linewidth}X@{}}
+\toprule
+Scope & Git revision \\\midrule
+Scientific source snapshot & \path{0219a84f0fc3b07c171295a8a65176a7e0f631c1} \\
+Competition adapter & \path{1d8de7d95b2ff8ccba884dbd40141c48745a1e95} \\
+CPLA-high exposure classification & \texttt{26480260} \\
+Evaluation-matrix execution correction & \texttt{1f9e2f99} \\
+Fold-specific producer correction & \texttt{de3349fd} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The competition projection includes predictions, measurement boundaries, checkpoint identities, and source digests for coverage, disagreement, and timing analysis. Raw sensor data remain subject to their dataset distribution terms. \path{ASSETS.md} records image attribution and display transformations; \path{data/real_sensor_excerpt/} preserves the real sensor excerpt's provenance, timestamps, and original asset hashes.
+
+\subsection{Runtime configuration}
+The L40 receipts specify the final component identities and the separate paced-replay input and clock. Model loading, synthetic shape priming, and history initialization precede measured arrivals; unexpected preparation during updates remains in latency. The records identify the laptop GPU and execution settings but omit the CPU model and GPU-driver version. \evidence{L40,R02}
 \input{tables/runtime_setup}
 
-\subsection{Code verification}
-
-Selected tests cover event representations, target updates, prefix causality,
-label rejection, source tracking, fusion fallbacks, and paced-runtime accounting.
-The environment used Python 3.11.15, PyTorch 2.11.0+cu128, and pytest 9.1.1.
-Across two batches, 178 tests passed and four skipped, with no failures. Four
-additional tests ran against the SHA-pinned official evaluator and passed with
-no skips or failures. They cover perfect predictions across four bands,
-crucial-band weighting, absent-band handling, and invalid-output retention.
-\evidence{M21,M24}
-
-For the competition adapter and verifier, 41 focused tests passed; the
-CPU-oriented suite skipped one conditional CUDA case. A separate CUDA test
-confirmed strict loading and native-model forward parity for all three public
-Garl checkpoints. Post-run validation covered 1,302 Garl terminal records, 434
-PHASE predictions, input identities, causal timing, signed FP32 height-ratio
-conversion, and complete or partial result packages. \evidence{T01}
-
-\subsection{Evidence integrity and source revision}
-
-SHA-256 checks identify 95 original result snapshots.
-Appendix~\ref{app:evidence} lists their digest prefixes and numerical projections.
-Entries without a projection preserve source identity but cannot support metric
-recomputation from the distributed data alone. For the official benchmark, the
-scorer JSON agrees with the dated leaderboard after display rounding. Because
-the scorer output contains no submitted-prediction hash, it does not link the
-reported score to a specific prediction file at the byte level.
-
-The scientific source snapshot is
-\path{0219a84f0fc3b07c171295a8a65176a7e0f631c1} in
-\href{https://github.com/Kripta-Studios/phase-ttc}{Kripta-Studios/phase-ttc}.
-
-The competition adapter used source revision
-\path{1d8de7d95b2ff8ccba884dbd40141c48745a1e95}. The public competition
-projection contains the numerical predictions, measurement boundaries,
-checkpoint identities, and source digests required to regenerate coverage,
-disagreement, and timing summaries without distributing raw sensor files.
-
-\path{ASSETS.md} documents the supplied visual material and its attribution.
-The visual-source manifest records the sensor illustration's checksum and
-transformation; original dataset and material rights remain with their owners.
-
 \subsection{Expanded edition}
-The new result tables regenerate from the copied JSON ledgers under \path{updates/}. Their manifest verifies source hashes before rendering. The expanded build retains all original source sections and figures, updates dated conclusions where later evidence supersedes them, and appends the new evidence registry (Appendix~\ref{app:update-evidence}). Rebuilding the article does not rerun the model fits reported in the later experiments.
+The expanded result tables regenerate from the copied JSON ledgers under \path{updates/}. The build preserves original sections and figures, updates conclusions where later measurements supersede them, and includes the source index in Appendix~\ref{app:update-evidence}. Rebuilding the document reuses recorded model outputs. The source manifest binds the final manuscript, figures, ledgers, and validation receipts; the source ZIP includes the assets needed to compile the consolidated \LaTeX{} file.

@@ -22,9 +22,9 @@ quality adapter is presented separately from the original nine-component system.
 
 **[PHASE-TTC: From Motion to Time](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)**
 documents the final TRAIN40 system, the experiments that led to it, and its
-evaluation. The expanded edition of **2 November 2026** adds the corrected
-EvTTC evaluation, quality adaptation, canonical-cadence studies, and subsequent
-physical and detection controls while retaining the original article.
+evaluation. The revised edition of **11 November 2026** incorporates the corrected
+460-query transfer evaluation, quality adaptation, canonical-cadence studies,
+and physical and detection controls with reviewed diagrams and source bindings.
 The implementation and public research evidence are maintained together on
 `main`.
 
@@ -34,17 +34,23 @@ The implementation and public research evidence are maintained together on
 - [Scientific and engineering history](docs/engineering_history_20261027/README.md)
 
 As of **28 October 2026**, PHASE-TTC ranks first among the three displayed
-GarlTTC Test submissions: **35.80 Overall MiD**, compared with **45.03** for
+[GarlTTC Test submissions](https://www.codabench.org/competitions/17289/#/results-tab): **35.80 Overall MiD**, compared with **45.03** for
 Garl-TTC, a **20.49% reduction** across **6,762 scored tokens** with **0% scorer-defined
 failures**. The TRAIN40 submission uses up to **650 ms of causal event–RGB
 history**. The [distributed scoring records](paper/data/official_benchmark.json)
 and article specify the protocol and comparison scope.
 
-The original article reports 468 labeled transfer queries from 32 sequences,
-434 separate EvTTC competition queries whose label mapping was then unverified,
-and a 250-update paced replay. The expanded edition incorporates the corrected
-434-target evaluation described below. Fusion has a mixed error profile against RGB alone, and the
-replay's 29.14 ms p95 response exceeds the 20 ms target.
+The corrected transfer analysis covers **460 eligible queries from 508 fixed
+candidates across 32 sequences**. The separate local EvTTC competition comparison
+uses **434 query correspondences**. Fusion has a mixed error profile against RGB
+alone, and the 250-update replay's 29.14 ms p95 response exceeds the 20 ms target.
+
+**Download and try the current models:** [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC),
+[PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt), and the
+[recorded demo Space](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC).
+See the [current model card](docs/model_card.md), [data overview](docs/dataset_card.md)
+and [reproduction commands](docs/reproducibility.md). The downloads include the
+frozen weights, custom runtime, examples, evaluation evidence and training recipes.
 
 **EvTTC research status, 1 November 2026:** the
 [current research index](docs/research_progress_20261101/README.md) separates the

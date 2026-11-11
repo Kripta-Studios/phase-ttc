@@ -17,6 +17,9 @@ def main() -> None:
     corrected = json.loads((ROOT / "updates/evidence/adapt.json").read_text(encoding="utf-8"))
     canonical = json.loads((ROOT / "updates/evidence/canonical.json").read_text(encoding="utf-8"))
     native = json.loads((ROOT / "updates/evidence/native_result.json").read_text(encoding="utf-8"))
+    transfer_revision = json.loads(
+        (ROOT / "audit_20261104/transfer_reassociation.json").read_text(encoding="utf-8")
+    )
     with (ROOT / "data/transfer_queries.csv").open(encoding="utf-8", newline="") as stream:
         transfer = list(csv.DictReader(stream))
     samples = int(official["phase_submission"]["metrics"]["num_samples"])
@@ -46,7 +49,7 @@ def main() -> None:
         ),
     ]
     for cohort, label in (
-        ("extended_new", "EvTTC Extended-new"),
+        ("extended_new", "Historical EvTTC transfer"),
         ("historical46", "EvTTC Historical46"),
     ):
         valid = [row for row in transfer if row["cohort"] == cohort and not row["target_exclusion"]]
@@ -55,9 +58,21 @@ def main() -> None:
             (
                 label,
                 f"{len(valid)} targets; {groups} sequences",
-                r"Labeled, development-exposed transfer with annotated ROI. \evidence{L01}",
+                (
+                    r"Original target assignment, superseded for Extended-new. "
+                    r"Historical46 is unaffected by the correction. \evidence{L01,GT01}"
+                ),
             )
         )
+    counts = transfer_revision["counts"]["extended_new"]
+    rows.append(
+        (
+            "Corrected EvTTC transfer",
+            f"{counts['corrected_eligible']} targets; 32 sequences",
+            r"All 508 fixed candidates reassociated; development-exposed, supplied ROI. "
+            r"\evidence{GT01,GT02}",
+        )
+    )
     cadence_domains = canonical["routes"]["F0"]["domains"]
     road_recordings = len(cadence_domains["road"]["by_recording"])
     slider_recordings = len(cadence_domains["slider"]["by_recording"])

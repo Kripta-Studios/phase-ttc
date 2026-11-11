@@ -1,0 +1,14 @@
+{
+  "PHASE-TTC": {
+    "revision": "6ba2f85482136d5e9512a8de947b7c1e73a39cba",
+    "manifest_sha256": "40fd743e92066faf4fa855687b2d0d2e2bf890422e01bb1bb1013b1d26e9c1db"
+  },
+  "PHASE-TTC-Adapt": {
+    "revision": "2db322a4fe3e727c68eac3c9d3a3c3c61f013e59",
+    "manifest_sha256": "b0d30fdf54c9fa665083894c50c20774d96828a06534c59faa74727157cca553"
+  },
+  "space": {
+    "revision": "37baf8d175efc298a5c76113484e3b635b646f38"
+  },
+  "scope": "Documentation only; published inference revision pins unchanged"
+}

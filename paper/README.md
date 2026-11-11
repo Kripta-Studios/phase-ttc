@@ -2,11 +2,14 @@
 
 **Causal Event–RGB Fusion for Signed Time-to-Contact Estimation**
 
-The complete [expanded edition, 2 November 2026](from_motion_to_time_20261102/README.md)
+The complete [corrected expanded edition, 11 November 2026](from_motion_to_time_20261102/README.md)
 updates this manuscript while retaining its methods, figures, historical studies
 and technical supplement. It adds the corrected local EvTTC evaluation, quality
 adaptation, canonical-cadence experiments and subsequent physical and detection
-controls. The files below retain the original 28 October snapshot.
+controls. The current delivery also corrects the transfer population to 460
+eligible queries, the PHASE20 training description and study-specific bootstrap
+units. The files below retain the original 28 October snapshot and its superseded
+468-query target assignment; use the corrected expanded edition for publication.
 
 Álvaro Schwiedop Souto · Evidence snapshot: 28 October 2026
 

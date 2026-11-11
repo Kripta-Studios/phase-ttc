@@ -1,0 +1,70 @@
+{
+  "baseline": {
+    "domains": {
+      "eap": {
+        "mae_seconds": 1.4160298109054565,
+        "nonfinite": 0,
+        "relative_absolute_error_pct": 27.365737915039062,
+        "rows": 88744
+      },
+      "evttc": {
+        "mae_seconds": 1.094082236289978,
+        "nonfinite": 0,
+        "relative_absolute_error_pct": 40.70634841918945,
+        "rows": 3571
+      }
+    },
+    "loss": 0.28388407826423645,
+    "scope": "training_resubstitution"
+  },
+  "checkpoint_sha256": "e2f21190e354f042a61851e028a6953e63b7f155fde0541595a33cee71312295",
+  "epochs": 2,
+  "history": [
+    {
+      "domains": {
+        "eap": {
+          "mae_seconds": 1.4343459606170654,
+          "nonfinite": 0,
+          "relative_absolute_error_pct": 27.217947006225586,
+          "rows": 88744
+        },
+        "evttc": {
+          "mae_seconds": 1.0557903051376343,
+          "nonfinite": 0,
+          "relative_absolute_error_pct": 37.33485794067383,
+          "rows": 3571
+        }
+      },
+      "epoch": 1,
+      "loss": 0.267039954662323,
+      "rows_seen": 92315,
+      "scope": "training_resubstitution",
+      "updates": 722
+    },
+    {
+      "domains": {
+        "eap": {
+          "mae_seconds": 1.4334958791732788,
+          "nonfinite": 0,
+          "relative_absolute_error_pct": 26.91722297668457,
+          "rows": 88744
+        },
+        "evttc": {
+          "mae_seconds": 1.0519005060195923,
+          "nonfinite": 0,
+          "relative_absolute_error_pct": 36.812889099121094,
+          "rows": 3571
+        }
+      },
+      "epoch": 2,
+      "loss": 0.26352694630622864,
+      "rows_seen": 92315,
+      "scope": "training_resubstitution",
+      "updates": 1444
+    }
+  ],
+  "parameters": 1955,
+  "rows": 92315,
+  "seed": 7,
+  "updates": 1444
+}

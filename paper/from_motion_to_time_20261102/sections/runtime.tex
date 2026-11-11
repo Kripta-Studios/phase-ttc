@@ -1,32 +1,48 @@
 \section{Runtime and causal service}
 \label{sec:runtime}
 
-The persistent service completed every update in its five-second paced replay and preserved numerical parity, but it missed the 20\,ms response target. The 95th percentile was 29.14\,ms. The distinction between model execution and delivery of a complete prediction explains why a faster inner kernel is not enough to meet the deadline.
+A 50\,Hz response budget allows 20\,ms for the complete prediction path, including preparation, scheduling, neural computation, and delivery to the host. We evaluate that path with a five-second paced replay: all 250 updates complete with numerical parity, and scheduled-arrival response reaches 29.14\,ms at p95. Even when timing begins after RAW acquisition, copy, and payload sealing, p95 is 25.25\,ms. Meeting the deadline therefore requires optimizing the remaining service path as well as input preparation. The measurements below separate this persistent replay from the sensor-preparation path used by the local adapter.
 
 \begin{figure}[H]
-\centering\includegraphics[width=\linewidth]{figures/rev_runtime_clock.pdf}
+\centering\includegraphics[width=\linewidth]{figures/publication_runtime_clock.pdf}
 \caption{\textbf{Response clocks for one query.} Deadline response starts at scheduled arrival; the secondary clock starts after RAW acquisition, copy, and payload sealing. Both stop when all required TTC outputs reach the host.}
 \label{fig:runtime-clocks}
 \end{figure}
 
 \subsection{Latency measurement boundaries}
 
-Earlier timing experiments measured different parts of the computation. V18 used warm raw-sensor queries with its original producer batching. The final test12 diagnostics timed a prepared eager path, and the EvTTC transfer measured adapter wall time, including preparation and cache behavior. Hardware and inputs also varied. I report these measurements separately and use the scheduled-arrival clock for the deadline test below. The saved timing record contains aggregate statistics, so the analysis uses quantiles and deadline counts rather than reconstructing a per-arrival distribution.
+Earlier timing experiments measured different parts of the computation. V18 used warm raw-sensor queries with its original producer batching. The final test12 diagnostics timed a prepared eager path, and the EvTTC transfer measured adapter wall time, including preparation and cache behavior. Hardware and inputs also varied. The measurements retain their original boundaries; the deadline test below uses the scheduled-arrival clock. Per-arrival timestamps record scheduled arrival, observation availability, execution start, and completion, allowing the response distribution and deadline counts to be reconstructed. \evidence{L40}
 
-The service reduced repeated work by preparing RGB within the object region, extending event prefixes incrementally, and reusing reverse-transport summaries exactly. It also combined top-$k$ normalization with native query graphs and parallel branches, overlapping event execution with RGB preparation. RGB features were reused; event encodings were recomputed. A separate diagnostic verified all 462 recorded calls to the prepared transport component. \evidence{L41}
+\begin{table}[htbp]
+\centering\small
+\caption{\textbf{Separate runtime contracts.} Both runs use an RTX 5070 Ti Laptop GPU, Python 3.11.15, PyTorch 2.11.0+cu128/CUDA 12.8, FP32, TF32 disabled, and two PyTorch CPU threads. Adapter host CPU: Ryzen 9 9955HX (16 cores/32 logical processors). The clocks and workloads differ. \evidence{A07,L40}}
+\label{tab:runtime-contracts}
+\begin{tabular}{p{.19\linewidth}p{.36\linewidth}p{.35\linewidth}}
+\toprule
+Run & Measured boundary and population & Result and exclusions \\
+\midrule
+Submitted adapter & 434 EvTTC queries; sensor/cache preparation plus synchronized native graph and geometry/router & Mean 1.740290\,s/query; excludes one-time loading, hashing/indexing, and ledger writes \\
+Paced base system & 250 single-object updates over five seconds; scheduled arrival through all required host TTC outputs & p95 29.143155\,ms; RAW preloaded, disk I/O excluded; initialization precedes arrivals \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-Numerical checks rejected several faster alternatives. Compiled transport arithmetic changed the final TTC on sensitive examples despite agreeing on most others. Processing smaller event packets preserved the tested state buffers, representations, and final predictions, but that experiment did not time the computation or run a 200\,Hz source through the paced service. It established a viable numerical path for a later timing experiment. \evidence{L42}
+For the submitted adapter, the mean decomposes into 1.158\,s preparation, 0.5801\,s native neural graph, and 0.001853\,s geometry/router. The bounded lossless input cache holds at most 64\,MiB of events and sixteen RGB frames. The original submission's observed mean of 3.268\,s/query comes from another run, so the difference is descriptive rather than a controlled cache or router speedup. These component means belong to the adapter run. The paced-service measurements below use a separate persistent path. \evidence{A07}
+
+The service reduced repeated work by preparing RGB within the object region, extending event prefixes incrementally, and reusing reverse-transport summaries exactly. It also combined top-$k$ normalization with native query graphs and parallel branches, overlapping event execution with RGB preparation. RGB features were reused; event encodings were recomputed. A separate diagnostic verified all 462 recorded calls to the prepared transport component.
+
+Numerical checks rejected several faster alternatives. Compiled transport arithmetic changed the final TTC on sensitive examples despite agreeing on most others. Processing smaller event packets preserved the tested state buffers, representations, and final predictions, but that experiment did not time the computation or run a 200\,Hz source through the paced service. It established a viable numerical path for a later timing experiment. \evidence{L41,L42}
 
 \subsection{Paced-service latency at 50 Hz}
 
-I ran the replay on an NVIDIA GeForce RTX 5070 Ti Laptop GPU using Python 3.11.15 and PyTorch 2.11.0+cu128, built with CUDA 12.8. Computation used FP32 with TF32 disabled, two PyTorch CPU threads, eight RGB preparation workers, and a queue capacity of two. Model loading, synthetic shape priming, and initialization from preceding history finished before measured arrivals. Table~\ref{tab:runtime-setup} gives these setup intervals and the parity tolerance. \evidence{L40,R02}
+The replay ran on an NVIDIA GeForce RTX 5070 Ti Laptop GPU with Python 3.11.15 and PyTorch 2.11.0+cu128, built with CUDA 12.8. Computation used FP32 with TF32 disabled, two PyTorch CPU threads, eight RGB preparation workers, and a queue capacity of two. Model loading, synthetic shape priming, and initialization from preceding history finished before measured arrivals. Table~\ref{tab:runtime-setup} gives these setup intervals and the parity tolerance.
 
-The five-second replay processed 250 single-object updates from preloaded RAW data accessible only to the CPU feeder. All updates completed with zero drops and zero source errors, and independent post-run checks confirmed TTC parity. Nevertheless, 200 scheduled arrivals found earlier work unfinished. Of the 250 responses, 201 met or exceeded 20\,ms. Scheduled-arrival latency reached 29.14\,ms at p95, 32.41\,ms at p99, and 35.33\,ms at maximum. Starting the clock after RAW acquisition, copy, and payload sealing gave a lower p95 of 25.25\,ms. \evidence{L40}
+The five-second replay processed 250 single-object updates from preloaded RAW data accessible only to the CPU feeder. All updates completed with zero drops and zero source errors, and independent post-run checks confirmed TTC parity. At 200 scheduled arrivals, earlier work was still unfinished. Of the 250 responses, 201 met or exceeded 20\,ms. Scheduled-arrival latency reached 29.14\,ms at p95, 32.41\,ms at p99, and 35.33\,ms at maximum. Starting the clock after RAW acquisition, copy, and payload sealing gave a lower p95 of 25.25\,ms.
 
-The measurement excludes disk I/O and covers one object over five seconds. It therefore leaves physical-camera input, sixty-second operation, and larger object counts for further testing. Failed replays remain in separate reports, including dropped updates and rapid error acknowledgements. I count latency only for successful TTC outputs, so a fast acknowledgement cannot improve the prediction-latency summary.
+The measurement excludes disk I/O and covers one object over five seconds. It therefore leaves physical-camera input, sixty-second operation, and larger object counts for further testing. Failed replays remain in separate reports, including dropped updates and rapid error acknowledgements. Latency statistics include completed TTC outputs; failed-request acknowledgements are recorded separately. \evidence{L40,R02}
 
 \begin{figure}[t]
-\centering\includegraphics[width=0.98\linewidth]{figures/rev_runtime.pdf}
+\centering\includegraphics[width=0.98\linewidth]{figures/publication_runtime.pdf}
 \caption{\textbf{Response-time summaries for 250 completed updates.} Scheduled-arrival latency has a p95 of 29.14\,ms. Of the 250 responses, 201 (80.4\%) meet or exceed 20\,ms. The second clock begins after RAW acquisition, copy, and payload sealing. \evidence{L40}}
 \end{figure}
 \FloatBarrier

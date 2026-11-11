@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{p{0.30\linewidth}rp{0.43\linewidth}}
+\toprule
+Original T6 head, seed 7 & MiD $\downarrow$ & Training condition \\
+\midrule
+Current observation (H1) & 132.832 & One observation, 160-unit recurrent cells \\
+Past context (H8) & 121.646 & Eight chronological slots, same cell width \\
+Reversed past & 121.225 & Trained with reversed past order \\
+Repeated current & 131.211 & Current observation repeated across eight slots \\
+Expert selector & 143.504 & Selection in place of residual correction \\
+Latent, current only & 171.057 & Added hidden producer coordinates, H1 \\
+Latent, past context & 184.072 & Added hidden producer coordinates, H8 \\
+Zeroed latent, H8 & 120.910 & Same latent-input architecture with coordinates zeroed \\
+\bottomrule
+\end{tabular}
+\caption{Trained residual-context controls from the original 72-fit T6 campaign on OLD\_DEV (8,192 queries, nine sequences, three folds). These rows report separately trained controls, not post-training interventions on one fixed model. Historical identifiers are H1/H8-C160, PAST\_REVERSED, REPEAT\_CURRENT, SELECTOR, LATENT, and LATENT\_ZERO. \evidence{H_T6}}
+\label{tab:original-t6}
+\end{table}

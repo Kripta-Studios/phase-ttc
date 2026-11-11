@@ -9,6 +9,8 @@ import shutil
 import zipfile
 from pathlib import Path
 
+import verify_publication
+
 ROOT = Path(__file__).resolve().parents[1]
 ORIGINAL = ROOT.parent
 REPO = ORIGINAL.parent
@@ -25,12 +27,24 @@ def publication_files() -> list[Path]:
         path
         for path in sorted(ROOT.rglob("*"))
         if path.is_file()
-        and not any(
-            part in {"build", "__pycache__", ".ruff_cache"} for part in path.relative_to(ROOT).parts
+        and not any(part in {"__pycache__", ".ruff_cache"} for part in path.relative_to(ROOT).parts)
+        and (
+            "build" not in path.relative_to(ROOT).parts
+            or path.relative_to(ROOT).as_posix() == "build/validation.json"
         )
-        and path.suffix
-        not in {".aux", ".bbl", ".log", ".out", ".blg", ".pyc", ".toc", ".fls", ".fdb_latexmk"}
+        and (
+            path.suffix
+            not in {".aux", ".bbl", ".log", ".out", ".blg", ".pyc", ".toc", ".fls", ".fdb_latexmk"}
+            or path.relative_to(ROOT).as_posix()
+            in {"data/verification_architecture.log", "data/verification_protocol.log"}
+            or path.relative_to(ROOT).parts[:2] == ("audit_20261104", "sources")
+        )
         and not path.name.endswith(".synctex.gz")
+        and path.name
+        not in {
+            "GUIA_REESCRITURA_NATURAL_PAPEL.tex",
+            "GUIA_REESCRITURA_NATURAL_PAPEL.pdf",
+        }
         and path.relative_to(ROOT).as_posix() not in {"main.pdf", "SOURCE_MANIFEST.json"}
     ]
 
@@ -44,6 +58,12 @@ def write_source_manifest(files: list[Path]) -> Path:
 
 
 def main() -> None:
+    # Fail before copying files or writing a new manifest for an obsolete PDF.
+    binding = verify_publication.verify(ROOT)
+    included = {path.relative_to(ROOT).as_posix() for path in publication_files()}
+    required = set(verify_publication.source_hashes(ROOT)) | set(verify_publication.ARTIFACTS)
+    if missing := required - included:
+        raise ValueError(f"Publication inventory excludes required build inputs: {sorted(missing)}")
     original_inputs = re.findall(
         r"\\input\{(sections/[^}]+)\}", (ORIGINAL / "main.tex").read_text()
     )
@@ -103,6 +123,7 @@ def main() -> None:
         "words": validation["words"],
         "figures": validation["figures"],
         "tables": validation["tables"],
+        "publication_binding": binding,
     }
     (output / f"{STEM}_delivery.json").write_text(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps(receipt, indent=2))

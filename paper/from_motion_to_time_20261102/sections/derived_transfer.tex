@@ -1,28 +1,31 @@
 \clearpage
-\section{Paired transfer uncertainty and numerical cases}
+\section{Corrected transfer uncertainty and historical record}
 \label{app:derived-transfer}
-I analyze the saved query-level predictions in \path{data/transfer_queries.csv} (L46). Source key R01 maps the derived results to \path{revision/derived_transfer_analysis.json}; \path{scripts/prepare_revision.py} regenerates them.
 
-\subsection{Exact paired sequence bootstrap}
-The analysis uses the 468 eligible Extended-new predictions and their 32 physical-sequence groups. Each of 10,000 replicates samples 32 group identities with replacement and includes every query from each sampled group. Repeated groups contribute repeated queries. PHASE-TTC and RGB share the sampled indices. For each model, I compute pooled mean, median, and 95th-percentile absolute error, then form the PHASE-minus-RGB difference. NumPy's \texttt{linear} quantile convention and \texttt{default\_rng(20261028)} define the 2.5th and 97.5th percentile endpoints.
+The scientific revision retains the original prediction ledger and its historical numerical derivations while introducing an additive corrected target projection. The correction changes both target values and eligibility; current statistics use all \AuditTransferCount{} eligible Extended-new queries derived from the 508 registered candidates. Historical46 is unaffected by the low/medium correction. \evidence{GT01}
 
-The point differences are \RevisionMeanDelta\,s for the mean, \RevisionMedianDelta\,s for the median, and \RevisionPninetyfiveDelta\,s for p95. All three intervals contain zero (Table~\ref{tab:revision-bootstrap}). The exploratory intervals condition on the fitted models and development-exposed sequences; they do not incorporate representation-training variability or adaptive model selection.
+\input{tables/audit_transfer_eligibility}
 
-Differences use full-precision predictions. The mean difference rounds to $+0.007$\,s; subtracting the separately rounded means 1.023 and 1.015 instead gives $+0.008$\,s.
+\subsection{Target reassociation versus metric recomputation}
+The source audit first reproduces every historical target or exclusion for all 554 saved candidates under the old source assignment. It then replaces only the two verified low/medium curves and applies the unchanged nearest-label rule at the unchanged native timestamps. The projection records the corrected source SHA-256, target time, time distance, and before/after label neighbors. The separate metric builder verifies the projection hash, all prediction fields against the historical CSV, and the nearest-neighbor decisions before recomputing statistics.
 
-\subsection{Numerical cases}
-The two queries below maximize and minimize the PHASE-minus-RGB absolute-error difference within the saved predictions. These post hoc examples show the range of model disagreement; their causes would require inspection of the corresponding sensor observations.
-\input{tables/revision_cases}
-\FloatBarrier
+This provides distinct checks of recording/source identity and arithmetic. The original raw sensor streams are not needed for saved-prediction scoring. Repeating the full association audit additionally requires the source curves and original query manifest pinned in \path{audit_20261104/transfer_reassociation.json}; no target-driven clock fitting is involved.
 
-\clearpage
-\subsection{Complete sequence comparisons}
+\subsection{Paired complete-sequence bootstrap}
+Each of 10,000 resamples draws 32 sequence-group identities with replacement and includes all eligible queries from each selected group, repeating queries when their group is drawn more than once. PHASE-TTC and RGB share the draw. Pooled mean, median, and p95 differences use NumPy's linear quantiles with seed 20261028. The three intervals contain zero (Table~\ref{tab:audit-transfer-bootstrap}). They condition on the saved models and historically exposed recordings.
+
+The mean difference is \AuditMeanDelta{}\,s, median difference \AuditMedianDelta{}\,s, and p95 difference \AuditPninetyfiveDelta{}\,s. Complete-precision estimates and intervals reside in \path{audit_20261104/corrected_transfer_statistics.json}. Sequence-macro MAE/RTE comparisons against Garl use their original 2,000 group resamples and seed 7; they are separate estimands from the pooled PHASE--RGB comparison.
+
+\subsection{Sequence-level comparisons}
 \begin{figure}[H]
-\centering\includegraphics[width=\linewidth,height=.70\textheight,keepaspectratio]{figures/rev_sequence.pdf}
-\caption{\textbf{Sequence-level relative TTC error differences.} Both panels show the 32 labeled Extended-new sequences in a common order; parentheses give query counts and negative values favor PHASE-TTC. The symmetric-log axes are linear between $-5$ and $+5$ percentage points. Display labels omit repeated overlap suffixes; Table~\ref{tab:sequence-full} gives the full identities. \evidence{R01,L46}}
+\centering\includegraphics[width=\linewidth,height=.70\textheight,keepaspectratio]{figures/audit_transfer_sequences.pdf}
+\caption{\textbf{Corrected sequence-level relative errors.} Curves show each model's mean relative TTC error on a logarithmic scale; lower is better. The thirty-two sequence groups retain their native identities. Table~\ref{tab:audit-transfer-sequences} gives the corrected eligible query counts and errors.}
 \label{fig:transfer-sequence}
 \end{figure}
 \FloatBarrier
-\clearpage
-{\small\input{tables/revision_sequence_full}}
+{\small\input{tables/audit_transfer_sequence_full}}
+
+\subsection{Preserved historical analysis}
+The files \path{revision/derived_transfer_analysis.json}, \path{tables/revision_bootstrap.tex}, the earlier numerical-case table, and the original transfer figures reconstruct the 468-query analysis under the prior assignment. Their matching arithmetic does not establish correct sensor--target correspondence. In particular, the former p95 pair 3.80/3.24\,s, the former ordering of mean errors, and the extreme numerical cases from that population are superseded by the corrected analysis above. These files remain available as historical evidence and are not mixed into the revised tables or figures. \evidence{R01,L46,GT01}
+\FloatBarrier
 

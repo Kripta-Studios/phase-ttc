@@ -1,0 +1,23 @@
+\begin{table}[H]
+\centering\scriptsize
+\caption{Resampling units for selected paired analyses. Counts describe the recorded protocols, not independent acquisitions or independent pretraining runs. Archived numerical intervals are unchanged. \evidence{P02,L03,N02,R01,A02--A04,H_V16}}
+\label{tab:audit-bootstrap-units}
+\begin{tabularx}{\linewidth}{@{}p{.20\linewidth}p{.23\linewidth}p{.15\linewidth}X@{}}
+\toprule
+Study & Resampling unit & Replicates & Seeds and reduction \\
+\midrule
+Public-validation paired audit & 108 sequence--track clusters; 2,048 rows & 5,000 & Fixed fitted checkpoints; paired rows, sequence-macro MiD. \\
+V5--V7 grouped development & 422 sequence--track clusters; nine sequences, 8,192 rows & 5,000 & Seed-7 models; bootstrap seed 20260813. Seeds are not extra clusters. \\
+V12 H16--H8 replication & Nine sequences, then tracks within sampled sequences & 8,192 accepted hierarchical draws & Per-query losses averaged across fixed matched head seeds; separate exact sequence comparison. \\
+V16 PHASE-ONLY selection & Eight V sequence groups & 4,000 & Bootstrap seed 20261012; group-macro bucket MiD contrasts separately for head seeds 7/13/23. \\
+V18 TRUE/ZERO fusion & Eight H sequence groups & 2,000 & Bootstrap seed 12345; groupwise MiD averaged over fixed seeds 7/13/23; no TTC ensembling. \\
+Grouped F1 adaptation & Seven scenario families; 24 recordings & 2,000 & Bootstrap seed 7; recording-macro RAE differences separately for head seeds 7/13/21. \\
+401-parameter gate confirmation & Four CCRm recordings within one family & 2,000 & Bootstrap seed 7; query-weighted RAE difference for the fixed three-seed ensemble. \\
+Startup router comparison & Five road scenario families & 5,000 & Bootstrap seed 7; query-weighted RAE differences for fixed three-seed ensembles. \\
+Historical Extended-new snapshot & 32 complete sequence groups; 468 eligible rows under the former target map & 10,000 & Seed 20261028; pooled-query mean, median, and p95; superseded target assignment. \\
+Corrected Extended-new analysis & 32 complete sequence groups; 460 eligible rows after target reassignment & 10,000 & Seed 20261028; paired saved predictions and corrected eligibility; no model refit. \\
+Canonical cadence & 24 road recordings; Slider-500 separate & 10,000 & Seed 7; recording-macro differences. One Slider recording has no between-recording interval. \\
+Later JEPA pilot closure & Eight complete sequence groups & Not recorded in the distributed summary & Seeds 7/13/21 kept together; descriptive post hoc sequence intervals. \\
+\bottomrule
+\end{tabularx}
+\end{table}
