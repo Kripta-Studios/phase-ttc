@@ -1,0 +1,429 @@
+"""Compare frozen PHASE/Garl native inference on all supplied EvTTC sensor queries.
+
+No labels are read. See the frozen protocol and per-call JSONL, not just aggregates.
+"""
+
+# ruff: noqa: E402
+from __future__ import annotations
+
+import argparse
+import contextlib
+import gc
+import hashlib
+import json
+import platform
+import socket
+import subprocess
+import sys
+import time
+from datetime import UTC, datetime
+from functools import partial
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path[:0] = [str(ROOT / "src"), str(ROOT)]
+sys.dont_write_bytecode = True
+
+import psutil
+import torch
+
+from operational.evttc_competition.prepare import prepare_query as prepare_phase
+from operational.evttc_competition.readers import SensorSequence
+from operational.garl_evttc_competition.model import OfficialGarlRuntime
+from operational.garl_evttc_competition.prepare import prepare_query as prepare_garl
+from operational.local_comparison.core import (
+    assert_parity,
+    parameter_inventory,
+    summarize_records,
+    without_decoders,
+)
+from operational.phase_robust.bundle import load_sensor_runtime
+from scripts.run_evttc_competition import preflight_inputs, query_identity
+
+MODELS = ("phase", "garl_full", "garl_ttc_only", "garl_event", "garl_visual")
+
+
+def sha(path: Path) -> str:
+    """Hash a file without materializing checkpoint bytes twice."""
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def write(path: Path, value: Any) -> None:
+    """Write a JSON artifact with strict finite-number serialization."""
+    path.write_text(
+        json.dumps(value, indent=2, allow_nan=False, default=str) + "\n", encoding="utf-8"
+    )
+
+
+def append(path: Path, value: Any) -> None:
+    """Flush one complete trial so an interrupted experiment retains evidence."""
+    with path.open("a", encoding="utf-8") as stream:
+        stream.write(json.dumps(value, allow_nan=False, default=str) + "\n")
+        stream.flush()
+
+
+def telemetry() -> dict[str, Any]:
+    """Read timestamped GPU power/clock/thermal state outside timed spans."""
+    result = subprocess.run(
+        [
+            "nvidia-smi",
+            "--query-gpu=name,driver_version,temperature.gpu,power.draw,"
+            "power.limit,clocks.sm,clocks.mem,utilization.gpu,memory.used",
+            "--format=csv,noheader,nounits",
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return {
+        "utc": datetime.now(UTC).isoformat(),
+        "gpu": result.stdout.strip(),
+        "process_rss_bytes": psutil.Process().memory_info().rss,
+    }
+
+
+def input_hash(prepared: Any, phase: bool) -> str:
+    """Bind actual prepared sensor bytes and their native sampling metadata."""
+    digest = hashlib.sha256()
+    if phase:
+        for observation in (*prepared.events, *prepared.rgb):
+            digest.update(observation.pixels.tobytes())
+            digest.update(
+                str(
+                    (
+                        observation.modality,
+                        observation.timestamps_us,
+                        observation.first_sensor_ts_us,
+                    )
+                ).encode()
+            )
+    elif prepared.sensor is not None:
+        digest.update(prepared.sensor.tobytes())
+        digest.update(str(prepared.delta_t_s).encode())
+    return digest.hexdigest()
+
+
+def main() -> None:
+    """Freeze, execute and profile a deterministic same-hardware comparison."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-root", required=True, type=Path)
+    parser.add_argument("--garl-freeze", required=True, type=Path)
+    parser.add_argument("--phase-bundle", required=True, type=Path)
+    parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--repeats", type=int, default=3)
+    parser.add_argument("--limit", type=int, help="Smoke only: first N queries per recording")
+    parser.add_argument("--warmup", type=int, default=5)
+    args = parser.parse_args()
+    if args.repeats < 1 or args.warmup < 1 or (args.limit is not None and args.limit < 1):
+        parser.error("Counts must be positive")
+    out = args.output.resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    if (out / "protocol.json").exists():
+        raise ValueError("Use a new output directory; prior experiments are immutable")
+    torch.set_num_threads(2)
+    torch.set_num_interop_threads(1)
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+    torch.backends.cudnn.benchmark = False
+    torch.manual_seed(7)
+    freeze = json.loads(args.garl_freeze.read_text(encoding="utf-8"))
+    rows, sources, calibrations = preflight_inputs(args.data_root)
+    if args.limit:
+        rows = {key: value[: args.limit] for key, value in rows.items()}
+    identities = [query_identity(seq, row) for seq, records in rows.items() for row in records]
+    protocol = {
+        "experiment_id": "same_hardware_20261112",
+        "run_name": out.name,
+        "git_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+        "start_time": datetime.now(UTC).isoformat(),
+        "host": socket.gethostname(),
+        "python_version": platform.python_version(),
+        "torch_version": torch.__version__,
+        "cuda_version": torch.version.cuda,
+        "gpu_name": torch.cuda.get_device_name(),
+        "platform": platform.platform(),
+        "cpu": platform.processor(),
+        "cpu_threads": 2,
+        "seed": 7,
+        "precision": "FP32; TF32 disabled; eager inference_mode",
+        "split_version": "EvTTC supplied competition434, no labels consumed",
+        "queries": identities,
+        "raw_sources": sources,
+        "models": MODELS,
+        "repeats": args.repeats,
+        "warmup_per_model": args.warmup,
+        "garl_inventory": freeze["inventory"],
+        "phase_bundle_manifest": json.loads((args.phase_bundle / "BUNDLE.json").read_text()),
+        "source_sha256": {
+            str(p.relative_to(ROOT)): sha(p)
+            for p in [Path(__file__), ROOT / "operational/local_comparison/core.py"]
+        },
+        "timing_contract": {
+            "preparation": "Reader, ROI transforms, native representation; OS caches uncontrolled",
+            "inference": (
+                "CPU-prepared arrays to host TTC via native API; H2D, diagnostics and sync included"
+            ),
+            "total": (
+                "Sum of preparation and synchronized inference; excludes loading, reader "
+                "initialization, logging, hashing and warmup"
+            ),
+            "order": "Cyclic rotation by query + repeat; shared reader and resident weights",
+            "memory": "Isolated CUDA model residency; RSS is process-wide, not model-only",
+            "garl_ttc_only": (
+                "Strict-loaded full weights, native with_decoder flags off; all-query TTC parity"
+            ),
+            "not_claimed": (
+                "Equal history, live deadline, independent accuracy or best-case optimization"
+            ),
+        },
+        "telemetry": telemetry(),
+    }
+    protocol["dataset_manifest_hash"] = hashlib.sha256(
+        json.dumps(identities, sort_keys=True).encode()
+    ).hexdigest()
+    protocol["config_hash"] = hashlib.sha256(
+        json.dumps(protocol, sort_keys=True, default=str).encode()
+    ).hexdigest()
+    write(out / "protocol.json", protocol)
+    init_start = time.perf_counter()
+    phase = load_sensor_runtime(args.phase_bundle, device="cuda")
+    garl = OfficialGarlRuntime(
+        Path(freeze["inventory"]["upstream"]["path"]), freeze["inventory"], "cuda"
+    )
+    torch.cuda.synchronize()
+    write(
+        out / "loading.json", {"seconds": time.perf_counter() - init_start, "garl": garl.bindings}
+    )
+    module_sets = {
+        "phase": phase.models,
+        **{
+            name: {
+                name: garl.models["full" if name == "garl_ttc_only" else name.removeprefix("garl_")]
+            }
+            for name in MODELS
+            if name != "phase"
+        },
+    }
+    all_modules = {id(m): m for modules in module_sets.values() for m in modules.values()}
+
+    def infer(
+        name: str, prepared: Any, query_us: int
+    ) -> tuple[str, float | None, str, dict[str, Any]]:
+        if name == "phase":
+            result = phase.predict(prepared.events, prepared.rgb, query_us)
+            return (
+                result.status,
+                result.model_ttc,
+                result.model_reason,
+                {
+                    "event_history_count": result.event_history_count,
+                    "rgb_history_count": result.rgb_history_count,
+                },
+            )
+        if prepared.sensor is None:
+            return "unavailable", None, prepared.reason, {}
+        variant = "full" if name == "garl_ttc_only" else name.removeprefix("garl_")
+        context = (
+            without_decoders(garl.models["full"])
+            if name == "garl_ttc_only"
+            else contextlib.nullcontext()
+        )
+        with context:
+            result = garl.predict(variant, prepared.sensor, prepared.delta_t_s)
+        return result.status, result.model_ttc, result.reason, {"heights": result.heights}
+
+    records = []
+    reference: dict[tuple[str, str], float | None] = {}
+    warmed: set[str] = set()
+    profile_inputs: dict[str, tuple[Any, int, str]] = {}
+    input_bindings: dict[tuple[str, str], str] = {}
+    with torch.inference_mode():
+        for repeat in range(args.repeats):
+            ordinal = 0
+            for seq, sequence_rows in rows.items():
+                append(out / "telemetry.jsonl", {"repeat": repeat, "sequence": seq, **telemetry()})
+                # Full original bbox history is supplied even in a smoke subset.
+                with SensorSequence(args.data_root, seq) as reader:
+                    bbox_history = reader.bbox_rows()
+                    for row in sequence_rows:
+                        query = f"{seq}:{row['row_index']}"
+                        offset = (ordinal + repeat) % len(MODELS)
+                        order = MODELS[offset:] + MODELS[:offset]
+                        query_results = {}
+                        for name in order:
+                            variant = (
+                                "full" if name == "garl_ttc_only" else name.removeprefix("garl_")
+                            )
+                            torch.cuda.synchronize()
+                            start = time.perf_counter()
+                            try:
+                                prepared = (
+                                    prepare_phase(reader, bbox_history, row, calibrations[seq])
+                                    if name == "phase"
+                                    else prepare_garl(
+                                        reader, bbox_history, row, calibrations[seq], variant
+                                    )
+                                )
+                                prep_end = time.perf_counter()
+                                # Warmup is outside BOTH reported clocks and explicitly logged.
+                                warm_seconds = 0.0
+                                if name not in warmed and (
+                                    name == "phase" or prepared.sensor is not None
+                                ):
+                                    warm_start = time.perf_counter()
+                                    for _ in range(args.warmup):
+                                        infer(name, prepared, int(row["anchor_us"]))
+                                    torch.cuda.synchronize()
+                                    warm_seconds = time.perf_counter() - warm_start
+                                    append(
+                                        out / "warmup.jsonl",
+                                        {
+                                            "model": name,
+                                            "query": query,
+                                            "seconds": warm_seconds,
+                                            "calls": args.warmup,
+                                        },
+                                    )
+                                    warmed.add(name)
+                                before = time.perf_counter()
+                                status, prediction, reason, diagnostics = infer(
+                                    name, prepared, int(row["anchor_us"])
+                                )
+                                torch.cuda.synchronize()
+                                end = time.perf_counter()
+                                record = {
+                                    "model": name,
+                                    "query": query,
+                                    "sequence": seq,
+                                    "repeat": repeat,
+                                    "order_position": order.index(name),
+                                    "status": status,
+                                    "ttc_seconds": prediction,
+                                    "reason": reason,
+                                    "preparation_ms": (prep_end - start) * 1000,
+                                    "inference_ms": (end - before) * 1000,
+                                    "total_ms": (prep_end - start + end - before) * 1000,
+                                    "diagnostics": diagnostics,
+                                }
+                                digest = input_hash(prepared, name == "phase")
+                                key = (name, query)
+                                record["prepared_input_sha256"] = digest
+                                if key in input_bindings and input_bindings[key] != digest:
+                                    raise ValueError("Prepared input changed across repeats")
+                                input_bindings[key] = digest
+                                if key in reference:
+                                    assert_parity(reference[key], prediction)
+                                reference[key] = prediction
+                                query_results[name] = prediction
+                                if (
+                                    status == "ok"
+                                    and name not in profile_inputs
+                                    and int(row["anchor_us"]) >= 650000
+                                ):
+                                    profile_inputs[name] = (prepared, int(row["anchor_us"]), query)
+                                records.append(record)
+                                append(out / "trials.jsonl", record)
+                            except Exception as error:
+                                append(
+                                    out / "errors.jsonl",
+                                    {
+                                        "model": name,
+                                        "query": query,
+                                        "repeat": repeat,
+                                        "error": repr(error),
+                                        "telemetry": telemetry(),
+                                    },
+                                )
+                                raise  # never hide a failed run or silently change the cohort
+                        assert_parity(query_results["garl_full"], query_results["garl_ttc_only"])
+                        ordinal += 1
+                        if ordinal % 10 == 0:
+                            print(
+                                f"repeat={repeat + 1}/{args.repeats} "
+                                f"queries={ordinal}/{len(identities)} last={query}",
+                                flush=True,
+                            )
+                write(out / "summary.partial.json", summarize_records(records))
+
+        # Profile full-history real inputs separately: hooks/profiler never contaminate trials.
+        profiles = {}
+        for module in all_modules.values():
+            module.to("cpu")
+        gc.collect()
+        torch.cuda.empty_cache()
+        for name in MODELS:
+            if name not in profile_inputs:
+                continue
+            prepared, query_us, query = profile_inputs[name]
+            models = module_sets[name]
+            for module in models.values():
+                module.to("cuda")
+            call = partial(infer, name, prepared, query_us)
+            for _ in range(args.warmup):
+                call()
+            torch.cuda.synchronize()
+            torch.cuda.reset_peak_memory_stats()
+            baseline = torch.cuda.memory_allocated()
+            for _ in range(5):
+                call()
+            torch.cuda.synchronize()
+            memory = {
+                "baseline_allocated_bytes": baseline,
+                "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
+                "peak_reserved_bytes": torch.cuda.max_memory_reserved(),
+                "rss_bytes": psutil.Process().memory_info().rss,
+            }
+            inventory = parameter_inventory(models, call)
+            torch.cuda.synchronize()
+            # Count supported operator FLOPs; GRU and custom transport are not fully covered.
+            with torch.profiler.profile(
+                activities=[
+                    torch.profiler.ProfilerActivity.CPU,
+                    torch.profiler.ProfilerActivity.CUDA,
+                ],
+                with_flops=True,
+            ) as profiler:
+                call()
+                torch.cuda.synchronize()
+            operators = [
+                {"operator": e.key, "calls": e.count, "flops": e.flops}
+                for e in profiler.key_averages()
+                if e.flops
+            ]
+            profiles[name] = {
+                "query": query,
+                **inventory,
+                **memory,
+                "counted_operator_flops": sum(x["flops"] for x in operators),
+                "flops_scope": "Partial supported-operator FLOPs, not full algorithmic complexity",
+                "operators": operators,
+            }
+            write(out / "profiles.json", profiles)
+            for module in models.values():
+                module.to("cpu")
+            gc.collect()
+            torch.cuda.empty_cache()
+    summary = {
+        "status": "complete",
+        "end_time": datetime.now(UTC).isoformat(),
+        "models": summarize_records(records),
+        "profiles": profiles,
+        "repeat_summaries": {
+            str(i): summarize_records([r for r in records if r["repeat"] == i])
+            for i in range(args.repeats)
+        },
+        "parity": "All repeat predictions and full/decoder-bypass TTC outputs match rtol=atol=1e-5",
+        "telemetry": telemetry(),
+        "protocol_sha256": sha(out / "protocol.json"),
+        "trials_sha256": sha(out / "trials.jsonl"),
+    }
+    write(out / "summary.json", summary)
+    print(
+        json.dumps({"status": "complete", "trials": len(records), "output": str(out)}), flush=True
+    )
+
+
+if __name__ == "__main__":
+    main()

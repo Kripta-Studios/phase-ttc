@@ -89,7 +89,7 @@
 \fancyhf{}
 \fancyhead[L]{\sffamily\fontsize{8}{10}\selectfont\runningtitle}
 \fancyhead[R]{\sffamily\fontsize{8}{10}\selectfont\color{muted}\reportpart}
-\fancyfoot[L]{\sffamily\fontsize{7.5}{9}\selectfont\color{muted}PHASE-TTC\enspace /\enspace Corrected 11 November 2026}
+\fancyfoot[L]{\sffamily\fontsize{7.5}{9}\selectfont\color{muted}PHASE-TTC\enspace /\enspace Updated 12 November 2026}
 \fancyfoot[R]{\sffamily\fontsize{8.5}{10}\selectfont\color{ink}\thepage}
 \renewcommand{\headrulewidth}{.35pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -121,7 +121,7 @@
 \newenvironment{evidencebox}[1]{\begin{tcolorbox}[enhanced,breakable,title={#1},colback=pale,colframe=blue!25,coltitle=ink,colbacktitle=blue!10,fonttitle=\bfseries,boxrule=.5pt,arc=2pt,before upper={\parindent0pt}]}{\end{tcolorbox}}
 \newcommand{\papertitle}[4]{%
   \thispagestyle{empty}
-  \noindent{\sffamily\scriptsize RESEARCH SERIES / CORRECTED EXPANDED EDITION\hfill11 NOVEMBER 2026}
+  \noindent{\sffamily\scriptsize RESEARCH SERIES / CORRECTED EXPANDED EDITION\hfill12 NOVEMBER 2026}
   \par\vspace{8pt}\noindent\textcolor{ink}{\rule{\linewidth}{1.1pt}}
   \vspace{5pt}
   \begin{center}
@@ -141,6 +141,6 @@
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true,frame=single,rulecolor=\color{rulegray},backgroundcolor=\color{pale},xleftmargin=4pt,xrightmargin=4pt,aboveskip=8pt,belowskip=8pt}
 
 \newcommand{\cohortline}[1]{\ifpublicationmode\else\par\noindent{\sffamily\fontsize{8}{10}\selectfont\color{muted}#1}\par\medskip\fi}
-\newcommand{\appendixdivider}{\clearpage\renewcommand{\reportpart}{TECHNICAL SUPPLEMENT}\thispagestyle{empty}\pdfbookmark[0]{Technical supplement}{supplement}\vspace*{33mm}\noindent{\sffamily\small\color{muted}PHASE-TTC / TECHNICAL SUPPLEMENT}\par\vspace{6mm}{\fontsize{29}{34}\selectfont\bfseries\color{blue}Methods, controls,\\and complete evidence}\par\vspace{8mm}\noindent\begin{minipage}{.82\linewidth}Detailed methods, controlled interventions, sequence-level comparisons, and source mappings accompany the main results. Separate appendices document historical experiments, official evaluation, transfer analysis, and frozen competition inference, followed by the corrected local evaluation and subsequent controls.\end{minipage}\par\vfill\noindent{\small\color{muted}Original evidence snapshot: 28 October 2026. Research coverage through 11 November 2026, including the matched readout and geometry controls.\par The build uses saved evidence; separate later model fits retain their own protocols and exposure history.}\clearpage}
+\newcommand{\appendixdivider}{\clearpage\renewcommand{\reportpart}{TECHNICAL SUPPLEMENT}\thispagestyle{empty}\pdfbookmark[0]{Technical supplement}{supplement}\vspace*{33mm}\noindent{\sffamily\small\color{muted}PHASE-TTC / TECHNICAL SUPPLEMENT}\par\vspace{6mm}{\fontsize{29}{34}\selectfont\bfseries\color{blue}Methods, controls,\\and complete evidence}\par\vspace{8mm}\noindent\begin{minipage}{.82\linewidth}Detailed methods, controlled interventions, sequence-level comparisons, and source mappings accompany the main results. Separate appendices document historical experiments, official evaluation, transfer analysis, and frozen competition inference, followed by the corrected local evaluation and subsequent controls.\end{minipage}\par\vfill\noindent{\small\color{muted}Original evidence snapshot: 28 October 2026. Research coverage through 12 November 2026, including matched readout, geometry, and same-hardware inference comparisons.\par The build uses saved evidence; separate later model fits retain their own protocols and exposure history.}\clearpage}
 \endinput
 

@@ -51,7 +51,8 @@
     "sections/evidence_index",
     "sections/update_evidence",
     "sections/scientific_revision",
-    "sections/consolidation_details"
+    "sections/consolidation_details",
+    "sections/local_hardware"
   ],
   "all_original_sections_retained": true,
   "byte_identical_original_assets": {
@@ -165,7 +166,7 @@
     {
       "path": "sections\\runtime.tex",
       "original_sha256": "87869c87692f4189fc6ccb9163df44d2499bbee7ce6511432797e5bb4aca1289",
-      "expanded_sha256": "d4471aa45b88edf22bfc7b96214fd766b8c6c405140912746c7a8adc5e6fba2d",
+      "expanded_sha256": "c38f1b0d015cc8940a244814a2a56b37a36f736c52be7ef84f2fabd933d277e1",
       "changed": true
     },
     {

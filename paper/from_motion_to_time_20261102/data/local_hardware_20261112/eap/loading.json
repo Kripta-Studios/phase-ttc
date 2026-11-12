@@ -1,0 +1,51 @@
+{
+  "garl": {
+    "full": {
+      "checkpoint_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl\\paper_ours_full.pth",
+      "checkpoint_sha256": "e96a613a4fb877a1969d57ab562cadba89961fb202f5f2f2f0658f333a0d443e",
+      "config_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl\\configs\\ablation\\ours_full.yaml",
+      "config_sha256": "c7dedc9b93d32a416b8e92a6b474cc5a17ffd96b2cdaae3a4554e3cc0ee28454",
+      "strict_state_load": true,
+      "removed_initializer_paths": {
+        "pretrained_ckpt_rgb": "checkpoints/paper_visual_only_lhr.pth",
+        "pretrained_ckpt_event": "checkpoints/paper_event_only_lhr.pth"
+      },
+      "parameter_count": 243109898,
+      "native_delta_t_s": 0.1,
+      "dataset_mode": "image_event"
+    },
+    "event": {
+      "checkpoint_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\train40_system_20261005\\public_garl\\paper_event_only_lhr.pth",
+      "checkpoint_sha256": "fcaf9be47e2dafc6f73c6c3ebd102595ae06119dcae78aea698a42627b2b4fef",
+      "config_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\train40_system_20261005\\public_garl\\configs\\ablation\\event_lhr.yaml",
+      "config_sha256": "601ecb74f1ed2f04921f8014ae648aeb8d111ca311e456be20af2d60b63be676",
+      "strict_state_load": true,
+      "removed_initializer_paths": {
+        "pretrained_ckpt_rgb": "checkpoints/paper_visual_only_lhr.pth",
+        "pretrained_ckpt_event": "checkpoints/paper_event_only_lhr.pth"
+      },
+      "parameter_count": 24674178,
+      "native_delta_t_s": 0.1,
+      "dataset_mode": "event_only"
+    },
+    "visual": {
+      "checkpoint_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v16-multimodal-validation\\artifacts\\multimodal_validation_20261012\\public_garl\\paper_visual_only_lhr.pth",
+      "checkpoint_sha256": "02d900d0ddf81086f4176b63663f952a7c753eeb033b13acc5030a892a88cf70",
+      "config_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v16-multimodal-validation\\artifacts\\multimodal_validation_20261012\\public_garl\\configs\\ablation\\visual_lhr.yaml",
+      "config_sha256": "ff09557e8526c94b1a654d03e4291adb0dfa8e0e1877ff6709a56e6b45af12b4",
+      "strict_state_load": true,
+      "removed_initializer_paths": {
+        "pretrained_ckpt_rgb": "checkpoints/paper_visual_only_lhr.pth",
+        "pretrained_ckpt_event": "checkpoints/paper_event_only_lhr.pth"
+      },
+      "parameter_count": 24567554,
+      "native_delta_t_s": 0.1,
+      "dataset_mode": "image_only"
+    }
+  },
+  "telemetry": {
+    "utc": "2026-11-12T16:22:11.386052+00:00",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU, 591.86, 68, 18.81, [N/A], 1822, 14001, 18, 2716",
+    "process_rss_bytes": 1505484800
+  }
+}

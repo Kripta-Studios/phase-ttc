@@ -1,0 +1,6411 @@
+{
+  "experiment_id": "same_hardware_20261112",
+  "run_name": "main01",
+  "git_commit": "66cf5cb91e8000140bf37552c7fecaa39af467e7",
+  "start_time": "2026-11-12T15:26:01.868423+00:00",
+  "host": "DESKTOP-2N393IP",
+  "python_version": "3.11.15",
+  "torch_version": "2.11.0+cu128",
+  "cuda_version": "12.8",
+  "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "cpu_threads": 2,
+  "seed": 7,
+  "precision": "FP32; TF32 disabled; eager inference_mode",
+  "split_version": "EvTTC supplied competition434, no labels consumed",
+  "queries": [
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.02026599999999945",
+      "anchor_us": 20266,
+      "box_text": [
+        "402",
+        "279",
+        "770",
+        "467"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.07026499999999913",
+      "anchor_us": 70265,
+      "box_text": [
+        "401",
+        "278",
+        "772",
+        "469"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12026499999999984",
+      "anchor_us": 120265,
+      "box_text": [
+        "396",
+        "276",
+        "776",
+        "471"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.1702729999999999",
+      "anchor_us": 170273,
+      "box_text": [
+        "391",
+        "273",
+        "780",
+        "472"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.22027199999999958",
+      "anchor_us": 220272,
+      "box_text": [
+        "388",
+        "275",
+        "781",
+        "477"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.27027099999999926",
+      "anchor_us": 270271,
+      "box_text": [
+        "385",
+        "277",
+        "782",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.32026999999999894",
+      "anchor_us": 320270,
+      "box_text": [
+        "381",
+        "278",
+        "786",
+        "483"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.370277999999999",
+      "anchor_us": 370278,
+      "box_text": [
+        "377",
+        "279",
+        "789",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.4202769999999987",
+      "anchor_us": 420277,
+      "box_text": [
+        "375",
+        "278",
+        "792",
+        "486"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.47027599999999836",
+      "anchor_us": 470276,
+      "box_text": [
+        "373",
+        "277",
+        "794",
+        "486"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.5202749999999998",
+      "anchor_us": 520275,
+      "box_text": [
+        "370",
+        "272",
+        "797",
+        "488"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.5702739999999995",
+      "anchor_us": 570274,
+      "box_text": [
+        "367",
+        "266",
+        "800",
+        "488"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6202819999999996",
+      "anchor_us": 620282,
+      "box_text": [
+        "361",
+        "263",
+        "805",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6702809999999992",
+      "anchor_us": 670281,
+      "box_text": [
+        "354",
+        "260",
+        "808",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7202799999999989",
+      "anchor_us": 720280,
+      "box_text": [
+        "352",
+        "255",
+        "810",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.770289",
+      "anchor_us": 770289,
+      "box_text": [
+        "349",
+        "249",
+        "811",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8202879999999997",
+      "anchor_us": 820288,
+      "box_text": [
+        "342",
+        "242",
+        "813",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.8702869999999994",
+      "anchor_us": 870287,
+      "box_text": [
+        "335",
+        "234",
+        "815",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.920285999999999",
+      "anchor_us": 920286,
+      "box_text": [
+        "331",
+        "231",
+        "820",
+        "479"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9702939999999991",
+      "anchor_us": 970294,
+      "box_text": [
+        "327",
+        "227",
+        "824",
+        "476"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0202929999999988",
+      "anchor_us": 1020293,
+      "box_text": [
+        "322",
+        "225",
+        "825",
+        "479"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.0702919999999985",
+      "anchor_us": 1070292,
+      "box_text": [
+        "316",
+        "223",
+        "825",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.120291",
+      "anchor_us": 1120291,
+      "box_text": [
+        "310",
+        "222",
+        "828",
+        "483"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.1702899999999996",
+      "anchor_us": 1170290,
+      "box_text": [
+        "304",
+        "221",
+        "830",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.2202979999999997",
+      "anchor_us": 1220298,
+      "box_text": [
+        "293",
+        "219",
+        "834",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.2702969999999993",
+      "anchor_us": 1270297,
+      "box_text": [
+        "282",
+        "216",
+        "838",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.320297",
+      "anchor_us": 1320297,
+      "box_text": [
+        "278",
+        "213",
+        "842",
+        "494"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.3702959999999997",
+      "anchor_us": 1370296,
+      "box_text": [
+        "273",
+        "210",
+        "845",
+        "500"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.4203039999999998",
+      "anchor_us": 1420304,
+      "box_text": [
+        "270",
+        "211",
+        "851",
+        "504"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.4703029999999995",
+      "anchor_us": 1470303,
+      "box_text": [
+        "266",
+        "212",
+        "855",
+        "508"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 30,
+      "index": 30,
+      "timestamp_text": "1.5203019999999992",
+      "anchor_us": 1520302,
+      "box_text": [
+        "255",
+        "212",
+        "861",
+        "513"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 31,
+      "index": 31,
+      "timestamp_text": "1.5703009999999988",
+      "anchor_us": 1570301,
+      "box_text": [
+        "243",
+        "212",
+        "865",
+        "518"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 32,
+      "index": 32,
+      "timestamp_text": "1.620308999999999",
+      "anchor_us": 1620309,
+      "box_text": [
+        "236",
+        "210",
+        "874",
+        "524"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 33,
+      "index": 33,
+      "timestamp_text": "1.6703079999999986",
+      "anchor_us": 1670308,
+      "box_text": [
+        "228",
+        "208",
+        "882",
+        "530"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 34,
+      "index": 34,
+      "timestamp_text": "1.720307",
+      "anchor_us": 1720307,
+      "box_text": [
+        "219",
+        "206",
+        "887",
+        "536"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 35,
+      "index": 35,
+      "timestamp_text": "1.7703059999999997",
+      "anchor_us": 1770306,
+      "box_text": [
+        "210",
+        "204",
+        "892",
+        "542"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 36,
+      "index": 36,
+      "timestamp_text": "1.820314999999999",
+      "anchor_us": 1820315,
+      "box_text": [
+        "201",
+        "207",
+        "901",
+        "551"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 37,
+      "index": 37,
+      "timestamp_text": "1.8703139999999987",
+      "anchor_us": 1870314,
+      "box_text": [
+        "191",
+        "210",
+        "908",
+        "560"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 38,
+      "index": 38,
+      "timestamp_text": "1.9203129999999984",
+      "anchor_us": 1920313,
+      "box_text": [
+        "178",
+        "206",
+        "917",
+        "566"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 39,
+      "index": 39,
+      "timestamp_text": "1.9703119999999998",
+      "anchor_us": 1970312,
+      "box_text": [
+        "165",
+        "201",
+        "926",
+        "571"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 40,
+      "index": 40,
+      "timestamp_text": "2.02032",
+      "anchor_us": 2020320,
+      "box_text": [
+        "155",
+        "198",
+        "933",
+        "580"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 41,
+      "index": 41,
+      "timestamp_text": "2.0703189999999996",
+      "anchor_us": 2070319,
+      "box_text": [
+        "144",
+        "194",
+        "938",
+        "588"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 42,
+      "index": 42,
+      "timestamp_text": "2.1203179999999993",
+      "anchor_us": 2120318,
+      "box_text": [
+        "131",
+        "192",
+        "951",
+        "596"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 43,
+      "index": 43,
+      "timestamp_text": "2.170316999999999",
+      "anchor_us": 2170317,
+      "box_text": [
+        "117",
+        "189",
+        "963",
+        "602"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 44,
+      "index": 44,
+      "timestamp_text": "2.220324999999999",
+      "anchor_us": 2220325,
+      "box_text": [
+        "102",
+        "186",
+        "974",
+        "611"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 45,
+      "index": 45,
+      "timestamp_text": "2.2703249999999997",
+      "anchor_us": 2270325,
+      "box_text": [
+        "87",
+        "182",
+        "984",
+        "619"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 46,
+      "index": 46,
+      "timestamp_text": "2.3203229999999984",
+      "anchor_us": 2320323,
+      "box_text": [
+        "70",
+        "180",
+        "993",
+        "633"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 47,
+      "index": 47,
+      "timestamp_text": "2.370322999999999",
+      "anchor_us": 2370323,
+      "box_text": [
+        "52",
+        "177",
+        "1001",
+        "646"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 48,
+      "index": 48,
+      "timestamp_text": "2.420330999999999",
+      "anchor_us": 2420331,
+      "box_text": [
+        "30",
+        "178",
+        "1011",
+        "661"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-low",
+      "row_index": 49,
+      "index": 49,
+      "timestamp_text": "2.470329999999999",
+      "anchor_us": 2470330,
+      "box_text": [
+        "8",
+        "178",
+        "1020",
+        "675"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.020309999999998496",
+      "anchor_us": 20310,
+      "box_text": [
+        "455",
+        "325",
+        "727",
+        "466"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.07031799999999855",
+      "anchor_us": 70318,
+      "box_text": [
+        "452",
+        "323",
+        "730",
+        "466"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12031700000000001",
+      "anchor_us": 120317,
+      "box_text": [
+        "448",
+        "320",
+        "731",
+        "465"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.17031699999999894",
+      "anchor_us": 170317,
+      "box_text": [
+        "446",
+        "319",
+        "733",
+        "466"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.22031599999999862",
+      "anchor_us": 220316,
+      "box_text": [
+        "443",
+        "318",
+        "733",
+        "466"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.2703239999999987",
+      "anchor_us": 270324,
+      "box_text": [
+        "441",
+        "318",
+        "737",
+        "468"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.32032299999999836",
+      "anchor_us": 320323,
+      "box_text": [
+        "438",
+        "317",
+        "739",
+        "468"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.3703219999999998",
+      "anchor_us": 370322,
+      "box_text": [
+        "434",
+        "315",
+        "741",
+        "471"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.4203209999999995",
+      "anchor_us": 420321,
+      "box_text": [
+        "430",
+        "312",
+        "742",
+        "472"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.47032899999999955",
+      "anchor_us": 470329,
+      "box_text": [
+        "427",
+        "308",
+        "745",
+        "473"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.5203279999999992",
+      "anchor_us": 520328,
+      "box_text": [
+        "424",
+        "303",
+        "748",
+        "473"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.5703269999999989",
+      "anchor_us": 570327,
+      "box_text": [
+        "422",
+        "299",
+        "753",
+        "470"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6203259999999986",
+      "anchor_us": 620326,
+      "box_text": [
+        "419",
+        "295",
+        "756",
+        "467"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6703349999999997",
+      "anchor_us": 670335,
+      "box_text": [
+        "415",
+        "291",
+        "759",
+        "467"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7203329999999983",
+      "anchor_us": 720333,
+      "box_text": [
+        "410",
+        "287",
+        "761",
+        "466"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.770332999999999",
+      "anchor_us": 770333,
+      "box_text": [
+        "408",
+        "285",
+        "771",
+        "467"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8203319999999987",
+      "anchor_us": 820332,
+      "box_text": [
+        "405",
+        "283",
+        "779",
+        "468"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.8703399999999988",
+      "anchor_us": 870340,
+      "box_text": [
+        "401",
+        "282",
+        "780",
+        "473"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.9203389999999985",
+      "anchor_us": 920339,
+      "box_text": [
+        "397",
+        "280",
+        "780",
+        "477"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9703379999999999",
+      "anchor_us": 970338,
+      "box_text": [
+        "395",
+        "281",
+        "784",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0203369999999996",
+      "anchor_us": 1020337,
+      "box_text": [
+        "393",
+        "282",
+        "787",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.0703449999999997",
+      "anchor_us": 1070345,
+      "box_text": [
+        "384",
+        "284",
+        "791",
+        "491"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.1203439999999993",
+      "anchor_us": 1120344,
+      "box_text": [
+        "374",
+        "285",
+        "794",
+        "496"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.170342999999999",
+      "anchor_us": 1170343,
+      "box_text": [
+        "368",
+        "281",
+        "800",
+        "497"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.2203419999999987",
+      "anchor_us": 1220342,
+      "box_text": [
+        "362",
+        "277",
+        "805",
+        "497"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.2703499999999988",
+      "anchor_us": 1270350,
+      "box_text": [
+        "355",
+        "266",
+        "809",
+        "494"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.3203489999999984",
+      "anchor_us": 1320349,
+      "box_text": [
+        "347",
+        "254",
+        "812",
+        "490"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.3703489999999992",
+      "anchor_us": 1370349,
+      "box_text": [
+        "335",
+        "243",
+        "815",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.4203479999999988",
+      "anchor_us": 1420348,
+      "box_text": [
+        "322",
+        "232",
+        "817",
+        "484"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.4703559999999989",
+      "anchor_us": 1470356,
+      "box_text": [
+        "312",
+        "224",
+        "823",
+        "483"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 30,
+      "index": 30,
+      "timestamp_text": "1.5203549999999986",
+      "anchor_us": 1520355,
+      "box_text": [
+        "302",
+        "215",
+        "828",
+        "480"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 31,
+      "index": 31,
+      "timestamp_text": "1.570354",
+      "anchor_us": 1570354,
+      "box_text": [
+        "290",
+        "213",
+        "834",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 32,
+      "index": 32,
+      "timestamp_text": "1.6203529999999997",
+      "anchor_us": 1620353,
+      "box_text": [
+        "277",
+        "211",
+        "838",
+        "489"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 33,
+      "index": 33,
+      "timestamp_text": "1.6703609999999998",
+      "anchor_us": 1670361,
+      "box_text": [
+        "267",
+        "211",
+        "845",
+        "500"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 34,
+      "index": 34,
+      "timestamp_text": "1.7203599999999994",
+      "anchor_us": 1720360,
+      "box_text": [
+        "256",
+        "210",
+        "851",
+        "509"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 35,
+      "index": 35,
+      "timestamp_text": "1.7703589999999991",
+      "anchor_us": 1770359,
+      "box_text": [
+        "240",
+        "212",
+        "859",
+        "523"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 36,
+      "index": 36,
+      "timestamp_text": "1.8203579999999988",
+      "anchor_us": 1820358,
+      "box_text": [
+        "223",
+        "213",
+        "865",
+        "535"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 37,
+      "index": 37,
+      "timestamp_text": "1.8703659999999989",
+      "anchor_us": 1870366,
+      "box_text": [
+        "207",
+        "211",
+        "876",
+        "544"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 38,
+      "index": 38,
+      "timestamp_text": "1.9203649999999985",
+      "anchor_us": 1920365,
+      "box_text": [
+        "191",
+        "209",
+        "887",
+        "552"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 39,
+      "index": 39,
+      "timestamp_text": "1.9703649999999993",
+      "anchor_us": 1970365,
+      "box_text": [
+        "171",
+        "196",
+        "896",
+        "553"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 40,
+      "index": 40,
+      "timestamp_text": "2.020363999999999",
+      "anchor_us": 2020364,
+      "box_text": [
+        "151",
+        "183",
+        "905",
+        "554"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 41,
+      "index": 41,
+      "timestamp_text": "2.0703709999999997",
+      "anchor_us": 2070371,
+      "box_text": [
+        "124",
+        "163",
+        "919",
+        "552"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-medium",
+      "row_index": 42,
+      "index": 42,
+      "timestamp_text": "2.1203709999999987",
+      "anchor_us": 2120371,
+      "box_text": [
+        "97",
+        "142",
+        "932",
+        "548"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.02046900000000207",
+      "anchor_us": 20469,
+      "box_text": [
+        "548",
+        "165",
+        "889",
+        "366"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.07047500000000184",
+      "anchor_us": 70475,
+      "box_text": [
+        "541",
+        "151",
+        "894",
+        "360"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12048100000000161",
+      "anchor_us": 120481,
+      "box_text": [
+        "535",
+        "145",
+        "900",
+        "360"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.170497000000001",
+      "anchor_us": 170497,
+      "box_text": [
+        "528",
+        "139",
+        "905",
+        "359"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.22050300000000078",
+      "anchor_us": 220503,
+      "box_text": [
+        "520",
+        "133",
+        "908",
+        "363"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.27050900000000055",
+      "anchor_us": 270509,
+      "box_text": [
+        "512",
+        "127",
+        "910",
+        "367"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.32051600000000136",
+      "anchor_us": 320516,
+      "box_text": [
+        "503",
+        "127",
+        "918",
+        "378"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.3705309999999997",
+      "anchor_us": 370531,
+      "box_text": [
+        "493",
+        "126",
+        "924",
+        "388"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.42053700000000305",
+      "anchor_us": 420537,
+      "box_text": [
+        "483",
+        "125",
+        "930",
+        "401"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.4705440000000003",
+      "anchor_us": 470544,
+      "box_text": [
+        "473",
+        "123",
+        "935",
+        "413"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.5205500000000001",
+      "anchor_us": 520550,
+      "box_text": [
+        "463",
+        "120",
+        "945",
+        "412"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.5705559999999998",
+      "anchor_us": 570556,
+      "box_text": [
+        "453",
+        "116",
+        "955",
+        "409"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6205720000000028",
+      "anchor_us": 620572,
+      "box_text": [
+        "444",
+        "111",
+        "964",
+        "417"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6705780000000026",
+      "anchor_us": 670578,
+      "box_text": [
+        "434",
+        "105",
+        "971",
+        "423"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7205849999999998",
+      "anchor_us": 720585,
+      "box_text": [
+        "423",
+        "106",
+        "981",
+        "439"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.7705920000000006",
+      "anchor_us": 770592,
+      "box_text": [
+        "411",
+        "107",
+        "990",
+        "455"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8206000000000024",
+      "anchor_us": 820600,
+      "box_text": [
+        "397",
+        "112",
+        "1003",
+        "470"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.8706160000000018",
+      "anchor_us": 870616,
+      "box_text": [
+        "382",
+        "117",
+        "1014",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.9206230000000026",
+      "anchor_us": 920623,
+      "box_text": [
+        "367",
+        "109",
+        "1026",
+        "494"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9706310000000009",
+      "anchor_us": 970631,
+      "box_text": [
+        "352",
+        "100",
+        "1038",
+        "502"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0206380000000017",
+      "anchor_us": 1020638,
+      "box_text": [
+        "336",
+        "83",
+        "1052",
+        "510"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.0706450000000025",
+      "anchor_us": 1070645,
+      "box_text": [
+        "319",
+        "65",
+        "1065",
+        "517"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.120662000000003",
+      "anchor_us": 1120662,
+      "box_text": [
+        "300",
+        "49",
+        "1082",
+        "521"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.1706690000000002",
+      "anchor_us": 1170669,
+      "box_text": [
+        "281",
+        "33",
+        "1098",
+        "525"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.220676000000001",
+      "anchor_us": 1220676,
+      "box_text": [
+        "262",
+        "19",
+        "1115",
+        "535"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.2706830000000018",
+      "anchor_us": 1270683,
+      "box_text": [
+        "242",
+        "5",
+        "1131",
+        "544"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.3207000000000022",
+      "anchor_us": 1320700,
+      "box_text": [
+        "216",
+        "7",
+        "1149",
+        "561"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.370707000000003",
+      "anchor_us": 1370707,
+      "box_text": [
+        "189",
+        "9",
+        "1166",
+        "577"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.4207150000000013",
+      "anchor_us": 1420715,
+      "box_text": [
+        "167",
+        "8",
+        "1189",
+        "618"
+      ]
+    },
+    {
+      "sequence_id": "CCRs1-high",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.470722000000002",
+      "anchor_us": 1470722,
+      "box_text": [
+        "144",
+        "7",
+        "1211",
+        "658"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.020278999999998604",
+      "anchor_us": 20279,
+      "box_text": [
+        "456",
+        "221",
+        "728",
+        "416"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.07027800000000006",
+      "anchor_us": 70278,
+      "box_text": [
+        "454",
+        "225",
+        "729",
+        "425"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12027699999999975",
+      "anchor_us": 120277,
+      "box_text": [
+        "451",
+        "229",
+        "729",
+        "434"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.17027599999999943",
+      "anchor_us": 170276,
+      "box_text": [
+        "450",
+        "232",
+        "734",
+        "441"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.2202749999999991",
+      "anchor_us": 220275,
+      "box_text": [
+        "449",
+        "234",
+        "738",
+        "446"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.27028299999999916",
+      "anchor_us": 270283,
+      "box_text": [
+        "449",
+        "235",
+        "741",
+        "438"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.32028199999999885",
+      "anchor_us": 320282,
+      "box_text": [
+        "448",
+        "235",
+        "742",
+        "429"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.37028099999999853",
+      "anchor_us": 370281,
+      "box_text": [
+        "447",
+        "233",
+        "745",
+        "430"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.42028",
+      "anchor_us": 420280,
+      "box_text": [
+        "446",
+        "230",
+        "747",
+        "430"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.4702889999999993",
+      "anchor_us": 470289,
+      "box_text": [
+        "446",
+        "230",
+        "750",
+        "439"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.520287999999999",
+      "anchor_us": 520288,
+      "box_text": [
+        "445",
+        "229",
+        "752",
+        "446"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.5702869999999987",
+      "anchor_us": 570287,
+      "box_text": [
+        "443",
+        "227",
+        "757",
+        "451"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6202859999999983",
+      "anchor_us": 620286,
+      "box_text": [
+        "441",
+        "224",
+        "761",
+        "454"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6702939999999984",
+      "anchor_us": 670294,
+      "box_text": [
+        "439",
+        "226",
+        "764",
+        "459"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7202929999999999",
+      "anchor_us": 720293,
+      "box_text": [
+        "436",
+        "227",
+        "766",
+        "463"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.7702919999999995",
+      "anchor_us": 770292,
+      "box_text": [
+        "435",
+        "231",
+        "770",
+        "469"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8202909999999992",
+      "anchor_us": 820291,
+      "box_text": [
+        "433",
+        "234",
+        "772",
+        "474"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.8702989999999993",
+      "anchor_us": 870299,
+      "box_text": [
+        "431",
+        "235",
+        "776",
+        "484"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.920299",
+      "anchor_us": 920299,
+      "box_text": [
+        "428",
+        "235",
+        "778",
+        "492"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9702979999999997",
+      "anchor_us": 970298,
+      "box_text": [
+        "423",
+        "234",
+        "780",
+        "495"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0202969999999993",
+      "anchor_us": 1020297,
+      "box_text": [
+        "417",
+        "233",
+        "781",
+        "498"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.070295999999999",
+      "anchor_us": 1070296,
+      "box_text": [
+        "411",
+        "231",
+        "782",
+        "502"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.120303999999999",
+      "anchor_us": 1120304,
+      "box_text": [
+        "405",
+        "229",
+        "783",
+        "505"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.1703029999999988",
+      "anchor_us": 1170303,
+      "box_text": [
+        "401",
+        "229",
+        "787",
+        "509"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.2203019999999984",
+      "anchor_us": 1220302,
+      "box_text": [
+        "396",
+        "229",
+        "789",
+        "512"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.270301",
+      "anchor_us": 1270301,
+      "box_text": [
+        "390",
+        "227",
+        "789",
+        "517"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.3203099999999992",
+      "anchor_us": 1320310,
+      "box_text": [
+        "384",
+        "224",
+        "789",
+        "520"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.3703079999999996",
+      "anchor_us": 1370308,
+      "box_text": [
+        "378",
+        "226",
+        "792",
+        "529"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.4203069999999993",
+      "anchor_us": 1420307,
+      "box_text": [
+        "372",
+        "228",
+        "794",
+        "538"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.470307",
+      "anchor_us": 1470307,
+      "box_text": [
+        "366",
+        "229",
+        "796",
+        "547"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 30,
+      "index": 30,
+      "timestamp_text": "1.520315",
+      "anchor_us": 1520315,
+      "box_text": [
+        "359",
+        "230",
+        "796",
+        "555"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 31,
+      "index": 31,
+      "timestamp_text": "1.5703139999999998",
+      "anchor_us": 1570314,
+      "box_text": [
+        "353",
+        "234",
+        "800",
+        "563"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 32,
+      "index": 32,
+      "timestamp_text": "1.6203129999999994",
+      "anchor_us": 1620313,
+      "box_text": [
+        "346",
+        "237",
+        "803",
+        "570"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 33,
+      "index": 33,
+      "timestamp_text": "1.6703119999999991",
+      "anchor_us": 1670312,
+      "box_text": [
+        "338",
+        "237",
+        "805",
+        "578"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 34,
+      "index": 34,
+      "timestamp_text": "1.7203109999999988",
+      "anchor_us": 1720311,
+      "box_text": [
+        "329",
+        "236",
+        "806",
+        "585"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 35,
+      "index": 35,
+      "timestamp_text": "1.7703189999999989",
+      "anchor_us": 1770319,
+      "box_text": [
+        "321",
+        "232",
+        "809",
+        "590"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 36,
+      "index": 36,
+      "timestamp_text": "1.8203189999999996",
+      "anchor_us": 1820319,
+      "box_text": [
+        "312",
+        "227",
+        "811",
+        "594"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 37,
+      "index": 37,
+      "timestamp_text": "1.8703179999999993",
+      "anchor_us": 1870318,
+      "box_text": [
+        "305",
+        "225",
+        "813",
+        "600"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 38,
+      "index": 38,
+      "timestamp_text": "1.9203159999999997",
+      "anchor_us": 1920316,
+      "box_text": [
+        "298",
+        "223",
+        "814",
+        "606"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 39,
+      "index": 39,
+      "timestamp_text": "1.970324999999999",
+      "anchor_us": 1970325,
+      "box_text": [
+        "287",
+        "223",
+        "820",
+        "614"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 40,
+      "index": 40,
+      "timestamp_text": "2.0203239999999987",
+      "anchor_us": 2020324,
+      "box_text": [
+        "275",
+        "222",
+        "824",
+        "621"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 41,
+      "index": 41,
+      "timestamp_text": "2.0703229999999984",
+      "anchor_us": 2070323,
+      "box_text": [
+        "268",
+        "220",
+        "828",
+        "627"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 42,
+      "index": 42,
+      "timestamp_text": "2.120322",
+      "anchor_us": 2120322,
+      "box_text": [
+        "261",
+        "218",
+        "832",
+        "632"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 43,
+      "index": 43,
+      "timestamp_text": "2.17033",
+      "anchor_us": 2170330,
+      "box_text": [
+        "252",
+        "214",
+        "839",
+        "641"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 44,
+      "index": 44,
+      "timestamp_text": "2.2203289999999996",
+      "anchor_us": 2220329,
+      "box_text": [
+        "242",
+        "210",
+        "844",
+        "650"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-low",
+      "row_index": 45,
+      "index": 45,
+      "timestamp_text": "2.2703279999999992",
+      "anchor_us": 2270328,
+      "box_text": [
+        "231",
+        "210",
+        "852",
+        "660"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.02026599999999945",
+      "anchor_us": 20266,
+      "box_text": [
+        "570",
+        "267",
+        "761",
+        "380"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.0702739999999995",
+      "anchor_us": 70274,
+      "box_text": [
+        "569",
+        "264",
+        "764",
+        "378"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12027299999999919",
+      "anchor_us": 120273,
+      "box_text": [
+        "568",
+        "261",
+        "766",
+        "375"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.17027199999999887",
+      "anchor_us": 170272,
+      "box_text": [
+        "567",
+        "257",
+        "769",
+        "373"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.22027099999999855",
+      "anchor_us": 220271,
+      "box_text": [
+        "565",
+        "253",
+        "770",
+        "371"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.27027",
+      "anchor_us": 270270,
+      "box_text": [
+        "564",
+        "249",
+        "773",
+        "369"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.32027800000000006",
+      "anchor_us": 320278,
+      "box_text": [
+        "563",
+        "245",
+        "776",
+        "366"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.37027699999999975",
+      "anchor_us": 370277,
+      "box_text": [
+        "562",
+        "244",
+        "779",
+        "370"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.42027599999999943",
+      "anchor_us": 420276,
+      "box_text": [
+        "560",
+        "243",
+        "781",
+        "374"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.4702839999999995",
+      "anchor_us": 470284,
+      "box_text": [
+        "559",
+        "246",
+        "785",
+        "378"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.5202839999999984",
+      "anchor_us": 520284,
+      "box_text": [
+        "558",
+        "248",
+        "788",
+        "381"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.5702829999999999",
+      "anchor_us": 570283,
+      "box_text": [
+        "557",
+        "249",
+        "793",
+        "386"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6202819999999996",
+      "anchor_us": 620282,
+      "box_text": [
+        "555",
+        "249",
+        "796",
+        "389"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6702809999999992",
+      "anchor_us": 670281,
+      "box_text": [
+        "554",
+        "242",
+        "800",
+        "387"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7202889999999993",
+      "anchor_us": 720289,
+      "box_text": [
+        "552",
+        "235",
+        "802",
+        "384"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.770287999999999",
+      "anchor_us": 770288,
+      "box_text": [
+        "552",
+        "227",
+        "807",
+        "377"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8202869999999987",
+      "anchor_us": 820287,
+      "box_text": [
+        "551",
+        "219",
+        "810",
+        "370"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.8702869999999994",
+      "anchor_us": 870287,
+      "box_text": [
+        "549",
+        "215",
+        "815",
+        "369"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.9202939999999984",
+      "anchor_us": 920294,
+      "box_text": [
+        "546",
+        "210",
+        "819",
+        "367"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9702939999999991",
+      "anchor_us": 970294,
+      "box_text": [
+        "544",
+        "214",
+        "822",
+        "375"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0202929999999988",
+      "anchor_us": 1020293,
+      "box_text": [
+        "542",
+        "217",
+        "825",
+        "381"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.0702919999999985",
+      "anchor_us": 1070292,
+      "box_text": [
+        "539",
+        "222",
+        "829",
+        "389"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.1202999999999985",
+      "anchor_us": 1120300,
+      "box_text": [
+        "535",
+        "226",
+        "832",
+        "396"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.170299",
+      "anchor_us": 1170299,
+      "box_text": [
+        "531",
+        "228",
+        "836",
+        "403"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.2202979999999997",
+      "anchor_us": 1220298,
+      "box_text": [
+        "527",
+        "229",
+        "840",
+        "409"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.2702969999999993",
+      "anchor_us": 1270297,
+      "box_text": [
+        "524",
+        "227",
+        "844",
+        "413"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.320295999999999",
+      "anchor_us": 1320296,
+      "box_text": [
+        "521",
+        "225",
+        "848",
+        "417"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.370303999999999",
+      "anchor_us": 1370304,
+      "box_text": [
+        "516",
+        "223",
+        "852",
+        "418"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.4203039999999998",
+      "anchor_us": 1420304,
+      "box_text": [
+        "510",
+        "221",
+        "855",
+        "419"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.4703029999999995",
+      "anchor_us": 1470303,
+      "box_text": [
+        "507",
+        "221",
+        "860",
+        "425"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 30,
+      "index": 30,
+      "timestamp_text": "1.5203109999999995",
+      "anchor_us": 1520311,
+      "box_text": [
+        "504",
+        "221",
+        "865",
+        "431"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 31,
+      "index": 31,
+      "timestamp_text": "1.5703099999999992",
+      "anchor_us": 1570310,
+      "box_text": [
+        "500",
+        "221",
+        "872",
+        "438"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 32,
+      "index": 32,
+      "timestamp_text": "1.620308999999999",
+      "anchor_us": 1620309,
+      "box_text": [
+        "495",
+        "221",
+        "877",
+        "444"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 33,
+      "index": 33,
+      "timestamp_text": "1.6703079999999986",
+      "anchor_us": 1670308,
+      "box_text": [
+        "489",
+        "223",
+        "882",
+        "468"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 34,
+      "index": 34,
+      "timestamp_text": "1.720307",
+      "anchor_us": 1720307,
+      "box_text": [
+        "483",
+        "224",
+        "886",
+        "491"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 35,
+      "index": 35,
+      "timestamp_text": "1.770315",
+      "anchor_us": 1770315,
+      "box_text": [
+        "477",
+        "225",
+        "891",
+        "503"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 36,
+      "index": 36,
+      "timestamp_text": "1.820314999999999",
+      "anchor_us": 1820315,
+      "box_text": [
+        "471",
+        "226",
+        "896",
+        "514"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 37,
+      "index": 37,
+      "timestamp_text": "1.8703129999999994",
+      "anchor_us": 1870313,
+      "box_text": [
+        "467",
+        "228",
+        "904",
+        "521"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 38,
+      "index": 38,
+      "timestamp_text": "1.9203129999999984",
+      "anchor_us": 1920313,
+      "box_text": [
+        "462",
+        "230",
+        "910",
+        "528"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 39,
+      "index": 39,
+      "timestamp_text": "1.9703209999999984",
+      "anchor_us": 1970321,
+      "box_text": [
+        "456",
+        "234",
+        "919",
+        "541"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 40,
+      "index": 40,
+      "timestamp_text": "2.02032",
+      "anchor_us": 2020320,
+      "box_text": [
+        "449",
+        "237",
+        "926",
+        "552"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 41,
+      "index": 41,
+      "timestamp_text": "2.0703189999999996",
+      "anchor_us": 2070319,
+      "box_text": [
+        "440",
+        "236",
+        "933",
+        "564"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 42,
+      "index": 42,
+      "timestamp_text": "2.1203179999999993",
+      "anchor_us": 2120318,
+      "box_text": [
+        "431",
+        "234",
+        "940",
+        "575"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 43,
+      "index": 43,
+      "timestamp_text": "2.1703259999999993",
+      "anchor_us": 2170326,
+      "box_text": [
+        "423",
+        "231",
+        "947",
+        "582"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 44,
+      "index": 44,
+      "timestamp_text": "2.220324999999999",
+      "anchor_us": 2220325,
+      "box_text": [
+        "415",
+        "228",
+        "954",
+        "588"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 45,
+      "index": 45,
+      "timestamp_text": "2.2703239999999987",
+      "anchor_us": 2270324,
+      "box_text": [
+        "408",
+        "226",
+        "966",
+        "599"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 46,
+      "index": 46,
+      "timestamp_text": "2.3203229999999984",
+      "anchor_us": 2320323,
+      "box_text": [
+        "401",
+        "223",
+        "978",
+        "608"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 47,
+      "index": 47,
+      "timestamp_text": "2.3703319999999994",
+      "anchor_us": 2370332,
+      "box_text": [
+        "390",
+        "220",
+        "986",
+        "617"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 48,
+      "index": 48,
+      "timestamp_text": "2.420330999999999",
+      "anchor_us": 2420331,
+      "box_text": [
+        "379",
+        "216",
+        "993",
+        "624"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 49,
+      "index": 49,
+      "timestamp_text": "2.470329999999999",
+      "anchor_us": 2470330,
+      "box_text": [
+        "368",
+        "214",
+        "1005",
+        "639"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 50,
+      "index": 50,
+      "timestamp_text": "2.5203289999999985",
+      "anchor_us": 2520329,
+      "box_text": [
+        "356",
+        "212",
+        "1016",
+        "654"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 51,
+      "index": 51,
+      "timestamp_text": "2.5703369999999985",
+      "anchor_us": 2570337,
+      "box_text": [
+        "344",
+        "216",
+        "1025",
+        "670"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 52,
+      "index": 52,
+      "timestamp_text": "2.620336",
+      "anchor_us": 2620336,
+      "box_text": [
+        "331",
+        "220",
+        "1033",
+        "686"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 53,
+      "index": 53,
+      "timestamp_text": "2.6703349999999997",
+      "anchor_us": 2670335,
+      "box_text": [
+        "318",
+        "219",
+        "1045",
+        "700"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-medium",
+      "row_index": 54,
+      "index": 54,
+      "timestamp_text": "2.7203339999999994",
+      "anchor_us": 2720334,
+      "box_text": [
+        "304",
+        "218",
+        "1056",
+        "713"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.020381999999999678",
+      "anchor_us": 20382,
+      "box_text": [
+        "598",
+        "247",
+        "756",
+        "359"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.07038100000000114",
+      "anchor_us": 70381,
+      "box_text": [
+        "598",
+        "245",
+        "758",
+        "360"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12038899999999941",
+      "anchor_us": 120389,
+      "box_text": [
+        "597",
+        "242",
+        "759",
+        "360"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.17038800000000087",
+      "anchor_us": 170388,
+      "box_text": [
+        "595",
+        "241",
+        "763",
+        "360"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.2203879999999998",
+      "anchor_us": 220388,
+      "box_text": [
+        "592",
+        "240",
+        "765",
+        "360"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.2703869999999995",
+      "anchor_us": 270387,
+      "box_text": [
+        "592",
+        "238",
+        "768",
+        "361"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.32039499999999954",
+      "anchor_us": 320395,
+      "box_text": [
+        "591",
+        "236",
+        "770",
+        "362"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.370394000000001",
+      "anchor_us": 370394,
+      "box_text": [
+        "589",
+        "234",
+        "772",
+        "363"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.4203930000000007",
+      "anchor_us": 420393,
+      "box_text": [
+        "587",
+        "232",
+        "774",
+        "363"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.47039200000000037",
+      "anchor_us": 470392,
+      "box_text": [
+        "587",
+        "230",
+        "778",
+        "363"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.520391",
+      "anchor_us": 520391,
+      "box_text": [
+        "586",
+        "227",
+        "781",
+        "362"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.5703990000000001",
+      "anchor_us": 570399,
+      "box_text": [
+        "585",
+        "226",
+        "784",
+        "362"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6203979999999998",
+      "anchor_us": 620398,
+      "box_text": [
+        "584",
+        "224",
+        "786",
+        "361"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6703980000000005",
+      "anchor_us": 670398,
+      "box_text": [
+        "582",
+        "222",
+        "791",
+        "363"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7203970000000002",
+      "anchor_us": 720397,
+      "box_text": [
+        "580",
+        "220",
+        "795",
+        "365"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.770404000000001",
+      "anchor_us": 770404,
+      "box_text": [
+        "579",
+        "220",
+        "799",
+        "369"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8204039999999999",
+      "anchor_us": 820404,
+      "box_text": [
+        "577",
+        "219",
+        "801",
+        "372"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.8704029999999996",
+      "anchor_us": 870403,
+      "box_text": [
+        "575",
+        "221",
+        "804",
+        "376"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.920402000000001",
+      "anchor_us": 920402,
+      "box_text": [
+        "573",
+        "223",
+        "806",
+        "379"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9704010000000007",
+      "anchor_us": 970401,
+      "box_text": [
+        "570",
+        "220",
+        "810",
+        "382"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0204090000000008",
+      "anchor_us": 1020409,
+      "box_text": [
+        "566",
+        "217",
+        "813",
+        "384"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.0704080000000005",
+      "anchor_us": 1070408,
+      "box_text": [
+        "563",
+        "206",
+        "816",
+        "375"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.1204070000000002",
+      "anchor_us": 1120407,
+      "box_text": [
+        "560",
+        "195",
+        "818",
+        "366"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.1704070000000009",
+      "anchor_us": 1170407,
+      "box_text": [
+        "557",
+        "188",
+        "823",
+        "362"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.220415000000001",
+      "anchor_us": 1220415,
+      "box_text": [
+        "554",
+        "181",
+        "827",
+        "357"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.2704140000000006",
+      "anchor_us": 1270414,
+      "box_text": [
+        "551",
+        "185",
+        "830",
+        "368"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.3204130000000003",
+      "anchor_us": 1320413,
+      "box_text": [
+        "547",
+        "188",
+        "832",
+        "378"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.370412",
+      "anchor_us": 1370412,
+      "box_text": [
+        "542",
+        "195",
+        "838",
+        "394"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.42042",
+      "anchor_us": 1420420,
+      "box_text": [
+        "537",
+        "201",
+        "843",
+        "409"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.4704189999999997",
+      "anchor_us": 1470419,
+      "box_text": [
+        "536",
+        "202",
+        "847",
+        "418"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 30,
+      "index": 30,
+      "timestamp_text": "1.5204180000000012",
+      "anchor_us": 1520418,
+      "box_text": [
+        "534",
+        "202",
+        "850",
+        "426"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 31,
+      "index": 31,
+      "timestamp_text": "1.570418",
+      "anchor_us": 1570418,
+      "box_text": [
+        "529",
+        "206",
+        "856",
+        "431"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 32,
+      "index": 32,
+      "timestamp_text": "1.620426000000002",
+      "anchor_us": 1620426,
+      "box_text": [
+        "524",
+        "209",
+        "862",
+        "434"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 33,
+      "index": 33,
+      "timestamp_text": "1.6704250000000016",
+      "anchor_us": 1670425,
+      "box_text": [
+        "520",
+        "208",
+        "867",
+        "438"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 34,
+      "index": 34,
+      "timestamp_text": "1.7204240000000013",
+      "anchor_us": 1720424,
+      "box_text": [
+        "515",
+        "206",
+        "871",
+        "440"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 35,
+      "index": 35,
+      "timestamp_text": "1.770423000000001",
+      "anchor_us": 1770423,
+      "box_text": [
+        "509",
+        "204",
+        "877",
+        "447"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 36,
+      "index": 36,
+      "timestamp_text": "1.8204220000000007",
+      "anchor_us": 1820422,
+      "box_text": [
+        "503",
+        "202",
+        "882",
+        "453"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 37,
+      "index": 37,
+      "timestamp_text": "1.870429999999999",
+      "anchor_us": 1870430,
+      "box_text": [
+        "499",
+        "199",
+        "889",
+        "459"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 38,
+      "index": 38,
+      "timestamp_text": "1.9204289999999986",
+      "anchor_us": 1920429,
+      "box_text": [
+        "494",
+        "195",
+        "895",
+        "464"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 39,
+      "index": 39,
+      "timestamp_text": "1.9704280000000018",
+      "anchor_us": 1970428,
+      "box_text": [
+        "488",
+        "198",
+        "904",
+        "476"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 40,
+      "index": 40,
+      "timestamp_text": "2.0204270000000015",
+      "anchor_us": 2020427,
+      "box_text": [
+        "481",
+        "201",
+        "911",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 41,
+      "index": 41,
+      "timestamp_text": "2.070435",
+      "anchor_us": 2070435,
+      "box_text": [
+        "477",
+        "202",
+        "919",
+        "500"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 42,
+      "index": 42,
+      "timestamp_text": "2.1204350000000005",
+      "anchor_us": 2120435,
+      "box_text": [
+        "472",
+        "202",
+        "925",
+        "512"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 43,
+      "index": 43,
+      "timestamp_text": "2.170434",
+      "anchor_us": 2170434,
+      "box_text": [
+        "464",
+        "208",
+        "934",
+        "523"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 44,
+      "index": 44,
+      "timestamp_text": "2.220433",
+      "anchor_us": 2220433,
+      "box_text": [
+        "456",
+        "213",
+        "943",
+        "533"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 45,
+      "index": 45,
+      "timestamp_text": "2.2704410000000017",
+      "anchor_us": 2270441,
+      "box_text": [
+        "452",
+        "215",
+        "952",
+        "544"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 46,
+      "index": 46,
+      "timestamp_text": "2.3204400000000014",
+      "anchor_us": 2320440,
+      "box_text": [
+        "448",
+        "217",
+        "961",
+        "554"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 47,
+      "index": 47,
+      "timestamp_text": "2.370439000000001",
+      "anchor_us": 2370439,
+      "box_text": [
+        "443",
+        "212",
+        "971",
+        "561"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 48,
+      "index": 48,
+      "timestamp_text": "2.4204380000000008",
+      "anchor_us": 2420438,
+      "box_text": [
+        "438",
+        "207",
+        "981",
+        "567"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 49,
+      "index": 49,
+      "timestamp_text": "2.470445999999999",
+      "anchor_us": 2470446,
+      "box_text": [
+        "429",
+        "203",
+        "992",
+        "577"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 50,
+      "index": 50,
+      "timestamp_text": "2.5204449999999987",
+      "anchor_us": 2520445,
+      "box_text": [
+        "420",
+        "199",
+        "1002",
+        "586"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 51,
+      "index": 51,
+      "timestamp_text": "2.5704449999999994",
+      "anchor_us": 2570445,
+      "box_text": [
+        "410",
+        "198",
+        "1014",
+        "597"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 52,
+      "index": 52,
+      "timestamp_text": "2.620443999999999",
+      "anchor_us": 2620444,
+      "box_text": [
+        "399",
+        "196",
+        "1025",
+        "607"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 53,
+      "index": 53,
+      "timestamp_text": "2.670442999999999",
+      "anchor_us": 2670443,
+      "box_text": [
+        "395",
+        "198",
+        "1036",
+        "624"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 54,
+      "index": 54,
+      "timestamp_text": "2.7204510000000006",
+      "anchor_us": 2720451,
+      "box_text": [
+        "391",
+        "199",
+        "1046",
+        "639"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 55,
+      "index": 55,
+      "timestamp_text": "2.7704500000000003",
+      "anchor_us": 2770450,
+      "box_text": [
+        "383",
+        "201",
+        "1058",
+        "656"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 56,
+      "index": 56,
+      "timestamp_text": "2.820449",
+      "anchor_us": 2820449,
+      "box_text": [
+        "375",
+        "203",
+        "1070",
+        "672"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 57,
+      "index": 57,
+      "timestamp_text": "2.8704479999999997",
+      "anchor_us": 2870448,
+      "box_text": [
+        "368",
+        "205",
+        "1083",
+        "685"
+      ]
+    },
+    {
+      "sequence_id": "CCRs2-high",
+      "row_index": 58,
+      "index": 58,
+      "timestamp_text": "2.9204560000000015",
+      "anchor_us": 2920456,
+      "box_text": [
+        "360",
+        "207",
+        "1095",
+        "697"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.020310999999999524",
+      "anchor_us": 20311,
+      "box_text": [
+        "504",
+        "235",
+        "765",
+        "412"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.07031899999999958",
+      "anchor_us": 70319,
+      "box_text": [
+        "501",
+        "235",
+        "765",
+        "415"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12031799999999926",
+      "anchor_us": 120318,
+      "box_text": [
+        "499",
+        "240",
+        "766",
+        "422"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.17031799999999997",
+      "anchor_us": 170318,
+      "box_text": [
+        "496",
+        "245",
+        "765",
+        "429"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.22031699999999965",
+      "anchor_us": 220317,
+      "box_text": [
+        "493",
+        "252",
+        "766",
+        "439"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.2703249999999997",
+      "anchor_us": 270325,
+      "box_text": [
+        "490",
+        "258",
+        "766",
+        "447"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.3203239999999994",
+      "anchor_us": 320324,
+      "box_text": [
+        "487",
+        "263",
+        "768",
+        "452"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.37032299999999907",
+      "anchor_us": 370323,
+      "box_text": [
+        "484",
+        "267",
+        "769",
+        "455"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.42032199999999875",
+      "anchor_us": 420322,
+      "box_text": [
+        "482",
+        "267",
+        "769",
+        "457"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.47032099999999843",
+      "anchor_us": 470321,
+      "box_text": [
+        "479",
+        "266",
+        "767",
+        "458"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.5203289999999985",
+      "anchor_us": 520329,
+      "box_text": [
+        "476",
+        "260",
+        "769",
+        "458"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.570328",
+      "anchor_us": 570328,
+      "box_text": [
+        "472",
+        "253",
+        "770",
+        "457"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6203269999999996",
+      "anchor_us": 620327,
+      "box_text": [
+        "469",
+        "250",
+        "772",
+        "454"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6703269999999986",
+      "anchor_us": 670327,
+      "box_text": [
+        "466",
+        "247",
+        "774",
+        "451"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7203349999999986",
+      "anchor_us": 720335,
+      "box_text": [
+        "465",
+        "246",
+        "775",
+        "451"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.7703340000000001",
+      "anchor_us": 770334,
+      "box_text": [
+        "463",
+        "244",
+        "775",
+        "450"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8203329999999998",
+      "anchor_us": 820333,
+      "box_text": [
+        "459",
+        "243",
+        "776",
+        "455"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.8703319999999994",
+      "anchor_us": 870332,
+      "box_text": [
+        "455",
+        "241",
+        "776",
+        "459"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.9203399999999995",
+      "anchor_us": 920340,
+      "box_text": [
+        "450",
+        "243",
+        "777",
+        "462"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9703389999999992",
+      "anchor_us": 970339,
+      "box_text": [
+        "445",
+        "244",
+        "777",
+        "464"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0203379999999989",
+      "anchor_us": 1020338,
+      "box_text": [
+        "444",
+        "244",
+        "780",
+        "467"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.0703369999999985",
+      "anchor_us": 1070337,
+      "box_text": [
+        "443",
+        "244",
+        "783",
+        "470"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.1203369999999993",
+      "anchor_us": 1120337,
+      "box_text": [
+        "438",
+        "247",
+        "782",
+        "476"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.1703449999999993",
+      "anchor_us": 1170345,
+      "box_text": [
+        "432",
+        "249",
+        "780",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.220343999999999",
+      "anchor_us": 1220344,
+      "box_text": [
+        "427",
+        "250",
+        "781",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.2703429999999987",
+      "anchor_us": 1270343,
+      "box_text": [
+        "422",
+        "250",
+        "781",
+        "487"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.3203419999999984",
+      "anchor_us": 1320342,
+      "box_text": [
+        "421",
+        "249",
+        "784",
+        "489"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.3703499999999984",
+      "anchor_us": 1370350,
+      "box_text": [
+        "419",
+        "248",
+        "786",
+        "491"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.4203489999999999",
+      "anchor_us": 1420349,
+      "box_text": [
+        "417",
+        "247",
+        "788",
+        "495"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.4703479999999995",
+      "anchor_us": 1470348,
+      "box_text": [
+        "415",
+        "245",
+        "790",
+        "497"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 30,
+      "index": 30,
+      "timestamp_text": "1.5203469999999992",
+      "anchor_us": 1520347,
+      "box_text": [
+        "414",
+        "245",
+        "793",
+        "499"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 31,
+      "index": 31,
+      "timestamp_text": "1.5703549999999993",
+      "anchor_us": 1570355,
+      "box_text": [
+        "412",
+        "244",
+        "795",
+        "499"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 32,
+      "index": 32,
+      "timestamp_text": "1.620355",
+      "anchor_us": 1620355,
+      "box_text": [
+        "410",
+        "244",
+        "800",
+        "503"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 33,
+      "index": 33,
+      "timestamp_text": "1.6703539999999997",
+      "anchor_us": 1670354,
+      "box_text": [
+        "408",
+        "244",
+        "805",
+        "507"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 34,
+      "index": 34,
+      "timestamp_text": "1.7203529999999994",
+      "anchor_us": 1720353,
+      "box_text": [
+        "408",
+        "245",
+        "808",
+        "514"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 35,
+      "index": 35,
+      "timestamp_text": "1.7703609999999994",
+      "anchor_us": 1770361,
+      "box_text": [
+        "408",
+        "245",
+        "811",
+        "520"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 36,
+      "index": 36,
+      "timestamp_text": "1.820359999999999",
+      "anchor_us": 1820360,
+      "box_text": [
+        "406",
+        "246",
+        "816",
+        "524"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 37,
+      "index": 37,
+      "timestamp_text": "1.8703589999999988",
+      "anchor_us": 1870359,
+      "box_text": [
+        "403",
+        "247",
+        "819",
+        "527"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 38,
+      "index": 38,
+      "timestamp_text": "1.9203579999999985",
+      "anchor_us": 1920358,
+      "box_text": [
+        "401",
+        "249",
+        "823",
+        "532"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 39,
+      "index": 39,
+      "timestamp_text": "1.970357",
+      "anchor_us": 1970357,
+      "box_text": [
+        "399",
+        "251",
+        "827",
+        "537"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 40,
+      "index": 40,
+      "timestamp_text": "2.020365999999999",
+      "anchor_us": 2020366,
+      "box_text": [
+        "397",
+        "252",
+        "832",
+        "542"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-low",
+      "row_index": 41,
+      "index": 41,
+      "timestamp_text": "2.0703639999999996",
+      "anchor_us": 2070364,
+      "box_text": [
+        "395",
+        "253",
+        "837",
+        "547"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 0,
+      "index": 0,
+      "timestamp_text": "0.020529999999997273",
+      "anchor_us": 20530,
+      "box_text": [
+        "535",
+        "259",
+        "734",
+        "396"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 1,
+      "index": 1,
+      "timestamp_text": "0.07052900000000051",
+      "anchor_us": 70529,
+      "box_text": [
+        "534",
+        "263",
+        "736",
+        "398"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 2,
+      "index": 2,
+      "timestamp_text": "0.12052800000000019",
+      "anchor_us": 120528,
+      "box_text": [
+        "533",
+        "262",
+        "737",
+        "398"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 3,
+      "index": 3,
+      "timestamp_text": "0.1705369999999995",
+      "anchor_us": 170537,
+      "box_text": [
+        "533",
+        "265",
+        "742",
+        "405"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 4,
+      "index": 4,
+      "timestamp_text": "0.22053599999999918",
+      "anchor_us": 220536,
+      "box_text": [
+        "532",
+        "267",
+        "745",
+        "410"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 5,
+      "index": 5,
+      "timestamp_text": "0.27053499999999886",
+      "anchor_us": 270535,
+      "box_text": [
+        "532",
+        "267",
+        "750",
+        "415"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 6,
+      "index": 6,
+      "timestamp_text": "0.32053399999999854",
+      "anchor_us": 320534,
+      "box_text": [
+        "531",
+        "267",
+        "753",
+        "419"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 7,
+      "index": 7,
+      "timestamp_text": "0.37054200000000037",
+      "anchor_us": 370542,
+      "box_text": [
+        "532",
+        "264",
+        "758",
+        "419"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 8,
+      "index": 8,
+      "timestamp_text": "0.42054100000000005",
+      "anchor_us": 420541,
+      "box_text": [
+        "532",
+        "260",
+        "761",
+        "418"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 9,
+      "index": 9,
+      "timestamp_text": "0.47053999999999974",
+      "anchor_us": 470540,
+      "box_text": [
+        "531",
+        "256",
+        "765",
+        "415"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 10,
+      "index": 10,
+      "timestamp_text": "0.5205389999999994",
+      "anchor_us": 520539,
+      "box_text": [
+        "530",
+        "251",
+        "768",
+        "410"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 11,
+      "index": 11,
+      "timestamp_text": "0.5705379999999991",
+      "anchor_us": 570538,
+      "box_text": [
+        "528",
+        "247",
+        "771",
+        "409"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 12,
+      "index": 12,
+      "timestamp_text": "0.6205469999999984",
+      "anchor_us": 620547,
+      "box_text": [
+        "526",
+        "243",
+        "773",
+        "408"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 13,
+      "index": 13,
+      "timestamp_text": "0.6705459999999981",
+      "anchor_us": 670546,
+      "box_text": [
+        "524",
+        "242",
+        "777",
+        "411"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 14,
+      "index": 14,
+      "timestamp_text": "0.7205449999999978",
+      "anchor_us": 720545,
+      "box_text": [
+        "521",
+        "240",
+        "779",
+        "412"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 15,
+      "index": 15,
+      "timestamp_text": "0.7705439999999975",
+      "anchor_us": 770544,
+      "box_text": [
+        "518",
+        "240",
+        "782",
+        "416"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 16,
+      "index": 16,
+      "timestamp_text": "0.8205519999999993",
+      "anchor_us": 820552,
+      "box_text": [
+        "515",
+        "239",
+        "785",
+        "419"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 17,
+      "index": 17,
+      "timestamp_text": "0.870550999999999",
+      "anchor_us": 870551,
+      "box_text": [
+        "514",
+        "239",
+        "789",
+        "425"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 18,
+      "index": 18,
+      "timestamp_text": "0.9205499999999986",
+      "anchor_us": 920550,
+      "box_text": [
+        "512",
+        "238",
+        "792",
+        "430"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 19,
+      "index": 19,
+      "timestamp_text": "0.9705489999999983",
+      "anchor_us": 970549,
+      "box_text": [
+        "510",
+        "236",
+        "796",
+        "433"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 20,
+      "index": 20,
+      "timestamp_text": "1.0205579999999976",
+      "anchor_us": 1020558,
+      "box_text": [
+        "507",
+        "234",
+        "799",
+        "435"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 21,
+      "index": 21,
+      "timestamp_text": "1.0705569999999973",
+      "anchor_us": 1070557,
+      "box_text": [
+        "505",
+        "233",
+        "804",
+        "437"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 22,
+      "index": 22,
+      "timestamp_text": "1.1205549999999995",
+      "anchor_us": 1120555,
+      "box_text": [
+        "502",
+        "232",
+        "808",
+        "438"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 23,
+      "index": 23,
+      "timestamp_text": "1.1705550000000002",
+      "anchor_us": 1170555,
+      "box_text": [
+        "497",
+        "233",
+        "810",
+        "445"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 24,
+      "index": 24,
+      "timestamp_text": "1.2205629999999985",
+      "anchor_us": 1220563,
+      "box_text": [
+        "492",
+        "234",
+        "812",
+        "452"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 25,
+      "index": 25,
+      "timestamp_text": "1.2705619999999982",
+      "anchor_us": 1270562,
+      "box_text": [
+        "489",
+        "237",
+        "816",
+        "458"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 26,
+      "index": 26,
+      "timestamp_text": "1.3205609999999979",
+      "anchor_us": 1320561,
+      "box_text": [
+        "485",
+        "239",
+        "819",
+        "462"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 27,
+      "index": 27,
+      "timestamp_text": "1.3705599999999976",
+      "anchor_us": 1370560,
+      "box_text": [
+        "480",
+        "236",
+        "824",
+        "467"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 28,
+      "index": 28,
+      "timestamp_text": "1.4205589999999972",
+      "anchor_us": 1420559,
+      "box_text": [
+        "474",
+        "233",
+        "827",
+        "471"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 29,
+      "index": 29,
+      "timestamp_text": "1.470566999999999",
+      "anchor_us": 1470567,
+      "box_text": [
+        "472",
+        "229",
+        "832",
+        "471"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 30,
+      "index": 30,
+      "timestamp_text": "1.5205669999999998",
+      "anchor_us": 1520567,
+      "box_text": [
+        "470",
+        "224",
+        "836",
+        "470"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 31,
+      "index": 31,
+      "timestamp_text": "1.5705659999999995",
+      "anchor_us": 1570566,
+      "box_text": [
+        "463",
+        "218",
+        "839",
+        "472"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 32,
+      "index": 32,
+      "timestamp_text": "1.6205649999999991",
+      "anchor_us": 1620565,
+      "box_text": [
+        "456",
+        "212",
+        "842",
+        "473"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 33,
+      "index": 33,
+      "timestamp_text": "1.6705729999999974",
+      "anchor_us": 1670573,
+      "box_text": [
+        "452",
+        "207",
+        "848",
+        "476"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 34,
+      "index": 34,
+      "timestamp_text": "1.720571999999997",
+      "anchor_us": 1720572,
+      "box_text": [
+        "447",
+        "201",
+        "853",
+        "478"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 35,
+      "index": 35,
+      "timestamp_text": "1.7705710000000003",
+      "anchor_us": 1770571,
+      "box_text": [
+        "442",
+        "200",
+        "858",
+        "482"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 36,
+      "index": 36,
+      "timestamp_text": "1.82057",
+      "anchor_us": 1820570,
+      "box_text": [
+        "436",
+        "199",
+        "861",
+        "485"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 37,
+      "index": 37,
+      "timestamp_text": "1.8705689999999997",
+      "anchor_us": 1870569,
+      "box_text": [
+        "429",
+        "200",
+        "864",
+        "497"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 38,
+      "index": 38,
+      "timestamp_text": "1.920577999999999",
+      "anchor_us": 1920578,
+      "box_text": [
+        "422",
+        "201",
+        "866",
+        "508"
+      ]
+    },
+    {
+      "sequence_id": "CCRm-medium",
+      "row_index": 39,
+      "index": 39,
+      "timestamp_text": "1.9705759999999977",
+      "anchor_us": 1970576,
+      "box_text": [
+        "415",
+        "204",
+        "870",
+        "516"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 0,
+      "index": 1,
+      "timestamp_text": "0.0400822162628174",
+      "anchor_us": 40081,
+      "box_text": [
+        "271",
+        "198",
+        "344",
+        "277"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 1,
+      "index": 2,
+      "timestamp_text": "0.0801641941070557",
+      "anchor_us": 80163,
+      "box_text": [
+        "271",
+        "198",
+        "346",
+        "277"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 2,
+      "index": 3,
+      "timestamp_text": "0.120246171951294",
+      "anchor_us": 120245,
+      "box_text": [
+        "270",
+        "198",
+        "346",
+        "278"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 3,
+      "index": 4,
+      "timestamp_text": "0.160328149795532",
+      "anchor_us": 160327,
+      "box_text": [
+        "270",
+        "198",
+        "348",
+        "278"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 4,
+      "index": 5,
+      "timestamp_text": "0.200410127639771",
+      "anchor_us": 200409,
+      "box_text": [
+        "269",
+        "197",
+        "349",
+        "280"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 5,
+      "index": 6,
+      "timestamp_text": "0.240492105484009",
+      "anchor_us": 240491,
+      "box_text": [
+        "267",
+        "196",
+        "350",
+        "281"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 6,
+      "index": 7,
+      "timestamp_text": "0.280574083328247",
+      "anchor_us": 280573,
+      "box_text": [
+        "266",
+        "195",
+        "351",
+        "283"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 7,
+      "index": 8,
+      "timestamp_text": "0.320656061172485",
+      "anchor_us": 320655,
+      "box_text": [
+        "265",
+        "195",
+        "351",
+        "284"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 8,
+      "index": 9,
+      "timestamp_text": "0.360738039016724",
+      "anchor_us": 360737,
+      "box_text": [
+        "265",
+        "194",
+        "353",
+        "284"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 9,
+      "index": 10,
+      "timestamp_text": "0.400820016860962",
+      "anchor_us": 400820,
+      "box_text": [
+        "264",
+        "194",
+        "353",
+        "285"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 10,
+      "index": 11,
+      "timestamp_text": "0.440902233123779",
+      "anchor_us": 440901,
+      "box_text": [
+        "263",
+        "193",
+        "354",
+        "286"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 11,
+      "index": 12,
+      "timestamp_text": "0.480984210968018",
+      "anchor_us": 480983,
+      "box_text": [
+        "262",
+        "192",
+        "355",
+        "287"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 12,
+      "index": 13,
+      "timestamp_text": "0.521066188812256",
+      "anchor_us": 521065,
+      "box_text": [
+        "261",
+        "191",
+        "356",
+        "288"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 13,
+      "index": 14,
+      "timestamp_text": "0.561148166656494",
+      "anchor_us": 561147,
+      "box_text": [
+        "261",
+        "191",
+        "358",
+        "289"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 14,
+      "index": 15,
+      "timestamp_text": "0.601230144500732",
+      "anchor_us": 601229,
+      "box_text": [
+        "260",
+        "190",
+        "359",
+        "290"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 15,
+      "index": 16,
+      "timestamp_text": "0.641312122344971",
+      "anchor_us": 641311,
+      "box_text": [
+        "259",
+        "189",
+        "360",
+        "291"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 16,
+      "index": 17,
+      "timestamp_text": "0.681394100189209",
+      "anchor_us": 681393,
+      "box_text": [
+        "258",
+        "188",
+        "361",
+        "292"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 17,
+      "index": 18,
+      "timestamp_text": "0.721476078033447",
+      "anchor_us": 721475,
+      "box_text": [
+        "257",
+        "187",
+        "362",
+        "294"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 18,
+      "index": 19,
+      "timestamp_text": "0.761558055877686",
+      "anchor_us": 761557,
+      "box_text": [
+        "257",
+        "185",
+        "364",
+        "294"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 19,
+      "index": 20,
+      "timestamp_text": "0.801640033721924",
+      "anchor_us": 801640,
+      "box_text": [
+        "256",
+        "184",
+        "365",
+        "296"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 20,
+      "index": 21,
+      "timestamp_text": "0.841722011566162",
+      "anchor_us": 841722,
+      "box_text": [
+        "254",
+        "182",
+        "367",
+        "297"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 21,
+      "index": 22,
+      "timestamp_text": "0.881804227828979",
+      "anchor_us": 881803,
+      "box_text": [
+        "252",
+        "181",
+        "368",
+        "300"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 22,
+      "index": 23,
+      "timestamp_text": "0.921886205673218",
+      "anchor_us": 921885,
+      "box_text": [
+        "250",
+        "179",
+        "370",
+        "301"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 23,
+      "index": 24,
+      "timestamp_text": "0.961968183517456",
+      "anchor_us": 961967,
+      "box_text": [
+        "248",
+        "177",
+        "371",
+        "302"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 24,
+      "index": 25,
+      "timestamp_text": "1.00205016136169",
+      "anchor_us": 1002049,
+      "box_text": [
+        "247",
+        "176",
+        "374",
+        "304"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 25,
+      "index": 26,
+      "timestamp_text": "1.04213118553162",
+      "anchor_us": 1042131,
+      "box_text": [
+        "245",
+        "175",
+        "375",
+        "306"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 26,
+      "index": 27,
+      "timestamp_text": "1.08221316337585",
+      "anchor_us": 1082213,
+      "box_text": [
+        "244",
+        "174",
+        "378",
+        "308"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 27,
+      "index": 28,
+      "timestamp_text": "1.12229514122009",
+      "anchor_us": 1122295,
+      "box_text": [
+        "242",
+        "172",
+        "380",
+        "311"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 28,
+      "index": 29,
+      "timestamp_text": "1.16237711906433",
+      "anchor_us": 1162377,
+      "box_text": [
+        "240",
+        "169",
+        "383",
+        "312"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 29,
+      "index": 30,
+      "timestamp_text": "1.20245909690857",
+      "anchor_us": 1202459,
+      "box_text": [
+        "238",
+        "167",
+        "385",
+        "315"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 30,
+      "index": 31,
+      "timestamp_text": "1.24254107475281",
+      "anchor_us": 1242542,
+      "box_text": [
+        "234",
+        "167",
+        "389",
+        "317"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 31,
+      "index": 32,
+      "timestamp_text": "1.28262305259705",
+      "anchor_us": 1282624,
+      "box_text": [
+        "232",
+        "164",
+        "392",
+        "320"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 32,
+      "index": 33,
+      "timestamp_text": "1.32270503044128",
+      "anchor_us": 1322705,
+      "box_text": [
+        "230",
+        "161",
+        "394",
+        "323"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 33,
+      "index": 34,
+      "timestamp_text": "1.36278700828552",
+      "anchor_us": 1362787,
+      "box_text": [
+        "227",
+        "158",
+        "398",
+        "327"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 34,
+      "index": 35,
+      "timestamp_text": "1.40286922454834",
+      "anchor_us": 1402868,
+      "box_text": [
+        "223",
+        "156",
+        "402",
+        "331"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 35,
+      "index": 36,
+      "timestamp_text": "1.44295120239258",
+      "anchor_us": 1442950,
+      "box_text": [
+        "220",
+        "153",
+        "406",
+        "335"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 36,
+      "index": 37,
+      "timestamp_text": "1.48303318023682",
+      "anchor_us": 1483032,
+      "box_text": [
+        "216",
+        "149",
+        "411",
+        "340"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 37,
+      "index": 38,
+      "timestamp_text": "1.52311515808105",
+      "anchor_us": 1523114,
+      "box_text": [
+        "213",
+        "144",
+        "418",
+        "344"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 38,
+      "index": 39,
+      "timestamp_text": "1.56319713592529",
+      "anchor_us": 1563196,
+      "box_text": [
+        "209",
+        "140",
+        "423",
+        "349"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 39,
+      "index": 40,
+      "timestamp_text": "1.60327911376953",
+      "anchor_us": 1603278,
+      "box_text": [
+        "202",
+        "134",
+        "430",
+        "356"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 40,
+      "index": 41,
+      "timestamp_text": "1.64336109161377",
+      "anchor_us": 1643360,
+      "box_text": [
+        "196",
+        "129",
+        "437",
+        "364"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 41,
+      "index": 42,
+      "timestamp_text": "1.68344306945801",
+      "anchor_us": 1683442,
+      "box_text": [
+        "189",
+        "123",
+        "444",
+        "371"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 42,
+      "index": 43,
+      "timestamp_text": "1.72352504730225",
+      "anchor_us": 1723524,
+      "box_text": [
+        "181",
+        "115",
+        "455",
+        "382"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 43,
+      "index": 44,
+      "timestamp_text": "1.76360702514648",
+      "anchor_us": 1763607,
+      "box_text": [
+        "173",
+        "107",
+        "465",
+        "393"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 44,
+      "index": 45,
+      "timestamp_text": "1.80368900299072",
+      "anchor_us": 1803689,
+      "box_text": [
+        "163",
+        "98",
+        "478",
+        "406"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 45,
+      "index": 46,
+      "timestamp_text": "1.84377121925354",
+      "anchor_us": 1843770,
+      "box_text": [
+        "152",
+        "88",
+        "490",
+        "417"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 46,
+      "index": 47,
+      "timestamp_text": "1.88385319709778",
+      "anchor_us": 1883852,
+      "box_text": [
+        "139",
+        "74",
+        "508",
+        "436"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 47,
+      "index": 48,
+      "timestamp_text": "1.92393517494202",
+      "anchor_us": 1923934,
+      "box_text": [
+        "126",
+        "59",
+        "526",
+        "453"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 48,
+      "index": 49,
+      "timestamp_text": "1.96401715278625",
+      "anchor_us": 1964016,
+      "box_text": [
+        "108",
+        "42",
+        "554",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 49,
+      "index": 50,
+      "timestamp_text": "2.00409913063049",
+      "anchor_us": 2004098,
+      "box_text": [
+        "84",
+        "15",
+        "585",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "Slider-750",
+      "row_index": 50,
+      "index": 51,
+      "timestamp_text": "2.04418110847473",
+      "anchor_us": 2044180,
+      "box_text": [
+        "51",
+        "1",
+        "627",
+        "481"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 0,
+      "index": 18,
+      "timestamp_text": "0.721475124359131",
+      "anchor_us": 721476,
+      "box_text": [
+        "245",
+        "177",
+        "377",
+        "305"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 1,
+      "index": 19,
+      "timestamp_text": "0.761557102203369",
+      "anchor_us": 761558,
+      "box_text": [
+        "244",
+        "176",
+        "380",
+        "309"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 2,
+      "index": 20,
+      "timestamp_text": "0.801639080047607",
+      "anchor_us": 801640,
+      "box_text": [
+        "240",
+        "172",
+        "383",
+        "312"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 3,
+      "index": 21,
+      "timestamp_text": "0.841721057891846",
+      "anchor_us": 841722,
+      "box_text": [
+        "237",
+        "167",
+        "388",
+        "315"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 4,
+      "index": 22,
+      "timestamp_text": "0.881803035736084",
+      "anchor_us": 881803,
+      "box_text": [
+        "233",
+        "163",
+        "391",
+        "318"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 5,
+      "index": 23,
+      "timestamp_text": "0.921885013580322",
+      "anchor_us": 921886,
+      "box_text": [
+        "229",
+        "160",
+        "396",
+        "323"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 6,
+      "index": 24,
+      "timestamp_text": "0.961966991424561",
+      "anchor_us": 961966,
+      "box_text": [
+        "226",
+        "156",
+        "401",
+        "327"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 7,
+      "index": 25,
+      "timestamp_text": "1.0020489692688",
+      "anchor_us": 1002049,
+      "box_text": [
+        "222",
+        "153",
+        "406",
+        "332"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 8,
+      "index": 26,
+      "timestamp_text": "1.04213094711304",
+      "anchor_us": 1042131,
+      "box_text": [
+        "216",
+        "148",
+        "412",
+        "339"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 9,
+      "index": 27,
+      "timestamp_text": "1.08221292495728",
+      "anchor_us": 1082213,
+      "box_text": [
+        "211",
+        "142",
+        "420",
+        "346"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 10,
+      "index": 28,
+      "timestamp_text": "1.12229514122009",
+      "anchor_us": 1122295,
+      "box_text": [
+        "205",
+        "137",
+        "426",
+        "353"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 11,
+      "index": 29,
+      "timestamp_text": "1.16237711906433",
+      "anchor_us": 1162377,
+      "box_text": [
+        "197",
+        "128",
+        "437",
+        "364"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 12,
+      "index": 30,
+      "timestamp_text": "1.20245909690857",
+      "anchor_us": 1202459,
+      "box_text": [
+        "189",
+        "119",
+        "447",
+        "374"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 13,
+      "index": 31,
+      "timestamp_text": "1.24254107475281",
+      "anchor_us": 1242541,
+      "box_text": [
+        "181",
+        "110",
+        "458",
+        "385"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 14,
+      "index": 32,
+      "timestamp_text": "1.28262305259705",
+      "anchor_us": 1282623,
+      "box_text": [
+        "169",
+        "98",
+        "474",
+        "399"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 15,
+      "index": 33,
+      "timestamp_text": "1.32270503044128",
+      "anchor_us": 1322705,
+      "box_text": [
+        "154",
+        "88",
+        "494",
+        "418"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 16,
+      "index": 34,
+      "timestamp_text": "1.36278700828552",
+      "anchor_us": 1362787,
+      "box_text": [
+        "132",
+        "66",
+        "522",
+        "447"
+      ]
+    },
+    {
+      "sequence_id": "Slider-1000",
+      "row_index": 17,
+      "index": 35,
+      "timestamp_text": "1.40286898612976",
+      "anchor_us": 1402868,
+      "box_text": [
+        "109",
+        "44",
+        "549",
+        "476"
+      ]
+    }
+  ],
+  "raw_sources": {
+    "CCRs1-low": {
+      "sequence_id": "CCRs1-low",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 576786935,
+          "sha256": "eae4cf5f799d8dc2ec8c5d8054ba1f3a0999dfd6b72036827e1c0139c8023bc1"
+        },
+        "bbox.csv": {
+          "bytes": 1884,
+          "sha256": "8c6c54a3d1d535747ed6e3312e6888cd702741dcb60712b8ef59cf4753e86cc9"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 2489000,
+        "last_observed_event_us": 2489999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "CCRs1-medium": {
+      "sequence_id": "CCRs1-medium",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 566228044,
+          "sha256": "7c0c531b42deb247abdd1cb4b450aca5fa9d6a3d3634046e958ce41fe0c7bb0b"
+        },
+        "bbox.csv": {
+          "bytes": 1661,
+          "sha256": "3fd726c1b043418091c4b91bfd3e40cea8b8b8f861b1ce1a6c8527b6f8f4d52c"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 2139000,
+        "last_observed_event_us": 2139999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "CCRs1-high": {
+      "sequence_id": "CCRs1-high",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 581650498,
+          "sha256": "88afc1bfb00d37931b202a5f79be65b20f6de41d50bfec103559e33d37515e9e"
+        },
+        "bbox.csv": {
+          "bytes": 1161,
+          "sha256": "8955f21d06133e6611a05da81b21546111e77bca135f54b9fd22e148eecaa890"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 1489000,
+        "last_observed_event_us": 1489999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "CCRs2-low": {
+      "sequence_id": "CCRs2-low",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 700355816,
+          "sha256": "a7a0d076954aec4afc1a211145fb860eeff881eda4c5b7ec2336cd1e2319bfae"
+        },
+        "bbox.csv": {
+          "bytes": 1716,
+          "sha256": "36c35c6ee6f228915e6b6e2095a6676459a6e85fc0637f0ef9394476afcdc2cf"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 2289000,
+        "last_observed_event_us": 2289999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "CCRs2-medium": {
+      "sequence_id": "CCRs2-medium",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 903049688,
+          "sha256": "eaf08554bb30e6f5a86610fcdf933e2db32075b2ff577ffd3ce9f4285af4f8ee"
+        },
+        "bbox.csv": {
+          "bytes": 2078,
+          "sha256": "87a07787a643c7e12cba98105f165264f63bbe05c19a68441eb63632950b4de6"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 2739000,
+        "last_observed_event_us": 2739999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "CCRs2-high": {
+      "sequence_id": "CCRs2-high",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 1011721041,
+          "sha256": "e0b278c3ca8106dc5451fbf8e64b21d8377a260768f4fc490274a33bcbaf6fb8"
+        },
+        "bbox.csv": {
+          "bytes": 2215,
+          "sha256": "91dfdc4542645b22b6ffbad23d1bdb6f9c38a2c7cc8924050e67e9d14edd22b4"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 2939000,
+        "last_observed_event_us": 2939999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "CCRm-low": {
+      "sequence_id": "CCRm-low",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 752566128,
+          "sha256": "42a871e2f958ee190863a05cfd3fad2f726e5dbd267f98b30a59802f448df2a2"
+        },
+        "bbox.csv": {
+          "bytes": 1604,
+          "sha256": "a128296a6e3fd2a2b70553e278cce31f3eeb6969f29cc865dd7b4c359c0ed14e"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 2089000,
+        "last_observed_event_us": 2089999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "CCRm-medium": {
+      "sequence_id": "CCRm-medium",
+      "kind": "road_hdf5",
+      "files": {
+        "data.hdf5": {
+          "bytes": 743021272,
+          "sha256": "848c2a333f0da785263af6d7a39dc1efa13212392fa03ab25b9672045f220c09"
+        },
+        "bbox.csv": {
+          "bytes": 1545,
+          "sha256": "ab07ce3461a8a11a8d479e9403f9ab17618c1e6bd9a83c65d4ce358aad2e0a62"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "road_ms_map_idx",
+        "authoritative_start_us": 0,
+        "last_indexed_boundary_us": 1989000,
+        "last_observed_event_us": 1989999,
+        "coverage_end_rule": "max(last_indexed_boundary_us,last_observed_event_us+1)",
+        "silent_edge_uncertainty": false
+      },
+      "clock_origin_us": 0,
+      "camera_selection": {
+        "rgb": "blackflys/right",
+        "events": "prophesee/event_cam_right"
+      }
+    },
+    "Slider-750": {
+      "sequence_id": "Slider-750",
+      "kind": "slider_ros1",
+      "files": {
+        "slider_750.bag": {
+          "bytes": 541667942,
+          "sha256": "51ce5463e9195f588c4facf7a485d9038344c0d85fc5515870621ac6779b504c"
+        },
+        "bbox.csv": {
+          "bytes": 1894,
+          "sha256": "5412a0d3bc2760f7321e75c8fe0be1deba199e703889f0504cb21bf4456ac45f"
+        },
+        "calibParams.mat": {
+          "bytes": 62200,
+          "sha256": "5926ebcfe420547df9638c47c3b2c0f477fd4bd0c75230e63edab2b2ce72ba08"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "slider_packet_headers_and_events",
+        "nonzero_packet_header_count": 3070,
+        "zero_packet_header_count": 577,
+        "first_nonzero_packet_header_us": 2945,
+        "last_nonzero_packet_header_us": 3647986,
+        "first_observed_event_us": 2945,
+        "last_observed_event_us": 3647986,
+        "coverage_end_rule": "max(nonzero_packet_headers,observed_events)+1us",
+        "silent_edge_uncertainty": true,
+        "authoritative_recording_interval": false
+      },
+      "clock_origin": "first /image_raw Header.stamp",
+      "clock_origin_ns": 1709535320469515085,
+      "event_topic": "/capture_node/events",
+      "rgb_topic": "/image_raw",
+      "negative_event_times_allowed": true
+    },
+    "Slider-1000": {
+      "sequence_id": "Slider-1000",
+      "kind": "slider_ros1",
+      "files": {
+        "slider_1000.bag": {
+          "bytes": 428001561,
+          "sha256": "49f401ff3b2733d665907f16902b190aa5262be4dd699e35a10e47f1ba6ab1b4"
+        },
+        "bbox.csv": {
+          "bytes": 668,
+          "sha256": "d017fbfe131c8c19323e9266c5096fb8394fa3251f678f46a61f204bbbc94d4b"
+        },
+        "calibParams.mat": {
+          "bytes": 62200,
+          "sha256": "5926ebcfe420547df9638c47c3b2c0f477fd4bd0c75230e63edab2b2ce72ba08"
+        }
+      },
+      "event_clock": "relative_microseconds",
+      "rgb_clock": "relative_microseconds",
+      "polarity_encoding": "0_or_1",
+      "bbox_timestamp_preservation": "Decimal timestamp_s plus original timestamp_text",
+      "coverage_evidence": {
+        "kind": "slider_packet_headers_and_events",
+        "nonzero_packet_header_count": 2310,
+        "zero_packet_header_count": 335,
+        "first_nonzero_packet_header_us": -28025,
+        "last_nonzero_packet_header_us": 2615771,
+        "first_observed_event_us": -28789,
+        "last_observed_event_us": 2615771,
+        "coverage_end_rule": "max(nonzero_packet_headers,observed_events)+1us",
+        "silent_edge_uncertainty": true,
+        "authoritative_recording_interval": false
+      },
+      "clock_origin": "first /image_raw Header.stamp",
+      "clock_origin_ns": 1709535414077251911,
+      "event_topic": "/capture_node/events",
+      "rgb_topic": "/image_raw",
+      "negative_event_times_allowed": true
+    }
+  },
+  "models": [
+    "phase",
+    "garl_full",
+    "garl_ttc_only",
+    "garl_event",
+    "garl_visual"
+  ],
+  "repeats": 3,
+  "warmup_per_model": 10,
+  "garl_inventory": {
+    "environment": {
+      "available_python": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\.venv\\Scripts\\python.exe",
+      "cv2_competition_preprocessing_required": false,
+      "cv2_note": "Runtime contract agent confirmed SensorSequence RGB uint8 and official torch grid_sample resize require no cv2 for selected path.",
+      "modern_env_note": "Existing project native wrappers use modern Python/PyTorch; strict-load and forward parity remain a separate execution gate.",
+      "packages": {
+        "Pillow": "12.3.0",
+        "PyYAML": "6.0.3",
+        "h5py": "3.16.0",
+        "huggingface_hub": "1.24.0",
+        "numpy": "2.4.6",
+        "opencv-python": null,
+        "opencv-python-headless": null,
+        "scipy": "1.17.1",
+        "torch": "2.11.0+cu128",
+        "torchvision": "0.26.0+cu128"
+      },
+      "python_version": "3.11.15",
+      "upstream_declared_python": ">=3.8,<3.11",
+      "upstream_declared_torch": "1.12.1+cu113",
+      "upstream_venv": "E:\\Garl-TTC\\.venv",
+      "upstream_venv_error": "Windows launcher could not create process for configured CPython3.8 path; no environment edits performed.",
+      "upstream_venv_usable": false
+    },
+    "hf": {
+      "live_cli_model_info": {
+        "bytes": 1662,
+        "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\tmp\\garl_evttc_readiness\\hf_pinned_model_info.json",
+        "sha256": "6c1fb4768cf028448dce74135fad4429eee7056f108a796c0958f41c615013bb"
+      },
+      "model_card": {
+        "bytes": 791,
+        "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl\\README.md",
+        "sha256": "ba523905a727da5f8d5ada06b8c46ae19fd6be368bc16f97badfeb8367d973e0"
+      },
+      "partial_snapshots": true,
+      "release_metadata": {
+        "bytes": 2751,
+        "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl\\model_release_metadata.json",
+        "sha256": "e14b72588172424f5dcedc0c75ba4c4923ff1af7cb842bd15239b1626e88aca8"
+      },
+      "repo_id": "NAIL-HNU/GarlTTC-model",
+      "revision": "b676fcdaf26c04bcf896cdb2b208c9c424e8462a",
+      "verification_note": "HF cache verify succeeded on existing checkpoint/config/card files. Other release variants absent from each partial snapshot; local .cache files reported as extras."
+    },
+    "limitations": [
+      "Five additional HF ablation checkpoints are catalogued by release metadata but not needed for the requested primary variants.",
+      "No checkpoint deserialization or inference conducted in this inventory.",
+      "The 434-query competition sensor adapter and startup/cadence/ROI policy require separate validation.",
+      "HF card does not certify complete training-sequence ancestry of public weights.",
+      "E:/Garl-TTC contains official source/configs but no current checkpoint folder; primary verified weight copies are in sibling worktrees."
+    ],
+    "preexisting_entrypoints": [
+      {
+        "entry": "FullGarl",
+        "notes": "Published full checkpoint, strict weights_only CPU deserialization, pinned native source/config hashes; removes unrelated backbone initializer paths before strict load; forward_test -> native signed height-ratio TTC.",
+        "path": "operational/evttc_rgb_transfer/model.py"
+      },
+      {
+        "entry": "native_model",
+        "notes": "Published event-only loader; strict weights_only=True; inference_record native event40-plane adapter.",
+        "path": "operational/train40_system/garl_predictions.py"
+      },
+      {
+        "entry": "execute",
+        "notes": "Historical sensor-only transfer wrapper; query manifest is not competition434 contract; do not reuse prepared cohort unmodified.",
+        "path": "scripts/final_train40_transfer_garl.py"
+      },
+      {
+        "entry": "GarlReferenceAdapter",
+        "notes": "Wraps local replica, not native official checkpoint implementation; avoid substituting this for requested official comparator.",
+        "path": "src/e_jepa_ttc/models/garl_reference_adapter.py"
+      }
+    ],
+    "schema": "garl_official_local_inventory_v1",
+    "scope": "Read-only asset/provenance/config inventory; no model loading, GPU execution, labels or prior predictions read",
+    "upstream": {
+      "commit": "256661242b8a7f5e56aa3c1c02348b30f6e89de6",
+      "native_cv2_required": false,
+      "native_external_imports": [
+        "torch",
+        "torch.nn",
+        "torch.nn.functional",
+        "os",
+        "optional colorama"
+      ],
+      "native_import_graph": [
+        {
+          "bytes": 80,
+          "path": "E:\\Garl-TTC\\garl_ttc\\__init__.py",
+          "sha256": "90e0ac4f12e75ccb82264ee28d99b786dc0ec48bd3e6a65ce86593530c2ea383"
+        },
+        {
+          "bytes": 65,
+          "path": "E:\\Garl-TTC\\garl_ttc\\models\\__init__.py",
+          "sha256": "039bdb68efbbb07647669670110825e0d3a96ffb4232c62fff59f6d590d834ea"
+        },
+        {
+          "bytes": 9329,
+          "path": "E:\\Garl-TTC\\garl_ttc\\models\\ttc_network.py",
+          "sha256": "7927946d4b9af608f1ed2e57c6cc8b498d3c4be8b9c84305647199ef812d9c14"
+        },
+        {
+          "bytes": 9317,
+          "path": "E:\\Garl-TTC\\garl_ttc\\models\\resnet.py",
+          "sha256": "6fbb6bb08d57f6a1d70fa4df31b362476a2b7af6f5c3d82a09a111da17f2f26b"
+        },
+        {
+          "bytes": 2469,
+          "path": "E:\\Garl-TTC\\garl_ttc\\models\\focal_loss.py",
+          "sha256": "7e5e53b9efff75b0254ebd13a7361a55be63ec8bd1385770b176f439dd6369c9"
+        }
+      ],
+      "path": "E:\\Garl-TTC",
+      "remote": "https://github.com/NAIL-HNU/Garl-TTC.git",
+      "status_short": ""
+    },
+    "variants": {
+      "event": {
+        "checkpoint": {
+          "bytes": 99018365,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\train40_system_20261005\\public_garl\\paper_event_only_lhr.pth",
+          "sha256": "fcaf9be47e2dafc6f73c6c3ebd102595ae06119dcae78aea698a42627b2b4fef"
+        },
+        "config": {
+          "bytes": 1842,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\train40_system_20261005\\public_garl\\configs\\ablation\\event_lhr.yaml",
+          "sha256": "601ecb74f1ed2f04921f8014ae648aeb8d111ca311e456be20af2d60b63be676"
+        },
+        "config_matches_upstream": false,
+        "config_matches_upstream_after_newline_normalization": true,
+        "config_matches_upstream_yaml_semantics": true,
+        "dataset_mode": "event_only",
+        "dataset_sync": "front",
+        "deserialized": false,
+        "download_receipt": {
+          "bytes": 128,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\train40_system_20261005\\public_garl\\.cache\\huggingface\\download\\paper_event_only_lhr.pth.metadata",
+          "sha256": "2572032074ce2777d8827c40e3c29439545b67c335597b8d88498fd96247d035"
+        },
+        "hf_remote_verification": {
+          "checked": 3,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\train40_system_20261005\\public_garl",
+          "repo_id": "NAIL-HNU/GarlTTC-model",
+          "repo_type": "model"
+        },
+        "model": {
+          "decoder_layers": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "fc_features": 512,
+          "frame_num": 2,
+          "fusion_style": "early_fusion",
+          "input_feat_num": 40,
+          "input_feat_num_event": 40,
+          "input_feat_num_rgb": 6,
+          "input_feat_size": [
+            128,
+            128
+          ],
+          "mode": "height_ratio",
+          "num_layers": 50,
+          "pretrained_ckpt_event": "checkpoints/paper_event_only_lhr.pth",
+          "pretrained_ckpt_rgb": "checkpoints/paper_visual_only_lhr.pth",
+          "visualize": false,
+          "with_decoder": false
+        },
+        "native_delta_t_s": 0.1,
+        "raw_config_byte_difference_reason": "HF LF versus Windows checkout CRLF; text and parsed YAML are identical",
+        "receipt_etag": "fcaf9be47e2dafc6f73c6c3ebd102595ae06119dcae78aea698a42627b2b4fef",
+        "receipt_revision": "b676fcdaf26c04bcf896cdb2b208c9c424e8462a",
+        "receipt_timestamp": "1791237344.2580862",
+        "upstream_config": {
+          "bytes": 1948,
+          "path": "E:\\Garl-TTC\\configs\\ablation\\event_lhr.yaml",
+          "sha256": "2620bd5d21faf485d7ef10f2ef851e72693074ea78c3ef42aec24620a78c357a"
+        },
+        "window_interval": 1
+      },
+      "full": {
+        "checkpoint": {
+          "bytes": 973290993,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl\\paper_ours_full.pth",
+          "sha256": "e96a613a4fb877a1969d57ab562cadba89961fb202f5f2f2f0658f333a0d443e"
+        },
+        "config": {
+          "bytes": 1840,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl\\configs\\ablation\\ours_full.yaml",
+          "sha256": "c7dedc9b93d32a416b8e92a6b474cc5a17ffd96b2cdaae3a4554e3cc0ee28454"
+        },
+        "config_matches_upstream": false,
+        "config_matches_upstream_after_newline_normalization": true,
+        "config_matches_upstream_yaml_semantics": true,
+        "dataset_mode": "image_event",
+        "dataset_sync": "front",
+        "deserialized": false,
+        "download_receipt": {
+          "bytes": 128,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl\\.cache\\huggingface\\download\\paper_ours_full.pth.metadata",
+          "sha256": "281bf768f87d2a6e3f886da4cb01f87cf5f6123abef5d65b21116f7b14e272c5"
+        },
+        "hf_remote_verification": {
+          "checked": 4,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v12-efficient-context\\artifacts\\evttc_rgb_transfer_20261008\\public_garl",
+          "repo_id": "NAIL-HNU/GarlTTC-model",
+          "repo_type": "model"
+        },
+        "model": {
+          "decoder_layers": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "fc_features": 512,
+          "frame_num": 2,
+          "fusion_style": "late_fusion",
+          "input_feat_num": 6,
+          "input_feat_num_event": 40,
+          "input_feat_num_rgb": 6,
+          "input_feat_size": [
+            128,
+            128
+          ],
+          "mode": "height_ratio",
+          "num_layers": 50,
+          "pretrained_ckpt_event": "checkpoints/paper_event_only_lhr.pth",
+          "pretrained_ckpt_rgb": "checkpoints/paper_visual_only_lhr.pth",
+          "visualize": false,
+          "with_decoder": true
+        },
+        "native_delta_t_s": 0.1,
+        "raw_config_byte_difference_reason": "HF LF versus Windows checkout CRLF; text and parsed YAML are identical",
+        "receipt_etag": "e96a613a4fb877a1969d57ab562cadba89961fb202f5f2f2f0658f333a0d443e",
+        "receipt_revision": "b676fcdaf26c04bcf896cdb2b208c9c424e8462a",
+        "receipt_timestamp": "1791475930.2267175",
+        "upstream_config": {
+          "bytes": 1946,
+          "path": "E:\\Garl-TTC\\configs\\ablation\\ours_full.yaml",
+          "sha256": "1d6e7ea9f69818e5819cd45d04955dadc187a75333dbb3055390dd4a6d948ecc"
+        },
+        "window_interval": 1
+      },
+      "visual": {
+        "checkpoint": {
+          "bytes": 98591869,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v16-multimodal-validation\\artifacts\\multimodal_validation_20261012\\public_garl\\paper_visual_only_lhr.pth",
+          "sha256": "02d900d0ddf81086f4176b63663f952a7c753eeb033b13acc5030a892a88cf70"
+        },
+        "config": {
+          "bytes": 1843,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v16-multimodal-validation\\artifacts\\multimodal_validation_20261012\\public_garl\\configs\\ablation\\visual_lhr.yaml",
+          "sha256": "ff09557e8526c94b1a654d03e4291adb0dfa8e0e1877ff6709a56e6b45af12b4"
+        },
+        "config_matches_upstream": false,
+        "config_matches_upstream_after_newline_normalization": true,
+        "config_matches_upstream_yaml_semantics": true,
+        "dataset_mode": "image_only",
+        "dataset_sync": "front",
+        "deserialized": false,
+        "download_receipt": {
+          "bytes": 128,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v16-multimodal-validation\\artifacts\\multimodal_validation_20261012\\public_garl\\.cache\\huggingface\\download\\paper_visual_only_lhr.pth.metadata",
+          "sha256": "ed4a81d6858c57f32fe0bc7e971bf1f4c54d3a1e4513cb13fbc62f73ca7e269b"
+        },
+        "hf_remote_verification": {
+          "checked": 3,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v16-multimodal-validation\\artifacts\\multimodal_validation_20261012\\public_garl",
+          "repo_id": "NAIL-HNU/GarlTTC-model",
+          "repo_type": "model"
+        },
+        "model": {
+          "decoder_layers": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "fc_features": 512,
+          "frame_num": 2,
+          "fusion_style": "early_fusion",
+          "input_feat_num": 6,
+          "input_feat_num_event": 40,
+          "input_feat_num_rgb": 6,
+          "input_feat_size": [
+            128,
+            128
+          ],
+          "mode": "height_ratio",
+          "num_layers": 50,
+          "pretrained_ckpt_event": "checkpoints/paper_event_only_lhr.pth",
+          "pretrained_ckpt_rgb": "checkpoints/paper_visual_only_lhr.pth",
+          "visualize": false,
+          "with_decoder": false
+        },
+        "native_delta_t_s": 0.1,
+        "raw_config_byte_difference_reason": "HF LF versus Windows checkout CRLF; text and parsed YAML are identical",
+        "receipt_etag": "02d900d0ddf81086f4176b63663f952a7c753eeb033b13acc5030a892a88cf70",
+        "receipt_revision": "b676fcdaf26c04bcf896cdb2b208c9c424e8462a",
+        "receipt_timestamp": "1791764718.2951274",
+        "upstream_config": {
+          "bytes": 1949,
+          "path": "E:\\Garl-TTC\\configs\\ablation\\visual_lhr.yaml",
+          "sha256": "fe281849d742425d5f8d0705e75b68ac78cbf169918ff8d1ca05a002bb789938"
+        },
+        "window_interval": 1
+      }
+    }
+  },
+  "phase_bundle_manifest": {
+    "all_data_refit_rows": 2677,
+    "default_variant": "evaluated",
+    "parent": {
+      "candidate": "PHASE_ONLY_EVENT_S7_TRAIN40_SCIENTIFIC_OOF",
+      "components": {
+        "E_A5": "a82e5b65ec9c3d302981438527f2cfccabbbf25c75f574946bd1e9dc97795758",
+        "E_C2F": "2b337dd76bd405c63ac9f96023a82196ee32e8180b86fe0015bfd67f0e2aeb57",
+        "E_CTX_MATCHED": "fec0ca9f2433a913ae1047cd0b47715a1dce39c4c2e4eecb9539f796434d137e",
+        "MODEL_SEAL.json": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+        "OOF_RECIPE.json": "e5ade2e986f30dbe672a13155b45a4288aa069b2b94a474951e4940900f0bd00",
+        "PAIR_E": "ccdd694f5d812a458c396fdb19bbffe439eff78fe38d57a7b288d4a4fd232680",
+        "PAIR_R": "dba94f1ae807d8e84ef68f50c93882a766a92cfc0b9a08da53c30fedbf509bc1",
+        "PHASE_ONLY_EVENT_S7_TRAIN40": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+        "R_A5": "3f09a2e06d4ff6aebaa64d8c1a8ccc0ade54eaa25b54bc11700fd70bd9701f29",
+        "R_C2F": "d5fa8fd9ed80df6141c3df8bd2ed8ac013c87e5e5bde7367a3b588c5b09e5a35",
+        "R_CTX": "a19f8188b859dcac7fb0cd4c68d0cd5c5c9a839ad84c0ac7ee1b3d61181d1852",
+        "event_normalizer": "19f9bf704de53a938e955ef1919e51881ec1f9c85c1d3e2cfd54aa6d76045f9f",
+        "rgb_normalizer": "d902dba58dc9738ed268e56fe57291fda1cf0dfb2e03be4da1171668e689bd59"
+      },
+      "model_seal_sha256": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+      "portable_paths_sha256": "4a4609591f80470dc304a68d20e3f1f707f5b88dc13ff04451d93e58d3b5465b",
+      "recipe_sha256": "78c83c09fc176846e1135df3b625a2455b71336becb9305589f55269058915c3"
+    },
+    "schema": "phase_robust_bundle_v1",
+    "upstream": {
+      "E_A5": {
+        "path": "components/E_A5.pt",
+        "sha256": "a82e5b65ec9c3d302981438527f2cfccabbbf25c75f574946bd1e9dc97795758"
+      },
+      "E_C2F": {
+        "path": "components/E_C2F.pt",
+        "sha256": "2b337dd76bd405c63ac9f96023a82196ee32e8180b86fe0015bfd67f0e2aeb57"
+      },
+      "E_CTX_MATCHED": {
+        "path": "components/E_CTX_MATCHED.pt",
+        "sha256": "fec0ca9f2433a913ae1047cd0b47715a1dce39c4c2e4eecb9539f796434d137e"
+      },
+      "MODEL_SEAL.json": {
+        "path": "components/MODEL_SEAL.json.json",
+        "sha256": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4"
+      },
+      "OOF_RECIPE.json": {
+        "path": "components/OOF_RECIPE.json.json",
+        "sha256": "e5ade2e986f30dbe672a13155b45a4288aa069b2b94a474951e4940900f0bd00"
+      },
+      "PAIR_E": {
+        "path": "components/PAIR_E.pt",
+        "sha256": "ccdd694f5d812a458c396fdb19bbffe439eff78fe38d57a7b288d4a4fd232680"
+      },
+      "PAIR_R": {
+        "path": "components/PAIR_R.pt",
+        "sha256": "dba94f1ae807d8e84ef68f50c93882a766a92cfc0b9a08da53c30fedbf509bc1"
+      },
+      "PHASE_ONLY_EVENT_S7_TRAIN40": {
+        "path": "components/PHASE_ONLY_EVENT_S7_TRAIN40.pt",
+        "sha256": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408"
+      },
+      "R_A5": {
+        "path": "components/R_A5.pt",
+        "sha256": "3f09a2e06d4ff6aebaa64d8c1a8ccc0ade54eaa25b54bc11700fd70bd9701f29"
+      },
+      "R_C2F": {
+        "path": "components/R_C2F.pt",
+        "sha256": "d5fa8fd9ed80df6141c3df8bd2ed8ac013c87e5e5bde7367a3b588c5b09e5a35"
+      },
+      "R_CTX": {
+        "path": "components/R_CTX.pt",
+        "sha256": "a19f8188b859dcac7fb0cd4c68d0cd5c5c9a839ad84c0ac7ee1b3d61181d1852"
+      },
+      "event_normalizer": {
+        "path": "components/event_normalizer.json",
+        "sha256": "19f9bf704de53a938e955ef1919e51881ec1f9c85c1d3e2cfd54aa6d76045f9f"
+      },
+      "rgb_normalizer": {
+        "path": "components/rgb_normalizer.json",
+        "sha256": "d902dba58dc9738ed268e56fe57291fda1cf0dfb2e03be4da1171668e689bd59"
+      }
+    }
+  },
+  "source_sha256": {
+    "scripts\\benchmark_local_comparison.py": "44ee4e0d7e8a2e27c82cf3a7db65257addf2aa2bca51cace9a21b5c308500406",
+    "operational\\local_comparison\\core.py": "cb6121dc5aed8180bf3512d68cc160c7cf41d9c89dff9de504d90c53eb091323"
+  },
+  "timing_contract": {
+    "preparation": "Reader, ROI transforms, native representation; OS caches uncontrolled",
+    "inference": "CPU-prepared arrays to host TTC via native API; H2D, diagnostics and sync included",
+    "total": "Sum of preparation and synchronized inference; excludes loading, reader initialization, logging, hashing and warmup",
+    "order": "Cyclic rotation by query + repeat; shared reader and resident weights",
+    "memory": "Isolated CUDA model residency; RSS is process-wide, not model-only",
+    "garl_ttc_only": "Strict-loaded full weights, native with_decoder flags off; all-query TTC parity",
+    "not_claimed": "Equal history, live deadline, independent accuracy or best-case optimization"
+  },
+  "telemetry": {
+    "utc": "2026-11-12T15:26:01.931279+00:00",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU, 591.86, 64, 9.59, [N/A], 262, 405, 1, 1071",
+    "process_rss_bytes": 692072448
+  },
+  "dataset_manifest_hash": "d4d0a6b989e3576b10c86ac892e2790c229661dfce2770e7ab4db2dc0b2ca1e8",
+  "config_hash": "f6fb6dc5497655eeaa0fd91b5a0c400e8c1b6b64bac5a66e283961de9d53ff68"
+}

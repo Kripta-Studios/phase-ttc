@@ -1,0 +1,165 @@
+{
+  "phase": {
+    "query": "CCRs1-low:13",
+    "total_parameters": 2347313,
+    "executed_parameters": 2347313,
+    "parameter_bytes": 9389252,
+    "components": {
+      "E_A5_MATCHED": 424274,
+      "E_C2F_MATCHED": 424293,
+      "R_A5": 417074,
+      "R_C2F": 417093,
+      "PAIR_E_MATCHED": 17547,
+      "PAIR_R": 17547,
+      "E_CTX_MATCHED": 313765,
+      "R_CTX": 313765,
+      "PHASE_ONLY_EVENT_S7_TRAIN40": 1955
+    },
+    "definition": "Unique parameters; executed subset observed on the profiled query.",
+    "baseline_allocated_bytes": 19018240,
+    "peak_allocated_bytes": 43207168,
+    "peak_reserved_bytes": 58720256,
+    "rss_bytes": 3706269696,
+    "counted_operator_flops": 29222237293,
+    "flops_scope": "Partial supported-operator FLOPs, not full algorithmic complexity",
+    "operators": [
+      {
+        "operator": "aten::mul",
+        "calls": 5483,
+        "flops": 72513476
+      },
+      {
+        "operator": "aten::conv2d",
+        "calls": 144,
+        "flops": 29104275456
+      },
+      {
+        "operator": "aten::add",
+        "calls": 5533,
+        "flops": 12053393
+      },
+      {
+        "operator": "aten::addmm",
+        "calls": 290,
+        "flops": 23564568
+      },
+      {
+        "operator": "aten::mm",
+        "calls": 64,
+        "flops": 9830400
+      }
+    ]
+  },
+  "garl_full": {
+    "query": "CCRs1-low:13",
+    "total_parameters": 243109898,
+    "executed_parameters": 243109898,
+    "parameter_bytes": 972439592,
+    "components": {
+      "garl_full": 243109898
+    },
+    "definition": "Unique parameters; executed subset observed on the profiled query.",
+    "baseline_allocated_bytes": 986319872,
+    "peak_allocated_bytes": 1485450240,
+    "peak_reserved_bytes": 1564475392,
+    "rss_bytes": 4767883264,
+    "counted_operator_flops": 54688483328,
+    "flops_scope": "Partial supported-operator FLOPs, not full algorithmic complexity",
+    "operators": [
+      {
+        "operator": "aten::conv2d",
+        "calls": 138,
+        "flops": 54684286976
+      },
+      {
+        "operator": "aten::addmm",
+        "calls": 2,
+        "flops": 4196352
+      }
+    ]
+  },
+  "garl_ttc_only": {
+    "query": "CCRs1-low:13",
+    "total_parameters": 243109898,
+    "executed_parameters": 49240194,
+    "parameter_bytes": 972439592,
+    "components": {
+      "garl_ttc_only": 243109898
+    },
+    "definition": "Unique parameters; executed subset observed on the profiled query.",
+    "baseline_allocated_bytes": 986319872,
+    "peak_allocated_bytes": 1032793088,
+    "peak_reserved_bytes": 1067450368,
+    "rss_bytes": 3918807040,
+    "counted_operator_flops": 6370101248,
+    "flops_scope": "Partial supported-operator FLOPs, not full algorithmic complexity",
+    "operators": [
+      {
+        "operator": "aten::conv2d",
+        "calls": 106,
+        "flops": 6365904896
+      },
+      {
+        "operator": "aten::addmm",
+        "calls": 2,
+        "flops": 4196352
+      }
+    ]
+  },
+  "garl_event": {
+    "query": "CCRs1-low:13",
+    "total_parameters": 24674178,
+    "executed_parameters": 24674178,
+    "parameter_bytes": 98696712,
+    "components": {
+      "garl_event": 24674178
+    },
+    "definition": "Unique parameters; executed subset observed on the profiled query.",
+    "baseline_allocated_bytes": 108514304,
+    "peak_allocated_bytes": 155110400,
+    "peak_reserved_bytes": 192937984,
+    "rss_bytes": 3975331840,
+    "counted_operator_flops": 3621783552,
+    "flops_scope": "Partial supported-operator FLOPs, not full algorithmic complexity",
+    "operators": [
+      {
+        "operator": "aten::conv2d",
+        "calls": 53,
+        "flops": 3619684352
+      },
+      {
+        "operator": "aten::addmm",
+        "calls": 2,
+        "flops": 2099200
+      }
+    ]
+  },
+  "garl_visual": {
+    "query": "CCRs1-low:13",
+    "total_parameters": 24567554,
+    "executed_parameters": 24567554,
+    "parameter_bytes": 98270216,
+    "components": {
+      "garl_visual": 24567554
+    },
+    "definition": "Unique parameters; executed subset observed on the profiled query.",
+    "baseline_allocated_bytes": 108087808,
+    "peak_allocated_bytes": 151931392,
+    "peak_reserved_bytes": 192937984,
+    "rss_bytes": 3965952000,
+    "counted_operator_flops": 2748319744,
+    "flops_scope": "Partial supported-operator FLOPs, not full algorithmic complexity",
+    "operators": [
+      {
+        "operator": "aten::conv2d",
+        "calls": 53,
+        "flops": 2746220544
+      },
+      {
+        "operator": "aten::addmm",
+        "calls": 2,
+        "flops": 2099200
+      }
+    ]
+  }
+}

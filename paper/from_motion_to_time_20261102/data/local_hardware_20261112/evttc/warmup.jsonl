@@ -1,0 +1,5 @@
+{"model": "phase", "query": "CCRs1-low:0", "seconds": 0.8269585999951232, "calls": 10}
+{"model": "garl_event", "query": "CCRs1-low:0", "seconds": 0.07320120000076713, "calls": 10}
+{"model": "garl_full", "query": "CCRs1-low:1", "seconds": 0.40278390000457875, "calls": 10}
+{"model": "garl_ttc_only", "query": "CCRs1-low:1", "seconds": 0.09414509999623988, "calls": 10}
+{"model": "garl_visual", "query": "CCRs1-low:1", "seconds": 0.04627430000255117, "calls": 10}

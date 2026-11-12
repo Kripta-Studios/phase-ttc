@@ -1,10 +1,10 @@
 {
-  "pages": 81,
-  "words": 34896,
-  "figures": 27,
-  "tables": 41,
+  "pages": 87,
+  "words": 37048,
+  "figures": 28,
+  "tables": 50,
   "all_fonts_embedded": true,
-  "pdf_sha256": "147016ac79ff0926941332b852df3aba59aaa48d3556450f9ec74315c95ce381",
+  "pdf_sha256": "7db8e27097ff167288fdb0b84922fdc670fd27f34f26553df207f39aec5e42d3",
   "latex_checks": {
     "overfull_boxes": 0,
     "missing_glyphs": 0,

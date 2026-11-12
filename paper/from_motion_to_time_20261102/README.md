@@ -4,9 +4,24 @@
 
 <a href="https://github.com/Kripta-Studios/phase-ttc"><img src="../../docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="../../docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
 
-Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; entrega corregida del 11 de noviembre de 2026
+Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; actualización del 12 de noviembre de 2026
 
 Esta es la actualización y ampliación del artículo original de 52 páginas. Conserva sus 19 archivos de secciones, las figuras, los datos publicados, los métodos completos, las ablations históricas, las trazas por secuencia y el índice de evidencia. El artículo breve de siete páginas preparado antes no lo sustituye.
+
+## Comparación de inferencia del 12 de noviembre
+
+La actualización añade inferencia real de PHASE-TTC y Garl-TTC en el mismo
+hardware, con pesos congelados y sin leer etiquetas. Incluye los 434 casos de
+EvTTC, un prefijo físico de 120 casos de eAP y tres pasadas por modelo. Las tablas
+separan parámetros almacenados y ejecutados, memoria GPU, preparación, inferencia
+y tiempo total. El control Garl sin decodificadores auxiliares conserva los pesos
+cargados y exige equivalencia de entradas y predicciones.
+
+`data/local_hardware_20261112/` conserva los protocolos y registros por llamada.
+`scripts/build_local_comparison.py` valida sus hashes, poblaciones y equivalencia,
+y regenera las tablas y la distribución de latencias. El suplemento distingue
+esta comparación del servicio persistente a 50 Hz. Las cifras de tamaño no se
+presentan como prueba de menor latencia ni como una nueva puntuación oficial.
 
 ## Consolidación científica del 11 de noviembre
 
@@ -28,6 +43,9 @@ experimentos en revisiones anteriores describen aquellas ediciones históricas.
 ## Archivos y construcción
 
 `main.tex` es la fuente modular. `PHASE_TTC_From_Motion_to_Time_Expanded.tex` consolida estilo, texto, tablas y bibliografía; necesita las carpetas de figuras incluidas en el ZIP. El PDF correspondiente contiene el artículo y el suplemento completos.
+
+El [ZIP de fuentes publicado en GitHub](../PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
+se regenera al empaquetar y contiene la evidencia y el PDF verificados.
 
 ```powershell
 python scripts/build_expanded.py
@@ -59,7 +77,7 @@ entregado y los controles y experimentos todavía pendientes.
 artefactos compilados. El empaquetador falla si cambian después de la construcción.
 `updates/review/material_corrections_20261111.json` documenta la comprobación de
 esta entrega. Los recibos editoriales anteriores conservan sus fechas y hashes;
-no acreditan el PDF corregido. Esta revisión no ejecuta nuevos entrenamientos,
+no acreditan el PDF actualizado. Aquella revisión del 11 de noviembre no ejecutó nuevos entrenamientos,
 inferencia de sensores ni envíos oficiales.
 
 - Evaluación EvTTC local corregida con 434 targets, exposición histórica explícita y discrepancia Slider-750 pendiente. Se mantienen las comparaciones históricas de cobertura y desacuerdo, identificadas como tales.

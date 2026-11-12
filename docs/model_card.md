@@ -1,6 +1,7 @@
 # Model card — PHASE-TTC
 
-Current release: 11 November 2026. Author: Álvaro Schwiedop Souto.
+Model release: 11 November 2026; local measurement update: 12 November 2026.
+Author: Álvaro Schwiedop Souto.
 
 PHASE-TTC estimates signed time-to-contact from causal event/RGB observations and supplied object regions. The current original model is `PHASE_ONLY_EVENT_S7_TRAIN40_SCIENTIFIC_OOF`: four modality-specific motion backbones, two pairwise readouts, two temporal refiners and one RGB-anchored phase fusion head. The final model is not a JEPA encoder. Its maximum causal information history is 650 ms; the 1,955-parameter count refers to the fusion head alone.
 
@@ -19,6 +20,14 @@ The corrected original transfer study uses 460 eligible queries from 508 fixed c
 The Hub bundles contain weights, exact source dependencies, normalizers, manifests, a tested inference command, synthetic and real-query regression references, evaluation projections and training source/recipes. See [reproducibility.md](reproducibility.md). Inputs require calibrated sensor preprocessing; a generic RGB image is insufficient.
 
 ## Limitations
+
+The full original system contains 2,347,313 parameters. The same-hardware study
+compares frozen native inference on 434 EvTTC queries and 120 physical eAP queries,
+with three passes per arm. It distinguishes the published Garl full graph from
+a parity-checked auxiliary-decoder bypass. Lower parameter count does not imply
+lower latency; portable history reconstruction, native observation reuse, and
+the paced service have different measurement boundaries. See the
+[measurement evidence](../paper/from_motion_to_time_20261102/data/local_hardware_20261112/).
 
 The release expects supplied object regions and synchronized event/RGB inputs. It includes neither a general-purpose autonomous detector nor calibrated collision probabilities or confidence intervals. The paced 250-update replay measured 29.14 ms p95, above a 20 ms budget. Zero benchmark failures is a scoring result, not a safety assurance. Full original training requires external data and reconstruction of historical caches.
 

@@ -1,0 +1,48 @@
+{
+  "status": "complete",
+  "end_time": "2026-11-12T16:28:14.203625+00:00",
+  "protocol_sha256": "ec6d05bde22ab00bfee42b85dd9e90afd613ada199709d6157b72203c2798ad7",
+  "trials_sha256": "21282c29be2e5c99f4781f26df7ceb28a04ad37c897d1b3bafd770658fca0ce7",
+  "models": {
+    "phase_native_raw": {
+      "attempts": 360,
+      "successes": 360,
+      "total_ms": {
+        "n": 360,
+        "mean": 362.55848111132866,
+        "median": 342.4454500018328,
+        "p95": 615.1903050020337,
+        "p99": 756.0026509963066,
+        "minimum": 147.61759999964852,
+        "maximum": 2728.334699997504
+      }
+    },
+    "garl_full_raw": {
+      "attempts": 360,
+      "successes": 360,
+      "total_ms": {
+        "n": 360,
+        "mean": 235.4514152778898,
+        "median": 224.02204999525566,
+        "p95": 368.1887300037488,
+        "p99": 578.8455220009938,
+        "minimum": 105.45819999970263,
+        "maximum": 898.6454999976559
+      }
+    },
+    "garl_ttc_only_raw": {
+      "attempts": 360,
+      "successes": 360,
+      "total_ms": {
+        "n": 360,
+        "mean": 204.51763333340853,
+        "median": 202.30699999956414,
+        "p95": 323.2612850035366,
+        "p99": 364.9726150022621,
+        "minimum": 77.97800000116695,
+        "maximum": 433.35189999925205
+      }
+    }
+  },
+  "parity": "RAW event inputs exact; repeat and Garl bypass outputs within 1e-5"
+}

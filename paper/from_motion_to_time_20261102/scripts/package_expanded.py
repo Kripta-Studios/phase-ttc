@@ -131,6 +131,8 @@ def main() -> None:
     with zipfile.ZipFile(archive_path, "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(files):
             archive.write(path, path.relative_to(ROOT))
+    # Keep the downloadable archive outside ROOT so it cannot include itself.
+    shutil.copy2(archive_path, ORIGINAL / archive_path.name)
     receipt = {
         "pdf": STEM + ".pdf",
         "pdf_sha256": digest(output / (STEM + ".pdf")),

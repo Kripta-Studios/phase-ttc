@@ -1,0 +1,64 @@
+{
+  "status": "PASS_PUBLICATION_WITH_UNRELATED_LOCAL_SUITE_FAILURES",
+  "date": "2026-11-12",
+  "pdf_sha256": "7db8e27097ff167288fdb0b84922fdc670fd27f34f26553df207f39aec5e42d3",
+  "pages": 87,
+  "scientific_review": "Independent reviewer validated all EvTTC/eAP populations, hashes, parity, profiles and generated statistics; no scientific blockers.",
+  "visual_review": {
+    "contact_sheet_coverage": "All pages; unchanged pages 1-82 reviewed in the first complete build, final new pages rechecked after layout refinement.",
+    "final_full_resolution_pages": [
+      15,
+      83,
+      84,
+      85,
+      86,
+      87
+    ],
+    "findings": "Tables and chart legible, no clipped content or overlaps; removed unnecessary table enlargement and reduced final delivery from 89 to 87 pages."
+  },
+  "latex_checks": {
+    "overfull_boxes": 0,
+    "missing_glyphs": 0,
+    "undefined_references_or_citations": 0,
+    "latex_warnings": 0
+  },
+  "all_fonts_embedded": true,
+  "measured_calls": 7590,
+  "evttc_calls": 6510,
+  "eap_calls": 1080,
+  "raw_event_byte_parity_count": 120,
+  "source_snapshots": "Exact executed files preserved; subsequent maintained CLI changes add typing casts only.",
+  "local_checks": {
+    "targeted_pytest_passed": 35,
+    "external_artifact_test_skipped": 1,
+    "ruff": "PASS",
+    "format": "PASS: 3613 files",
+    "maintained_pyright": "0 errors",
+    "new_code_pyright": "0 errors",
+    "wheel_build": "PASS",
+    "current_and_legacy_cli_help": "PASS",
+    "powershell_syntax": "PASS",
+    "full_pytest": {
+      "status": "FAILED",
+      "failed_count": 5,
+      "failures": {
+        "test_pipeline_dry_run_writes_argv_logs_and_manifest": "Invalid CUDA device id in full-suite process; passes in fresh process.",
+        "test_cpu_cuda_forward_and_first_gradients[dtype0]": "Earlier global deterministic mode rejects grid_sampler CUDA backward; passes in fresh process.",
+        "test_cpu_cuda_forward_and_first_gradients[dtype1]": "Earlier global deterministic mode rejects grid_sampler CUDA backward; passes in fresh process.",
+        "test_failure_still_verifies_sources_and_writes_summary[disk]": "cuDNN device enumeration has empty sequence in full-suite process; passes in fresh process.",
+        "test_verifier_reuses_receipt_and_rejects_changed_data": "Existing size/mtime receipt cache misses same-size overwrite with identical Windows mtime_ns; reproduces separately."
+      },
+      "fresh_process_followup": "12 passed, 1 failed across affected test groups; only the existing timestamp-cache case remains.",
+      "scope": "Affected production and test files are byte-identical to base HEAD 66cf5cb91e8000140bf37552c7fecaa39af467e7. No benchmark or paper verification failure. No full-suite pass is claimed.",
+      "environment": "UV_PROJECT_ENVIRONMENT=.venv-transfer, OMP_NUM_THREADS=2, MKL_NUM_THREADS=2. GPU remained visible; PowerShell empty CUDA_VISIBLE_DEVICES removes the variable.",
+      "receipt_boundary": "New benchmark validates current selected event bytes and exact executed source/weight hashes; historical full-media receipts are explicitly historical, not a fresh full-file verification."
+    }
+  },
+  "boundaries": [
+    "No TTC labels read or new accuracy ranking",
+    "No claim of faster PHASE inference",
+    "Garl bypass retains full stored weights",
+    "Partial supported-operator FLOPs, single-query executed parameter profile",
+    "Prior full-media hashes retained; current selected event tensors byte-verified"
+  ]
+}

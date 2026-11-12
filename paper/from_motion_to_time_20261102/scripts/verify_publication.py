@@ -29,6 +29,7 @@ SOURCE_SUFFIXES = {
     ".jpg",
     ".jpeg",
     ".json",
+    ".jsonl",
     ".csv",
     ".npz",
     ".py",
@@ -61,6 +62,8 @@ def source_hashes(root: Path) -> dict[str, str]:
             "revision/generated_figures.json",
             "revision/derived_transfer_analysis.json",
             "revision/bootstrap_differences.csv",
+            "revision/local_comparison_validation.json",
+            "revision/local_comparison_report.md",
         )
         if (root / name).is_file()
     }

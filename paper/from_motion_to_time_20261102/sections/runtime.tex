@@ -46,3 +46,7 @@ The measurement excludes disk I/O and covers one object over five seconds. It th
 \caption{\textbf{Response-time summaries for 250 completed updates.} Scheduled-arrival latency has a p95 of 29.14\,ms. Of the 250 responses, 201 (80.4\%) meet or exceed 20\,ms. The second clock begins after RAW acquisition, copy, and payload sealing. \evidence{L40}}
 \end{figure}
 \FloatBarrier
+
+\subsection{Same-hardware model comparison}
+
+A separate controlled experiment compares the original nine-component PHASE distribution with the released full, event-only, and RGB-only Garl-TTC models on all 434 EvTTC queries, with three passes per arm. It also measures native RAW replay on 120 physical eAP queries from twelve sequences. The complete PHASE system contains \LocalPhaseParameters{} parameters. The unmodified full Garl release executes auxiliary foreground decoders, so we additionally measure a decoder-bypass control with verified input and prediction parity. On matched EvTTC queries, prepared inference medians are \LocalEvPhaseInferMedian{}\,ms for PHASE, \LocalEvGarlFullInferMedian{}\,ms for full Garl, and \LocalEvGarlBypassInferMedian{}\,ms for the bypass control. Appendix~\ref{sec:local-hardware} reports capacity, memory, supported-operator arithmetic, sensor preparation, native eAP replay, coverage, and per-recording and per-pass distributions. The smaller parameter count does not imply faster execution; these local paths and populations differ from the persistent paced-service experiment above.

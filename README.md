@@ -32,12 +32,15 @@ geometric adaptation and execution measurements.
 - [Read online](https://schwiedop.com/papers/phase-ttc/)
 - [Download the PDF](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)
 - [LaTeX source](paper/from_motion_to_time_20261102/main.tex)
-- [Download the source bundle](https://schwiedop.com/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
+- [Download the source bundle](paper/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
 - [Matched-comparison data and protocols](paper/from_motion_to_time_20261102/data/consolidation)
+- [Same-hardware inference evidence](paper/from_motion_to_time_20261102/data/local_hardware_20261112)
+- [Parameter and inference comparison](paper/from_motion_to_time_20261102/revision/local_comparison_report.md)
 
-The PDF contains a 17-page main article, including references, followed by a
-64-page supplement with implementation details, additional experiments and
-reproduction records.
+The PDF contains the main article and a technical supplement with implementation
+details, additional experiments and reproduction records. The 12 November update
+adds real same-hardware PHASE/Garl inference, including the complete EvTTC cohort
+and a deterministic eAP prefix, with three measured passes per arm.
 
 ## Architecture
 
@@ -52,7 +55,8 @@ the training folds.
 | Two temporal refiners | Summarize up to eight observations per modality, within a maximum 650 ms causal information span. |
 | One residual fusion head | Combine 20 phase, timing and support descriptors to correct the RGB estimate. |
 
-The **1,955-parameter fusion head** contains two hidden layers of width 32 with
+The complete original system has **2,347,313 parameters**. Its
+**1,955-parameter fusion head** contains two hidden layers of width 32 with
 LayerNorm and SiLU. This count describes the head, not the full system. The phase
 coordinate links apparent scale change to inverse TTC; the output policy
 preserves approaching and receding motion and bounds emitted TTC magnitudes.

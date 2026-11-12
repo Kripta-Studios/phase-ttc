@@ -35,7 +35,9 @@ def test_unchanged_build_can_be_packaged(manuscript):
     assert publication.verify(manuscript)["status"] == "PASS"
 
 
-@pytest.mark.parametrize("path", ["main.tex", "sections/protocol.tex", "sections/new.tex"])
+@pytest.mark.parametrize(
+    "path", ["main.tex", "sections/protocol.tex", "sections/new.tex", "sections/trials.jsonl"]
+)
 def test_changed_or_added_source_requires_rebuild(manuscript, path):
     (manuscript / path).write_text("later scientific correction")
     with pytest.raises(ValueError, match="rebuild"):
