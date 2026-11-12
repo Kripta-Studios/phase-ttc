@@ -2991,6 +2991,8 @@ Garl TTC-only & 3 & 965.8 & 1110.0 & 3 & 3 \\
 
 The primary statistic is the median and range of per-pass p95 values. The three replays reuse the same correlated anchors and are not independent training seeds or 750 independent examples. All offered arrivals, unsuccessful outputs, queue drops and source errors remain in the ledgers. A primary complete-service comparison requires 250/250 valid outputs and successful input/native-output parity for every pass; incomplete runs cannot become faster through filtering.
 
+For Garl, a missing RAW packet invalidates contiguous causal history and causes the service to refuse subsequent requests until a fresh replay. These failures remain capacity failures, but they are correlated refusals rather than emitted inaccurate TTC estimates.
+
 The all-anchor reference verification runs after each measured stream, inside the same process command. Its GPU workload differs between models: Garl's reference executes the full auxiliary-decoder graph. No cooldown is enforced between commands, so reference work can affect the power, thermal and cache state encountered by the next service. The recorded telemetry documents but does not remove this confound. Consequently, these short desktop runs support workload-specific coverage and response observations, not a causal ranking of model speed or an attribution of failures to temperature, background load, or architecture.
 
 \subsection{Evidence and scope}

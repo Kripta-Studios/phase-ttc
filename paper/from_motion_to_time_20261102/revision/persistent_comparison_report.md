@@ -31,6 +31,8 @@ The earlier eager-service control is retained in full:
 
 Complete runs must pass every native parity check. Incomplete runs retain their drops and failed outputs; no complete-service p95 is assigned to a model unless all three runs complete. The primary clock includes acquisition/release, scheduling, queueing, preparation, inference and host delivery. These are repeats of the same 250 anchors, not 750 independent examples. Neither this experiment nor the historical 29.14 ms p95 proves a strict 20 ms deadline, physical-camera service, multi-object capacity or new accuracy ranking.
 
+For Garl, a missing RAW packet invalidates contiguous causal history and causes the service to refuse subsequent requests until a fresh replay. These remain capacity failures, but are correlated refusals rather than emitted inaccurate TTC estimates.
+
 Reference verification executes between measured streams, with different GPU workloads for each model and no enforced cooldown. Before/after telemetry documents but does not control power, thermal or cache carryover. These observations do not establish a causal speed ranking, or identify the cause of a capacity failure.
 
 Garl uses the two declared causal RGB endpoints from the shared manifest, exact cached native representations and paired RGB backbone features. Its event backbone and TTC heads run on every completed update, using separate native FP32 CUDA graphs. Auxiliary foreground decoders are disabled, with every delivered output checked against untouched native inference. Missing outputs remain failed checks. Input age and repeated sensor endpoints remain in the evidence.

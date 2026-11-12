@@ -441,6 +441,10 @@ def main() -> None:
         "a strict 20 ms deadline, physical-camera service, multi-object capacity "
         "or new accuracy ranking.",
         "",
+        "For Garl, a missing RAW packet invalidates contiguous causal history and causes the "
+        "service to refuse subsequent requests until a fresh replay. These remain capacity "
+        "failures, but are correlated refusals rather than emitted inaccurate TTC estimates.",
+        "",
         "Reference verification executes between measured streams, with different GPU workloads "
         "for each model and no enforced cooldown. Before/after telemetry documents but does not "
         "control power, thermal or cache carryover. These observations do not establish a causal "
