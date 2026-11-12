@@ -1,103 +1,77 @@
-\section{Controlled local inference comparison}
+\section{Matched persistent-service comparison}
 \label{sec:local-hardware}
 
-This experiment measures the computational cost of the frozen PHASE-TTC system and the released Garl-TTC models on the same workstation. It uses real sensor inputs and does not read TTC labels, retrain weights, or submit predictions to a benchmark. Its purpose is to separate model capacity, runtime implementation, and input preparation. It does not establish a new accuracy ranking.
+This appendix compares the persistent optimized PHASE service with persistent TTC-only Garl on the same causal RAW replay. No TTC labels are read, no weights are trained, and no predictions are submitted to a benchmark. This is a deployment-response experiment on EvTTC CPLA-low, not an eAP accuracy evaluation.
 
-\subsection{Models and measurement protocol}
+\subsection{Frozen model and execution identities}
 
-The PHASE arm loads the original nine-component distribution: four modality-specific motion producers, two pair heads, two temporal context refiners, and the residual fusion head. The complete system contains \LocalPhaseParameters{} parameters; the 1,955-parameter fusion head is only one component. Garl-TTC loads the published full, event-only, and RGB-only checkpoints with strict state-dictionary matching against frozen source and checkpoint hashes. The full model uses separate RGB and event ResNet-50 backbones, late feature fusion, and a height-ratio readout.
-
-The released full Garl inference method also executes the auxiliary foreground decoders in both backbones. We therefore retain the unmodified release and add a separate decoder-bypass control using the same loaded weights with the native decoder flags disabled. Every query must preserve prepared input bytes, output availability, raw heights, and TTC, within $10^{-5}$ absolute and relative tolerance for numerical outputs. Bypass does not delete stored weights or produce a smaller exported checkpoint.
-
-All arms run sequentially on the same NVIDIA GeForce RTX 5070 Ti Laptop GPU, with Python 3.11.15, PyTorch 2.11.0+cu128, CUDA 12.8, FP32, two PyTorch CPU threads, and TF32 disabled. The machine runs Windows with a shared desktop GPU. We preserve thermal, power, clock, and memory telemetry, and retain latency outliers. No second GPU experiment runs concurrently. These measurements describe this workstation and execution path; desktop scheduling and uncontrolled operating-system file caches remain sources of variation.
-
-The main cohort contains all 434 supplied EvTTC query identities from ten recordings. Each of five arms processes every query in three passes, giving \LocalEvTTCAttempts{} measured attempts. Arm order rotates with query and pass. Each arm receives ten warmup calls at its first supported input; these are excluded and logged. Native representations and causal histories differ between models. PHASE uses up to 650\,ms of history, whereas Garl uses its corresponding current pair. Both use supplied object regions; detection and sensor acquisition are outside the measured boundary.
-
-Preparation time includes native sensor access, decoding, region transforms, and representation construction. Prepared inference starts with host arrays and ends with the host TTC result, including transfer, synchronization, and runtime API diagnostics. Total time is the sum of these two intervals. Loading, reader initialization, hashing, logging, and warmup are excluded. Cyclic rotation does not balance all ordered arm pairs; order, thermal state, and scheduling limit causal interpretation of latency differences. The EvTTC arms also share a sensor reader, so shared cache state specifically affects preparation comparisons. The portable PHASE EvTTC API reconstructs the query history; it is distinct from the persistent paced service in Section~\ref{sec:runtime}. We do not infer a speed ratio between those separate implementations.
-
-\subsection{Capacity, memory, and observed arithmetic}
+PHASE retains four motion producers, two pair heads, two temporal context refiners, and its residual fusion head. The full system contains \LocalPhaseParameters{} parameters; the 1,955-parameter fusion head is one component. Garl uses two ResNet-50 backbones, late feature fusion, and a height-ratio readout. The complete Garl checkpoint contains \LocalGarlStoredParameters{} stored parameters. Its TTC-only path bypasses the auxiliary foreground decoders without deleting their stored weights.
 
 \begin{table}[H]
 \centering\small
-\caption{\textbf{Complete original PHASE parameter inventory.} Counts come from the strictly loaded distributed components. All nine components contribute to the full \LocalPhaseParameters{}-parameter total.}
+\caption{\textbf{Complete PHASE parameter inventory.} Counts come from the strictly loaded distributed components and remain separate from service memory and latency.}
 \input{tables/local_phase_components.tex}
 \end{table}
 
+A separately recorded module-execution profile counted \LocalPhaseExecutedParameters{} parameters in called PHASE modules and \LocalGarlTTCParameters{} in Garl's decoder-bypassed path, a reduction of \LocalExecutedParameterReduction{}. This is an observed executed-module count, not the size of a pruned Garl export. Parameter count does not determine service latency or total GPU allocation: persistent histories, resident decoder weights, graph buffers, caches and allocator reserves also consume memory.
+
+The PHASE execution tree restores the 40 source files archived with the historical L40 service, verifying each digest. Sealed weights and original prediction references remain unchanged. Absolute reference-source paths are relocated into that isolated tree while retaining the original content-hash checks. A shared maintained pacing module adds generic output-component validation and wall-clock metadata; scheduled deadlines and completion timestamps use the same clock. The execution receipt identifies archived model/service sources, measurement overlays, and current launchers separately.
+
+\subsection{Shared workload and causal data boundary}
+
+Each pass offers the same 250 anchors, spaced by 20,000\,\textmu s, from the frozen single-object CPLA-low manifest. The two services use the same bounded RAW feeder, queue capacity two, and absolute sleep-based schedule. RAW bytes are preloaded privately to the feeder before timing; future frames, event representations and predictions are unavailable to the model. The initial 600\,ms history is released before the first arrival. Newly available frame copying and sealing, event packet release, and causal annotation checks remain in the response clock.
+
+Each of the six runs starts in a separate process with new history and cache state. Whole-stream order alternates between PHASE/Garl and Garl/PHASE; three passes do not perfectly balance first position. All runs use the same laptop GPU, FP32, TF32 disabled, and two PyTorch CPU threads. PHASE retains its eight RGB preparation workers, event query graphs, exact RGB feature cache, reverse transport summaries and overlapping event/RGB preparation. Garl uses separate fixed-shape CUDA graphs for its RGB branch and event/fusion branch, preserving native arithmetic. Capture uses synthetic zero inputs before timing. Point-in-time GPU temperature, clocks and power are recorded before and after each process; these observations do not control the desktop scheduler or thermal state. No outlier or slower pass is removed.
+
+\subsection{Garl transfer and reuse contract}
+
+Garl consumes the last two declared causal RGB endpoints from the shared L40 left-sensor manifest, with their supplied boxes. This explicit transfer avoids granting Garl access to frames absent from PHASE's released payload. It is distinct from the earlier 434-query competition adapter. The native 20-plane event volume is formed independently at each endpoint, with support capped at 100\,ms and the released first-event-relative binning. Height-to-TTC conversion preserves FP32 operation order and uses actual endpoint spacing; native model $\Delta t=0.1$ remains unchanged.
+
+Preparation caches are bounded and bind source/model identity, exact sensor windows, frame identities, geometry and preprocessing. The RGB backbone consumes a joint six-channel pair, so only the exact paired result is reused; individual frame features are not substituted. One paired RGB feature remains resident, while the CPU preparation caches retain at most two RGB regions and four event endpoints. The event backbone and fused TTC heads run for every completed update. No fused prediction or TTC output is cached. For RGB preparation, only the sampled region and a conservative interpolation halo are normalized in a native-size scratch array; the original full-frame sampling coordinates are retained. Byte-exact comparison against full-frame normalization is required for every measured query.
+
+Repeated sensor endpoints retain their original timestamps. A fast response using the same causal RGB pair is not described as a newly acquired sensor observation. The per-update evidence records endpoint IDs, source age, cache hits, exact prepared-input hashes, raw heights and signed TTC. Independent post-run verification rereads RAW data and reconstructs the reference at all 250 anchors using full-frame RGB normalization and untouched Garl inference with auxiliary decoders enabled. Every delivered output is checked against that reference; missing service outputs remain failed parity entries. PHASE is separately compared against its original uncached oracle.
+
+\input{tables/persistent_input_age.tex}
+
+\subsection{Response distributions and service memory}
+
 \begin{table}[H]
-\centering\small
-\caption{\textbf{Capacity and separately profiled computation.} Stored counts include every unique parameter in the loaded graph. Executed counts include parameters owned by modules called on one real, supported full-history query. Peak memory is PyTorch CUDA allocated memory with only the profiled arm resident; the bypass retains decoder weights. Counted arithmetic covers profiler-supported operators and is not a complete FLOP count.}
-\label{tab:local-capacity}
-\input{tables/local_capacity.tex}
+\centering\footnotesize
+\caption{\textbf{Each independent graph-service replay.} p50/p95/p99 (ms) use scheduled-arrival response among valid TTC outputs only. Coverage, queue drops and failed responses remain explicit; a conditional p95 from an incomplete run is not a complete-service latency.}
+\input{tables/persistent_repeats.tex}
 \end{table}
-
-On the profiled query, PHASE executes modules owning \LocalPhaseExecutedParameters{} parameters, compared with \LocalGarlTTCParameters{} for decoder-bypassed Garl: \LocalExecutedParameterReduction{} fewer observed executed parameters. These counts describe the measured paths and do not establish a minimal exported Garl model. The bypass control retains the complete published checkpoint in memory. Comparisons of stored capacity include Garl's auxiliary decoder branches, as shown in Table~\ref{tab:local-capacity}.
-
-Hooks and the operator profiler run separately from latency trials. Memory profiling moves the other model weights to the CPU before measuring allocated and reserved CUDA peaks. Process RSS includes the Python process and host allocations, so it is retained in the evidence rather than presented as model-only memory. Supported-operator FLOPs omit or incompletely represent recurrent and custom transport operations; they do not measure full algorithmic complexity or predict wall-clock latency.
-
-\subsection{EvTTC inference and sensor preparation}
-
-\begin{table}[H]
-\centering\small
-\caption{\textbf{EvTTC prepared-input-to-host inference, in milliseconds.} Timing uses the \LocalMatchedQueries{} unique queries successful in all five arms, repeated three times. Coverage retains all planned attempts, including unavailable predictions.}
-\label{tab:local-inference}
-\input{tables/local_inference.tex}
-\end{table}
-
-\begin{table}[H]
-\centering\small
-\caption{\textbf{EvTTC preparation and total cost, in milliseconds.} The same all-five complete-case population is used. Total includes preparation and synchronized native inference.}
-\label{tab:local-pipeline}
-\input{tables/local_pipeline.tex}
-\end{table}
-
-On these matched queries, median prepared inference is \LocalEvPhaseInferMedian{}\,ms for PHASE, \LocalEvGarlFullInferMedian{}\,ms for full Garl, and \LocalEvGarlBypassInferMedian{}\,ms for decoder-bypassed Garl. Median total cost is respectively \LocalEvPhaseTotalMedian{}, \LocalEvGarlFullTotalMedian{}, and \LocalEvGarlBypassTotalMedian{}\,ms. Model size and latency must therefore be reported separately: the parameter reduction alone does not support a claim of faster inference.
-
-\subsection{Native RAW replay on eAP}
-
-The second cohort selects the first ten chronological physical queries in each of the twelve frozen eAP Test12 sequences, after collapsing aliases: 120 queries and \LocalEAPAttempts{} measured attempts across three arms and three passes. Selection uses identities and timestamps, without prediction or label filtering. It is a deterministic prefix cohort, not a random sample of the entire benchmark.
-
-PHASE uses its native causal predictor with per-sequence observation reuse. Its event tensors are reconstructed from real HDF5 events and required to match the frozen input tensors exactly before timing. Garl receives the corresponding supplied current RGB/event pair through its native normalization and 40-plane event representation. Both methods read real sensor data, but use separate per-sequence readers and their native caching behavior. Each arm receives three first-query warmup calls per sequence, after which readers and PHASE observation caches are reset; operating-system caches are not flushed. Each pass resets sequence state.
-
-Garl's eAP TTC conversion preserves the released model's nominal $\Delta t=0.1$\,s. The observed sensor-clock pair intervals are recorded separately; their small clock-mapping differences do not change the native conversion rule. This differs from the explicitly measured-cadence adaptation used on EvTTC. Full and bypass outputs, inputs, and availability must agree for every selected query, and repeated outputs must remain within the same numerical tolerance.
 
 \begin{table}[H]
 \centering\small
-\caption{\textbf{eAP native RAW-to-host cost, in milliseconds.} The clock includes real sensor reading, preparation, native computation, and host output. Timings use queries successful in all three arms; coverage includes all attempts. This replay includes PHASE observation reuse and is separate from the EvTTC portable API and the 50\,Hz paced-service experiment.}
-\label{tab:local-eap}
-\input{tables/local_eap_raw.tex}
+\caption{\textbf{Secondary clocks, in milliseconds.} Available p95 starts after RAW payload availability; service p95 starts at consumer execution. Both are conditional on valid outputs and exclude some work counted by the primary response clock.}
+\input{tables/persistent_secondary.tex}
 \end{table}
-
-Median native RAW-to-host cost is \LocalEAPPhaseTotalMedian{}\,ms for PHASE, \LocalEAPGarlFullTotalMedian{}\,ms for full Garl, and \LocalEAPGarlBypassTotalMedian{}\,ms for the bypass control. These results describe the stated prefix replay and native implementations. They do not establish camera-to-warning response, sustained multi-object operation, or an optimized deployment limit.
-
-\subsection{Coverage, pairwise comparisons, and variation}
 
 \begin{figure}[H]
-\centering\includegraphics[width=\linewidth]{figures/local_latency_cdf.pdf}
-\caption{\textbf{Complete measured latency distributions.} Each panel uses its all-model complete-case population over three passes. The horizontal axis is logarithmic. Input histories, cache reuse, and native runtime paths differ between cohorts; curves compare arms within each panel.}
+\centering\includegraphics[width=\linewidth]{figures/persistent_latency_cdf.pdf}
+\caption{\textbf{Persistent-service responses and coverage.} Each curve uses all 250 offered arrivals as its denominator; an incomplete replay stops below one. The vertical line marks the 20\,ms target; no scheduling or acquisition time is subtracted.}
 \end{figure}
 
 \begin{table}[H]
 \centering\small
-\caption{\textbf{All-attempt total cost, in milliseconds.} Unavailable predictions remain in the denominator and their processing time remains in these distributions. They are not treated as completed TTC estimates.}
-\input{tables/local_all_attempts.tex}
+\caption{\textbf{Resident service and stream allocation.} CUDA peaks are reset after initialization and include resident model, history, graph and cache allocations during the stream. Reserved memory is the PyTorch allocator reserve, not additional model parameters. RGB hits count exact feature-cache reuse.}
+\input{tables/persistent_memory.tex}
 \end{table}
+
+The primary statistic is the median and range of per-pass p95 values. The three replays reuse the same correlated anchors and are not independent training seeds or 750 independent examples. All offered arrivals, unsuccessful outputs, queue drops and source errors remain in the ledgers. A primary complete-service comparison requires 250/250 valid outputs and successful input/native-output parity for every pass; incomplete runs cannot become faster through filtering.
+
+The all-anchor reference verification runs after each measured stream, inside the same process command. Its GPU workload differs between models: Garl's reference executes the full auxiliary-decoder graph. No cooldown is enforced between commands, so reference work can affect the power, thermal and cache state encountered by the next service. The recorded telemetry documents but does not remove this confound. Consequently, these short desktop runs support workload-specific coverage and response observations, not a causal ranking of model speed or an attribution of failures to temperature, background load, or architecture.
+
+\subsection{Evidence and scope}
+
+An initial three-pass comparison used persistent Garl with eager native GPU execution. Queue losses motivated a prospective second execution protocol with separate fixed-shape CUDA graphs for Garl's RGB branch and event/fusion branch, analogous to PHASE's existing graph optimization. The second protocol keeps the cohort, rate, queue and model arithmetic fixed; all three new passes are retained. The first protocol is preserved below, including incomplete PHASE runs. It is not removed to obtain a favorable comparison.
 
 \begin{table}[H]
 \centering\small
-\caption{\textbf{Pairwise complete-case total medians, in milliseconds.} Each row uses only the two named methods' jointly successful query/pass identities. Failure of an unrelated modality-only control does not remove a pairwise observation.}
-\input{tables/local_pairwise.tex}
+\caption{\textbf{Earlier eager-Garl protocol, all outcomes.} Complete p95 (ms) is shown only for a fully covered replay. PHASE uses its original optimized service in both protocols.}
+\input{tables/persistent_eager_control.tex}
 \end{table}
 
-\begin{table}[H]
-\centering\small
-\caption{\textbf{Total means by repeated pass, in milliseconds.} The all-model complete-case population is retained within each cohort. These are repeated timing passes with frozen weights, not independent training seeds.}
-\input{tables/local_repeats.tex}
-\end{table}
+The directory \texttt{data/persistent\_service\_20261112/} preserves the preregistered protocol and order, source identities, complete per-arrival clocks, service records, independent parity checks and host metadata. The report generator verifies evidence hashes, clock ordering, complete populations and parity before regenerating the tables. Historical query-oriented API measurements remain archived under \texttt{data/local\_hardware\_20261112/}; their latency values are not used in the article's production-service comparison.
 
-\begin{table}[H]
-\centering\small
-\caption{\textbf{Total medians by recording, in milliseconds.} Counts are unique queries in the all-model complete-case population; each has three measured passes.}
-\input{tables/local_sequences.tex}
-\end{table}
-
-The evidence directory \texttt{data/local\_hardware\_20261112/} contains the pre-run protocols, complete trial ledgers, telemetry, loading bindings, parity evidence, and separate profiles. Source and checkpoint hashes identify the executed code and weights. The table generator rejects partial populations, duplicate attempts, changed protocol or trial hashes, nonfinite timings, and failed parity checks. Every table is regenerated from these records; no measured value is entered manually into the manuscript.
+The historical 29.14\,ms p95 remains an earlier PHASE reference. Neither that result nor these short matched replays guarantees a strict 20\,ms deadline, physical-camera timing, sustained multi-object operation, or a new accuracy ranking.

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "phase_1",
+    "returncode": 0,
+    "summary_sha256": "c263b2594d831f25a150c16fb474eeb5b783afef3ae7fb438032360946b72681",
+    "graph_startup_sha256": null
+  },
+  {
+    "name": "garl_1",
+    "returncode": 2,
+    "summary_sha256": "744e2da6e4182aacac92416d9a0294b1cca0b3fbb18a016e75442bf407eda7e3",
+    "graph_startup_sha256": "13cc50b7cea57116fd99e31e4866ad9f69c50eccf8005c14e55ed89ccc1bae46"
+  },
+  {
+    "name": "garl_2",
+    "returncode": 2,
+    "summary_sha256": "8642543eaef1a6d779a56a8338efb069a83542a049b85ef30562131d3b996693",
+    "graph_startup_sha256": "0f58ea3dcc2bfe3cdb0dd8ca084702ffbc4b5764643968edfb5b46c10fbaf346"
+  },
+  {
+    "name": "phase_2",
+    "returncode": 2,
+    "summary_sha256": "66a07b652d42541bcaba91011917abc1baf2f83dbd409f0d1c6b053315fd8fdd",
+    "graph_startup_sha256": null
+  },
+  {
+    "name": "phase_3",
+    "returncode": 0,
+    "summary_sha256": "384804e3829b3750d887bd4b2628c681b24cfce7f56e17ad90de7adf7a5f8b8a",
+    "graph_startup_sha256": null
+  },
+  {
+    "name": "garl_3",
+    "returncode": 2,
+    "summary_sha256": "5ab95bcb522ca9004e008668976cb05633d31444e89bfc7dfafc132b87b01124",
+    "graph_startup_sha256": "2cd4e70949ffe87d24e803eb85909fda3fae349328bb2d5f77ef257cee2f8738"
+  }
+]

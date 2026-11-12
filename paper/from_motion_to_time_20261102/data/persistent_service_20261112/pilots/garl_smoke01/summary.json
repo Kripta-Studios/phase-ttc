@@ -1,0 +1,1526 @@
+{
+  "status": "COMPLETE",
+  "paced": {
+    "schema": "train40_paced_raw_replay_v1",
+    "scope": "HOST_PACED_RAW_REPLAY_CAPACITY_NOT_PHYSICAL_SENSOR_CERTIFICATION",
+    "physical_goal_demonstrated": false,
+    "capacity_checks_passed": false,
+    "capacity_checks": {
+      "all_scheduled_arrivals_recorded": true,
+      "no_drops_or_source_errors": true,
+      "complete_object_coverage": true,
+      "actual_availability_before_service": true,
+      "every_deadline_response_under_20ms": false,
+      "no_prior_work_at_scheduled_arrivals": false,
+      "finished_before_end_of_last_period": true,
+      "offered_50hz_for_at_least_60s": false,
+      "twenty_distinct_objects_per_update": false,
+      "source_lifecycle_succeeded": true
+    },
+    "rate_hz": 50.0,
+    "offered_updates": 20,
+    "offered_duration_s": 0.4,
+    "wall_clock_schema": "train40_paced_wall_intervals_v2",
+    "real_run_wall_duration_s": 0.5226755,
+    "run_started_ns": 66906582032300,
+    "run_finished_ns": 66907104707800,
+    "first_offering_established": true,
+    "actual_wall_duration_s": 0.4050898,
+    "actual_wall_duration_note": "First offered deadline to source finalization/join; null when no offer was established. real_run_wall_duration_s includes startup.",
+    "actual_wall_duration_includes_source_finalize_and_join": true,
+    "last_response_duration_s": 0.3962238,
+    "last_successful_all_object_ttc_duration_s": 0.3962238,
+    "queue_capacity": 2,
+    "wait_strategy": "sleep",
+    "scheduler": {
+      "wait_strategy": "sleep",
+      "wait_primitive": "time.sleep",
+      "python_version": "3.11.15",
+      "python_implementation": "CPython",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "deadline_clock": "time.perf_counter_ns",
+      "clock_implementation": "QueryPerformanceCounter()",
+      "clock_monotonic": true,
+      "clock_adjustable": false,
+      "clock_resolution_seconds": 1e-07,
+      "sleep_stop_poll_seconds": 0.01,
+      "deadlines_absolute": true,
+      "busy_spin": false,
+      "scheduler_lateness_subtracted": false
+    },
+    "first_scheduled_ns": 66906699618000,
+    "planned_first_scheduled_ns": 66906699618000,
+    "source_lifecycle": {
+      "schema": "train40_paced_source_lifecycle_v2",
+      "order": "OFFERING_DONE_THEN_CONSUMER_DRAIN_OR_ABORT_THEN_FINALIZE",
+      "warmup": {
+        "started_ns": 66906600118500,
+        "thread_id": 36084,
+        "result": {
+          "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+          "acquired_updates": 0,
+          "unique_frames_frozen": 13,
+          "frame_freeze_bytes": 89856000,
+          "frame_freeze_seconds": 0.04926359999808483,
+          "event_packet_copy_bytes": 0,
+          "payload_frame_copy_bytes": 0,
+          "peak_frame_token_count": 13,
+          "peak_frame_token_bytes": 89856000,
+          "bbox_validations": 0,
+          "bbox_cache_hits": 0,
+          "physical_sensor_claim": false,
+          "targets_read": false,
+          "warmup_cutoff_us": 16730664,
+          "warmup_frames": 13,
+          "preload": {
+            "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+            "preload_seconds": 0.3075588999927277,
+            "raw_event_bytes": 58940180,
+            "raw_rgb_bytes": 145152000,
+            "archive_bytes": 204191769,
+            "token_ring_upper_bound_bytes": 110592000,
+            "live_payload_upper_bound_bytes": 671088640,
+            "scratch_upper_bound_bytes": 536870912,
+            "source_total_upper_bound_bytes": 1522743321,
+            "max_total_bytes": 3221225472,
+            "memory_exclusions": "Python object overhead, HDF5 internals, model/GPU storage and result receipts",
+            "event_archive_rows": 4533860,
+            "rgb_archive_frames": 21,
+            "future_raw_bytes_preloaded_private_to_feeder": true,
+            "future_tokens_or_hashes_prepared": false,
+            "representations_precomputed": false,
+            "physical_sensor_claim": false
+          }
+        },
+        "ended_ns": 66906649617200
+      },
+      "finalize": {
+        "started_ns": 66907095898000,
+        "thread_id": 36084,
+        "result": {
+          "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+          "acquired_updates": 20,
+          "unique_frames_frozen": 21,
+          "frame_freeze_bytes": 145152000,
+          "frame_freeze_seconds": 0.0785969999851659,
+          "event_packet_copy_bytes": 30970719,
+          "payload_frame_copy_bytes": 0,
+          "peak_frame_token_count": 13,
+          "peak_frame_token_bytes": 89856000,
+          "bbox_validations": 12,
+          "bbox_cache_hits": 48,
+          "physical_sensor_claim": false,
+          "targets_read": false,
+          "closed_on_owner_thread": true
+        },
+        "ended_ns": 66907104660700
+      },
+      "errors": [],
+      "offering_ended_ns": 66907080295200,
+      "consumer_drain_completed_ns": 66907095863000,
+      "consumer_stopped_ns": 66907095863000,
+      "consumer_queue_drained": true,
+      "finalize_permitted_ns": 66907095863800,
+      "producer_finished_ns": 66907104661900
+    },
+    "object_ids": [
+      "roi_00"
+    ],
+    "arrival_receipts": [
+      {
+        "update_id": "update-0",
+        "scheduled_ns": 66906699618000,
+        "acquisition_started_ns": 66906700200100,
+        "observation_available_ns": 66906705701300,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-1",
+        "scheduled_ns": 66906719618000,
+        "acquisition_started_ns": 66906719929300,
+        "observation_available_ns": 66906720987700,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-2",
+        "scheduled_ns": 66906739618000,
+        "acquisition_started_ns": 66906740003900,
+        "observation_available_ns": 66906740735100,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-3",
+        "scheduled_ns": 66906759618000,
+        "acquisition_started_ns": 66906759943700,
+        "observation_available_ns": 66906765241200,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-4",
+        "scheduled_ns": 66906779618000,
+        "acquisition_started_ns": 66906779933000,
+        "observation_available_ns": 66906780884700,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-5",
+        "scheduled_ns": 66906799618000,
+        "acquisition_started_ns": 66906800169500,
+        "observation_available_ns": 66906804596500,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-6",
+        "scheduled_ns": 66906819618000,
+        "acquisition_started_ns": 66906820245300,
+        "observation_available_ns": 66906820978300,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-7",
+        "scheduled_ns": 66906839618000,
+        "acquisition_started_ns": 66906839967400,
+        "observation_available_ns": 66906840687300,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-8",
+        "scheduled_ns": 66906859618000,
+        "acquisition_started_ns": 66906860200500,
+        "observation_available_ns": 66906865617500,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-9",
+        "scheduled_ns": 66906879618000,
+        "acquisition_started_ns": 66906879878400,
+        "observation_available_ns": 66906880583600,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-10",
+        "scheduled_ns": 66906899618000,
+        "acquisition_started_ns": 66906899942100,
+        "observation_available_ns": 66906900698000,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-11",
+        "scheduled_ns": 66906919618000,
+        "acquisition_started_ns": 66906919822600,
+        "observation_available_ns": 66906924077800,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-12",
+        "scheduled_ns": 66906939618000,
+        "acquisition_started_ns": 66906939937400,
+        "observation_available_ns": 66906940831300,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-13",
+        "scheduled_ns": 66906959618000,
+        "acquisition_started_ns": 66906959806700,
+        "observation_available_ns": 66906964465900,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-14",
+        "scheduled_ns": 66906979618000,
+        "acquisition_started_ns": 66906979944200,
+        "observation_available_ns": 66906980394600,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-15",
+        "scheduled_ns": 66906999618000,
+        "acquisition_started_ns": 66906999842500,
+        "observation_available_ns": 66907000474400,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-16",
+        "scheduled_ns": 66907019618000,
+        "acquisition_started_ns": 66907019878700,
+        "observation_available_ns": 66907025265100,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-17",
+        "scheduled_ns": 66907039618000,
+        "acquisition_started_ns": 66907039728800,
+        "observation_available_ns": 66907040276700,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-18",
+        "scheduled_ns": 66907059618000,
+        "acquisition_started_ns": 66907059861300,
+        "observation_available_ns": 66907064562700,
+        "status": "ENQUEUED"
+      },
+      {
+        "update_id": "update-19",
+        "scheduled_ns": 66907079618000,
+        "acquisition_started_ns": 66907079729900,
+        "observation_available_ns": 66907080286500,
+        "status": "ENQUEUED"
+      }
+    ],
+    "object_records": [
+      {
+        "update_id": "update-0",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906699618000,
+        "observation_available_ns": 66906705701300,
+        "started_ns": 66906705741000,
+        "completed_ns": 66906733785600,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.658644199371338
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-1",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906719618000,
+        "observation_available_ns": 66906720987700,
+        "started_ns": 66906733872600,
+        "completed_ns": 66906741369100,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.658644199371338
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-2",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906739618000,
+        "observation_available_ns": 66906740735100,
+        "started_ns": 66906741387300,
+        "completed_ns": 66906749672900,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.658644199371338
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-3",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906759618000,
+        "observation_available_ns": 66906765241200,
+        "started_ns": 66906765454200,
+        "completed_ns": 66906790373500,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.639283180236816
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-4",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906779618000,
+        "observation_available_ns": 66906780884700,
+        "started_ns": 66906790432400,
+        "completed_ns": 66906797688900,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.639283180236816
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-5",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906799618000,
+        "observation_available_ns": 66906804596500,
+        "started_ns": 66906805505500,
+        "completed_ns": 66906830689000,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.58469820022583
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-6",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906819618000,
+        "observation_available_ns": 66906820978300,
+        "started_ns": 66906830708000,
+        "completed_ns": 66906838281500,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.58469820022583
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-7",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906839618000,
+        "observation_available_ns": 66906840687300,
+        "started_ns": 66906840762100,
+        "completed_ns": 66906847976400,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.58469820022583
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-8",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906859618000,
+        "observation_available_ns": 66906865617500,
+        "started_ns": 66906865933700,
+        "completed_ns": 66906889848600,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.710364818572998
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-9",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906879618000,
+        "observation_available_ns": 66906880583600,
+        "started_ns": 66906889897300,
+        "completed_ns": 66906897343700,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.710364818572998
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-10",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906899618000,
+        "observation_available_ns": 66906900698000,
+        "started_ns": 66906901030800,
+        "completed_ns": 66906909292400,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.710364818572998
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-11",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906919618000,
+        "observation_available_ns": 66906924077800,
+        "started_ns": 66906924109700,
+        "completed_ns": 66906947870200,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 6.7121076583862305
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-12",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906939618000,
+        "observation_available_ns": 66906940831300,
+        "started_ns": 66906947914900,
+        "completed_ns": 66906955700000,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 6.7121076583862305
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-13",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906959618000,
+        "observation_available_ns": 66906964465900,
+        "started_ns": 66906964750200,
+        "completed_ns": 66906987706900,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.515923023223877
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-14",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906979618000,
+        "observation_available_ns": 66906980394600,
+        "started_ns": 66906987762000,
+        "completed_ns": 66906995968500,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.515923023223877
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-15",
+        "object_id": "roi_00",
+        "scheduled_ns": 66906999618000,
+        "observation_available_ns": 66907000474400,
+        "started_ns": 66907000735200,
+        "completed_ns": 66907008295700,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.515923023223877
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-16",
+        "object_id": "roi_00",
+        "scheduled_ns": 66907019618000,
+        "observation_available_ns": 66907025265100,
+        "started_ns": 66907025298600,
+        "completed_ns": 66907047310400,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.014510631561279
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-17",
+        "object_id": "roi_00",
+        "scheduled_ns": 66907039618000,
+        "observation_available_ns": 66907040276700,
+        "started_ns": 66907047350000,
+        "completed_ns": 66907054654300,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.014510631561279
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-18",
+        "object_id": "roi_00",
+        "scheduled_ns": 66907059618000,
+        "observation_available_ns": 66907064562700,
+        "started_ns": 66907064807100,
+        "completed_ns": 66907088120300,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.427217483520508
+          }
+        },
+        "error": null
+      },
+      {
+        "update_id": "update-19",
+        "object_id": "roi_00",
+        "scheduled_ns": 66907079618000,
+        "observation_available_ns": 66907080286500,
+        "started_ns": 66907088187600,
+        "completed_ns": 66907095841800,
+        "success": true,
+        "result": {
+          "success": true,
+          "predictions": {
+            "GARL_TTC": 5.427217483520508
+          }
+        },
+        "error": null
+      }
+    ],
+    "grouped": {
+      "passed": true,
+      "unexpected_update_ids": [],
+      "expected_updates": 20,
+      "expected_object_results": 20,
+      "updates": [
+        {
+          "update_id": "update-0",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906699618000,
+          "started_ns": 66906705741000,
+          "completed_ns": 66906733785600,
+          "response_ms": 34.1676,
+          "service_span_ms": 28.0446,
+          "queue_wait_ms": 6.123
+        },
+        {
+          "update_id": "update-1",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906719618000,
+          "started_ns": 66906733872600,
+          "completed_ns": 66906741369100,
+          "response_ms": 21.7511,
+          "service_span_ms": 7.4965,
+          "queue_wait_ms": 14.2546
+        },
+        {
+          "update_id": "update-2",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906739618000,
+          "started_ns": 66906741387300,
+          "completed_ns": 66906749672900,
+          "response_ms": 10.0549,
+          "service_span_ms": 8.2856,
+          "queue_wait_ms": 1.7693
+        },
+        {
+          "update_id": "update-3",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906759618000,
+          "started_ns": 66906765454200,
+          "completed_ns": 66906790373500,
+          "response_ms": 30.7555,
+          "service_span_ms": 24.9193,
+          "queue_wait_ms": 5.8362
+        },
+        {
+          "update_id": "update-4",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906779618000,
+          "started_ns": 66906790432400,
+          "completed_ns": 66906797688900,
+          "response_ms": 18.0709,
+          "service_span_ms": 7.2565,
+          "queue_wait_ms": 10.8144
+        },
+        {
+          "update_id": "update-5",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906799618000,
+          "started_ns": 66906805505500,
+          "completed_ns": 66906830689000,
+          "response_ms": 31.071,
+          "service_span_ms": 25.1835,
+          "queue_wait_ms": 5.8875
+        },
+        {
+          "update_id": "update-6",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906819618000,
+          "started_ns": 66906830708000,
+          "completed_ns": 66906838281500,
+          "response_ms": 18.6635,
+          "service_span_ms": 7.5735,
+          "queue_wait_ms": 11.09
+        },
+        {
+          "update_id": "update-7",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906839618000,
+          "started_ns": 66906840762100,
+          "completed_ns": 66906847976400,
+          "response_ms": 8.3584,
+          "service_span_ms": 7.2143,
+          "queue_wait_ms": 1.1441
+        },
+        {
+          "update_id": "update-8",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906859618000,
+          "started_ns": 66906865933700,
+          "completed_ns": 66906889848600,
+          "response_ms": 30.2306,
+          "service_span_ms": 23.9149,
+          "queue_wait_ms": 6.3157
+        },
+        {
+          "update_id": "update-9",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906879618000,
+          "started_ns": 66906889897300,
+          "completed_ns": 66906897343700,
+          "response_ms": 17.7257,
+          "service_span_ms": 7.4464,
+          "queue_wait_ms": 10.2793
+        },
+        {
+          "update_id": "update-10",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906899618000,
+          "started_ns": 66906901030800,
+          "completed_ns": 66906909292400,
+          "response_ms": 9.6744,
+          "service_span_ms": 8.2616,
+          "queue_wait_ms": 1.4128
+        },
+        {
+          "update_id": "update-11",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906919618000,
+          "started_ns": 66906924109700,
+          "completed_ns": 66906947870200,
+          "response_ms": 28.2522,
+          "service_span_ms": 23.7605,
+          "queue_wait_ms": 4.4917
+        },
+        {
+          "update_id": "update-12",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906939618000,
+          "started_ns": 66906947914900,
+          "completed_ns": 66906955700000,
+          "response_ms": 16.082,
+          "service_span_ms": 7.7851,
+          "queue_wait_ms": 8.2969
+        },
+        {
+          "update_id": "update-13",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906959618000,
+          "started_ns": 66906964750200,
+          "completed_ns": 66906987706900,
+          "response_ms": 28.0889,
+          "service_span_ms": 22.9567,
+          "queue_wait_ms": 5.1322
+        },
+        {
+          "update_id": "update-14",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906979618000,
+          "started_ns": 66906987762000,
+          "completed_ns": 66906995968500,
+          "response_ms": 16.3505,
+          "service_span_ms": 8.2065,
+          "queue_wait_ms": 8.144
+        },
+        {
+          "update_id": "update-15",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66906999618000,
+          "started_ns": 66907000735200,
+          "completed_ns": 66907008295700,
+          "response_ms": 8.6777,
+          "service_span_ms": 7.5605,
+          "queue_wait_ms": 1.1172
+        },
+        {
+          "update_id": "update-16",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66907019618000,
+          "started_ns": 66907025298600,
+          "completed_ns": 66907047310400,
+          "response_ms": 27.6924,
+          "service_span_ms": 22.0118,
+          "queue_wait_ms": 5.6806
+        },
+        {
+          "update_id": "update-17",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66907039618000,
+          "started_ns": 66907047350000,
+          "completed_ns": 66907054654300,
+          "response_ms": 15.0363,
+          "service_span_ms": 7.3043,
+          "queue_wait_ms": 7.732
+        },
+        {
+          "update_id": "update-18",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66907059618000,
+          "started_ns": 66907064807100,
+          "completed_ns": 66907088120300,
+          "response_ms": 28.5023,
+          "service_span_ms": 23.3132,
+          "queue_wait_ms": 5.1891
+        },
+        {
+          "update_id": "update-19",
+          "passed": true,
+          "coverage": {
+            "passed": true,
+            "expected": 1,
+            "records": 1,
+            "unique_present": 1,
+            "missing_ids": [],
+            "unexpected_ids": [],
+            "duplicate_ids": [],
+            "invalid_id_record_indices": []
+          },
+          "errors": [],
+          "objects": 1,
+          "expected_object_ids": [
+            "roi_00"
+          ],
+          "completed_object_ids": [
+            "roi_00"
+          ],
+          "scheduled_ns": 66907079618000,
+          "started_ns": 66907088187600,
+          "completed_ns": 66907095841800,
+          "response_ms": 16.2238,
+          "service_span_ms": 7.6542,
+          "queue_wait_ms": 8.5696
+        }
+      ]
+    },
+    "missing_arrival_ids": [],
+    "dropped_updates": 0,
+    "source_errors": 0,
+    "deadline_response_ms": {
+      "count": 20,
+      "mean_ms": 20.771485,
+      "p50_ms": 18.3672,
+      "p95_ms": 31.225830000000002,
+      "p99_ms": 33.579246,
+      "min_ms": 8.3584,
+      "max_ms": 34.1676,
+      "quantile_method": "linear",
+      "strictly_under_20ms_count": 11,
+      "at_least_20ms_count": 9,
+      "over_50ms_count": 0,
+      "over_100ms_count": 0,
+      "inverse_mean_capacity_hz_not_sustained_throughput": 48.14292285794685
+    },
+    "raw_availability_response_ms": {
+      "count": 20,
+      "mean_ms": 18.022174999999997,
+      "p50_ms": 17.0537,
+      "p95_ms": 26.192090000000004,
+      "p99_ms": 27.705857999999996,
+      "min_ms": 7.2891,
+      "max_ms": 28.0843,
+      "quantile_method": "linear",
+      "strictly_under_20ms_count": 11,
+      "at_least_20ms_count": 9,
+      "over_50ms_count": 0,
+      "over_100ms_count": 0,
+      "inverse_mean_capacity_hz_not_sustained_throughput": 55.487198409736905
+    },
+    "raw_availability_lateness_ms": {
+      "count": 20,
+      "mean_ms": 2.7493100000000004,
+      "p50_ms": 1.3135,
+      "p95_ms": 6.003690000000001,
+      "p99_ms": 6.067378000000001,
+      "min_ms": 0.6587,
+      "max_ms": 6.0833,
+      "quantile_method": "linear",
+      "strictly_under_20ms_count": 20,
+      "at_least_20ms_count": 0,
+      "over_50ms_count": 0,
+      "over_100ms_count": 0,
+      "inverse_mean_capacity_hz_not_sustained_throughput": 363.72762620439306
+    },
+    "prior_work_at_each_scheduled_arrival": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "legacy_response_population": "ALL_RESPONSES_INCLUDING_FAILURES",
+    "timing_note": "Legacy responses include failed acknowledgements; valid all-object TTC distributions are separate in latency_populations. No division by object count.",
+    "latency_populations": {
+      "schema": "train40_paced_latency_populations_v1",
+      "derivation": "grouped.updates.passed + arrival/object monotonic receipts",
+      "quantile_method": "linear; index=(count-1)*fraction",
+      "legacy_response_population": "ALL_RESPONSES_INCLUDING_FAILURES",
+      "counts": {
+        "expected_updates": 20,
+        "offered_updates": 20,
+        "grouped_updates": 20,
+        "arrival_receipts": 20,
+        "completed_responses": 20,
+        "successful_all_object_ttc": 20,
+        "failed_acknowledgements": 0,
+        "updates_without_completion": 0,
+        "dropped_updates": 0,
+        "source_errors": 0,
+        "missing_arrival_receipts": 0,
+        "unexpected_arrival_receipts": 0
+      },
+      "counts_consistent": true,
+      "populations": {
+        "successful_all_object_ttc": {
+          "count": 20,
+          "deadline_response_ms": {
+            "count": 20,
+            "mean_ms": 20.771485000000002,
+            "min_ms": 8.3584,
+            "p50_ms": 18.3672,
+            "p95_ms": 31.225830000000002,
+            "p99_ms": 33.579246,
+            "max_ms": 34.1676,
+            "at_least_20ms_count": 9
+          },
+          "raw_availability_response_ms": {
+            "count": 20,
+            "mean_ms": 18.022175,
+            "min_ms": 7.2891,
+            "p50_ms": 17.0537,
+            "p95_ms": 26.192090000000004,
+            "p99_ms": 27.705857999999996,
+            "max_ms": 28.0843,
+            "at_least_20ms_count": 9
+          },
+          "service_span_ms": {
+            "count": 20,
+            "mean_ms": 14.307475,
+            "min_ms": 7.2143,
+            "p50_ms": 8.23405,
+            "p95_ms": 25.326555,
+            "p99_ms": 27.500990999999996,
+            "max_ms": 28.0446,
+            "at_least_20ms_count": 8
+          }
+        },
+        "failed_acknowledgements": {
+          "count": 0,
+          "deadline_response_ms": null,
+          "raw_availability_response_ms": null,
+          "service_span_ms": null
+        },
+        "all_responses_including_failures": {
+          "count": 20,
+          "deadline_response_ms": {
+            "count": 20,
+            "mean_ms": 20.771485000000002,
+            "min_ms": 8.3584,
+            "p50_ms": 18.3672,
+            "p95_ms": 31.225830000000002,
+            "p99_ms": 33.579246,
+            "max_ms": 34.1676,
+            "at_least_20ms_count": 9
+          },
+          "raw_availability_response_ms": {
+            "count": 20,
+            "mean_ms": 18.022175,
+            "min_ms": 7.2891,
+            "p50_ms": 17.0537,
+            "p95_ms": 26.192090000000004,
+            "p99_ms": 27.705857999999996,
+            "max_ms": 28.0843,
+            "at_least_20ms_count": 9
+          },
+          "service_span_ms": {
+            "count": 20,
+            "mean_ms": 14.307475,
+            "min_ms": 7.2143,
+            "p50_ms": 8.23405,
+            "p95_ms": 25.326555,
+            "p99_ms": 27.500990999999996,
+            "max_ms": 28.0446,
+            "at_least_20ms_count": 8
+          }
+        }
+      },
+      "note": "Success is valid all-object output, not parity admission. Failed acknowledgements are not TTC completions. Drops have no inferred latency."
+    },
+    "prediction_components": [
+      "GARL_TTC"
+    ]
+  },
+  "separate_parity": {
+    "performed": true,
+    "passed": true,
+    "updates": [
+      {
+        "update_id": "update-0",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.658644199371338,
+        "passed": true
+      },
+      {
+        "update_id": "update-1",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.658644199371338,
+        "passed": true
+      },
+      {
+        "update_id": "update-2",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.658644199371338,
+        "passed": true
+      },
+      {
+        "update_id": "update-3",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.639283180236816,
+        "passed": true
+      },
+      {
+        "update_id": "update-4",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.639283180236816,
+        "passed": true
+      },
+      {
+        "update_id": "update-5",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.58469820022583,
+        "passed": true
+      },
+      {
+        "update_id": "update-6",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.58469820022583,
+        "passed": true
+      },
+      {
+        "update_id": "update-7",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.58469820022583,
+        "passed": true
+      },
+      {
+        "update_id": "update-8",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.710364818572998,
+        "passed": true
+      },
+      {
+        "update_id": "update-9",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.710364818572998,
+        "passed": true
+      },
+      {
+        "update_id": "update-10",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.710364818572998,
+        "passed": true
+      },
+      {
+        "update_id": "update-11",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 6.7121076583862305,
+        "passed": true
+      },
+      {
+        "update_id": "update-12",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 6.7121076583862305,
+        "passed": true
+      },
+      {
+        "update_id": "update-13",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.515923023223877,
+        "passed": true
+      },
+      {
+        "update_id": "update-14",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.515923023223877,
+        "passed": true
+      },
+      {
+        "update_id": "update-15",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.515923023223877,
+        "passed": true
+      },
+      {
+        "update_id": "update-16",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.014510631561279,
+        "passed": true
+      },
+      {
+        "update_id": "update-17",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.014510631561279,
+        "passed": true
+      },
+      {
+        "update_id": "update-18",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.427217483520508,
+        "passed": true
+      },
+      {
+        "update_id": "update-19",
+        "input_exact": true,
+        "height_parity": true,
+        "ttc_parity": true,
+        "reference_status": "ok",
+        "reference_ttc": 5.427217483520508,
+        "passed": true
+      }
+    ],
+    "scope": "ALL_SCHEDULED_ANCHORS_INDEPENDENT_DISK_RAW_FULL_FRAME_NORMALIZATION_UNTOUCHED_NATIVE_FORWARD"
+  },
+  "sources_unchanged": true,
+  "history_failure": null,
+  "rgb_branch_hits": 12,
+  "rgb_branch_misses": 8,
+  "targets_read": false,
+  "optimizer_updates": 0
+}

@@ -107,15 +107,9 @@ The 3,640-target expansion showed the same split. H8 achieved 1.36--1.46 seconds
 
 On FCWD, H8 led in MAE at 1.57--1.78 seconds versus 2.15 for Garl event-only. Garl led in mean relative TTC error at 26.9\%, compared with 27.4--30.2\% for H8. These rankings weight the TTC distribution differently, and only three sequences were available for clustered uncertainty. \evidence{M_V12_EVTTC_946,M_V12_EVTTC_3640,M_V12_FCWD_597}
 
-\subsection{Head and full-route runtime}
+\subsection{Historical execution-study boundary}
 
-\input{tables/middle_cost.tex}
-
-Prepared-input CPU profiling measured three rotated-order blocks of 500 batch-one calls per head. Median blockwise p95 was 9.28\,ms for H1, 19.47\,ms for H8, and 31.45\,ms for H16. The timer covered canonical TTC emission, but not event reading, ROI construction, expert inference, detection, or tracking.
-
-The shared-GPU route was much slower than the isolated heads. Across 1,728 supplied-ROI requests from 64 TRAIN queries, H8 p95 was 9.35 and 8.48 seconds in two warm blocks; H16 reached 13.20 and 15.30 seconds. The application reopened HDF5 inputs between cold measurements, while the operating system could retain cached pages.
-
-ROI/voxel reading and preparation consumed 85.5\% of H8's measured time and 90.4\% of H16's in the second warm block. These preparation costs motivated bounded caching and transfer scheduling in the efficient-context study.
+Earlier profiling separated prepared-input heads from a shared-GPU query adapter. The adapter included repeated ROI/voxel reading and preparation, motivating bounded caching and transfer scheduling in the efficient-context study. These measurements do not describe the final persistent service. Their complete timing tables remain archived in \path{tables/middle_cost.tex} and sources M\_HEAD\_COST and M\_ROUTE\_COST, rather than entering this article's deployment-latency comparison. Sections~\ref{sec:runtime} and~\ref{sec:local-hardware} report persistent execution.
 
 CUDA graphs reduced recorded A5 launches from 5,877 to 1,270 while preserving the tested outputs, losses, RNG state, and gradients. A later window measured 41.78 versus 32.89 updates/min, but host load and data wait also changed, so the run did not isolate graph speedup. Adaptive caching reached 26.31 updates/min against a 36.75 reference and failed its throughput test. \evidence{M_HEAD_COST,M_ROUTE_COST,M_ROUTE_REPORT,M_ENGINEERING}
 

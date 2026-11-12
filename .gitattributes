@@ -37,6 +37,7 @@ docs/train40_runtime_council_20261028/*_GENERATED.* -text -whitespace
 # The publication bundle contains SHA-256-bound inputs with original line endings.
 paper/** -text whitespace=cr-at-eol
 paper/from_motion_to_time_20261102/audit_20261104/sources/** -text -whitespace
+paper/from_motion_to_time_20261102/data/persistent_service_20261112/** -text -whitespace
 paper/from_motion_to_time_20261102/sections/implementation_details.tex whitespace=cr-at-eol,-blank-at-eof
 
 # Preserve the hash-bound EvTTC license notice, including its original final blank line.

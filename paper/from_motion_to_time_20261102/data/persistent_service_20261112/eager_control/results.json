@@ -1,0 +1,32 @@
+[
+  {
+    "name": "phase_1",
+    "returncode": 0,
+    "summary_sha256": "44e407aaf59e52a2f4385d46247db543b6b4f9a431b422a9f6c18a496a065c10"
+  },
+  {
+    "name": "garl_1",
+    "returncode": 2,
+    "summary_sha256": "8baba67152e28ef9be6d24d9e572690c7382a83ce585625d89aeb67cf8ee6d47"
+  },
+  {
+    "name": "garl_2",
+    "returncode": 2,
+    "summary_sha256": "169ee4ad88e8df4dd96bfac11b86f23d16245c3a262954cac9a1cff137c71794"
+  },
+  {
+    "name": "phase_2",
+    "returncode": 2,
+    "summary_sha256": "f22bb4a26a3ce1acfd5b190b13c160da1dceb2c2921d6c9e2a1cf65a8e7385a4"
+  },
+  {
+    "name": "phase_3",
+    "returncode": 2,
+    "summary_sha256": "0855aba6c2fc3e2e7449ea25381919cc5fdbe7cea5db9997a9b6b4666f1db3c7"
+  },
+  {
+    "name": "garl_3",
+    "returncode": 2,
+    "summary_sha256": "703c85d4f9ce5ea36c8fd924d74a72beeb2880d853d1700208c0df7d4d0a9923"
+  }
+]

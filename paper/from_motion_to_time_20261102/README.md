@@ -10,18 +10,21 @@ Esta es la actualización y ampliación del artículo original de 52 páginas. C
 
 ## Comparación de inferencia del 12 de noviembre
 
-La actualización añade inferencia real de PHASE-TTC y Garl-TTC en el mismo
-hardware, con pesos congelados y sin leer etiquetas. Incluye los 434 casos de
-EvTTC, un prefijo físico de 120 casos de eAP y tres pasadas por modelo. Las tablas
-separan parámetros almacenados y ejecutados, memoria GPU, preparación, inferencia
-y tiempo total. El control Garl sin decodificadores auxiliares conserva los pesos
-cargados y exige equivalencia de entradas y predicciones.
+La comparación de latencia del artículo usa exclusivamente los servicios
+persistentes de PHASE-TTC y Garl-TTC: pesos residentes, historial causal y
+reutilización exacta del trabajo. Ambos reciben los mismos 250 paquetes RAW de
+EvTTC CPLA-low a 50 Hz, con tres pasadas por modelo. El reloj principal incluye
+adquisición, cola, preparación, inferencia y entrega del TTC al host. La carga
+inicial y el acceso al disco quedan fuera de ese reloj. Garl conserva el
+checkpoint completo y verifica el resultado sin decodificadores auxiliares
+contra la inferencia nativa original.
 
-`data/local_hardware_20261112/` conserva los protocolos y registros por llamada.
-`scripts/build_local_comparison.py` valida sus hashes, poblaciones y equivalencia,
-y regenera las tablas y la distribución de latencias. El suplemento distingue
-esta comparación del servicio persistente a 50 Hz. Las cifras de tamaño no se
-presentan como prueba de menor latencia ni como una nueva puntuación oficial.
+`data/persistent_service_20261112/` conserva los protocolos, las seis ejecuciones,
+sus relojes y las comprobaciones de equivalencia. `scripts/build_persistent_comparison.py`
+verifica la evidencia y regenera tablas y figuras. Los experimentos anteriores de
+API por consulta permanecen como archivo histórico en `data/local_hardware_20261112/`;
+sus latencias no se usan en la comparación de producción del artículo. Los
+29,14 ms históricos son un p95 de PHASE, no una garantía de respuesta en 20 ms.
 
 ## Consolidación científica del 11 de noviembre
 

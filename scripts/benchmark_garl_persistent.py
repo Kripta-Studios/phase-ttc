@@ -1,0 +1,276 @@
+"""Measure persistent TTC-only Garl using the same causal feeder and paced clock."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import platform
+import subprocess
+import sys
+import time
+from dataclasses import replace
+from pathlib import Path
+from typing import Any, cast
+
+
+def write(path: Path, value: Any) -> None:
+    """Preserve strict JSON evidence."""
+    path.write_text(json.dumps(value, indent=2, allow_nan=False, default=str), encoding="utf-8")
+
+
+def sha(path: Path) -> str:
+    """Hash the actual executed bytes."""
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main() -> None:
+    """Initialize once, run one complete stream, then verify every scheduled query."""
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument("--runtime-root", type=Path, required=True)
+    cli.add_argument("--manifest", type=Path, required=True)
+    cli.add_argument("--garl-freeze", type=Path, required=True)
+    cli.add_argument("--output", type=Path, required=True)
+    cli.add_argument("--updates", type=int, default=250)
+    args = cli.parse_args()
+    root = args.runtime_root.resolve(strict=True)
+    sys.path[:0] = [str(root / "src"), str(root)]
+    import numpy as np
+    import torch
+
+    from e_jepa_ttc.data.garl_official_preprocessing import official_resize_roi
+    from operational.evttc_transfer.inputs import EvTTCEventReader
+    from operational.garl_evttc_competition.model import OfficialGarlRuntime
+    from operational.garl_evttc_competition.prepare import IMAGENET_MEAN, IMAGENET_STD
+    from operational.local_comparison.garl_persistent import (
+        ABI,
+        PersistentGarl,
+        endpoint_contract,
+        event_tensor,
+    )
+    from operational.local_comparison.persistent import EventRing
+    from operational.train40_runtime.paced import run_paced_replay
+    from operational.train40_runtime.replay_memory import PreloadedRawSource
+    from operational.train40_runtime.rgb_immutable_history import FrozenRGBHistory
+    from operational.train40_runtime.rgb_raw_ring import RGBSourceIdentity, freeze_rgb_frame
+    from scripts.benchmark_train40_paced import DiskRawSource, bounded_events, replay_schedule
+
+    torch.set_num_threads(2)
+    torch.set_num_interop_threads(1)
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+    torch.backends.cudnn.benchmark = False
+    torch.manual_seed(7)
+    args.output.mkdir(parents=True, exist_ok=False)
+    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+    schedule = replay_schedule(manifest, "CPLA-low", args.updates)
+    freeze = json.loads(args.garl_freeze.read_text(encoding="utf-8"))
+    sources = {
+        str(p.relative_to(root)): sha(p)
+        for directory in ("src", "operational", "scripts")
+        for p in (root / directory).rglob("*.py")
+    }
+    protocol = {
+        "schema": "persistent_garl_l40_v1",
+        "abi": ABI,
+        "manifest_sha256": sha(args.manifest),
+        "garl_freeze_sha256": sha(args.garl_freeze),
+        "launcher_sha256": sha(Path(__file__)),
+        "runtime_sources": sources,
+        "queries": [row["query_id"] for row in schedule],
+        "python": platform.python_version(),
+        "torch": torch.__version__,
+        "cuda": torch.version.cuda,
+        "gpu": torch.cuda.get_device_name(),
+        "gpu_driver": subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=driver_version", "--format=csv,noheader"], text=True
+        ).strip(),
+        "precision": "FP32_TF32_OFF",
+        "cpu_threads": 2,
+        "rate_hz": 50,
+        "queue_capacity": 2,
+        "objects": 1,
+        "clock": "scheduled CPU RAW arrival to completed host TTC; native preparation included",
+        "startup": (
+            "resident weights, preceding600ms, synthetic shape warmup; RAW disk preload excluded"
+        ),
+        "cache": (
+            "exact paired RGB preparation/backbone and exact event endpoint tensors; "
+            "no fused/TTC cache"
+        ),
+        "sensor_policy": (
+            "L40 declared last two left RGB endpoints and supplied causal boxes; actual cadence"
+        ),
+        "native_window": (
+            "Two 20-plane volumes, support min(actual RGB spacing,100000us), "
+            "native first-event-relative bins"
+        ),
+        "targets_read": False,
+        "optimizer_updates": 0,
+    }
+    write(args.output / "protocol.json", protocol)
+    started = time.perf_counter()
+    runtime = OfficialGarlRuntime(
+        Path(freeze["inventory"]["upstream"]["path"]), freeze["inventory"], "cpu"
+    )
+    runtime.device = torch.device("cuda")
+    model = cast(Any, runtime.models["full"]).to("cuda")
+    flags = {
+        name: bool(module.with_decoder)
+        for name, module in model.named_modules()
+        if hasattr(module, "with_decoder")
+    }
+    for module in model.modules():
+        if hasattr(module, "with_decoder"):
+            module.with_decoder = False
+    with torch.inference_mode():
+        for _ in range(10):
+            model.forward_test(torch.zeros((1, 46, 128, 128), device="cuda"))
+    torch.cuda.synchronize()
+    startup = {
+        "model_and_synthetic_warmup_seconds": time.perf_counter() - started,
+        "original_decoder_flags": flags,
+        "decoder_flags_during_service": False,
+        "garl_bindings": runtime.bindings,
+    }
+    source = PreloadedRawSource(schedule, 128 * 1024**2, max_total_bytes=3 * 1024**3)
+    startup["raw_preload"] = source.preload()
+    raw = source.initial_history(512 * 1024**2)
+    end = int(schedule[0]["anchor_us"]) - 20_000
+    identity = sha(args.manifest) + freeze["inventory"]["variants"]["full"]["checkpoint"]["sha256"]
+    consumer = PersistentGarl(model, EventRing(dict(raw), end - 600_000, end), identity)
+    write(args.output / "startup.json", startup)
+    torch.cuda.synchronize()
+    torch.cuda.reset_peak_memory_stats()
+    paced = run_paced_replay(
+        source.acquire_raw,
+        consumer.infer_all,
+        ["roi_00"],
+        updates=len(schedule),
+        rate_hz=50.0,
+        queue_capacity=2,
+        wait_strategy="sleep",
+        source_warmup=source.warmup,
+        source_finalize=source.finalize,
+        prediction_components=("GARL_TTC",),
+    )
+    torch.cuda.synchronize()
+    paced["service_cuda_memory"] = {
+        "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
+        "peak_reserved_bytes": torch.cuda.max_memory_reserved(),
+        "scope": "RESIDENT_SERVICE_PLUS_MEASURED_STREAM_STARTUP_BEFORE_RESET",
+    }
+    write(args.output / "paced.json", paced)
+    write(args.output / "service_updates.json", consumer.records)
+    # Restore untouched native forward for an independent, untimed all-anchor oracle.
+    for name, module in model.named_modules():
+        if name in flags:
+            module.with_decoder = flags[name]
+    disk = DiskRawSource(schedule, 128 * 1024**2)
+    measured = {r["update_id"]: r for r in consumer.records}
+    checks = []
+    origin = RGBSourceIdentity("independent_disk_oracle", sha(args.manifest))
+    with EvTTCEventReader(schedule[0]["raw_path"]) as reader:
+        for index in range(len(schedule)):
+            try:
+                payload = disk.acquire_raw(index)
+                tokens = {
+                    i: freeze_rgb_frame(
+                        frame, i, payload.rgb.timestamps_us[i], origin, max_bytes=128 * 1024**2
+                    )
+                    for i, frame in payload.rgb.frames.items()
+                }
+                frozen = FrozenRGBHistory(
+                    payload.rgb.query_us,
+                    tokens,
+                    payload.rgb.triplets,
+                    payload.rgb.unavailable_reason,
+                )
+                contract, _ = endpoint_contract(cast(Any, replace(payload, rgb=frozen)))
+                normalized = np.concatenate(
+                    [
+                        (
+                            payload.rgb.frames[i].transpose(2, 0, 1).astype(np.float32)
+                            / np.float32(255.0)
+                            - IMAGENET_MEAN
+                        )
+                        / IMAGENET_STD
+                        for i in contract["frame_ids"]
+                    ]
+                )
+                rgb = official_resize_roi(normalized, contract["rgb_square"], (128, 128)).numpy()
+                event = [
+                    event_tensor(
+                        dict(bounded_events(reader, window[0], window[1], 128 * 1024**2)), square
+                    )
+                    for window, square in zip(
+                        contract["event_windows"], contract["event_squares"], strict=True
+                    )
+                ]
+                sensor = np.concatenate([rgb, *event]).astype(np.float32, copy=False)
+                reference = runtime.predict("full", sensor, contract["delta_t_s"])
+                actual = measured.get(f"update-{index}")
+                input_equal = (
+                    actual is not None
+                    and sha_json(contract) == sha_json(actual["contract"])
+                    and hashlib.sha256(sensor.tobytes()).hexdigest() == actual["sensor_sha256"]
+                )
+                height_equal = actual is not None and np.allclose(
+                    reference.heights, actual["heights"][0], rtol=1e-5, atol=1e-5
+                )
+                ttc_equal = (
+                    actual is not None
+                    and reference.status == "ok"
+                    and reference.model_ttc is not None
+                    and np.isclose(reference.model_ttc, actual["ttc"], rtol=1e-5, atol=1e-5)
+                )
+                checks.append(
+                    {
+                        "update_id": f"update-{index}",
+                        "input_exact": bool(input_equal),
+                        "height_parity": bool(height_equal),
+                        "ttc_parity": bool(ttc_equal),
+                        "reference_status": reference.status,
+                        "reference_ttc": reference.model_ttc,
+                        "passed": bool(input_equal and height_equal and ttc_equal),
+                    }
+                )
+            except Exception as exc:
+                checks.append({"update_id": f"update-{index}", "passed": False, "error": str(exc)})
+    parity = {
+        "performed": True,
+        "passed": all(r["passed"] for r in checks),
+        "updates": checks,
+        "scope": (
+            "ALL_SCHEDULED_ANCHORS_INDEPENDENT_DISK_RAW_FULL_FRAME_NORMALIZATION_"
+            "UNTOUCHED_NATIVE_FORWARD"
+        ),
+    }
+    write(args.output / "parity.json", parity)
+    intact = all(sha(root / name) == digest for name, digest in sources.items())
+    passed = paced["grouped"]["passed"] and parity["passed"] and intact
+    write(
+        args.output / "summary.json",
+        {
+            "status": "COMPLETE" if passed else "FAILED",
+            "paced": paced,
+            "separate_parity": parity,
+            "sources_unchanged": intact,
+            "history_failure": consumer.failure,
+            "rgb_branch_hits": consumer.branch.hits,
+            "rgb_branch_misses": consumer.branch.misses,
+            "targets_read": False,
+            "optimizer_updates": 0,
+        },
+    )
+    if not passed:
+        raise SystemExit(2)
+
+
+def sha_json(value: Any) -> str:
+    """Compare semantic JSON metadata without tuple/list representation artifacts."""
+    return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
+
+
+if __name__ == "__main__":
+    main()

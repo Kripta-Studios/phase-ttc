@@ -1,0 +1,5450 @@
+{
+  "schema": "train40_paced_raw_replay_v1",
+  "scope": "HOST_PACED_RAW_REPLAY_CAPACITY_NOT_PHYSICAL_SENSOR_CERTIFICATION",
+  "physical_goal_demonstrated": false,
+  "capacity_checks_passed": false,
+  "capacity_checks": {
+    "all_scheduled_arrivals_recorded": true,
+    "no_drops_or_source_errors": true,
+    "complete_object_coverage": true,
+    "actual_availability_before_service": true,
+    "every_deadline_response_under_20ms": false,
+    "no_prior_work_at_scheduled_arrivals": false,
+    "finished_before_end_of_last_period": false,
+    "offered_50hz_for_at_least_60s": false,
+    "twenty_distinct_objects_per_update": false,
+    "source_lifecycle_succeeded": true
+  },
+  "rate_hz": 50.0,
+  "offered_updates": 20,
+  "offered_duration_s": 0.4,
+  "actual_wall_duration_s": 0.4137418,
+  "actual_wall_duration_includes_source_finalize_and_join": true,
+  "last_response_duration_s": 0.4017603,
+  "last_successful_all_object_ttc_duration_s": 0.4017603,
+  "queue_capacity": 2,
+  "wait_strategy": "sleep",
+  "scheduler": {
+    "wait_strategy": "sleep",
+    "wait_primitive": "time.sleep",
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "deadline_clock": "time.perf_counter_ns",
+    "clock_implementation": "QueryPerformanceCounter()",
+    "clock_monotonic": true,
+    "clock_adjustable": false,
+    "clock_resolution_seconds": 1e-07,
+    "sleep_stop_poll_seconds": 0.01,
+    "deadlines_absolute": true,
+    "busy_spin": false,
+    "scheduler_lateness_subtracted": false
+  },
+  "first_scheduled_ns": 66584164685600,
+  "source_lifecycle": {
+    "schema": "train40_paced_source_lifecycle_v2",
+    "order": "OFFERING_DONE_THEN_CONSUMER_DRAIN_OR_ABORT_THEN_FINALIZE",
+    "warmup": {
+      "started_ns": 66584060746900,
+      "thread_id": 26164,
+      "result": {
+        "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+        "acquired_updates": 0,
+        "unique_frames_frozen": 13,
+        "frame_freeze_bytes": 89856000,
+        "frame_freeze_seconds": 0.05367319997458253,
+        "event_packet_copy_bytes": 0,
+        "payload_frame_copy_bytes": 0,
+        "peak_frame_token_count": 13,
+        "peak_frame_token_bytes": 89856000,
+        "bbox_validations": 0,
+        "bbox_cache_hits": 0,
+        "physical_sensor_claim": false,
+        "targets_read": false,
+        "warmup_cutoff_us": 16730664,
+        "warmup_frames": 13,
+        "preload": {
+          "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+          "preload_seconds": 0.3543491000018548,
+          "raw_event_bytes": 58940180,
+          "raw_rgb_bytes": 145152000,
+          "archive_bytes": 204191769,
+          "token_ring_upper_bound_bytes": 110592000,
+          "live_payload_upper_bound_bytes": 671088640,
+          "scratch_upper_bound_bytes": 536870912,
+          "source_total_upper_bound_bytes": 1522743321,
+          "max_total_bytes": 3221225472,
+          "memory_exclusions": "Python object overhead, HDF5 internals, model/GPU storage and result receipts",
+          "event_archive_rows": 4533860,
+          "rgb_archive_frames": 21,
+          "future_raw_bytes_preloaded_private_to_feeder": true,
+          "future_tokens_or_hashes_prepared": false,
+          "representations_precomputed": false,
+          "physical_sensor_claim": false
+        }
+      },
+      "ended_ns": 66584114684400
+    },
+    "finalize": {
+      "started_ns": 66584566481600,
+      "thread_id": 26164,
+      "result": {
+        "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+        "acquired_updates": 20,
+        "unique_frames_frozen": 21,
+        "frame_freeze_bytes": 145152000,
+        "frame_freeze_seconds": 0.08866279998619575,
+        "event_packet_copy_bytes": 30970719,
+        "payload_frame_copy_bytes": 0,
+        "peak_frame_token_count": 13,
+        "peak_frame_token_bytes": 89856000,
+        "bbox_validations": 12,
+        "bbox_cache_hits": 48,
+        "physical_sensor_claim": false,
+        "targets_read": false,
+        "closed_on_owner_thread": true
+      },
+      "ended_ns": 66584578398100
+    },
+    "errors": [],
+    "offering_ended_ns": 66584545610100,
+    "consumer_drain_completed_ns": 66584566457800,
+    "consumer_stopped_ns": 66584566457800,
+    "consumer_queue_drained": true,
+    "finalize_permitted_ns": 66584566458300,
+    "producer_finished_ns": 66584578399200
+  },
+  "object_ids": [
+    "roi_00"
+  ],
+  "arrival_receipts": [
+    {
+      "update_id": "update-0",
+      "scheduled_ns": 66584164685600,
+      "acquisition_started_ns": 66584164846400,
+      "observation_available_ns": 66584170778800,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-1",
+      "scheduled_ns": 66584184685600,
+      "acquisition_started_ns": 66584184956400,
+      "observation_available_ns": 66584185556800,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-2",
+      "scheduled_ns": 66584204685600,
+      "acquisition_started_ns": 66584205076600,
+      "observation_available_ns": 66584205728100,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-3",
+      "scheduled_ns": 66584224685600,
+      "acquisition_started_ns": 66584225066000,
+      "observation_available_ns": 66584231449400,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-4",
+      "scheduled_ns": 66584244685600,
+      "acquisition_started_ns": 66584245169100,
+      "observation_available_ns": 66584245769800,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-5",
+      "scheduled_ns": 66584264685600,
+      "acquisition_started_ns": 66584265217800,
+      "observation_available_ns": 66584270847200,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-6",
+      "scheduled_ns": 66584284685600,
+      "acquisition_started_ns": 66584285061800,
+      "observation_available_ns": 66584285929800,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-7",
+      "scheduled_ns": 66584304685600,
+      "acquisition_started_ns": 66584304825000,
+      "observation_available_ns": 66584305583600,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-8",
+      "scheduled_ns": 66584324685600,
+      "acquisition_started_ns": 66584324888000,
+      "observation_available_ns": 66584329948300,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-9",
+      "scheduled_ns": 66584344685600,
+      "acquisition_started_ns": 66584344926100,
+      "observation_available_ns": 66584346084900,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-10",
+      "scheduled_ns": 66584364685600,
+      "acquisition_started_ns": 66584365050200,
+      "observation_available_ns": 66584365817100,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-11",
+      "scheduled_ns": 66584384685600,
+      "acquisition_started_ns": 66584385100800,
+      "observation_available_ns": 66584390443600,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-12",
+      "scheduled_ns": 66584404685600,
+      "acquisition_started_ns": 66584405157200,
+      "observation_available_ns": 66584405871800,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-13",
+      "scheduled_ns": 66584424685600,
+      "acquisition_started_ns": 66584425207600,
+      "observation_available_ns": 66584431074600,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-14",
+      "scheduled_ns": 66584444685600,
+      "acquisition_started_ns": 66584444764400,
+      "observation_available_ns": 66584445374500,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-15",
+      "scheduled_ns": 66584464685600,
+      "acquisition_started_ns": 66584464818100,
+      "observation_available_ns": 66584465430000,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-16",
+      "scheduled_ns": 66584484685600,
+      "acquisition_started_ns": 66584485169200,
+      "observation_available_ns": 66584490754700,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-17",
+      "scheduled_ns": 66584504685600,
+      "acquisition_started_ns": 66584504730900,
+      "observation_available_ns": 66584505222800,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-18",
+      "scheduled_ns": 66584524685600,
+      "acquisition_started_ns": 66584524793600,
+      "observation_available_ns": 66584530430900,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-19",
+      "scheduled_ns": 66584544685600,
+      "acquisition_started_ns": 66584545078500,
+      "observation_available_ns": 66584545600700,
+      "status": "ENQUEUED"
+    }
+  ],
+  "object_records": [
+    {
+      "update_id": "update-0",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584164685600,
+      "observation_available_ns": 66584170778800,
+      "started_ns": 66584170830400,
+      "completed_ns": 66584193898800,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.108412265777588,
+          "E_CTX_TRAIN40": 8.128082275390625,
+          "R_CTX_TRAIN40": 6.72006893157959
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16750664,
+          "event_square": [
+            575.8831141040471,
+            323.97169184425974,
+            652.7363861280996,
+            400.8249638683124
+          ],
+          "rgb_square": [
+            910.0,
+            545.0,
+            1018.0,
+            653.0
+          ],
+          "event_windows_us": [
+            [
+              [
+                16150664,
+                16250664
+              ],
+              [
+                16250664,
+                16350664
+              ],
+              [
+                16350664,
+                16450664
+              ]
+            ],
+            [
+              [
+                16250664,
+                16350664
+              ],
+              [
+                16350664,
+                16450664
+              ],
+              [
+                16450664,
+                16550664
+              ]
+            ],
+            [
+              [
+                16350664,
+                16450664
+              ],
+              [
+                16450664,
+                16550664
+              ],
+              [
+                16550664,
+                16650664
+              ]
+            ],
+            [
+              [
+                16450664,
+                16550664
+              ],
+              [
+                16550664,
+                16650664
+              ],
+              [
+                16650664,
+                16750664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16150649,
+              "anchor_us": 16350654,
+              "available_us": 16750664,
+              "timestamps_us": [
+                16150649,
+                16250647,
+                16350654
+              ],
+              "frame_indices": [
+                323,
+                325,
+                327
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16250647,
+              "anchor_us": 16450652,
+              "available_us": 16750664,
+              "timestamps_us": [
+                16250647,
+                16350654,
+                16450652
+              ],
+              "frame_indices": [
+                325,
+                327,
+                329
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16750664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16750664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16750664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-1",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584184685600,
+      "observation_available_ns": 66584185556800,
+      "started_ns": 66584193930600,
+      "completed_ns": 66584209533100,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.005323886871338,
+          "E_CTX_TRAIN40": 7.529435634613037,
+          "R_CTX_TRAIN40": 6.717520713806152
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16770664,
+          "event_square": [
+            575.8831141040471,
+            323.97169184425974,
+            652.7363861280996,
+            400.8249638683124
+          ],
+          "rgb_square": [
+            910.0,
+            545.0,
+            1018.0,
+            653.0
+          ],
+          "event_windows_us": [
+            [
+              [
+                16170664,
+                16270664
+              ],
+              [
+                16270664,
+                16370664
+              ],
+              [
+                16370664,
+                16470664
+              ]
+            ],
+            [
+              [
+                16270664,
+                16370664
+              ],
+              [
+                16370664,
+                16470664
+              ],
+              [
+                16470664,
+                16570664
+              ]
+            ],
+            [
+              [
+                16370664,
+                16470664
+              ],
+              [
+                16470664,
+                16570664
+              ],
+              [
+                16570664,
+                16670664
+              ]
+            ],
+            [
+              [
+                16470664,
+                16570664
+              ],
+              [
+                16570664,
+                16670664
+              ],
+              [
+                16670664,
+                16770664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16150649,
+              "anchor_us": 16350654,
+              "available_us": 16770664,
+              "timestamps_us": [
+                16150649,
+                16250647,
+                16350654
+              ],
+              "frame_indices": [
+                323,
+                325,
+                327
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16250647,
+              "anchor_us": 16450652,
+              "available_us": 16770664,
+              "timestamps_us": [
+                16250647,
+                16350654,
+                16450652
+              ],
+              "frame_indices": [
+                325,
+                327,
+                329
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16770664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16770664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16770664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-2",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584204685600,
+      "observation_available_ns": 66584205728100,
+      "started_ns": 66584209555600,
+      "completed_ns": 66584224650300,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 5.918784141540527,
+          "E_CTX_TRAIN40": 7.1345624923706055,
+          "R_CTX_TRAIN40": 6.714736461639404
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16790664,
+          "event_square": [
+            575.8831141040471,
+            323.97169184425974,
+            652.7363861280996,
+            400.8249638683124
+          ],
+          "rgb_square": [
+            910.0,
+            545.0,
+            1018.0,
+            653.0
+          ],
+          "event_windows_us": [
+            [
+              [
+                16190664,
+                16290664
+              ],
+              [
+                16290664,
+                16390664
+              ],
+              [
+                16390664,
+                16490664
+              ]
+            ],
+            [
+              [
+                16290664,
+                16390664
+              ],
+              [
+                16390664,
+                16490664
+              ],
+              [
+                16490664,
+                16590664
+              ]
+            ],
+            [
+              [
+                16390664,
+                16490664
+              ],
+              [
+                16490664,
+                16590664
+              ],
+              [
+                16590664,
+                16690664
+              ]
+            ],
+            [
+              [
+                16490664,
+                16590664
+              ],
+              [
+                16590664,
+                16690664
+              ],
+              [
+                16690664,
+                16790664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16150649,
+              "anchor_us": 16350654,
+              "available_us": 16790664,
+              "timestamps_us": [
+                16150649,
+                16250647,
+                16350654
+              ],
+              "frame_indices": [
+                323,
+                325,
+                327
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16250647,
+              "anchor_us": 16450652,
+              "available_us": 16790664,
+              "timestamps_us": [
+                16250647,
+                16350654,
+                16450652
+              ],
+              "frame_indices": [
+                325,
+                327,
+                329
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16790664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16790664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16790664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                545.0,
+                1018.0,
+                653.0
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-3",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584224685600,
+      "observation_available_ns": 66584231449400,
+      "started_ns": 66584231924300,
+      "completed_ns": 66584254941400,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.5317912101745605,
+          "E_CTX_TRAIN40": 7.652647972106934,
+          "R_CTX_TRAIN40": 7.198768615722656
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16810664,
+          "event_square": [
+            574.8370655034604,
+            325.7464851591362,
+            653.8209057815235,
+            404.7303254371993
+          ],
+          "rgb_square": [
+            908.5,
+            547.5,
+            1019.5,
+            658.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16210664,
+                16310664
+              ],
+              [
+                16310664,
+                16410664
+              ],
+              [
+                16410664,
+                16510664
+              ]
+            ],
+            [
+              [
+                16310664,
+                16410664
+              ],
+              [
+                16410664,
+                16510664
+              ],
+              [
+                16510664,
+                16610664
+              ]
+            ],
+            [
+              [
+                16410664,
+                16510664
+              ],
+              [
+                16510664,
+                16610664
+              ],
+              [
+                16610664,
+                16710664
+              ]
+            ],
+            [
+              [
+                16510664,
+                16610664
+              ],
+              [
+                16610664,
+                16710664
+              ],
+              [
+                16710664,
+                16810664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16200648,
+              "anchor_us": 16400653,
+              "available_us": 16810664,
+              "timestamps_us": [
+                16200648,
+                16300655,
+                16400653
+              ],
+              "frame_indices": [
+                324,
+                326,
+                328
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16300655,
+              "anchor_us": 16500660,
+              "available_us": 16810664,
+              "timestamps_us": [
+                16300655,
+                16400653,
+                16500660
+              ],
+              "frame_indices": [
+                326,
+                328,
+                330
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16400653,
+              "anchor_us": 16600658,
+              "available_us": 16810664,
+              "timestamps_us": [
+                16400653,
+                16500660,
+                16600658
+              ],
+              "frame_indices": [
+                328,
+                330,
+                332
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 16810664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 16810664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-4",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584244685600,
+      "observation_available_ns": 66584245769800,
+      "started_ns": 66584254965500,
+      "completed_ns": 66584271114200,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.459771633148193,
+          "E_CTX_TRAIN40": 7.39060640335083,
+          "R_CTX_TRAIN40": 7.20747184753418
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16830664,
+          "event_square": [
+            574.8370655034604,
+            325.7464851591362,
+            653.8209057815235,
+            404.7303254371993
+          ],
+          "rgb_square": [
+            908.5,
+            547.5,
+            1019.5,
+            658.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16230664,
+                16330664
+              ],
+              [
+                16330664,
+                16430664
+              ],
+              [
+                16430664,
+                16530664
+              ]
+            ],
+            [
+              [
+                16330664,
+                16430664
+              ],
+              [
+                16430664,
+                16530664
+              ],
+              [
+                16530664,
+                16630664
+              ]
+            ],
+            [
+              [
+                16430664,
+                16530664
+              ],
+              [
+                16530664,
+                16630664
+              ],
+              [
+                16630664,
+                16730664
+              ]
+            ],
+            [
+              [
+                16530664,
+                16630664
+              ],
+              [
+                16630664,
+                16730664
+              ],
+              [
+                16730664,
+                16830664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16200648,
+              "anchor_us": 16400653,
+              "available_us": 16830664,
+              "timestamps_us": [
+                16200648,
+                16300655,
+                16400653
+              ],
+              "frame_indices": [
+                324,
+                326,
+                328
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16300655,
+              "anchor_us": 16500660,
+              "available_us": 16830664,
+              "timestamps_us": [
+                16300655,
+                16400653,
+                16500660
+              ],
+              "frame_indices": [
+                326,
+                328,
+                330
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16400653,
+              "anchor_us": 16600658,
+              "available_us": 16830664,
+              "timestamps_us": [
+                16400653,
+                16500660,
+                16600658
+              ],
+              "frame_indices": [
+                328,
+                330,
+                332
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 16830664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 16830664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                547.5,
+                1019.5,
+                658.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-5",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584264685600,
+      "observation_available_ns": 66584270847200,
+      "started_ns": 66584271378300,
+      "completed_ns": 66584293692400,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.335333347320557,
+          "E_CTX_TRAIN40": 7.488424301147461,
+          "R_CTX_TRAIN40": 6.750434398651123
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16850664,
+          "event_square": [
+            574.8417950742064,
+            326.4564262300489,
+            653.8257730439991,
+            405.4404041998416
+          ],
+          "rgb_square": [
+            908.5,
+            548.5,
+            1019.5,
+            659.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16250664,
+                16350664
+              ],
+              [
+                16350664,
+                16450664
+              ],
+              [
+                16450664,
+                16550664
+              ]
+            ],
+            [
+              [
+                16350664,
+                16450664
+              ],
+              [
+                16450664,
+                16550664
+              ],
+              [
+                16550664,
+                16650664
+              ]
+            ],
+            [
+              [
+                16450664,
+                16550664
+              ],
+              [
+                16550664,
+                16650664
+              ],
+              [
+                16650664,
+                16750664
+              ]
+            ],
+            [
+              [
+                16550664,
+                16650664
+              ],
+              [
+                16650664,
+                16750664
+              ],
+              [
+                16750664,
+                16850664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16250647,
+              "anchor_us": 16450652,
+              "available_us": 16850664,
+              "timestamps_us": [
+                16250647,
+                16350654,
+                16450652
+              ],
+              "frame_indices": [
+                325,
+                327,
+                329
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16850664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16850664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16850664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16650657,
+              "anchor_us": 16850662,
+              "available_us": 16850664,
+              "timestamps_us": [
+                16650657,
+                16750664,
+                16850662
+              ],
+              "frame_indices": [
+                333,
+                335,
+                337
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-6",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584284685600,
+      "observation_available_ns": 66584285929800,
+      "started_ns": 66584293717300,
+      "completed_ns": 66584309520100,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.2734694480896,
+          "E_CTX_TRAIN40": 7.086677074432373,
+          "R_CTX_TRAIN40": 6.753868579864502
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16870664,
+          "event_square": [
+            574.8417950742064,
+            326.4564262300489,
+            653.8257730439991,
+            405.4404041998416
+          ],
+          "rgb_square": [
+            908.5,
+            548.5,
+            1019.5,
+            659.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16270664,
+                16370664
+              ],
+              [
+                16370664,
+                16470664
+              ],
+              [
+                16470664,
+                16570664
+              ]
+            ],
+            [
+              [
+                16370664,
+                16470664
+              ],
+              [
+                16470664,
+                16570664
+              ],
+              [
+                16570664,
+                16670664
+              ]
+            ],
+            [
+              [
+                16470664,
+                16570664
+              ],
+              [
+                16570664,
+                16670664
+              ],
+              [
+                16670664,
+                16770664
+              ]
+            ],
+            [
+              [
+                16570664,
+                16670664
+              ],
+              [
+                16670664,
+                16770664
+              ],
+              [
+                16770664,
+                16870664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16250647,
+              "anchor_us": 16450652,
+              "available_us": 16870664,
+              "timestamps_us": [
+                16250647,
+                16350654,
+                16450652
+              ],
+              "frame_indices": [
+                325,
+                327,
+                329
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16870664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16870664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16870664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16650657,
+              "anchor_us": 16850662,
+              "available_us": 16870664,
+              "timestamps_us": [
+                16650657,
+                16750664,
+                16850662
+              ],
+              "frame_indices": [
+                333,
+                335,
+                337
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-7",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584304685600,
+      "observation_available_ns": 66584305583600,
+      "started_ns": 66584309542100,
+      "completed_ns": 66584325195700,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.279585838317871,
+          "E_CTX_TRAIN40": 7.321052074432373,
+          "R_CTX_TRAIN40": 6.757018089294434
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16890664,
+          "event_square": [
+            574.8417950742064,
+            326.4564262300489,
+            653.8257730439991,
+            405.4404041998416
+          ],
+          "rgb_square": [
+            908.5,
+            548.5,
+            1019.5,
+            659.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16290664,
+                16390664
+              ],
+              [
+                16390664,
+                16490664
+              ],
+              [
+                16490664,
+                16590664
+              ]
+            ],
+            [
+              [
+                16390664,
+                16490664
+              ],
+              [
+                16490664,
+                16590664
+              ],
+              [
+                16590664,
+                16690664
+              ]
+            ],
+            [
+              [
+                16490664,
+                16590664
+              ],
+              [
+                16590664,
+                16690664
+              ],
+              [
+                16690664,
+                16790664
+              ]
+            ],
+            [
+              [
+                16590664,
+                16690664
+              ],
+              [
+                16690664,
+                16790664
+              ],
+              [
+                16790664,
+                16890664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16250647,
+              "anchor_us": 16450652,
+              "available_us": 16890664,
+              "timestamps_us": [
+                16250647,
+                16350654,
+                16450652
+              ],
+              "frame_indices": [
+                325,
+                327,
+                329
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16890664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16890664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16890664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16650657,
+              "anchor_us": 16850662,
+              "available_us": 16890664,
+              "timestamps_us": [
+                16650657,
+                16750664,
+                16850662
+              ],
+              "frame_indices": [
+                333,
+                335,
+                337
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.5,
+                548.5,
+                1019.5,
+                659.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-8",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584324685600,
+      "observation_available_ns": 66584329948300,
+      "started_ns": 66584330349800,
+      "completed_ns": 66584354610300,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.3044281005859375,
+          "E_CTX_TRAIN40": 7.222726345062256,
+          "R_CTX_TRAIN40": 6.570664405822754
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16910664,
+          "event_square": [
+            575.9090169087302,
+            328.93411552946714,
+            652.7776568758833,
+            405.8027554966202
+          ],
+          "rgb_square": [
+            910.0,
+            552.0,
+            1018.0,
+            660.0
+          ],
+          "event_windows_us": [
+            [
+              [
+                16310664,
+                16410664
+              ],
+              [
+                16410664,
+                16510664
+              ],
+              [
+                16510664,
+                16610664
+              ]
+            ],
+            [
+              [
+                16410664,
+                16510664
+              ],
+              [
+                16510664,
+                16610664
+              ],
+              [
+                16610664,
+                16710664
+              ]
+            ],
+            [
+              [
+                16510664,
+                16610664
+              ],
+              [
+                16610664,
+                16710664
+              ],
+              [
+                16710664,
+                16810664
+              ]
+            ],
+            [
+              [
+                16610664,
+                16710664
+              ],
+              [
+                16710664,
+                16810664
+              ],
+              [
+                16810664,
+                16910664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16300655,
+              "anchor_us": 16500660,
+              "available_us": 16910664,
+              "timestamps_us": [
+                16300655,
+                16400653,
+                16500660
+              ],
+              "frame_indices": [
+                326,
+                328,
+                330
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16400653,
+              "anchor_us": 16600658,
+              "available_us": 16910664,
+              "timestamps_us": [
+                16400653,
+                16500660,
+                16600658
+              ],
+              "frame_indices": [
+                328,
+                330,
+                332
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 16910664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 16910664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 16910664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-9",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584344685600,
+      "observation_available_ns": 66584346084900,
+      "started_ns": 66584354634400,
+      "completed_ns": 66584370988700,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.2745041847229,
+          "E_CTX_TRAIN40": 7.493930339813232,
+          "R_CTX_TRAIN40": 6.568181991577148
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16930664,
+          "event_square": [
+            575.9090169087302,
+            328.93411552946714,
+            652.7776568758833,
+            405.8027554966202
+          ],
+          "rgb_square": [
+            910.0,
+            552.0,
+            1018.0,
+            660.0
+          ],
+          "event_windows_us": [
+            [
+              [
+                16330664,
+                16430664
+              ],
+              [
+                16430664,
+                16530664
+              ],
+              [
+                16530664,
+                16630664
+              ]
+            ],
+            [
+              [
+                16430664,
+                16530664
+              ],
+              [
+                16530664,
+                16630664
+              ],
+              [
+                16630664,
+                16730664
+              ]
+            ],
+            [
+              [
+                16530664,
+                16630664
+              ],
+              [
+                16630664,
+                16730664
+              ],
+              [
+                16730664,
+                16830664
+              ]
+            ],
+            [
+              [
+                16630664,
+                16730664
+              ],
+              [
+                16730664,
+                16830664
+              ],
+              [
+                16830664,
+                16930664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16300655,
+              "anchor_us": 16500660,
+              "available_us": 16930664,
+              "timestamps_us": [
+                16300655,
+                16400653,
+                16500660
+              ],
+              "frame_indices": [
+                326,
+                328,
+                330
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16400653,
+              "anchor_us": 16600658,
+              "available_us": 16930664,
+              "timestamps_us": [
+                16400653,
+                16500660,
+                16600658
+              ],
+              "frame_indices": [
+                328,
+                330,
+                332
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 16930664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 16930664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 16930664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-10",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584364685600,
+      "observation_available_ns": 66584365817100,
+      "started_ns": 66584371463000,
+      "completed_ns": 66584393937700,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.388915538787842,
+          "E_CTX_TRAIN40": 6.7243170738220215,
+          "R_CTX_TRAIN40": 6.7930684089660645
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 4
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16950664,
+          "event_square": [
+            575.9090169087302,
+            328.93411552946714,
+            652.7776568758833,
+            405.8027554966202
+          ],
+          "rgb_square": [
+            910.0,
+            552.0,
+            1018.0,
+            660.0
+          ],
+          "event_windows_us": [
+            [
+              [
+                16350664,
+                16450664
+              ],
+              [
+                16450664,
+                16550664
+              ],
+              [
+                16550664,
+                16650664
+              ]
+            ],
+            [
+              [
+                16450664,
+                16550664
+              ],
+              [
+                16550664,
+                16650664
+              ],
+              [
+                16650664,
+                16750664
+              ]
+            ],
+            [
+              [
+                16550664,
+                16650664
+              ],
+              [
+                16650664,
+                16750664
+              ],
+              [
+                16750664,
+                16850664
+              ]
+            ],
+            [
+              [
+                16650664,
+                16750664
+              ],
+              [
+                16750664,
+                16850664
+              ],
+              [
+                16850664,
+                16950664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16400653,
+              "anchor_us": 16600658,
+              "available_us": 16950664,
+              "timestamps_us": [
+                16400653,
+                16500660,
+                16600658
+              ],
+              "frame_indices": [
+                328,
+                330,
+                332
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 16950664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 16950664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 16950664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                910.0,
+                552.0,
+                1018.0,
+                660.0
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-11",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584384685600,
+      "observation_available_ns": 66584390443600,
+      "started_ns": 66584393958900,
+      "completed_ns": 66584415627900,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.445278644561768,
+          "E_CTX_TRAIN40": 6.309720039367676,
+          "R_CTX_TRAIN40": 7.086763381958008
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16970664,
+          "event_square": [
+            574.6640893532312,
+            328.05139937288004,
+            652.59780887034,
+            405.9851188899888
+          ],
+          "rgb_square": [
+            908.25,
+            550.75,
+            1017.75,
+            660.25
+          ],
+          "event_windows_us": [
+            [
+              [
+                16370664,
+                16470664
+              ],
+              [
+                16470664,
+                16570664
+              ],
+              [
+                16570664,
+                16670664
+              ]
+            ],
+            [
+              [
+                16470664,
+                16570664
+              ],
+              [
+                16570664,
+                16670664
+              ],
+              [
+                16670664,
+                16770664
+              ]
+            ],
+            [
+              [
+                16570664,
+                16670664
+              ],
+              [
+                16670664,
+                16770664
+              ],
+              [
+                16770664,
+                16870664
+              ]
+            ],
+            [
+              [
+                16670664,
+                16770664
+              ],
+              [
+                16770664,
+                16870664
+              ],
+              [
+                16870664,
+                16970664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16970664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16970664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16970664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16650657,
+              "anchor_us": 16850662,
+              "available_us": 16970664,
+              "timestamps_us": [
+                16650657,
+                16750664,
+                16850662
+              ],
+              "frame_indices": [
+                333,
+                335,
+                337
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16750664,
+              "anchor_us": 16950669,
+              "available_us": 16970664,
+              "timestamps_us": [
+                16750664,
+                16850662,
+                16950669
+              ],
+              "frame_indices": [
+                335,
+                337,
+                339
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-12",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584404685600,
+      "observation_available_ns": 66584405871800,
+      "started_ns": 66584415648900,
+      "completed_ns": 66584432678900,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.508517742156982,
+          "E_CTX_TRAIN40": 6.847764492034912,
+          "R_CTX_TRAIN40": 7.084691524505615
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 16990664,
+          "event_square": [
+            574.6640893532312,
+            328.05139937288004,
+            652.59780887034,
+            405.9851188899888
+          ],
+          "rgb_square": [
+            908.25,
+            550.75,
+            1017.75,
+            660.25
+          ],
+          "event_windows_us": [
+            [
+              [
+                16390664,
+                16490664
+              ],
+              [
+                16490664,
+                16590664
+              ],
+              [
+                16590664,
+                16690664
+              ]
+            ],
+            [
+              [
+                16490664,
+                16590664
+              ],
+              [
+                16590664,
+                16690664
+              ],
+              [
+                16690664,
+                16790664
+              ]
+            ],
+            [
+              [
+                16590664,
+                16690664
+              ],
+              [
+                16690664,
+                16790664
+              ],
+              [
+                16790664,
+                16890664
+              ]
+            ],
+            [
+              [
+                16690664,
+                16790664
+              ],
+              [
+                16790664,
+                16890664
+              ],
+              [
+                16890664,
+                16990664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16350654,
+              "anchor_us": 16550659,
+              "available_us": 16990664,
+              "timestamps_us": [
+                16350654,
+                16450652,
+                16550659
+              ],
+              "frame_indices": [
+                327,
+                329,
+                331
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 16990664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 16990664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16650657,
+              "anchor_us": 16850662,
+              "available_us": 16990664,
+              "timestamps_us": [
+                16650657,
+                16750664,
+                16850662
+              ],
+              "frame_indices": [
+                333,
+                335,
+                337
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16750664,
+              "anchor_us": 16950669,
+              "available_us": 16990664,
+              "timestamps_us": [
+                16750664,
+                16850662,
+                16950669
+              ],
+              "frame_indices": [
+                335,
+                337,
+                339
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                908.25,
+                550.75,
+                1017.75,
+                660.25
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-13",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584424685600,
+      "observation_available_ns": 66584431074600,
+      "started_ns": 66584433116700,
+      "completed_ns": 66584454179500,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 7.056597709655762,
+          "E_CTX_TRAIN40": 6.929146766662598,
+          "R_CTX_TRAIN40": 8.038140296936035
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 17010664,
+          "event_square": [
+            574.1290114049528,
+            328.57665943910473,
+            653.1423879142804,
+            407.59003594843244
+          ],
+          "rgb_square": [
+            907.5,
+            551.5,
+            1018.5,
+            662.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16410664,
+                16510664
+              ],
+              [
+                16510664,
+                16610664
+              ],
+              [
+                16610664,
+                16710664
+              ]
+            ],
+            [
+              [
+                16510664,
+                16610664
+              ],
+              [
+                16610664,
+                16710664
+              ],
+              [
+                16710664,
+                16810664
+              ]
+            ],
+            [
+              [
+                16610664,
+                16710664
+              ],
+              [
+                16710664,
+                16810664
+              ],
+              [
+                16810664,
+                16910664
+              ]
+            ],
+            [
+              [
+                16710664,
+                16810664
+              ],
+              [
+                16810664,
+                16910664
+              ],
+              [
+                16910664,
+                17010664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16400653,
+              "anchor_us": 16600658,
+              "available_us": 17010664,
+              "timestamps_us": [
+                16400653,
+                16500660,
+                16600658
+              ],
+              "frame_indices": [
+                328,
+                330,
+                332
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 17010664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 17010664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 17010664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16800663,
+              "anchor_us": 17000668,
+              "available_us": 17010664,
+              "timestamps_us": [
+                16800663,
+                16900661,
+                17000668
+              ],
+              "frame_indices": [
+                336,
+                338,
+                340
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-14",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584444685600,
+      "observation_available_ns": 66584445374500,
+      "started_ns": 66584454201000,
+      "completed_ns": 66584470101400,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 7.003833770751953,
+          "E_CTX_TRAIN40": 6.880764961242676,
+          "R_CTX_TRAIN40": 8.046223640441895
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 17030664,
+          "event_square": [
+            574.1290114049528,
+            328.57665943910473,
+            653.1423879142804,
+            407.59003594843244
+          ],
+          "rgb_square": [
+            907.5,
+            551.5,
+            1018.5,
+            662.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16430664,
+                16530664
+              ],
+              [
+                16530664,
+                16630664
+              ],
+              [
+                16630664,
+                16730664
+              ]
+            ],
+            [
+              [
+                16530664,
+                16630664
+              ],
+              [
+                16630664,
+                16730664
+              ],
+              [
+                16730664,
+                16830664
+              ]
+            ],
+            [
+              [
+                16630664,
+                16730664
+              ],
+              [
+                16730664,
+                16830664
+              ],
+              [
+                16830664,
+                16930664
+              ]
+            ],
+            [
+              [
+                16730664,
+                16830664
+              ],
+              [
+                16830664,
+                16930664
+              ],
+              [
+                16930664,
+                17030664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16400653,
+              "anchor_us": 16600658,
+              "available_us": 17030664,
+              "timestamps_us": [
+                16400653,
+                16500660,
+                16600658
+              ],
+              "frame_indices": [
+                328,
+                330,
+                332
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 17030664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 17030664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 17030664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16800663,
+              "anchor_us": 17000668,
+              "available_us": 17030664,
+              "timestamps_us": [
+                16800663,
+                16900661,
+                17000668
+              ],
+              "frame_indices": [
+                336,
+                338,
+                340
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-15",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584464685600,
+      "observation_available_ns": 66584465430000,
+      "started_ns": 66584470482100,
+      "completed_ns": 66584491523000,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 7.158470630645752,
+          "E_CTX_TRAIN40": 6.7859416007995605,
+          "R_CTX_TRAIN40": 8.596643447875977
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 4
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 17050664,
+          "event_square": [
+            574.1290114049528,
+            328.57665943910473,
+            653.1423879142804,
+            407.59003594843244
+          ],
+          "rgb_square": [
+            907.5,
+            551.5,
+            1018.5,
+            662.5
+          ],
+          "event_windows_us": [
+            [
+              [
+                16450664,
+                16550664
+              ],
+              [
+                16550664,
+                16650664
+              ],
+              [
+                16650664,
+                16750664
+              ]
+            ],
+            [
+              [
+                16550664,
+                16650664
+              ],
+              [
+                16650664,
+                16750664
+              ],
+              [
+                16750664,
+                16850664
+              ]
+            ],
+            [
+              [
+                16650664,
+                16750664
+              ],
+              [
+                16750664,
+                16850664
+              ],
+              [
+                16850664,
+                16950664
+              ]
+            ],
+            [
+              [
+                16750664,
+                16850664
+              ],
+              [
+                16850664,
+                16950664
+              ],
+              [
+                16950664,
+                17050664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 17050664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 17050664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 17050664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16800663,
+              "anchor_us": 17000668,
+              "available_us": 17050664,
+              "timestamps_us": [
+                16800663,
+                16900661,
+                17000668
+              ],
+              "frame_indices": [
+                336,
+                338,
+                340
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                907.5,
+                551.5,
+                1018.5,
+                662.5
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-16",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584484685600,
+      "observation_available_ns": 66584490754700,
+      "started_ns": 66584491552300,
+      "completed_ns": 66584511921000,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.840583801269531,
+          "E_CTX_TRAIN40": 5.598182678222656,
+          "R_CTX_TRAIN40": 8.015219688415527
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 17070664,
+          "event_square": [
+            572.8840807594105,
+            327.6939429445024,
+            652.9625388467856,
+            407.7724010318775
+          ],
+          "rgb_square": [
+            905.75,
+            550.25,
+            1018.25,
+            662.75
+          ],
+          "event_windows_us": [
+            [
+              [
+                16470664,
+                16570664
+              ],
+              [
+                16570664,
+                16670664
+              ],
+              [
+                16670664,
+                16770664
+              ]
+            ],
+            [
+              [
+                16570664,
+                16670664
+              ],
+              [
+                16670664,
+                16770664
+              ],
+              [
+                16770664,
+                16870664
+              ]
+            ],
+            [
+              [
+                16670664,
+                16770664
+              ],
+              [
+                16770664,
+                16870664
+              ],
+              [
+                16870664,
+                16970664
+              ]
+            ],
+            [
+              [
+                16770664,
+                16870664
+              ],
+              [
+                16870664,
+                16970664
+              ],
+              [
+                16970664,
+                17070664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 17070664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 17070664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16650657,
+              "anchor_us": 16850662,
+              "available_us": 17070664,
+              "timestamps_us": [
+                16650657,
+                16750664,
+                16850662
+              ],
+              "frame_indices": [
+                333,
+                335,
+                337
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16750664,
+              "anchor_us": 16950669,
+              "available_us": 17070664,
+              "timestamps_us": [
+                16750664,
+                16850662,
+                16950669
+              ],
+              "frame_indices": [
+                335,
+                337,
+                339
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16850662,
+              "anchor_us": 17050668,
+              "available_us": 17070664,
+              "timestamps_us": [
+                16850662,
+                16950669,
+                17050668
+              ],
+              "frame_indices": [
+                337,
+                339,
+                341
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099999
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-17",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584504685600,
+      "observation_available_ns": 66584505222800,
+      "started_ns": 66584512012700,
+      "completed_ns": 66584528032300,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.970195770263672,
+          "E_CTX_TRAIN40": 6.1007399559021,
+          "R_CTX_TRAIN40": 8.025383949279785
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 17090664,
+          "event_square": [
+            572.8840807594105,
+            327.6939429445024,
+            652.9625388467856,
+            407.7724010318775
+          ],
+          "rgb_square": [
+            905.75,
+            550.25,
+            1018.25,
+            662.75
+          ],
+          "event_windows_us": [
+            [
+              [
+                16490664,
+                16590664
+              ],
+              [
+                16590664,
+                16690664
+              ],
+              [
+                16690664,
+                16790664
+              ]
+            ],
+            [
+              [
+                16590664,
+                16690664
+              ],
+              [
+                16690664,
+                16790664
+              ],
+              [
+                16790664,
+                16890664
+              ]
+            ],
+            [
+              [
+                16690664,
+                16790664
+              ],
+              [
+                16790664,
+                16890664
+              ],
+              [
+                16890664,
+                16990664
+              ]
+            ],
+            [
+              [
+                16790664,
+                16890664
+              ],
+              [
+                16890664,
+                16990664
+              ],
+              [
+                16990664,
+                17090664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16450652,
+              "anchor_us": 16650657,
+              "available_us": 17090664,
+              "timestamps_us": [
+                16450652,
+                16550659,
+                16650657
+              ],
+              "frame_indices": [
+                329,
+                331,
+                333
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16550659,
+              "anchor_us": 16750664,
+              "available_us": 17090664,
+              "timestamps_us": [
+                16550659,
+                16650657,
+                16750664
+              ],
+              "frame_indices": [
+                331,
+                333,
+                335
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16650657,
+              "anchor_us": 16850662,
+              "available_us": 17090664,
+              "timestamps_us": [
+                16650657,
+                16750664,
+                16850662
+              ],
+              "frame_indices": [
+                333,
+                335,
+                337
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16750664,
+              "anchor_us": 16950669,
+              "available_us": 17090664,
+              "timestamps_us": [
+                16750664,
+                16850662,
+                16950669
+              ],
+              "frame_indices": [
+                335,
+                337,
+                339
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16850662,
+              "anchor_us": 17050668,
+              "available_us": 17090664,
+              "timestamps_us": [
+                16850662,
+                16950669,
+                17050668
+              ],
+              "frame_indices": [
+                337,
+                339,
+                341
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099999
+              ],
+              "square_xyxy": [
+                905.75,
+                550.25,
+                1018.25,
+                662.75
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-18",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584524685600,
+      "observation_available_ns": 66584530430900,
+      "started_ns": 66584530892300,
+      "completed_ns": 66584551811800,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.839850902557373,
+          "E_CTX_TRAIN40": 5.991814613342285,
+          "R_CTX_TRAIN40": 7.959357738494873
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 17110664,
+          "event_square": [
+            572.5398507263491,
+            328.40983700085263,
+            652.6113142486323,
+            408.48130052313587
+          ],
+          "rgb_square": [
+            905.25,
+            551.25,
+            1017.75,
+            663.75
+          ],
+          "event_windows_us": [
+            [
+              [
+                16510664,
+                16610664
+              ],
+              [
+                16610664,
+                16710664
+              ],
+              [
+                16710664,
+                16810664
+              ]
+            ],
+            [
+              [
+                16610664,
+                16710664
+              ],
+              [
+                16710664,
+                16810664
+              ],
+              [
+                16810664,
+                16910664
+              ]
+            ],
+            [
+              [
+                16710664,
+                16810664
+              ],
+              [
+                16810664,
+                16910664
+              ],
+              [
+                16910664,
+                17010664
+              ]
+            ],
+            [
+              [
+                16810664,
+                16910664
+              ],
+              [
+                16910664,
+                17010664
+              ],
+              [
+                17010664,
+                17110664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 17110664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 17110664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 17110664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16800663,
+              "anchor_us": 17000668,
+              "available_us": 17110664,
+              "timestamps_us": [
+                16800663,
+                16900661,
+                17000668
+              ],
+              "frame_indices": [
+                336,
+                338,
+                340
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16900661,
+              "anchor_us": 17100667,
+              "available_us": 17110664,
+              "timestamps_us": [
+                16900661,
+                17000668,
+                17100667
+              ],
+              "frame_indices": [
+                338,
+                340,
+                342
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099999
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-19",
+      "object_id": "roi_00",
+      "scheduled_ns": 66584544685600,
+      "observation_available_ns": 66584545600700,
+      "started_ns": 66584551831900,
+      "completed_ns": 66584566445900,
+      "success": true,
+      "result": {
+        "object_id": "roi_00",
+        "predictions": {
+          "PHASE_ONLY_TRAIN40_S7": 6.819464683532715,
+          "E_CTX_TRAIN40": 5.984402656555176,
+          "R_CTX_TRAIN40": 7.963013648986816
+        },
+        "history_lengths": {
+          "event": 4,
+          "rgb": 5
+        },
+        "rgb_available": true,
+        "rgb_unavailable_reason": "",
+        "input_receipt": {
+          "query_us": 17130664,
+          "event_square": [
+            572.5398507263491,
+            328.40983700085263,
+            652.6113142486323,
+            408.48130052313587
+          ],
+          "rgb_square": [
+            905.25,
+            551.25,
+            1017.75,
+            663.75
+          ],
+          "event_windows_us": [
+            [
+              [
+                16530664,
+                16630664
+              ],
+              [
+                16630664,
+                16730664
+              ],
+              [
+                16730664,
+                16830664
+              ]
+            ],
+            [
+              [
+                16630664,
+                16730664
+              ],
+              [
+                16730664,
+                16830664
+              ],
+              [
+                16830664,
+                16930664
+              ]
+            ],
+            [
+              [
+                16730664,
+                16830664
+              ],
+              [
+                16830664,
+                16930664
+              ],
+              [
+                16930664,
+                17030664
+              ]
+            ],
+            [
+              [
+                16830664,
+                16930664
+              ],
+              [
+                16930664,
+                17030664
+              ],
+              [
+                17030664,
+                17130664
+              ]
+            ]
+          ],
+          "rgb_observations": [
+            {
+              "first_sensor_ts_us": 16500660,
+              "anchor_us": 16700656,
+              "available_us": 17130664,
+              "timestamps_us": [
+                16500660,
+                16600658,
+                16700656
+              ],
+              "frame_indices": [
+                330,
+                332,
+                334
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16600658,
+              "anchor_us": 16800663,
+              "available_us": 17130664,
+              "timestamps_us": [
+                16600658,
+                16700656,
+                16800663
+              ],
+              "frame_indices": [
+                332,
+                334,
+                336
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16700656,
+              "anchor_us": 16900661,
+              "available_us": 17130664,
+              "timestamps_us": [
+                16700656,
+                16800663,
+                16900661
+              ],
+              "frame_indices": [
+                334,
+                336,
+                338
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099998
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16800663,
+              "anchor_us": 17000668,
+              "available_us": 17130664,
+              "timestamps_us": [
+                16800663,
+                16900661,
+                17000668
+              ],
+              "frame_indices": [
+                336,
+                338,
+                340
+              ],
+              "delta_t_s": [
+                0.099998,
+                0.100007
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            },
+            {
+              "first_sensor_ts_us": 16900661,
+              "anchor_us": 17100667,
+              "available_us": 17130664,
+              "timestamps_us": [
+                16900661,
+                17000668,
+                17100667
+              ],
+              "frame_indices": [
+                338,
+                340,
+                342
+              ],
+              "delta_t_s": [
+                0.100007,
+                0.099999
+              ],
+              "square_xyxy": [
+                905.25,
+                551.25,
+                1017.75,
+                663.75
+              ]
+            }
+          ]
+        },
+        "success": true
+      },
+      "error": null
+    }
+  ],
+  "grouped": {
+    "passed": true,
+    "unexpected_update_ids": [],
+    "expected_updates": 20,
+    "expected_object_results": 20,
+    "updates": [
+      {
+        "update_id": "update-0",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584164685600,
+        "started_ns": 66584170830400,
+        "completed_ns": 66584193898800,
+        "response_ms": 29.2132,
+        "service_span_ms": 23.0684,
+        "queue_wait_ms": 6.1448
+      },
+      {
+        "update_id": "update-1",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584184685600,
+        "started_ns": 66584193930600,
+        "completed_ns": 66584209533100,
+        "response_ms": 24.8475,
+        "service_span_ms": 15.6025,
+        "queue_wait_ms": 9.245
+      },
+      {
+        "update_id": "update-2",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584204685600,
+        "started_ns": 66584209555600,
+        "completed_ns": 66584224650300,
+        "response_ms": 19.9647,
+        "service_span_ms": 15.0947,
+        "queue_wait_ms": 4.87
+      },
+      {
+        "update_id": "update-3",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584224685600,
+        "started_ns": 66584231924300,
+        "completed_ns": 66584254941400,
+        "response_ms": 30.2558,
+        "service_span_ms": 23.0171,
+        "queue_wait_ms": 7.2387
+      },
+      {
+        "update_id": "update-4",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584244685600,
+        "started_ns": 66584254965500,
+        "completed_ns": 66584271114200,
+        "response_ms": 26.4286,
+        "service_span_ms": 16.1487,
+        "queue_wait_ms": 10.2799
+      },
+      {
+        "update_id": "update-5",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584264685600,
+        "started_ns": 66584271378300,
+        "completed_ns": 66584293692400,
+        "response_ms": 29.0068,
+        "service_span_ms": 22.3141,
+        "queue_wait_ms": 6.6927
+      },
+      {
+        "update_id": "update-6",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584284685600,
+        "started_ns": 66584293717300,
+        "completed_ns": 66584309520100,
+        "response_ms": 24.8345,
+        "service_span_ms": 15.8028,
+        "queue_wait_ms": 9.0317
+      },
+      {
+        "update_id": "update-7",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584304685600,
+        "started_ns": 66584309542100,
+        "completed_ns": 66584325195700,
+        "response_ms": 20.5101,
+        "service_span_ms": 15.6536,
+        "queue_wait_ms": 4.8565
+      },
+      {
+        "update_id": "update-8",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584324685600,
+        "started_ns": 66584330349800,
+        "completed_ns": 66584354610300,
+        "response_ms": 29.9247,
+        "service_span_ms": 24.2605,
+        "queue_wait_ms": 5.6642
+      },
+      {
+        "update_id": "update-9",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584344685600,
+        "started_ns": 66584354634400,
+        "completed_ns": 66584370988700,
+        "response_ms": 26.3031,
+        "service_span_ms": 16.3543,
+        "queue_wait_ms": 9.9488
+      },
+      {
+        "update_id": "update-10",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584364685600,
+        "started_ns": 66584371463000,
+        "completed_ns": 66584393937700,
+        "response_ms": 29.2521,
+        "service_span_ms": 22.4747,
+        "queue_wait_ms": 6.7774
+      },
+      {
+        "update_id": "update-11",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584384685600,
+        "started_ns": 66584393958900,
+        "completed_ns": 66584415627900,
+        "response_ms": 30.9423,
+        "service_span_ms": 21.669,
+        "queue_wait_ms": 9.2733
+      },
+      {
+        "update_id": "update-12",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584404685600,
+        "started_ns": 66584415648900,
+        "completed_ns": 66584432678900,
+        "response_ms": 27.9933,
+        "service_span_ms": 17.03,
+        "queue_wait_ms": 10.9633
+      },
+      {
+        "update_id": "update-13",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584424685600,
+        "started_ns": 66584433116700,
+        "completed_ns": 66584454179500,
+        "response_ms": 29.4939,
+        "service_span_ms": 21.0628,
+        "queue_wait_ms": 8.4311
+      },
+      {
+        "update_id": "update-14",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584444685600,
+        "started_ns": 66584454201000,
+        "completed_ns": 66584470101400,
+        "response_ms": 25.4158,
+        "service_span_ms": 15.9004,
+        "queue_wait_ms": 9.5154
+      },
+      {
+        "update_id": "update-15",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584464685600,
+        "started_ns": 66584470482100,
+        "completed_ns": 66584491523000,
+        "response_ms": 26.8374,
+        "service_span_ms": 21.0409,
+        "queue_wait_ms": 5.7965
+      },
+      {
+        "update_id": "update-16",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584484685600,
+        "started_ns": 66584491552300,
+        "completed_ns": 66584511921000,
+        "response_ms": 27.2354,
+        "service_span_ms": 20.3687,
+        "queue_wait_ms": 6.8667
+      },
+      {
+        "update_id": "update-17",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584504685600,
+        "started_ns": 66584512012700,
+        "completed_ns": 66584528032300,
+        "response_ms": 23.3467,
+        "service_span_ms": 16.0196,
+        "queue_wait_ms": 7.3271
+      },
+      {
+        "update_id": "update-18",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584524685600,
+        "started_ns": 66584530892300,
+        "completed_ns": 66584551811800,
+        "response_ms": 27.1262,
+        "service_span_ms": 20.9195,
+        "queue_wait_ms": 6.2067
+      },
+      {
+        "update_id": "update-19",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 66584544685600,
+        "started_ns": 66584551831900,
+        "completed_ns": 66584566445900,
+        "response_ms": 21.7603,
+        "service_span_ms": 14.614,
+        "queue_wait_ms": 7.1463
+      }
+    ]
+  },
+  "missing_arrival_ids": [],
+  "dropped_updates": 0,
+  "source_errors": 0,
+  "deadline_response_ms": {
+    "count": 20,
+    "mean_ms": 26.53462,
+    "p50_ms": 26.9818,
+    "p95_ms": 30.290125,
+    "p99_ms": 30.811864999999997,
+    "min_ms": 19.9647,
+    "max_ms": 30.9423,
+    "quantile_method": "linear",
+    "strictly_under_20ms_count": 1,
+    "at_least_20ms_count": 19,
+    "over_50ms_count": 0,
+    "over_100ms_count": 0,
+    "inverse_mean_capacity_hz_not_sustained_throughput": 37.68661469431256
+  },
+  "raw_availability_response_ms": {
+    "count": 20,
+    "mean_ms": 23.535349999999998,
+    "p50_ms": 23.541150000000002,
+    "p95_ms": 26.872775,
+    "p99_ms": 27.871035,
+    "min_ms": 18.9222,
+    "max_ms": 28.1206,
+    "quantile_method": "linear",
+    "strictly_under_20ms_count": 2,
+    "at_least_20ms_count": 18,
+    "over_50ms_count": 0,
+    "over_100ms_count": 0,
+    "inverse_mean_capacity_hz_not_sustained_throughput": 42.48927676877548
+  },
+  "raw_availability_lateness_ms": {
+    "count": 20,
+    "mean_ms": 2.99927,
+    "p50_ms": 1.2151999999999998,
+    "p95_ms": 6.40774,
+    "p99_ms": 6.692588,
+    "min_ms": 0.5372,
+    "max_ms": 6.7638,
+    "quantile_method": "linear",
+    "strictly_under_20ms_count": 20,
+    "at_least_20ms_count": 0,
+    "over_50ms_count": 0,
+    "over_100ms_count": 0,
+    "inverse_mean_capacity_hz_not_sustained_throughput": 333.41446418628533
+  },
+  "prior_work_at_each_scheduled_arrival": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "legacy_response_population": "ALL_RESPONSES_INCLUDING_FAILURES",
+  "timing_note": "Legacy responses include failed acknowledgements; valid all-object TTC distributions are separate in latency_populations. No division by object count.",
+  "latency_populations": {
+    "schema": "train40_paced_latency_populations_v1",
+    "derivation": "grouped.updates.passed + arrival/object monotonic receipts",
+    "quantile_method": "linear; index=(count-1)*fraction",
+    "legacy_response_population": "ALL_RESPONSES_INCLUDING_FAILURES",
+    "counts": {
+      "expected_updates": 20,
+      "offered_updates": 20,
+      "grouped_updates": 20,
+      "arrival_receipts": 20,
+      "completed_responses": 20,
+      "successful_all_object_ttc": 20,
+      "failed_acknowledgements": 0,
+      "updates_without_completion": 0,
+      "dropped_updates": 0,
+      "source_errors": 0,
+      "missing_arrival_receipts": 0,
+      "unexpected_arrival_receipts": 0
+    },
+    "counts_consistent": true,
+    "populations": {
+      "successful_all_object_ttc": {
+        "count": 20,
+        "deadline_response_ms": {
+          "count": 20,
+          "mean_ms": 26.53462,
+          "min_ms": 19.9647,
+          "p50_ms": 26.9818,
+          "p95_ms": 30.290125,
+          "p99_ms": 30.811864999999997,
+          "max_ms": 30.9423,
+          "at_least_20ms_count": 19
+        },
+        "raw_availability_response_ms": {
+          "count": 20,
+          "mean_ms": 23.53535,
+          "min_ms": 18.9222,
+          "p50_ms": 23.541150000000002,
+          "p95_ms": 26.872775,
+          "p99_ms": 27.871035,
+          "max_ms": 28.1206,
+          "at_least_20ms_count": 18
+        },
+        "service_span_ms": {
+          "count": 20,
+          "mean_ms": 18.920814999999997,
+          "min_ms": 14.614,
+          "p50_ms": 18.699350000000003,
+          "p95_ms": 23.128005,
+          "p99_ms": 24.034001,
+          "max_ms": 24.2605,
+          "at_least_20ms_count": 10
+        }
+      },
+      "failed_acknowledgements": {
+        "count": 0,
+        "deadline_response_ms": null,
+        "raw_availability_response_ms": null,
+        "service_span_ms": null
+      },
+      "all_responses_including_failures": {
+        "count": 20,
+        "deadline_response_ms": {
+          "count": 20,
+          "mean_ms": 26.53462,
+          "min_ms": 19.9647,
+          "p50_ms": 26.9818,
+          "p95_ms": 30.290125,
+          "p99_ms": 30.811864999999997,
+          "max_ms": 30.9423,
+          "at_least_20ms_count": 19
+        },
+        "raw_availability_response_ms": {
+          "count": 20,
+          "mean_ms": 23.53535,
+          "min_ms": 18.9222,
+          "p50_ms": 23.541150000000002,
+          "p95_ms": 26.872775,
+          "p99_ms": 27.871035,
+          "max_ms": 28.1206,
+          "at_least_20ms_count": 18
+        },
+        "service_span_ms": {
+          "count": 20,
+          "mean_ms": 18.920814999999997,
+          "min_ms": 14.614,
+          "p50_ms": 18.699350000000003,
+          "p95_ms": 23.128005,
+          "p99_ms": 24.034001,
+          "max_ms": 24.2605,
+          "at_least_20ms_count": 10
+        }
+      }
+    },
+    "note": "Success is valid all-object output, not parity admission. Failed acknowledgements are not TTC completions. Drops have no inferred latency."
+  }
+}

@@ -22,12 +22,15 @@ The Hub bundles contain weights, exact source dependencies, normalizers, manifes
 ## Limitations
 
 The full original system contains 2,347,313 parameters. The same-hardware study
-compares frozen native inference on 434 EvTTC queries and 120 physical eAP queries,
-with three passes per arm. It distinguishes the published Garl full graph from
-a parity-checked auxiliary-decoder bypass. Lower parameter count does not imply
-lower latency; portable history reconstruction, native observation reuse, and
-the paced service have different measurement boundaries. See the
-[measurement evidence](../paper/from_motion_to_time_20261102/data/local_hardware_20261112/).
+compares persistent PHASE/Garl services on the same 250-arrival EvTTC CPLA-low
+replay at 50 Hz, with three fresh-process passes per arm. Both retain resident
+weights, causal history and exact reusable features. Garl bypasses auxiliary
+foreground decoders and verifies TTC against unchanged native inference.
+Lower parameter count does not imply lower latency. See the
+[persistent-service report](../paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md).
+The repeated campaign includes queue losses and uncontrolled device-state
+carryover between runs; all outcomes remain visible. It does not establish a
+stable three-pass service p95 or a causal speed ranking.
 
 The release expects supplied object regions and synchronized event/RGB inputs. It includes neither a general-purpose autonomous detector nor calibrated collision probabilities or confidence intervals. The paced 250-update replay measured 29.14 ms p95, above a 20 ms budget. Zero benchmark failures is a scoring result, not a safety assurance. Full original training requires external data and reconstruction of historical caches.
 

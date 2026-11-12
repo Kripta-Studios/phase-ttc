@@ -1,0 +1,57 @@
+{
+  "schema": "train40_paced_service_summary_v1",
+  "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+  "status": "FAILED",
+  "paced": null,
+  "separate_parity": {
+    "performed": false,
+    "passed": false,
+    "reason": "SEPARATE_PARITY_NOT_RUN"
+  },
+  "originals": {
+    "passed": false,
+    "reason": "SNAPSHOT_NOT_ESTABLISHED"
+  },
+  "raw_source_stat_checks": [],
+  "startup": {},
+  "rgb_cache_exercise": {
+    "passed": false,
+    "hit_updates": 0,
+    "miss_updates": 0,
+    "no_rgb_updates": 0,
+    "unattested_update_indices": [],
+    "scope": "CAUSAL_PACED_UPDATES_STORED_FEATURES_ONLY_CONTEXT_RECOMPUTED"
+  },
+  "rgb_crop_cache_exercise": null,
+  "history_failure": null,
+  "milestone": {
+    "schema": "train40_paced_milestone_gate_v2",
+    "target_object_count": 1,
+    "milestone_checks": {
+      "all_scheduled_arrivals_recorded": false,
+      "no_drops_or_source_errors": false,
+      "complete_object_coverage": false,
+      "actual_availability_before_service": false,
+      "every_deadline_response_under_20ms": false,
+      "no_prior_work_at_scheduled_arrivals": false,
+      "finished_before_end_of_last_period": false,
+      "offered_50hz_for_at_least_60s": false,
+      "source_lifecycle_succeeded": false,
+      "required_object_count": false,
+      "all_three_host_ttc_per_required_object": false,
+      "rgb_cache_stored_miss_then_real_hit": false
+    },
+    "complete_measurement_coverage": false,
+    "milestone_with_parity_passed": false,
+    "capacity_with_parity_passed": false,
+    "legacy_twenty_object_capacity_checks_passed": false
+  },
+  "capacity_with_parity_passed": false,
+  "physical_goal_demonstrated": false,
+  "target_20_objects_50hz_demonstrated": false,
+  "goal_note": "Versioned 1/2-object milestones require the same 60s, all <20ms, full TTC and separate parity gates; they do not imply the 20-object or physical-sensor goal",
+  "cleanup_errors": [],
+  "error": "ValueError: Local inference source differs from sealed cloud runtime: src/e_jepa_ttc/models/local_transport.py",
+  "targets_read": false,
+  "optimizer_updates": 0
+}

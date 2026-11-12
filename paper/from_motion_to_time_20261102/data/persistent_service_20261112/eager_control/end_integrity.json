@@ -1,0 +1,7 @@
+{
+  "utc": "2026-11-12T20:33:34.400517+00:00",
+  "passed": true,
+  "checked_files": 2811,
+  "mismatches": [],
+  "scope": "Post-run verification against preregistered hashes; initial host thermal state was not recorded"
+}

@@ -1,0 +1,206 @@
+"""Freeze the graph-service revision; retain all alternating matched stream passes."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import sys
+from datetime import UTC, datetime
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from operational.local_comparison.persistent import materialize_runtime  # noqa: E402
+
+
+def digest(path: Path) -> str:
+    """Bind exact files."""
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main() -> None:
+    """Run every predeclared pass; retain unsuccessful measurements as evidence."""
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument("--output", type=Path, required=True)
+    cli.add_argument("--repeats", type=int, default=3)
+    options = cli.parse_args()
+    if options.repeats < 1:
+        cli.error("At least one independent pass is required")
+    out = options.output.resolve()
+    out.mkdir(parents=True, exist_ok=False)
+    archive = ROOT / (
+        "docs/train40_runtime_council_20261028/evidence/council_v1/artifacts/"
+        "train40_runtime_council_20261028/paced/memory_cache_overlap_reverse1_250_v1"
+    )
+    binding = json.loads((archive / "binding.json").read_text(encoding="utf-8"))
+    runtime = out / "runtime"
+    receipt = materialize_runtime(ROOT, runtime, archive / "sources", binding)
+    # Only shared measurement metadata/validation is updated; historical model/service stays sealed.
+    overlay = "operational/train40_runtime/paced.py"
+    shutil.copyfile(ROOT / overlay, runtime / overlay)
+    receipt["measurement_overlay"] = {overlay: digest(runtime / overlay)}
+    receipt["tree_source_sha256"][overlay] = digest(runtime / overlay)
+    (out / "runtime_sources.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")
+    config = binding["configuration"]
+    manifest = ROOT / config["manifest"]
+    freeze = ROOT / "output/garl_evttc_competition_20261028/RUN_FREEZE.json"
+    commands = []
+    for repeat in range(options.repeats):
+        order = ("phase", "garl") if repeat % 2 == 0 else ("garl", "phase")
+        for model in order:
+            destination = out / f"{model}_{repeat + 1}"
+            if model == "phase":
+                argv = [
+                    sys.executable,
+                    str(ROOT / "scripts/run_persistent_phase.py"),
+                    "--runtime-root",
+                    str(runtime),
+                    "--workspace-root",
+                    str(ROOT),
+                ]
+                for name in ("candidate", "reference", "base_manifest", "manifest"):
+                    path = Path(config[name])
+                    argv += [
+                        "--" + name.replace("_", "-"),
+                        str(path if path.is_absolute() else ROOT / path),
+                    ]
+                argv += [
+                    "--sequence",
+                    "CPLA-low",
+                    "--objects",
+                    "1",
+                    "--updates",
+                    "250",
+                    "--queue-capacity",
+                    "2",
+                    "--raw-source",
+                    "memory",
+                    "--max-preloaded-source-bytes",
+                    "3221225472",
+                    "--backend",
+                    "prefix",
+                    "--event-query-graphs",
+                    "--event-normalization",
+                    "topk",
+                    "--rgb-workers",
+                    "8",
+                    "--prime-native-histories",
+                    "--rgb-feature-cache",
+                    "--transport-reuse",
+                    "reverse-summaries",
+                    "--overlap-event-with-rgb-preparation",
+                    "--wait-strategy",
+                    "sleep",
+                    "--verify-parity",
+                    "--output",
+                    str(destination),
+                ]
+            else:
+                argv = [
+                    sys.executable,
+                    str(ROOT / "scripts/benchmark_garl_graph_persistent.py"),
+                    "--runtime-root",
+                    str(runtime),
+                    "--manifest",
+                    str(manifest),
+                    "--garl-freeze",
+                    str(freeze),
+                    "--updates",
+                    "250",
+                    "--output",
+                    str(destination),
+                ]
+            commands.append({"model": model, "repeat": repeat + 1, "argv": argv})
+    protocol = {
+        "schema": "persistent_service_comparison_graph_v2",
+        "revision_reason": (
+            "Prior eager Garl service lost packets at 50 Hz. This prospective revision adds "
+            "fixed-shape CUDA graphs, as already used by PHASE. No rate/queue/cohort changes. "
+            "Prior eager results are retained; no selection among repeats."
+        ),
+        "start_utc": datetime.now(UTC).isoformat(),
+        "workspace_commit": subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], text=True
+        ).strip(),
+        "historical_service_commit": binding["git_commit"],
+        "historical_binding_sha256": digest(archive / "binding.json"),
+        "runtime_receipt_sha256": digest(out / "runtime_sources.json"),
+        "manifest_sha256": digest(manifest),
+        "garl_freeze_sha256": digest(freeze),
+        "commands": commands,
+        "updates_per_pass": 250,
+        "repeats": options.repeats,
+        "scope": "CPLA-low 5s one-object 50Hz causal preloaded RAW replay; no live-camera claim",
+        "primary_summary": "median/range of per-pass scheduled-arrival p95s; all passes retained",
+        "initialization": (
+            "Fresh process, feeder, history and caches for every pass; "
+            "resident weights after initialization"
+        ),
+        "order": "Whole-stream alternating order; three passes do not perfectly balance positions",
+        "failures": "All drops/errors retained; complete250/250 required for clean p95 comparison",
+        "runtime_sources": {
+            name: digest(ROOT / name)
+            for name in (
+                "scripts/run_graph_persistent_comparison.py",
+                "scripts/run_persistent_phase.py",
+                "scripts/benchmark_garl_graph_persistent.py",
+                "scripts/benchmark_garl_persistent_v2.py",
+                "operational/local_comparison/garl_graph.py",
+                "operational/local_comparison/service_audit.py",
+                "operational/local_comparison/persistent.py",
+                "operational/local_comparison/garl_persistent.py",
+                "operational/train40_runtime/paced.py",
+            )
+        },
+        "targets_read": False,
+        "optimizer_updates": 0,
+    }
+    (out / "protocol.json").write_text(json.dumps(protocol, indent=2), encoding="utf-8")
+    from operational.local_comparison.service_audit import capture_host, freeze_files, verify_files
+
+    frozen_inputs = freeze_files(ROOT, out, freeze)
+    (out / "input_inventory.json").write_text(json.dumps(frozen_inputs, indent=2), encoding="utf-8")
+    env = {**os.environ, "PYTHONUTF8": "1", "UV_PROJECT_ENVIRONMENT": str(ROOT / ".venv-transfer")}
+    results = []
+    for item in commands:
+        name = f"{item['model']}_{item['repeat']}"
+        print(f"START {name}", flush=True)
+        (out / f"{name}_host_before.json").write_text(
+            json.dumps(capture_host(), indent=2), encoding="utf-8"
+        )
+        with (out / f"{name}.log").open("w", encoding="utf-8") as log:
+            result = subprocess.run(
+                item["argv"], cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, check=False
+            )
+        (out / f"{name}_host_after.json").write_text(
+            json.dumps(capture_host(), indent=2), encoding="utf-8"
+        )
+        summary = out / name / "summary.json"
+        record = {
+            "name": name,
+            "returncode": result.returncode,
+            "summary_sha256": digest(summary) if summary.exists() else None,
+            "graph_startup_sha256": (
+                digest(out / name / "graph_startup.json")
+                if (out / name / "graph_startup.json").exists()
+                else None
+            ),
+        }
+        results.append(record)
+        (out / "results.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
+        print(f"DONE {name}: exit={result.returncode}", flush=True)
+    integrity = verify_files(frozen_inputs)
+    (out / "end_integrity.json").write_text(json.dumps(integrity, indent=2), encoding="utf-8")
+    if not integrity["passed"]:
+        raise RuntimeError("Frozen inputs changed during the comparison")
+    if any(row["returncode"] for row in results):
+        raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()

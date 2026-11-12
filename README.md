@@ -34,13 +34,15 @@ geometric adaptation and execution measurements.
 - [LaTeX source](paper/from_motion_to_time_20261102/main.tex)
 - [Download the source bundle](paper/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
 - [Matched-comparison data and protocols](paper/from_motion_to_time_20261102/data/consolidation)
-- [Same-hardware inference evidence](paper/from_motion_to_time_20261102/data/local_hardware_20261112)
-- [Parameter and inference comparison](paper/from_motion_to_time_20261102/revision/local_comparison_report.md)
+- [Persistent-service evidence](paper/from_motion_to_time_20261102/data/persistent_service_20261112)
+- [Persistent PHASE/Garl comparison](paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md)
 
 The PDF contains the main article and a technical supplement with implementation
 details, additional experiments and reproduction records. The 12 November update
-adds real same-hardware PHASE/Garl inference, including the complete EvTTC cohort
-and a deterministic eAP prefix, with three measured passes per arm.
+compares persistent PHASE/Garl services on the same causal EvTTC CPLA-low replay,
+with resident models, reusable state and three measured passes per arm. Historical
+query-API experiments remain archived separately; their timings are excluded from
+the article's deployment-response comparison.
 
 ## Architecture
 

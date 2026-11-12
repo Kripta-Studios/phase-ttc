@@ -1,52 +1,44 @@
 \section{Runtime and causal service}
 \label{sec:runtime}
 
-We evaluate end-to-end execution with a five-second replay paced at 50\,Hz. All 250 updates complete with numerical parity, with a scheduled-arrival response of 29.14\,ms at p95. Sustaining this rate within a 20\,ms response deadline requires accounting for preparation, scheduling, neural computation, and delivery to the host. Starting the clock after RAW acquisition, copy, and payload sealing still gives a p95 of 25.25\,ms, so preparation alone cannot explain the missed deadline. We therefore profile the complete service path and distinguish this persistent replay from the sensor-preparation path used by the local adapter.
+The deployment measurements in this article use persistent services: weights remain resident, state advances with causal sensor arrivals, and previously computed work is reused when its inputs are unchanged. PHASE and Garl receive the same paced RAW replay. The primary response clock begins at scheduled arrival and ends when the required TTC output is available on the host. It includes sensor release, scheduling and queueing, region preparation, neural computation, synchronization, and delivery. Model loading, synthetic shape priming, history initialization, and RAW disk preload occur before measured arrivals. This is a CPU-fed sensor replay, not a physical-camera measurement.
 
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{figures/publication_runtime_clock.pdf}
-\caption{\textbf{Response clocks for one query.} Deadline response starts at scheduled arrival; the secondary clock starts after RAW acquisition, copy, and payload sealing. Both stop when all required TTC outputs reach the host.}
+\caption{\textbf{Persistent-service response clocks.} The primary clock starts at scheduled arrival. The secondary clock starts after RAW acquisition, copy, and payload sealing. Both end at completed host TTC output. Service time starts only when the consumer begins work and is reported separately.}
 \label{fig:runtime-clocks}
 \end{figure}
 
-\subsection{Latency measurement boundaries}
+\subsection{Persistent execution and exact reuse}
 
-Earlier timing experiments measured different parts of the computation. V18 used warm raw-sensor queries with its original producer batching. The final test12 diagnostics timed a prepared eager path, and the EvTTC transfer measured adapter wall time, including preparation and cache behavior. Hardware and inputs also varied. The measurements retain their original boundaries; the deadline test below uses the scheduled-arrival clock. Per-arrival timestamps record scheduled arrival, observation availability, execution start, and completion, allowing the response distribution and deadline counts to be reconstructed. \evidence{L40}
+PHASE prepares RGB within the object region, extends event prefixes incrementally, and reuses reverse-transport summaries exactly. Top-$k$ normalization and native query graphs reduce repeated work; parallel branches overlap event execution with RGB preparation. Exact RGB producer features are reused, while event encodings and temporal readouts are recomputed. The complete nine-component model is retained.
 
-\begin{table}[htbp]
+The comparator is persistent TTC-only Garl. Its weights and causal event history remain resident; exact endpoint representations and the six-channel paired RGB backbone result are reused only under matching sensor, geometry, model, and preprocessing identities. Its event backbone and TTC heads execute on every completed update. Auxiliary foreground decoders are disabled because their masks do not feed the TTC output. All raw heights and TTC predictions are verified against untouched native inference after timing; the complete checkpoint remains loaded.
+
+Compiled transport alternatives that changed PHASE's TTC on sensitive examples were rejected. An earlier smaller-packet experiment established numerical equivalence but did not establish paced-service latency. Neither result is substituted for the measured production-service response. \evidence{L41,L42}
+
+\subsection{Matched repeated service measurements}
+
+The comparison uses the same 250 contiguous CPLA-low sensor-clock anchors as the historical paced experiment: one supplied object region, 50 scheduled arrivals per second, and five seconds per replay. Both services run in fresh processes with fresh histories and caches for each of three passes, alternating whole-stream order. They use the same RTX 5070 Ti Laptop GPU, FP32 with TF32 disabled, two PyTorch CPU threads, and a queue capacity of two. No second GPU experiment runs concurrently.
+
+\begin{table}[H]
 \centering\small
-\caption{\textbf{Separate runtime contracts.} Both runs use an RTX 5070 Ti Laptop GPU, Python 3.11.15, PyTorch 2.11.0+cu128/CUDA 12.8, FP32, TF32 disabled, and two PyTorch CPU threads. Adapter host CPU: Ryzen 9 9955HX (16 cores/32 logical processors). The clocks and workloads differ. \evidence{A07,L40}}
-\label{tab:runtime-contracts}
-\begin{tabular}{p{.19\linewidth}p{.36\linewidth}p{.35\linewidth}}
-\toprule
-Run & Measured boundary and population & Result and exclusions \\
-\midrule
-Submitted adapter & 434 EvTTC queries; sensor/cache preparation plus synchronized native graph and geometry/router & Mean 1.740290\,s/query; excludes one-time loading, hashing/indexing, and ledger writes \\
-Paced base system & 250 single-object updates over five seconds; scheduled arrival through all required host TTC outputs & p95 29.143155\,ms; RAW preloaded, disk I/O excluded; initialization precedes arrivals \\
-\bottomrule
-\end{tabular}
+\caption{\textbf{Persistent-service response, in milliseconds.} The primary summary is the median and range of the three per-pass scheduled-arrival p95 values. Outputs count all scheduled updates across all three passes. These are repeated timings of the same 250 anchors, not 750 independent samples.}
+\label{tab:persistent-primary}
+\input{tables/persistent_primary.tex}
 \end{table}
 
-For the submitted adapter, the mean decomposes into 1.158\,s preparation, 0.5801\,s native neural graph, and 0.001853\,s geometry/router. The bounded lossless input cache holds at most 64\,MiB of events and sixteen RGB frames. The original submission's observed mean of 3.268\,s/query comes from another run, so the difference is descriptive rather than a controlled cache or router speedup. These component means belong to the adapter run. The paced-service measurements below use a separate persistent path. \evidence{A07}
+\input{tables/persistent_findings.tex}
+Appendix~\ref{sec:local-hardware} gives every pass's response distribution and coverage, acquisition-to-output and service clocks, memory allocation, input age, cache behavior, and native-parity checks. The 20\,ms period is a deadline target, not a guaranteed per-update latency. Completing the offered stream does not establish that every response meets that deadline.
 
-The service reduced repeated work by preparing RGB within the object region, extending event prefixes incrementally, and reusing reverse-transport summaries exactly. It also combined top-$k$ normalization with native query graphs and parallel branches, overlapping event execution with RGB preparation. RGB features were reused; event encodings were recomputed. A separate diagnostic verified all 462 recorded calls to the prepared transport component.
+\subsection{Historical persistent-service reference}
 
-Numerical checks rejected several faster alternatives. Compiled transport arithmetic changed the final TTC on sensitive examples despite agreeing on most others. Processing smaller event packets preserved the tested state buffers, representations, and final predictions, but that experiment did not time the computation or run a 200\,Hz source through the paced service. It established a viable numerical path for a later timing experiment. \evidence{L41,L42}
-
-\subsection{Paced-service latency at 50 Hz}
-
-The replay ran on an NVIDIA GeForce RTX 5070 Ti Laptop GPU with Python 3.11.15 and PyTorch 2.11.0+cu128, built with CUDA 12.8. Computation used FP32 with TF32 disabled, two PyTorch CPU threads, eight RGB preparation workers, and a queue capacity of two. Model loading, synthetic shape priming, and initialization from preceding history finished before measured arrivals. Table~\ref{tab:runtime-setup} gives these setup intervals and the parity tolerance.
-
-The five-second replay processed 250 single-object updates from preloaded RAW data accessible only to the CPU feeder. All updates completed with zero drops and zero source errors, and independent post-run checks confirmed TTC parity. At 200 scheduled arrivals, earlier work was still unfinished. Of the 250 responses, 201 met or exceeded 20\,ms. Scheduled-arrival latency reached 29.14\,ms at p95, 32.41\,ms at p99, and 35.33\,ms at maximum. Starting the clock after RAW acquisition, copy, and payload sealing gave a lower p95 of 25.25\,ms.
-
-The measurement excludes disk I/O and covers one object over five seconds. It therefore leaves physical-camera input, sixty-second operation, and larger object counts for further testing. Failed replays remain in separate reports, including dropped updates and rapid error acknowledgements. Latency statistics include completed TTC outputs; failed-request acknowledgements are recorded separately. \evidence{L40,R02}
+The earlier five-second replay completed all 250 updates with numerical parity, zero drops and zero source errors. Its scheduled-arrival latency was 29.14\,ms at p95, 32.41\,ms at p99, and 35.33\,ms at maximum. Of the 250 responses, 201 reached or exceeded 20\,ms. Starting the clock after RAW acquisition, copy and payload sealing gave a p95 of 25.25\,ms. This remains a historical single-run reference, distinct from the contemporaneous repeated comparison above. \evidence{L40,R02}
 
 \begin{figure}[t]
 \centering\includegraphics[width=0.98\linewidth]{figures/publication_runtime.pdf}
-\caption{\textbf{Response-time summaries for 250 completed updates.} Scheduled-arrival latency has a p95 of 29.14\,ms. Of the 250 responses, 201 (80.4\%) meet or exceed 20\,ms. The second clock begins after RAW acquisition, copy, and payload sealing. \evidence{L40}}
+\caption{\textbf{Historical persistent PHASE reference.} The original 250-update replay has scheduled-arrival p95 29.14\,ms; 201 responses reach or exceed 20\,ms. This figure is not a new Garl comparison. \evidence{L40}}
 \end{figure}
+
+All deployment measurements here exclude disk I/O and cover one supplied object region over a five-second replay. They do not establish physical-camera operation, upstream object detection, sixty-second sustained service, multi-object capacity, or calibrated safety decisions. Earlier query-oriented adapter experiments remain in the evidence archive, but their timings are excluded from this article's deployment-latency comparison.
 \FloatBarrier
-
-\subsection{Same-hardware model comparison}
-
-A separate controlled experiment compares the original nine-component PHASE distribution with the released full, event-only, and RGB-only Garl-TTC models on all 434 EvTTC queries, with three passes per arm. It also measures native RAW replay on 120 physical eAP queries from twelve sequences. The complete PHASE system contains \LocalPhaseParameters{} parameters. The unmodified full Garl release executes auxiliary foreground decoders, so we additionally measure a decoder-bypass control with verified input and prediction parity. On matched EvTTC queries, prepared inference medians are \LocalEvPhaseInferMedian{}\,ms for PHASE, \LocalEvGarlFullInferMedian{}\,ms for full Garl, and \LocalEvGarlBypassInferMedian{}\,ms for the bypass control. Appendix~\ref{sec:local-hardware} reports capacity, memory, supported-operator arithmetic, sensor preparation, native eAP replay, coverage, and per-recording and per-pass distributions. The smaller parameter count does not imply faster execution; these local paths and populations differ from the persistent paced-service experiment above.

@@ -1,0 +1,5791 @@
+{
+  "performed": true,
+  "passed": false,
+  "updates": [
+    {
+      "update_id": "update-0",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "reference_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "reference_sensor_sha256": "3b5f6fd6808e2c25b2551d8ac4dba5d605eac0d1ee92383f26165b66ce19bd65",
+      "reference_contract_sha256": "d286cb6df45b5d6a9ba494552e78105f121d7a59e8d44697d20e48c27c900acc",
+      "actual_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "actual_ttc": 5.658644199371338,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-1",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "reference_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "reference_sensor_sha256": "3b5f6fd6808e2c25b2551d8ac4dba5d605eac0d1ee92383f26165b66ce19bd65",
+      "reference_contract_sha256": "19d995ae0c168c5885c63274e0f73a685aefea924183c56b27b5c08c9f399c75",
+      "actual_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "actual_ttc": 5.658644199371338,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-2",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "reference_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "reference_sensor_sha256": "3b5f6fd6808e2c25b2551d8ac4dba5d605eac0d1ee92383f26165b66ce19bd65",
+      "reference_contract_sha256": "e35c7e7d9a4f200379eebc871fa50ee5db01f2e0c7970732534ae9f9ac0ac71c",
+      "actual_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "actual_ttc": 5.658644199371338,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-3",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "reference_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "reference_sensor_sha256": "9c3aef9f20b7387ff3173c9a30d669dbfdfe3c927589a13958612a76f92369d7",
+      "reference_contract_sha256": "63688c9424f96cf85d735703a0f5fb6c2776f2cee167e6073706ff834c838f3c",
+      "actual_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "actual_ttc": 5.639283180236816,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-4",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "reference_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "reference_sensor_sha256": "9c3aef9f20b7387ff3173c9a30d669dbfdfe3c927589a13958612a76f92369d7",
+      "reference_contract_sha256": "86084be0e64e0430edbc6ceaad001f8d582acf7049fd66d5373013a357b73a10",
+      "actual_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "actual_ttc": 5.639283180236816,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-5",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "reference_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "reference_sensor_sha256": "768c851b23aabd87a740e1e5d85dc7bee49998b66837e80db0674b7d18bcfedb",
+      "reference_contract_sha256": "d422365ea9e41ad470ae22b1bfa1f837164c41ee3932332819b9baaf2f95b70d",
+      "actual_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "actual_ttc": 5.58469820022583,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-6",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "reference_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "reference_sensor_sha256": "768c851b23aabd87a740e1e5d85dc7bee49998b66837e80db0674b7d18bcfedb",
+      "reference_contract_sha256": "10573b0434a997df4ea6e41b2e1be775b5c6756e4db89afac6dd9d027a4d17ab",
+      "actual_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "actual_ttc": 5.58469820022583,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-7",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "reference_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "reference_sensor_sha256": "768c851b23aabd87a740e1e5d85dc7bee49998b66837e80db0674b7d18bcfedb",
+      "reference_contract_sha256": "dc1a66816bdb216b99e6792bb99a75fa9fb44a01fc2a5feeb45651f1eb691529",
+      "actual_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "actual_ttc": 5.58469820022583,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-8",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "reference_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "reference_sensor_sha256": "fdda3c42fe21f2303209a793a1728eecc8d47bdcb3f6c4553df38771b22d0bb4",
+      "reference_contract_sha256": "9a85107b21e9f8715fc3934bf762bd2dcad9334fbfdd707bbba5ac48c730282a",
+      "actual_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "actual_ttc": 5.710364818572998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-9",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "reference_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "reference_sensor_sha256": "fdda3c42fe21f2303209a793a1728eecc8d47bdcb3f6c4553df38771b22d0bb4",
+      "reference_contract_sha256": "cf9cbac689fe4538214d85596d73a472db520e4bfdf65d216a1d1ca4a480dc1d",
+      "actual_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "actual_ttc": 5.710364818572998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-10",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "reference_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "reference_sensor_sha256": "fdda3c42fe21f2303209a793a1728eecc8d47bdcb3f6c4553df38771b22d0bb4",
+      "reference_contract_sha256": "55c824541cedc1d917ab7e5388a66c3dbd29b76b93ce50253c14be68a8b3cef4",
+      "actual_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "actual_ttc": 5.710364818572998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-11",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "reference_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "reference_sensor_sha256": "8fc19d264886833afc56c4b1b5bbb04fd990f1ebaf659a0da2ec36775873f6b4",
+      "reference_contract_sha256": "329ab329896e295b50099abb0d2276122cdd7449b1d66d79773f50f8e516968b",
+      "actual_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "actual_ttc": 6.7121076583862305,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-12",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "reference_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "reference_sensor_sha256": "8fc19d264886833afc56c4b1b5bbb04fd990f1ebaf659a0da2ec36775873f6b4",
+      "reference_contract_sha256": "8076bdb5d206dd9e57b6bac8c40699eca59e0ec7f7d3c8f25ead1eef0ebca0ad",
+      "actual_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "actual_ttc": 6.7121076583862305,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-13",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "reference_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "reference_sensor_sha256": "799692dc02b43772f60f5edb09d18561a972e6c4c9cba1afcdfa8a99e2a3ecaf",
+      "reference_contract_sha256": "0c69f5603323d72f6079ef1fbeef7af17d5692c6294d55201c4ec623d08b1156",
+      "actual_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "actual_ttc": 5.515923023223877,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-14",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "reference_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "reference_sensor_sha256": "799692dc02b43772f60f5edb09d18561a972e6c4c9cba1afcdfa8a99e2a3ecaf",
+      "reference_contract_sha256": "738b4d63dc0e269c22a816d3d70e51aa3530b5e71c6ead9a11392dbbdfd15e21",
+      "actual_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "actual_ttc": 5.515923023223877,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-15",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "reference_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "reference_sensor_sha256": "799692dc02b43772f60f5edb09d18561a972e6c4c9cba1afcdfa8a99e2a3ecaf",
+      "reference_contract_sha256": "234f37f620f6612fafd186b02ad3e779cceb3310829fb728df7ed4ae8000cc77",
+      "actual_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "actual_ttc": 5.515923023223877,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-16",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "reference_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "reference_sensor_sha256": "5a20bed3516bc9266d201f7eae8067a64a6bcce67f72b18b5806f0304ca1ffaf",
+      "reference_contract_sha256": "1a34e9b48c74b8f6672db1aed12cc786e267f8d9f149cb3ca580c18bd101f015",
+      "actual_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "actual_ttc": 5.014510631561279,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-17",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "reference_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "reference_sensor_sha256": "5a20bed3516bc9266d201f7eae8067a64a6bcce67f72b18b5806f0304ca1ffaf",
+      "reference_contract_sha256": "883369cca9af03a65a2bdd7b8cc98232204c6296130c6df5000cc9e8d61a3ae9",
+      "actual_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "actual_ttc": 5.014510631561279,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-18",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "reference_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "reference_sensor_sha256": "6fe61b30e0f41a4b03c9ae0c5ed1a9ed21a8386494c49f87e7e94d00900aa12a",
+      "reference_contract_sha256": "207bb0579f41dc7aa3d5e888f449a50640f98b5de43718c6949f6340e90b7e93",
+      "actual_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "actual_ttc": 5.427217483520508,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-19",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "reference_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "reference_sensor_sha256": "6fe61b30e0f41a4b03c9ae0c5ed1a9ed21a8386494c49f87e7e94d00900aa12a",
+      "reference_contract_sha256": "0e641f43c9a957451adc208d743256ba3bac62cfa45059b7867243c3e18f2bdf",
+      "actual_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "actual_ttc": 5.427217483520508,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-20",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "reference_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "reference_sensor_sha256": "6fe61b30e0f41a4b03c9ae0c5ed1a9ed21a8386494c49f87e7e94d00900aa12a",
+      "reference_contract_sha256": "610a3e84680d0a9bc5883e023e34feca5eb231c243f35a44b28644d298f9e53f",
+      "actual_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "actual_ttc": 5.427217483520508,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-21",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.779672622680664,
+      "reference_heights": [
+        112.51242065429688,
+        114.4935302734375
+      ],
+      "reference_sensor_sha256": "a8dcc20b398260784d3b4091012fc9603a2adc0a32d9acf1b5295c6febb3c76a",
+      "reference_contract_sha256": "1f79bca90fdeeb28ccc108edf550aee879e27e11ca66c163ee3b2886f333a224",
+      "actual_heights": [
+        112.51242065429688,
+        114.4935302734375
+      ],
+      "actual_ttc": 5.779672622680664,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-22",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.779672622680664,
+      "reference_heights": [
+        112.51242065429688,
+        114.4935302734375
+      ],
+      "reference_sensor_sha256": "a8dcc20b398260784d3b4091012fc9603a2adc0a32d9acf1b5295c6febb3c76a",
+      "reference_contract_sha256": "94e8c36cacff532204e2ceae8f51e6dc69017d0f4717f1b0a7c1aa33c8e642a6",
+      "actual_heights": [
+        112.51242065429688,
+        114.4935302734375
+      ],
+      "actual_ttc": 5.779672622680664,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-23",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368329048156738,
+      "reference_heights": [
+        113.58368682861328,
+        115.73981475830078
+      ],
+      "reference_sensor_sha256": "05cf285ebc516e56f006e4854a9e7732b5814c43d913eb3cc04beb546337ce74",
+      "reference_contract_sha256": "eefc14e8b3fc8d7f61986399c81719472f0e48c7be2e211f302a66ed58a8875c",
+      "actual_heights": [
+        113.58368682861328,
+        115.73981475830078
+      ],
+      "actual_ttc": 5.368329048156738,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-24",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368329048156738,
+      "reference_heights": [
+        113.58368682861328,
+        115.73981475830078
+      ],
+      "reference_sensor_sha256": "05cf285ebc516e56f006e4854a9e7732b5814c43d913eb3cc04beb546337ce74",
+      "reference_contract_sha256": "07d832746ffc041a2b79931da57577527bb69d84393b5fc79feed8d4d7381dcb",
+      "actual_heights": [
+        113.58368682861328,
+        115.73981475830078
+      ],
+      "actual_ttc": 5.368329048156738,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-25",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368329048156738,
+      "reference_heights": [
+        113.58368682861328,
+        115.73981475830078
+      ],
+      "reference_sensor_sha256": "05cf285ebc516e56f006e4854a9e7732b5814c43d913eb3cc04beb546337ce74",
+      "reference_contract_sha256": "c11c05dec1684f27552c0dd4e77aa28a2bf84012b5f944557fee46568cb64fc9",
+      "actual_heights": [
+        113.58368682861328,
+        115.73981475830078
+      ],
+      "actual_ttc": 5.368329048156738,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-26",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.765712261199951,
+      "reference_heights": [
+        116.5027847290039,
+        118.9997329711914
+      ],
+      "reference_sensor_sha256": "87523750a1172de60d206b96518b96613c9f2f4dc4e8599a81d0795d2006094c",
+      "reference_contract_sha256": "27b675db05ee89aa0fcb0dfa83cb7f761d98ea53cebb26842303001a1eee4549",
+      "actual_heights": [
+        116.5027847290039,
+        118.9997329711914
+      ],
+      "actual_ttc": 4.765712261199951,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-27",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.765712261199951,
+      "reference_heights": [
+        116.5027847290039,
+        118.9997329711914
+      ],
+      "reference_sensor_sha256": "87523750a1172de60d206b96518b96613c9f2f4dc4e8599a81d0795d2006094c",
+      "reference_contract_sha256": "068187fccf91b3e62198f217dc7ad4539b8d336822c824cb6100a5b796b40db2",
+      "actual_heights": [
+        116.5027847290039,
+        118.9997329711914
+      ],
+      "actual_ttc": 4.765712261199951,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-28",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.8279900550842285,
+      "reference_heights": [
+        117.84809112548828,
+        120.3405990600586
+      ],
+      "reference_sensor_sha256": "b4e8d891d1fcc4c4d4a68d19623677b5787a52ec5c459c05ff1e37b4b72f3123",
+      "reference_contract_sha256": "b56675449581b2fe726f4cf11861308518fcbf68799990e8f3bf83a8945875ee",
+      "actual_heights": [
+        117.84809112548828,
+        120.3405990600586
+      ],
+      "actual_ttc": 4.8279900550842285,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-29",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.8279900550842285,
+      "reference_heights": [
+        117.84809112548828,
+        120.3405990600586
+      ],
+      "reference_sensor_sha256": "b4e8d891d1fcc4c4d4a68d19623677b5787a52ec5c459c05ff1e37b4b72f3123",
+      "reference_contract_sha256": "bd0e884a6bf65f51dac0ca8e70334334d54bbbf41e0ab81d1846afe143a21dca",
+      "actual_heights": [
+        117.84809112548828,
+        120.3405990600586
+      ],
+      "actual_ttc": 4.8279900550842285,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-30",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.8279900550842285,
+      "reference_heights": [
+        117.84809112548828,
+        120.3405990600586
+      ],
+      "reference_sensor_sha256": "b4e8d891d1fcc4c4d4a68d19623677b5787a52ec5c459c05ff1e37b4b72f3123",
+      "reference_contract_sha256": "517472c1301d956e1ff98cef634cfa541068cd31b297c37564a60e7107de9af9",
+      "actual_heights": [
+        117.84809112548828,
+        120.3405990600586
+      ],
+      "actual_ttc": 4.8279900550842285,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-31",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.236196994781494,
+      "reference_heights": [
+        113.79889678955078,
+        116.01448059082031
+      ],
+      "reference_sensor_sha256": "3d7072fe30ac0e34000992423044a409f2e173ca9c6cfc25206849d1374fba25",
+      "reference_contract_sha256": "35a86b2fddf8f7f3a313f4ab582be3c76e684d50ff387b513b4e1a65d1627c9c",
+      "actual_heights": [
+        113.79889678955078,
+        116.01448059082031
+      ],
+      "actual_ttc": 5.236196994781494,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-32",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.236196994781494,
+      "reference_heights": [
+        113.79889678955078,
+        116.01448059082031
+      ],
+      "reference_sensor_sha256": "3d7072fe30ac0e34000992423044a409f2e173ca9c6cfc25206849d1374fba25",
+      "reference_contract_sha256": "4df7cbf36bb18e50d6786e9cfad65b16c2539c342167a41d94ede865be2d413d",
+      "actual_heights": [
+        113.79889678955078,
+        116.01448059082031
+      ],
+      "actual_ttc": 5.236196994781494,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-33",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.9070725440979,
+      "reference_heights": [
+        111.8626480102539,
+        113.78910064697266
+      ],
+      "reference_sensor_sha256": "915016f7c410b88deaee5885c8d74b5696ef8a35433547e562e69b034d616d4a",
+      "reference_contract_sha256": "053ee617c6b3c20c6f690df7e89f5970efe17fe4483eb58b2560480d710cac96",
+      "actual_heights": [
+        111.8626480102539,
+        113.78910064697266
+      ],
+      "actual_ttc": 5.9070725440979,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-34",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.9070725440979,
+      "reference_heights": [
+        111.8626480102539,
+        113.78910064697266
+      ],
+      "reference_sensor_sha256": "915016f7c410b88deaee5885c8d74b5696ef8a35433547e562e69b034d616d4a",
+      "reference_contract_sha256": "a517a42b5ce1061553a1c8c5359ec6ccb3ac63b4b0c4cd71c79687c853334df6",
+      "actual_heights": [
+        111.8626480102539,
+        113.78910064697266
+      ],
+      "actual_ttc": 5.9070725440979,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-35",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.9070725440979,
+      "reference_heights": [
+        111.8626480102539,
+        113.78910064697266
+      ],
+      "reference_sensor_sha256": "915016f7c410b88deaee5885c8d74b5696ef8a35433547e562e69b034d616d4a",
+      "reference_contract_sha256": "a25165bb53416219b992ef6b678cc77cfa2a0d97fece7654887d93930efec84a",
+      "actual_heights": [
+        111.8626480102539,
+        113.78910064697266
+      ],
+      "actual_ttc": 5.9070725440979,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-36",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.5643630027771,
+      "reference_heights": [
+        111.79522705078125,
+        113.84127044677734
+      ],
+      "reference_sensor_sha256": "4d2d93775d5778335edbaa1e7304c30f1418e0060d50fb83417319b3effbe985",
+      "reference_contract_sha256": "4deaee9177096215a2363ec3d31fc0728505a0d5e6596965f5978e6cd5b7bcd1",
+      "actual_heights": [
+        111.79522705078125,
+        113.84127044677734
+      ],
+      "actual_ttc": 5.5643630027771,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-37",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.5643630027771,
+      "reference_heights": [
+        111.79522705078125,
+        113.84127044677734
+      ],
+      "reference_sensor_sha256": "4d2d93775d5778335edbaa1e7304c30f1418e0060d50fb83417319b3effbe985",
+      "reference_contract_sha256": "d4e2513f0e2bfbd42dd7cbe6ff2e5acf858fe13a0c762ef34fce8aecac7c863f",
+      "actual_heights": [
+        111.79522705078125,
+        113.84127044677734
+      ],
+      "actual_ttc": 5.5643630027771,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-38",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.694007396697998,
+      "reference_heights": [
+        111.95991516113281,
+        113.9613037109375
+      ],
+      "reference_sensor_sha256": "634498eecc82cad5451212fc36f4e805a8850f54989df699e5536d8bf78d13ad",
+      "reference_contract_sha256": "10746022e5026e35ba2925fcf5c58af8213a4c9f323f10937e23e1f55d05b419",
+      "actual_heights": [
+        111.95991516113281,
+        113.9613037109375
+      ],
+      "actual_ttc": 5.694007396697998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-39",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.694007396697998,
+      "reference_heights": [
+        111.95991516113281,
+        113.9613037109375
+      ],
+      "reference_sensor_sha256": "634498eecc82cad5451212fc36f4e805a8850f54989df699e5536d8bf78d13ad",
+      "reference_contract_sha256": "df76c0d1da2d80f73c489911ad131ac819be2396eb04615eb5fc8e6e10fe7c3f",
+      "actual_heights": [
+        111.95991516113281,
+        113.9613037109375
+      ],
+      "actual_ttc": 5.694007396697998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-40",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.694007396697998,
+      "reference_heights": [
+        111.95991516113281,
+        113.9613037109375
+      ],
+      "reference_sensor_sha256": "634498eecc82cad5451212fc36f4e805a8850f54989df699e5536d8bf78d13ad",
+      "reference_contract_sha256": "70966a9c4e798a86617e8d077d43cde1ca13a6e29fa7a37a7f91218ff737417d",
+      "actual_heights": [
+        111.95991516113281,
+        113.9613037109375
+      ],
+      "actual_ttc": 5.694007396697998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-41",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.9521164894104,
+      "reference_heights": [
+        119.1663818359375,
+        121.62229919433594
+      ],
+      "reference_sensor_sha256": "9caacc00dcfe63fd0767c0d8d4c73a1207d850d1ab38232f0481e9492c199502",
+      "reference_contract_sha256": "df6d74cee610618a19daec87c217eab6cda9a5cccd3c1a26fe7d1cd29ebe6a97",
+      "actual_heights": [
+        119.1663818359375,
+        121.62229919433594
+      ],
+      "actual_ttc": 4.9521164894104,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-42",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.9521164894104,
+      "reference_heights": [
+        119.1663818359375,
+        121.62229919433594
+      ],
+      "reference_sensor_sha256": "9caacc00dcfe63fd0767c0d8d4c73a1207d850d1ab38232f0481e9492c199502",
+      "reference_contract_sha256": "22b4f01ff998c9b46d1231c9fca3d25ae618fc4d28235fb0bdcc7d64312ab220",
+      "actual_heights": [
+        119.1663818359375,
+        121.62229919433594
+      ],
+      "actual_ttc": 4.9521164894104,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-43",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.555235385894775,
+      "reference_heights": [
+        117.50013732910156,
+        119.32032775878906
+      ],
+      "reference_sensor_sha256": "4d4bef0106478ccf5da48a6c829340cd521977cee6c550dfc96492adfedd7499",
+      "reference_contract_sha256": "b8d75b70bdab6f9a28b5d46b17d079b2109975586f662851afa62305ef6797bf",
+      "actual_heights": [
+        117.50013732910156,
+        119.32032775878906
+      ],
+      "actual_ttc": 6.555235385894775,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-44",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.555235385894775,
+      "reference_heights": [
+        117.50013732910156,
+        119.32032775878906
+      ],
+      "reference_sensor_sha256": "4d4bef0106478ccf5da48a6c829340cd521977cee6c550dfc96492adfedd7499",
+      "reference_contract_sha256": "4ff201e395509f4b72ca175d620b8ce064a52a1803989a679084a50b205a158d",
+      "actual_heights": [
+        117.50013732910156,
+        119.32032775878906
+      ],
+      "actual_ttc": 6.555235385894775,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-45",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.555235385894775,
+      "reference_heights": [
+        117.50013732910156,
+        119.32032775878906
+      ],
+      "reference_sensor_sha256": "4d4bef0106478ccf5da48a6c829340cd521977cee6c550dfc96492adfedd7499",
+      "reference_contract_sha256": "fd31366c2b147d7517ec4c24420837f006b28869f710f61d604783d276cda060",
+      "actual_heights": [
+        117.50013732910156,
+        119.32032775878906
+      ],
+      "actual_ttc": 6.555235385894775,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-46",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 12.62453842163086,
+      "reference_heights": [
+        120.11707305908203,
+        121.0761947631836
+      ],
+      "reference_sensor_sha256": "fc5907b6f868e237ee3d1aa19d1118a460ecccb0d41623dae9c3e18573c8a1cb",
+      "reference_contract_sha256": "b0027e40607f1fdd34fca2ce27dd63730abc496520175ec13a2e6b387a55c97f",
+      "actual_heights": [
+        120.11707305908203,
+        121.0761947631836
+      ],
+      "actual_ttc": 12.62453842163086,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-47",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 12.62453842163086,
+      "reference_heights": [
+        120.11707305908203,
+        121.0761947631836
+      ],
+      "reference_sensor_sha256": "fc5907b6f868e237ee3d1aa19d1118a460ecccb0d41623dae9c3e18573c8a1cb",
+      "reference_contract_sha256": "d190a96028e4c6c4e7a18034a83e36b9744ad162cb3c24aca33662a96b52d402",
+      "actual_heights": [
+        120.11707305908203,
+        121.0761947631836
+      ],
+      "actual_ttc": 12.62453842163086,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-48",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 7.94397497177124,
+      "reference_heights": [
+        112.43824768066406,
+        113.87178039550781
+      ],
+      "reference_sensor_sha256": "d8d8080dbaa1a4836d951efb7632595a23222ea3716198524d64ce82ec656a69",
+      "reference_contract_sha256": "8ce74d4a4f1435007d9d96ebbd03319519be1f428b695b0e22c27fff8b99c144",
+      "actual_heights": [
+        112.43824768066406,
+        113.87178039550781
+      ],
+      "actual_ttc": 7.94397497177124,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-49",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 7.94397497177124,
+      "reference_heights": [
+        112.43824768066406,
+        113.87178039550781
+      ],
+      "reference_sensor_sha256": "d8d8080dbaa1a4836d951efb7632595a23222ea3716198524d64ce82ec656a69",
+      "reference_contract_sha256": "4c0d80f027e8c1e7f30608148c42e8d70581836e70a3f775b1c55d63739a1677",
+      "actual_heights": [
+        112.43824768066406,
+        113.87178039550781
+      ],
+      "actual_ttc": 7.94397497177124,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-50",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 7.94397497177124,
+      "reference_heights": [
+        112.43824768066406,
+        113.87178039550781
+      ],
+      "reference_sensor_sha256": "d8d8080dbaa1a4836d951efb7632595a23222ea3716198524d64ce82ec656a69",
+      "reference_contract_sha256": "2f65a38af22b8d93d51dbc5b5e7ad82142b98fefca1b6170557d756113215f08",
+      "actual_heights": [
+        112.43824768066406,
+        113.87178039550781
+      ],
+      "actual_ttc": 7.94397497177124,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-51",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.695321559906006,
+      "reference_heights": [
+        116.00048065185547,
+        118.0736083984375
+      ],
+      "reference_sensor_sha256": "5de27a81b32dc357f6be0d3995eb7ef61dfda3c3e1c5d81e0d925fed1c590fea",
+      "reference_contract_sha256": "0f0afcf5bb72c89606ccb0ad4f5f81174ae4188f7b05b74d7fe3849b35bc00b9",
+      "actual_heights": [
+        116.00048065185547,
+        118.0736083984375
+      ],
+      "actual_ttc": 5.695321559906006,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-52",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.695321559906006,
+      "reference_heights": [
+        116.00048065185547,
+        118.0736083984375
+      ],
+      "reference_sensor_sha256": "5de27a81b32dc357f6be0d3995eb7ef61dfda3c3e1c5d81e0d925fed1c590fea",
+      "reference_contract_sha256": "32a161ddc844ad2d3ac29cfd7615065c9cc8f5910188a70bd84cd2713de92def",
+      "actual_heights": [
+        116.00048065185547,
+        118.0736083984375
+      ],
+      "actual_ttc": 5.695321559906006,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-53",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.26399564743042,
+      "reference_heights": [
+        108.04132080078125,
+        110.13348388671875
+      ],
+      "reference_sensor_sha256": "eabd4f70b93346842b5cf4abcc2eceef0c8c36de948848397f8dd086a53442f2",
+      "reference_contract_sha256": "a714e91245953ae9278f9f1a9cd713b8ceebf36cd09c286b6e7c16d7bd7c421a",
+      "actual_heights": [
+        108.04132080078125,
+        110.13348388671875
+      ],
+      "actual_ttc": 5.26399564743042,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-54",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.26399564743042,
+      "reference_heights": [
+        108.04132080078125,
+        110.13348388671875
+      ],
+      "reference_sensor_sha256": "eabd4f70b93346842b5cf4abcc2eceef0c8c36de948848397f8dd086a53442f2",
+      "reference_contract_sha256": "ddbb85a1d3ff219f0a287b01b12045917be1d3088a5ba2eaa0796bfb8a08c37d",
+      "actual_heights": [
+        108.04132080078125,
+        110.13348388671875
+      ],
+      "actual_ttc": 5.26399564743042,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-55",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.26399564743042,
+      "reference_heights": [
+        108.04132080078125,
+        110.13348388671875
+      ],
+      "reference_sensor_sha256": "eabd4f70b93346842b5cf4abcc2eceef0c8c36de948848397f8dd086a53442f2",
+      "reference_contract_sha256": "26bcb36aa930a7ba8f270ac5b1bce3d47c62010f7302a3fce14f9ff5c7540fdf",
+      "actual_heights": [
+        108.04132080078125,
+        110.13348388671875
+      ],
+      "actual_ttc": 5.26399564743042,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-56",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368981838226318,
+      "reference_heights": [
+        113.68394470214844,
+        115.84170532226562
+      ],
+      "reference_sensor_sha256": "1e2c7bdc798f60196ee4087988224eee888b4e95454b80836644d4531022e0ae",
+      "reference_contract_sha256": "83a4e45d31ff5de4b3cd355db444db464a3ee4c85f1d8b389e59dbc10c105c23",
+      "actual_heights": [
+        113.68394470214844,
+        115.84170532226562
+      ],
+      "actual_ttc": 5.368981838226318,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-57",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368981838226318,
+      "reference_heights": [
+        113.68394470214844,
+        115.84170532226562
+      ],
+      "reference_sensor_sha256": "1e2c7bdc798f60196ee4087988224eee888b4e95454b80836644d4531022e0ae",
+      "reference_contract_sha256": "0696b25a5c92562a44fcdbcdb99dd613b993e548065323411cca317e1a436895",
+      "actual_heights": [
+        113.68394470214844,
+        115.84170532226562
+      ],
+      "actual_ttc": 5.368981838226318,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-58",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.2295355796813965,
+      "reference_heights": [
+        117.54615783691406,
+        119.83787536621094
+      ],
+      "reference_sensor_sha256": "d07347ca09d423a8005d75c73e633d6a8979852cf0e78fa47505128b32351ef6",
+      "reference_contract_sha256": "a8eb23b15534e2d5c70ddc46017cfb7f6f6c301ca0f9b93bb541a4b8b6ca0a22",
+      "actual_heights": [
+        117.54615783691406,
+        119.83787536621094
+      ],
+      "actual_ttc": 5.2295355796813965,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-59",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.2295355796813965,
+      "reference_heights": [
+        117.54615783691406,
+        119.83787536621094
+      ],
+      "reference_sensor_sha256": "d07347ca09d423a8005d75c73e633d6a8979852cf0e78fa47505128b32351ef6",
+      "reference_contract_sha256": "92e61c4063c1f1115969c2316f7edd410a00c91eabe6340e050940df44d3a81e",
+      "actual_heights": [
+        117.54615783691406,
+        119.83787536621094
+      ],
+      "actual_ttc": 5.2295355796813965,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-60",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.2295355796813965,
+      "reference_heights": [
+        117.54615783691406,
+        119.83787536621094
+      ],
+      "reference_sensor_sha256": "d07347ca09d423a8005d75c73e633d6a8979852cf0e78fa47505128b32351ef6",
+      "reference_contract_sha256": "0d1709aee7ea7d14bf94544d7b8d96f38487e3abd66e640e42a151f5ca60e94a",
+      "actual_heights": [
+        117.54615783691406,
+        119.83787536621094
+      ],
+      "actual_ttc": 5.2295355796813965,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-61",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.023484230041504,
+      "reference_heights": [
+        122.2230224609375,
+        124.7054214477539
+      ],
+      "reference_sensor_sha256": "c0f8fbde02aa583426143abeb9832193728a774bcd56cce884736b5e5fff4929",
+      "reference_contract_sha256": "267066783dd75bb4997a2f11e5bbad8d70143a5bd134a8371f59149e106f65f9",
+      "actual_heights": [
+        122.2230224609375,
+        124.7054214477539
+      ],
+      "actual_ttc": 5.023484230041504,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-62",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.023484230041504,
+      "reference_heights": [
+        122.2230224609375,
+        124.7054214477539
+      ],
+      "reference_sensor_sha256": "c0f8fbde02aa583426143abeb9832193728a774bcd56cce884736b5e5fff4929",
+      "reference_contract_sha256": "fd8479fe2713ed8aa74cdc5ac380c7a7f35a3ab475d0f0131e493b303b3c72f6",
+      "actual_heights": [
+        122.2230224609375,
+        124.7054214477539
+      ],
+      "actual_ttc": 5.023484230041504,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-63",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.645435333251953,
+      "reference_heights": [
+        113.86063385009766,
+        115.9138412475586
+      ],
+      "reference_sensor_sha256": "0b092ba3e07cb97a4e028c0b123329f32dca09d77f913975b399f418666aa6a3",
+      "reference_contract_sha256": "5bbbba20f775d3420a892a7059900f150e51f08a7d15e42fc6ff46865ffee22a",
+      "actual_heights": [
+        113.86063385009766,
+        115.9138412475586
+      ],
+      "actual_ttc": 5.645435333251953,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-64",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.645435333251953,
+      "reference_heights": [
+        113.86063385009766,
+        115.9138412475586
+      ],
+      "reference_sensor_sha256": "0b092ba3e07cb97a4e028c0b123329f32dca09d77f913975b399f418666aa6a3",
+      "reference_contract_sha256": "e364cff05a6ce908f7164435ea301d889eecd94c98b9e4a33634dbf414b25e8b",
+      "actual_heights": [
+        113.86063385009766,
+        115.9138412475586
+      ],
+      "actual_ttc": 5.645435333251953,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-65",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.645435333251953,
+      "reference_heights": [
+        113.86063385009766,
+        115.9138412475586
+      ],
+      "reference_sensor_sha256": "0b092ba3e07cb97a4e028c0b123329f32dca09d77f913975b399f418666aa6a3",
+      "reference_contract_sha256": "257779f407121f643e73393fd4628b6b526b263b06027abdaf5098ec89696e47",
+      "actual_heights": [
+        113.86063385009766,
+        115.9138412475586
+      ],
+      "actual_ttc": 5.645435333251953,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-66",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.293485641479492,
+      "reference_heights": [
+        117.60057830810547,
+        119.49951171875
+      ],
+      "reference_sensor_sha256": "df858e0233b60139c9d4a5bd3c95e06f0fe46effc584f038438e080e4aa1dc2a",
+      "reference_contract_sha256": "1d1e1fbaca233e16c0bb30c04b753504c31c2fc08c4ca985b6540da271d2fd95",
+      "actual_heights": [
+        117.60057830810547,
+        119.49951171875
+      ],
+      "actual_ttc": 6.293485641479492,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-67",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.293485641479492,
+      "reference_heights": [
+        117.60057830810547,
+        119.49951171875
+      ],
+      "reference_sensor_sha256": "df858e0233b60139c9d4a5bd3c95e06f0fe46effc584f038438e080e4aa1dc2a",
+      "reference_contract_sha256": "6f5755802143231130941ae245ec83343ab8b9d73456b498cf3ac3afdc530408",
+      "actual_heights": [
+        117.60057830810547,
+        119.49951171875
+      ],
+      "actual_ttc": 6.293485641479492,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-68",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.166718482971191,
+      "reference_heights": [
+        114.0743408203125,
+        115.95478820800781
+      ],
+      "reference_sensor_sha256": "97ec143aeffdcffcddd15036544fec5512bef55fb2d47a72283ca41cc335159a",
+      "reference_contract_sha256": "bae98568903f8a5beb614d41f9291340bc38dba55c37ab467bc94939ca84318b",
+      "actual_heights": [
+        114.0743408203125,
+        115.95478820800781
+      ],
+      "actual_ttc": 6.166718482971191,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-69",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.166718482971191,
+      "reference_heights": [
+        114.0743408203125,
+        115.95478820800781
+      ],
+      "reference_sensor_sha256": "97ec143aeffdcffcddd15036544fec5512bef55fb2d47a72283ca41cc335159a",
+      "reference_contract_sha256": "a9e05958da8866db2aaa6fab045759dd2b49dbc1c23270cf6455ad106f2a9372",
+      "actual_heights": [
+        114.0743408203125,
+        115.95478820800781
+      ],
+      "actual_ttc": 6.166718482971191,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-70",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.166718482971191,
+      "reference_heights": [
+        114.0743408203125,
+        115.95478820800781
+      ],
+      "reference_sensor_sha256": "97ec143aeffdcffcddd15036544fec5512bef55fb2d47a72283ca41cc335159a",
+      "reference_contract_sha256": "4ac19455bf7cca7e3d0ee051d2aa3f548d77048cc644eed189e3f4ac57febdb9",
+      "actual_heights": [
+        114.0743408203125,
+        115.95478820800781
+      ],
+      "actual_ttc": 6.166718482971191,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-71",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.342224597930908,
+      "reference_heights": [
+        115.4994888305664,
+        118.2220458984375
+      ],
+      "reference_sensor_sha256": "0e9cae39c1083cd05f88f855d5fbdad93c603da8faa4b65b5531e01806d37ae4",
+      "reference_contract_sha256": "374ee5d984894ec788f822f0087194d0d44977cc16d8cab65814b7cc6d173a15",
+      "actual_heights": [
+        115.4994888305664,
+        118.2220458984375
+      ],
+      "actual_ttc": 4.342224597930908,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-72",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.342224597930908,
+      "reference_heights": [
+        115.4994888305664,
+        118.2220458984375
+      ],
+      "reference_sensor_sha256": "0e9cae39c1083cd05f88f855d5fbdad93c603da8faa4b65b5531e01806d37ae4",
+      "reference_contract_sha256": "196fce592a375dde3794c3fecd4e0db4c37d2bc096615a4ae0d744149c2dafc7",
+      "actual_heights": [
+        115.4994888305664,
+        118.2220458984375
+      ],
+      "actual_ttc": 4.342224597930908,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-73",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.322985649108887,
+      "reference_heights": [
+        114.97650146484375,
+        117.17781066894531
+      ],
+      "reference_sensor_sha256": "034cf6f522b40ce45cd618ce0b4bd5e5781264db43b70ce8f5542f5385752620",
+      "reference_contract_sha256": "a0883d10c992044bfea5c33a79142da665b8ec173d85848ce3284585b8cddc30",
+      "actual_heights": [
+        114.97650146484375,
+        117.17781066894531
+      ],
+      "actual_ttc": 5.322985649108887,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-74",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.322985649108887,
+      "reference_heights": [
+        114.97650146484375,
+        117.17781066894531
+      ],
+      "reference_sensor_sha256": "034cf6f522b40ce45cd618ce0b4bd5e5781264db43b70ce8f5542f5385752620",
+      "reference_contract_sha256": "f51cb70bd00e2121df95ab18e1886c6d2dabf287ea6d6a457d2932f4ee8ffcd7",
+      "actual_heights": [
+        114.97650146484375,
+        117.17781066894531
+      ],
+      "actual_ttc": 5.322985649108887,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-75",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.322985649108887,
+      "reference_heights": [
+        114.97650146484375,
+        117.17781066894531
+      ],
+      "reference_sensor_sha256": "034cf6f522b40ce45cd618ce0b4bd5e5781264db43b70ce8f5542f5385752620",
+      "reference_contract_sha256": "869b76c67d3b36c4fd03202b80dadd1ec177cd3bc8271b98ad368996730febb0",
+      "actual_heights": [
+        114.97650146484375,
+        117.17781066894531
+      ],
+      "actual_ttc": 5.322985649108887,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-76",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.774052619934082,
+      "reference_heights": [
+        114.01573181152344,
+        116.45501708984375
+      ],
+      "reference_sensor_sha256": "5fd66c117cf1b1dd10ef16326e420b673d854c6972296a8dcf7b17671379a326",
+      "reference_contract_sha256": "7b774651d72f769fbea807dddbea26f303ff5b1ca6a4b634b6e5ed008fb7bd66",
+      "actual_heights": [
+        114.01573181152344,
+        116.45501708984375
+      ],
+      "actual_ttc": 4.774052619934082,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-77",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.774052619934082,
+      "reference_heights": [
+        114.01573181152344,
+        116.45501708984375
+      ],
+      "reference_sensor_sha256": "5fd66c117cf1b1dd10ef16326e420b673d854c6972296a8dcf7b17671379a326",
+      "reference_contract_sha256": "0d5ae0e20ad1c60b678d0bd816a90876edc06e0c6e57e9001d890e2013177c7b",
+      "actual_heights": [
+        114.01573181152344,
+        116.45501708984375
+      ],
+      "actual_ttc": 4.774052619934082,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-78",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.175420761108398,
+      "reference_heights": [
+        114.93244934082031,
+        117.19712829589844
+      ],
+      "reference_sensor_sha256": "54855dee66e3b9fdf6e02d496ca1a0b839f03c09d77032bd1832b5f688717860",
+      "reference_contract_sha256": "127a125773e4eaf5d6624c68a4ac042e03c48270f4417a6d776e275fce282179",
+      "actual_heights": [
+        114.93244934082031,
+        117.19712829589844
+      ],
+      "actual_ttc": 5.175420761108398,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-79",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.175420761108398,
+      "reference_heights": [
+        114.93244934082031,
+        117.19712829589844
+      ],
+      "reference_sensor_sha256": "54855dee66e3b9fdf6e02d496ca1a0b839f03c09d77032bd1832b5f688717860",
+      "reference_contract_sha256": "e4aaa87b047edeb920c566e5fa7730c0887e2e494520ef95e6a0e50ec7aafbf1",
+      "actual_heights": [
+        114.93244934082031,
+        117.19712829589844
+      ],
+      "actual_ttc": 5.175420761108398,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-80",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.175420761108398,
+      "reference_heights": [
+        114.93244934082031,
+        117.19712829589844
+      ],
+      "reference_sensor_sha256": "54855dee66e3b9fdf6e02d496ca1a0b839f03c09d77032bd1832b5f688717860",
+      "reference_contract_sha256": "25df2fa08c6a660c1eed1063889c21f7c9f596cee391a6b32f8c8f8966d9e23a",
+      "actual_heights": [
+        114.93244934082031,
+        117.19712829589844
+      ],
+      "actual_ttc": 5.175420761108398,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-81",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.586056232452393,
+      "reference_heights": [
+        124.63309478759766,
+        126.9050521850586
+      ],
+      "reference_sensor_sha256": "1039acec4ce29ea3e52b72529c663ca90b1289b5d026881f0200525250726943",
+      "reference_contract_sha256": "71596a6b6da69139da7e491076981aa429f1a0234849b520744fb6361e0e7623",
+      "actual_heights": [
+        124.63309478759766,
+        126.9050521850586
+      ],
+      "actual_ttc": 5.586056232452393,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-82",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.586056232452393,
+      "reference_heights": [
+        124.63309478759766,
+        126.9050521850586
+      ],
+      "reference_sensor_sha256": "1039acec4ce29ea3e52b72529c663ca90b1289b5d026881f0200525250726943",
+      "reference_contract_sha256": "0eeebfcc4ad147c3b58b923e8d8366fc6b63e4a421835e06f41ebebd04bd4520",
+      "actual_heights": [
+        124.63309478759766,
+        126.9050521850586
+      ],
+      "actual_ttc": 5.586056232452393,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-83",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.1534013748168945,
+      "reference_heights": [
+        120.541748046875,
+        122.53301239013672
+      ],
+      "reference_sensor_sha256": "025f9e2579ad0a3c55c3fdc165b816c767624b227b93e5085795a70efc40e69b",
+      "reference_contract_sha256": "68dcb5237be49766d15bb7c992df4542ae51c09adf8182b67e3d87a4056afc23",
+      "actual_heights": [
+        120.541748046875,
+        122.53301239013672
+      ],
+      "actual_ttc": 6.1534013748168945,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-84",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.1534013748168945,
+      "reference_heights": [
+        120.541748046875,
+        122.53301239013672
+      ],
+      "reference_sensor_sha256": "025f9e2579ad0a3c55c3fdc165b816c767624b227b93e5085795a70efc40e69b",
+      "reference_contract_sha256": "0ac12e0fe5c1b944025c04d176063e7aa452b792dcd4340088cbbcb10d893fcb",
+      "actual_heights": [
+        120.541748046875,
+        122.53301239013672
+      ],
+      "actual_ttc": 6.1534013748168945,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-85",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.1534013748168945,
+      "reference_heights": [
+        120.541748046875,
+        122.53301239013672
+      ],
+      "reference_sensor_sha256": "025f9e2579ad0a3c55c3fdc165b816c767624b227b93e5085795a70efc40e69b",
+      "reference_contract_sha256": "1309f07366b3d7385c91d5ebdab1bdc09ae41530fba6951de5d960a0d1c835b5",
+      "actual_heights": [
+        120.541748046875,
+        122.53301239013672
+      ],
+      "actual_ttc": 6.1534013748168945,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-86",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.691843032836914,
+      "reference_heights": [
+        123.29638671875,
+        125.50129699707031
+      ],
+      "reference_sensor_sha256": "a74e75b686eec78820b3d8eb4daf9c85f94b15bf596c74d18171bd49e6a0ee3e",
+      "reference_contract_sha256": "5575e9e3ed15bc1c3e35cceb36ba97339b3431b0c1ae2264cf9bbf9ee4c27dce",
+      "actual_heights": [
+        123.29638671875,
+        125.50129699707031
+      ],
+      "actual_ttc": 5.691843032836914,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-87",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.691843032836914,
+      "reference_heights": [
+        123.29638671875,
+        125.50129699707031
+      ],
+      "reference_sensor_sha256": "a74e75b686eec78820b3d8eb4daf9c85f94b15bf596c74d18171bd49e6a0ee3e",
+      "reference_contract_sha256": "a2cd7f77a4ebf724a36e131883a2ee9d1ee2a330ddeffbad016e3fc87799f162",
+      "actual_heights": [
+        123.29638671875,
+        125.50129699707031
+      ],
+      "actual_ttc": 5.691843032836914,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-88",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.536454200744629,
+      "reference_heights": [
+        121.7957534790039,
+        124.03626251220703
+      ],
+      "reference_sensor_sha256": "8cb7b8db2b622e1db03e426864d7bfc215e0d671a0f630395821175ac2c46308",
+      "reference_contract_sha256": "a259afe97cb0bd89efcb7f01d52872ab9e449efebdc0e0f69a7b2ae19a77a2ed",
+      "actual_heights": [
+        121.7957534790039,
+        124.03626251220703
+      ],
+      "actual_ttc": 5.536454200744629,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-89",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.536454200744629,
+      "reference_heights": [
+        121.7957534790039,
+        124.03626251220703
+      ],
+      "reference_sensor_sha256": "8cb7b8db2b622e1db03e426864d7bfc215e0d671a0f630395821175ac2c46308",
+      "reference_contract_sha256": "6c0bb3f8e9ef58af07126fa3a7f875b8cf99d05446a85338cd84b78d29ab0274",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-90",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.536454200744629,
+      "reference_heights": [
+        121.7957534790039,
+        124.03626251220703
+      ],
+      "reference_sensor_sha256": "8cb7b8db2b622e1db03e426864d7bfc215e0d671a0f630395821175ac2c46308",
+      "reference_contract_sha256": "c502e12f9fe66624e15ec293b917e0f9d151fdf27a89773df8d5292bd7e10d97",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-91",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.580965042114258,
+      "reference_heights": [
+        117.64054107666016,
+        119.78704071044922
+      ],
+      "reference_sensor_sha256": "be70ce17f359c448e297b7ae99adb508800da1a22f5bae7d1b4749778f6342c1",
+      "reference_contract_sha256": "e26c24008d526c53f263dcb089d20b4df026682eb4e33542e42570737a55d438",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-92",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.580965042114258,
+      "reference_heights": [
+        117.64054107666016,
+        119.78704071044922
+      ],
+      "reference_sensor_sha256": "be70ce17f359c448e297b7ae99adb508800da1a22f5bae7d1b4749778f6342c1",
+      "reference_contract_sha256": "ff1b5b5a0f58ceca98c7829a26e7bf13578ee74f7e4bd0e8838f08ec13fdaabe",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-93",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.232685565948486,
+      "reference_heights": [
+        106.23258972167969,
+        108.30227661132812
+      ],
+      "reference_sensor_sha256": "7119f0d206879992480e1e1372eb916c84311b57dab0345bb5602ea0feed709d",
+      "reference_contract_sha256": "376a53f83231b4cf783550a6a6cb19f067448b235bfb683da3200254396d703c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-94",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.232685565948486,
+      "reference_heights": [
+        106.23258972167969,
+        108.30227661132812
+      ],
+      "reference_sensor_sha256": "7119f0d206879992480e1e1372eb916c84311b57dab0345bb5602ea0feed709d",
+      "reference_contract_sha256": "5188dd8e08688c1f0f3a5a8bd6e00be7554fdb013a619865b1651cbe711dc8e2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-95",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.232685565948486,
+      "reference_heights": [
+        106.23258972167969,
+        108.30227661132812
+      ],
+      "reference_sensor_sha256": "7119f0d206879992480e1e1372eb916c84311b57dab0345bb5602ea0feed709d",
+      "reference_contract_sha256": "3b7282593ec9efe2d4ff6caaa74bd359317e10db5bf7b6dbdb4d9de691fb5c9b",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-96",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.096923351287842,
+      "reference_heights": [
+        111.60713195800781,
+        113.84060668945312
+      ],
+      "reference_sensor_sha256": "8291efe0e1c85460c4287159cd16a10d0037c9f16f706013eb093676dd38063f",
+      "reference_contract_sha256": "2db66814ee95f4615c285c5d2e9f1b435f6510db27310e1d0d78ab7c672e5f48",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-97",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.096923351287842,
+      "reference_heights": [
+        111.60713195800781,
+        113.84060668945312
+      ],
+      "reference_sensor_sha256": "8291efe0e1c85460c4287159cd16a10d0037c9f16f706013eb093676dd38063f",
+      "reference_contract_sha256": "22674471b4f1e61b731c86d19be4f7cf4a4072e270509e459d5616460e3649fe",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-98",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.317439556121826,
+      "reference_heights": [
+        108.42416381835938,
+        110.99496459960938
+      ],
+      "reference_sensor_sha256": "f180ec75b3c89a089c4e1119412b3421214c9355f1e6353ce66bee927dc6d673",
+      "reference_contract_sha256": "7fb5c556add2617d19bba0df0f2efc712a28a42bdcbebc93a18c5950b2551f96",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-99",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.317439556121826,
+      "reference_heights": [
+        108.42416381835938,
+        110.99496459960938
+      ],
+      "reference_sensor_sha256": "f180ec75b3c89a089c4e1119412b3421214c9355f1e6353ce66bee927dc6d673",
+      "reference_contract_sha256": "06e0c20ba1070d9463cd10d398fe5561b9c1e7e2921d6fb29f9fbb5d1e235d66",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-100",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.317439556121826,
+      "reference_heights": [
+        108.42416381835938,
+        110.99496459960938
+      ],
+      "reference_sensor_sha256": "f180ec75b3c89a089c4e1119412b3421214c9355f1e6353ce66bee927dc6d673",
+      "reference_contract_sha256": "90cb719bb34e377a8dba04bb883f3a66ba93b61d3c6bf7c7b1b91c9dd99812f1",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-101",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.267627239227295,
+      "reference_heights": [
+        110.14080810546875,
+        112.78376770019531
+      ],
+      "reference_sensor_sha256": "76cbc6ef5f37a4468eaf0af1787e0f434d640042d39b8a63828d96b08e86b33b",
+      "reference_contract_sha256": "c2fef063f404ef445596bd073098e8a4ed1a167a0c3676968dcf69abbad8842d",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-102",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.267627239227295,
+      "reference_heights": [
+        110.14080810546875,
+        112.78376770019531
+      ],
+      "reference_sensor_sha256": "76cbc6ef5f37a4468eaf0af1787e0f434d640042d39b8a63828d96b08e86b33b",
+      "reference_contract_sha256": "6ce55cd603b9166a9047c8b94721cbc2dea70c402f5af100a48b5123160f2a98",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-103",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.84699010848999,
+      "reference_heights": [
+        110.69258117675781,
+        113.02459716796875
+      ],
+      "reference_sensor_sha256": "e8cb3eb3b64c6b0ca7f4188f5eb09d339982f4981eba3f5b8bcfbbee71eb3658",
+      "reference_contract_sha256": "87643ea120d70d82e687a843bb81521cc4eaf0a5be53aa5a72b8a63d580fd318",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-104",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.84699010848999,
+      "reference_heights": [
+        110.69258117675781,
+        113.02459716796875
+      ],
+      "reference_sensor_sha256": "e8cb3eb3b64c6b0ca7f4188f5eb09d339982f4981eba3f5b8bcfbbee71eb3658",
+      "reference_contract_sha256": "6c94afa7adcb76c0175f987bb124b7e9479f880ce372f2721b8111115c3f5c60",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-105",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.84699010848999,
+      "reference_heights": [
+        110.69258117675781,
+        113.02459716796875
+      ],
+      "reference_sensor_sha256": "e8cb3eb3b64c6b0ca7f4188f5eb09d339982f4981eba3f5b8bcfbbee71eb3658",
+      "reference_contract_sha256": "e25e71880bad65b88b14315dc1d6ce87f1062335eb5e9ce9ea4a170539cd1168",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-106",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.263978481292725,
+      "reference_heights": [
+        102.02127838134766,
+        104.47132110595703
+      ],
+      "reference_sensor_sha256": "ce8264027dd3451b7b71da34b9f0ae211e4053cca1025cae5e62277d302478dd",
+      "reference_contract_sha256": "da92a5072bc8e4adc96190d0b2cffadbe8872d9f956629f445ed266eeabed3a8",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-107",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.263978481292725,
+      "reference_heights": [
+        102.02127838134766,
+        104.47132110595703
+      ],
+      "reference_sensor_sha256": "ce8264027dd3451b7b71da34b9f0ae211e4053cca1025cae5e62277d302478dd",
+      "reference_contract_sha256": "f75e162de0bd8a2a4c5ecaf7552e0c5963e6887ac3ec56767c7f8419a85a064a",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-108",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.10970401763916,
+      "reference_heights": [
+        104.65046691894531,
+        107.26034545898438
+      ],
+      "reference_sensor_sha256": "acb2555a499e2accbe4dcd89f25dacd24b21282131558f7c89193685d71a84e8",
+      "reference_contract_sha256": "dcfecee186bcf8dbf3cb9acd6424f94c206073235886a2757a2cf27999e2d990",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-109",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.10970401763916,
+      "reference_heights": [
+        104.65046691894531,
+        107.26034545898438
+      ],
+      "reference_sensor_sha256": "acb2555a499e2accbe4dcd89f25dacd24b21282131558f7c89193685d71a84e8",
+      "reference_contract_sha256": "968d83189215f8d7fec897820173a841d1baac2a8a06bf0b041200ee0db6b2ea",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-110",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.10970401763916,
+      "reference_heights": [
+        104.65046691894531,
+        107.26034545898438
+      ],
+      "reference_sensor_sha256": "acb2555a499e2accbe4dcd89f25dacd24b21282131558f7c89193685d71a84e8",
+      "reference_contract_sha256": "a4334c269c3751396fd6ed6c93315eddc7f18ab2a045375901c901dc2377b1ed",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-111",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.763921737670898,
+      "reference_heights": [
+        112.13391876220703,
+        114.53837585449219
+      ],
+      "reference_sensor_sha256": "99f5e869ccec2e615c984f00c3e42077893bfae68d813ca580eafba92ed37d03",
+      "reference_contract_sha256": "8cd0b6197d0e7656f885fa2a246027f2955e21c0cdcfdb4db561b029dfd5783c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-112",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.763921737670898,
+      "reference_heights": [
+        112.13391876220703,
+        114.53837585449219
+      ],
+      "reference_sensor_sha256": "99f5e869ccec2e615c984f00c3e42077893bfae68d813ca580eafba92ed37d03",
+      "reference_contract_sha256": "feb6fb286ea0c5583705f2de844d063992a4b84b368ec6ad1f9d16e971bf1a51",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-113",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.305440902709961,
+      "reference_heights": [
+        106.07740783691406,
+        108.5999755859375
+      ],
+      "reference_sensor_sha256": "62d7cdbe7e4ffc0de8ff63cdcec8b6c3cd16d666800d84d304edd8dd3a9f2f38",
+      "reference_contract_sha256": "a4b09af726a06d926e803f909b7767cc92fe2923b4b425be302c6dcd6b2a5f30",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-114",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.305440902709961,
+      "reference_heights": [
+        106.07740783691406,
+        108.5999755859375
+      ],
+      "reference_sensor_sha256": "62d7cdbe7e4ffc0de8ff63cdcec8b6c3cd16d666800d84d304edd8dd3a9f2f38",
+      "reference_contract_sha256": "576131168c13169d2d2c2a33e2ee9af5e973c746450d846c8b129506b49fce66",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-115",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.305440902709961,
+      "reference_heights": [
+        106.07740783691406,
+        108.5999755859375
+      ],
+      "reference_sensor_sha256": "62d7cdbe7e4ffc0de8ff63cdcec8b6c3cd16d666800d84d304edd8dd3a9f2f38",
+      "reference_contract_sha256": "b71ec9b9dc71eef28cd625027f88299448b6cc86d5cd71b672627470b05fff84",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-116",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.14399528503418,
+      "reference_heights": [
+        106.14057922363281,
+        108.76519775390625
+      ],
+      "reference_sensor_sha256": "7e80b59a53a146b063b01acde89a16195589906e506cb44a1cd2ca499966836a",
+      "reference_contract_sha256": "beeddf8f2a6f4de9ddca274e5eecc30982e3ce0274dec27f2eea37305e2b4989",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-117",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.14399528503418,
+      "reference_heights": [
+        106.14057922363281,
+        108.76519775390625
+      ],
+      "reference_sensor_sha256": "7e80b59a53a146b063b01acde89a16195589906e506cb44a1cd2ca499966836a",
+      "reference_contract_sha256": "72a1bdf759429070bbe9e9f84af45d68075055cbac823b7f1af243f8b2202484",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-118",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.440101623535156,
+      "reference_heights": [
+        112.55686950683594,
+        115.15023040771484
+      ],
+      "reference_sensor_sha256": "63338ed82a8628f6d8ebf3a36f9877f2c17204e43d96fdf9071809026b781073",
+      "reference_contract_sha256": "05a4ce389609ba24fe71197e21958cacd9d34683e2114fd7ddc755b72d8dd9db",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-119",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.440101623535156,
+      "reference_heights": [
+        112.55686950683594,
+        115.15023040771484
+      ],
+      "reference_sensor_sha256": "63338ed82a8628f6d8ebf3a36f9877f2c17204e43d96fdf9071809026b781073",
+      "reference_contract_sha256": "9e29bcf593d238e525de7eae6150cff119b4aca95aa8e51764a0efa901542607",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-120",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.440101623535156,
+      "reference_heights": [
+        112.55686950683594,
+        115.15023040771484
+      ],
+      "reference_sensor_sha256": "63338ed82a8628f6d8ebf3a36f9877f2c17204e43d96fdf9071809026b781073",
+      "reference_contract_sha256": "69554f290575eb4d274fa744e0c1b43a6e2683fcbbb32689243154708b0747e9",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-121",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.7475504875183105,
+      "reference_heights": [
+        106.05001068115234,
+        108.33200073242188
+      ],
+      "reference_sensor_sha256": "15b4784b0f6fac0e227cfd142c929046b7a8b9749a1b85b7d0289f2428109df3",
+      "reference_contract_sha256": "517d5b5353d05a5823a2fa7c1a6999100959357911aa975a47d931e5b883db21",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-122",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.7475504875183105,
+      "reference_heights": [
+        106.05001068115234,
+        108.33200073242188
+      ],
+      "reference_sensor_sha256": "15b4784b0f6fac0e227cfd142c929046b7a8b9749a1b85b7d0289f2428109df3",
+      "reference_contract_sha256": "5e603a2ac1a82248917716fc9457412b78ef11afa4c4b661de204498de38525b",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-123",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.1686482429504395,
+      "reference_heights": [
+        102.84794616699219,
+        105.37596893310547
+      ],
+      "reference_sensor_sha256": "beb596a84fae36fdb04f00657725e6105f14a2cd860f4ef8d0a7bcaa67ba7166",
+      "reference_contract_sha256": "f2f1d2b2199bda1ed5556c92005be9df8bc56c16a5dce8ce0a94676f1567b62d",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-124",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.1686482429504395,
+      "reference_heights": [
+        102.84794616699219,
+        105.37596893310547
+      ],
+      "reference_sensor_sha256": "beb596a84fae36fdb04f00657725e6105f14a2cd860f4ef8d0a7bcaa67ba7166",
+      "reference_contract_sha256": "1955d53f194fafd8da2dd5150227999afffb7a76952bf6e80e89c36227ea1430",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-125",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.1686482429504395,
+      "reference_heights": [
+        102.84794616699219,
+        105.37596893310547
+      ],
+      "reference_sensor_sha256": "beb596a84fae36fdb04f00657725e6105f14a2cd860f4ef8d0a7bcaa67ba7166",
+      "reference_contract_sha256": "e4a1ce5b8503d623f997822390022f1dc215befd67102c57d835cb482bd1290f",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-126",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.090475082397461,
+      "reference_heights": [
+        105.43978881835938,
+        108.08202362060547
+      ],
+      "reference_sensor_sha256": "1b9952bdf82697d1e0619fe76fdffcd709b96611231b939033411f5b5d86154f",
+      "reference_contract_sha256": "6578eb621426a6f1176ffd51c3006e7b720efbde597a2269e31db12b644b125b",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-127",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.090475082397461,
+      "reference_heights": [
+        105.43978881835938,
+        108.08202362060547
+      ],
+      "reference_sensor_sha256": "1b9952bdf82697d1e0619fe76fdffcd709b96611231b939033411f5b5d86154f",
+      "reference_contract_sha256": "bec15d9595932b509c16b2c47e04e7e2106d18d60c911c05ca355a8033f39f59",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-128",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.2752909660339355,
+      "reference_heights": [
+        109.40520477294922,
+        112.02542877197266
+      ],
+      "reference_sensor_sha256": "0a00b5dab2d9a288bf74b6f6031cf084d05adff81a6a3cda14ca381db5be6c43",
+      "reference_contract_sha256": "a76d43cadefc3e6143ee002ecabe04b74aa7ff4d11afd3329559766631129902",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-129",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.2752909660339355,
+      "reference_heights": [
+        109.40520477294922,
+        112.02542877197266
+      ],
+      "reference_sensor_sha256": "0a00b5dab2d9a288bf74b6f6031cf084d05adff81a6a3cda14ca381db5be6c43",
+      "reference_contract_sha256": "d7f12e7e35f3c4c0596e89f7996508f1a4c4e235d0b2fd28e34a22e2b98fbff2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-130",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.2752909660339355,
+      "reference_heights": [
+        109.40520477294922,
+        112.02542877197266
+      ],
+      "reference_sensor_sha256": "0a00b5dab2d9a288bf74b6f6031cf084d05adff81a6a3cda14ca381db5be6c43",
+      "reference_contract_sha256": "202c40a40fd3d8e87d35f7fe2ea7eea91fa7bf0eba017d19e4b0baff508f5fe4",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-131",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.176512241363525,
+      "reference_heights": [
+        110.99372863769531,
+        113.71646118164062
+      ],
+      "reference_sensor_sha256": "0bb816fb27f53c7f82799630d26000fe7afc4041000229e1a021f7f49ca13c33",
+      "reference_contract_sha256": "f6fe8561bda9c4ecbe8096ffa84d1f65cb5b0172f5eba8668b87774f651d66e5",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-132",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.176512241363525,
+      "reference_heights": [
+        110.99372863769531,
+        113.71646118164062
+      ],
+      "reference_sensor_sha256": "0bb816fb27f53c7f82799630d26000fe7afc4041000229e1a021f7f49ca13c33",
+      "reference_contract_sha256": "954fa99108970fd1e8fe7715cc64c8d4c9787927bb156b63dfc3694f1ae2a6be",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-133",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.246521472930908,
+      "reference_heights": [
+        111.2658462524414,
+        113.94941711425781
+      ],
+      "reference_sensor_sha256": "18478def88021d80e328973c17d5aa02538cd9d4d9b605817b3147972686f3d8",
+      "reference_contract_sha256": "57fda0d1edeebd14d794e95fbadcd879d69b0788a0d0bdb2568323d7a7115de3",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-134",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.246521472930908,
+      "reference_heights": [
+        111.2658462524414,
+        113.94941711425781
+      ],
+      "reference_sensor_sha256": "18478def88021d80e328973c17d5aa02538cd9d4d9b605817b3147972686f3d8",
+      "reference_contract_sha256": "39cd8979c6352e22daf4015471cbc4c4c320daa749a4708a59f0b24ee2801256",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-135",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.246521472930908,
+      "reference_heights": [
+        111.2658462524414,
+        113.94941711425781
+      ],
+      "reference_sensor_sha256": "18478def88021d80e328973c17d5aa02538cd9d4d9b605817b3147972686f3d8",
+      "reference_contract_sha256": "1fdc0f298c0f687cb350b569796dfd7f7adb17dd6b4b3f5f745064f24dedffff",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-136",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.883284330368042,
+      "reference_heights": [
+        104.18630981445312,
+        106.94036865234375
+      ],
+      "reference_sensor_sha256": "28ae395c2ab1f10628f214cdcbe040d0bfa1765ba15b0ecc9593101d70675399",
+      "reference_contract_sha256": "ddf907e30da4145dfcdba90928f7fce52ce333b0030b1e1315d671032a4cf893",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-137",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.883284330368042,
+      "reference_heights": [
+        104.18630981445312,
+        106.94036865234375
+      ],
+      "reference_sensor_sha256": "28ae395c2ab1f10628f214cdcbe040d0bfa1765ba15b0ecc9593101d70675399",
+      "reference_contract_sha256": "c01292403f9bf90e1caa095522eec92d9eb4bf0eb9b587bca56b3cadec0c9711",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-138",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.277382850646973,
+      "reference_heights": [
+        96.71964263916016,
+        99.034912109375
+      ],
+      "reference_sensor_sha256": "4c631adb1fb754ffdd6c4bb77823def8572447850ec02c4829f778b31b8932a5",
+      "reference_contract_sha256": "00a956693a98628326c43cc56f46e4a22493d371e106973f3fd14d560a20c377",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-139",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.277382850646973,
+      "reference_heights": [
+        96.71964263916016,
+        99.034912109375
+      ],
+      "reference_sensor_sha256": "4c631adb1fb754ffdd6c4bb77823def8572447850ec02c4829f778b31b8932a5",
+      "reference_contract_sha256": "47e0385d446757aedae4b8d0454d30defac333ca27f6aadd52253fe112714145",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-140",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.277382850646973,
+      "reference_heights": [
+        96.71964263916016,
+        99.034912109375
+      ],
+      "reference_sensor_sha256": "4c631adb1fb754ffdd6c4bb77823def8572447850ec02c4829f778b31b8932a5",
+      "reference_contract_sha256": "88f48a346f169c226898b47a8b053e5d45b82bf17d5b82fd183b800787143f48",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-141",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.247311592102051,
+      "reference_heights": [
+        109.21320343017578,
+        111.84649658203125
+      ],
+      "reference_sensor_sha256": "2797b33c4a8adb36e375acfb624a52ddd0d09a3b6aaf2bd38c28bdfdd3f31752",
+      "reference_contract_sha256": "f250b6b1e021a6ab105a62fbda546e63490029bd948a1ea6d5131c43e5eba579",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-142",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.247311592102051,
+      "reference_heights": [
+        109.21320343017578,
+        111.84649658203125
+      ],
+      "reference_sensor_sha256": "2797b33c4a8adb36e375acfb624a52ddd0d09a3b6aaf2bd38c28bdfdd3f31752",
+      "reference_contract_sha256": "583e716408ecad4ba8f22b12267f84007f977c756142d7ee780c647b13da6d4f",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-143",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.712911128997803,
+      "reference_heights": [
+        96.9920654296875,
+        99.09464263916016
+      ],
+      "reference_sensor_sha256": "54883e3e4869b92f5a7cbd244b176f7142aed53f208f774d57680a1137d245e0",
+      "reference_contract_sha256": "873567fd04e26e23ed8385cf606cf8e7e58a2945fdfda5ef83b46158fc5add9c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-144",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.712911128997803,
+      "reference_heights": [
+        96.9920654296875,
+        99.09464263916016
+      ],
+      "reference_sensor_sha256": "54883e3e4869b92f5a7cbd244b176f7142aed53f208f774d57680a1137d245e0",
+      "reference_contract_sha256": "1d46e5484e358ad8a9ec0d62ac0e9d101f82b3b4051d209ba511f1585578e27d",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-145",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.712911128997803,
+      "reference_heights": [
+        96.9920654296875,
+        99.09464263916016
+      ],
+      "reference_sensor_sha256": "54883e3e4869b92f5a7cbd244b176f7142aed53f208f774d57680a1137d245e0",
+      "reference_contract_sha256": "4e0253ec9e5b907fc258ea2eee0f0bfd9b0f3ce9864d6111d2a95404ccfa7845",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-146",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.632303714752197,
+      "reference_heights": [
+        94.14295196533203,
+        96.22025299072266
+      ],
+      "reference_sensor_sha256": "88c3df6a289a2e7101508838dc97c538c36cd3185753245f1268560eee3f176b",
+      "reference_contract_sha256": "64a831b85f96752338c21c71453a5a75079d078ce6aad3d1d6c50bb314badc14",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-147",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.632303714752197,
+      "reference_heights": [
+        94.14295196533203,
+        96.22025299072266
+      ],
+      "reference_sensor_sha256": "88c3df6a289a2e7101508838dc97c538c36cd3185753245f1268560eee3f176b",
+      "reference_contract_sha256": "2e2266502faf9a5261cc4585fb46bd116bb2757e740d37063e6e4df1c343eeb1",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-148",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.957232713699341,
+      "reference_heights": [
+        105.63089752197266,
+        108.3696060180664
+      ],
+      "reference_sensor_sha256": "d9434f0c7ef23e2c6a812b67169451fc99015503e89422af845155ab47c8532f",
+      "reference_contract_sha256": "a63944b668bd71722241aa70f039d060a4e7d674025165e2f9d2244040b0d17c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-149",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.957232713699341,
+      "reference_heights": [
+        105.63089752197266,
+        108.3696060180664
+      ],
+      "reference_sensor_sha256": "d9434f0c7ef23e2c6a812b67169451fc99015503e89422af845155ab47c8532f",
+      "reference_contract_sha256": "1335409182d82bad324bfae1b96fb1ab6f4a56071265086f91b617fd3e4cfca5",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-150",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.957232713699341,
+      "reference_heights": [
+        105.63089752197266,
+        108.3696060180664
+      ],
+      "reference_sensor_sha256": "d9434f0c7ef23e2c6a812b67169451fc99015503e89422af845155ab47c8532f",
+      "reference_contract_sha256": "2d4ef5f0cc206a93a51c103436e0330c8f114a1255541ee82e5a1078d3acd261",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-151",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.833348512649536,
+      "reference_heights": [
+        105.94349670410156,
+        108.78119659423828
+      ],
+      "reference_sensor_sha256": "a667dc9b81e575b83e9e69d9125a8846bbe8b6756952da9b40d46b61410f281f",
+      "reference_contract_sha256": "9a4c1d03ad39a9db6058c99d95620a18dcec0239a24c42351e5e03d4ffaf860d",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-152",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.833348512649536,
+      "reference_heights": [
+        105.94349670410156,
+        108.78119659423828
+      ],
+      "reference_sensor_sha256": "a667dc9b81e575b83e9e69d9125a8846bbe8b6756952da9b40d46b61410f281f",
+      "reference_contract_sha256": "e23d349ad23888c89cac321741686ed8b00bf313cfae98e725bd7c6b967344da",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-153",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.122509002685547,
+      "reference_heights": [
+        108.50756072998047,
+        111.20501708984375
+      ],
+      "reference_sensor_sha256": "f85dc362b6194752685bdd3d6c32de12b9e5968eabeebd9b26581dcbd514cf21",
+      "reference_contract_sha256": "753e30d601f02d8506bd3d210f3db6bb89ba92c5519124594cca57473c283ccb",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-154",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.122509002685547,
+      "reference_heights": [
+        108.50756072998047,
+        111.20501708984375
+      ],
+      "reference_sensor_sha256": "f85dc362b6194752685bdd3d6c32de12b9e5968eabeebd9b26581dcbd514cf21",
+      "reference_contract_sha256": "3caaabd34e2faa4a43dfedba112e599891f606789e7f7fa527e6fa83da749c56",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-155",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.122509002685547,
+      "reference_heights": [
+        108.50756072998047,
+        111.20501708984375
+      ],
+      "reference_sensor_sha256": "f85dc362b6194752685bdd3d6c32de12b9e5968eabeebd9b26581dcbd514cf21",
+      "reference_contract_sha256": "1577f554c44a48d4721fa82eed4c13da7d43b36adabcf48352ec0b37376ada29",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-156",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.285361289978027,
+      "reference_heights": [
+        105.58423614501953,
+        108.10711669921875
+      ],
+      "reference_sensor_sha256": "ffb9c0bda00f7225a98aad09b7c2dfe76406ca139c845d10e440fc18cdd4190f",
+      "reference_contract_sha256": "13417c6567cafa2c446edb9279563c01a707025ddd08a78657e4df18b94d3403",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-157",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.285361289978027,
+      "reference_heights": [
+        105.58423614501953,
+        108.10711669921875
+      ],
+      "reference_sensor_sha256": "ffb9c0bda00f7225a98aad09b7c2dfe76406ca139c845d10e440fc18cdd4190f",
+      "reference_contract_sha256": "89d0f8e250593dbf56c70f18aa3036c10f37e7b0dea9c8b7a3f3b358083249f2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-158",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.210798740386963,
+      "reference_heights": [
+        108.26741790771484,
+        110.90133666992188
+      ],
+      "reference_sensor_sha256": "ea64a6c9f6862f7451d666446ee97ab14b1523168d34b94488dde5f5945701ce",
+      "reference_contract_sha256": "af74887028ef253fc1d1085cc4ccb1b9564a0c29c97c889ff6d0dae88b611715",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-159",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.210798740386963,
+      "reference_heights": [
+        108.26741790771484,
+        110.90133666992188
+      ],
+      "reference_sensor_sha256": "ea64a6c9f6862f7451d666446ee97ab14b1523168d34b94488dde5f5945701ce",
+      "reference_contract_sha256": "afa8a34fe3fc6b4fb14ef0a3a87e4a2d913eb978aa1a06c17a2a5c4f2bf72184",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-160",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.210798740386963,
+      "reference_heights": [
+        108.26741790771484,
+        110.90133666992188
+      ],
+      "reference_sensor_sha256": "ea64a6c9f6862f7451d666446ee97ab14b1523168d34b94488dde5f5945701ce",
+      "reference_contract_sha256": "e245b66d393cacb4377b04141eb3b6c29f4cb219ec2dd69ce02a212e801601be",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-161",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.290213584899902,
+      "reference_heights": [
+        111.03948211669922,
+        113.68939971923828
+      ],
+      "reference_sensor_sha256": "ee47762bdfa49f8231157adc776f9b6cd9a6109f3788e966699f33879d4778b0",
+      "reference_contract_sha256": "2849743bf6d631a2f17803a89e9c6ac649358a5695bb067afead1a50306afeb7",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-162",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.290213584899902,
+      "reference_heights": [
+        111.03948211669922,
+        113.68939971923828
+      ],
+      "reference_sensor_sha256": "ee47762bdfa49f8231157adc776f9b6cd9a6109f3788e966699f33879d4778b0",
+      "reference_contract_sha256": "b7a101fae7e8b905093553040f7dbbd301c059f8efa9417adedb33317ad00526",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-163",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.478623867034912,
+      "reference_heights": [
+        101.70846557617188,
+        104.03125762939453
+      ],
+      "reference_sensor_sha256": "a26935729e63394156e7a31a27baf079db6e83063c4f5d583c03e6b09028e5d3",
+      "reference_contract_sha256": "51adc02d5a1259d4ddb82917c35f9ad35726fe6dc83b7d508767fa7973cbc40a",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-164",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.478623867034912,
+      "reference_heights": [
+        101.70846557617188,
+        104.03125762939453
+      ],
+      "reference_sensor_sha256": "a26935729e63394156e7a31a27baf079db6e83063c4f5d583c03e6b09028e5d3",
+      "reference_contract_sha256": "9635d091f46724f0b9fcaa3fa68b191f0543bdea0d71ec5520855c4748642b5d",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-165",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.478623867034912,
+      "reference_heights": [
+        101.70846557617188,
+        104.03125762939453
+      ],
+      "reference_sensor_sha256": "a26935729e63394156e7a31a27baf079db6e83063c4f5d583c03e6b09028e5d3",
+      "reference_contract_sha256": "fd9403bd02787620e1630758db6d68e9f838024b78712316330935e71ffc64d7",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-166",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.203919887542725,
+      "reference_heights": [
+        102.6023178100586,
+        105.10260009765625
+      ],
+      "reference_sensor_sha256": "4d949faa8e3cb91f05e71752c20b3dd110a3b0bc05f44e6271464c1623423439",
+      "reference_contract_sha256": "7a21f30339f6360040b78b58a6bcd248f25f8c7392681645a29a283d2ff69774",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-167",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.203919887542725,
+      "reference_heights": [
+        102.6023178100586,
+        105.10260009765625
+      ],
+      "reference_sensor_sha256": "4d949faa8e3cb91f05e71752c20b3dd110a3b0bc05f44e6271464c1623423439",
+      "reference_contract_sha256": "bf61668243bafa8493343675154c9fbaf0d8aa1c0818f6ba1bdb7ee9e7bff353",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-168",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.286828517913818,
+      "reference_heights": [
+        108.16520690917969,
+        110.74885559082031
+      ],
+      "reference_sensor_sha256": "49d8facbaa7fb4d9c7bd1da7a7805da789ae527c6fb306da31abb29b25619d27",
+      "reference_contract_sha256": "b3071002b75f23f0175d2aa50287d0c167b29ca506fdd68f2f7ea8c7a0a28436",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-169",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.286828517913818,
+      "reference_heights": [
+        108.16520690917969,
+        110.74885559082031
+      ],
+      "reference_sensor_sha256": "49d8facbaa7fb4d9c7bd1da7a7805da789ae527c6fb306da31abb29b25619d27",
+      "reference_contract_sha256": "6f1864f034d05a74b8c55718ea6c468b83354c30df7aca232010ea00d7ed626d",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-170",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.286828517913818,
+      "reference_heights": [
+        108.16520690917969,
+        110.74885559082031
+      ],
+      "reference_sensor_sha256": "49d8facbaa7fb4d9c7bd1da7a7805da789ae527c6fb306da31abb29b25619d27",
+      "reference_contract_sha256": "171f94211a26383c5b2396622fc8c9f05a3fe1544bf1d025f75ff5a400fc0411",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-171",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.538560390472412,
+      "reference_heights": [
+        103.41294860839844,
+        105.7427749633789
+      ],
+      "reference_sensor_sha256": "58df7ca26f48f5abece006f440ef0e6618a67b6338110404c0ea86f4976028eb",
+      "reference_contract_sha256": "ee3fbd1aab5f4b32c23c53ea6801fc49c66e04b3852f44b77e3d0a6381268b89",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-172",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.538560390472412,
+      "reference_heights": [
+        103.41294860839844,
+        105.7427749633789
+      ],
+      "reference_sensor_sha256": "58df7ca26f48f5abece006f440ef0e6618a67b6338110404c0ea86f4976028eb",
+      "reference_contract_sha256": "bc10268207a7d9963006fc6f0cf58db2c90406bc3fae068249f37f698ae963b4",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-173",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.827244758605957,
+      "reference_heights": [
+        94.4658203125,
+        97.00023651123047
+      ],
+      "reference_sensor_sha256": "6528a5bd2d34a7aaf3cca336d336b1eeaa2c9752c0a324545c305dabb737f2ee",
+      "reference_contract_sha256": "faf286756a7d95e374f8ad6414988be3c572aac462fda2818ba744efe67eb661",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-174",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.827244758605957,
+      "reference_heights": [
+        94.4658203125,
+        97.00023651123047
+      ],
+      "reference_sensor_sha256": "6528a5bd2d34a7aaf3cca336d336b1eeaa2c9752c0a324545c305dabb737f2ee",
+      "reference_contract_sha256": "f1a9a7d61a9a81a23941a1b8380e58d235740d736094ce631f70cbfd7e8e2813",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-175",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.827244758605957,
+      "reference_heights": [
+        94.4658203125,
+        97.00023651123047
+      ],
+      "reference_sensor_sha256": "6528a5bd2d34a7aaf3cca336d336b1eeaa2c9752c0a324545c305dabb737f2ee",
+      "reference_contract_sha256": "d11a86fc3bc8386def22717f6fb0dd52725b334d3b56a14add730fa4ab494033",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-176",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6803476810455322,
+      "reference_heights": [
+        110.87511444091797,
+        113.97185516357422
+      ],
+      "reference_sensor_sha256": "33146ddc4551c4b66568adf605ebb066d683d33ff3e02a555845de0c175aa317",
+      "reference_contract_sha256": "b848f75487b9f01bd3b48f8603bd6fd8fcbd5f4124e616f9ff1430223e4bc858",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-177",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6803476810455322,
+      "reference_heights": [
+        110.87511444091797,
+        113.97185516357422
+      ],
+      "reference_sensor_sha256": "33146ddc4551c4b66568adf605ebb066d683d33ff3e02a555845de0c175aa317",
+      "reference_contract_sha256": "eda9c4743e711beb1b9225bfe3b722b13565f7e593d296d7b562c8ba7a35234f",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-178",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8633835315704346,
+      "reference_heights": [
+        101.83777618408203,
+        104.54401397705078
+      ],
+      "reference_sensor_sha256": "db39ecb0b23e9b2f9990ddfb1d7ed7e672824fd49078cc899ec227ac7851a70e",
+      "reference_contract_sha256": "ed45648aa19379b40bab79a1955e57e28210447ed4d021ae72afb27327eeb0b4",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-179",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8633835315704346,
+      "reference_heights": [
+        101.83777618408203,
+        104.54401397705078
+      ],
+      "reference_sensor_sha256": "db39ecb0b23e9b2f9990ddfb1d7ed7e672824fd49078cc899ec227ac7851a70e",
+      "reference_contract_sha256": "9cb7ecda71618d91691d2a24f15375a6ef44857c22eb94c088ba8bf282861de7",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-180",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8633835315704346,
+      "reference_heights": [
+        101.83777618408203,
+        104.54401397705078
+      ],
+      "reference_sensor_sha256": "db39ecb0b23e9b2f9990ddfb1d7ed7e672824fd49078cc899ec227ac7851a70e",
+      "reference_contract_sha256": "45b62b31663ce80f83dc398c0929fb2c1ab839cda198048a7eb97814ba6603c9",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-181",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.170118808746338,
+      "reference_heights": [
+        112.16632843017578,
+        114.92234802246094
+      ],
+      "reference_sensor_sha256": "5e53f1a2df23f9989012c8164c01555c9c9b7abc33286827d5b5c2016bd6c84d",
+      "reference_contract_sha256": "621b10d50c1237afe267e24ce80f3b83e1252f4f14a68059c92d835dd3c0e799",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-182",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.170118808746338,
+      "reference_heights": [
+        112.16632843017578,
+        114.92234802246094
+      ],
+      "reference_sensor_sha256": "5e53f1a2df23f9989012c8164c01555c9c9b7abc33286827d5b5c2016bd6c84d",
+      "reference_contract_sha256": "fcc09ac3c9a9cd1e8b170c13bc423754e6a2ffb9dac9d75b51c018d01225dbed",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-183",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.976430892944336,
+      "reference_heights": [
+        102.8946304321289,
+        105.54894256591797
+      ],
+      "reference_sensor_sha256": "6331074103ca8634ba0d7b51f8ffa6896dc75e10cf17663d8b4f2e5b24bfdcee",
+      "reference_contract_sha256": "1dd7634df81b86d7916a421dc7e93c71338f7be92ba3e9352c65dcd8d6f4f955",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-184",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.976430892944336,
+      "reference_heights": [
+        102.8946304321289,
+        105.54894256591797
+      ],
+      "reference_sensor_sha256": "6331074103ca8634ba0d7b51f8ffa6896dc75e10cf17663d8b4f2e5b24bfdcee",
+      "reference_contract_sha256": "0e88e844bb9029e31d432dc2b4483257f24079bb334f2aa7b3ab8b5114145d76",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-185",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.976430892944336,
+      "reference_heights": [
+        102.8946304321289,
+        105.54894256591797
+      ],
+      "reference_sensor_sha256": "6331074103ca8634ba0d7b51f8ffa6896dc75e10cf17663d8b4f2e5b24bfdcee",
+      "reference_contract_sha256": "441a1d42125fe95cdefc7c6e04ce369ce4d220b9128af5f7e76704f2aba4dd4f",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-186",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.528823137283325,
+      "reference_heights": [
+        102.84526824951172,
+        105.84467315673828
+      ],
+      "reference_sensor_sha256": "6f84f0af5699daed0403cd115223b384f40bb5a374cc8b69232f25baff5a979e",
+      "reference_contract_sha256": "9b0fbafac8dbcfa2bd76178baacff836d67522ea8235fea960514827a0d4a8fe",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-187",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.528823137283325,
+      "reference_heights": [
+        102.84526824951172,
+        105.84467315673828
+      ],
+      "reference_sensor_sha256": "6f84f0af5699daed0403cd115223b384f40bb5a374cc8b69232f25baff5a979e",
+      "reference_contract_sha256": "7dadf8c2af18e4dcc073950ac4fba5e7378150be42aed80c2db3089855a19f96",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-188",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.492798328399658,
+      "reference_heights": [
+        96.41563415527344,
+        99.25761413574219
+      ],
+      "reference_sensor_sha256": "2cb96a939529887c2651103f08f91cc8ea7a091d84b65898faab2c48527a0a4a",
+      "reference_contract_sha256": "bf57e7f710cfed570fff00b4dd402c6ad3e78401e1b1e8ddc228b616daaf0997",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-189",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.492798328399658,
+      "reference_heights": [
+        96.41563415527344,
+        99.25761413574219
+      ],
+      "reference_sensor_sha256": "2cb96a939529887c2651103f08f91cc8ea7a091d84b65898faab2c48527a0a4a",
+      "reference_contract_sha256": "758ce683fdb0dbb6937b8e740203e2f4bdf2a586aebeb56ae7551568a5760eb5",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-190",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.492798328399658,
+      "reference_heights": [
+        96.41563415527344,
+        99.25761413574219
+      ],
+      "reference_sensor_sha256": "2cb96a939529887c2651103f08f91cc8ea7a091d84b65898faab2c48527a0a4a",
+      "reference_contract_sha256": "1141efe39f71c162b52f8d1ce5a1353a48f799fa64478d18ab5d9043d1fd51db",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-191",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8439786434173584,
+      "reference_heights": [
+        96.65547180175781,
+        99.2372817993164
+      ],
+      "reference_sensor_sha256": "f5410abb6e6e8b6176e2d51a443d77eb2a29067ccb8e91b32d8d6c761610d07d",
+      "reference_contract_sha256": "3f7e8d11699fb215099571b535010370c746cdacdc570de73b286e124934c18a",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-192",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8439786434173584,
+      "reference_heights": [
+        96.65547180175781,
+        99.2372817993164
+      ],
+      "reference_sensor_sha256": "f5410abb6e6e8b6176e2d51a443d77eb2a29067ccb8e91b32d8d6c761610d07d",
+      "reference_contract_sha256": "cfd9fff7f31b0157985b9bf325569bea33b1991eeb5d89b37e43a39c88624e7c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-193",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6655311584472656,
+      "reference_heights": [
+        94.30430603027344,
+        96.94914245605469
+      ],
+      "reference_sensor_sha256": "fbeb31c17830f0ef884d98f21cb8c07b15e8f334213c233a5b62c717b4dad0f7",
+      "reference_contract_sha256": "11748f5c8446bf0449d8303332856f4b484b71cf999b898373a5ed47da596410",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-194",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6655311584472656,
+      "reference_heights": [
+        94.30430603027344,
+        96.94914245605469
+      ],
+      "reference_sensor_sha256": "fbeb31c17830f0ef884d98f21cb8c07b15e8f334213c233a5b62c717b4dad0f7",
+      "reference_contract_sha256": "f9b4c74cfb2c7f814b682ca9191605a8115e7bc6fa0ee721ce1ef7fcd467ce25",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-195",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6655311584472656,
+      "reference_heights": [
+        94.30430603027344,
+        96.94914245605469
+      ],
+      "reference_sensor_sha256": "fbeb31c17830f0ef884d98f21cb8c07b15e8f334213c233a5b62c717b4dad0f7",
+      "reference_contract_sha256": "a3c4f17f2de39f5da6828d46d49f86ec2756cf7e65037e6d8b9b32bddc9557c2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-196",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.332852602005005,
+      "reference_heights": [
+        98.60801696777344,
+        101.65814208984375
+      ],
+      "reference_sensor_sha256": "8044e5f943ceac7d774020804278aebde3baa9d72e2a137677a7042edae0c4dc",
+      "reference_contract_sha256": "6c3a39c061b67fb42b59c94124f5f6a3155fd3709144f3f2d03385f647eca2a3",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-197",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.332852602005005,
+      "reference_heights": [
+        98.60801696777344,
+        101.65814208984375
+      ],
+      "reference_sensor_sha256": "8044e5f943ceac7d774020804278aebde3baa9d72e2a137677a7042edae0c4dc",
+      "reference_contract_sha256": "f7bf96fddea4a2704ad3e455e65a7171060d209562c63958ada9519435d69ab3",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-198",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1123569011688232,
+      "reference_heights": [
+        102.25567626953125,
+        105.650146484375
+      ],
+      "reference_sensor_sha256": "eb7fa6a9bb3880b30161078704a0a96f0645275a271ba41bd84c5a2d5c2ac855",
+      "reference_contract_sha256": "d1bdadadb20f11ab9ca59e7079856b76632fdd98cde65a259430e8f9d083c1f2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-199",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1123569011688232,
+      "reference_heights": [
+        102.25567626953125,
+        105.650146484375
+      ],
+      "reference_sensor_sha256": "eb7fa6a9bb3880b30161078704a0a96f0645275a271ba41bd84c5a2d5c2ac855",
+      "reference_contract_sha256": "7e164363c9c9e935839ed153550ea88394d4b56d362e554f8eb4c3dce01a59c2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-200",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1123569011688232,
+      "reference_heights": [
+        102.25567626953125,
+        105.650146484375
+      ],
+      "reference_sensor_sha256": "eb7fa6a9bb3880b30161078704a0a96f0645275a271ba41bd84c5a2d5c2ac855",
+      "reference_contract_sha256": "161a4e5e11c1455b51066b7ef507ef98fe8b8791d771a54ee9bb7c1a20cedfad",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-201",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0344619750976562,
+      "reference_heights": [
+        103.28511810302734,
+        106.80509948730469
+      ],
+      "reference_sensor_sha256": "c6b312d004a8ccb52eaf5f8985cf45c81abfe6770eb69c377578017712d09eb6",
+      "reference_contract_sha256": "2281fb6b0ed754ddf08d95186a3bc595672f3eb5a1e4412f924b81ac74a05afb",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-202",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0344619750976562,
+      "reference_heights": [
+        103.28511810302734,
+        106.80509948730469
+      ],
+      "reference_sensor_sha256": "c6b312d004a8ccb52eaf5f8985cf45c81abfe6770eb69c377578017712d09eb6",
+      "reference_contract_sha256": "64e525763e26f843554cdc0888b478dddc0ab3e6b95bf8ca10df82ca3d1b44c1",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-203",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.970141649246216,
+      "reference_heights": [
+        100.39752960205078,
+        103.89578247070312
+      ],
+      "reference_sensor_sha256": "f8c488ff29e0035272390ee264201d01dabcb15cbcfab13763690aafac7e69df",
+      "reference_contract_sha256": "56982097abc65c77054e6b4812ed8865bcad065e56805c245474369c2f542253",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-204",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.970141649246216,
+      "reference_heights": [
+        100.39752960205078,
+        103.89578247070312
+      ],
+      "reference_sensor_sha256": "f8c488ff29e0035272390ee264201d01dabcb15cbcfab13763690aafac7e69df",
+      "reference_contract_sha256": "ea7e1fcf4dde421a4e97d6bc5297f8ce981f8c8661182072608af0c2fbb7b492",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-205",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.970141649246216,
+      "reference_heights": [
+        100.39752960205078,
+        103.89578247070312
+      ],
+      "reference_sensor_sha256": "f8c488ff29e0035272390ee264201d01dabcb15cbcfab13763690aafac7e69df",
+      "reference_contract_sha256": "34b007059408ca406e2ab6498b2b4dda3fe70d88a7a3988747c007b24090ec7f",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-206",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.175220251083374,
+      "reference_heights": [
+        97.34442901611328,
+        100.50981140136719
+      ],
+      "reference_sensor_sha256": "e2803ba70c57d5eecb8cfd72f2a3882426a08990827325ed6cc4ad634c6e547b",
+      "reference_contract_sha256": "1d018d28a4ba2e43c87d34a868b76cf272b2ad9cb1eaef77c7da350c46921697",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-207",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.175220251083374,
+      "reference_heights": [
+        97.34442901611328,
+        100.50981140136719
+      ],
+      "reference_sensor_sha256": "e2803ba70c57d5eecb8cfd72f2a3882426a08990827325ed6cc4ad634c6e547b",
+      "reference_contract_sha256": "54b3d3b2ffc79fdd99da664bf9f46b8c9384db561a49e3c30489a2f3a1df9e90",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-208",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0547852516174316,
+      "reference_heights": [
+        106.40840148925781,
+        110.00955200195312
+      ],
+      "reference_sensor_sha256": "ed54a696a389197143de5af3ef8b88c7bf563db37d8a366fdc8479dab6792f3c",
+      "reference_contract_sha256": "be1c59b26f65fe654b281cb1091976798b564dc062630a07242c2eab8e079cf2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-209",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0547852516174316,
+      "reference_heights": [
+        106.40840148925781,
+        110.00955200195312
+      ],
+      "reference_sensor_sha256": "ed54a696a389197143de5af3ef8b88c7bf563db37d8a366fdc8479dab6792f3c",
+      "reference_contract_sha256": "039b4ce72051b4b5d3d4dc8837b24afee2bb23dec7821fdcaa02c46d1b9b5ecb",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-210",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0547852516174316,
+      "reference_heights": [
+        106.40840148925781,
+        110.00955200195312
+      ],
+      "reference_sensor_sha256": "ed54a696a389197143de5af3ef8b88c7bf563db37d8a366fdc8479dab6792f3c",
+      "reference_contract_sha256": "ae289746160b93535dec24724cdb2f6b9d1dfd164560b593cbb8586a32833b66",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-211",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1023924350738525,
+      "reference_heights": [
+        103.68872833251953,
+        107.14251708984375
+      ],
+      "reference_sensor_sha256": "41a7e0d25e657c70a033e513acdc783c2cdfbedcdf05de8063e4db86b17607e7",
+      "reference_contract_sha256": "a3619f8ad08f20d8f97be5c177a074d41c8788ae334762a25a0a8ab0f164c4f4",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-212",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1023924350738525,
+      "reference_heights": [
+        103.68872833251953,
+        107.14251708984375
+      ],
+      "reference_sensor_sha256": "41a7e0d25e657c70a033e513acdc783c2cdfbedcdf05de8063e4db86b17607e7",
+      "reference_contract_sha256": "a16b24958ae9b5b54b108afbea650c68007e9be3744945411c8882fc14c1b616",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-213",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.9368841648101807,
+      "reference_heights": [
+        104.75666809082031,
+        108.44960021972656
+      ],
+      "reference_sensor_sha256": "8d7e13122f3eae08e2c85b2a7d05e8b8cc101df7bf325679c0ad8a07d12dcb5b",
+      "reference_contract_sha256": "f12188fdffed7f7b1a4379091a4425eba1c812dfd1172b3223f2c203a1ed6dd4",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-214",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.9368841648101807,
+      "reference_heights": [
+        104.75666809082031,
+        108.44960021972656
+      ],
+      "reference_sensor_sha256": "8d7e13122f3eae08e2c85b2a7d05e8b8cc101df7bf325679c0ad8a07d12dcb5b",
+      "reference_contract_sha256": "5ec34cfdaaa4737b9bda85c0fe464064cc64d5d7ca80ebbccde4da99e3324d25",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-215",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.9368841648101807,
+      "reference_heights": [
+        104.75666809082031,
+        108.44960021972656
+      ],
+      "reference_sensor_sha256": "8d7e13122f3eae08e2c85b2a7d05e8b8cc101df7bf325679c0ad8a07d12dcb5b",
+      "reference_contract_sha256": "acd79779ded24a3d82bb36f11ae1d286f2539b4783adbeb59041eb13117215a2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-216",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.6989920139312744,
+      "reference_heights": [
+        107.44914245605469,
+        111.58332061767578
+      ],
+      "reference_sensor_sha256": "9b87924b535a4e4207630719a0dbb7adc739f1193385bfc0bb039788fdd73b66",
+      "reference_contract_sha256": "4648e3dda425ac853ebf6255214e39f9b459fc65d63912c6338581921d8aab2e",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-217",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.6989920139312744,
+      "reference_heights": [
+        107.44914245605469,
+        111.58332061767578
+      ],
+      "reference_sensor_sha256": "9b87924b535a4e4207630719a0dbb7adc739f1193385bfc0bb039788fdd73b66",
+      "reference_contract_sha256": "05448e71ecca01308099d7c880f21be05b4b90ac77dbc8c8925ca4f4a515bb30",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-218",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4907145500183105,
+      "reference_heights": [
+        100.41344451904297,
+        104.6135025024414
+      ],
+      "reference_sensor_sha256": "8970124a4469cf4e419ec97c1bce7afe058bfab40f2c11e4fd00eed1d2ffa6c4",
+      "reference_contract_sha256": "ae2ffa1ec64dc58e3700bcff8116600d897e6967634dae74432c5b4b1161001c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-219",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4907145500183105,
+      "reference_heights": [
+        100.41344451904297,
+        104.6135025024414
+      ],
+      "reference_sensor_sha256": "8970124a4469cf4e419ec97c1bce7afe058bfab40f2c11e4fd00eed1d2ffa6c4",
+      "reference_contract_sha256": "9b43b70d5c093240c8563877ffda3d3f5dad880fb7c9ffb94d8ae8dd93437f97",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-220",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4907145500183105,
+      "reference_heights": [
+        100.41344451904297,
+        104.6135025024414
+      ],
+      "reference_sensor_sha256": "8970124a4469cf4e419ec97c1bce7afe058bfab40f2c11e4fd00eed1d2ffa6c4",
+      "reference_contract_sha256": "436fe1514b1371444fb5cb4c8f367d12997d747cb95ecb43d1901bf461906c77",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-221",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4211416244506836,
+      "reference_heights": [
+        103.3477783203125,
+        107.8005599975586
+      ],
+      "reference_sensor_sha256": "62a224538d469026d1760ce0614b6be158ad4df227a86aade050efdb24452a09",
+      "reference_contract_sha256": "c45a81a112cf88024b32ae33b7e4415474cc1834e43e0e7920df641f475b61a3",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-222",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4211416244506836,
+      "reference_heights": [
+        103.3477783203125,
+        107.8005599975586
+      ],
+      "reference_sensor_sha256": "62a224538d469026d1760ce0614b6be158ad4df227a86aade050efdb24452a09",
+      "reference_contract_sha256": "3c3f5291e40a13f11a2027f59c2ad3ef0f593d7ab7991ea1a2b48a3e1aad30c2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-223",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.508666753768921,
+      "reference_heights": [
+        103.44171142578125,
+        107.73658752441406
+      ],
+      "reference_sensor_sha256": "e05519a57384e1cf2c7205791f24d5abb51fe266a9a4904a2ad5c7a7237ca4aa",
+      "reference_contract_sha256": "5bc382f74233c967eb2924cf4a2614f36efbd292907d1a1847b448338e03e6e7",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-224",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.508666753768921,
+      "reference_heights": [
+        103.44171142578125,
+        107.73658752441406
+      ],
+      "reference_sensor_sha256": "e05519a57384e1cf2c7205791f24d5abb51fe266a9a4904a2ad5c7a7237ca4aa",
+      "reference_contract_sha256": "23bd936014a95fdd6ad43d2156e6edd8fb743abfa9e73eaa07c0b9095451d636",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-225",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.508666753768921,
+      "reference_heights": [
+        103.44171142578125,
+        107.73658752441406
+      ],
+      "reference_sensor_sha256": "e05519a57384e1cf2c7205791f24d5abb51fe266a9a4904a2ad5c7a7237ca4aa",
+      "reference_contract_sha256": "72ae72c26f9f95728fbdea032579519559062937bb9a58d53e213c6456f85303",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-226",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.738340377807617,
+      "reference_heights": [
+        99.90868377685547,
+        103.69540405273438
+      ],
+      "reference_sensor_sha256": "8a7fd2ef1119c9cfebadae33685e012bd3841c7390f553b9de2b89e8435061b0",
+      "reference_contract_sha256": "01be275b44a37a7bf79e0ed92e7efabd6cbdd4ee5120986fcb8f02b151dba5a2",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-227",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.738340377807617,
+      "reference_heights": [
+        99.90868377685547,
+        103.69540405273438
+      ],
+      "reference_sensor_sha256": "8a7fd2ef1119c9cfebadae33685e012bd3841c7390f553b9de2b89e8435061b0",
+      "reference_contract_sha256": "aed0f0adb60f8e4a3d7638b256aa854fae9842a590a2b701e51e08aefff75318",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-228",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.2169151306152344,
+      "reference_heights": [
+        90.28521728515625,
+        93.18180847167969
+      ],
+      "reference_sensor_sha256": "91cb5c5c017b1cd7947f3282d7b9a0dc33f6d9c7dd7aeeb24b4db7f79646e200",
+      "reference_contract_sha256": "8eb1497a09e8fa6dfb8d9f5a8d12f1199c1496bc8e67c59e519ec5b911c89f0b",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-229",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.2169151306152344,
+      "reference_heights": [
+        90.28521728515625,
+        93.18180847167969
+      ],
+      "reference_sensor_sha256": "91cb5c5c017b1cd7947f3282d7b9a0dc33f6d9c7dd7aeeb24b4db7f79646e200",
+      "reference_contract_sha256": "8ad4b29dbee95f741b2ca1c1ac52cd983ce8d5d1b447045284f4f8686527e302",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-230",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.2169151306152344,
+      "reference_heights": [
+        90.28521728515625,
+        93.18180847167969
+      ],
+      "reference_sensor_sha256": "91cb5c5c017b1cd7947f3282d7b9a0dc33f6d9c7dd7aeeb24b4db7f79646e200",
+      "reference_contract_sha256": "4fa3dd906fdd45c3cff2d76f8460f7104bf9f1e7e9e102cd8fa353efaebd601e",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-231",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.001615285873413,
+      "reference_heights": [
+        90.55218505859375,
+        93.67290496826172
+      ],
+      "reference_sensor_sha256": "a5478a9224bbb66f8d370391148b079960240126e3839faee5afbeabcbb522fe",
+      "reference_contract_sha256": "44d9528830f397c1ce76aed915f474d961e0f461bd50a27ed9f5710954457b9b",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-232",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.001615285873413,
+      "reference_heights": [
+        90.55218505859375,
+        93.67290496826172
+      ],
+      "reference_sensor_sha256": "a5478a9224bbb66f8d370391148b079960240126e3839faee5afbeabcbb522fe",
+      "reference_contract_sha256": "f223420cdfbc30bb2326b49bf5372c62df41426a7a7bfac4010f1927e55fe38c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-233",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.3287878036499023,
+      "reference_heights": [
+        89.23151397705078,
+        91.99530792236328
+      ],
+      "reference_sensor_sha256": "a1d761d3b76a8993db00cfb70209154eb16541f73b747b5d922e01e7f85c6d81",
+      "reference_contract_sha256": "820cd1890c0a284e0588b9b1a3e7481cb7bc0293f7800c68e167de8ff0868154",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-234",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.3287878036499023,
+      "reference_heights": [
+        89.23151397705078,
+        91.99530792236328
+      ],
+      "reference_sensor_sha256": "a1d761d3b76a8993db00cfb70209154eb16541f73b747b5d922e01e7f85c6d81",
+      "reference_contract_sha256": "bea4cdb25975c85e5faeb19857f140c2d03006ecc3d8df3ef0ce078e556f4192",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-235",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.3287878036499023,
+      "reference_heights": [
+        89.23151397705078,
+        91.99530792236328
+      ],
+      "reference_sensor_sha256": "a1d761d3b76a8993db00cfb70209154eb16541f73b747b5d922e01e7f85c6d81",
+      "reference_contract_sha256": "7b4894176d72529b8ca2d31eafbd32a438ffce10a6fb4773607e9bf9a3cd42aa",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-236",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.505246877670288,
+      "reference_heights": [
+        91.4312973022461,
+        94.11650085449219
+      ],
+      "reference_sensor_sha256": "42d64fbe51a4de82ddd8546ae5aec4fa27d6e34f2ace88485173676d4d6ee7e9",
+      "reference_contract_sha256": "fde72de75f5574e629e709dca341e60d35de76c7d5e1a94912638bd63be1b351",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-237",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.505246877670288,
+      "reference_heights": [
+        91.4312973022461,
+        94.11650085449219
+      ],
+      "reference_sensor_sha256": "42d64fbe51a4de82ddd8546ae5aec4fa27d6e34f2ace88485173676d4d6ee7e9",
+      "reference_contract_sha256": "d56ef6e5715bd08343520dca465a6558d2e683e6a3e15b204a8cda7cdd03f946",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-238",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1829209327697754,
+      "reference_heights": [
+        91.90728759765625,
+        94.88843536376953
+      ],
+      "reference_sensor_sha256": "0a58399f335f4a6400c0fb7d48c60bed021b01f48a647b6f4c68d73f0f8932a4",
+      "reference_contract_sha256": "671e025d1dd8debc55a22da4c731a6da4bbdfa889fd7a1a8c71699da5ba8eeae",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-239",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1829209327697754,
+      "reference_heights": [
+        91.90728759765625,
+        94.88843536376953
+      ],
+      "reference_sensor_sha256": "0a58399f335f4a6400c0fb7d48c60bed021b01f48a647b6f4c68d73f0f8932a4",
+      "reference_contract_sha256": "dea07855f58f9b60b92d924abb60b7e49c1da19423d61ff61b76d012fa820652",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-240",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1829209327697754,
+      "reference_heights": [
+        91.90728759765625,
+        94.88843536376953
+      ],
+      "reference_sensor_sha256": "0a58399f335f4a6400c0fb7d48c60bed021b01f48a647b6f4c68d73f0f8932a4",
+      "reference_contract_sha256": "0f41ce87353e6309b49f66818b476ff8226a803a37d74ba869f3508ebd9184ca",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-241",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4405784606933594,
+      "reference_heights": [
+        87.07161712646484,
+        89.67804718017578
+      ],
+      "reference_sensor_sha256": "ca9e43a45e3e17fd03b33f75a6bda9e8a6056754dd15140bacb7999f35fe4378",
+      "reference_contract_sha256": "4d79b13000cf5c3be3d1a49023fe66b702e2b2774fb6b508fa939b691a66e463",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-242",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4405784606933594,
+      "reference_heights": [
+        87.07161712646484,
+        89.67804718017578
+      ],
+      "reference_sensor_sha256": "ca9e43a45e3e17fd03b33f75a6bda9e8a6056754dd15140bacb7999f35fe4378",
+      "reference_contract_sha256": "c281719a904d6d65a02a0d21fa1243f8a322596fe3d363e871c4127d739fdd2e",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-243",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4870033264160156,
+      "reference_heights": [
+        86.52369689941406,
+        89.0782241821289
+      ],
+      "reference_sensor_sha256": "f2efe86a04992f03895e05469af0b65140731aea077b30fee2a28ba22531f194",
+      "reference_contract_sha256": "8b2e01f824d95d4ace4504076a74ecbebed8ae6748feb115117ac5ee617c074c",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-244",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4870033264160156,
+      "reference_heights": [
+        86.52369689941406,
+        89.0782241821289
+      ],
+      "reference_sensor_sha256": "f2efe86a04992f03895e05469af0b65140731aea077b30fee2a28ba22531f194",
+      "reference_contract_sha256": "6ba721166ddc44a6367e888976aed4e960a5b1475e73cbcd0330f835358857e3",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-245",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4870033264160156,
+      "reference_heights": [
+        86.52369689941406,
+        89.0782241821289
+      ],
+      "reference_sensor_sha256": "f2efe86a04992f03895e05469af0b65140731aea077b30fee2a28ba22531f194",
+      "reference_contract_sha256": "c49f289c57c7a9aa72a650ec94d32bebed5cad8b9b6c76722dd720363b72b9bb",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-246",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.072498083114624,
+      "reference_heights": [
+        88.80177307128906,
+        91.78943634033203
+      ],
+      "reference_sensor_sha256": "4776cd776cd89a71b4f102f37b3371a50d1ff6ff0515709cccfe7c93b6b336a1",
+      "reference_contract_sha256": "8f373d7eb947ee77810ca7137de47ec38aa75c2cbc11b66afb753f5dfc135f28",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-247",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.072498083114624,
+      "reference_heights": [
+        88.80177307128906,
+        91.78943634033203
+      ],
+      "reference_sensor_sha256": "4776cd776cd89a71b4f102f37b3371a50d1ff6ff0515709cccfe7c93b6b336a1",
+      "reference_contract_sha256": "9cb36b79b42fb1e1dfcce71f1f3c4a263e4149832c812ac9c9bdd6f98a1469f9",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-248",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.957758903503418,
+      "reference_heights": [
+        87.40064239501953,
+        90.459228515625
+      ],
+      "reference_sensor_sha256": "4f9dfe076706181ab4cf40a188ecf8dd9a269be17236cca70a3030d5ef18db88",
+      "reference_contract_sha256": "6843699f13146712f54d401e09890c21cd90c7dc685077a8034d67cf0e2ea4b9",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    },
+    {
+      "update_id": "update-249",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.957758903503418,
+      "reference_heights": [
+        87.40064239501953,
+        90.459228515625
+      ],
+      "reference_sensor_sha256": "4f9dfe076706181ab4cf40a188ecf8dd9a269be17236cca70a3030d5ef18db88",
+      "reference_contract_sha256": "aae676ba9971675eee74d14f714a297a6b5b18498a81ac5e7949524570387d80",
+      "actual_heights": null,
+      "actual_ttc": null,
+      "height_absolute_errors": null,
+      "ttc_absolute_error": null,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": false
+    }
+  ],
+  "scope": "ALL_SCHEDULED_ANCHORS_INDEPENDENT_DISK_RAW_FULL_FRAME_NORMALIZATION_UNTOUCHED_NATIVE_FORWARD"
+}

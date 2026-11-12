@@ -1,6 +1,6 @@
 \section{Competition adaptation and complete prediction traces}
 \label{app:competition-details}
-This appendix details input construction and timing for the original 434-query competition inference snapshot of 28 October. Linear and symmetric-log views show the full signed prediction traces. The corrected target audit and quality-adapted PHASE-TTC comparison added on 1 November appear in Section~\ref{sec:quality-adaptation}; they do not alter the frozen predictions shown here. \evidence{T01,N01}
+This appendix details input construction and predictions for the original 434-query competition inference snapshot of 28 October. Linear and symmetric-log views show the full signed prediction traces. The corrected target audit and quality-adapted PHASE-TTC comparison added on 1 November appear in Section~\ref{sec:quality-adaptation}; they do not alter the frozen predictions shown here. \evidence{T01,N01}
 
 \subsection{Frozen models and causal input construction}
 
@@ -27,11 +27,9 @@ Table~VI of the eAP paper reports Garl-TTC on three EvTTC sequences, with an unw
 \input{tables/evttc_published_rte}
 \input{tables/evttc_sequence_disagreement}
 
-\subsection{Runtime boundary and interpretation}
+\subsection{Execution boundary and prediction verification}
 
-\input{tables/evttc_runtime}
-
-Timing separates tensor preparation from the synchronized model-to-host call and excludes loading, indexing, calibration, source hashing, and result serialization. The variants run once in full, event-only, visual-only order, so operating-system and HDF5 caches and GPU warm state can carry between runs. Table~\ref{tab:evttc-runtime} reports these observations alongside PHASE-TTC, whose adapter and temporal support differ.
+This historical snapshot uses query-oriented adapters with different temporal support and cache states. Its timing records remain archived in source T01 and \path{tables/evttc_runtime.tex}; they are excluded from the article's latency comparison. Sections~\ref{sec:runtime} and~\ref{sec:local-hardware} report the persistent-service measurements.
 
 Independent verification accounts for each planned record and replays the float32 height-to-TTC conversion. Full and visual Garl remain partial because of input gaps; event-only contains all 434 rows. Across the ten sequences, the four routes exhibit distinct signed behavior and disagreement tails. \evidence{T01}
 

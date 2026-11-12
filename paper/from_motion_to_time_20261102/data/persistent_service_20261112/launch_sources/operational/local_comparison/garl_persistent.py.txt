@@ -1,0 +1,215 @@
+"""Persistent TTC-only Garl on the shared causal L40 left-sensor replay."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from collections import OrderedDict
+from typing import Any, cast
+
+import numpy as np
+import torch
+
+from e_jepa_ttc.data.garl_official_preprocessing import (
+    official_resize_feature,
+    official_resize_roi,
+    official_square_box,
+    official_timevolume_roi_np,
+)
+from operational.evttc_transfer.inputs import project_rgb_box_rotation_only
+from operational.garl_evttc_competition.prepare import IMAGENET_MEAN, IMAGENET_STD
+from operational.local_comparison.persistent import EventRing
+from operational.train40_runtime.paced import Arrival
+from operational.train40_runtime.replay_memory import MemoryRawUpdate
+
+ABI = "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1"
+
+
+def exact_rgb_roi(frames: list[np.ndarray], square: tuple[int, int, int, int]) -> np.ndarray:
+    """Normalize only sampled pixels, retaining native full-frame grid coordinates.
+
+    The zero scratch has the native dimensions. The sampled square, with a
+    conservative two-pixel interpolation halo, is filled with exactly the native
+    normalized values. Outside-image zero padding and grid_sample are unchanged.
+    """
+    height, width, _ = frames[0].shape
+    if any(frame.shape != frames[0].shape for frame in frames):
+        raise ValueError("RGB endpoints must have identical image dimensions")
+    x0, y0 = max(0, square[0] - 2), max(0, square[1] - 2)
+    x1, y1 = min(width, square[2] + 2), min(height, square[3] + 2)
+    scratch = np.zeros((6, height, width), dtype=np.float32)
+    if x1 > x0 and y1 > y0:
+        for index, frame in enumerate(frames):
+            raw = frame[y0:y1, x0:x1].transpose(2, 0, 1).astype(np.float32)
+            scratch[index * 3 : index * 3 + 3, y0:y1, x0:x1] = (
+                raw / np.float32(255.0) - IMAGENET_MEAN
+            ) / IMAGENET_STD
+    return official_resize_roi(scratch, square, (128, 128)).numpy()
+
+
+class PairedBackboneCache:
+    """Cache one exact six-channel RGB branch; always recompute event and TTC heads."""
+
+    def __init__(self, model: torch.nn.Module) -> None:
+        self.model = model
+        self.key: tuple | None = None
+        self.rgb: np.ndarray | None = None
+        self.feature: torch.Tensor | None = None
+        self.hits = self.misses = 0
+
+    def predict(self, sensor: np.ndarray, key: tuple) -> torch.Tensor:
+        """Return native raw heights without caching fused features or TTC outputs."""
+        model = cast(Any, self.model)
+        parameter = next(model.parameters(), None)
+        device = parameter.device if parameter is not None else torch.device("cpu")
+        with torch.inference_mode():
+            if key == self.key:
+                if self.rgb is None or not np.array_equal(sensor[:6], self.rgb):
+                    raise ValueError("Immutable cache key reused with different RGB bytes")
+                rgb = self.feature
+                assert rgb is not None
+                self.hits += 1
+            else:
+                raw = torch.from_numpy(np.ascontiguousarray(sensor[:6])[None]).to(device)
+                rgb, _ = model.backbone_rgb(raw)
+                rgb = model.pool_layer(rgb).reshape(1, -1)
+                self.key, self.rgb, self.feature = key, sensor[:6].copy(), rgb
+                self.misses += 1
+            event = torch.from_numpy(np.ascontiguousarray(sensor[6:])[None]).to(device)
+            event, _ = model.backbone_event(event)
+            event = model.pool_layer(event).reshape(1, -1)
+            return model.final_layer(model.middle_layer(torch.cat([rgb, event], dim=1)))
+
+
+def endpoint_contract(payload: MemoryRawUpdate) -> tuple[dict[str, Any], tuple]:
+    """Bind Garl to the last two declared L40 frames, their boxes and actual cadence."""
+    row = json.loads(payload.row_json)
+    ids = row["rgb_frame_indices"][-2:]
+    times = row["rgb_timestamps_us"][-2:]
+    if len(ids) != 2 or not times[0] < times[1] <= row["anchor_us"]:
+        raise ValueError("Two distinct causal L40 RGB endpoints are required")
+    tokens = [payload.rgb.tokens[index] for index in ids]
+    if [token.timestamp_us for token in tokens] != times:
+        raise ValueError("Released frame timestamps differ from the manifest")
+    rgb_boxes = list(payload.boxes[-2:])
+    if not np.array_equal(np.asarray(rgb_boxes), np.asarray(row["rgb_boxes"][-2:])):
+        raise ValueError("Causal annotation boxes differ from the frozen manifest")
+    event_boxes = [project_rgb_box_rotation_only(box, payload.calibration) for box in rgb_boxes]
+    event_squares = [official_square_box(event_boxes, i) for i in range(2)]
+    rgb_square = official_square_box(rgb_boxes, 1)
+    delta_us = times[1] - times[0]
+    support = min(delta_us, 100_000)
+    contract = {
+        "abi": ABI,
+        "query_us": row["anchor_us"],
+        "frame_ids": ids,
+        "frame_timestamps_us": times,
+        "frame_sha256": [token.sha256 for token in tokens],
+        "rgb_boxes": rgb_boxes,
+        "rgb_square": rgb_square,
+        "event_squares": event_squares,
+        "event_windows": [(t - support, t) for t in times],
+        "delta_t_s": delta_us / 1e6,
+        "sensor_age_us": row["anchor_us"] - times[-1],
+        "bbox_sources": row["bbox_sources"][-2:],
+    }
+    key = (
+        ABI,
+        tuple(ids),
+        tuple(times),
+        tuple(token.identity_sha256 for token in tokens),
+        tuple(tuple(box) for box in rgb_boxes),
+        tuple(rgb_square),
+    )
+    return contract, key
+
+
+def event_tensor(raw: dict[str, np.ndarray], square: tuple[int, int, int, int]) -> np.ndarray:
+    """Preserve native first-event-relative bins and exact grid sampling."""
+    if not len(raw["t"]):
+        raise ValueError("Empty raw event endpoint")
+    feature, _ = official_timevolume_roi_np(square, raw["x"], raw["y"], raw["t"])
+    return official_resize_feature(feature, (128, 128)).numpy()
+
+
+def ttc_from_heights(heights: np.ndarray, delta_s: float) -> float:
+    """Use the native FP32 height-ratio operation order and signed output."""
+    if heights.shape != (1, 2) or not np.isfinite(heights).all() or heights[0, 1] == 0:
+        raise ValueError("Invalid Garl heights")
+    with np.errstate(divide="ignore", invalid="ignore"):
+        value = np.asarray([delta_s], dtype=np.float32) / (
+            np.float32(1.0) - heights[:, 0] / heights[:, 1]
+        )
+    if not np.isfinite(value).all():
+        raise ValueError("Unavailable singular Garl TTC")
+    return float(value[0])
+
+
+class PersistentGarl:
+    """Consume contiguous released RAW; retain exact endpoint and RGB pair state."""
+
+    def __init__(self, model: torch.nn.Module, ring: EventRing, identity: str) -> None:
+        self.model, self.ring, self.identity = model, ring, identity
+        self.branch = PairedBackboneCache(model)
+        self.rgb_cache: OrderedDict[tuple, np.ndarray] = OrderedDict()
+        self.event_cache: OrderedDict[tuple, np.ndarray] = OrderedDict()
+        self.records: list[dict[str, Any]] = []
+        self.next_index = 0
+        self.failure: str | None = None
+
+    def infer_all(self, arrival: Arrival[MemoryRawUpdate]) -> dict[str, Any]:
+        """Include selection, preparation, exact reuse, transfer and host delivery."""
+        payload = arrival.payload
+        if self.failure is not None:
+            raise ValueError(self.failure)
+        try:
+            if payload.index != self.next_index:
+                raise ValueError("RAW gap invalidated Garl causal history")
+            row = json.loads(payload.row_json)
+            query = int(row["anchor_us"])
+            self.ring.append(dict(payload.events), query - 20_000, query)
+            contract, key = endpoint_contract(payload)
+            key = (self.identity, *key)
+            rgb_hit = key in self.rgb_cache
+            if not rgb_hit:
+                frames = [payload.rgb.frames[i] for i in contract["frame_ids"]]
+                self.rgb_cache[key] = exact_rgb_roi(frames, contract["rgb_square"])
+            rgb = self.rgb_cache[key]
+            self.rgb_cache.move_to_end(key)
+            while len(self.rgb_cache) > 2:
+                self.rgb_cache.popitem(last=False)
+            tensors, event_hits = [], []
+            for window, square in zip(
+                contract["event_windows"], contract["event_squares"], strict=True
+            ):
+                event_key = (self.identity, ABI, tuple(window), tuple(square))
+                hit = event_key in self.event_cache
+                if not hit:
+                    self.event_cache[event_key] = event_tensor(self.ring.window(*window), square)
+                tensors.append(self.event_cache[event_key])
+                event_hits.append(hit)
+                self.event_cache.move_to_end(event_key)
+            while len(self.event_cache) > 4:
+                self.event_cache.popitem(last=False)
+            sensor = np.concatenate([rgb, *tensors]).astype(np.float32, copy=False)
+            heights = self.branch.predict(sensor, key).detach().cpu().numpy()
+            value = ttc_from_heights(heights, contract["delta_t_s"])
+            # CPU conversion above synchronizes every required native height output.
+            record = {
+                "update_id": arrival.update_id,
+                "query_id": row["query_id"],
+                "contract": contract,
+                "sensor_sha256": hashlib.sha256(sensor.tobytes()).hexdigest(),
+                "heights": heights.tolist(),
+                "ttc": value,
+                "rgb_preparation_cache_hit": rgb_hit,
+                "event_representation_cache_hits": event_hits,
+                "rgb_branch_hits": self.branch.hits,
+                "rgb_branch_misses": self.branch.misses,
+            }
+            self.records.append(record)
+            self.next_index += 1
+            return {"roi_00": {"success": True, "predictions": {"GARL_TTC": value}}}
+        except Exception as exc:
+            self.failure = f"{type(exc).__name__}: {exc}"
+            raise

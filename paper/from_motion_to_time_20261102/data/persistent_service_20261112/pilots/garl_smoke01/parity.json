@@ -1,0 +1,187 @@
+{
+  "performed": true,
+  "passed": true,
+  "updates": [
+    {
+      "update_id": "update-0",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "passed": true
+    },
+    {
+      "update_id": "update-1",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "passed": true
+    },
+    {
+      "update_id": "update-2",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "passed": true
+    },
+    {
+      "update_id": "update-3",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "passed": true
+    },
+    {
+      "update_id": "update-4",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "passed": true
+    },
+    {
+      "update_id": "update-5",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "passed": true
+    },
+    {
+      "update_id": "update-6",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "passed": true
+    },
+    {
+      "update_id": "update-7",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "passed": true
+    },
+    {
+      "update_id": "update-8",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "passed": true
+    },
+    {
+      "update_id": "update-9",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "passed": true
+    },
+    {
+      "update_id": "update-10",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "passed": true
+    },
+    {
+      "update_id": "update-11",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "passed": true
+    },
+    {
+      "update_id": "update-12",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "passed": true
+    },
+    {
+      "update_id": "update-13",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "passed": true
+    },
+    {
+      "update_id": "update-14",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "passed": true
+    },
+    {
+      "update_id": "update-15",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "passed": true
+    },
+    {
+      "update_id": "update-16",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "passed": true
+    },
+    {
+      "update_id": "update-17",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "passed": true
+    },
+    {
+      "update_id": "update-18",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "passed": true
+    },
+    {
+      "update_id": "update-19",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "passed": true
+    }
+  ],
+  "scope": "ALL_SCHEDULED_ANCHORS_INDEPENDENT_DISK_RAW_FULL_FRAME_NORMALIZATION_UNTOUCHED_NATIVE_FORWARD"
+}

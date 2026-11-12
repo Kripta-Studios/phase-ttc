@@ -1,0 +1,8 @@
+{
+  "scope": "PATH_RELOCATION_ONLY_ORIGINAL_HASH_VERIFIERS_RETAINED",
+  "workspace_root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement",
+  "runtime_root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\persistent_comparison_20261112\\runtime",
+  "launcher_sha256": "3628ce2231a69dfc72f800a62c4a4d6da1303dd5c1b8d1c66093b35af18bf292",
+  "relocation_source_sha256": "a7f690a1779cc15d75262ff7b7f34c92b97133b24e0d89ec931f7913879125e7",
+  "original_assets_modified": false
+}

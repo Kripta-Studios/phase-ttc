@@ -541,6 +541,9 @@ def main() -> None:
     macros = {
         "LocalPhaseParameters": f"{phase:,}",
         "LocalGarlTTCParameters": f"{garl:,}",
+        "LocalGarlStoredParameters": (
+            f"{summary['profiles']['garl_ttc_only']['total_parameters']:,}"
+        ),
         "LocalPhaseExecutedParameters": f"{phase_executed:,}",
         "LocalExecutedParameterReduction": f"{100 * (1 - phase_executed / garl):.2f}\\%",
         "LocalMatchedQueries": str(len({r["query"] for r in common})),

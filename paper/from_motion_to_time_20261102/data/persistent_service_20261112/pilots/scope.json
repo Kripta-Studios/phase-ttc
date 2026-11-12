@@ -1,0 +1,12 @@
+{
+  "scope": "Setup and parity pilots excluded from primary timing population",
+  "attempts": {
+    "phase_smoke": "Initial maintained-tree attempt rejected historical source binding.",
+    "phase_smoke_frozen": "Historical-tree setup attempts exposed missing configuration/path relocation.",
+    "phase_smoke_relocated": "Omitted historical optimization flags; overloaded pilot, not admitted.",
+    "phase_smoke_exact": "Historical flags restored; 20-anchor PHASE parity pilot.",
+    "garl_smoke01": "20-anchor eager persistent Garl parity pilot.",
+    "garl_graph_smoke01": "Setup race: launcher ran before isolated-tree overlay completed; no paced measurement.",
+    "garl_graph_smoke02": "20-anchor graph Garl pilot; exact input and native-output parity."
+  }
+}

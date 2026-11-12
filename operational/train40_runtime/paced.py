@@ -89,11 +89,13 @@ class Arrival(Generic[Payload]):
     payload: Payload
 
 
-def _finite_predictions(result: Mapping[str, Any]) -> bool:
+def _finite_predictions(
+    result: Mapping[str, Any], components: Sequence[str] = PREDICTION_COMPONENTS
+) -> bool:
     predictions = result.get("predictions")
     if not isinstance(predictions, Mapping):
         return False
-    for component in PREDICTION_COMPONENTS:
+    for component in components:
         if component not in predictions:
             return False
         value = predictions[component]
@@ -121,6 +123,7 @@ def run_paced_replay(
     wait_strategy: str = "event",
     source_warmup: Callable[[], Mapping[str, Any] | None] | None = None,
     source_finalize: Callable[[], Mapping[str, Any] | None] | None = None,
+    prediction_components: Sequence[str] = PREDICTION_COMPONENTS,
 ) -> dict[str, Any]:
     """Measure all scheduled arrivals, retaining failures and overload drops.
 
@@ -150,6 +153,11 @@ def run_paced_replay(
     acquisition failure. Caller cancellation releases the producer in finally.
     """
     run_started_ns = time.perf_counter_ns()
+    components = tuple(prediction_components)
+    if not components or any(not isinstance(x, str) or not x for x in components):
+        raise ValueError("Prediction component names must be nonempty strings")
+    if len(set(components)) != len(components):
+        raise ValueError("Prediction component names must be unique")
     ids = tuple(object_ids)
     if not ids or any(not isinstance(x, str) or not x for x in ids) or len(set(ids)) != len(ids):
         raise ValueError("object_ids must be nonempty unique strings")
@@ -293,7 +301,7 @@ def run_paced_replay(
                         "completed_ns": completed,
                         "success": error is None
                         and item.get("success") is True
-                        and _finite_predictions(item),
+                        and _finite_predictions(item, components),
                         "result": item,
                         "error": error or (None if identity in result else "MISSING_OBJECT"),
                     }
@@ -407,4 +415,6 @@ def run_paced_replay(
         "TTC distributions are separate in latency_populations. No division by object count.",
     }
     summary["latency_populations"] = paced_latency_populations(summary)
+    if components != PREDICTION_COMPONENTS:
+        summary["prediction_components"] = list(components)
     return summary

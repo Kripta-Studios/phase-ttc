@@ -1,0 +1,2257 @@
+{
+  "performed": true,
+  "passed": false,
+  "updates": [
+    {
+      "update_id": "update-0",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "passed": true
+    },
+    {
+      "update_id": "update-1",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "passed": true
+    },
+    {
+      "update_id": "update-2",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "passed": true
+    },
+    {
+      "update_id": "update-3",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "passed": true
+    },
+    {
+      "update_id": "update-4",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "passed": true
+    },
+    {
+      "update_id": "update-5",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "passed": true
+    },
+    {
+      "update_id": "update-6",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "passed": true
+    },
+    {
+      "update_id": "update-7",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "passed": true
+    },
+    {
+      "update_id": "update-8",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "passed": true
+    },
+    {
+      "update_id": "update-9",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "passed": true
+    },
+    {
+      "update_id": "update-10",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "passed": true
+    },
+    {
+      "update_id": "update-11",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "passed": true
+    },
+    {
+      "update_id": "update-12",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "passed": true
+    },
+    {
+      "update_id": "update-13",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "passed": true
+    },
+    {
+      "update_id": "update-14",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "passed": true
+    },
+    {
+      "update_id": "update-15",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "passed": true
+    },
+    {
+      "update_id": "update-16",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "passed": true
+    },
+    {
+      "update_id": "update-17",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "passed": true
+    },
+    {
+      "update_id": "update-18",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "passed": true
+    },
+    {
+      "update_id": "update-19",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "passed": true
+    },
+    {
+      "update_id": "update-20",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "passed": true
+    },
+    {
+      "update_id": "update-21",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.779672622680664,
+      "passed": true
+    },
+    {
+      "update_id": "update-22",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.779672622680664,
+      "passed": true
+    },
+    {
+      "update_id": "update-23",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368329048156738,
+      "passed": true
+    },
+    {
+      "update_id": "update-24",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368329048156738,
+      "passed": true
+    },
+    {
+      "update_id": "update-25",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368329048156738,
+      "passed": true
+    },
+    {
+      "update_id": "update-26",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.765712261199951,
+      "passed": true
+    },
+    {
+      "update_id": "update-27",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.765712261199951,
+      "passed": true
+    },
+    {
+      "update_id": "update-28",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.8279900550842285,
+      "passed": true
+    },
+    {
+      "update_id": "update-29",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.8279900550842285,
+      "passed": true
+    },
+    {
+      "update_id": "update-30",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.8279900550842285,
+      "passed": true
+    },
+    {
+      "update_id": "update-31",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.236196994781494,
+      "passed": true
+    },
+    {
+      "update_id": "update-32",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.236196994781494,
+      "passed": true
+    },
+    {
+      "update_id": "update-33",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.9070725440979,
+      "passed": true
+    },
+    {
+      "update_id": "update-34",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.9070725440979,
+      "passed": true
+    },
+    {
+      "update_id": "update-35",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.9070725440979,
+      "passed": true
+    },
+    {
+      "update_id": "update-36",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.5643630027771,
+      "passed": true
+    },
+    {
+      "update_id": "update-37",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.5643630027771,
+      "passed": true
+    },
+    {
+      "update_id": "update-38",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.694007396697998,
+      "passed": true
+    },
+    {
+      "update_id": "update-39",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.694007396697998,
+      "passed": true
+    },
+    {
+      "update_id": "update-40",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.694007396697998,
+      "passed": true
+    },
+    {
+      "update_id": "update-41",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.9521164894104,
+      "passed": true
+    },
+    {
+      "update_id": "update-42",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 4.9521164894104,
+      "passed": true
+    },
+    {
+      "update_id": "update-43",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.555235385894775,
+      "passed": true
+    },
+    {
+      "update_id": "update-44",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.555235385894775,
+      "passed": true
+    },
+    {
+      "update_id": "update-45",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.555235385894775,
+      "passed": true
+    },
+    {
+      "update_id": "update-46",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 12.62453842163086,
+      "passed": true
+    },
+    {
+      "update_id": "update-47",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 12.62453842163086,
+      "passed": true
+    },
+    {
+      "update_id": "update-48",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 7.94397497177124,
+      "passed": true
+    },
+    {
+      "update_id": "update-49",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 7.94397497177124,
+      "passed": true
+    },
+    {
+      "update_id": "update-50",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 7.94397497177124,
+      "passed": true
+    },
+    {
+      "update_id": "update-51",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.695321559906006,
+      "passed": true
+    },
+    {
+      "update_id": "update-52",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.695321559906006,
+      "passed": true
+    },
+    {
+      "update_id": "update-53",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.26399564743042,
+      "passed": true
+    },
+    {
+      "update_id": "update-54",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.26399564743042,
+      "passed": true
+    },
+    {
+      "update_id": "update-55",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.26399564743042,
+      "passed": true
+    },
+    {
+      "update_id": "update-56",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368981838226318,
+      "passed": true
+    },
+    {
+      "update_id": "update-57",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.368981838226318,
+      "passed": true
+    },
+    {
+      "update_id": "update-58",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.2295355796813965,
+      "passed": true
+    },
+    {
+      "update_id": "update-59",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.2295355796813965,
+      "passed": true
+    },
+    {
+      "update_id": "update-60",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.2295355796813965,
+      "passed": true
+    },
+    {
+      "update_id": "update-61",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.023484230041504,
+      "passed": false
+    },
+    {
+      "update_id": "update-62",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.023484230041504,
+      "passed": false
+    },
+    {
+      "update_id": "update-63",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.645435333251953,
+      "passed": false
+    },
+    {
+      "update_id": "update-64",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.645435333251953,
+      "passed": false
+    },
+    {
+      "update_id": "update-65",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.645435333251953,
+      "passed": false
+    },
+    {
+      "update_id": "update-66",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.293485641479492,
+      "passed": false
+    },
+    {
+      "update_id": "update-67",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.293485641479492,
+      "passed": false
+    },
+    {
+      "update_id": "update-68",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.166718482971191,
+      "passed": false
+    },
+    {
+      "update_id": "update-69",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.166718482971191,
+      "passed": false
+    },
+    {
+      "update_id": "update-70",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.166718482971191,
+      "passed": false
+    },
+    {
+      "update_id": "update-71",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.342224597930908,
+      "passed": false
+    },
+    {
+      "update_id": "update-72",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.342224597930908,
+      "passed": false
+    },
+    {
+      "update_id": "update-73",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.322985649108887,
+      "passed": false
+    },
+    {
+      "update_id": "update-74",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.322985649108887,
+      "passed": false
+    },
+    {
+      "update_id": "update-75",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.322985649108887,
+      "passed": false
+    },
+    {
+      "update_id": "update-76",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.774052619934082,
+      "passed": false
+    },
+    {
+      "update_id": "update-77",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.774052619934082,
+      "passed": false
+    },
+    {
+      "update_id": "update-78",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.175420761108398,
+      "passed": false
+    },
+    {
+      "update_id": "update-79",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.175420761108398,
+      "passed": false
+    },
+    {
+      "update_id": "update-80",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.175420761108398,
+      "passed": false
+    },
+    {
+      "update_id": "update-81",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.586056232452393,
+      "passed": false
+    },
+    {
+      "update_id": "update-82",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.586056232452393,
+      "passed": false
+    },
+    {
+      "update_id": "update-83",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.1534013748168945,
+      "passed": false
+    },
+    {
+      "update_id": "update-84",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.1534013748168945,
+      "passed": false
+    },
+    {
+      "update_id": "update-85",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 6.1534013748168945,
+      "passed": false
+    },
+    {
+      "update_id": "update-86",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.691843032836914,
+      "passed": false
+    },
+    {
+      "update_id": "update-87",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.691843032836914,
+      "passed": false
+    },
+    {
+      "update_id": "update-88",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.536454200744629,
+      "passed": false
+    },
+    {
+      "update_id": "update-89",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.536454200744629,
+      "passed": false
+    },
+    {
+      "update_id": "update-90",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.536454200744629,
+      "passed": false
+    },
+    {
+      "update_id": "update-91",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.580965042114258,
+      "passed": false
+    },
+    {
+      "update_id": "update-92",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.580965042114258,
+      "passed": false
+    },
+    {
+      "update_id": "update-93",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.232685565948486,
+      "passed": false
+    },
+    {
+      "update_id": "update-94",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.232685565948486,
+      "passed": false
+    },
+    {
+      "update_id": "update-95",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.232685565948486,
+      "passed": false
+    },
+    {
+      "update_id": "update-96",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.096923351287842,
+      "passed": false
+    },
+    {
+      "update_id": "update-97",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 5.096923351287842,
+      "passed": false
+    },
+    {
+      "update_id": "update-98",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.317439556121826,
+      "passed": false
+    },
+    {
+      "update_id": "update-99",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.317439556121826,
+      "passed": false
+    },
+    {
+      "update_id": "update-100",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.317439556121826,
+      "passed": false
+    },
+    {
+      "update_id": "update-101",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.267627239227295,
+      "passed": false
+    },
+    {
+      "update_id": "update-102",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.267627239227295,
+      "passed": false
+    },
+    {
+      "update_id": "update-103",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.84699010848999,
+      "passed": false
+    },
+    {
+      "update_id": "update-104",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.84699010848999,
+      "passed": false
+    },
+    {
+      "update_id": "update-105",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.84699010848999,
+      "passed": false
+    },
+    {
+      "update_id": "update-106",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.263978481292725,
+      "passed": false
+    },
+    {
+      "update_id": "update-107",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.263978481292725,
+      "passed": false
+    },
+    {
+      "update_id": "update-108",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.10970401763916,
+      "passed": false
+    },
+    {
+      "update_id": "update-109",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.10970401763916,
+      "passed": false
+    },
+    {
+      "update_id": "update-110",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.10970401763916,
+      "passed": false
+    },
+    {
+      "update_id": "update-111",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.763921737670898,
+      "passed": false
+    },
+    {
+      "update_id": "update-112",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.763921737670898,
+      "passed": false
+    },
+    {
+      "update_id": "update-113",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.305440902709961,
+      "passed": false
+    },
+    {
+      "update_id": "update-114",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.305440902709961,
+      "passed": false
+    },
+    {
+      "update_id": "update-115",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.305440902709961,
+      "passed": false
+    },
+    {
+      "update_id": "update-116",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.14399528503418,
+      "passed": false
+    },
+    {
+      "update_id": "update-117",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.14399528503418,
+      "passed": false
+    },
+    {
+      "update_id": "update-118",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.440101623535156,
+      "passed": false
+    },
+    {
+      "update_id": "update-119",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.440101623535156,
+      "passed": false
+    },
+    {
+      "update_id": "update-120",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.440101623535156,
+      "passed": false
+    },
+    {
+      "update_id": "update-121",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.7475504875183105,
+      "passed": false
+    },
+    {
+      "update_id": "update-122",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.7475504875183105,
+      "passed": false
+    },
+    {
+      "update_id": "update-123",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.1686482429504395,
+      "passed": false
+    },
+    {
+      "update_id": "update-124",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.1686482429504395,
+      "passed": false
+    },
+    {
+      "update_id": "update-125",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.1686482429504395,
+      "passed": false
+    },
+    {
+      "update_id": "update-126",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.090475082397461,
+      "passed": false
+    },
+    {
+      "update_id": "update-127",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.090475082397461,
+      "passed": false
+    },
+    {
+      "update_id": "update-128",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.2752909660339355,
+      "passed": false
+    },
+    {
+      "update_id": "update-129",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.2752909660339355,
+      "passed": false
+    },
+    {
+      "update_id": "update-130",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.2752909660339355,
+      "passed": false
+    },
+    {
+      "update_id": "update-131",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.176512241363525,
+      "passed": false
+    },
+    {
+      "update_id": "update-132",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.176512241363525,
+      "passed": false
+    },
+    {
+      "update_id": "update-133",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.246521472930908,
+      "passed": false
+    },
+    {
+      "update_id": "update-134",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.246521472930908,
+      "passed": false
+    },
+    {
+      "update_id": "update-135",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.246521472930908,
+      "passed": false
+    },
+    {
+      "update_id": "update-136",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.883284330368042,
+      "passed": false
+    },
+    {
+      "update_id": "update-137",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.883284330368042,
+      "passed": false
+    },
+    {
+      "update_id": "update-138",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.277382850646973,
+      "passed": false
+    },
+    {
+      "update_id": "update-139",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.277382850646973,
+      "passed": false
+    },
+    {
+      "update_id": "update-140",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.277382850646973,
+      "passed": false
+    },
+    {
+      "update_id": "update-141",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.247311592102051,
+      "passed": false
+    },
+    {
+      "update_id": "update-142",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.247311592102051,
+      "passed": false
+    },
+    {
+      "update_id": "update-143",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.712911128997803,
+      "passed": false
+    },
+    {
+      "update_id": "update-144",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.712911128997803,
+      "passed": false
+    },
+    {
+      "update_id": "update-145",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.712911128997803,
+      "passed": false
+    },
+    {
+      "update_id": "update-146",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.632303714752197,
+      "passed": false
+    },
+    {
+      "update_id": "update-147",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.632303714752197,
+      "passed": false
+    },
+    {
+      "update_id": "update-148",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.957232713699341,
+      "passed": false
+    },
+    {
+      "update_id": "update-149",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.957232713699341,
+      "passed": false
+    },
+    {
+      "update_id": "update-150",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.957232713699341,
+      "passed": false
+    },
+    {
+      "update_id": "update-151",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.833348512649536,
+      "passed": false
+    },
+    {
+      "update_id": "update-152",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.833348512649536,
+      "passed": false
+    },
+    {
+      "update_id": "update-153",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.122509002685547,
+      "passed": false
+    },
+    {
+      "update_id": "update-154",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.122509002685547,
+      "passed": false
+    },
+    {
+      "update_id": "update-155",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.122509002685547,
+      "passed": false
+    },
+    {
+      "update_id": "update-156",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.285361289978027,
+      "passed": false
+    },
+    {
+      "update_id": "update-157",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.285361289978027,
+      "passed": false
+    },
+    {
+      "update_id": "update-158",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.210798740386963,
+      "passed": false
+    },
+    {
+      "update_id": "update-159",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.210798740386963,
+      "passed": false
+    },
+    {
+      "update_id": "update-160",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.210798740386963,
+      "passed": false
+    },
+    {
+      "update_id": "update-161",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.290213584899902,
+      "passed": false
+    },
+    {
+      "update_id": "update-162",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.290213584899902,
+      "passed": false
+    },
+    {
+      "update_id": "update-163",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.478623867034912,
+      "passed": false
+    },
+    {
+      "update_id": "update-164",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.478623867034912,
+      "passed": false
+    },
+    {
+      "update_id": "update-165",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.478623867034912,
+      "passed": false
+    },
+    {
+      "update_id": "update-166",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.203919887542725,
+      "passed": false
+    },
+    {
+      "update_id": "update-167",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.203919887542725,
+      "passed": false
+    },
+    {
+      "update_id": "update-168",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.286828517913818,
+      "passed": false
+    },
+    {
+      "update_id": "update-169",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.286828517913818,
+      "passed": false
+    },
+    {
+      "update_id": "update-170",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.286828517913818,
+      "passed": false
+    },
+    {
+      "update_id": "update-171",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.538560390472412,
+      "passed": false
+    },
+    {
+      "update_id": "update-172",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.538560390472412,
+      "passed": false
+    },
+    {
+      "update_id": "update-173",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.827244758605957,
+      "passed": false
+    },
+    {
+      "update_id": "update-174",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.827244758605957,
+      "passed": false
+    },
+    {
+      "update_id": "update-175",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.827244758605957,
+      "passed": false
+    },
+    {
+      "update_id": "update-176",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6803476810455322,
+      "passed": false
+    },
+    {
+      "update_id": "update-177",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6803476810455322,
+      "passed": false
+    },
+    {
+      "update_id": "update-178",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8633835315704346,
+      "passed": false
+    },
+    {
+      "update_id": "update-179",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8633835315704346,
+      "passed": false
+    },
+    {
+      "update_id": "update-180",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8633835315704346,
+      "passed": false
+    },
+    {
+      "update_id": "update-181",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.170118808746338,
+      "passed": false
+    },
+    {
+      "update_id": "update-182",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 4.170118808746338,
+      "passed": false
+    },
+    {
+      "update_id": "update-183",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.976430892944336,
+      "passed": false
+    },
+    {
+      "update_id": "update-184",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.976430892944336,
+      "passed": false
+    },
+    {
+      "update_id": "update-185",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.976430892944336,
+      "passed": false
+    },
+    {
+      "update_id": "update-186",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.528823137283325,
+      "passed": false
+    },
+    {
+      "update_id": "update-187",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.528823137283325,
+      "passed": false
+    },
+    {
+      "update_id": "update-188",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.492798328399658,
+      "passed": false
+    },
+    {
+      "update_id": "update-189",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.492798328399658,
+      "passed": false
+    },
+    {
+      "update_id": "update-190",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.492798328399658,
+      "passed": false
+    },
+    {
+      "update_id": "update-191",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8439786434173584,
+      "passed": false
+    },
+    {
+      "update_id": "update-192",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.8439786434173584,
+      "passed": false
+    },
+    {
+      "update_id": "update-193",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6655311584472656,
+      "passed": false
+    },
+    {
+      "update_id": "update-194",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6655311584472656,
+      "passed": false
+    },
+    {
+      "update_id": "update-195",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.6655311584472656,
+      "passed": false
+    },
+    {
+      "update_id": "update-196",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.332852602005005,
+      "passed": false
+    },
+    {
+      "update_id": "update-197",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.332852602005005,
+      "passed": false
+    },
+    {
+      "update_id": "update-198",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1123569011688232,
+      "passed": false
+    },
+    {
+      "update_id": "update-199",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1123569011688232,
+      "passed": false
+    },
+    {
+      "update_id": "update-200",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1123569011688232,
+      "passed": false
+    },
+    {
+      "update_id": "update-201",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0344619750976562,
+      "passed": false
+    },
+    {
+      "update_id": "update-202",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0344619750976562,
+      "passed": false
+    },
+    {
+      "update_id": "update-203",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.970141649246216,
+      "passed": false
+    },
+    {
+      "update_id": "update-204",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.970141649246216,
+      "passed": false
+    },
+    {
+      "update_id": "update-205",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.970141649246216,
+      "passed": false
+    },
+    {
+      "update_id": "update-206",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.175220251083374,
+      "passed": false
+    },
+    {
+      "update_id": "update-207",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.175220251083374,
+      "passed": false
+    },
+    {
+      "update_id": "update-208",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0547852516174316,
+      "passed": false
+    },
+    {
+      "update_id": "update-209",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0547852516174316,
+      "passed": false
+    },
+    {
+      "update_id": "update-210",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.0547852516174316,
+      "passed": false
+    },
+    {
+      "update_id": "update-211",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1023924350738525,
+      "passed": false
+    },
+    {
+      "update_id": "update-212",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1023924350738525,
+      "passed": false
+    },
+    {
+      "update_id": "update-213",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.9368841648101807,
+      "passed": false
+    },
+    {
+      "update_id": "update-214",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.9368841648101807,
+      "passed": false
+    },
+    {
+      "update_id": "update-215",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.9368841648101807,
+      "passed": false
+    },
+    {
+      "update_id": "update-216",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.6989920139312744,
+      "passed": false
+    },
+    {
+      "update_id": "update-217",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.6989920139312744,
+      "passed": false
+    },
+    {
+      "update_id": "update-218",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4907145500183105,
+      "passed": false
+    },
+    {
+      "update_id": "update-219",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4907145500183105,
+      "passed": false
+    },
+    {
+      "update_id": "update-220",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4907145500183105,
+      "passed": false
+    },
+    {
+      "update_id": "update-221",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4211416244506836,
+      "passed": false
+    },
+    {
+      "update_id": "update-222",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.4211416244506836,
+      "passed": false
+    },
+    {
+      "update_id": "update-223",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.508666753768921,
+      "passed": false
+    },
+    {
+      "update_id": "update-224",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.508666753768921,
+      "passed": false
+    },
+    {
+      "update_id": "update-225",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.508666753768921,
+      "passed": false
+    },
+    {
+      "update_id": "update-226",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.738340377807617,
+      "passed": false
+    },
+    {
+      "update_id": "update-227",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.738340377807617,
+      "passed": false
+    },
+    {
+      "update_id": "update-228",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.2169151306152344,
+      "passed": false
+    },
+    {
+      "update_id": "update-229",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.2169151306152344,
+      "passed": false
+    },
+    {
+      "update_id": "update-230",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.2169151306152344,
+      "passed": false
+    },
+    {
+      "update_id": "update-231",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.001615285873413,
+      "passed": false
+    },
+    {
+      "update_id": "update-232",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.001615285873413,
+      "passed": false
+    },
+    {
+      "update_id": "update-233",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.3287878036499023,
+      "passed": false
+    },
+    {
+      "update_id": "update-234",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.3287878036499023,
+      "passed": false
+    },
+    {
+      "update_id": "update-235",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.3287878036499023,
+      "passed": false
+    },
+    {
+      "update_id": "update-236",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.505246877670288,
+      "passed": false
+    },
+    {
+      "update_id": "update-237",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.505246877670288,
+      "passed": false
+    },
+    {
+      "update_id": "update-238",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1829209327697754,
+      "passed": false
+    },
+    {
+      "update_id": "update-239",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1829209327697754,
+      "passed": false
+    },
+    {
+      "update_id": "update-240",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.1829209327697754,
+      "passed": false
+    },
+    {
+      "update_id": "update-241",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4405784606933594,
+      "passed": false
+    },
+    {
+      "update_id": "update-242",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4405784606933594,
+      "passed": false
+    },
+    {
+      "update_id": "update-243",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4870033264160156,
+      "passed": false
+    },
+    {
+      "update_id": "update-244",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4870033264160156,
+      "passed": false
+    },
+    {
+      "update_id": "update-245",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.4870033264160156,
+      "passed": false
+    },
+    {
+      "update_id": "update-246",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.072498083114624,
+      "passed": false
+    },
+    {
+      "update_id": "update-247",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 3.072498083114624,
+      "passed": false
+    },
+    {
+      "update_id": "update-248",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.957758903503418,
+      "passed": false
+    },
+    {
+      "update_id": "update-249",
+      "input_exact": false,
+      "height_parity": false,
+      "ttc_parity": false,
+      "reference_status": "ok",
+      "reference_ttc": 2.957758903503418,
+      "passed": false
+    }
+  ],
+  "scope": "ALL_SCHEDULED_ANCHORS_INDEPENDENT_DISK_RAW_FULL_FRAME_NORMALIZATION_UNTOUCHED_NATIVE_FORWARD"
+}

@@ -64,7 +64,7 @@
     {
       "path": "sections\\competition_details.tex",
       "original_sha256": "46763122043303fdd4ef94dfd5d6973bd6a32f474db59aafebe2d306eda680e4",
-      "expanded_sha256": "9459184b7b330da1e4246fc4ff053bbdd291c7f1e0a6a955842d3031a80bf376",
+      "expanded_sha256": "8d101ad78566e0864ba5f52259548da38ee8ddc9d344ac3270ffa89b1a144892",
       "changed": true
     },
     {
@@ -88,7 +88,7 @@
     {
       "path": "sections\\early.tex",
       "original_sha256": "c7aac90b3a93c3bd269702b8be743f27c3a04032fcfc1c7f7946bc5f36cea88a",
-      "expanded_sha256": "d7e8b9f7fd44ca077081b3a1cfc9eed720ad9963eb4d532bbb881523ddaba032",
+      "expanded_sha256": "f86c830bc533fcfe2d22b2142168fb2408fef136b32f7d58ad32e3b2258727e8",
       "changed": true
     },
     {
@@ -142,7 +142,7 @@
     {
       "path": "sections\\middle.tex",
       "original_sha256": "192b783e448da66715287c8acdef43fe35e5fff95fd9873beedde0f6e365e661",
-      "expanded_sha256": "d192a5a80152735ab9cbc4b4f6f3527f2705928905408da39aaea6a9fbdbe2f3",
+      "expanded_sha256": "6fbe2b415e1bdea3daf6a93521ddaac9cae1c1fba5a36059e8d8d04ff1d78ae9",
       "changed": true
     },
     {
@@ -166,7 +166,7 @@
     {
       "path": "sections\\runtime.tex",
       "original_sha256": "87869c87692f4189fc6ccb9163df44d2499bbee7ce6511432797e5bb4aca1289",
-      "expanded_sha256": "c38f1b0d015cc8940a244814a2a56b37a36f736c52be7ef84f2fabd933d277e1",
+      "expanded_sha256": "2c9dcea477bdf75c51218649f43e3aab1c9395f3ee9a9c9253d9e0e0256f1b98",
       "changed": true
     },
     {

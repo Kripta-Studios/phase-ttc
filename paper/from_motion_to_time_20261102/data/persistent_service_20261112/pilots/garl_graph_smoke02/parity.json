@@ -1,0 +1,547 @@
+{
+  "performed": true,
+  "passed": true,
+  "updates": [
+    {
+      "update_id": "update-0",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "reference_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "reference_sensor_sha256": "3b5f6fd6808e2c25b2551d8ac4dba5d605eac0d1ee92383f26165b66ce19bd65",
+      "reference_contract_sha256": "d286cb6df45b5d6a9ba494552e78105f121d7a59e8d44697d20e48c27c900acc",
+      "actual_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "actual_ttc": 5.658644199371338,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-1",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "reference_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "reference_sensor_sha256": "3b5f6fd6808e2c25b2551d8ac4dba5d605eac0d1ee92383f26165b66ce19bd65",
+      "reference_contract_sha256": "19d995ae0c168c5885c63274e0f73a685aefea924183c56b27b5c08c9f399c75",
+      "actual_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "actual_ttc": 5.658644199371338,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-2",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.658644199371338,
+      "reference_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "reference_sensor_sha256": "3b5f6fd6808e2c25b2551d8ac4dba5d605eac0d1ee92383f26165b66ce19bd65",
+      "reference_contract_sha256": "e35c7e7d9a4f200379eebc871fa50ee5db01f2e0c7970732534ae9f9ac0ac71c",
+      "actual_heights": [
+        113.31095123291016,
+        115.34956359863281
+      ],
+      "actual_ttc": 5.658644199371338,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-3",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "reference_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "reference_sensor_sha256": "9c3aef9f20b7387ff3173c9a30d669dbfdfe3c927589a13958612a76f92369d7",
+      "reference_contract_sha256": "63688c9424f96cf85d735703a0f5fb6c2776f2cee167e6073706ff834c838f3c",
+      "actual_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "actual_ttc": 5.639283180236816,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-4",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.639283180236816,
+      "reference_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "reference_sensor_sha256": "9c3aef9f20b7387ff3173c9a30d669dbfdfe3c927589a13958612a76f92369d7",
+      "reference_contract_sha256": "86084be0e64e0430edbc6ceaad001f8d582acf7049fd66d5373013a357b73a10",
+      "actual_heights": [
+        109.99063873291016,
+        111.97642517089844
+      ],
+      "actual_ttc": 5.639283180236816,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-5",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "reference_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "reference_sensor_sha256": "768c851b23aabd87a740e1e5d85dc7bee49998b66837e80db0674b7d18bcfedb",
+      "reference_contract_sha256": "d422365ea9e41ad470ae22b1bfa1f837164c41ee3932332819b9baaf2f95b70d",
+      "actual_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "actual_ttc": 5.58469820022583,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-6",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "reference_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "reference_sensor_sha256": "768c851b23aabd87a740e1e5d85dc7bee49998b66837e80db0674b7d18bcfedb",
+      "reference_contract_sha256": "10573b0434a997df4ea6e41b2e1be775b5c6756e4db89afac6dd9d027a4d17ab",
+      "actual_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "actual_ttc": 5.58469820022583,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-7",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.58469820022583,
+      "reference_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "reference_sensor_sha256": "768c851b23aabd87a740e1e5d85dc7bee49998b66837e80db0674b7d18bcfedb",
+      "reference_contract_sha256": "dc1a66816bdb216b99e6792bb99a75fa9fb44a01fc2a5feeb45651f1eb691529",
+      "actual_heights": [
+        109.65186309814453,
+        111.65105438232422
+      ],
+      "actual_ttc": 5.58469820022583,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-8",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "reference_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "reference_sensor_sha256": "fdda3c42fe21f2303209a793a1728eecc8d47bdcb3f6c4553df38771b22d0bb4",
+      "reference_contract_sha256": "9a85107b21e9f8715fc3934bf762bd2dcad9334fbfdd707bbba5ac48c730282a",
+      "actual_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "actual_ttc": 5.710364818572998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-9",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "reference_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "reference_sensor_sha256": "fdda3c42fe21f2303209a793a1728eecc8d47bdcb3f6c4553df38771b22d0bb4",
+      "reference_contract_sha256": "cf9cbac689fe4538214d85596d73a472db520e4bfdf65d216a1d1ca4a480dc1d",
+      "actual_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "actual_ttc": 5.710364818572998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-10",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.710364818572998,
+      "reference_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "reference_sensor_sha256": "fdda3c42fe21f2303209a793a1728eecc8d47bdcb3f6c4553df38771b22d0bb4",
+      "reference_contract_sha256": "55c824541cedc1d917ab7e5388a66c3dbd29b76b93ce50253c14be68a8b3cef4",
+      "actual_heights": [
+        112.22844696044922,
+        114.2287826538086
+      ],
+      "actual_ttc": 5.710364818572998,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-11",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "reference_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "reference_sensor_sha256": "8fc19d264886833afc56c4b1b5bbb04fd990f1ebaf659a0da2ec36775873f6b4",
+      "reference_contract_sha256": "329ab329896e295b50099abb0d2276122cdd7449b1d66d79773f50f8e516968b",
+      "actual_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "actual_ttc": 6.7121076583862305,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-12",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 6.7121076583862305,
+      "reference_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "reference_sensor_sha256": "8fc19d264886833afc56c4b1b5bbb04fd990f1ebaf659a0da2ec36775873f6b4",
+      "reference_contract_sha256": "8076bdb5d206dd9e57b6bac8c40699eca59e0ec7f7d3c8f25ead1eef0ebca0ad",
+      "actual_heights": [
+        109.38217163085938,
+        111.03656005859375
+      ],
+      "actual_ttc": 6.7121076583862305,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-13",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "reference_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "reference_sensor_sha256": "799692dc02b43772f60f5edb09d18561a972e6c4c9cba1afcdfa8a99e2a3ecaf",
+      "reference_contract_sha256": "0c69f5603323d72f6079ef1fbeef7af17d5692c6294d55201c4ec623d08b1156",
+      "actual_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "actual_ttc": 5.515923023223877,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-14",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "reference_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "reference_sensor_sha256": "799692dc02b43772f60f5edb09d18561a972e6c4c9cba1afcdfa8a99e2a3ecaf",
+      "reference_contract_sha256": "738b4d63dc0e269c22a816d3d70e51aa3530b5e71c6ead9a11392dbbdfd15e21",
+      "actual_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "actual_ttc": 5.515923023223877,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-15",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.515923023223877,
+      "reference_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "reference_sensor_sha256": "799692dc02b43772f60f5edb09d18561a972e6c4c9cba1afcdfa8a99e2a3ecaf",
+      "reference_contract_sha256": "234f37f620f6612fafd186b02ad3e779cceb3310829fb728df7ed4ae8000cc77",
+      "actual_heights": [
+        109.54322814941406,
+        111.56598663330078
+      ],
+      "actual_ttc": 5.515923023223877,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-16",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "reference_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "reference_sensor_sha256": "5a20bed3516bc9266d201f7eae8067a64a6bcce67f72b18b5806f0304ca1ffaf",
+      "reference_contract_sha256": "1a34e9b48c74b8f6672db1aed12cc786e267f8d9f149cb3ca580c18bd101f015",
+      "actual_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "actual_ttc": 5.014510631561279,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-17",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.014510631561279,
+      "reference_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "reference_sensor_sha256": "5a20bed3516bc9266d201f7eae8067a64a6bcce67f72b18b5806f0304ca1ffaf",
+      "reference_contract_sha256": "883369cca9af03a65a2bdd7b8cc98232204c6296130c6df5000cc9e8d61a3ae9",
+      "actual_heights": [
+        105.67240905761719,
+        107.82260131835938
+      ],
+      "actual_ttc": 5.014510631561279,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-18",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "reference_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "reference_sensor_sha256": "6fe61b30e0f41a4b03c9ae0c5ed1a9ed21a8386494c49f87e7e94d00900aa12a",
+      "reference_contract_sha256": "207bb0579f41dc7aa3d5e888f449a50640f98b5de43718c6949f6340e90b7e93",
+      "actual_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "actual_ttc": 5.427217483520508,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    },
+    {
+      "update_id": "update-19",
+      "input_exact": true,
+      "height_parity": true,
+      "ttc_parity": true,
+      "reference_status": "ok",
+      "reference_ttc": 5.427217483520508,
+      "reference_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "reference_sensor_sha256": "6fe61b30e0f41a4b03c9ae0c5ed1a9ed21a8386494c49f87e7e94d00900aa12a",
+      "reference_contract_sha256": "0e641f43c9a957451adc208d743256ba3bac62cfa45059b7867243c3e18f2bdf",
+      "actual_heights": [
+        113.19560241699219,
+        115.3204345703125
+      ],
+      "actual_ttc": 5.427217483520508,
+      "height_absolute_errors": [
+        0.0,
+        0.0
+      ],
+      "ttc_absolute_error": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "passed": true
+    }
+  ],
+  "scope": "ALL_SCHEDULED_ANCHORS_INDEPENDENT_DISK_RAW_FULL_FRAME_NORMALIZATION_UNTOUCHED_NATIVE_FORWARD"
+}
