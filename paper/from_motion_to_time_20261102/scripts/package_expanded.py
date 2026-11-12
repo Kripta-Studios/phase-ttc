@@ -38,6 +38,7 @@ def publication_files() -> list[Path]:
             or path.relative_to(ROOT).as_posix()
             in {"data/verification_architecture.log", "data/verification_protocol.log"}
             or path.relative_to(ROOT).parts[:2] == ("audit_20261104", "sources")
+            or path.relative_to(ROOT).parts[:2] == ("data", "extended_service_20261112")
         )
         and not path.name.endswith(".synctex.gz")
         and path.name

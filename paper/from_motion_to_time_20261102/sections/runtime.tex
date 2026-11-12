@@ -11,27 +11,28 @@ The deployment measurements in this article use persistent services: weights rem
 
 \subsection{Persistent execution and exact reuse}
 
-PHASE prepares RGB within the object region, extends event prefixes incrementally, and reuses reverse-transport summaries exactly. Top-$k$ normalization and native query graphs reduce repeated work; parallel branches overlap event execution with RGB preparation. Exact RGB producer features are reused, while event encodings and temporal readouts are recomputed. The complete nine-component model is retained.
+PHASE prepares RGB within the object region, extends event prefixes incrementally, and reuses reverse-transport summaries exactly. Top-$k$ normalization and native query graphs reduce repeated work; parallel branches overlap event execution with RGB preparation. Previously computed RGB producer features are reused under matching identities, while event encodings and temporal readouts are recomputed. Native numerical agreement is checked separately for the complete output chain. The complete nine-component model is retained.
 
 The comparator is persistent TTC-only Garl. Its weights and causal event history remain resident; exact endpoint representations and the six-channel paired RGB backbone result are reused only under matching sensor, geometry, model, and preprocessing identities. Its event backbone and TTC heads execute on every completed update. Auxiliary foreground decoders are disabled because their masks do not feed the TTC output. All raw heights and TTC predictions are verified against untouched native inference after timing; the complete checkpoint remains loaded.
 
 Compiled transport alternatives that changed PHASE's TTC on sensitive examples were rejected. An earlier smaller-packet experiment established numerical equivalence but did not establish paced-service latency. Neither result is substituted for the measured production-service response. \evidence{L41,L42}
 
-\subsection{Matched repeated service measurements}
+\subsection{Expanded repeated inference study}
 
-The comparison uses the same 250 contiguous CPLA-low sensor-clock anchors as the historical paced experiment: one supplied object region, 50 scheduled arrivals per second, and five seconds per replay. Both services run in fresh processes with fresh histories and caches for each of three passes, alternating whole-stream order. They use the same RTX 5070 Ti Laptop GPU, FP32 with TF32 disabled, two PyTorch CPU threads, and a queue capacity of two. No second GPU experiment runs concurrently.
+The subsequent campaign extends the comparison to six recorded car and pedestrian scenarios, using 1,979 distinct sensor-clock anchors and continuous intervals up to 9.3\,s. It retains 72 fresh-process attempts: four repetitions per model and scenario with queue capacity two, and two additional repetitions with queue capacity 64. All timing finishes before independent native-reference inference begins, and both services apply a fixed rest after initialization. This separates the expanded evidence from the initial experiment's interleaved reference workload.
 
 \begin{table}[H]
 \centering\small
-\caption{\textbf{Persistent-service response, in milliseconds.} The primary summary is the median and range of the three per-pass scheduled-arrival p95 values. Outputs count all scheduled updates across all three passes. These are repeated timings of the same 250 anchors, not 750 independent samples.}
-\label{tab:persistent-primary}
-\input{tables/persistent_primary.tex}
+\caption{\textbf{Expanded persistent-service comparison at 50\,Hz.} S1--S6 denote CPLA-low, CCRm-medium-0, CCRs-3-low-100, CCRs-side-high, CPNA-high and CPNAO-high. Q2 and Q64 denote queue capacities two and 64. D/A/N gives complete deliveries, numerically admitted runs and declared attempts. Median per-pass p95 (ms) requires full delivery and native parity in all four Q2 repetitions or both Q64 repetitions; all attempts remain in the full tables.}
+\input{tables/extended_joint.tex}
 \end{table}
 
-\input{tables/persistent_findings.tex}
-Appendix~\ref{sec:local-hardware} gives every pass's response distribution and coverage, acquisition-to-output and service clocks, memory allocation, input age, cache behavior, and native-parity checks. The 20\,ms period is a deadline target, not a guaranteed per-update latency. Completing the offered stream does not establish that every response meets that deadline.
+\input{tables/extended_interpretation.tex}
+Appendix~\ref{sec:extended-inference} reports cohort selection, complete architecture and execution contracts, per-pass distributions, service and queue clocks, deadline coverage, buffered response traces, memory, startup, source age and independent numerical verification. A larger queue can preserve more packets while increasing the age of delivered TTC; those diagnostic results are kept separate from the two-packet primary policy.
 
 \subsection{Historical persistent-service reference}
+
+The initial three-pass matched comparison did not establish complete repeated-service coverage. Its native-oracle work was interleaved with subsequent timing without a controlled rest, so it remains a separate historical experiment. Appendix~\ref{sec:local-hardware} retains every pass, including failures and the earlier eager-Garl control.
 
 The earlier five-second replay completed all 250 updates with numerical parity, zero drops and zero source errors. Its scheduled-arrival latency was 29.14\,ms at p95, 32.41\,ms at p99, and 35.33\,ms at maximum. Of the 250 responses, 201 reached or exceeded 20\,ms. Starting the clock after RAW acquisition, copy and payload sealing gave a p95 of 25.25\,ms. This remains a historical single-run reference, distinct from the contemporaneous repeated comparison above. \evidence{L40,R02}
 
@@ -40,5 +41,5 @@ The earlier five-second replay completed all 250 updates with numerical parity, 
 \caption{\textbf{Historical persistent PHASE reference.} The original 250-update replay has scheduled-arrival p95 29.14\,ms; 201 responses reach or exceed 20\,ms. This figure is not a new Garl comparison. \evidence{L40}}
 \end{figure}
 
-All deployment measurements here exclude disk I/O and cover one supplied object region over a five-second replay. They do not establish physical-camera operation, upstream object detection, sixty-second sustained service, multi-object capacity, or calibrated safety decisions. Earlier query-oriented adapter experiments remain in the evidence archive, but their timings are excluded from this article's deployment-latency comparison.
+All deployment measurements here exclude disk I/O and cover one supplied object region. The initial comparison uses five-second replays; the expanded campaign uses distinct continuous intervals of 3.1--9.3\,s. Neither establishes physical-camera operation, upstream object detection, sixty-second sustained service, multi-object capacity, or calibrated safety decisions. Earlier query-oriented adapter experiments remain in the evidence archive, but their timings are excluded from this article's deployment-latency comparison.
 \FloatBarrier

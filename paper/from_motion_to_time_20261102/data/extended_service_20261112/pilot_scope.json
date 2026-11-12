@@ -1,0 +1,29 @@
+{
+  "scope": "Setup and serializer pilots, excluded from primary 72-pass statistics",
+  "omitted_duplicate_scouts": [
+    {
+      "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\pilot01\\scout_manifest.json",
+      "sha256": "7ffee585d5db1f4371e6f196d7699341bb90fbe5545418ce80bd799043b2a52f",
+      "reason": "Same complete scout retained once in main campaign"
+    },
+    {
+      "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\pilot02\\scout_manifest.json",
+      "sha256": "7ffee585d5db1f4371e6f196d7699341bb90fbe5545418ce80bd799043b2a52f",
+      "reason": "Same complete scout retained once in main campaign"
+    },
+    {
+      "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\pilot03\\scout_manifest.json",
+      "sha256": "7ffee585d5db1f4371e6f196d7699341bb90fbe5545418ce80bd799043b2a52f",
+      "reason": "Same complete scout retained once in main campaign"
+    },
+    {
+      "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\pilot04\\scout_manifest.json",
+      "sha256": "7ffee585d5db1f4371e6f196d7699341bb90fbe5545418ce80bd799043b2a52f",
+      "reason": "Same complete scout retained once in main campaign"
+    }
+  ],
+  "pilot01": "PHASE path protection setup failures; Garl timed runs completed",
+  "pilot02": "Four complete short streams; canonical JSON correction receipt retained alongside original comparisons",
+  "pilot03": "Scout tuple/list comparison rejected before timing",
+  "pilot04": "Four complete streams; PHASE native verification passed; Garl post-oracle audit variable shadow fixed before main"
+}

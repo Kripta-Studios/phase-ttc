@@ -1,0 +1,219 @@
+"""Build independent native references after the entire timed campaign finishes."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import sys
+from dataclasses import replace
+from pathlib import Path
+from typing import Any, cast
+from unittest.mock import patch
+
+
+def main() -> None:
+    """Read disk RAW and run the native model once per registered query."""
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument("--campaign", type=Path, required=True)
+    cli.add_argument("--model", choices=("phase", "garl"), required=True)
+    cli.add_argument("--workload", type=int, required=True)
+    args = cli.parse_args()
+    out = args.campaign.resolve()
+    protocol = json.loads((out / "protocol.json").read_text(encoding="utf-8"))
+    results = json.loads((out / "results.json").read_text(encoding="utf-8"))
+    if [r["name"] for r in results] != [c["name"] for c in protocol["commands"]]:
+        raise ValueError("Finish every timed pass before native reference computation")
+    root = out / "runtime"
+    sys.path[:0] = [str(root / "src"), str(root)]
+    import numpy as np
+    import torch
+
+    from operational.local_comparison.extended import compare_reference, write
+    from operational.local_comparison.service_audit import sha, verify_files
+    from scripts import benchmark_train40_paced as runner
+
+    frozen_inputs = json.loads((out / "input_inventory.json").read_text(encoding="utf-8"))
+    if Path(__file__).resolve() != root / "scripts/reference_extended_service.py":
+        raise ValueError("Execute the frozen runtime oracle launcher")
+    if not json.loads((out / "end_integrity.json").read_text())["passed"]:
+        raise ValueError("Timed campaign failed source integrity")
+    if not verify_files(frozen_inputs)["passed"]:
+        raise ValueError("Frozen source/model identity changed before the oracle")
+
+    torch.set_num_threads(2)
+    torch.set_num_interop_threads(1)
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+    torch.backends.cudnn.benchmark = False
+    torch.manual_seed(7)
+    workload = protocol["workloads"][args.workload]
+    manifest = Path(workload["manifest"])
+    if sha(manifest) != workload["manifest_sha256"]:
+        raise ValueError("Manifest changed")
+    schedule = runner.replay_schedule(
+        json.loads(manifest.read_text(encoding="utf-8")), workload["sequence"]
+    )
+    output = out / f"reference_s{args.workload}_{args.model}.json"
+    if output.exists():
+        raise ValueError("Refusing to overwrite a native reference")
+    disk = runner.DiskRawSource(schedule, 128 * 1024**2)
+    rows: list[dict[str, Any]] = []
+    if args.model == "phase":
+        candidate = Path(protocol["config"]["candidate"])
+        paths, _ = runner.verify_candidate(candidate)
+        runner.verify_frozen_runtime(candidate)
+        models, norms = runner.load_models(paths, "cuda")
+        oracle = runner.FinalTransferPredictor.__new__(runner.FinalTransferPredictor)
+        oracle.device, oracle.models, oracle.normalizers = torch.device("cuda"), models, norms
+        for index, row in enumerate(schedule):
+            try:
+                payload = disk.acquire_raw(index)
+                region = runner.current_regions(payload, 1)[0]
+                modified = {**row, "square_xyxy": list(region.event_square)}
+                raw = runner.engine.prepare_event(modified)
+                rgb = runner.reference_rgb(payload.rgb, region)
+                with (
+                    patch.object(runner.engine, "prepare_event", return_value=raw),
+                    patch.object(
+                        runner.engine,
+                        "raw_rgb_observations",
+                        return_value=(rgb, payload.rgb.unavailable_reason),
+                    ),
+                ):
+                    prediction = oracle.predict(modified)
+                rows.append(
+                    {
+                        "update_id": f"update-{index}",
+                        "query_id": row["query_id"],
+                        "objects": [
+                            {
+                                **prediction,
+                                "object_id": "roi_00",
+                                "input_receipt": runner.reference_receipt(modified, region, rgb),
+                            }
+                        ],
+                    }
+                )
+            except Exception as exc:
+                rows.append(
+                    {"update_id": f"update-{index}", "error": f"{type(exc).__name__}: {exc}"}
+                )
+            if index % 50 == 0:
+                print(f"REFERENCE {args.model} {index}/{len(schedule)}", flush=True)
+    else:
+        from e_jepa_ttc.data.garl_official_preprocessing import official_resize_roi
+        from operational.evttc_transfer.inputs import EvTTCEventReader
+        from operational.garl_evttc_competition.model import OfficialGarlRuntime
+        from operational.garl_evttc_competition.prepare import IMAGENET_MEAN, IMAGENET_STD
+        from operational.local_comparison.garl_persistent import endpoint_contract, event_tensor
+        from operational.train40_runtime.rgb_immutable_history import FrozenRGBHistory
+        from operational.train40_runtime.rgb_raw_ring import RGBSourceIdentity, freeze_rgb_frame
+
+        freeze = Path(protocol["garl_freeze"])
+        if sha(freeze) != protocol["garl_freeze_sha256"]:
+            raise ValueError("Native model freeze changed")
+        inventory = json.loads(freeze.read_text(encoding="utf-8"))["inventory"]
+        native = OfficialGarlRuntime(Path(inventory["upstream"]["path"]), inventory, "cpu")
+        native.device = torch.device("cuda")
+        native.models["full"].to(native.device)
+        origin = RGBSourceIdentity("independent_disk_oracle", sha(manifest))
+        with EvTTCEventReader(schedule[0]["raw_path"]) as reader:
+            for index, row in enumerate(schedule):
+                try:
+                    payload = disk.acquire_raw(index)
+                    tokens = {
+                        i: freeze_rgb_frame(
+                            frame, i, payload.rgb.timestamps_us[i], origin, max_bytes=128 * 1024**2
+                        )
+                        for i, frame in payload.rgb.frames.items()
+                    }
+                    frozen = FrozenRGBHistory(
+                        payload.rgb.query_us,
+                        tokens,
+                        payload.rgb.triplets,
+                        payload.rgb.unavailable_reason,
+                    )
+                    # The disk payload has the same consumed fields after freezing its RGB.
+                    contract, _ = endpoint_contract(cast(Any, replace(payload, rgb=frozen)))
+                    normalized = np.concatenate(
+                        [
+                            (
+                                payload.rgb.frames[i].transpose(2, 0, 1).astype(np.float32)
+                                / np.float32(255.0)
+                                - IMAGENET_MEAN
+                            )
+                            / IMAGENET_STD
+                            for i in contract["frame_ids"]
+                        ]
+                    )
+                    rgb = official_resize_roi(
+                        normalized, contract["rgb_square"], (128, 128)
+                    ).numpy()
+                    events = [
+                        event_tensor(
+                            dict(runner.bounded_events(reader, w[0], w[1], 128 * 1024**2)), square
+                        )
+                        for w, square in zip(
+                            contract["event_windows"], contract["event_squares"], strict=True
+                        )
+                    ]
+                    sensor = np.concatenate([rgb, *events]).astype(np.float32, copy=False)
+                    reference = native.predict("full", sensor, contract["delta_t_s"])
+                    if reference.status != "ok" or reference.model_ttc is None:
+                        raise ValueError(f"Native oracle status: {reference.status}")
+                    rows.append(
+                        {
+                            "update_id": f"update-{index}",
+                            "query_id": row["query_id"],
+                            "sensor_sha256": hashlib.sha256(sensor.tobytes()).hexdigest(),
+                            "contract": contract,
+                            "heights": [list(reference.heights)],
+                            "ttc": reference.model_ttc,
+                        }
+                    )
+                except Exception as exc:
+                    rows.append(
+                        {"update_id": f"update-{index}", "error": f"{type(exc).__name__}: {exc}"}
+                    )
+                if index % 50 == 0:
+                    print(f"REFERENCE {args.model} {index}/{len(schedule)}", flush=True)
+    integrity = verify_files(frozen_inputs)
+    if not integrity["passed"]:
+        raise ValueError("Frozen source/model identity changed during the oracle")
+    write(out / f"reference_integrity_s{args.workload}_{args.model}.json", integrity)
+    write(
+        output,
+        {
+            "schema": "extended_native_reference_v1",
+            "model": args.model,
+            "manifest_sha256": sha(manifest),
+            "oracle_source_sha256": sha(Path(__file__)),
+            "scope": (
+                "Independent disk RAW and native forward, after all timing; shared across repeats"
+            ),
+            "targets_read": False,
+            "rows": rows,
+        },
+    )
+    for command in protocol["commands"]:
+        if command["workload"] != args.workload or command["model"] != args.model:
+            continue
+        run = out / command["name"]
+        actual = (
+            json.loads((run / "service_updates.json").read_text(encoding="utf-8"))
+            if (run / "service_updates.json").exists()
+            else []
+        )
+        comparison = compare_reference(args.model, rows, actual)
+        comparison["reference_sha256"] = sha(output)
+        write(run / "deferred_parity.json", comparison)
+    print(
+        f"DONE reference {args.model} {args.workload}: "
+        f"{sum('error' not in r for r in rows)}/{len(rows)}",
+        flush=True,
+    )
+
+
+if __name__ == "__main__":
+    main()

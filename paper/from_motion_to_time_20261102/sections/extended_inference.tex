@@ -1,0 +1,181 @@
+\section{Extended inference study: workload diversity, repetition and queueing}
+\label{sec:extended-inference}
+
+This study extends the initial five-second CPLA comparison to six recorded scenarios and 72 independently initialized service passes. Its purpose is to measure the behavior of the complete persistent inference services under repeated causal input, rather than infer deployment performance from parameter counts or a model-only forward pass. Both implementations retain their published weights. No TTC labels are read and no model is retrained. The experiment concerns inference on EvTTC and does not change the eAP accuracy results.
+
+\subsection{Questions and prospective design}
+
+The study asks four separate questions. First, does the response distribution reproduce across fresh processes and different scenes? Second, can each service deliver every update offered at 50\,Hz with a small bounded queue? Third, when buffering prevents an immediate history gap, does outstanding work remain bounded or accumulate into delayed responses? Fourth, do the optimized service outputs agree with independent native inference on the same causal observations? These questions require different statistics: a p95 over surviving outputs alone cannot answer the coverage or stability questions.
+
+The campaign fixes the scenarios, interval-selection rule, repetitions, queue capacities, precision, rest policy and order before timing. It makes four passes per model and scenario with a two-packet queue, followed by two passes with a 64-packet queue. Each repetition alternates the first model in the pair, and the scenario order rotates. Thus each model occupies first position equally often within each queue policy. Every attempt is retained, including initialization failures, acquisition errors, dropped packets and subsequent refusals. The larger queue is a diagnostic of buffering and backlog; it does not establish an acceptable deployment latency.
+
+\subsection{Sensor support and cohort selection}
+
+All 32 physical sequences in the preserved transfer manifest are inspected using event-clock endpoints and causal annotation availability. A fixed 20\,ms grid begins at 700\,ms, or at the first event plus 620\,ms when that is later. The scout records every accepted and rejected slot. It does not inspect TTC, depth, velocity, RGB pixels, model predictions or measured latency when selecting the workload. The complete scout is reconstructed and checked before the campaign is frozen.
+
+Six scenarios are declared to include cars and pedestrians, straight and lateral motion, different road configurations and different speed categories. For each, the longest uninterrupted accepted interval is selected; ties use the earliest interval. Invalid annotation slots are not removed and joined across a gap. The resulting intervals are listed in Table~\ref{tab:extended-cohorts}. This is an input-availability selection rule, not an unbiased random sample of all driving time: scenes and instants without a usable annotated target are outside the timed cohort.
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{\textbf{Distinct continuous sensor intervals.} Duration is the number of scheduled updates divided by 50; the last anchor is one period before the interval end. The same interval is replayed in each repetition.}
+\label{tab:extended-cohorts}
+\input{tables/extended_cohorts.tex}
+\end{table}
+
+The longest usable interval is 465 updates, or 9.3\,s. Repeating this interval increases the evidence about run-to-run variation but does not create a longer unique recording. The six scenes are not joined into one synthetic continuous stream, and the experiment does not claim a 60-second uninterrupted sensor test. Each pass resets its process, history and caches and then consumes the complete registered interval.
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{Observed RAW workload.} Counts come from the feeder in the first PHASE small-queue pass, including acquired packets later dropped by the consumer queue. Event rate is averaged over the offered interval; the preload archive also contains initialization history and RGB frames.}
+\input{tables/extended_input_load.tex}
+\end{table}
+
+\subsection{Hardware, initialization and controlled execution choices}
+
+Both services execute on the same NVIDIA RTX 5070 Ti Laptop GPU with 12\,GiB VRAM, on an AMD Ryzen 9 9955HX host with 32\,GiB system memory. The measured environment uses Python 3.11.15, PyTorch 2.11.0 with CUDA 12.8, and driver 591.86. Inference is FP32 with TF32 disabled. Both use two PyTorch CPU threads; PHASE additionally retains its eight RGB preparation workers. Garl uses one inter-op thread. The recorded configurations, rather than nominal hardware specifications alone, define the execution comparison.
+
+Model loading, private RAW preload, the initial 600\,ms event history, synthetic shape priming, graph capture and feeder warmup precede measured arrivals. A fixed 15-second rest follows feeder warmup in both services. Host and GPU state are recorded around this rest, outside the measurement interval. The rest is a reproducible waiting policy, not proof of thermal equilibrium. Desktop scheduling and other host activity remain uncontrolled, and there is no attribution of a slow pass to temperature or a particular background process without direct evidence.
+
+All timed passes finish before any native-reference GPU work begins. This removes the specific interleaving of full-decoder reference inference and subsequent timing present in the initial experiment. It does not equalize the architectures' own initialization costs or eliminate all device-state variation. Startup timings and memory envelopes are retained separately. No concurrent GPU experiment is launched by this campaign.
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{Observed GPU state after the pre-stream rest.} Ranges are point-in-time observations across attempts, not continuous telemetry or temperature control. They do not identify the cause of an individual delay.}
+\input{tables/extended_host.tex}
+\end{table}
+
+\subsection{Complete persistent pipelines and architectural comparison}
+
+PHASE executes its complete nine-component system: four modality-specific motion producers, two pair heads, two temporal context refiners and the residual fusion head. Its distributed system contains \LocalPhaseParameters{} parameters. The 1,955-parameter residual head is not substituted for the complete model when reporting size. Persistent event prefixes and exact reverse-transport summaries avoid rebuilding shared history, and native query graphs reduce dispatch overhead. RGB region preparation overlaps event execution, while an identity-checked cache reuses previously computed RGB producer features. Agreement of the resulting output chain with native inference is evaluated separately. Temporal readouts and final TTC predictions are recomputed.
+
+Garl's TTC path uses paired RGB and event ResNet-50 backbones, feature fusion and a height-ratio TTC readout. The full checkpoint retains \LocalGarlStoredParameters{} stored parameters, including auxiliary foreground decoders. Those decoders are bypassed during TTC-only service because they do not contribute to the TTC output; they remain enabled in the independent native reference. The previously recorded execution profile counts \LocalGarlTTCParameters{} parameters in the TTC path, compared with \LocalPhaseExecutedParameters{} in called PHASE modules. These are module-execution parameter counts, not FLOPs or an exported pruned checkpoint size.
+
+Garl receives the last two declared causal RGB endpoints and corresponding boxes in the common input contract. Event support is capped at 100\,ms per endpoint and uses the native 20-plane, first-event-relative representation. The actual endpoint interval is retained in the signed height-ratio conversion. Exact paired RGB backbone features may be reused; independent single-frame embeddings are not substituted for the native six-channel paired backbone. Event preparation may reuse unchanged endpoint tensors, but the event backbone, fusion and TTC heads execute on every completed request. Separate CUDA graphs cover the RGB and event/fusion branches. Neither service caches the final TTC output.
+
+The services therefore have different computational structures despite receiving the same released observations. PHASE combines several compact motion and temporal modules and reuses shared history; Garl applies larger spatial backbones to paired sensor representations. Parameter count describes model storage and executed modules, while measured service time also includes ROI preparation, event encoding, memory movement, graph dispatch and synchronization. No FLOP estimate or asymptotic claim is substituted for measured response, and the results do not isolate a single architectural cause of a latency difference.
+
+The local Garl implementation retains causal event packets in a deque and assembles an endpoint window only when required. On a representation-cache miss, its native-compatible CPU path masks the ROI, groups selected events by pixel and temporal plane using a stable sort, constructs the 20-plane time volume, and applies the released sampling convention before transfer to the GPU. PHASE instead advances its persistent event prefixes and queries the required representations on the GPU. These implementation choices are part of the measured pipelines. The results are not lower bounds on what a different numerically compatible Garl preprocessing implementation could achieve, and a long response cannot be attributed to backbone size alone.
+
+The measured instrumentation also differs: Garl computes a prepared-sensor SHA-256 inside each completed call, while PHASE records causal metadata without hashing every prepared tensor. Both share the feeder's newly released frame checksums. This diagnostic overhead remains inside the reported service response; its isolated contribution is not measured or subtracted.
+
+\subsection{Causality, input age and the measurement clock}
+
+The feeder privately preloads RAW bytes, but releases each packet and newly available frame only at its scheduled causal query. Event conversion and copying, frame sealing, annotation validation, ROI preparation, CPU/GPU transfers, complete inference and host delivery remain within the response path. The initial history contains only observations preceding the first query. A supplied annotated region is assumed available at its declared sensor timestamp; object detection and tracking are not measured.
+
+For scheduled arrival $a_i$, completed RAW availability $v_i$, consumer start $s_i$ and host TTC completion $c_i$, the recorded clocks are
+\[
+ R_i=c_i-a_i,\qquad A_i=c_i-v_i,\qquad S_i=c_i-s_i,
+ \qquad Q_i=s_i-v_i.
+\]
+The primary response $R_i$ includes release lateness, acquisition and queueing. $S_i$ is service time and $Q_i$ is waiting after the payload is available. Subtracting acquisition or queueing would answer a different question. A 50\,Hz input has a 20\,ms period; response latency may exceed one period while throughput remains 50\,Hz if acquisition and service overlap. Conversely, a short model forward does not establish that the whole service keeps up.
+
+Repeated RGB endpoints retain their original timestamps. Reuse is not presented as a new camera observation at every query. Garl's endpoint identities, source age, prepared-input hashes and cache decisions are recorded for each delivered output. PHASE records the causal event windows, RGB observations, geometry and temporal support used by its full prediction chain. The two systems can aggregate their released history differently; equal arrival packets do not imply identical internal representations.
+
+PHASE's event windows end at the current query and can incorporate new events between RGB arrivals. Garl's native-compatible event volumes end at its declared RGB endpoints, so repeated calls can reuse the same underlying pair. Fifty requested outputs per second therefore does not mean fifty distinct RGB observations or independent predictions per second.
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{Age of Garl's latest declared RGB endpoint.} Statistics use the independent native reference at every valid anchor, including anchors for which a timed service did not return a TTC. RGB pairs count distinct endpoint identities.}
+\input{tables/extended_input_age.tex}
+\end{table}
+
+\subsection{Independent native verification and evidence preservation}
+
+After all 72 timing attempts, each scenario is reread from disk by an independent native reference for each model. The reference is computed once per unique anchor and then compared with every delivered output from every repetition. This avoids repeatedly heating the GPU with the reference between timed passes while still checking all measured predictions. It does not turn repeated timings into independent prediction samples.
+
+For Garl, verification reconstructs full-frame RGB normalization and native event representations, checks the prepared sensor tensor's SHA-256, and compares both raw heights and signed TTC with relative and absolute tolerances of $10^{-5}$. The unmodified native model executes its auxiliary decoders. For PHASE, verification uses the original uncached predictor, checks all three TTC components with its preserved tolerance contract, and compares causal input metadata exactly. PHASE's metadata receipt is not a hash of every prepared tensor or RAW byte; source-stat, annotation and model/source checks supplement numerical parity. That distinction remains explicit.
+
+The model sources, historical service overlay, model inventories, manifests, timed launchers and measurement commands are frozen before timing. The independent native-reference implementation is included in that freeze. Integrity is checked after timing and around native-reference computation, then checked again before evidence archival. Publication regenerates the numerical comparisons from the saved reference and measured prediction records, verifies file hashes, and rejects altered evidence or missing declared attempts. Numerical disagreements are retained as failed checks; they are not converted into successful native validation. Failed reference computations and absent service predictions remain distinct from successful numerical agreement.
+
+A later-added controller waits for the timed campaign to close and invokes the frozen native-reference implementation. Its job list and executed source are recorded after timing; the controller itself was not prospectively frozen in this campaign. The publication sealer is also a later analysis tool. These stages do not alter the measured services or the frozen native-reference arithmetic.
+
+The recorded Git identifier denotes the base checkout. Exact file digests and archived source snapshots identify the executed revision, including the new benchmark launchers; the base commit alone is not presented as containing those new files. The final publication also preserves the byte identity of the archiver actually executed and its supplemental evidence-sealing script.
+
+\subsection{Numerical agreement and admission of performance claims}
+
+The independent references exposed numerical differences beyond the frozen tolerance in some delivered PHASE outputs. The analysis therefore distinguishes complete delivery from admission under the full numerical contract. An admitted run must deliver every scheduled output and pass all required native checks, including intermediate TTC components. A run that delivers every output but fails an intermediate check remains a complete delivery; its full-service p95 is withheld from admitted comparisons. The tolerance and the measured service code are unchanged.
+
+This reporting distinction was made explicit after inspecting the first numerical failures. It is a retrospective accounting clarification, not a changed timing protocol or a relaxed acceptance threshold. The per-pass timing tables retain the measured response distributions, including numerically rejected outputs, with a separate failed-parity count. The aggregate deadline counts likewise describe delivered timing, not the number of fully validated timely predictions.
+
+\input{tables/extended_parity_interpretation.tex}
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{\textbf{PHASE component agreement with native inference.} Checks and failures count repeated delivered comparisons; anchors count distinct failed anchors within each scene, and runs count affected repetitions. Maximum errors use all delivered comparisons. Complete delivery alone does not establish numerical admission.}
+\input{tables/extended_parity.tex}
+\end{table}
+
+\subsection{Small-queue service response across scenarios}
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{Primary 50\,Hz service with queue capacity two.} Four repetitions per model and scene. Delivered runs return every offered update; admitted runs additionally pass every native numerical check. Median p95 and its range are reported only when all four runs are admitted; a dash is not zero latency.}
+\label{tab:extended-bounded}
+\input{tables/extended_bounded.tex}
+\end{table}
+
+\begin{figure}[H]
+\centering\includegraphics[width=\linewidth]{figures/extended_coverage_cdf.pdf}
+\caption{\textbf{Response and coverage in the primary experiment.} Each curve is one attempted replay, with all offered updates in the denominator. Curves that stop below one indicate missing outputs. The dotted line marks 20\,ms.}
+\end{figure}
+
+\input{tables/extended_interpretation.tex}
+
+\subsection{Buffering, outstanding work and throughput}
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{Buffered diagnostic with queue capacity 64.} Two repetitions per model and scene, retaining the same 50\,Hz input schedule. Full-population p95 includes any accumulated queue delay and requires both runs to be admitted. These measurements are separate from the small-queue primary experiment.}
+\label{tab:extended-buffered}
+\input{tables/extended_buffered.tex}
+\end{table}
+
+\begin{figure}[H]
+\centering\includegraphics[width=\linewidth]{figures/extended_buffered_traces.pdf}
+\caption{\textbf{Response traces with additional buffering.} A rising response trajectory indicates increasing delay relative to sensor time. Missing tails remain missing; no later prediction is invented to complete a curve.}
+\end{figure}
+
+The buffered diagnostic distinguishes short overload bursts from the immediate cascade caused by a dropped RAW packet. Both services require contiguous causal history. A missing packet invalidates that history and latches subsequent requests into refusal until a fresh replay; the campaign does not silently refill history, skip sensor time or emit stale TTC. The reported failed responses therefore include correlated refusals, not just independent numerical failures. Recovery behavior is documented rather than changed during this comparison.
+
+Output rate is the number of successful deliveries divided by the interval from the first scheduled arrival to the last successful completion. For an incomplete run this is a diagnostic over its delivered prefix, not sustained capacity for the full offered recording. Drain time measures how far the last valid completion extends beyond the end of the offered interval. Neither quantity is calculated as $1000/\mathrm{p95}$, and neither alone establishes a real-time deadline guarantee. The 64-packet queue can reduce packet loss while allowing responses to become too old for an application.
+
+\subsection{Initial response and later stream behavior}
+
+Inspection of the first completed campaign round showed that an early long service call could fill the small queue and trigger the history-gap cascade. The following breakdown was therefore added retrospectively as a descriptive diagnostic; it is not a prospectively specified primary endpoint or a reason to remove the initial delay. It compares the first response, the p95 of the entire stream, and the p95 of the latter half of scheduled anchors. Each latency column is the median across the two buffered repetitions and is admitted only when both complete the entire interval with native parity. D/A/N gives complete deliveries, admitted runs and declared attempts. The latter half is fixed by anchor index, rather than selected for its measured speed.
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{Retrospective initial/later response breakdown, in milliseconds.} Queue capacity 64. The later-window statistic retains its explicit subset definition and is not substituted for complete-stream latency or described as a guaranteed steady-state bound.}
+\input{tables/extended_initial_late.tex}
+\end{table}
+
+\subsection{Memory, initialization and repeated-pass accounting}
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{All attempts and service allocation.} CUDA peaks include resident model, persistent state, graph buffers and stream allocations after the counter reset. Values are allocated MiB, not the allocator's additional reserved capacity.}
+\input{tables/extended_overview.tex}
+\end{table}
+
+The RAW feeder declares a conservative 12\,GiB numeric memory envelope, accounting for preload, frame tokens, bounded payloads and scratch space. This is an upper bound rather than measured process RSS, and Python objects, HDF5 internals and output receipts are outside that numeric envelope. A larger queue changes this bound even when immutable frame tokens are shared. Complete startup receipts record RAW preload, model/service initialization, history preparation and graph setup separately from response latency.
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{\textbf{Initialization and reuse diagnostics.} Preload and model/priming columns give medians across the declared scenes and repetitions, in seconds. Model/priming excludes source audits, RAW history initialization and the fixed rest. Garl graph capture is recorded separately. Cache hits are conditional on attempted model updates, not new sensor frames; reserved MiB is the PyTorch allocator's peak reserve.}
+\input{tables/extended_execution.tex}
+\end{table}
+
+The following tables retain each repetition instead of pooling correlated windows as if they were independent experiments. Per-pass p50, p95 and p99 are conditional on delivered outputs when coverage is incomplete; only the summary tables apply the all-repetitions full-coverage and native-parity admission rule. The Parity column counts delivered updates failing at least one required numerical check; it is separate from missing or refused outputs. Repetitions measure execution variability with fixed trained weights, not variation across training seeds. Six scenes are insufficient for a broad claim about all event-camera workloads, and no window-level confidence interval is used to imply that they are.
+
+\begingroup\footnotesize
+\input{tables/extended_repeats.tex}
+\endgroup
+
+\begingroup\footnotesize
+\input{tables/extended_clocks.tex}
+\endgroup
+
+\subsection{Scope of the inference claim}
+
+The expanded evidence supports exact statements about these frozen services, these six annotated EvTTC intervals, this hardware and the declared queue policies. It provides more repetitions and longer unique streams than the initial comparison, while preserving its failures as historical evidence. It does not demonstrate an uninterrupted 60-second stream, physical-camera acquisition, detector latency, multiple independently tracked objects, deployment on a smaller GPU, or eAP streaming performance. The historical 26--29\,ms PHASE p95 values remain valid observations for their original runs, not universal response bounds. Architecture, parameter count, accuracy and deployment response remain separate claims, each tied to its own evidence.
+\FloatBarrier

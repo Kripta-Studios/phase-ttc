@@ -1,0 +1,317 @@
+[
+  {
+    "update_id": "update-0",
+    "query_id": "SENSOR_REPLAY:CPNAO-high:13020000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 13020000,
+      "frame_ids": [
+        258,
+        260
+      ],
+      "frame_timestamps_us": [
+        12900418,
+        13000416
+      ],
+      "frame_sha256": [
+        "b9b6903a03651059517422d258db83e3182e27ae9dc7fae469ff889ca97daaeb",
+        "f07396868442ff7c30e41adc4a9ce5ab2c715522dd80067f627d7136d0c2578e"
+      ],
+      "rgb_boxes": [
+        [
+          889.0,
+          520.0,
+          907.0,
+          574.0
+        ],
+        [
+          894.0,
+          534.0,
+          909.0,
+          579.0
+        ]
+      ],
+      "rgb_square": [
+        874,
+        529,
+        928,
+        583
+      ],
+      "event_squares": [
+        [
+          546,
+          291,
+          585,
+          330
+        ],
+        [
+          549,
+          298,
+          588,
+          337
+        ]
+      ],
+      "event_windows": [
+        [
+          12800420,
+          12900418
+        ],
+        [
+          12900418,
+          13000416
+        ]
+      ],
+      "delta_t_s": 0.099998,
+      "sensor_age_us": 19584,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 12900418,
+          "category": "pedestrian",
+          "frame_index": 258,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNAO\\high\\leftlabel\\0258.json",
+          "sha256": "e981ccaac96c3fe5b7ffc650cab03a349d3fe50257a6018317d0e4feed9d541a",
+          "timestamp_us": 12900418
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 13000416,
+          "category": "pedestrian",
+          "frame_index": 260,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNAO\\high\\leftlabel\\0260.json",
+          "sha256": "5f5abad6404275a509173e8fb318cc6d8f8f74b1ae723c5ff585d15a6452bddc",
+          "timestamp_us": 13000416
+        }
+      ]
+    },
+    "sensor_sha256": "8866549e814ed08225c34749bfdf33f996068fc97d5216fa4eb325b6a35f9ed4",
+    "heights": [
+      [
+        98.8194351196289,
+        100.72649383544922
+      ]
+    ],
+    "ttc": 5.281661033630371,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 0,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-1",
+    "query_id": "SENSOR_REPLAY:CPNAO-high:13040000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 13040000,
+      "frame_ids": [
+        258,
+        260
+      ],
+      "frame_timestamps_us": [
+        12900418,
+        13000416
+      ],
+      "frame_sha256": [
+        "b9b6903a03651059517422d258db83e3182e27ae9dc7fae469ff889ca97daaeb",
+        "f07396868442ff7c30e41adc4a9ce5ab2c715522dd80067f627d7136d0c2578e"
+      ],
+      "rgb_boxes": [
+        [
+          889.0,
+          520.0,
+          907.0,
+          574.0
+        ],
+        [
+          894.0,
+          534.0,
+          909.0,
+          579.0
+        ]
+      ],
+      "rgb_square": [
+        874,
+        529,
+        928,
+        583
+      ],
+      "event_squares": [
+        [
+          546,
+          291,
+          585,
+          330
+        ],
+        [
+          549,
+          298,
+          588,
+          337
+        ]
+      ],
+      "event_windows": [
+        [
+          12800420,
+          12900418
+        ],
+        [
+          12900418,
+          13000416
+        ]
+      ],
+      "delta_t_s": 0.099998,
+      "sensor_age_us": 39584,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 12900418,
+          "category": "pedestrian",
+          "frame_index": 258,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNAO\\high\\leftlabel\\0258.json",
+          "sha256": "e981ccaac96c3fe5b7ffc650cab03a349d3fe50257a6018317d0e4feed9d541a",
+          "timestamp_us": 12900418
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 13000416,
+          "category": "pedestrian",
+          "frame_index": 260,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNAO\\high\\leftlabel\\0260.json",
+          "sha256": "5f5abad6404275a509173e8fb318cc6d8f8f74b1ae723c5ff585d15a6452bddc",
+          "timestamp_us": 13000416
+        }
+      ]
+    },
+    "sensor_sha256": "8866549e814ed08225c34749bfdf33f996068fc97d5216fa4eb325b6a35f9ed4",
+    "heights": [
+      [
+        98.8194351196289,
+        100.72649383544922
+      ]
+    ],
+    "ttc": 5.281661033630371,
+    "rgb_preparation_cache_hit": true,
+    "event_representation_cache_hits": [
+      true,
+      true
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-2",
+    "query_id": "SENSOR_REPLAY:CPNAO-high:13060000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 13060000,
+      "frame_ids": [
+        259,
+        261
+      ],
+      "frame_timestamps_us": [
+        12950417,
+        13050415
+      ],
+      "frame_sha256": [
+        "e97501ee73c6e5a4d63e1f7011568f7762d5bf5afd775acd93d75eb6323080a3",
+        "91cec9e1282d599c92bd61c4dcc8f4e7f4494df799766c267cbbf9e62ac9437e"
+      ],
+      "rgb_boxes": [
+        [
+          889.0,
+          524.0,
+          908.0,
+          577.0
+        ],
+        [
+          897.0,
+          535.0,
+          910.0,
+          589.0
+        ]
+      ],
+      "rgb_square": [
+        876,
+        535,
+        930,
+        589
+      ],
+      "event_squares": [
+        [
+          547,
+          294,
+          585,
+          332
+        ],
+        [
+          550,
+          302,
+          588,
+          340
+        ]
+      ],
+      "event_windows": [
+        [
+          12850419,
+          12950417
+        ],
+        [
+          12950417,
+          13050415
+        ]
+      ],
+      "delta_t_s": 0.099998,
+      "sensor_age_us": 9585,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 12950417,
+          "category": "pedestrian",
+          "frame_index": 259,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNAO\\high\\leftlabel\\0259.json",
+          "sha256": "46c7f29803ba8fd1b3c8a036fcb5ed25eeb364ee7f5f84b5c62794e3110f8052",
+          "timestamp_us": 12950417
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 13050415,
+          "category": "pedestrian",
+          "frame_index": 261,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNAO\\high\\leftlabel\\0261.json",
+          "sha256": "ed9d9d622caa66b3d3ca57abc7a50310d5b7222a35889705d9ee8dfb78172b6f",
+          "timestamp_us": 13050415
+        }
+      ]
+    },
+    "sensor_sha256": "a5fa450f520e4d4ac7cca45ed6e6ad928a37070217776aa4696393a9f253fc77",
+    "heights": [
+      [
+        95.65132904052734,
+        97.14060974121094
+      ]
+    ],
+    "ttc": 6.522512435913086,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 2
+  }
+]

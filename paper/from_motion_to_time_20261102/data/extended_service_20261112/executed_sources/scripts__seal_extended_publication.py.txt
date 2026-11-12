@@ -1,0 +1,148 @@
+"""Add retained setup pilots to the immutable campaign archive without rewriting it."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import shutil
+import subprocess
+import sys
+from datetime import UTC, datetime
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def sha(path: Path) -> str:
+    """Hash exact source/evidence bytes without external helper dependencies."""
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def write(path: Path, value: object) -> None:
+    """Write a finite JSON sealing receipt."""
+    path.write_text(json.dumps(value, indent=2, allow_nan=False), encoding="utf-8")
+
+
+def main() -> None:
+    """Keep the campaign inventory intact and seal an enclosing publication inventory."""
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument("--campaign", type=Path, required=True)
+    cli.add_argument("--archive", type=Path, required=True)
+    args = cli.parse_args()
+    campaign, archive = args.campaign.resolve(), args.archive.resolve()
+    if archive.exists():
+        raise ValueError("Refusing to replace an existing evidence archive")
+    executed = ROOT / "scripts/archive_extended_comparison.py"
+    frozen = campaign / "runtime/scripts/archive_extended_comparison.py"
+    expected = json.loads((campaign / "input_inventory.json").read_text(encoding="utf-8"))[
+        str(frozen)
+    ]
+    before = sha(executed)
+    if before != expected or sha(frozen) != expected:
+        raise ValueError("Executed archiver differs from its prospectively frozen source")
+    started = datetime.now(UTC).isoformat()
+    command = [sys.executable, str(executed), "--campaign", str(campaign), "--output", str(archive)]
+    result = subprocess.run(command, cwd=ROOT, check=False)
+    after = sha(executed)
+    if result.returncode != 0 or after != before:
+        raise ValueError("Archive failed or its executed source changed")
+    write(
+        archive / "archive_execution.json",
+        {
+            "command": command,
+            "started_utc": started,
+            "finished_utc": datetime.now(UTC).isoformat(),
+            "expected_sha256": expected,
+            "executed_sha256_before": before,
+            "executed_sha256_after": after,
+            "returncode": result.returncode,
+            "sealer_sha256": sha(Path(__file__)),
+            "scope": (
+                "Byte-identical frozen archiver executed from workspace to resolve historical docs"
+            ),
+        },
+    )
+    inventory = json.loads((archive / "inventory.json").read_text(encoding="utf-8"))
+    if any(sha(archive / name) != digest for name, digest in inventory["files"].items()):
+        raise ValueError("Frozen campaign archive changed")
+    omitted = []
+    for pilot in sorted(campaign.parent.glob("pilot*")):
+        for path in pilot.rglob("*"):
+            relative = path.relative_to(pilot)
+            if not path.is_file() or path.suffix not in (".json", ".log"):
+                continue
+            if "runtime" in relative.parts or "sources" in relative.parts:
+                continue
+            if path.name == "scout_manifest.json":
+                omitted.append(
+                    {
+                        "path": str(path),
+                        "sha256": sha(path),
+                        "reason": "Same complete scout retained once in main campaign",
+                    }
+                )
+                if sha(path) != sha(archive / "scout_manifest.json"):
+                    raise ValueError("A pilot used a different scout")
+                continue
+            target = archive / "pilots" / pilot.name / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path, target)
+    for script in ("archive_extended_comparison.py", "reference_extended_service.py"):
+        source = campaign / "runtime/scripts" / script
+        target = archive / "executed_sources" / f"scripts__{script}.txt"
+        if target.exists() and sha(target) != sha(source):
+            raise ValueError("Executed source snapshot differs")
+        shutil.copyfile(source, target)
+    shutil.copyfile(
+        Path(__file__), archive / "executed_sources/scripts__seal_extended_publication.py.txt"
+    )
+    # The first campaign added this scheduler after the prospective runtime freeze.
+    # Preserve its executed bytes separately; future campaigns freeze it with the runtime.
+    controller = campaign / "oracle_controller_executed.py.txt"
+    if not controller.is_file():
+        controller = campaign / "runtime/scripts/run_extended_oracles.py"
+        frozen_inputs = json.loads((campaign / "input_inventory.json").read_text(encoding="utf-8"))
+        if (
+            str(controller) not in frozen_inputs
+            or sha(controller) != frozen_inputs[str(controller)]
+        ):
+            raise ValueError("Controller was not part of the prospective runtime freeze")
+    jobs = json.loads((archive / "oracle_jobs.json").read_text(encoding="utf-8"))
+    if sha(controller) != jobs["controller_sha256"]:
+        raise ValueError("Native-reference controller changed after execution")
+    shutil.copyfile(controller, archive / "executed_sources/scripts__run_extended_oracles.py.txt")
+    write(
+        archive / "pilot_scope.json",
+        {
+            "scope": "Setup and serializer pilots, excluded from primary 72-pass statistics",
+            "omitted_duplicate_scouts": omitted,
+            "pilot01": "PHASE path protection setup failures; Garl timed runs completed",
+            "pilot02": (
+                "Four complete short streams; canonical JSON correction receipt "
+                "retained alongside original comparisons"
+            ),
+            "pilot03": "Scout tuple/list comparison rejected before timing",
+            "pilot04": (
+                "Four complete streams; PHASE native verification passed; "
+                "Garl post-oracle audit variable shadow fixed before main"
+            ),
+        },
+    )
+    write(
+        archive / "publication_inventory.json",
+        {
+            "schema": "extended_publication_inventory_v1",
+            "campaign_inventory_sha256": sha(archive / "inventory.json"),
+            "files": {
+                p.relative_to(archive).as_posix(): sha(p)
+                for p in sorted(archive.rglob("*"))
+                if p.is_file()
+            },
+        },
+    )
+
+
+if __name__ == "__main__":
+    main()

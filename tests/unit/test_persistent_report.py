@@ -82,3 +82,14 @@ def test_missing_enqueued_result_is_rejected():
     data["object_records"].pop()
     with pytest.raises(ValueError, match="accounting"):
         module().summarize_paced(data, expected=3)
+
+
+def test_buffered_capacity_is_explicit_and_not_mixed_with_primary():
+    data = paced()
+    data["queue_capacity"] = 64
+    with pytest.raises(ValueError, match="population/rate/queue"):
+        module().summarize_paced(data, expected=3)
+    assert module().summarize_paced(data, expected=3, queue_capacity=64)["complete"]
+    data["rate_hz"] = 25
+    with pytest.raises(ValueError, match="population/rate/queue"):
+        module().summarize_paced(data, expected=3, queue_capacity=64)

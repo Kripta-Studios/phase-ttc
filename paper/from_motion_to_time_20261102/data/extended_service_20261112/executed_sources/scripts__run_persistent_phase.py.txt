@@ -1,0 +1,68 @@
+"""Execute the archived persistent PHASE service with verified path relocation only."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import sys
+from pathlib import Path
+from typing import Any
+
+
+def main() -> None:
+    """Keep original sealed assets unchanged while resolving their archived sources."""
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument("--runtime-root", type=Path, required=True)
+    cli.add_argument("--workspace-root", type=Path, required=True)
+    options, remaining = cli.parse_known_args()
+    runtime = options.runtime_root.resolve(strict=True)
+    sys.path[:0] = [str(runtime / "src"), str(runtime)]
+    import torch
+
+    from operational.local_comparison.persistent import relocate_reference_sources
+    from scripts import benchmark_train40_paced as runner
+
+    original = runner._source_inventory
+
+    def inventory(frozen: dict[str, Any], reference: dict[str, Any]) -> list[Path]:
+        return original(frozen, relocate_reference_sources(reference, options.workspace_root))
+
+    runner._source_inventory = inventory
+    original_clock = runner.run_paced_replay
+
+    def measured_clock(*args: Any, **kwargs: Any) -> dict[str, Any]:
+        torch.cuda.synchronize()
+        torch.cuda.reset_peak_memory_stats()
+        result = original_clock(*args, **kwargs)
+        torch.cuda.synchronize()
+        result["service_cuda_memory"] = {
+            "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
+            "peak_reserved_bytes": torch.cuda.max_memory_reserved(),
+            "scope": "RESIDENT_SERVICE_PLUS_MEASURED_STREAM_STARTUP_BEFORE_RESET",
+        }
+        return result
+
+    runner.run_paced_replay = measured_clock
+    args = runner.parser().parse_args(remaining)
+    try:
+        runner.run(args)
+    finally:
+        if args.output.is_dir():
+            receipt = {
+                "scope": "PATH_RELOCATION_ONLY_ORIGINAL_HASH_VERIFIERS_RETAINED",
+                "workspace_root": str(options.workspace_root.resolve()),
+                "runtime_root": str(runtime),
+                "launcher_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                "relocation_source_sha256": hashlib.sha256(
+                    (runtime / "operational/local_comparison/persistent.py").read_bytes()
+                ).hexdigest(),
+                "original_assets_modified": False,
+            }
+            (args.output / "relocation.json").write_text(
+                json.dumps(receipt, indent=2), encoding="utf-8"
+            )
+
+
+if __name__ == "__main__":
+    main()

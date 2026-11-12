@@ -1,0 +1,190 @@
+{
+  "expected": 20,
+  "delivered": 20,
+  "complete": true,
+  "all_delivered_passed": false,
+  "all_reference_valid": true,
+  "updates": [
+    {
+      "update_id": "update-0",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-1",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-2",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-3",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-4",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-5",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-6",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-7",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-8",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-9",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-10",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-11",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-12",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-13",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-14",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-15",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-16",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-17",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-18",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    },
+    {
+      "update_id": "update-19",
+      "delivered": true,
+      "passed": false,
+      "input_exact": false,
+      "height_parity": true,
+      "ttc_parity": true,
+      "ttc_abs_error": 0.0
+    }
+  ],
+  "reference_sha256": "ccbc00fa438a2501d1c45c4279a2c8990993d530957cad40c40234e9ab45201d"
+}

@@ -1,0 +1,10 @@
+\begin{tabular}{llrrrr}
+\toprule
+Queue policy & Model & Delivered & Admitted & Outputs & CUDA peak MiB \\
+\midrule
+bounded & PHASE & 1/24 & 1/24 & 762/7916 & 2969--2969 \\
+bounded & Garl & 0/24 & 0/24 & 72/7916 & 966--966 \\
+buffered & PHASE & 12/12 & 10/12 & 3958/3958 & 2969--2969 \\
+buffered & Garl & 7/12 & 7/12 & 3816/3958 & 966--966 \\
+\bottomrule
+\end{tabular}

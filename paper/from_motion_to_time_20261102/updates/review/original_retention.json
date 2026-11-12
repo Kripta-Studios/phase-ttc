@@ -52,7 +52,8 @@
     "sections/update_evidence",
     "sections/scientific_revision",
     "sections/consolidation_details",
-    "sections/local_hardware"
+    "sections/local_hardware",
+    "sections/extended_inference"
   ],
   "all_original_sections_retained": true,
   "byte_identical_original_assets": {
@@ -82,7 +83,7 @@
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "a4323b164a8dcc2afcf787a3761c9a41deaff64032db50dceee50e641107b715",
+      "expanded_sha256": "c40ee3ec3d9c674a0938d04838fbcf25f2c868b85b560dcf877d5a92a2358f6a",
       "changed": true
     },
     {
@@ -166,7 +167,7 @@
     {
       "path": "sections\\runtime.tex",
       "original_sha256": "87869c87692f4189fc6ccb9163df44d2499bbee7ce6511432797e5bb4aca1289",
-      "expanded_sha256": "2c9dcea477bdf75c51218649f43e3aab1c9395f3ee9a9c9253d9e0e0256f1b98",
+      "expanded_sha256": "79cc78be728623871a907fb2ab553849e42f72212824ba82e945a36bdb7bc4f1",
       "changed": true
     },
     {

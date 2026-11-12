@@ -1,0 +1,140 @@
+"""Cohort selection and independent-reference accounting for long service replays."""
+
+from __future__ import annotations
+
+import json
+import time
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+
+
+def write(path: Path, value: object) -> None:
+    """Write finite, reproducible JSON."""
+    path.write_text(json.dumps(value, indent=2, allow_nan=False, default=str), encoding="utf-8")
+
+
+def longest_interval(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Select longest contiguous 20-ms interval, breaking ties by earliest time."""
+    ordered = sorted(rows, key=lambda r: r["anchor_us"])
+    if len({r["anchor_us"] for r in ordered}) != len(ordered):
+        raise ValueError("Duplicate sensor anchor")
+    runs: list[list[dict[str, Any]]] = []
+    for row in ordered:
+        if not runs or row["anchor_us"] != runs[-1][-1]["anchor_us"] + 20_000:
+            runs.append([])
+        runs[-1].append(row)
+    return max(runs, key=len) if runs else []
+
+
+def validate_run_population(protocol: dict[str, Any], results: list[dict[str, Any]]) -> None:
+    """Reject missing, duplicated, reordered or reclassified campaign attempts."""
+    expected = []
+    scenes = protocol["workloads"]
+    if [w["id"] for w in scenes] != list(range(6)) or protocol["rate_hz"] != 50:
+        raise ValueError("Campaign workload/rate changed")
+    for mode, repeats, queue in (("bounded", 4, 2), ("buffered", 2, 64)):
+        for repeat in range(repeats):
+            order = scenes[repeat:] + scenes[:repeat]
+            for scene in order:
+                for model in ("phase", "garl") if repeat % 2 == 0 else ("garl", "phase"):
+                    expected.append(
+                        (
+                            f"{mode}_s{scene['id']}_r{repeat + 1}_{model}",
+                            mode,
+                            model,
+                            scene["id"],
+                            repeat + 1,
+                            queue,
+                        )
+                    )
+    actual = [
+        (c["name"], c["mode"], c["model"], c["workload"], c["repeat"], c["queue"])
+        for c in protocol["commands"]
+    ]
+    if actual != expected or [r["name"] for r in results] != [r[0] for r in expected]:
+        raise ValueError("Campaign run population changed")
+
+
+def quiet_before_stream(output: Path, seconds: float) -> None:
+    """Apply a fixed rest after startup, without claiming thermal stabilization."""
+    from operational.local_comparison.service_audit import capture_host
+
+    start = time.perf_counter()
+    before = capture_host()
+    time.sleep(seconds)
+    after = capture_host()
+    write(
+        output / "rest.json",
+        {
+            "policy_seconds": seconds,
+            "elapsed_seconds": time.perf_counter() - start,
+            "before": before,
+            "after": after,
+        },
+    )
+
+
+def compare_reference(
+    model: str, reference: list[dict[str, Any]], actual: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Check every delivered prediction and report missing outputs separately."""
+    from operational.train40_runtime.measurement import prediction_parity
+
+    expected = {r["update_id"]: r for r in reference}
+    measured = {r["update_id"]: r for r in actual}
+    if len(expected) != len(reference) or len(measured) != len(actual):
+        raise ValueError("Duplicate reference or measured update")
+    if set(measured) - set(expected):
+        raise ValueError("Unregistered measured output")
+    checks = []
+    for identity, ref in expected.items():
+        row = measured.get(identity)
+        check: dict[str, Any] = {
+            "update_id": identity,
+            "delivered": row is not None,
+            "passed": False,
+        }
+        if row is not None and "error" not in ref:
+            if model == "phase":
+                before, after = ref["objects"], row["objects"]
+                parity = prediction_parity(
+                    [{**r, "query_id": r["object_id"]} for r in before],
+                    [{**r, "query_id": r["object_id"]} for r in after],
+                    ["roi_00"],
+                )
+                inputs = len(before) == len(after) and all(
+                    a["input_receipt"] == b["input_receipt"]
+                    for a, b in zip(before, after, strict=True)
+                )
+                check.update(
+                    parity=parity, input_metadata_exact=inputs, passed=inputs and parity["passed"]
+                )
+            elif model == "garl":
+                inputs = row["sensor_sha256"] == ref["sensor_sha256"] and json.dumps(
+                    row["contract"], sort_keys=True, allow_nan=False
+                ) == json.dumps(ref["contract"], sort_keys=True, allow_nan=False)
+                heights = bool(np.allclose(ref["heights"], row["heights"], rtol=1e-5, atol=1e-5))
+                ttc = bool(
+                    np.isfinite(row["ttc"])
+                    and np.isclose(ref["ttc"], row["ttc"], rtol=1e-5, atol=1e-5)
+                )
+                check.update(
+                    input_exact=inputs,
+                    height_parity=heights,
+                    ttc_parity=ttc,
+                    ttc_abs_error=abs(ref["ttc"] - row["ttc"]),
+                    passed=inputs and heights and ttc,
+                )
+            else:
+                raise ValueError("Unknown model")
+        checks.append(check)
+    return {
+        "expected": len(reference),
+        "delivered": len(actual),
+        "complete": len(actual) == len(reference),
+        "all_delivered_passed": all(r["passed"] for r in checks if r["delivered"]),
+        "all_reference_valid": all("error" not in r for r in reference),
+        "updates": checks,
+    }

@@ -1,0 +1,199 @@
+"""Measure persistent TTC-only Garl using the same causal feeder and paced clock."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import platform
+import subprocess
+import sys
+import time
+from pathlib import Path
+from typing import Any, cast
+
+
+def write(path: Path, value: Any) -> None:
+    """Preserve strict JSON evidence."""
+    path.write_text(json.dumps(value, indent=2, allow_nan=False, default=str), encoding="utf-8")
+
+
+def sha(path: Path) -> str:
+    """Hash the actual executed bytes."""
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main() -> None:
+    """Initialize, measure the stream, and save outputs for deferred native verification."""
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument("--runtime-root", type=Path, required=True)
+    cli.add_argument("--manifest", type=Path, required=True)
+    cli.add_argument("--garl-freeze", type=Path, required=True)
+    cli.add_argument("--output", type=Path, required=True)
+    cli.add_argument("--updates", type=int, default=250)
+    cli.add_argument("--sequence", required=True)
+    cli.add_argument("--queue-capacity", type=int, default=2)
+    cli.add_argument("--rest-seconds", type=float, default=15)
+    args = cli.parse_args()
+    root = args.runtime_root.resolve(strict=True)
+    sys.path[:0] = [str(root / "src"), str(root)]
+    import torch
+
+    from operational.garl_evttc_competition.model import OfficialGarlRuntime
+    from operational.local_comparison.garl_persistent import (
+        ABI,
+        PersistentGarl,
+    )
+    from operational.local_comparison.persistent import EventRing
+    from operational.train40_runtime.paced import run_paced_replay
+    from operational.train40_runtime.replay_memory import PreloadedRawSource
+    from scripts.benchmark_train40_paced import replay_schedule
+
+    torch.set_num_threads(2)
+    torch.set_num_interop_threads(1)
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+    torch.backends.cudnn.benchmark = False
+    torch.manual_seed(7)
+    args.output.mkdir(parents=True, exist_ok=False)
+    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+    schedule = replay_schedule(manifest, args.sequence, args.updates)
+    freeze = json.loads(args.garl_freeze.read_text(encoding="utf-8"))
+    sources = {
+        str(p.relative_to(root)): sha(p)
+        for directory in ("src", "operational", "scripts")
+        for p in (root / directory).rglob("*.py")
+    }
+    protocol = {
+        "schema": "persistent_garl_extended_v3",
+        "execution": "separate native FP32 CUDA graphs with exact paired RGB feature reuse",
+        "abi": ABI,
+        "manifest_sha256": sha(args.manifest),
+        "garl_freeze_sha256": sha(args.garl_freeze),
+        "launcher_sha256": sha(Path(__file__)),
+        "runtime_sources": sources,
+        "queries": [row["query_id"] for row in schedule],
+        "python": platform.python_version(),
+        "torch": torch.__version__,
+        "cuda": torch.version.cuda,
+        "gpu": torch.cuda.get_device_name(),
+        "gpu_driver": subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=driver_version", "--format=csv,noheader"], text=True
+        ).strip(),
+        "precision": "FP32_TF32_OFF",
+        "cpu_threads": 2,
+        "rate_hz": 50,
+        "queue_capacity": args.queue_capacity,
+        "objects": 1,
+        "clock": "scheduled CPU RAW arrival to completed host TTC; native preparation included",
+        "startup": (
+            "resident weights, preceding600ms, synthetic shape warmup; RAW disk preload excluded"
+        ),
+        "cache": (
+            "exact paired RGB preparation/backbone and exact event endpoint tensors; "
+            "no fused/TTC cache"
+        ),
+        "sensor_policy": (
+            "L40 declared last two left RGB endpoints and supplied causal boxes; actual cadence"
+        ),
+        "native_window": (
+            "Two 20-plane volumes, support min(actual RGB spacing,100000us), "
+            "native first-event-relative bins"
+        ),
+        "targets_read": False,
+        "optimizer_updates": 0,
+    }
+    write(args.output / "protocol.json", protocol)
+    started = time.perf_counter()
+    runtime = OfficialGarlRuntime(
+        Path(freeze["inventory"]["upstream"]["path"]), freeze["inventory"], "cpu"
+    )
+    runtime.device = torch.device("cuda")
+    model = cast(Any, runtime.models["full"]).to("cuda")
+    flags = {
+        name: bool(module.with_decoder)
+        for name, module in model.named_modules()
+        if hasattr(module, "with_decoder")
+    }
+    for module in model.modules():
+        if hasattr(module, "with_decoder"):
+            module.with_decoder = False
+    with torch.inference_mode():
+        for _ in range(10):
+            model.forward_test(torch.zeros((1, 46, 128, 128), device="cuda"))
+    torch.cuda.synchronize()
+    startup = {
+        "model_and_synthetic_warmup_seconds": time.perf_counter() - started,
+        "original_decoder_flags": flags,
+        "decoder_flags_during_service": False,
+        "garl_bindings": runtime.bindings,
+    }
+    source = PreloadedRawSource(
+        schedule, 128 * 1024**2, max_total_bytes=12 * 1024**3, queue_capacity=args.queue_capacity
+    )
+    startup["raw_preload"] = source.preload()
+    history_started = time.perf_counter()
+    raw = source.initial_history(512 * 1024**2)
+    startup["initial_history_seconds"] = time.perf_counter() - history_started
+    startup["initial_history_bytes"] = sum(value.nbytes for value in raw.values())
+    end = int(schedule[0]["anchor_us"]) - 20_000
+    identity = sha(args.manifest) + freeze["inventory"]["variants"]["full"]["checkpoint"]["sha256"]
+    from operational.local_comparison import garl_persistent
+    from operational.local_comparison.extended import quiet_before_stream
+    from operational.local_comparison.garl_graph import GraphPairedBackboneCache
+
+    garl_persistent.PairedBackboneCache = GraphPairedBackboneCache
+    consumer = PersistentGarl(model, EventRing(dict(raw), end - 600_000, end), identity)
+    write(args.output / "startup.json", startup)
+    torch.cuda.synchronize()
+    torch.cuda.reset_peak_memory_stats()
+
+    def rested_warmup() -> dict[str, Any]:
+        result = source.warmup()
+        quiet_before_stream(args.output, args.rest_seconds)
+        return result
+
+    paced = run_paced_replay(
+        source.acquire_raw,
+        consumer.infer_all,
+        ["roi_00"],
+        updates=len(schedule),
+        rate_hz=50.0,
+        queue_capacity=args.queue_capacity,
+        wait_strategy="sleep",
+        source_warmup=rested_warmup,
+        source_finalize=source.finalize,
+        prediction_components=("GARL_TTC",),
+    )
+    torch.cuda.synchronize()
+    paced["service_cuda_memory"] = {
+        "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
+        "peak_reserved_bytes": torch.cuda.max_memory_reserved(),
+        "scope": "RESIDENT_SERVICE_PLUS_MEASURED_STREAM_STARTUP_BEFORE_RESET",
+    }
+    write(args.output / "paced.json", paced)
+    write(args.output / "service_updates.json", consumer.records)
+    write(
+        args.output / "graph_startup.json",
+        {"graphs": [cast(GraphPairedBackboneCache, consumer.branch).startup]},
+    )
+    intact = all(sha(root / name) == digest for name, digest in sources.items())
+    write(
+        args.output / "summary.json",
+        {
+            "status": "COMPLETE" if paced["grouped"]["passed"] and intact else "FAILED",
+            "sources_unchanged": intact,
+            "history_failure": consumer.failure,
+            "rgb_branch_hits": consumer.branch.hits,
+            "rgb_branch_misses": consumer.branch.misses,
+            "parity": "DEFERRED_UNTIL_ALL_TIMED_RUNS_FINISH",
+            "targets_read": False,
+            "optimizer_updates": 0,
+        },
+    )
+    if not paced["grouped"]["passed"] or not intact:
+        raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()

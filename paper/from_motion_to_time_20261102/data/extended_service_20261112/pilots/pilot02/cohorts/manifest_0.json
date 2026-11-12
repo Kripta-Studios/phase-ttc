@@ -1,0 +1,2654 @@
+{
+  "schema": "train40_sensor_clock_replay_queries_v1",
+  "rows": [
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16760000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16760000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16460000,
+          16560000
+        ],
+        [
+          16560000,
+          16660000
+        ],
+        [
+          16660000,
+          16760000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6076393633517,
+          335.3558990378533,
+          623.6591535623107,
+          380.2055687456925
+        ],
+        [
+          605.6171161583711,
+          336.78057051493516,
+          622.9878505936266,
+          385.8859347781069
+        ],
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ]
+      ],
+      "square_xyxy": [
+        575.8831141040471,
+        323.97169184425974,
+        652.7363861280996,
+        400.8249638683124
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0331.json",
+          "sha256": "7254df5722d8bb3b7e42f230b5abd012ac88eb42f4be9e570de8147d3c8bce94",
+          "frame_index": 331,
+          "timestamp_us": 16550659,
+          "available_us": 16550659,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0333.json",
+          "sha256": "8bb63f5aeb4c4f23fb11f0e83cd70459d3404da4bc3d86dd42342c2e4d742494",
+          "frame_index": 333,
+          "timestamp_us": 16650657,
+          "available_us": 16650657,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          561.0,
+          977.0,
+          624.0
+        ],
+        [
+          952.0,
+          563.0,
+          976.0,
+          632.0
+        ],
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        331,
+        333,
+        335
+      ],
+      "rgb_timestamps_us": [
+        16550659,
+        16650657,
+        16750664
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16750664,
+      "roi_available_us": 16750664,
+      "roi_age_us": 9336,
+      "metadata_sha256": "01ac4b566df667277311e64b7a95a15a389190e8b5b0014f54b5818c326cdeba"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16780000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16780000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16480000,
+          16580000
+        ],
+        [
+          16580000,
+          16680000
+        ],
+        [
+          16680000,
+          16780000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6076393633517,
+          335.3558990378533,
+          623.6591535623107,
+          380.2055687456925
+        ],
+        [
+          605.6171161583711,
+          336.78057051493516,
+          622.9878505936266,
+          385.8859347781069
+        ],
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ]
+      ],
+      "square_xyxy": [
+        575.8831141040471,
+        323.97169184425974,
+        652.7363861280996,
+        400.8249638683124
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0331.json",
+          "sha256": "7254df5722d8bb3b7e42f230b5abd012ac88eb42f4be9e570de8147d3c8bce94",
+          "frame_index": 331,
+          "timestamp_us": 16550659,
+          "available_us": 16550659,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0333.json",
+          "sha256": "8bb63f5aeb4c4f23fb11f0e83cd70459d3404da4bc3d86dd42342c2e4d742494",
+          "frame_index": 333,
+          "timestamp_us": 16650657,
+          "available_us": 16650657,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          561.0,
+          977.0,
+          624.0
+        ],
+        [
+          952.0,
+          563.0,
+          976.0,
+          632.0
+        ],
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        331,
+        333,
+        335
+      ],
+      "rgb_timestamps_us": [
+        16550659,
+        16650657,
+        16750664
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16750664,
+      "roi_available_us": 16750664,
+      "roi_age_us": 29336,
+      "metadata_sha256": "1629a5be6805f2596f755b460d2c81906ab8889d5b526e6066b53b67dcc0b4b1"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16800000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16800000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16500000,
+          16600000
+        ],
+        [
+          16600000,
+          16700000
+        ],
+        [
+          16700000,
+          16800000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6076393633517,
+          335.3558990378533,
+          623.6591535623107,
+          380.2055687456925
+        ],
+        [
+          605.6171161583711,
+          336.78057051493516,
+          622.9878505936266,
+          385.8859347781069
+        ],
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ]
+      ],
+      "square_xyxy": [
+        575.8831141040471,
+        323.97169184425974,
+        652.7363861280996,
+        400.8249638683124
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0331.json",
+          "sha256": "7254df5722d8bb3b7e42f230b5abd012ac88eb42f4be9e570de8147d3c8bce94",
+          "frame_index": 331,
+          "timestamp_us": 16550659,
+          "available_us": 16550659,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0333.json",
+          "sha256": "8bb63f5aeb4c4f23fb11f0e83cd70459d3404da4bc3d86dd42342c2e4d742494",
+          "frame_index": 333,
+          "timestamp_us": 16650657,
+          "available_us": 16650657,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          561.0,
+          977.0,
+          624.0
+        ],
+        [
+          952.0,
+          563.0,
+          976.0,
+          632.0
+        ],
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        331,
+        333,
+        335
+      ],
+      "rgb_timestamps_us": [
+        16550659,
+        16650657,
+        16750664
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16750664,
+      "roi_available_us": 16750664,
+      "roi_age_us": 49336,
+      "metadata_sha256": "e366718b963ceeced1550d17e5298746b63b4094c8f0a4943b3723b8f6fc5982"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16820000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16820000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16520000,
+          16620000
+        ],
+        [
+          16620000,
+          16720000
+        ],
+        [
+          16720000,
+          16820000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          606.3271162764884,
+          336.78057051493516,
+          622.9684896831988,
+          383.0409150605222
+        ],
+        [
+          605.6313403692993,
+          338.91045853881343,
+          622.9975383616181,
+          387.3060342537453
+        ],
+        [
+          605.6503228199633,
+          341.7503186772449,
+          623.0266309156847,
+          391.5663520575222
+        ]
+      ],
+      "square_xyxy": [
+        574.8370655034604,
+        325.7464851591362,
+        653.8209057815235,
+        404.7303254371993
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0332.json",
+          "sha256": "7f06e388bd04ff9fcc4866bfe6f6eac384018a49b337a04090bb97fbaa57a2ae",
+          "frame_index": 332,
+          "timestamp_us": 16600658,
+          "available_us": 16600658,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0334.json",
+          "sha256": "290aece155967f02d247ccafb47a690d396a68e8fd2dbf4e43753ed65bfa3609",
+          "frame_index": 334,
+          "timestamp_us": 16700656,
+          "available_us": 16700656,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0336.json",
+          "sha256": "7bf125bb28fd7e57d27496a80989ccfc53de07bd21eff0e21921276d171dbaa4",
+          "frame_index": 336,
+          "timestamp_us": 16800663,
+          "available_us": 16800663,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          953.0,
+          563.0,
+          976.0,
+          628.0
+        ],
+        [
+          952.0,
+          566.0,
+          976.0,
+          634.0
+        ],
+        [
+          952.0,
+          570.0,
+          976.0,
+          640.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        332,
+        334,
+        336
+      ],
+      "rgb_timestamps_us": [
+        16600658,
+        16700656,
+        16800663
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16800663,
+      "roi_available_us": 16800663,
+      "roi_age_us": 19337,
+      "metadata_sha256": "9ccefc6c44c869fe9ba6f5200df9d97f5c300dde4d630ebf7b66400fdbdef57e"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16840000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16840000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16540000,
+          16640000
+        ],
+        [
+          16640000,
+          16740000
+        ],
+        [
+          16740000,
+          16840000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          606.3271162764884,
+          336.78057051493516,
+          622.9684896831988,
+          383.0409150605222
+        ],
+        [
+          605.6313403692993,
+          338.91045853881343,
+          622.9975383616181,
+          387.3060342537453
+        ],
+        [
+          605.6503228199633,
+          341.7503186772449,
+          623.0266309156847,
+          391.5663520575222
+        ]
+      ],
+      "square_xyxy": [
+        574.8370655034604,
+        325.7464851591362,
+        653.8209057815235,
+        404.7303254371993
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0332.json",
+          "sha256": "7f06e388bd04ff9fcc4866bfe6f6eac384018a49b337a04090bb97fbaa57a2ae",
+          "frame_index": 332,
+          "timestamp_us": 16600658,
+          "available_us": 16600658,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0334.json",
+          "sha256": "290aece155967f02d247ccafb47a690d396a68e8fd2dbf4e43753ed65bfa3609",
+          "frame_index": 334,
+          "timestamp_us": 16700656,
+          "available_us": 16700656,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0336.json",
+          "sha256": "7bf125bb28fd7e57d27496a80989ccfc53de07bd21eff0e21921276d171dbaa4",
+          "frame_index": 336,
+          "timestamp_us": 16800663,
+          "available_us": 16800663,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          953.0,
+          563.0,
+          976.0,
+          628.0
+        ],
+        [
+          952.0,
+          566.0,
+          976.0,
+          634.0
+        ],
+        [
+          952.0,
+          570.0,
+          976.0,
+          640.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        332,
+        334,
+        336
+      ],
+      "rgb_timestamps_us": [
+        16600658,
+        16700656,
+        16800663
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16800663,
+      "roi_available_us": 16800663,
+      "roi_age_us": 39337,
+      "metadata_sha256": "2539745d2a01f2f58c204805e510f2571a20ddeaa87c576c298137cbb88251b1"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16860000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16860000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16560000,
+          16660000
+        ],
+        [
+          16660000,
+          16760000
+        ],
+        [
+          16760000,
+          16860000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6171161583711,
+          336.78057051493516,
+          622.9878505936266,
+          385.8859347781069
+        ],
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ],
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ]
+      ],
+      "square_xyxy": [
+        574.8417950742064,
+        326.4564262300489,
+        653.8257730439991,
+        405.4404041998416
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0333.json",
+          "sha256": "8bb63f5aeb4c4f23fb11f0e83cd70459d3404da4bc3d86dd42342c2e4d742494",
+          "frame_index": 333,
+          "timestamp_us": 16650657,
+          "available_us": 16650657,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          563.0,
+          976.0,
+          632.0
+        ],
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ],
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        333,
+        335,
+        337
+      ],
+      "rgb_timestamps_us": [
+        16650657,
+        16750664,
+        16850662
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16850662,
+      "roi_available_us": 16850662,
+      "roi_age_us": 9338,
+      "metadata_sha256": "48f795e00f954052539d0f97c3ce8cf3ddc72d696fc0711a05206d856b7e0688"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16880000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16880000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16580000,
+          16680000
+        ],
+        [
+          16680000,
+          16780000
+        ],
+        [
+          16780000,
+          16880000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6171161583711,
+          336.78057051493516,
+          622.9878505936266,
+          385.8859347781069
+        ],
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ],
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ]
+      ],
+      "square_xyxy": [
+        574.8417950742064,
+        326.4564262300489,
+        653.8257730439991,
+        405.4404041998416
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0333.json",
+          "sha256": "8bb63f5aeb4c4f23fb11f0e83cd70459d3404da4bc3d86dd42342c2e4d742494",
+          "frame_index": 333,
+          "timestamp_us": 16650657,
+          "available_us": 16650657,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          563.0,
+          976.0,
+          632.0
+        ],
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ],
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        333,
+        335,
+        337
+      ],
+      "rgb_timestamps_us": [
+        16650657,
+        16750664,
+        16850662
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16850662,
+      "roi_available_us": 16850662,
+      "roi_age_us": 29338,
+      "metadata_sha256": "41a2b52c2663efe387b7d30418f5850152ee63f502c2c88624413bc0a97b909a"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16900000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16900000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16600000,
+          16700000
+        ],
+        [
+          16700000,
+          16800000
+        ],
+        [
+          16800000,
+          16900000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6171161583711,
+          336.78057051493516,
+          622.9878505936266,
+          385.8859347781069
+        ],
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ],
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ]
+      ],
+      "square_xyxy": [
+        574.8417950742064,
+        326.4564262300489,
+        653.8257730439991,
+        405.4404041998416
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0333.json",
+          "sha256": "8bb63f5aeb4c4f23fb11f0e83cd70459d3404da4bc3d86dd42342c2e4d742494",
+          "frame_index": 333,
+          "timestamp_us": 16650657,
+          "available_us": 16650657,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          563.0,
+          976.0,
+          632.0
+        ],
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ],
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        333,
+        335,
+        337
+      ],
+      "rgb_timestamps_us": [
+        16650657,
+        16750664,
+        16850662
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16850662,
+      "roi_available_us": 16850662,
+      "roi_age_us": 49338,
+      "metadata_sha256": "7b53dbe6b13cf1dc078f04d08411168959cb7cc2df33f229339a73be37be88a7"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16920000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16920000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16620000,
+          16720000
+        ],
+        [
+          16720000,
+          16820000
+        ],
+        [
+          16820000,
+          16920000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6313403692993,
+          338.91045853881343,
+          622.9975383616181,
+          387.3060342537453
+        ],
+        [
+          605.6503228199633,
+          341.7503186772449,
+          623.0266309156847,
+          391.5663520575222
+        ],
+        [
+          604.940315278193,
+          341.74555552399266,
+          623.7463585064205,
+          392.99131550209466
+        ]
+      ],
+      "square_xyxy": [
+        575.9090169087302,
+        328.93411552946714,
+        652.7776568758833,
+        405.8027554966202
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0334.json",
+          "sha256": "290aece155967f02d247ccafb47a690d396a68e8fd2dbf4e43753ed65bfa3609",
+          "frame_index": 334,
+          "timestamp_us": 16700656,
+          "available_us": 16700656,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0336.json",
+          "sha256": "7bf125bb28fd7e57d27496a80989ccfc53de07bd21eff0e21921276d171dbaa4",
+          "frame_index": 336,
+          "timestamp_us": 16800663,
+          "available_us": 16800663,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0338.json",
+          "sha256": "9bd3e948ce783f9a58b02f58ccc44291627033aa47235df2b4a164abf4359dbb",
+          "frame_index": 338,
+          "timestamp_us": 16900661,
+          "available_us": 16900661,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          566.0,
+          976.0,
+          634.0
+        ],
+        [
+          952.0,
+          570.0,
+          976.0,
+          640.0
+        ],
+        [
+          951.0,
+          570.0,
+          977.0,
+          642.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        334,
+        336,
+        338
+      ],
+      "rgb_timestamps_us": [
+        16700656,
+        16800663,
+        16900661
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16900661,
+      "roi_available_us": 16900661,
+      "roi_age_us": 19339,
+      "metadata_sha256": "f88c5de7d709498e54cbf816550efe4892f83a04aa24f96b5e77273413938ae2"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16940000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16940000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16640000,
+          16740000
+        ],
+        [
+          16740000,
+          16840000
+        ],
+        [
+          16840000,
+          16940000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6313403692993,
+          338.91045853881343,
+          622.9975383616181,
+          387.3060342537453
+        ],
+        [
+          605.6503228199633,
+          341.7503186772449,
+          623.0266309156847,
+          391.5663520575222
+        ],
+        [
+          604.940315278193,
+          341.74555552399266,
+          623.7463585064205,
+          392.99131550209466
+        ]
+      ],
+      "square_xyxy": [
+        575.9090169087302,
+        328.93411552946714,
+        652.7776568758833,
+        405.8027554966202
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0334.json",
+          "sha256": "290aece155967f02d247ccafb47a690d396a68e8fd2dbf4e43753ed65bfa3609",
+          "frame_index": 334,
+          "timestamp_us": 16700656,
+          "available_us": 16700656,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0336.json",
+          "sha256": "7bf125bb28fd7e57d27496a80989ccfc53de07bd21eff0e21921276d171dbaa4",
+          "frame_index": 336,
+          "timestamp_us": 16800663,
+          "available_us": 16800663,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0338.json",
+          "sha256": "9bd3e948ce783f9a58b02f58ccc44291627033aa47235df2b4a164abf4359dbb",
+          "frame_index": 338,
+          "timestamp_us": 16900661,
+          "available_us": 16900661,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          566.0,
+          976.0,
+          634.0
+        ],
+        [
+          952.0,
+          570.0,
+          976.0,
+          640.0
+        ],
+        [
+          951.0,
+          570.0,
+          977.0,
+          642.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        334,
+        336,
+        338
+      ],
+      "rgb_timestamps_us": [
+        16700656,
+        16800663,
+        16900661
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16900661,
+      "roi_available_us": 16900661,
+      "roi_age_us": 39339,
+      "metadata_sha256": "d606eac07ba9ebcf9873f02a15a164f58738603e355fc7f6f05e0aa0e20d053e"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16960000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16960000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16660000,
+          16760000
+        ],
+        [
+          16760000,
+          16860000
+        ],
+        [
+          16860000,
+          16960000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ],
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ],
+        [
+          604.225560040212,
+          341.04035262573154,
+          623.0363381833591,
+          392.9961656371374
+        ]
+      ],
+      "square_xyxy": [
+        574.6640893532312,
+        328.05139937288004,
+        652.59780887034,
+        405.9851188899888
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0339.json",
+          "sha256": "018023ca3b6e07b4929ce0489c14ade8cb07f4f7fa1a052cb594049b710d0dc9",
+          "frame_index": 339,
+          "timestamp_us": 16950669,
+          "available_us": 16950669,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ],
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ],
+        [
+          950.0,
+          569.0,
+          976.0,
+          642.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        335,
+        337,
+        339
+      ],
+      "rgb_timestamps_us": [
+        16750664,
+        16850662,
+        16950669
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16950669,
+      "roi_available_us": 16950669,
+      "roi_age_us": 9331,
+      "metadata_sha256": "c213c1a09b65c46cb9ba2b131a1f557a096eaacb2434679879176f726be97cfe"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:16980000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 16980000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16680000,
+          16780000
+        ],
+        [
+          16780000,
+          16880000
+        ],
+        [
+          16880000,
+          16980000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ],
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ],
+        [
+          604.225560040212,
+          341.04035262573154,
+          623.0363381833591,
+          392.9961656371374
+        ]
+      ],
+      "square_xyxy": [
+        574.6640893532312,
+        328.05139937288004,
+        652.59780887034,
+        405.9851188899888
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0339.json",
+          "sha256": "018023ca3b6e07b4929ce0489c14ade8cb07f4f7fa1a052cb594049b710d0dc9",
+          "frame_index": 339,
+          "timestamp_us": 16950669,
+          "available_us": 16950669,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ],
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ],
+        [
+          950.0,
+          569.0,
+          976.0,
+          642.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        335,
+        337,
+        339
+      ],
+      "rgb_timestamps_us": [
+        16750664,
+        16850662,
+        16950669
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16950669,
+      "roi_available_us": 16950669,
+      "roi_age_us": 29331,
+      "metadata_sha256": "b2d7f95e918ec8aa43baaf84accc759d25575bb68af90f9a310c71888ce1724b"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17000000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17000000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16700000,
+          16800000
+        ],
+        [
+          16800000,
+          16900000
+        ],
+        [
+          16900000,
+          17000000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6360841780175,
+          339.6204225583477,
+          623.0023840737756,
+          388.0160851976369
+        ],
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ],
+        [
+          604.225560040212,
+          341.04035262573154,
+          623.0363381833591,
+          392.9961656371374
+        ]
+      ],
+      "square_xyxy": [
+        574.6640893532312,
+        328.05139937288004,
+        652.59780887034,
+        405.9851188899888
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0335.json",
+          "sha256": "99ffa9ccaf4e093852c5028b9b289ff55c2ef72f7c38e8f2ab448eeed2ddf8d5",
+          "frame_index": 335,
+          "timestamp_us": 16750664,
+          "available_us": 16750664,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0339.json",
+          "sha256": "018023ca3b6e07b4929ce0489c14ade8cb07f4f7fa1a052cb594049b710d0dc9",
+          "frame_index": 339,
+          "timestamp_us": 16950669,
+          "available_us": 16950669,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          567.0,
+          976.0,
+          635.0
+        ],
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ],
+        [
+          950.0,
+          569.0,
+          976.0,
+          642.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        335,
+        337,
+        339
+      ],
+      "rgb_timestamps_us": [
+        16750664,
+        16850662,
+        16950669
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 16950669,
+      "roi_available_us": 16950669,
+      "roi_age_us": 49331,
+      "metadata_sha256": "a5f923ada26e16f645c5f36ade6c44a2dc3f6ad341ac7bc9c8d6248b2d296b01"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17020000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17020000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16720000,
+          16820000
+        ],
+        [
+          16820000,
+          16920000
+        ],
+        [
+          16920000,
+          17020000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6503228199633,
+          341.7503186772449,
+          623.0266309156847,
+          391.5663520575222
+        ],
+        [
+          604.940315278193,
+          341.74555552399266,
+          623.7463585064205,
+          392.99131550209466
+        ],
+        [
+          603.5250408128128,
+          342.4650491743545,
+          622.3360264955878,
+          394.42113986354445
+        ]
+      ],
+      "square_xyxy": [
+        574.1290114049528,
+        328.57665943910473,
+        653.1423879142804,
+        407.59003594843244
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0336.json",
+          "sha256": "7bf125bb28fd7e57d27496a80989ccfc53de07bd21eff0e21921276d171dbaa4",
+          "frame_index": 336,
+          "timestamp_us": 16800663,
+          "available_us": 16800663,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0338.json",
+          "sha256": "9bd3e948ce783f9a58b02f58ccc44291627033aa47235df2b4a164abf4359dbb",
+          "frame_index": 338,
+          "timestamp_us": 16900661,
+          "available_us": 16900661,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0340.json",
+          "sha256": "2a954bdcd57de1143c69a95e43aaf30c5de5f69122f6328f42d45c0c6fee2213",
+          "frame_index": 340,
+          "timestamp_us": 17000668,
+          "available_us": 17000668,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          570.0,
+          976.0,
+          640.0
+        ],
+        [
+          951.0,
+          570.0,
+          977.0,
+          642.0
+        ],
+        [
+          949.0,
+          571.0,
+          975.0,
+          644.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        336,
+        338,
+        340
+      ],
+      "rgb_timestamps_us": [
+        16800663,
+        16900661,
+        17000668
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 17000668,
+      "roi_available_us": 17000668,
+      "roi_age_us": 19332,
+      "metadata_sha256": "7ac16e555e9f5977803ef950eb9dc00f30278bccac39ac94e7fc93fa8637b39b"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17040000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17040000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16740000,
+          16840000
+        ],
+        [
+          16840000,
+          16940000
+        ],
+        [
+          16940000,
+          17040000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6503228199633,
+          341.7503186772449,
+          623.0266309156847,
+          391.5663520575222
+        ],
+        [
+          604.940315278193,
+          341.74555552399266,
+          623.7463585064205,
+          392.99131550209466
+        ],
+        [
+          603.5250408128128,
+          342.4650491743545,
+          622.3360264955878,
+          394.42113986354445
+        ]
+      ],
+      "square_xyxy": [
+        574.1290114049528,
+        328.57665943910473,
+        653.1423879142804,
+        407.59003594843244
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0336.json",
+          "sha256": "7bf125bb28fd7e57d27496a80989ccfc53de07bd21eff0e21921276d171dbaa4",
+          "frame_index": 336,
+          "timestamp_us": 16800663,
+          "available_us": 16800663,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0338.json",
+          "sha256": "9bd3e948ce783f9a58b02f58ccc44291627033aa47235df2b4a164abf4359dbb",
+          "frame_index": 338,
+          "timestamp_us": 16900661,
+          "available_us": 16900661,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0340.json",
+          "sha256": "2a954bdcd57de1143c69a95e43aaf30c5de5f69122f6328f42d45c0c6fee2213",
+          "frame_index": 340,
+          "timestamp_us": 17000668,
+          "available_us": 17000668,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          570.0,
+          976.0,
+          640.0
+        ],
+        [
+          951.0,
+          570.0,
+          977.0,
+          642.0
+        ],
+        [
+          949.0,
+          571.0,
+          975.0,
+          644.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        336,
+        338,
+        340
+      ],
+      "rgb_timestamps_us": [
+        16800663,
+        16900661,
+        17000668
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 17000668,
+      "roi_available_us": 17000668,
+      "roi_age_us": 39332,
+      "metadata_sha256": "a201dc221d588774b58b514b43a83032d4b6d2941113b28946f7eced1eb08ca6"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17060000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17060000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16760000,
+          16860000
+        ],
+        [
+          16860000,
+          16960000
+        ],
+        [
+          16960000,
+          17060000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ],
+        [
+          604.225560040212,
+          341.04035262573154,
+          623.0363381833591,
+          392.9961656371374
+        ],
+        [
+          602.810281422837,
+          341.7550809212332,
+          622.3360264955878,
+          394.4259913506483
+        ]
+      ],
+      "square_xyxy": [
+        572.8840807594105,
+        327.6939429445024,
+        652.9625388467856,
+        407.7724010318775
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0339.json",
+          "sha256": "018023ca3b6e07b4929ce0489c14ade8cb07f4f7fa1a052cb594049b710d0dc9",
+          "frame_index": 339,
+          "timestamp_us": 16950669,
+          "available_us": 16950669,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0341.json",
+          "sha256": "cfdad3de697e895c85d646fc1d1839c64b47ef6f35209d4ea3d74d071a6b62fa",
+          "frame_index": 341,
+          "timestamp_us": 17050668,
+          "available_us": 17050668,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ],
+        [
+          950.0,
+          569.0,
+          976.0,
+          642.0
+        ],
+        [
+          948.0,
+          570.0,
+          975.0,
+          644.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        337,
+        339,
+        341
+      ],
+      "rgb_timestamps_us": [
+        16850662,
+        16950669,
+        17050668
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 17050668,
+      "roi_available_us": 17050668,
+      "roi_age_us": 9332,
+      "metadata_sha256": "04b27ed038787af9b935d6dcb944606d06a0b15bf22a99db2e89ecfa8689cedc"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17080000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17080000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16780000,
+          16880000
+        ],
+        [
+          16880000,
+          16980000
+        ],
+        [
+          16980000,
+          17080000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ],
+        [
+          604.225560040212,
+          341.04035262573154,
+          623.0363381833591,
+          392.9961656371374
+        ],
+        [
+          602.810281422837,
+          341.7550809212332,
+          622.3360264955878,
+          394.4259913506483
+        ]
+      ],
+      "square_xyxy": [
+        572.8840807594105,
+        327.6939429445024,
+        652.9625388467856,
+        407.7724010318775
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0339.json",
+          "sha256": "018023ca3b6e07b4929ce0489c14ade8cb07f4f7fa1a052cb594049b710d0dc9",
+          "frame_index": 339,
+          "timestamp_us": 16950669,
+          "available_us": 16950669,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0341.json",
+          "sha256": "cfdad3de697e895c85d646fc1d1839c64b47ef6f35209d4ea3d74d071a6b62fa",
+          "frame_index": 341,
+          "timestamp_us": 17050668,
+          "available_us": 17050668,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ],
+        [
+          950.0,
+          569.0,
+          976.0,
+          642.0
+        ],
+        [
+          948.0,
+          570.0,
+          975.0,
+          644.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        337,
+        339,
+        341
+      ],
+      "rgb_timestamps_us": [
+        16850662,
+        16950669,
+        17050668
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 17050668,
+      "roi_available_us": 17050668,
+      "roi_age_us": 29332,
+      "metadata_sha256": "42e9ab35088ce180b0c44608131cdbf3332175def4ad29b6b9168bea1fa7d247"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17100000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17100000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16800000,
+          16900000
+        ],
+        [
+          16900000,
+          17000000
+        ],
+        [
+          17000000,
+          17100000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          605.6550714393383,
+          342.4602854097543,
+          623.0314839401879,
+          392.2764078715428
+        ],
+        [
+          604.225560040212,
+          341.04035262573154,
+          623.0363381833591,
+          392.9961656371374
+        ],
+        [
+          602.810281422837,
+          341.7550809212332,
+          622.3360264955878,
+          394.4259913506483
+        ]
+      ],
+      "square_xyxy": [
+        572.8840807594105,
+        327.6939429445024,
+        652.9625388467856,
+        407.7724010318775
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0337.json",
+          "sha256": "483472faf3c39ba3f43dc823c2bd36599fca72f276b0f7392526e5bce63488b7",
+          "frame_index": 337,
+          "timestamp_us": 16850662,
+          "available_us": 16850662,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0339.json",
+          "sha256": "018023ca3b6e07b4929ce0489c14ade8cb07f4f7fa1a052cb594049b710d0dc9",
+          "frame_index": 339,
+          "timestamp_us": 16950669,
+          "available_us": 16950669,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0341.json",
+          "sha256": "cfdad3de697e895c85d646fc1d1839c64b47ef6f35209d4ea3d74d071a6b62fa",
+          "frame_index": 341,
+          "timestamp_us": 17050668,
+          "available_us": 17050668,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          571.0,
+          976.0,
+          641.0
+        ],
+        [
+          950.0,
+          569.0,
+          976.0,
+          642.0
+        ],
+        [
+          948.0,
+          570.0,
+          975.0,
+          644.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        337,
+        339,
+        341
+      ],
+      "rgb_timestamps_us": [
+        16850662,
+        16950669,
+        17050668
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 17050668,
+      "roi_available_us": 17050668,
+      "roi_age_us": 49332,
+      "metadata_sha256": "a61f04cfaa7ec569de66f1ef6a04017841104fe28b18a2fda053f25c5ac03e6c"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17120000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17120000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16820000,
+          16920000
+        ],
+        [
+          16920000,
+          17020000
+        ],
+        [
+          17020000,
+          17120000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          604.940315278193,
+          341.74555552399266,
+          623.7463585064205,
+          392.99131550209466
+        ],
+        [
+          603.5250408128128,
+          342.4650491743545,
+          622.3360264955878,
+          394.42113986354445
+        ],
+        [
+          602.810281422837,
+          341.7550809212332,
+          622.3408835521443,
+          395.13605660275533
+        ]
+      ],
+      "square_xyxy": [
+        572.5398507263491,
+        328.40983700085263,
+        652.6113142486323,
+        408.48130052313587
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0338.json",
+          "sha256": "9bd3e948ce783f9a58b02f58ccc44291627033aa47235df2b4a164abf4359dbb",
+          "frame_index": 338,
+          "timestamp_us": 16900661,
+          "available_us": 16900661,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0340.json",
+          "sha256": "2a954bdcd57de1143c69a95e43aaf30c5de5f69122f6328f42d45c0c6fee2213",
+          "frame_index": 340,
+          "timestamp_us": 17000668,
+          "available_us": 17000668,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0342.json",
+          "sha256": "1890f263cc16bba1da250b25a17fd7c1276e4518b680ca525887decff4e0f646",
+          "frame_index": 342,
+          "timestamp_us": 17100667,
+          "available_us": 17100667,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          951.0,
+          570.0,
+          977.0,
+          642.0
+        ],
+        [
+          949.0,
+          571.0,
+          975.0,
+          644.0
+        ],
+        [
+          948.0,
+          570.0,
+          975.0,
+          645.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        338,
+        340,
+        342
+      ],
+      "rgb_timestamps_us": [
+        16900661,
+        17000668,
+        17100667
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 17100667,
+      "roi_available_us": 17100667,
+      "roi_age_us": 19333,
+      "metadata_sha256": "3f81b239495d5af5629e778f2b24bf0ccaed8b20a8fb33d715293b71cfb816ce"
+    },
+    {
+      "query_id": "SENSOR_REPLAY:CPLA-low:17140000",
+      "sequence_id": "CPLA-low",
+      "physical_sequence_id": "CPLA-low",
+      "anchor_us": 17140000,
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "windows_us": [
+        [
+          16840000,
+          16940000
+        ],
+        [
+          16940000,
+          17040000
+        ],
+        [
+          17040000,
+          17140000
+        ]
+      ],
+      "boxes_xyxy3": [
+        [
+          604.940315278193,
+          341.74555552399266,
+          623.7463585064205,
+          392.99131550209466
+        ],
+        [
+          603.5250408128128,
+          342.4650491743545,
+          622.3360264955878,
+          394.42113986354445
+        ],
+        [
+          602.810281422837,
+          341.7550809212332,
+          622.3408835521443,
+          395.13605660275533
+        ]
+      ],
+      "square_xyxy": [
+        572.5398507263491,
+        328.40983700085263,
+        652.6113142486323,
+        408.48130052313587
+      ],
+      "bbox_sources": [
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0338.json",
+          "sha256": "9bd3e948ce783f9a58b02f58ccc44291627033aa47235df2b4a164abf4359dbb",
+          "frame_index": 338,
+          "timestamp_us": 16900661,
+          "available_us": 16900661,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0340.json",
+          "sha256": "2a954bdcd57de1143c69a95e43aaf30c5de5f69122f6328f42d45c0c6fee2213",
+          "frame_index": 340,
+          "timestamp_us": 17000668,
+          "available_us": 17000668,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        },
+        {
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation\\0342.json",
+          "sha256": "1890f263cc16bba1da250b25a17fd7c1276e4518b680ca525887decff4e0f646",
+          "frame_index": 342,
+          "timestamp_us": 17100667,
+          "available_us": 17100667,
+          "category": "pedestrian",
+          "group": 1,
+          "object_index": 0,
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay"
+        }
+      ],
+      "rgb_boxes": [
+        [
+          951.0,
+          570.0,
+          977.0,
+          642.0
+        ],
+        [
+          949.0,
+          571.0,
+          975.0,
+          644.0
+        ],
+        [
+          948.0,
+          570.0,
+          975.0,
+          645.0
+        ]
+      ],
+      "rgb_frame_indices": [
+        338,
+        340,
+        342
+      ],
+      "rgb_timestamps_us": [
+        16900661,
+        17000668,
+        17100667
+      ],
+      "calibration_sha256": "ce95f2c81ad8f9ae71dd457bbb23784794fda7bd779f5d757a107edf940d5d11",
+      "multiple_car_objects": false,
+      "target_type": "pedestrian",
+      "scenario_family": "CPLA",
+      "speed_bucket": "low",
+      "strata": [
+        "SENSOR_CLOCK_REPLAY_SINGLE_ANNOTATED_TARGET"
+      ],
+      "replay_step_us": 20000,
+      "annotation_delay_us": 0,
+      "roi_sensor_anchor_us": 17100667,
+      "roi_available_us": 17100667,
+      "roi_age_us": 39333,
+      "metadata_sha256": "3fbd167400a37be1cbc0514f7031643f2f5816e822558d6d5cd46d231b3cb3dc"
+    }
+  ],
+  "excluded": [],
+  "inventory": [
+    {
+      "physical_sequence_id": "CPLA-low",
+      "raw_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\data.hdf5",
+      "raw_stat": {
+        "size_bytes": 7530933704,
+        "mtime_ns": 1734004464000000000
+      },
+      "annotation_directory": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPLA\\low\\bbox_segmentation",
+      "event_sensor_range_us": [
+        10,
+        27914298
+      ],
+      "requested_bounds_us": [
+        16760000,
+        17140000
+      ],
+      "scheduled_updates": 20,
+      "accepted_updates": 20,
+      "annotation_frames_inspected": 12
+    }
+  ],
+  "scheduled_updates": 20,
+  "accepted_updates": 20,
+  "exclusion_reasons": {},
+  "targets_read": false,
+  "optimizer_updates": 0,
+  "provenance": {
+    "base_manifest_canonical_sha256": "3ee044ae790c60db3ebeb36efc01ea0b18629927daa53d2037b0b222c643d38d",
+    "step_us": 20000,
+    "frequency_hz": 50.0,
+    "annotation_delay_us": 0,
+    "scope": "sensor-clock replay of one annotated primary scenario target",
+    "hardware_arrivals_measured": false,
+    "annotation_availability_measured": false,
+    "annotation_availability": "actual RGB timestamp plus declared replay delay",
+    "roi_policy": "latest available native triplet; last-two-box shared square, margin0.25",
+    "event_roi_projection": "same calibrated rotation-only RGB-to-event mapping; no depth",
+    "event_history_us": 600000,
+    "maximum_rgb_history_us": 650000,
+    "query_schedule": "fixed sensor-clock intervals; rejected updates remain in coverage",
+    "future_annotations_read": false,
+    "original_manifest_modified": false,
+    "rgb_pixels_read": false,
+    "event_coordinates_or_polarities_read": false,
+    "sequence_endpoint_clock_metadata_read": true,
+    "outputs_written": false
+  }
+}

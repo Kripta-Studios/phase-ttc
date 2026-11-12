@@ -1,0 +1,1750 @@
+{
+  "expected": 20,
+  "delivered": 20,
+  "complete": true,
+  "all_delivered_passed": true,
+  "all_reference_valid": true,
+  "updates": [
+    {
+      "update_id": "update-0",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": true,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": true,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.050759315490724e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.776504516601563e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.718908309936523e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-1",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": true,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": true,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.003073692321778e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.50880527496338e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.716249942779542e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-2",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.420562701932988e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 6.905230998992921e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.051226615905762e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 7.713356018066407e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-3",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.4913513552208036e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 7.394699096679687e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.097806930541993e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.202862739562988e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-4",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.4326491574017245e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.3224451137339166e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 7.656719207763673e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 9.551279067993165e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 8.21144723892212e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-5",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": true,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": true,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.323097705841065e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.359595775604249e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.75207281112671e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-6",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": true,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": true,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.267070770263672e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.109000205993653e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.755374431610108e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-7",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": true,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": true,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.253619194030763e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.268587589263917e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.758391857147217e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-8",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.5197500254368161e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.9073486328125e-06,
+            "max_relative_error": 2.903319742893617e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 7.27520513534546e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.106592178344727e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.9073486328125e-06,
+                "allowed_abs_error": 7.569543838500977e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-9",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.430511474609375e-06,
+            "max_relative_error": 2.2962094939077734e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.430511474609375e-06,
+            "max_relative_error": 2.1783575242356798e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.430511474609375e-06,
+                "allowed_abs_error": 7.22988224029541e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.169427871704102e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.430511474609375e-06,
+                "allowed_abs_error": 7.566926956176758e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-10",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.9073486328125e-06,
+            "max_relative_error": 2.95010487622835e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 2.86102294921875e-06,
+            "max_relative_error": 4.0365952341803815e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.9073486328125e-06,
+                "allowed_abs_error": 7.46535873413086e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.480826377868652e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 2.86102294921875e-06,
+                "allowed_abs_error": 8.08771324157715e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-11",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.47184980538098e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 2.384185791015625e-06,
+            "max_relative_error": 3.3647153605581874e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 7.479426860809326e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.612330436706544e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 2.384185791015625e-06,
+                "allowed_abs_error": 8.085846900939942e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-12",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.9073486328125e-06,
+            "max_relative_error": 2.9472410692148513e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 2.86102294921875e-06,
+            "max_relative_error": 4.038941318086958e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.9073486328125e-06,
+                "allowed_abs_error": 7.471641063690186e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.74665927886963e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 2.86102294921875e-06,
+                "allowed_abs_error": 8.083596229553223e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-13",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": true,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": true,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.093973636627197e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 8.266708374023438e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 9.041988372802735e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-14",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 4.76837158203125e-07,
+            "max_relative_error": 6.924227623181317e-08
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.1847198623260743e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 4.76837158203125e-07,
+                "allowed_abs_error": 7.886503219604493e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.372918605804444e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 9.049787521362305e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-15",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.430511474609375e-06,
+            "max_relative_error": 2.068028771519218e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 2.86102294921875e-06,
+            "max_relative_error": 3.571959687815486e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.430511474609375e-06,
+                "allowed_abs_error": 7.917270660400391e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 6.901755332946778e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 2.86102294921875e-06,
+                "allowed_abs_error": 9.009673118591309e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-16",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.9073486328125e-06,
+            "max_relative_error": 2.744611812397549e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 2.86102294921875e-06,
+            "max_relative_error": 3.567359657990095e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.9073486328125e-06,
+                "allowed_abs_error": 7.949429512023926e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.009584903717042e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 2.86102294921875e-06,
+                "allowed_abs_error": 9.020001411437988e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-17",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 1.430511474609375e-06,
+            "max_relative_error": 2.044311821607899e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 2.86102294921875e-06,
+            "max_relative_error": 3.5629102468467354e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 1.430511474609375e-06,
+                "allowed_abs_error": 7.997520923614502e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.333973407745362e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 2.86102294921875e-06,
+                "allowed_abs_error": 9.030016899108888e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-18",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.4101066858516382e-07
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.1979149571421965e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 7.76313591003418e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 6.682414531707765e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 8.961118698120117e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    },
+    {
+      "update_id": "update-19",
+      "delivered": true,
+      "passed": true,
+      "parity": {
+        "passed": true,
+        "exact": false,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "reference_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "candidate_coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "components": {
+          "PHASE_ONLY_TRAIN40_S7": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "E_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 0.0,
+            "max_relative_error": 0.0
+          },
+          "R_CTX_TRAIN40": {
+            "finite_pairs": 1,
+            "max_abs_error": 9.5367431640625e-07,
+            "max_relative_error": 1.1973948519684693e-07
+          }
+        },
+        "failed_query_ids": [],
+        "per_query": [
+          {
+            "query_id": "roi_00",
+            "passed": true,
+            "exact": false,
+            "metadata_mismatches": [],
+            "components": {
+              "PHASE_ONLY_TRAIN40_S7": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 7.720443725585938e-05
+              },
+              "E_CTX_TRAIN40": {
+                "passed": true,
+                "exact": true,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 0.0,
+                "allowed_abs_error": 6.68021583557129e-05
+              },
+              "R_CTX_TRAIN40": {
+                "passed": true,
+                "exact": false,
+                "reference_state": "finite",
+                "candidate_state": "finite",
+                "finite_mask_equal": true,
+                "abs_error": 9.5367431640625e-07,
+                "allowed_abs_error": 8.964576721191406e-05
+              }
+            }
+          }
+        ]
+      },
+      "input_metadata_exact": true
+    }
+  ],
+  "reference_sha256": "358174f8f4c06a05532d3d65748fe0f097b4acd6bc4c62b3862091822fe44df7"
+}

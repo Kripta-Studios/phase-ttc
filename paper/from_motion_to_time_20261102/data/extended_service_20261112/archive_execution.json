@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+    "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\scripts\\archive_extended_comparison.py",
+    "--campaign",
+    "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+    "--output",
+    "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\paper\\from_motion_to_time_20261102\\data\\extended_service_20261112"
+  ],
+  "started_utc": "2026-11-12T23:27:13.987748+00:00",
+  "finished_utc": "2026-11-12T23:27:21.188998+00:00",
+  "expected_sha256": "1737a78222ebfa2011a9c92d9ec032c84b2e8a0c0a66d9cbb599a340a0fe257a",
+  "executed_sha256_before": "1737a78222ebfa2011a9c92d9ec032c84b2e8a0c0a66d9cbb599a340a0fe257a",
+  "executed_sha256_after": "1737a78222ebfa2011a9c92d9ec032c84b2e8a0c0a66d9cbb599a340a0fe257a",
+  "returncode": 0,
+  "sealer_sha256": "cf1cbc02c6cc02dbade79aa1aa4984ebccd0b37a1c7a2f71734dbd915d07fa17",
+  "scope": "Byte-identical frozen archiver executed from workspace to resolve historical docs"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "COMPLETE",
+  "sources_unchanged": true,
+  "history_failure": null,
+  "rgb_branch_hits": 222,
+  "rgb_branch_misses": 148,
+  "parity": "DEFERRED_UNTIL_ALL_TIMED_RUNS_FINISH",
+  "targets_read": false,
+  "optimizer_updates": 0
+}

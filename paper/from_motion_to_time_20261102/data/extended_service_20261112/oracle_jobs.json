@@ -1,0 +1,200 @@
+{
+  "controller_sha256": "b5cd663776b06d9eba0934ba45c52860b87f3a147c438bbedade72e0ecfd79a9",
+  "frozen_launcher_sha256": "ba3fbf5094114e951f2df390d4bbfc4e5dc28904571a35cdbef959511e408042",
+  "started_utc": "2026-11-12T22:38:56.456417+00:00",
+  "scope": "Native references only, after every timed attempt",
+  "jobs": [
+    {
+      "name": "reference_s0_phase",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "phase",
+        "--workload",
+        "0"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T22:44:23.245580+00:00"
+    },
+    {
+      "name": "reference_s0_garl",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "garl",
+        "--workload",
+        "0"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T22:46:39.406105+00:00"
+    },
+    {
+      "name": "reference_s1_phase",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "phase",
+        "--workload",
+        "1"
+      ],
+      "returncode": 0,
+      "all_checks_passed": false,
+      "finished_utc": "2026-11-12T22:53:26.792365+00:00"
+    },
+    {
+      "name": "reference_s1_garl",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "garl",
+        "--workload",
+        "1"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T22:56:33.393245+00:00"
+    },
+    {
+      "name": "reference_s2_phase",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "phase",
+        "--workload",
+        "2"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:03:36.618856+00:00"
+    },
+    {
+      "name": "reference_s2_garl",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "garl",
+        "--workload",
+        "2"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:06:35.239014+00:00"
+    },
+    {
+      "name": "reference_s3_phase",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "phase",
+        "--workload",
+        "3"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:13:07.925145+00:00"
+    },
+    {
+      "name": "reference_s3_garl",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "garl",
+        "--workload",
+        "3"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:15:29.709840+00:00"
+    },
+    {
+      "name": "reference_s4_phase",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "phase",
+        "--workload",
+        "4"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:18:56.740695+00:00"
+    },
+    {
+      "name": "reference_s4_garl",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "garl",
+        "--workload",
+        "4"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:20:18.896491+00:00"
+    },
+    {
+      "name": "reference_s5_phase",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "phase",
+        "--workload",
+        "5"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:24:39.860385+00:00"
+    },
+    {
+      "name": "reference_s5_garl",
+      "command": [
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\.venv-transfer\\Scripts\\python.exe",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01\\runtime\\scripts\\reference_extended_service.py",
+        "--campaign",
+        "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\extended_service_20261112\\main01",
+        "--model",
+        "garl",
+        "--workload",
+        "5"
+      ],
+      "returncode": 0,
+      "all_checks_passed": true,
+      "finished_utc": "2026-11-12T23:26:31.581784+00:00"
+    }
+  ]
+}

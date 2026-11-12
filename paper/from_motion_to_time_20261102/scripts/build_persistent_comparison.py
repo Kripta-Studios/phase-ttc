@@ -35,12 +35,14 @@ def distribution(values: list[float]) -> dict[str, float] | None:
     }
 
 
-def summarize_paced(paced: dict[str, Any], expected: int = 250) -> dict[str, Any]:
+def summarize_paced(
+    paced: dict[str, Any], expected: int = 250, *, queue_capacity: int = 2
+) -> dict[str, Any]:
     """Recompute response clocks and coverage without silently removing failures."""
     if (
         paced["offered_updates"] != expected
         or paced["rate_hz"] != 50
-        or paced["queue_capacity"] != 2
+        or paced["queue_capacity"] != queue_capacity
     ):
         raise ValueError("Wrong offered population/rate/queue")
     arrivals = paced["arrival_receipts"]

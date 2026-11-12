@@ -1,0 +1,56 @@
+[
+  {
+    "name": "bounded_s0_r1_phase",
+    "returncode": 0,
+    "files": {
+      "binding.json": "700135075952bba45c32a3f73eda367cb6674806b2b28bd58d6d1ae3da976bbb",
+      "original_snapshot.json": "d7f31e65b71d3c53a2c2e36e5d8ec4bd1876e08b6fb870b9aa857c48b2573a33",
+      "paced.json": "0cb62ef3c39e02a0f365f5dfc31ddb73a624b61ce6a31d4710a8487014b2807a",
+      "relocation.json": "03b9c672ad58bc89d3c75c3e40acdee59a60104f4a95650e1e21c6f830304399",
+      "rest.json": "ca7f84e38c95a486edd4894bf0a33752de9f1c901818e6df02f123aa76442241",
+      "service_updates.json": "85843235e24c6a36e831337136eed625738b8c796de324a2fc8d8ecb2feeb2a2",
+      "startup.json": "046271583bc67af5e33ce3b17344f38f2757decf1989bdd468357c9a69fd6a2e",
+      "summary.json": "faa7e7fd03ef705bc8dff82ca471fe3cd8b8d2e533c997e1f288328f08d8f401"
+    }
+  },
+  {
+    "name": "bounded_s0_r1_garl",
+    "returncode": 0,
+    "files": {
+      "graph_startup.json": "2f700c6d294ea43b25ea3db0288628f0c027b9a24fc176d2757befb91829babe",
+      "paced.json": "9cb65398bc11a8c2c5b792958842d00466fb0fe8048337de80f9b11c9b0c5be1",
+      "protocol.json": "4c169b9ade47cca681c8ebb515000e728fae2fd75fe791c2e321f05d2d4f8ed3",
+      "rest.json": "4f1bc208e3c994dfdcd3c12680ad4622c63ba66a8c1f2e83082ea5d5ad7b78f7",
+      "service_updates.json": "9c421eee1f8b7e88625201b7e744174edaa7342493326b8daae92f156e6a5028",
+      "startup.json": "5ede17f78d0de865db10bf5ac7a57cd946ae7deaf06bb03eee04c0c92d2c40e9",
+      "summary.json": "f82c9bd43d2ff49b80704c91ec8f10b6206dc266de90bebd0e5277c7c19f4a40"
+    }
+  },
+  {
+    "name": "buffered_s0_r1_phase",
+    "returncode": 0,
+    "files": {
+      "binding.json": "1a958c9bb39d5c0d4b377860922dad4014cd48301929aa4a4a2b0c1e4bcf3065",
+      "original_snapshot.json": "d7f31e65b71d3c53a2c2e36e5d8ec4bd1876e08b6fb870b9aa857c48b2573a33",
+      "paced.json": "1a22c07140ce9e8f969ed2c5a74fa25d3d89e263c0919450238755430713b142",
+      "relocation.json": "03b9c672ad58bc89d3c75c3e40acdee59a60104f4a95650e1e21c6f830304399",
+      "rest.json": "bfb59beaa126a40628a07a4aacf386f8438f20d216e5723f78ffe894c8cad5aa",
+      "service_updates.json": "495376ca6e36275e218c5db61cab15e452ec8b9ff531b78a92fa21eaa864b446",
+      "startup.json": "98007c9ad77bb5f431c18964700862b57b72a7b16620850f64b43e6254021677",
+      "summary.json": "499185f482b5b0b8723585eb918a96d320808e5b4a1d2aa1e2cf826573728f3b"
+    }
+  },
+  {
+    "name": "buffered_s0_r1_garl",
+    "returncode": 0,
+    "files": {
+      "graph_startup.json": "3d51c2efc6117060c1374470767b2caaa430426b720f24c5dfe64ad61761647a",
+      "paced.json": "086a5f624f4b7c0614321fa28287cf2365b118d82ddd6b8771e26ded05a6043f",
+      "protocol.json": "c435dbbe9c9edf7d8ffd24f5acaf5a43aec1d73015eba49d1c8fe02a7f0b6ecc",
+      "rest.json": "4439122af0abdefe72ca6e920d4dc79f4fae9ddba6def748b0a9115c73021814",
+      "service_updates.json": "9c421eee1f8b7e88625201b7e744174edaa7342493326b8daae92f156e6a5028",
+      "startup.json": "f0f8dfc2fc748a81c13e7a8aab83e344480d5702d3ded8634517645e2b1108be",
+      "summary.json": "f82c9bd43d2ff49b80704c91ec8f10b6206dc266de90bebd0e5277c7c19f4a40"
+    }
+  }
+]

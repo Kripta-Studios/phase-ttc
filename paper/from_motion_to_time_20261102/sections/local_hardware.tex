@@ -1,7 +1,16 @@
-\section{Matched persistent-service comparison}
+\section{Initial matched persistent-service comparison}
 \label{sec:local-hardware}
 
 This appendix compares the persistent optimized PHASE service with persistent TTC-only Garl on the same causal RAW replay. No TTC labels are read, no weights are trained, and no predictions are submitted to a benchmark. This is a deployment-response experiment on EvTTC CPLA-low, not an eAP accuracy evaluation.
+
+\begin{table}[H]
+\centering\small
+\caption{\textbf{Persistent-service response, in milliseconds.} The primary summary is the median and range of the three per-pass scheduled-arrival p95 values. Outputs count all scheduled updates across all three passes. These are repeated timings of the same 250 anchors, not 750 independent samples.}
+\label{tab:persistent-primary}
+\input{tables/persistent_primary.tex}
+\end{table}
+
+\input{tables/persistent_findings.tex}
 
 \subsection{Frozen model and execution identities}
 

@@ -64,6 +64,7 @@ def main() -> None:
         "build_consolidation.py",
         "build_local_comparison.py",
         "build_persistent_comparison.py",
+        "build_extended_inference.py",
         "verify_audit_sources.py",
         "build_transfer_revision.py",
         "make_population_table.py",

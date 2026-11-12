@@ -1,0 +1,317 @@
+[
+  {
+    "update_id": "update-0",
+    "query_id": "SENSOR_REPLAY:CCRs-3-low-100-overlap-100:6520000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 6520000,
+      "frame_ids": [
+        128,
+        130
+      ],
+      "frame_timestamps_us": [
+        6400184,
+        6500182
+      ],
+      "frame_sha256": [
+        "7fe8668f9de3d7fd733e3aa6bb2cfb6ebce930ee114c09a7a1affce652e91f2c",
+        "20dffd4818060bada69d0a3d2ad944d7b685c3c3bc7ca5fa3f98297390255ff5"
+      ],
+      "rgb_boxes": [
+        [
+          1001.0,
+          563.0,
+          1074.0,
+          625.0
+        ],
+        [
+          1001.0,
+          561.0,
+          1074.0,
+          627.0
+        ]
+      ],
+      "rgb_square": [
+        1001,
+        558,
+        1074,
+        631
+      ],
+      "event_squares": [
+        [
+          640,
+          331,
+          692,
+          383
+        ],
+        [
+          640,
+          331,
+          692,
+          383
+        ]
+      ],
+      "event_windows": [
+        [
+          6300186,
+          6400184
+        ],
+        [
+          6400184,
+          6500182
+        ]
+      ],
+      "delta_t_s": 0.099998,
+      "sensor_age_us": 19818,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 6400184,
+          "category": "car",
+          "frame_index": 128,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-3\\low-100\\overlap-100\\leftlabel\\0128.json",
+          "sha256": "0a1154ced6be2cea4faf61f5f6e78b3e95467e99b0cfdafde57a93a0249793ea",
+          "timestamp_us": 6400184
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 6500182,
+          "category": "car",
+          "frame_index": 130,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-3\\low-100\\overlap-100\\leftlabel\\0130.json",
+          "sha256": "63d88b9daf919b1a2d2430b4ee62e93cee7bd2b1bcd0161292e0bc174f1cd9c0",
+          "timestamp_us": 6500182
+        }
+      ]
+    },
+    "sensor_sha256": "7be2b55a136252db5cdd4de0c22458a336f2f645f2f3c510268169020893cd41",
+    "heights": [
+      [
+        108.4254150390625,
+        109.75758361816406
+      ]
+    ],
+    "ttc": 8.238862991333008,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 0,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-1",
+    "query_id": "SENSOR_REPLAY:CCRs-3-low-100-overlap-100:6540000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 6540000,
+      "frame_ids": [
+        128,
+        130
+      ],
+      "frame_timestamps_us": [
+        6400184,
+        6500182
+      ],
+      "frame_sha256": [
+        "7fe8668f9de3d7fd733e3aa6bb2cfb6ebce930ee114c09a7a1affce652e91f2c",
+        "20dffd4818060bada69d0a3d2ad944d7b685c3c3bc7ca5fa3f98297390255ff5"
+      ],
+      "rgb_boxes": [
+        [
+          1001.0,
+          563.0,
+          1074.0,
+          625.0
+        ],
+        [
+          1001.0,
+          561.0,
+          1074.0,
+          627.0
+        ]
+      ],
+      "rgb_square": [
+        1001,
+        558,
+        1074,
+        631
+      ],
+      "event_squares": [
+        [
+          640,
+          331,
+          692,
+          383
+        ],
+        [
+          640,
+          331,
+          692,
+          383
+        ]
+      ],
+      "event_windows": [
+        [
+          6300186,
+          6400184
+        ],
+        [
+          6400184,
+          6500182
+        ]
+      ],
+      "delta_t_s": 0.099998,
+      "sensor_age_us": 39818,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 6400184,
+          "category": "car",
+          "frame_index": 128,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-3\\low-100\\overlap-100\\leftlabel\\0128.json",
+          "sha256": "0a1154ced6be2cea4faf61f5f6e78b3e95467e99b0cfdafde57a93a0249793ea",
+          "timestamp_us": 6400184
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 6500182,
+          "category": "car",
+          "frame_index": 130,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-3\\low-100\\overlap-100\\leftlabel\\0130.json",
+          "sha256": "63d88b9daf919b1a2d2430b4ee62e93cee7bd2b1bcd0161292e0bc174f1cd9c0",
+          "timestamp_us": 6500182
+        }
+      ]
+    },
+    "sensor_sha256": "7be2b55a136252db5cdd4de0c22458a336f2f645f2f3c510268169020893cd41",
+    "heights": [
+      [
+        108.4254150390625,
+        109.75758361816406
+      ]
+    ],
+    "ttc": 8.238862991333008,
+    "rgb_preparation_cache_hit": true,
+    "event_representation_cache_hits": [
+      true,
+      true
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-2",
+    "query_id": "SENSOR_REPLAY:CCRs-3-low-100-overlap-100:6560000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 6560000,
+      "frame_ids": [
+        129,
+        131
+      ],
+      "frame_timestamps_us": [
+        6450183,
+        6550181
+      ],
+      "frame_sha256": [
+        "f70267a73cf8e0deaaca88129da19437ca65dd589016b0d0a4c87a2b84b764c3",
+        "ae622e9fd5d75596135d84bef91b9d74d25060c2c7401ad62ed1c31fabbcd11b"
+      ],
+      "rgb_boxes": [
+        [
+          1001.0,
+          562.0,
+          1073.0,
+          626.0
+        ],
+        [
+          1001.0,
+          562.0,
+          1074.0,
+          628.0
+        ]
+      ],
+      "rgb_square": [
+        1001,
+        559,
+        1074,
+        632
+      ],
+      "event_squares": [
+        [
+          639,
+          331,
+          691,
+          383
+        ],
+        [
+          640,
+          332,
+          692,
+          384
+        ]
+      ],
+      "event_windows": [
+        [
+          6350185,
+          6450183
+        ],
+        [
+          6450183,
+          6550181
+        ]
+      ],
+      "delta_t_s": 0.099998,
+      "sensor_age_us": 9819,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 6450183,
+          "category": "car",
+          "frame_index": 129,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-3\\low-100\\overlap-100\\leftlabel\\0129.json",
+          "sha256": "69237351f26b26ada004232d5567916bcfc27717d0354ba41a096f018601a763",
+          "timestamp_us": 6450183
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 6550181,
+          "category": "car",
+          "frame_index": 131,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-3\\low-100\\overlap-100\\leftlabel\\0131.json",
+          "sha256": "30cf480d0505414cdd5785b17f527e63c12146ace8ffa7b3c9d49fb6e5db30a1",
+          "timestamp_us": 6550181
+        }
+      ]
+    },
+    "sensor_sha256": "77abe07fe913c8fe94efb2b560025a4f3586b758f5713aa84e932137894619ef",
+    "heights": [
+      [
+        106.22695922851562,
+        108.05089569091797
+      ]
+    ],
+    "ttc": 5.9239349365234375,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 2
+  }
+]

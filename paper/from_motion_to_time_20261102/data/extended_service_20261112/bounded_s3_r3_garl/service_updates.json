@@ -1,0 +1,317 @@
+[
+  {
+    "update_id": "update-0",
+    "query_id": "SENSOR_REPLAY:CCRs-side-high:11980000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 11980000,
+      "frame_ids": [
+        237,
+        239
+      ],
+      "frame_timestamps_us": [
+        11861949,
+        11962045
+      ],
+      "frame_sha256": [
+        "eb5f490460ecfb103ed719f6394c5da5fc9802af332970f9f5d92fdbe33ad6db",
+        "db2348dbb37d91b038f8944c4dcccf3c659bf30bcdaeca3bc3fbaa7d85934078"
+      ],
+      "rgb_boxes": [
+        [
+          956.0,
+          531.0,
+          1091.0,
+          578.0
+        ],
+        [
+          952.0,
+          534.0,
+          1092.0,
+          584.0
+        ]
+      ],
+      "rgb_square": [
+        952,
+        489,
+        1092,
+        629
+      ],
+      "event_squares": [
+        [
+          606,
+          267,
+          705,
+          366
+        ],
+        [
+          604,
+          270,
+          703,
+          369
+        ]
+      ],
+      "event_windows": [
+        [
+          11761949,
+          11861949
+        ],
+        [
+          11862045,
+          11962045
+        ]
+      ],
+      "delta_t_s": 0.100096,
+      "sensor_age_us": 17955,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 11861949,
+          "category": "car",
+          "frame_index": 237,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-side\\high\\bbox_segmentation\\0237.json",
+          "sha256": "8c0389f8d4bd98cb4ed6ea2dd009e50b1852a96631f221ad4f132fcfcba97e06",
+          "timestamp_us": 11861949
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 11962045,
+          "category": "car",
+          "frame_index": 239,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-side\\high\\bbox_segmentation\\0239.json",
+          "sha256": "d3067cf558d49699b54153dfae22a4b0e5c96cc5d7546a887adde3b785ca552f",
+          "timestamp_us": 11962045
+        }
+      ]
+    },
+    "sensor_sha256": "3a2e13d1708174d88899110532ee4b7b50175b9d844525ee72a8f10362599fc6",
+    "heights": [
+      [
+        67.63609313964844,
+        69.73827362060547
+      ]
+    ],
+    "ttc": 3.320610284805298,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 0,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-1",
+    "query_id": "SENSOR_REPLAY:CCRs-side-high:12000000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 12000000,
+      "frame_ids": [
+        237,
+        239
+      ],
+      "frame_timestamps_us": [
+        11861949,
+        11962045
+      ],
+      "frame_sha256": [
+        "eb5f490460ecfb103ed719f6394c5da5fc9802af332970f9f5d92fdbe33ad6db",
+        "db2348dbb37d91b038f8944c4dcccf3c659bf30bcdaeca3bc3fbaa7d85934078"
+      ],
+      "rgb_boxes": [
+        [
+          956.0,
+          531.0,
+          1091.0,
+          578.0
+        ],
+        [
+          952.0,
+          534.0,
+          1092.0,
+          584.0
+        ]
+      ],
+      "rgb_square": [
+        952,
+        489,
+        1092,
+        629
+      ],
+      "event_squares": [
+        [
+          606,
+          267,
+          705,
+          366
+        ],
+        [
+          604,
+          270,
+          703,
+          369
+        ]
+      ],
+      "event_windows": [
+        [
+          11761949,
+          11861949
+        ],
+        [
+          11862045,
+          11962045
+        ]
+      ],
+      "delta_t_s": 0.100096,
+      "sensor_age_us": 37955,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 11861949,
+          "category": "car",
+          "frame_index": 237,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-side\\high\\bbox_segmentation\\0237.json",
+          "sha256": "8c0389f8d4bd98cb4ed6ea2dd009e50b1852a96631f221ad4f132fcfcba97e06",
+          "timestamp_us": 11861949
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 11962045,
+          "category": "car",
+          "frame_index": 239,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-side\\high\\bbox_segmentation\\0239.json",
+          "sha256": "d3067cf558d49699b54153dfae22a4b0e5c96cc5d7546a887adde3b785ca552f",
+          "timestamp_us": 11962045
+        }
+      ]
+    },
+    "sensor_sha256": "3a2e13d1708174d88899110532ee4b7b50175b9d844525ee72a8f10362599fc6",
+    "heights": [
+      [
+        67.63609313964844,
+        69.73827362060547
+      ]
+    ],
+    "ttc": 3.320610284805298,
+    "rgb_preparation_cache_hit": true,
+    "event_representation_cache_hits": [
+      true,
+      true
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-2",
+    "query_id": "SENSOR_REPLAY:CCRs-side-high:12020000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 12020000,
+      "frame_ids": [
+        238,
+        240
+      ],
+      "frame_timestamps_us": [
+        11911997,
+        12012093
+      ],
+      "frame_sha256": [
+        "593290c3c827129cbf1d7e763bbf27d17e8f5223f9458ba563e10ef42f14020a",
+        "358d32e4b4b69e73b73618476d70196596d7f06371cbece8530ebaf6dd9ab058"
+      ],
+      "rgb_boxes": [
+        [
+          952.0,
+          534.0,
+          1091.0,
+          583.0
+        ],
+        [
+          947.0,
+          534.0,
+          1093.0,
+          586.0
+        ]
+      ],
+      "rgb_square": [
+        947,
+        487,
+        1093,
+        633
+      ],
+      "event_squares": [
+        [
+          601,
+          266,
+          705,
+          370
+        ],
+        [
+          600,
+          268,
+          704,
+          372
+        ]
+      ],
+      "event_windows": [
+        [
+          11811997,
+          11911997
+        ],
+        [
+          11912093,
+          12012093
+        ]
+      ],
+      "delta_t_s": 0.100096,
+      "sensor_age_us": 7907,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 11911997,
+          "category": "car",
+          "frame_index": 238,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-side\\high\\bbox_segmentation\\0238.json",
+          "sha256": "f44622f2df81a3c38647b67b4f41b5673786c07ea21dcf2f78b729ddeacafb4e",
+          "timestamp_us": 11911997
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 12012093,
+          "category": "car",
+          "frame_index": 240,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CCRs-side\\high\\bbox_segmentation\\0240.json",
+          "sha256": "3200c49a26a35299d329951c8133933f44726e0bac417951b9a1e967d4c2218d",
+          "timestamp_us": 12012093
+        }
+      ]
+    },
+    "sensor_sha256": "81e49ae040980ccff667c1ca3b4ca04e85f269c39c0fbc786d5aceb6afe0b7c2",
+    "heights": [
+      [
+        59.96782684326172,
+        62.283363342285156
+      ]
+    ],
+    "ttc": 2.692385196685791,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 2
+  }
+]

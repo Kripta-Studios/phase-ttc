@@ -1,6 +1,6 @@
 # Model card — PHASE-TTC
 
-Model release: 11 November 2026; local measurement update: 12 November 2026.
+Model release: 11 November 2026; local measurement update: 13 November 2026.
 Author: Álvaro Schwiedop Souto.
 
 PHASE-TTC estimates signed time-to-contact from causal event/RGB observations and supplied object regions. The current original model is `PHASE_ONLY_EVENT_S7_TRAIN40_SCIENTIFIC_OOF`: four modality-specific motion backbones, two pairwise readouts, two temporal refiners and one RGB-anchored phase fusion head. The final model is not a JEPA encoder. Its maximum causal information history is 650 ms; the 1,955-parameter count refers to the fusion head alone.
@@ -21,16 +21,20 @@ The Hub bundles contain weights, exact source dependencies, normalizers, manifes
 
 ## Limitations
 
-The full original system contains 2,347,313 parameters. The same-hardware study
-compares persistent PHASE/Garl services on the same 250-arrival EvTTC CPLA-low
-replay at 50 Hz, with three fresh-process passes per arm. Both retain resident
-weights, causal history and exact reusable features. Garl bypasses auxiliary
-foreground decoders and verifies TTC against unchanged native inference.
-Lower parameter count does not imply lower latency. See the
-[persistent-service report](../paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md).
-The repeated campaign includes queue losses and uncontrolled device-state
-carryover between runs; all outcomes remain visible. It does not establish a
-stable three-pass service p95 or a causal speed ranking.
+The full original system contains 2,347,313 parameters. The expanded same-hardware
+study compares persistent PHASE/Garl services over 72 fresh-process passes on six
+EvTTC scenes, with continuous intervals of 3.1–9.3 seconds and 50 Hz offered input.
+Both retain resident weights and causal state; Garl bypasses auxiliary foreground
+decoders during service and is checked against native inference afterward.
+
+Complete delivery, strict numerical admission and response deadlines are separate
+results. With the larger queue PHASE delivers all twelve streams, but two fail the
+frozen intermediate RGB tolerance at three repeated anchors; their final fused
+TTC outputs pass. Garl delivers seven complete streams under that queue policy.
+Small-queue losses and all failed checks are retained. Neither parameter counts
+nor these runs establish a universal latency bound or continuous 20 ms responses.
+See the [expanded inference report](../paper/from_motion_to_time_20261102/revision/extended_inference_report.md)
+and the [initial comparison](../paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md).
 
 The release expects supplied object regions and synchronized event/RGB inputs. It includes neither a general-purpose autonomous detector nor calibrated collision probabilities or confidence intervals. The paced 250-update replay measured 29.14 ms p95, above a 20 ms budget. Zero benchmark failures is a scoring result, not a safety assurance. Full original training requires external data and reconstruction of historical caches.
 

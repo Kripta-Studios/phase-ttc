@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Álvaro Schwiedop\Desktop\KriptaStudios\EVOCON_JEPA_Codex_Handoff\e-jepa-ttc-v18-joint-measurement\output\extended_service_20261112\pilot01\runtime\scripts\run_extended_phase.py", line 38, in <module>
+    main()
+  File "C:\Users\Álvaro Schwiedop\Desktop\KriptaStudios\EVOCON_JEPA_Codex_Handoff\e-jepa-ttc-v18-joint-measurement\output\extended_service_20261112\pilot01\runtime\scripts\run_extended_phase.py", line 34, in main
+    run_persistent_phase.main()
+  File "C:\Users\Álvaro Schwiedop\Desktop\KriptaStudios\EVOCON_JEPA_Codex_Handoff\e-jepa-ttc-v18-joint-measurement\output\extended_service_20261112\pilot01\runtime\scripts\run_persistent_phase.py", line 49, in main
+    runner.run(args)
+  File "C:\Users\Álvaro Schwiedop\Desktop\KriptaStudios\EVOCON_JEPA_Codex_Handoff\e-jepa-ttc-v18-joint-measurement\output\extended_service_20261112\pilot01\runtime\scripts\benchmark_train40_paced.py", line 942, in run
+    _validate_output(
+  File "C:\Users\Álvaro Schwiedop\Desktop\KriptaStudios\EVOCON_JEPA_Codex_Handoff\e-jepa-ttc-v18-joint-measurement\output\extended_service_20261112\pilot01\runtime\scripts\benchmark_train40_runtime.py", line 62, in _validate_output
+    raise ValueError("Output cannot equal, contain, or be inside a frozen source directory")
+ValueError: Output cannot equal, contain, or be inside a frozen source directory

@@ -1,0 +1,106 @@
+"""Run frozen native references only after the complete timed campaign closes."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import time
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+
+def read(path: Path) -> Any:  # noqa: ANN401
+    """Read a controller receipt."""
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def main() -> None:
+    """Retain all oracle outcomes without launching GPU work during timing."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--campaign", type=Path, required=True)
+    args = parser.parse_args()
+    campaign = args.campaign.resolve()
+    frozen_inputs = read(campaign / "input_inventory.json")
+    frozen_controller = campaign / "runtime/scripts/run_extended_oracles.py"
+    controller_sha = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    if (
+        str(frozen_controller) not in frozen_inputs
+        or controller_sha != frozen_inputs[str(frozen_controller)]
+        or hashlib.sha256(frozen_controller.read_bytes()).hexdigest() != controller_sha
+    ):
+        raise ValueError("Controller must match its prospectively frozen runtime source")
+    deadline = time.monotonic() + 7200
+    while not (campaign / "end_integrity.json").exists():
+        if time.monotonic() > deadline:
+            raise TimeoutError("Timed campaign did not close within two hours")
+        time.sleep(10)
+    protocol = read(campaign / "protocol.json")
+    results = read(campaign / "results.json")
+    if [r["name"] for r in results] != [c["name"] for c in protocol["commands"]]:
+        raise ValueError("Incomplete timed population")
+    if not read(campaign / "end_integrity.json")["passed"]:
+        raise ValueError("Timed campaign sources changed")
+    receipt_path = campaign / "oracle_jobs.json"
+    if receipt_path.exists():
+        raise ValueError("Oracle controller already ran")
+    frozen_launcher = campaign / "runtime/scripts/reference_extended_service.py"
+    expected = frozen_inputs[str(frozen_launcher)]
+    if hashlib.sha256(frozen_launcher.read_bytes()).hexdigest() != expected:
+        raise ValueError("Frozen oracle launcher changed")
+    receipt = {
+        "controller_sha256": controller_sha,
+        "controller_frozen_before_timing": True,
+        "frozen_launcher_sha256": expected,
+        "started_utc": datetime.now(UTC).isoformat(),
+        "scope": "Native references only, after every timed attempt",
+        "jobs": [],
+    }
+    env = {**os.environ, "PYTHONUTF8": "1"}
+    for workload in protocol["workloads"]:
+        for model in ("phase", "garl"):
+            name = f"reference_s{workload['id']}_{model}"
+            command = [
+                sys.executable,
+                str(frozen_launcher),
+                "--campaign",
+                str(campaign),
+                "--model",
+                model,
+                "--workload",
+                str(workload["id"]),
+            ]
+            print(f"START {name}", flush=True)
+            with (campaign / f"{name}.log").open("w", encoding="utf-8") as log:
+                result = subprocess.run(
+                    command, env=env, stdout=log, stderr=subprocess.STDOUT, check=False
+                )
+            checks = []
+            for item in protocol["commands"]:
+                if item["model"] == model and item["workload"] == workload["id"]:
+                    path = campaign / item["name"] / "deferred_parity.json"
+                    check = read(path) if path.exists() else {}
+                    checks.append(
+                        bool(check.get("all_delivered_passed") and check.get("all_reference_valid"))
+                    )
+            receipt["jobs"].append(
+                {
+                    "name": name,
+                    "command": command,
+                    "returncode": result.returncode,
+                    "all_checks_passed": bool(checks) and all(checks),
+                    "finished_utc": datetime.now(UTC).isoformat(),
+                }
+            )
+            if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != controller_sha:
+                raise ValueError("Controller source changed during native verification")
+            receipt_path.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
+            print(f"END {name}: exit={result.returncode}, parity={all(checks)}", flush=True)
+
+
+if __name__ == "__main__":
+    main()

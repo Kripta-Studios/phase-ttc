@@ -1,0 +1,317 @@
+[
+  {
+    "update_id": "update-0",
+    "query_id": "SENSOR_REPLAY:CPNA-high:19620000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 19620000,
+      "frame_ids": [
+        391,
+        393
+      ],
+      "frame_timestamps_us": [
+        19502373,
+        19602378
+      ],
+      "frame_sha256": [
+        "bc2ea101ff99b2ddab6b1f94047fa0b271463dfd380fa9727d130f6fa11dbdd2",
+        "a1c32885587cabb3ca71ceb0292005bfa1e8c7ad99b2e3823d113a18accf0286"
+      ],
+      "rgb_boxes": [
+        [
+          836.0,
+          535.0,
+          852.0,
+          623.0
+        ],
+        [
+          836.0,
+          528.0,
+          852.0,
+          621.0
+        ]
+      ],
+      "rgb_square": [
+        798,
+        528,
+        891,
+        621
+      ],
+      "event_squares": [
+        [
+          494,
+          300,
+          560,
+          366
+        ],
+        [
+          494,
+          297,
+          560,
+          363
+        ]
+      ],
+      "event_windows": [
+        [
+          19402373,
+          19502373
+        ],
+        [
+          19502378,
+          19602378
+        ]
+      ],
+      "delta_t_s": 0.100005,
+      "sensor_age_us": 17622,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 19502373,
+          "category": "pedestrian",
+          "frame_index": 391,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNA\\high\\leftlabel\\0391.json",
+          "sha256": "fc6e2e82bb2b60e69fd061e67a48c6c94a37819bdedd7fa580cf1bdeba3fb401",
+          "timestamp_us": 19502373
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 19602378,
+          "category": "pedestrian",
+          "frame_index": 393,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNA\\high\\leftlabel\\0393.json",
+          "sha256": "4849b313aa25e6687e1adc5784e8e461b1552418a9bce885d82970350c4f6557",
+          "timestamp_us": 19602378
+        }
+      ]
+    },
+    "sensor_sha256": "39e09ecaba33d730058a5a96abc28df3cb4903b493549634b9a9116c235f8e4c",
+    "heights": [
+      [
+        100.06952667236328,
+        101.61311340332031
+      ]
+    ],
+    "ttc": 6.5832438468933105,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 0,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-1",
+    "query_id": "SENSOR_REPLAY:CPNA-high:19640000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 19640000,
+      "frame_ids": [
+        391,
+        393
+      ],
+      "frame_timestamps_us": [
+        19502373,
+        19602378
+      ],
+      "frame_sha256": [
+        "bc2ea101ff99b2ddab6b1f94047fa0b271463dfd380fa9727d130f6fa11dbdd2",
+        "a1c32885587cabb3ca71ceb0292005bfa1e8c7ad99b2e3823d113a18accf0286"
+      ],
+      "rgb_boxes": [
+        [
+          836.0,
+          535.0,
+          852.0,
+          623.0
+        ],
+        [
+          836.0,
+          528.0,
+          852.0,
+          621.0
+        ]
+      ],
+      "rgb_square": [
+        798,
+        528,
+        891,
+        621
+      ],
+      "event_squares": [
+        [
+          494,
+          300,
+          560,
+          366
+        ],
+        [
+          494,
+          297,
+          560,
+          363
+        ]
+      ],
+      "event_windows": [
+        [
+          19402373,
+          19502373
+        ],
+        [
+          19502378,
+          19602378
+        ]
+      ],
+      "delta_t_s": 0.100005,
+      "sensor_age_us": 37622,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 19502373,
+          "category": "pedestrian",
+          "frame_index": 391,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNA\\high\\leftlabel\\0391.json",
+          "sha256": "fc6e2e82bb2b60e69fd061e67a48c6c94a37819bdedd7fa580cf1bdeba3fb401",
+          "timestamp_us": 19502373
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 19602378,
+          "category": "pedestrian",
+          "frame_index": 393,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNA\\high\\leftlabel\\0393.json",
+          "sha256": "4849b313aa25e6687e1adc5784e8e461b1552418a9bce885d82970350c4f6557",
+          "timestamp_us": 19602378
+        }
+      ]
+    },
+    "sensor_sha256": "39e09ecaba33d730058a5a96abc28df3cb4903b493549634b9a9116c235f8e4c",
+    "heights": [
+      [
+        100.06952667236328,
+        101.61311340332031
+      ]
+    ],
+    "ttc": 6.5832438468933105,
+    "rgb_preparation_cache_hit": true,
+    "event_representation_cache_hits": [
+      true,
+      true
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 1
+  },
+  {
+    "update_id": "update-2",
+    "query_id": "SENSOR_REPLAY:CPNA-high:19660000",
+    "contract": {
+      "abi": "l40_garl_two_declared_rgb_endpoints_native_timevolume_fp32_v1",
+      "query_us": 19660000,
+      "frame_ids": [
+        392,
+        394
+      ],
+      "frame_timestamps_us": [
+        19552376,
+        19652381
+      ],
+      "frame_sha256": [
+        "d5cefef1d9c94da91d0b06e1922f5de38277a6871296802046d623991e98a972",
+        "2cb35de6463f80a895b4f26221dbdf21c80a30eecc5bfe037808cad10b068903"
+      ],
+      "rgb_boxes": [
+        [
+          836.0,
+          531.0,
+          853.0,
+          621.0
+        ],
+        [
+          832.0,
+          530.0,
+          852.0,
+          627.0
+        ]
+      ],
+      "rgb_square": [
+        794,
+        530,
+        891,
+        627
+      ],
+      "event_squares": [
+        [
+          494,
+          297,
+          563,
+          366
+        ],
+        [
+          492,
+          298,
+          561,
+          367
+        ]
+      ],
+      "event_windows": [
+        [
+          19452376,
+          19552376
+        ],
+        [
+          19552381,
+          19652381
+        ]
+      ],
+      "delta_t_s": 0.100005,
+      "sensor_age_us": 7619,
+      "bbox_sources": [
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 19552376,
+          "category": "pedestrian",
+          "frame_index": 392,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNA\\high\\leftlabel\\0392.json",
+          "sha256": "bb966d89795e1cf6825b57a05b581ff7b9bb6d2adf9e8304207d264278e0ccff",
+          "timestamp_us": 19552376
+        },
+        {
+          "availability_basis": "sensor_timestamp_plus_declared_replay_delay",
+          "available_us": 19652381,
+          "category": "pedestrian",
+          "frame_index": 394,
+          "group": 1,
+          "object_index": 0,
+          "path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc\\datasets\\evttc\\CPNA\\high\\leftlabel\\0394.json",
+          "sha256": "2d7420f9380c192a78867746366b6a562cfe6ea0780e79d2170acf05db106eca",
+          "timestamp_us": 19652381
+        }
+      ]
+    },
+    "sensor_sha256": "ab84ca92382ba98ca98ecd7a5ff51966c925f18a767bef772f99552edde40c54",
+    "heights": [
+      [
+        107.24015045166016,
+        110.6634521484375
+      ]
+    ],
+    "ttc": 3.232815742492676,
+    "rgb_preparation_cache_hit": false,
+    "event_representation_cache_hits": [
+      false,
+      false
+    ],
+    "rgb_branch_hits": 1,
+    "rgb_branch_misses": 2
+  }
+]

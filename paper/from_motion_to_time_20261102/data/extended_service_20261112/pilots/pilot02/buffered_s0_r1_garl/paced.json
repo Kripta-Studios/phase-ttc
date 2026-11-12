@@ -1,0 +1,1335 @@
+{
+  "schema": "train40_paced_raw_replay_v1",
+  "scope": "HOST_PACED_RAW_REPLAY_CAPACITY_NOT_PHYSICAL_SENSOR_CERTIFICATION",
+  "physical_goal_demonstrated": false,
+  "capacity_checks_passed": false,
+  "capacity_checks": {
+    "all_scheduled_arrivals_recorded": true,
+    "no_drops_or_source_errors": true,
+    "complete_object_coverage": true,
+    "actual_availability_before_service": true,
+    "every_deadline_response_under_20ms": false,
+    "no_prior_work_at_scheduled_arrivals": false,
+    "finished_before_end_of_last_period": true,
+    "offered_50hz_for_at_least_60s": false,
+    "twenty_distinct_objects_per_update": false,
+    "source_lifecycle_succeeded": true
+  },
+  "rate_hz": 50.0,
+  "offered_updates": 20,
+  "offered_duration_s": 0.4,
+  "wall_clock_schema": "train40_paced_wall_intervals_v2",
+  "real_run_wall_duration_s": 0.5051201,
+  "run_started_ns": 72602755056800,
+  "run_finished_ns": 72603260176900,
+  "first_offering_established": true,
+  "actual_wall_duration_s": 0.4031974,
+  "actual_wall_duration_note": "First offered deadline to source finalization/join; null when no offer was established. real_run_wall_duration_s includes startup.",
+  "actual_wall_duration_includes_source_finalize_and_join": true,
+  "last_response_duration_s": 0.3932855,
+  "last_successful_all_object_ttc_duration_s": 0.3932855,
+  "queue_capacity": 64,
+  "wait_strategy": "sleep",
+  "scheduler": {
+    "wait_strategy": "sleep",
+    "wait_primitive": "time.sleep",
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "deadline_clock": "time.perf_counter_ns",
+    "clock_implementation": "QueryPerformanceCounter()",
+    "clock_monotonic": true,
+    "clock_adjustable": false,
+    "clock_resolution_seconds": 1e-07,
+    "sleep_stop_poll_seconds": 0.01,
+    "deadlines_absolute": true,
+    "busy_spin": false,
+    "scheduler_lateness_subtracted": false
+  },
+  "first_scheduled_ns": 72602856979500,
+  "planned_first_scheduled_ns": 72602856979500,
+  "source_lifecycle": {
+    "schema": "train40_paced_source_lifecycle_v2",
+    "order": "OFFERING_DONE_THEN_CONSUMER_DRAIN_OR_ABORT_THEN_FINALIZE",
+    "warmup": {
+      "started_ns": 72602755685900,
+      "thread_id": 37800,
+      "result": {
+        "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+        "acquired_updates": 0,
+        "unique_frames_frozen": 13,
+        "frame_freeze_bytes": 89856000,
+        "frame_freeze_seconds": 0.05105059998459183,
+        "event_packet_copy_bytes": 0,
+        "payload_frame_copy_bytes": 0,
+        "peak_frame_token_count": 13,
+        "peak_frame_token_bytes": 89856000,
+        "bbox_validations": 0,
+        "bbox_cache_hits": 0,
+        "physical_sensor_claim": false,
+        "targets_read": false,
+        "warmup_cutoff_us": 16740000,
+        "warmup_frames": 13,
+        "preload": {
+          "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+          "preload_seconds": 0.4549687999970047,
+          "raw_event_bytes": 58918327,
+          "raw_rgb_bytes": 145152000,
+          "archive_bytes": 204169913,
+          "token_ring_upper_bound_bytes": 110592000,
+          "live_payload_upper_bound_bytes": 8992587776,
+          "scratch_upper_bound_bytes": 536870912,
+          "source_total_upper_bound_bytes": 9844220601,
+          "max_total_bytes": 12884901888,
+          "memory_exclusions": "Python object overhead, HDF5 internals, model/GPU storage and result receipts",
+          "event_archive_rows": 4532179,
+          "rgb_archive_frames": 21,
+          "future_raw_bytes_preloaded_private_to_feeder": true,
+          "future_tokens_or_hashes_prepared": false,
+          "representations_precomputed": false,
+          "physical_sensor_claim": false
+        }
+      },
+      "ended_ns": 72602806978500
+    },
+    "finalize": {
+      "started_ns": 72603250314500,
+      "thread_id": 37800,
+      "result": {
+        "scope": "PACED_PRELOADED_RAW_CPU_ARRIVALS_NOT_PHYSICAL_SENSOR",
+        "acquired_updates": 20,
+        "unique_frames_frozen": 21,
+        "frame_freeze_bytes": 145152000,
+        "frame_freeze_seconds": 0.0805996999843046,
+        "event_packet_copy_bytes": 31243807,
+        "payload_frame_copy_bytes": 0,
+        "peak_frame_token_count": 13,
+        "peak_frame_token_bytes": 89856000,
+        "bbox_validations": 12,
+        "bbox_cache_hits": 48,
+        "physical_sensor_claim": false,
+        "targets_read": false,
+        "closed_on_owner_thread": true
+      },
+      "ended_ns": 72603260140300
+    },
+    "errors": [],
+    "offering_ended_ns": 72603238203300,
+    "consumer_drain_completed_ns": 72603250277900,
+    "consumer_stopped_ns": 72603250277900,
+    "consumer_queue_drained": true,
+    "finalize_permitted_ns": 72603250278600,
+    "producer_finished_ns": 72603260141200
+  },
+  "object_ids": [
+    "roi_00"
+  ],
+  "arrival_receipts": [
+    {
+      "update_id": "update-0",
+      "scheduled_ns": 72602856979500,
+      "acquisition_started_ns": 72602857359700,
+      "observation_available_ns": 72602863114500,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-1",
+      "scheduled_ns": 72602876979500,
+      "acquisition_started_ns": 72602877200700,
+      "observation_available_ns": 72602878159200,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-2",
+      "scheduled_ns": 72602896979500,
+      "acquisition_started_ns": 72602897204500,
+      "observation_available_ns": 72602897769600,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-3",
+      "scheduled_ns": 72602916979500,
+      "acquisition_started_ns": 72602917144300,
+      "observation_available_ns": 72602922076100,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-4",
+      "scheduled_ns": 72602936979500,
+      "acquisition_started_ns": 72602937485400,
+      "observation_available_ns": 72602937978300,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-5",
+      "scheduled_ns": 72602956979500,
+      "acquisition_started_ns": 72602957054100,
+      "observation_available_ns": 72602961968700,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-6",
+      "scheduled_ns": 72602976979500,
+      "acquisition_started_ns": 72602977424400,
+      "observation_available_ns": 72602978063000,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-7",
+      "scheduled_ns": 72602996979500,
+      "acquisition_started_ns": 72602997309600,
+      "observation_available_ns": 72602997923200,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-8",
+      "scheduled_ns": 72603016979500,
+      "acquisition_started_ns": 72603017134900,
+      "observation_available_ns": 72603021968300,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-9",
+      "scheduled_ns": 72603036979500,
+      "acquisition_started_ns": 72603037006000,
+      "observation_available_ns": 72603037613200,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-10",
+      "scheduled_ns": 72603056979500,
+      "acquisition_started_ns": 72603057371300,
+      "observation_available_ns": 72603062100300,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-11",
+      "scheduled_ns": 72603076979500,
+      "acquisition_started_ns": 72603077329200,
+      "observation_available_ns": 72603078276500,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-12",
+      "scheduled_ns": 72603096979500,
+      "acquisition_started_ns": 72603097519000,
+      "observation_available_ns": 72603098204400,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-13",
+      "scheduled_ns": 72603116979500,
+      "acquisition_started_ns": 72603117481900,
+      "observation_available_ns": 72603122421900,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-14",
+      "scheduled_ns": 72603136979500,
+      "acquisition_started_ns": 72603137269200,
+      "observation_available_ns": 72603137945100,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-15",
+      "scheduled_ns": 72603156979500,
+      "acquisition_started_ns": 72603157193500,
+      "observation_available_ns": 72603162308900,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-16",
+      "scheduled_ns": 72603176979500,
+      "acquisition_started_ns": 72603177488900,
+      "observation_available_ns": 72603178129800,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-17",
+      "scheduled_ns": 72603196979500,
+      "acquisition_started_ns": 72603197408100,
+      "observation_available_ns": 72603197935200,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-18",
+      "scheduled_ns": 72603216979500,
+      "acquisition_started_ns": 72603217195500,
+      "observation_available_ns": 72603222200600,
+      "status": "ENQUEUED"
+    },
+    {
+      "update_id": "update-19",
+      "scheduled_ns": 72603236979500,
+      "acquisition_started_ns": 72603237382900,
+      "observation_available_ns": 72603238191800,
+      "status": "ENQUEUED"
+    }
+  ],
+  "object_records": [
+    {
+      "update_id": "update-0",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602856979500,
+      "observation_available_ns": 72602863114500,
+      "started_ns": 72602863163400,
+      "completed_ns": 72602889356600,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.658644199371338
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-1",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602876979500,
+      "observation_available_ns": 72602878159200,
+      "started_ns": 72602889417500,
+      "completed_ns": 72602895981400,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.658644199371338
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-2",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602896979500,
+      "observation_available_ns": 72602897769600,
+      "started_ns": 72602897828300,
+      "completed_ns": 72602905068400,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.658644199371338
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-3",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602916979500,
+      "observation_available_ns": 72602922076100,
+      "started_ns": 72602922494700,
+      "completed_ns": 72602943694600,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.639283180236816
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-4",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602936979500,
+      "observation_available_ns": 72602937978300,
+      "started_ns": 72602943739600,
+      "completed_ns": 72602950405900,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.639283180236816
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-5",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602956979500,
+      "observation_available_ns": 72602961968700,
+      "started_ns": 72602962241200,
+      "completed_ns": 72602982847100,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.58469820022583
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-6",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602976979500,
+      "observation_available_ns": 72602978063000,
+      "started_ns": 72602982866900,
+      "completed_ns": 72602989358100,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.58469820022583
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-7",
+      "object_id": "roi_00",
+      "scheduled_ns": 72602996979500,
+      "observation_available_ns": 72602997923200,
+      "started_ns": 72602997973400,
+      "completed_ns": 72603006043700,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.58469820022583
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-8",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603016979500,
+      "observation_available_ns": 72603021968300,
+      "started_ns": 72603022204600,
+      "completed_ns": 72603043372200,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.710364818572998
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-9",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603036979500,
+      "observation_available_ns": 72603037613200,
+      "started_ns": 72603043417300,
+      "completed_ns": 72603049738200,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.710364818572998
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-10",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603056979500,
+      "observation_available_ns": 72603062100300,
+      "started_ns": 72603062367600,
+      "completed_ns": 72603083462700,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 6.7121076583862305
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-11",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603076979500,
+      "observation_available_ns": 72603078276500,
+      "started_ns": 72603083481600,
+      "completed_ns": 72603090164700,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 6.7121076583862305
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-12",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603096979500,
+      "observation_available_ns": 72603098204400,
+      "started_ns": 72603098250000,
+      "completed_ns": 72603106170300,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 6.7121076583862305
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-13",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603116979500,
+      "observation_available_ns": 72603122421900,
+      "started_ns": 72603122689400,
+      "completed_ns": 72603142338100,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.515923023223877
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-14",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603136979500,
+      "observation_available_ns": 72603137945100,
+      "started_ns": 72603142379600,
+      "completed_ns": 72603148813800,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.515923023223877
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-15",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603156979500,
+      "observation_available_ns": 72603162308900,
+      "started_ns": 72603162710900,
+      "completed_ns": 72603182966300,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.014510631561279
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-16",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603176979500,
+      "observation_available_ns": 72603178129800,
+      "started_ns": 72603183008900,
+      "completed_ns": 72603189874400,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.014510631561279
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-17",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603196979500,
+      "observation_available_ns": 72603197935200,
+      "started_ns": 72603197975100,
+      "completed_ns": 72603204705100,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.014510631561279
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-18",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603216979500,
+      "observation_available_ns": 72603222200600,
+      "started_ns": 72603222474700,
+      "completed_ns": 72603243649400,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.427217483520508
+        }
+      },
+      "error": null
+    },
+    {
+      "update_id": "update-19",
+      "object_id": "roi_00",
+      "scheduled_ns": 72603236979500,
+      "observation_available_ns": 72603238191800,
+      "started_ns": 72603243693600,
+      "completed_ns": 72603250265000,
+      "success": true,
+      "result": {
+        "success": true,
+        "predictions": {
+          "GARL_TTC": 5.427217483520508
+        }
+      },
+      "error": null
+    }
+  ],
+  "grouped": {
+    "passed": true,
+    "unexpected_update_ids": [],
+    "expected_updates": 20,
+    "expected_object_results": 20,
+    "updates": [
+      {
+        "update_id": "update-0",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602856979500,
+        "started_ns": 72602863163400,
+        "completed_ns": 72602889356600,
+        "response_ms": 32.3771,
+        "service_span_ms": 26.1932,
+        "queue_wait_ms": 6.1839
+      },
+      {
+        "update_id": "update-1",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602876979500,
+        "started_ns": 72602889417500,
+        "completed_ns": 72602895981400,
+        "response_ms": 19.0019,
+        "service_span_ms": 6.5639,
+        "queue_wait_ms": 12.438
+      },
+      {
+        "update_id": "update-2",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602896979500,
+        "started_ns": 72602897828300,
+        "completed_ns": 72602905068400,
+        "response_ms": 8.0889,
+        "service_span_ms": 7.2401,
+        "queue_wait_ms": 0.8488
+      },
+      {
+        "update_id": "update-3",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602916979500,
+        "started_ns": 72602922494700,
+        "completed_ns": 72602943694600,
+        "response_ms": 26.7151,
+        "service_span_ms": 21.1999,
+        "queue_wait_ms": 5.5152
+      },
+      {
+        "update_id": "update-4",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602936979500,
+        "started_ns": 72602943739600,
+        "completed_ns": 72602950405900,
+        "response_ms": 13.4264,
+        "service_span_ms": 6.6663,
+        "queue_wait_ms": 6.7601
+      },
+      {
+        "update_id": "update-5",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602956979500,
+        "started_ns": 72602962241200,
+        "completed_ns": 72602982847100,
+        "response_ms": 25.8676,
+        "service_span_ms": 20.6059,
+        "queue_wait_ms": 5.2617
+      },
+      {
+        "update_id": "update-6",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602976979500,
+        "started_ns": 72602982866900,
+        "completed_ns": 72602989358100,
+        "response_ms": 12.3786,
+        "service_span_ms": 6.4912,
+        "queue_wait_ms": 5.8874
+      },
+      {
+        "update_id": "update-7",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72602996979500,
+        "started_ns": 72602997973400,
+        "completed_ns": 72603006043700,
+        "response_ms": 9.0642,
+        "service_span_ms": 8.0703,
+        "queue_wait_ms": 0.9939
+      },
+      {
+        "update_id": "update-8",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603016979500,
+        "started_ns": 72603022204600,
+        "completed_ns": 72603043372200,
+        "response_ms": 26.3927,
+        "service_span_ms": 21.1676,
+        "queue_wait_ms": 5.2251
+      },
+      {
+        "update_id": "update-9",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603036979500,
+        "started_ns": 72603043417300,
+        "completed_ns": 72603049738200,
+        "response_ms": 12.7587,
+        "service_span_ms": 6.3209,
+        "queue_wait_ms": 6.4378
+      },
+      {
+        "update_id": "update-10",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603056979500,
+        "started_ns": 72603062367600,
+        "completed_ns": 72603083462700,
+        "response_ms": 26.4832,
+        "service_span_ms": 21.0951,
+        "queue_wait_ms": 5.3881
+      },
+      {
+        "update_id": "update-11",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603076979500,
+        "started_ns": 72603083481600,
+        "completed_ns": 72603090164700,
+        "response_ms": 13.1852,
+        "service_span_ms": 6.6831,
+        "queue_wait_ms": 6.5021
+      },
+      {
+        "update_id": "update-12",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603096979500,
+        "started_ns": 72603098250000,
+        "completed_ns": 72603106170300,
+        "response_ms": 9.1908,
+        "service_span_ms": 7.9203,
+        "queue_wait_ms": 1.2705
+      },
+      {
+        "update_id": "update-13",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603116979500,
+        "started_ns": 72603122689400,
+        "completed_ns": 72603142338100,
+        "response_ms": 25.3586,
+        "service_span_ms": 19.6487,
+        "queue_wait_ms": 5.7099
+      },
+      {
+        "update_id": "update-14",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603136979500,
+        "started_ns": 72603142379600,
+        "completed_ns": 72603148813800,
+        "response_ms": 11.8343,
+        "service_span_ms": 6.4342,
+        "queue_wait_ms": 5.4001
+      },
+      {
+        "update_id": "update-15",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603156979500,
+        "started_ns": 72603162710900,
+        "completed_ns": 72603182966300,
+        "response_ms": 25.9868,
+        "service_span_ms": 20.2554,
+        "queue_wait_ms": 5.7314
+      },
+      {
+        "update_id": "update-16",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603176979500,
+        "started_ns": 72603183008900,
+        "completed_ns": 72603189874400,
+        "response_ms": 12.8949,
+        "service_span_ms": 6.8655,
+        "queue_wait_ms": 6.0294
+      },
+      {
+        "update_id": "update-17",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603196979500,
+        "started_ns": 72603197975100,
+        "completed_ns": 72603204705100,
+        "response_ms": 7.7256,
+        "service_span_ms": 6.73,
+        "queue_wait_ms": 0.9956
+      },
+      {
+        "update_id": "update-18",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603216979500,
+        "started_ns": 72603222474700,
+        "completed_ns": 72603243649400,
+        "response_ms": 26.6699,
+        "service_span_ms": 21.1747,
+        "queue_wait_ms": 5.4952
+      },
+      {
+        "update_id": "update-19",
+        "passed": true,
+        "coverage": {
+          "passed": true,
+          "expected": 1,
+          "records": 1,
+          "unique_present": 1,
+          "missing_ids": [],
+          "unexpected_ids": [],
+          "duplicate_ids": [],
+          "invalid_id_record_indices": []
+        },
+        "errors": [],
+        "objects": 1,
+        "expected_object_ids": [
+          "roi_00"
+        ],
+        "completed_object_ids": [
+          "roi_00"
+        ],
+        "scheduled_ns": 72603236979500,
+        "started_ns": 72603243693600,
+        "completed_ns": 72603250265000,
+        "response_ms": 13.2855,
+        "service_span_ms": 6.5714,
+        "queue_wait_ms": 6.7141
+      }
+    ]
+  },
+  "missing_arrival_ids": [],
+  "dropped_updates": 0,
+  "source_errors": 0,
+  "deadline_response_ms": {
+    "count": 20,
+    "mean_ms": 17.9343,
+    "p50_ms": 13.35595,
+    "p95_ms": 26.998200000000004,
+    "p99_ms": 31.30131999999999,
+    "min_ms": 7.7256,
+    "max_ms": 32.3771,
+    "quantile_method": "linear",
+    "strictly_under_20ms_count": 12,
+    "at_least_20ms_count": 8,
+    "over_50ms_count": 0,
+    "over_100ms_count": 0,
+    "inverse_mean_capacity_hz_not_sustained_throughput": 55.75907618362579
+  },
+  "raw_availability_response_ms": {
+    "count": 20,
+    "mean_ms": 15.196369999999998,
+    "p50_ms": 12.276299999999999,
+    "p95_ms": 21.849680000000003,
+    "p99_ms": 25.363615999999993,
+    "min_ms": 6.7699,
+    "max_ms": 26.2421,
+    "quantile_method": "linear",
+    "strictly_under_20ms_count": 13,
+    "at_least_20ms_count": 7,
+    "over_50ms_count": 0,
+    "over_100ms_count": 0,
+    "inverse_mean_capacity_hz_not_sustained_throughput": 65.8051890023736
+  },
+  "raw_availability_lateness_ms": {
+    "count": 20,
+    "mean_ms": 2.73793,
+    "p50_ms": 1.2186,
+    "p95_ms": 5.477030000000001,
+    "p99_ms": 6.003405999999999,
+    "min_ms": 0.6337,
+    "max_ms": 6.135,
+    "quantile_method": "linear",
+    "strictly_under_20ms_count": 20,
+    "at_least_20ms_count": 0,
+    "over_50ms_count": 0,
+    "over_100ms_count": 0,
+    "inverse_mean_capacity_hz_not_sustained_throughput": 365.23943271011314
+  },
+  "prior_work_at_each_scheduled_arrival": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+  ],
+  "legacy_response_population": "ALL_RESPONSES_INCLUDING_FAILURES",
+  "timing_note": "Legacy responses include failed acknowledgements; valid all-object TTC distributions are separate in latency_populations. No division by object count.",
+  "latency_populations": {
+    "schema": "train40_paced_latency_populations_v1",
+    "derivation": "grouped.updates.passed + arrival/object monotonic receipts",
+    "quantile_method": "linear; index=(count-1)*fraction",
+    "legacy_response_population": "ALL_RESPONSES_INCLUDING_FAILURES",
+    "counts": {
+      "expected_updates": 20,
+      "offered_updates": 20,
+      "grouped_updates": 20,
+      "arrival_receipts": 20,
+      "completed_responses": 20,
+      "successful_all_object_ttc": 20,
+      "failed_acknowledgements": 0,
+      "updates_without_completion": 0,
+      "dropped_updates": 0,
+      "source_errors": 0,
+      "missing_arrival_receipts": 0,
+      "unexpected_arrival_receipts": 0
+    },
+    "counts_consistent": true,
+    "populations": {
+      "successful_all_object_ttc": {
+        "count": 20,
+        "deadline_response_ms": {
+          "count": 20,
+          "mean_ms": 17.9343,
+          "min_ms": 7.7256,
+          "p50_ms": 13.35595,
+          "p95_ms": 26.998200000000004,
+          "p99_ms": 31.30131999999999,
+          "max_ms": 32.3771,
+          "at_least_20ms_count": 8
+        },
+        "raw_availability_response_ms": {
+          "count": 20,
+          "mean_ms": 15.196369999999998,
+          "min_ms": 6.7699,
+          "p50_ms": 12.276299999999999,
+          "p95_ms": 21.849680000000003,
+          "p99_ms": 25.363615999999993,
+          "max_ms": 26.2421,
+          "at_least_20ms_count": 7
+        },
+        "service_span_ms": {
+          "count": 20,
+          "mean_ms": 12.694885000000001,
+          "min_ms": 6.3209,
+          "p50_ms": 7.5802,
+          "p95_ms": 21.449565000000003,
+          "p99_ms": 25.244472999999992,
+          "max_ms": 26.1932,
+          "at_least_20ms_count": 7
+        }
+      },
+      "failed_acknowledgements": {
+        "count": 0,
+        "deadline_response_ms": null,
+        "raw_availability_response_ms": null,
+        "service_span_ms": null
+      },
+      "all_responses_including_failures": {
+        "count": 20,
+        "deadline_response_ms": {
+          "count": 20,
+          "mean_ms": 17.9343,
+          "min_ms": 7.7256,
+          "p50_ms": 13.35595,
+          "p95_ms": 26.998200000000004,
+          "p99_ms": 31.30131999999999,
+          "max_ms": 32.3771,
+          "at_least_20ms_count": 8
+        },
+        "raw_availability_response_ms": {
+          "count": 20,
+          "mean_ms": 15.196369999999998,
+          "min_ms": 6.7699,
+          "p50_ms": 12.276299999999999,
+          "p95_ms": 21.849680000000003,
+          "p99_ms": 25.363615999999993,
+          "max_ms": 26.2421,
+          "at_least_20ms_count": 7
+        },
+        "service_span_ms": {
+          "count": 20,
+          "mean_ms": 12.694885000000001,
+          "min_ms": 6.3209,
+          "p50_ms": 7.5802,
+          "p95_ms": 21.449565000000003,
+          "p99_ms": 25.244472999999992,
+          "max_ms": 26.1932,
+          "at_least_20ms_count": 7
+        }
+      }
+    },
+    "note": "Success is valid all-object output, not parity admission. Failed acknowledgements are not TTC completions. Drops have no inferred latency."
+  },
+  "prediction_components": [
+    "GARL_TTC"
+  ],
+  "service_cuda_memory": {
+    "peak_allocated_bytes": 1012697600,
+    "peak_reserved_bytes": 1163919360,
+    "scope": "RESIDENT_SERVICE_PLUS_MEASURED_STREAM_STARTUP_BEFORE_RESET"
+  }
+}

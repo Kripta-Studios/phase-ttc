@@ -195,3 +195,4 @@ tests/unit/test_release_research.py -text whitespace=cr-at-eol
 tests/unit/test_release_sensor_identifiability.py -text whitespace=cr-at-eol
 tests/unit/test_release_sensor_proxy.py -text whitespace=cr-at-eol
 tests/unit/test_release_surface.py -text whitespace=cr-at-eol
+paper/from_motion_to_time_20261102/data/extended_service_20261112/** -text -whitespace

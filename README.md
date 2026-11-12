@@ -34,15 +34,18 @@ geometric adaptation and execution measurements.
 - [LaTeX source](paper/from_motion_to_time_20261102/main.tex)
 - [Download the source bundle](paper/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
 - [Matched-comparison data and protocols](paper/from_motion_to_time_20261102/data/consolidation)
-- [Persistent-service evidence](paper/from_motion_to_time_20261102/data/persistent_service_20261112)
-- [Persistent PHASE/Garl comparison](paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md)
+- [Expanded persistent-service evidence](paper/from_motion_to_time_20261102/data/extended_service_20261112)
+- [Six-scene, 72-pass inference comparison](paper/from_motion_to_time_20261102/revision/extended_inference_report.md)
+- [Initial three-pass comparison](paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md)
 
 The PDF contains the main article and a technical supplement with implementation
-details, additional experiments and reproduction records. The 12 November update
-compares persistent PHASE/Garl services on the same causal EvTTC CPLA-low replay,
-with resident models, reusable state and three measured passes per arm. Historical
-query-API experiments remain archived separately; their timings are excluded from
-the article's deployment-response comparison.
+details, additional experiments and reproduction records. The 13 November update
+adds a complete inference chapter: 72 fresh-process PHASE/Garl passes across six
+EvTTC scenes, with continuous intervals of 3.1–9.3 seconds and two queue policies.
+It separates delivery coverage, native numerical agreement and response latency;
+all losses and intermediate-output discrepancies remain visible. The initial
+three-pass comparison remains historical evidence. Query-API timings are excluded
+from the article's deployment-response comparison.
 
 ## Architecture
 

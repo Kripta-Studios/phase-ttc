@@ -1,0 +1,38 @@
+{
+  "policy_seconds": 15.0,
+  "elapsed_seconds": 17.58946869999636,
+  "before": {
+    "utc": "2026-11-12T22:29:07.825937+00:00",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+    "python": "3.11.15",
+    "scope": "point-in-time observation outside measured stream",
+    "gpu": {
+      "returncode": 0,
+      "stdout": "name, driver_version, pstate, temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz], memory.used [MiB]\nNVIDIA GeForce RTX 5070 Ti Laptop GPU, 591.86, P0, 66, 21.54 W, 1560 MHz, 14001 MHz, 2657 MiB\n",
+      "stderr": ""
+    },
+    "cpu": {
+      "returncode": 0,
+      "stdout": "{\n    \"Name\":  \"AMD Ryzen 9 9955HX 16-Core Processor           \",\n    \"NumberOfCores\":  16,\n    \"NumberOfLogicalProcessors\":  32\n}\n",
+      "stderr": ""
+    }
+  },
+  "after": {
+    "utc": "2026-11-12T22:29:24.124701+00:00",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+    "python": "3.11.15",
+    "scope": "point-in-time observation outside measured stream",
+    "gpu": {
+      "returncode": 0,
+      "stdout": "name, driver_version, pstate, temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz], memory.used [MiB]\nNVIDIA GeForce RTX 5070 Ti Laptop GPU, 591.86, P8, 64, 9.87 W, 277 MHz, 405 MHz, 2657 MiB\n",
+      "stderr": ""
+    },
+    "cpu": {
+      "returncode": 0,
+      "stdout": "{\n    \"Name\":  \"AMD Ryzen 9 9955HX 16-Core Processor           \",\n    \"NumberOfCores\":  16,\n    \"NumberOfLogicalProcessors\":  32\n}\n",
+      "stderr": ""
+    }
+  }
+}

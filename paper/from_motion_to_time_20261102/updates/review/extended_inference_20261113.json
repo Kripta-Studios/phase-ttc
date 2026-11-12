@@ -1,0 +1,42 @@
+{
+  "utc": "2026-11-12T23:33:44.631703+00:00",
+  "pdf_sha256": "744fb89cd80cfdce0f0c01cfcf518f515126484cc1bf9e4654f5b088d866a732",
+  "pages": 97,
+  "visual_review": {
+    "all_pages_rendered": true,
+    "all_pages_contact_sheet_reviewed": true,
+    "full_size_pages_inspected": [
+      15,
+      90,
+      91,
+      92,
+      94,
+      97
+    ],
+    "new_chapter_pages": [
+      85,
+      97
+    ],
+    "overlaps_or_clipped_content_observed": false
+  },
+  "checks": {
+    "targeted_tests_passed": 150,
+    "ruff_check": "PASS",
+    "ruff_format_files": 3639,
+    "core_and_maintained_pyright_errors": 0,
+    "new_launcher_pyright_errors": 0
+  },
+  "scientific_result": {
+    "timed_runs": 72,
+    "scenes": 6,
+    "unique_anchors": 1979,
+    "offered": 23748,
+    "delivered": 8608,
+    "failed_native_checks": 6,
+    "failed_distinct_scene_anchors": 3,
+    "failed_component": "R_CTX_TRAIN40",
+    "all_delivered_fused_ttc_checks_passed": true
+  },
+  "scope": "Rendering, evidence accounting and test review; not a claim of universal 50Hz service or unchanged intermediate outputs.",
+  "final_caption_correction": "Figure29: one attempted replay; incomplete coverage retained."
+}

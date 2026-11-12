@@ -66,6 +66,8 @@ def source_hashes(root: Path) -> dict[str, str]:
             "revision/local_comparison_report.md",
             "revision/persistent_comparison_validation.json",
             "revision/persistent_comparison_report.md",
+            "revision/extended_inference_validation.json",
+            "revision/extended_inference_report.md",
         )
         if (root / name).is_file()
     }

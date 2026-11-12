@@ -1,0 +1,10 @@
+{
+  "status": "FAILED",
+  "sources_unchanged": true,
+  "history_failure": "ValueError: RAW gap invalidated Garl causal history",
+  "rgb_branch_hits": 165,
+  "rgb_branch_misses": 110,
+  "parity": "DEFERRED_UNTIL_ALL_TIMED_RUNS_FINISH",
+  "targets_read": false,
+  "optimizer_updates": 0
+}

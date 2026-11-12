@@ -1,0 +1,38 @@
+[
+  {
+    "name": "bounded_s0_r1_phase",
+    "returncode": 1,
+    "files": {}
+  },
+  {
+    "name": "bounded_s0_r1_garl",
+    "returncode": 0,
+    "files": {
+      "graph_startup.json": "0523eb8a8ac7c2ad62f0b59087153bce3241d229050f49a7c2e76b1b3ff3e6f1",
+      "paced.json": "fd0fc00e68cac9050d2ea4b9d04060bf777b71537406bcce3675d30ae01fbf2b",
+      "protocol.json": "ae955aad5a804338d8b05fb742f1d82ec119d5792b959f61e3c50cb99b7613ae",
+      "rest.json": "891b79137472a8a0f508a031a2daef07b552d941f6cd11e20fc0d9b69280aa3a",
+      "service_updates.json": "9c421eee1f8b7e88625201b7e744174edaa7342493326b8daae92f156e6a5028",
+      "startup.json": "3f53e09d6bfc24a8bc2da5dd2de21734cbc8eb94e42cb038dfcafea08dc81f9a",
+      "summary.json": "f82c9bd43d2ff49b80704c91ec8f10b6206dc266de90bebd0e5277c7c19f4a40"
+    }
+  },
+  {
+    "name": "buffered_s0_r1_phase",
+    "returncode": 1,
+    "files": {}
+  },
+  {
+    "name": "buffered_s0_r1_garl",
+    "returncode": 0,
+    "files": {
+      "graph_startup.json": "0b2d21d7d238db4d4314d922454e71daf81e06a134c052b796769e77d2fffc23",
+      "paced.json": "18f57d6562de561ad0be40e4888a74f2c8bb0374e0c6a493219c17f23d8c6210",
+      "protocol.json": "ef219f8cb8703564218564f086516c19d97af8301647a4e0c550dc36d24832f0",
+      "rest.json": "18b38366b2e0f8d91380986f3bbe62fb9fa3df0ffe73e20e525f70633b6f43d4",
+      "service_updates.json": "9c421eee1f8b7e88625201b7e744174edaa7342493326b8daae92f156e6a5028",
+      "startup.json": "1275044d2ca83189b09fe18721ee0cc45a076b1a6619a5141580855b796e07ed",
+      "summary.json": "f82c9bd43d2ff49b80704c91ec8f10b6206dc266de90bebd0e5277c7c19f4a40"
+    }
+  }
+]

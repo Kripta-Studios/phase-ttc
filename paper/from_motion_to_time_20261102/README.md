@@ -4,27 +4,42 @@
 
 <a href="https://github.com/Kripta-Studios/phase-ttc"><img src="../../docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="../../docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
 
-Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; actualización del 12 de noviembre de 2026
+Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; actualización del 13 de noviembre de 2026
 
 Esta es la actualización y ampliación del artículo original de 52 páginas. Conserva sus 19 archivos de secciones, las figuras, los datos publicados, los métodos completos, las ablations históricas, las trazas por secuencia y el índice de evidencia. El artículo breve de siete páginas preparado antes no lo sustituye.
 
 ## Comparación de inferencia del 12 de noviembre
 
-La comparación de latencia del artículo usa exclusivamente los servicios
-persistentes de PHASE-TTC y Garl-TTC: pesos residentes, historial causal y
-reutilización exacta del trabajo. Ambos reciben los mismos 250 paquetes RAW de
-EvTTC CPLA-low a 50 Hz, con tres pasadas por modelo. El reloj principal incluye
-adquisición, cola, preparación, inferencia y entrega del TTC al host. La carga
-inicial y el acceso al disco quedan fuera de ese reloj. Garl conserva el
-checkpoint completo y verifica el resultado sin decodificadores auxiliares
-contra la inferencia nativa original.
+La comparación usa exclusivamente los servicios persistentes de PHASE-TTC y
+Garl-TTC: pesos residentes, historial causal y reutilización del trabajo bajo identidades de entrada verificadas.
+El reloj principal incluye adquisición, cola, preparación, inferencia y entrega
+del TTC al host. La carga inicial y el acceso al disco quedan fuera de ese reloj.
 
-`data/persistent_service_20261112/` conserva los protocolos, las seis ejecuciones,
-sus relojes y las comprobaciones de equivalencia. `scripts/build_persistent_comparison.py`
-verifica la evidencia y regenera tablas y figuras. Los experimentos anteriores de
-API por consulta permanecen como archivo histórico en `data/local_hardware_20261112/`;
-sus latencias no se usan en la comparación de producción del artículo. Los
-29,14 ms históricos son un p95 de PHASE, no una garantía de respuesta en 20 ms.
+La campaña ampliada contiene seis escenas de EvTTC, 1.979 anchors distintos y
+72 pasadas en procesos nuevos. Cada modelo ejecuta cuatro repeticiones por
+escena con cola de dos paquetes y dos repeticiones con cola de 64. Los tramos
+continuos duran entre 3,1 y 9,3 segundos; sus repeticiones no se presentan como
+una grabación continua de 60 segundos. Los oráculos nativos se ejecutan después
+de terminar todas las mediciones y comprueban cada predicción entregada.
+
+`data/extended_service_20261112/` conserva los protocolos, todos los intentos,
+las referencias independientes, los pilotos y los inventarios de integridad.
+`scripts/build_extended_inference.py` verifica los archivos y regenera las
+comparaciones usando las fuentes del verificador congeladas en el propio ZIP.
+El capítulo separa cobertura, p95 de respuesta, plazo de 20 ms, tiempo de servicio,
+cola, memoria, inicialización, antigüedad del RGB y comportamiento posterior al
+arranque. Las distribuciones incompletas no se convierten en latencias de servicio
+con cobertura completa. El análisis inicial frente a la segunda mitad se
+identifica como diagnóstico retrospectivo. La entrega completa se distingue de
+la admisión numérica: los fallos de tolerancia frente al oráculo se conservan por
+componente, repetición e instante único, y excluyen la pasada de las cifras
+agregadas que requieren paridad. No se amplían las tolerancias para admitirla.
+
+La campaña inicial de tres pasadas sobre 250 anchors CPLA-low permanece en
+`data/persistent_service_20261112/`. Los experimentos anteriores de API por
+consulta se archivan en `data/local_hardware_20261112/`; sus latencias no se usan
+en la comparación de producción. Los 29,14 ms históricos son un p95 de PHASE,
+no una garantía de respuesta en 20 ms.
 
 ## Consolidación científica del 11 de noviembre
 
