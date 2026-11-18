@@ -40,6 +40,13 @@ F0 y 0 en E_CTX sobre las 460 consultas.
 
 Bootstrap pareado por grabación completa, 10.000 remuestreos, semilla 20261118.
 
+**Unidad de la columna MiD:** `score.py` calcula 100·|Δφ|, no los 10⁴·|Δφ| del
+benchmark. Para leerla en puntos MiD oficiales hay que multiplicar por 100: el
+contraste primario es +5,2 [+0,9; +9,1] MiD, un empeoramiento con intervalo que
+excluye el cero. La regla prefijada se escribió sobre el MAE en segundos, por eso
+devuelve «sin efecto medible»; en la coordenada del benchmark el historial
+alineado es entre neutro y perjudicial.
+
 | Lectura | MAE (s) | Mediana (s) | p95 (s) | RTE (%) | MiD |
 |---|---:|---:|---:|---:|---:|
 | F0, A | 0,8130 | 0,4456 | 2,7420 | 29,11 | 1,0296 |

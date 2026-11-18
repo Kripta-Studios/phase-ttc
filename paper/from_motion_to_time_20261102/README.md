@@ -49,8 +49,35 @@ inferencia de sensores ni envíos oficiales. Cambios:
 - **Bibliografía.** Pasa de 13 a 32 entradas, con una subsección de trabajo
   relacionado sobre TTC por expansión, TTC con eventos y fusión eventos–imagen.
 
-Pendiente de aportar por el autor: el número de envíos realizados por la cuenta
-al servidor de GarlTTC, que el manuscrito declara como no registrado.
+Actualización del mismo día: el autor declara haber realizado un único envío al
+servidor de GarlTTC. El manuscrito lo recoge como declaración del autor, porque
+el leaderboard archivado muestra una entrada por participante y no permite
+confirmarlo de forma independiente.
+
+## Controles posteriores al envío del 18 de noviembre
+
+El apéndice «Post-submission controls» añade tres controles con protocolo fijado
+antes de calcular las comparaciones. Ninguno usa etiquetas privadas ni se ha
+enviado al servidor. Sus tablas se generan con `scripts/build_post_audit.py` a
+partir de `data/post_audit_20261118/`.
+
+- **Geometría de cajas.** En los folds de entrenamiento, añadir a la cabeza la
+  expansión causal de las regiones suministradas baja el Overall MiD de 85,17 a
+  41,96, y a 41,27 con pérdida por banda y sin eventos (variante elegida por la
+  regla prefijada). Los niveles de los folds no son comparables con el 35,80 del
+  test; la ganancia en test es de magnitud desconocida y su signo no está
+  garantizado.
+- **Historial de eventos alineado con el entrenamiento.** Con todo congelado, no
+  mejora en EvTTC: +0,058 s de MAE [−0,004; +0,120] y +5,2 MiD [+0,9; +9,1].
+- **Historia más allá de dos observaciones.** Aporta unos 3 de 85 puntos en los
+  folds (+3,51 [+2,67; +4,31] con la semilla 7). No reentrena Garl-TTC.
+
+**Identidad del paquete puntuado.** Existen dos paquetes de predicciones
+compatibles con el tamaño registrado por el servidor (89,0 kB): el TRAIN40
+descrito en el artículo y uno anterior de otro modelo. El servidor no guarda
+hash. La atribución de la puntuación 35,80 al sistema TRAIN40 se apoya en el
+nombre declarado del envío y en la declaración del autor, y queda sin verificar
+hasta recuperar el archivo subido. El manuscrito lo declara en la sección 4.
 
 ## Comparación de inferencia del 12 de noviembre
 

@@ -1,0 +1,47 @@
+\section{Post-submission controls of 18 November 2026}
+\label{sec:post-audit}
+\cohortline{DEVELOPMENT FOLDS / 88,744 TRAIN40 queries, 40 sequences / 460 EvTTC queries / no test scoring}
+
+Three controls were run after the claim-scope audit. Each fixed its protocol, arms, metrics, and decision rule in a file written before its comparisons were computed; the protocols are included with the source package, although protocol and results entered version control together, so file times and not commits attest the order. The geometry control is a confirmatory rerun of an earlier exploratory estimate on the same rows, whose approximate size was known when its rule was fixed. None used the private test labels, and no prediction package from these controls has been submitted. The TRAIN40 controls use the out-of-fold rows that fit the released head, grouped by complete sequence. Their levels are not comparable to the test score: the released recipe scores about 85 Overall MiD on these folds and 35.80 on the test server, so differences measured here may not transfer in size.
+
+\subsection{Box-expansion geometry as a head input}
+\label{sec:post-audit-geometry}
+The benchmark supplies an object region for every query, and its test queries form same-track sequences 100\,ms apart. A causal box-expansion estimate fits the slope of the logarithm of box size, from the square root of area, height, and width, over the same-track regions in the preceding 600\,ms, within the declared 650\,ms budget. We refit the released head recipe under five sequence-disjoint blocks with seeds 7, 13, and 21, with and without these geometry inputs, and with and without a loss weighted by the benchmark's band weights. Table~\ref{tab:post-audit-geometry} reports the official band-weighted score; all values agree with the official scorer to $10^{-12}$.
+
+\begin{table}[htbp]
+\centering\small\input{tables/post_audit_geometry}
+\caption{Head readouts on TRAIN40 development folds; lower is better. Values are the mean and sample standard deviation over three seeds where a fit is involved. Differences are paired sequence-bootstrap estimates against the released recipe, with 10,000 resamples of 40 sequences.}
+\label{tab:post-audit-geometry}
+\end{table}
+
+Geometry inputs roughly halve the error of the released recipe on these folds. A head that receives only the geometry inputs reaches 46.1; adding the RGB-branch fields brings it to 41.3 and adding the event fields as well to 40.7, so the learned branches contribute about five points beyond supplied-box history, and removing the event fields from the geometry-augmented head costs 0.55 points with an interval of $[0.26,0.88]$. The pre-registered rule, lowest three-seed Overall MiD among variants whose interval against the released recipe excludes zero, with ties within one point resolved toward fewer inputs, selects the variant without event fields. The geometric estimate is not a projection of the label: its correlation with the target phase is 0.93, but its own median error is 34 MiD, and truncated boxes, 15\% of training rows and 10\% of test queries, are markedly worse. Geometry is computable for every test query, with at least five same-track causal frames in 94.6\% of them.
+
+On the benchmark's own training folds the largest available improvement therefore comes from the history of the supplied regions, not from event--RGB fusion or the phase interface. The submitted system does not use box expansion, so this says nothing about the source of its test score.
+
+The size of any test gain is unknown and its sign is not guaranteed. The gap between fold and test levels is concentrated in the crucial band: the released recipe scores 132.4, 39.7, 34.6, and 35.8 in the crucial, small, large, and negative bands on the folds, against 43.52, 28.26, 25.72, and 29.93 for the submitted system on the test server. The selected variant's fold scores in the small, large, and negative bands, 30.1, 33.7, and 33.2, are worse than those test values, and its fold Overall of 41.27 is above the 35.80 already obtained on the test server. One plausible reason, not tested, is that the deployed RGB branch, fitted on forty sequences, is more accurate on test than the fold branches fitted on twenty-four, in which case a head fitted on fold features would weight geometry too heavily. A candidate prediction package for the selected variant exists locally. It differs from the TRAIN40 package by 27.6 MiD on average, a disagreement and not an accuracy, and it has not been submitted.
+
+\subsection{Event history on the training grid}
+\label{sec:post-audit-event-history}
+Appendix~\ref{sec:field-ranges} documents that the event branch was evaluated with a history grid that differs from training. We rebuilt the event history on the training grid, seven valid slots 50\,ms apart, with every model frozen, and recomputed the event context and the released fusion head on the 460 EvTTC transfer queries. Recomputing the delivered history from raw events reproduces the delivered predictions within $5.7\times10^{-6}$\,s, so arm differences are attributable to the history construction.
+
+\begin{table}[htbp]
+\centering\small\input{tables/post_audit_event_history}
+\caption{Matched versus delivered event history on 460 development-exposed EvTTC queries; 10,000 complete-recording resamples across 32 recordings. Positive values mean the first arm is worse. MiD is the benchmark's motion-in-depth error, $10^4|\Delta\phi|$, averaged over queries without band weights.}
+\label{tab:post-audit-event-history}
+\end{table}
+
+The pre-declared rule, written on seconds MAE, returns no measurable effect for the primary contrast: fusion MAE moves from 0.813 to 0.871\,s and its interval includes zero. In the benchmark coordinate the matched history is worse by 5.2 MiD with an interval that excludes zero, fusion improves in 9 of 32 recordings, and a sensitivity arm with all eight slots valid worsens MAE by 0.081\,s with an interval of $[0.002,0.160]$\,s. The matched history is therefore neutral to harmful on this cohort. The matched history does bring the gap and valid-slot fields inside the training support, so the absence of an event benefit is not explained by that mismatch. The event context remains about 0.5\,s worse than the RGB context. An exposure-offset mismatch remains in every arm, since the event anchor coincides with the RGB timestamp on EvTTC, and a model refitted on the inference grid was not tested.
+
+\subsection{History beyond two observations}
+\label{sec:post-audit-history}
+To isolate the contribution of temporal support, we refit the RGB and event context refiners with history truncated to their $K$ most recent slots, masking older slots identically in fitting and evaluation, under the released rotation scheme, updates, and seeds, and then refit the fusion head with grouped folds. Refitting the untruncated arm reproduces the Overall MiD obtained from the released fusion features within 0.06 points.
+
+\begin{table}[htbp]
+\centering\small\input{tables/post_audit_history}
+\caption{Fusion-head Overall MiD on TRAIN40 development folds as a function of the history available to the context refiners; seed-7 levels, with paired sequence-bootstrap differences against the released arm.}
+\label{tab:post-audit-history}
+\end{table}
+
+Restricting both refiners to two slots costs 3.5 points with seed 7 and 2.9 averaged over three seeds; removing history entirely costs 5.6. RGB history accounts for most of the two-slot difference and event history for a smaller, resolved part. Almost all of the benefit is present with four slots. Seconds MAE does not follow the same order: three truncated arms have a lower point MAE than the released arm.
+
+This control bounds the role of history inside PHASE-TTC; it does not reproduce the two-frame regime of the reference method. Each PHASE observation already integrates about 200\,ms of RGB and 300\,ms of events, the producers are fixed, the recipe was developed with full history, and Garl-TTC was not retrained with longer support. On these folds, history beyond two slots explains a few points of an 85-point score, which is small beside the 9.2-point test difference in relative terms but cannot be mapped onto it.

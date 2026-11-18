@@ -1,5 +1,5 @@
 {
-  "built_at_utc": "2026-11-18T12:40:34.832427+00:00",
+  "built_at_utc": "2026-11-18T15:20:29.286499+00:00",
   "scope": "Result-ledger validation and reproducible saved-prediction analysis; no training or sensor inference",
   "python": "3.11.15",
   "numpy_version": "2.4.6",
@@ -7,11 +7,11 @@
   "bibtex_executable": "bibtex.EXE",
   "main_tex": "PHASE_TTC_From_Motion_to_Time_Expanded.tex",
   "pdf": "PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
-  "pdf_sha256": "226406502efbee6c47052592ea8168d4801950b49bdccf27ba7948a7e09d6191",
-  "tex_sha256": "31d50ce9363838674965da57886d7d07f9cd7c00ba88beaad11a50001a111724",
-  "pages": 103,
+  "pdf_sha256": "9179e0593d2254e61310aaa0388911dd8fc137d703e1540715555a14aa2e9020",
+  "tex_sha256": "e2355ecf1c2a1a10dd8882066a87c51adb0417107148d2bb266043d2ef51af6f",
+  "pages": 105,
   "numbered_figures": 30,
-  "numbered_tables": 56,
+  "numbered_tables": 59,
   "regenerated_figure_sources": [
     "figures\\rev_architecture.tex",
     "figures\\rev_fusion.tex",

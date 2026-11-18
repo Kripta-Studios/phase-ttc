@@ -53,7 +53,8 @@
     "sections/scientific_revision",
     "sections/consolidation_details",
     "sections/local_hardware",
-    "sections/extended_inference"
+    "sections/extended_inference",
+    "sections/post_audit_controls"
   ],
   "all_original_sections_retained": true,
   "byte_identical_original_assets": {
@@ -77,13 +78,13 @@
     {
       "path": "sections\\design_analysis.tex",
       "original_sha256": "67629432090dd30a07c5f74cb3bd570ba946f764ae33a3ebbcf4545ff0c05368",
-      "expanded_sha256": "b70d2adccce1a0f6eb2e0985568b4404aeba941dc85d4e0e58e3f97108b0b6f7",
+      "expanded_sha256": "d78e740a36c1e10e7d3616233cf26bb3df7d1bd7970a3e0ac89220f98f4c01a5",
       "changed": true
     },
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "28a46aded2a1d47418f8f433ee9f5528e8f5efb0ddd488701133c8625a5010d2",
+      "expanded_sha256": "b2c2184c61d3bd37dc77e8bc41b6d7c5e708870c1be447ef8d9a8ca415bc0459",
       "changed": true
     },
     {
@@ -137,7 +138,7 @@
     {
       "path": "sections\\methods.tex",
       "original_sha256": "bd58d2c11d810846437a08f3ad5e6437eac9bc80a7f45a1ee1d3194a5b9f7b6b",
-      "expanded_sha256": "7fcb594a05e1b7aa8b6c0557f2a803f64f6fc7de290643287eb22ee761645f96",
+      "expanded_sha256": "5ea074a8df5b620fb3e07953e42d9fb1cbd009dcf4abf73b1302c037eaa06ae2",
       "changed": true
     },
     {
@@ -149,13 +150,13 @@
     {
       "path": "sections\\official_results.tex",
       "original_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
-      "expanded_sha256": "117601defd37fb367494682d5c8093a026abd7a036fc7e8c2f4a3332f2346fd2",
+      "expanded_sha256": "17dbcd22c3f6968082668e99f2ea30b1bd912d1916d15cc984b2c69de31135fb",
       "changed": true
     },
     {
       "path": "sections\\protocol.tex",
       "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
-      "expanded_sha256": "5991e55037886a12be888624ca497c0e3bc593e3583e16916ddd9ebabbf8a21d",
+      "expanded_sha256": "029a9833cd035922d52bce05c40a480486c56b0663126c28dfaa44044bb163d4",
       "changed": true
     },
     {

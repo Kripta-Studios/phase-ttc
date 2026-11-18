@@ -20,7 +20,9 @@ se han reproducido** en este repositorio.
 
 ## 1. En curso en esta rama (sin resultados que afirmar)
 
-Estado: **en curso, ver subcarpetas**. Ninguno de estos puntos tiene todavía un
+Estado: **completado el 2026-11-18; resultados en `geometry/REPORT.md`,
+`event_history/REPORT.md` e `history/REPORT.md`** (la frase siguiente describe el
+estado al redactar esta hoja de ruta). Ninguno de estos puntos tiene todavía un
 resultado citable; esta hoja de ruta no anticipa su signo.
 
 | Línea | Qué pregunta responde | Dónde |

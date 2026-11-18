@@ -1,0 +1,18 @@
+{
+  "primary": "RGB_GEO_BAND",
+  "qualified": [
+    "REL_BAND",
+    "REL_GEO",
+    "REL_GEO_BAND",
+    "RGB_GEO_BAND",
+    "GEO_LEARNED"
+  ],
+  "best_overall": "REL_GEO_BAND",
+  "tie_set": [
+    "REL_GEO_BAND",
+    "RGB_GEO_BAND"
+  ],
+  "tie_tolerance_mid": 1.0,
+  "reason": "fewest inputs within the tie set, then lowest seed-mean Overall",
+  "protocol_sha256": "7894046c035e5143576826b0f877d567830549bac3da6b456ddfb0f8d8c60126"
+}
