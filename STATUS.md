@@ -1,5 +1,11 @@
 # Estado del repositorio
 
+> **Documento histórico (última entrada: 2026-08-14).** No describe el estado actual del proyecto.
+> El modelo enviado, la puntuación oficial del 28 de octubre de 2026 y sus límites están en
+> [README.md](README.md) y en [paper/from_motion_to_time_20261102](paper/from_motion_to_time_20261102/README.md).
+> Las frases de este archivo sobre test cerrado o ausencia de candidato son anteriores a ese envío.
+> «A5 limpio» designa un productor supervisado con destilación DINOv3; no es un encoder JEPA.
+
 Contrato vigente: [cierre V6 y Scientific Recovery V7/V8](CODEX_HANDOFF.md).
 El acta V6 permanece en
 [docs/SCIENTIFIC_RECOVERY_V6_STATUS.md](docs/SCIENTIFIC_RECOVERY_V6_STATUS.md).

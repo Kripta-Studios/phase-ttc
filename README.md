@@ -19,9 +19,13 @@ anchor using phase, timing and observation-support descriptors.
 The complete system achieves **35.8015 Overall Motion-in-Depth (MiD) error** on
 GarlTTC Test, a **20.49% reduction** relative to the reported Garl-TTC reference
 of 45.03, with **0% scorer-defined failures** across **6,762 scored tokens**.
-The paper documents **Rank 1** in the archived
-leaderboard evaluation. This result measures the complete system; the component
-studies below examine which parts account for its performance.
+In the archived leaderboard of 28 October 2026 this is the **first of three
+entries**; the other two are the organizers' Garl-TTC reference and an unnamed
+submission with the same score. PHASE-TTC uses up to 650 ms of causal history and
+the benchmark's object regions, whereas Garl-TTC uses two observations 0.1 s
+apart. This result measures the complete system: the matched controls in the
+paper do not show a benefit from event access or from the phase parameterization,
+so the gain is not attributed to event-RGB fusion.
 
 ## Paper
 

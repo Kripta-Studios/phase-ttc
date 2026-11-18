@@ -1,5 +1,10 @@
 # V8 experiment ledger
 
+> **Historical planning ledger, frozen in August 2026.** Rows marked `planned` were not updated after
+> the V8 controls ran. The recovered V8 results (scratch, random-frozen, JEPA-frozen, JEPA partial
+> fine-tuning, shuffled-future; all negative for JEPA) are reported in the paper appendix
+> `paper/from_motion_to_time_20261102/sections/early.tex` and in `data/consolidation/v8_controls.json` there.
+
 This ledger is a planning and evidence index. Its `signed evidence` column must point to a signed artifact before a row moves to `completed` or `confirmed`. It records no performance claims.
 
 Allowed states: `planned`, `frozen`, `running`, `completed`, `failed_integrity`, `failed_gate`, `confirmed`.

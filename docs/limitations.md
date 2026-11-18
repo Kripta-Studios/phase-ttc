@@ -1,5 +1,12 @@
 # Limitaciones
 
+> **Documento histórico (actualizado por última vez el 2026-08-10).** Las limitaciones vigentes del
+> sistema enviado están en la sección «Discussion and limitations» del artículo
+> ([paper/from_motion_to_time_20261102](../paper/from_motion_to_time_20261102/README.md)).
+> Las frases «no existe un claim SOTA ni un checkpoint final promovido» y «impiden afirmar superioridad
+> sobre Garl-TTC» describen el estado de agosto: desde el 28 de octubre existe un envío oficial
+> (35,80 frente a 45,03 Overall MiD, primero de tres entradas). Sigue sin existir un claim SOTA.
+
 ## Scientific Recovery V7
 
 Los cinco brazos se evaluaron con una sola seed de optimización; los tres folds
