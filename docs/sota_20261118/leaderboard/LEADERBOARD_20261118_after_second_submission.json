@@ -1,0 +1,56 @@
+{
+  "source": "pasted by the repository owner after submission 1058935; not fetched by tooling",
+  "task": "GarlTTC Test",
+  "total_entries": 3,
+  "note": "One entry per participant: the 28 October entry 1016512 (35.80) is no longer displayed. The Uses Event field of entry 1058935 is shown empty.",
+  "entries": [
+    {
+      "rank": 1,
+      "participant": "AlvaroSchwiedop",
+      "date": "2026-11-18 18:16",
+      "id": 1058935,
+      "uses_event": null,
+      "uses_image": true,
+      "method_name": "PHASE-TTC-Geo",
+      "overall_MiD": 23.47,
+      "MiDc": 24.37,
+      "MiDs": 23.95,
+      "MiDl": 22.89,
+      "MiDn": 18.13,
+      "failed_rate": 0.0,
+      "samples": 6762
+    },
+    {
+      "rank": 2,
+      "participant": "nail-hnu",
+      "date": "2026-06-28 16:02",
+      "id": 817519,
+      "uses_event": true,
+      "uses_image": true,
+      "method_name": "Garl-TTC",
+      "overall_MiD": 45.03,
+      "MiDc": 53.13,
+      "MiDs": 37.58,
+      "MiDl": 40.61,
+      "MiDn": 31.29,
+      "failed_rate": 0.0,
+      "samples": 6762
+    },
+    {
+      "rank": 3,
+      "participant": "ahmed2204a",
+      "date": "2026-10-09 00:39",
+      "id": 970318,
+      "uses_event": null,
+      "uses_image": null,
+      "method_name": null,
+      "overall_MiD": 45.03,
+      "MiDc": 53.13,
+      "MiDs": 37.59,
+      "MiDl": 40.61,
+      "MiDn": 31.28,
+      "failed_rate": 0.0,
+      "samples": 6762
+    }
+  ]
+}

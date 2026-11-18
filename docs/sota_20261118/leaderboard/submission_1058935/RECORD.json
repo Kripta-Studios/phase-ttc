@@ -21,5 +21,10 @@
     "num_samples": 6762,
     "failed_rate": 0.0
   },
-  "fact_sheet": "not yet recorded; to be supplied by the owner"
+  "fact_sheet": {
+    "method_name": "PHASE-TTC-Geo",
+    "uses_image": true,
+    "uses_event": "displayed empty on the leaderboard",
+    "source": "leaderboard pasted by the owner on 2026-11-18"
+  }
 }
