@@ -101,6 +101,8 @@ H8 bounds TTC at $\pm60$ seconds. Garl keeps its native scale-ratio division, wh
 
 \input{tables/middle_transfer.tex}
 
+The two EvTTC blocks of Table~\ref{tab:middle-transfer} were computed before the target-association audit and use the superseded CCRs-1 low/medium label assignment (Appendix~\ref{app:target-association}). The source ledgers carry the label hashes of that assignment; it affects 64 of the 1,024 candidate queries in the first block and 253 of 3,947 in the second, in two of the 32 sequences. These H8 and Garl values have not been recomputed with corrected targets and are retained as historical record only. The FCWD block is unaffected.
+
 H8 had the lowest mean error on the first 946 EvTTC targets: its three heads reached 1.32--1.41 seconds MAE, versus 8.05 for Garl event-only and 1.87 for Garl full. Garl full had the best median, 0.69 seconds versus 0.73--0.77 for H8.
 
 The 3,640-target expansion showed the same split. H8 achieved 1.36--1.46 seconds MAE, Garl event-only 4.56, and Garl full 94.51. Yet Garl full retained the best median at 0.66 seconds, ahead of H8's 0.70--0.72. Rare near-singular scale ratios drove Garl full's mean, so native-output and matched-clipping results remain separate.

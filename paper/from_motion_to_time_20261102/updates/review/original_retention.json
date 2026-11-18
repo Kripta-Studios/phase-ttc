@@ -77,19 +77,19 @@
     {
       "path": "sections\\design_analysis.tex",
       "original_sha256": "67629432090dd30a07c5f74cb3bd570ba946f764ae33a3ebbcf4545ff0c05368",
-      "expanded_sha256": "ee2d32e1d877abe5fee43190242eacfaf595e3ac70ff549a7242cf5aa3f4522d",
+      "expanded_sha256": "b70d2adccce1a0f6eb2e0985568b4404aeba941dc85d4e0e58e3f97108b0b6f7",
       "changed": true
     },
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "c40ee3ec3d9c674a0938d04838fbcf25f2c868b85b560dcf877d5a92a2358f6a",
+      "expanded_sha256": "28a46aded2a1d47418f8f433ee9f5528e8f5efb0ddd488701133c8625a5010d2",
       "changed": true
     },
     {
       "path": "sections\\early.tex",
       "original_sha256": "c7aac90b3a93c3bd269702b8be743f27c3a04032fcfc1c7f7946bc5f36cea88a",
-      "expanded_sha256": "f86c830bc533fcfe2d22b2142168fb2408fef136b32f7d58ad32e3b2258727e8",
+      "expanded_sha256": "b448eb05f65fb108369b58750a4f0380ae544478872e8f1e1b3a4702cb0d1ad2",
       "changed": true
     },
     {
@@ -113,7 +113,7 @@
     {
       "path": "sections\\final_model.tex",
       "original_sha256": "ee946529c93a4985d3612d356949e05c68965065c3d51083644b0540142d6181",
-      "expanded_sha256": "cdd8bfb2accb99f828076f7cbbfa7d193eccf9dc5d7baa3fcf8aa85779a1a774",
+      "expanded_sha256": "1028ced66d04d20795b040745a7de06d024a6cf4979abbd2af093c69604fc6cd",
       "changed": true
     },
     {
@@ -125,7 +125,7 @@
     {
       "path": "sections\\introduction.tex",
       "original_sha256": "2ea165727c8fe22993ffd76dbcad20188bfba40a2f0f076097ba3703b4b91f89",
-      "expanded_sha256": "6b603f895fefbebfcd3b58fa153712db2b22bdb4653b7e643d809b4dcdc078b1",
+      "expanded_sha256": "612bfd82603d5bf31e75cd04dc3c70ff2a229cf2b8158c122895c54a0a071e79",
       "changed": true
     },
     {
@@ -137,25 +137,25 @@
     {
       "path": "sections\\methods.tex",
       "original_sha256": "bd58d2c11d810846437a08f3ad5e6437eac9bc80a7f45a1ee1d3194a5b9f7b6b",
-      "expanded_sha256": "5bb7de3475009b825eb395b6ef7f47068bedbc3b33efe53fca000cdaf92fa6ae",
+      "expanded_sha256": "7fcb594a05e1b7aa8b6c0557f2a803f64f6fc7de290643287eb22ee761645f96",
       "changed": true
     },
     {
       "path": "sections\\middle.tex",
       "original_sha256": "192b783e448da66715287c8acdef43fe35e5fff95fd9873beedde0f6e365e661",
-      "expanded_sha256": "6fbe2b415e1bdea3daf6a93521ddaac9cae1c1fba5a36059e8d8d04ff1d78ae9",
+      "expanded_sha256": "deafd55042081421c876bd6e0a2603a7b0666447f70a7214ba8400f985f4a4a0",
       "changed": true
     },
     {
       "path": "sections\\official_results.tex",
       "original_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
-      "expanded_sha256": "f4fc44b0b494f368e02dac241cbb31b4576ad969349ef06fc2d941528a729d30",
+      "expanded_sha256": "117601defd37fb367494682d5c8093a026abd7a036fc7e8c2f4a3332f2346fd2",
       "changed": true
     },
     {
       "path": "sections\\protocol.tex",
       "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
-      "expanded_sha256": "27338e3259651ee3b84e7dba798ce66e3f6d72de4dbd25726c297d55b2e8848d",
+      "expanded_sha256": "5991e55037886a12be888624ca497c0e3bc593e3583e16916ddd9ebabbf8a21d",
       "changed": true
     },
     {
@@ -167,13 +167,13 @@
     {
       "path": "sections\\runtime.tex",
       "original_sha256": "87869c87692f4189fc6ccb9163df44d2499bbee7ce6511432797e5bb4aca1289",
-      "expanded_sha256": "79cc78be728623871a907fb2ab553849e42f72212824ba82e945a36bdb7bc4f1",
+      "expanded_sha256": "aadb5bbf8b7322d7fdcc43431897939cd727794fc7f8af5e24f0d60b8b2d83ae",
       "changed": true
     },
     {
       "path": "sections\\transfer.tex",
       "original_sha256": "4130fe890f7ab78a2cacd1047a1abd13fb89dc3099b10dc646dcdb1823fe1b07",
-      "expanded_sha256": "0780ece9cb1bb578a02e28032c10cb9b835bb8894531666cc76c6b44a5d377ab",
+      "expanded_sha256": "3646c1338568c705d0bd4cf1740e7e653873f90345bd18dda9348d6b3164c45d",
       "changed": true
     }
   ]

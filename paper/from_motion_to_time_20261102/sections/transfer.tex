@@ -2,7 +2,7 @@
 \label{sec:late-transfer}
 \cohortline{CORRECTED TRANSFER / \AuditTransferCount{} eligible of 508 candidates / 32 development-exposed sequences / supplied ROI}
 
-The frozen-modality comparison tests whether the shared phase interface improves errors in seconds beyond the benchmark setting. Fusion has lower point MAE and p95 than RGB alone on the revised cohort, whereas RGB retains lower median and relative error. Paired sequence-bootstrap intervals for mean, median, and p95 differences include zero.
+The frozen-modality comparison tests whether the shared phase interface improves errors in seconds beyond the benchmark setting. Fusion has lower point MAE and p95 than RGB alone on the revised cohort, whereas RGB retains lower median and relative error. Paired sequence-bootstrap intervals for mean, median, and p95 differences include zero, so the cohort does not resolve an ordering between the two.
 
 \subsection{Evaluation population}
 We evaluate frozen predictions on \AuditTransferCount{} eligible queries from 32 EvTTC sequences. The registered sampling contains 508 candidate queries; eligibility requires a public TTC label within 50\,ms of the query, with ties assigned to the earlier timestamp. All eligible targets are positive. The primary annotated object supplies the query region. These sequences had been used during development, as specified in Section~\ref{sec:protocol}.
@@ -23,6 +23,10 @@ The full corrected distribution retains signed predictions, including large erro
 
 
 
-The PHASE-minus-RGB mean difference is \AuditMeanDelta{}\,s with interval $[\AuditMeanLow,\AuditMeanHigh]$\,s; the p95 difference is \AuditPninetyfiveDelta{}\,s with interval $[\AuditPninetyfiveLow,\AuditPninetyfiveHigh]$\,s. All three paired intervals include zero. The procedure uses 10,000 complete-sequence resamples with linear quantiles and the same frozen models. Appendix~\ref{app:derived-transfer} gives complete sequence results and distinguishes this corrected analysis from the historical one.
+The PHASE-minus-RGB mean difference is \AuditMeanDelta{}\,s with interval $[\AuditMeanLow,\AuditMeanHigh]$\,s; the p95 difference is \AuditPninetyfiveDelta{}\,s with interval $[\AuditPninetyfiveLow,\AuditPninetyfiveHigh]$\,s. All three paired intervals include zero. The procedure uses 10,000 complete-sequence resamples with linear quantiles and the same frozen models.
+
+Two observations show how fragile the ordering of means is. Under the superseded target assignment, RGB had the lower MAE by 0.007\,s; correcting the targets of two recordings moved the difference to \AuditMeanDelta{}\,s in favor of fusion without changing any prediction. On the earlier 46-query subset, RGB is better in mean and median with intervals that exclude zero (Table~\ref{tab:audit-transfer-bootstrap}). We therefore do not claim that fusion improves on RGB in seconds on EvTTC.
+
+Eligibility removes 48 candidates whose query lies between 54 and 2,055\,ms from the nearest public label; each sits at the edge of its recording's labeled span, where the nearest label has a median TTC of 2.2\,s. The rule is independent of every prediction and identical for all models, and every excluded candidate has finite predictions from all four systems. Appendix~\ref{app:derived-transfer} gives complete sequence results and distinguishes this corrected analysis from the historical one.
 \input{tables/audit_transfer_bootstrap}
 \FloatBarrier

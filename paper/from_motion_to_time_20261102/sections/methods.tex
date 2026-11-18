@@ -181,6 +181,31 @@ The third field is zero for the first retained observation; missing prefixes are
 
 Context heads receive PHASE17 fields standardized by per-coordinate means and population standard deviations fitted on unique valid observations in the allowed fitting population; a standard deviation at most $10^{-6}$ is replaced by one. Padding remains zero. Their four timing channels are separate, expressed in seconds. At the subsequent PHASE-ONLY input, each modality's first five phase-valued fields are divided by $0.03$; the four timing fields remain in seconds and support remains valid-count$/8$. No fold-specific hidden-state standardization aligns latent coordinates. The RGB raw location also bypasses the correction MLP as its residual anchor, and the two native RGB width logits bypass it separately as quantile-width anchors. Zero correction therefore reproduces the RGB context prediction and widths. \evidence{M22,M23,P04}
 
+\subsection{Observed field ranges and the event-history mismatch}
+\label{sec:field-ranges}
+Table~\ref{tab:field-ranges} lists the values that the timing and support fields take at the fusion input in three populations: the 88,744 out-of-fold TRAIN40 rows that fit the head, the 5,805 physical Test12 queries of the submission, and the 460 EvTTC transfer queries. The first, second, and fourth RGB timing fields and the second event timing field are zero everywhere. Raw location and emitted point phase coincide in 99.6\% of training rows and in all 460 transfer rows. On the transfer cohort the ten timing and support fields are constant or vary by less than $10^{-4}$, so the head acts there on the five phase values of each modality and, effectively, on four distinct values per modality.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{llll}
+\toprule
+Field & TRAIN40 out-of-fold & Test12 & EvTTC transfer \\
+\midrule
+RGB gap (s) & 0.1 (91\%), 0 (9\%) & 0.1 (96\%), 0 (4\%) & 0.1 \\
+RGB valid slots / 8 & 0.625 (76\%), four other values & 0.625 (91\%), four other values & 0.625 \\
+Event anchor offset (s) & 0.0009--0.020 & 0 & 0 \\
+Event gap (s) & 0.05 (99.95\%), 0 & 0.1 (98\%), 0 (2\%) & 0.1 \\
+Event valid slots / 8 & 0.875 (99.9\%) & 0.5 (95\%); never 0.875 & 0.5 \\
+\bottomrule
+\end{tabular}
+\caption{Values of the non-constant timing and support fields at the fusion input. Training and Test12 values are computed from the archived out-of-fold features and staged submission features, which are outside the public source package; transfer values come from the released evaluation features.}
+\label{tab:field-ranges}
+\end{table}
+
+The RGB fields have the same support in training and evaluation. The event fields do not. Training rows were generated with event-history slots every 50\,ms, all encoded inside the current query's object region; 99.9\% of rows have seven valid slots, a 0.05\,s gap, and an anchor-to-query offset between 1 and 20\,ms. Test12 and EvTTC inference instead assembled the event history from the observations of earlier queries, 0.1\,s apart, each encoded inside its own object region, giving a 0.1\,s gap, at most four valid slots, and zero offset. A gap of 0.1\,s and a support of 0.5 never occur in the training rows. The event context refiner, which receives the timing of all eight slots, and the fusion head were therefore evaluated outside their fitted support in these fields, and with history crops that follow the object instead of staying fixed in the query's frame.
+
+This mismatch was identified after submission, by comparing archived inputs. Its effect on accuracy is unknown: the private Test12 labels are unavailable, and no local experiment has yet regenerated the event history at the training cadence. It is distinct from the PAIR interval normalization of Appendix~\ref{sec:canonical-cadence}, which concerns the duration fields of the pairwise readout. It may contribute to the absence of a measurable event benefit in Section~\ref{sec:design-analysis}, and it means the benchmark score was obtained with a degraded event path.
+
 \subsection{Multimodal complement and uncertainty boundaries}
 The later joint-measurement complement anchors on RGB phase and learns a correction from RGB features, event features, and the RGB phase itself:
 \begin{equation}

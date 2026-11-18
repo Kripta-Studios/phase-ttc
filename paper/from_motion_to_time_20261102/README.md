@@ -4,9 +4,53 @@
 
 <a href="https://github.com/Kripta-Studios/phase-ttc"><img src="../../docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="../../docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
 
-Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; actualización del 13 de noviembre de 2026
+Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; actualización del 18 de noviembre de 2026
 
 Esta es la actualización y ampliación del artículo original de 52 páginas. Conserva sus 19 archivos de secciones, las figuras, los datos publicados, los métodos completos, las ablations históricas, las trazas por secuencia y el índice de evidencia. El artículo breve de siete páginas preparado antes no lo sustituye.
+
+## Auditoría de alcance de afirmaciones del 18 de noviembre
+
+Una auditoría independiente recalculó las cifras del manuscrito contra la
+evidencia guardada y el código. No encontró discrepancias numéricas; sí corrigió
+el alcance de varias afirmaciones. Esta entrega no añade entrenamientos,
+inferencia de sensores ni envíos oficiales. Cambios:
+
+- **Benchmark oficial.** El resumen y la sección 4 indican que el leaderboard
+  archivado tiene tres entradas, que Garl-TTC usa dos observaciones separadas
+  0,1 s frente a los 650 ms de PHASE-TTC, que las regiones de objeto son las del
+  benchmark y que el archivo no registra el número de envíos de la cuenta ni un
+  hash del paquete puntuado. La deriva del replay nativo queda acotada en unas
+  0,01 unidades MiD de media.
+- **Atribución.** Los controles emparejados no atribuyen la mejora a la fusión:
+  las cabezas reajustadas no se distinguen de la rama RGB (+0,004 s,
+  [−0,089; +0,114]); la ventaja sobre la mezcla calibrada depende de CPNAO-high;
+  la cabeza publicada coincide con la semilla más favorable. La tabla pareada
+  incorpora estos tres contrastes, generados por `scripts/build_consolidation.py`.
+- **Desajuste del historial de eventos.** El apéndice E.8 documenta que la rama
+  de eventos se entrenó con historial cada 50 ms (siete slots, recorte de la
+  consulta actual) y se evaluó en Test12 y EvTTC con historial cada 100 ms
+  (cuatro slots, recorte propio de cada observación). Su efecto en la precisión
+  no está medido.
+- **Router.** Ocho grabaciones de carretera, tres de las cuales concentran la
+  ventaja; la mezcla fija usa dos expertos y el router cuatro; en el agregado la
+  mezcla fija tiene menor error puntual; diez grabaciones de ajuste son hermanas
+  de cinco evaluadas.
+- **Latencia.** El resumen incluye el resultado del estudio de 72 pasadas. La
+  sección de runtime advierte que los tiempos de Garl dependen de nuestra
+  implementación del servicio y que el colapso con cola de dos paquetes es un
+  fallo de arranque cuya causa no está aislada.
+- **Historia.** La tabla H8 de transferencia queda marcada como calculada con la
+  asignación de etiquetas sustituida. El apéndice V8 indica que el encoder JEPA
+  congelado fue peor que uno aleatorio congelado, y recoge dos negativos antes
+  omitidos (cribado dense level–dynamics y SSL con CARLA).
+- **Protocolo.** Se declara la reutilización de datos de desarrollo (al menos 498
+  ajustes sobre la población de adaptación) y que la independencia entre
+  secuencias a nivel de escena no está verificada.
+- **Bibliografía.** Pasa de 13 a 32 entradas, con una subsección de trabajo
+  relacionado sobre TTC por expansión, TTC con eventos y fusión eventos–imagen.
+
+Pendiente de aportar por el autor: el número de envíos realizados por la cuenta
+al servidor de GarlTTC, que el manuscrito declara como no registrado.
 
 ## Comparación de inferencia del 12 de noviembre
 

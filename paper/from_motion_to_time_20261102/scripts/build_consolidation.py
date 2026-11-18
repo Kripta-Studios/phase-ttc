@@ -88,6 +88,16 @@ def main() -> None:
             losses[arm] - losses["phase_true"], groups
         )
     comparisons["calibrated_minus_phase_true"] = interval(calibrated - losses["phase_true"], groups)
+    # Audit additions: does the refit improve on its RGB anchor, is the released
+    # head typical of its refits, and does one recording carry the mixture margin?
+    rgb_anchor = np.abs(evaluation["rgb_prediction"] - target)
+    released = np.abs(evaluation["released_prediction"] - target)
+    comparisons["rgb_minus_phase_true"] = interval(rgb_anchor - losses["phase_true"], groups)
+    comparisons["released_minus_phase_true"] = interval(released - losses["phase_true"], groups)
+    keep = groups != "CPNAO-high"
+    comparisons["calibrated_minus_phase_true_without_CPNAO_high"] = interval(
+        (calibrated - losses["phase_true"])[keep], groups[keep]
+    )
     stats["paired"] = comparisons
     (ROOT / "tables/consolidation_statistics.json").write_text(
         json.dumps(stats, indent=2) + "\n", encoding="utf-8"
@@ -97,6 +107,12 @@ def main() -> None:
         ("phase_zero_event_minus_phase_true", "Zero events minus real events"),
         ("inverse_residual_minus_phase_true", "Inverse TTC minus phase"),
         ("calibrated_minus_phase_true", "Calibrated mixture minus phase"),
+        (
+            "calibrated_minus_phase_true_without_CPNAO_high",
+            "Calibrated mixture minus phase, without CPNAO-high",
+        ),
+        ("rgb_minus_phase_true", "RGB context minus phase"),
+        ("released_minus_phase_true", "Released head minus refitted phase"),
     ):
         value = comparisons[key]
         paired_rows.append(
