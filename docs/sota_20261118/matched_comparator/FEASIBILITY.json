@@ -1,0 +1,126 @@
+{
+  "checkpoints": [
+    {
+      "name": "paper_ours_full.pth",
+      "config": "configs/ablation/ours_full.yaml",
+      "bytes": 973290993,
+      "sha256": "e96a613a4fb877a1969d57ab562cadba89961fb202f5f2f2f0658f333a0d443e",
+      "local_verified_copy": true,
+      "local_path_relative_to_V12_ARTIFACTS": "sota_campaign_20261008/dev32_expanded_rgb/public_garl/paper_ours_full.pth"
+    },
+    {
+      "name": "paper_visual_only_lhr.pth",
+      "config": "configs/ablation/visual_lhr.yaml",
+      "bytes": 98591869,
+      "sha256": "02d900d0ddf81086f4176b63663f952a7c753eeb033b13acc5030a892a88cf70",
+      "local_verified_copy": false,
+      "local_path_relative_to_V12_ARTIFACTS": null
+    },
+    {
+      "name": "paper_event_only_lhr.pth",
+      "config": "configs/ablation/event_lhr.yaml",
+      "bytes": 99018365,
+      "sha256": "fcaf9be47e2dafc6f73c6c3ebd102595ae06119dcae78aea698a42627b2b4fef",
+      "local_verified_copy": true,
+      "local_path_relative_to_V12_ARTIFACTS": "train40_system_20261005/public_garl/paper_event_only_lhr.pth"
+    },
+    {
+      "name": "paper_event_only_baseline.pth",
+      "config": "configs/ablation/event_baseline.yaml",
+      "bytes": 99016317,
+      "sha256": "210ca4c78694164e4e524196c0c795c4646dd54b540efbe40fad011a94861ab5",
+      "local_verified_copy": false,
+      "local_path_relative_to_V12_ARTIFACTS": null
+    },
+    {
+      "name": "paper_visual_only_baseline.pth",
+      "config": "configs/ablation/visual_baseline.yaml",
+      "bytes": 98589821,
+      "sha256": "04f59c7324a06200519e52805c61bcd6c11ab17f838d296572942bb13a7d5f7e",
+      "local_verified_copy": false,
+      "local_path_relative_to_V12_ARTIFACTS": null
+    },
+    {
+      "name": "paper_multi_modal_baseline.pth",
+      "config": "configs/ablation/multimodal_baseline.yaml",
+      "bytes": 99091581,
+      "sha256": "19ca6c22528636c97c88a99257c3e8dac8791c21df1a024d40755e3ccc328761",
+      "local_verified_copy": false,
+      "local_path_relative_to_V12_ARTIFACTS": null
+    },
+    {
+      "name": "paper_multi_modal_lhr_early_fusion.pth",
+      "config": "configs/ablation/multimodal_lhr_early.yaml",
+      "bytes": 99093629,
+      "sha256": "1365f774324fd7f9327cf581b2b1ccae1a7b6341e3dbc41e8d1624da9698171f",
+      "local_verified_copy": false,
+      "local_path_relative_to_V12_ARTIFACTS": null
+    },
+    {
+      "name": "paper_multi_modal_lhr_late_fusion.pth",
+      "config": "configs/ablation/multimodal_lhr_late.yaml",
+      "bytes": 197608193,
+      "sha256": "23371fc95f836b13c005edb0161759e2678a84ba1b033373ea531f55df8e7dfa",
+      "local_verified_copy": false,
+      "local_path_relative_to_V12_ARTIFACTS": null
+    }
+  ],
+  "leaderboard_45_03": {
+    "checkpoint": "paper_ours_full.pth (RGB+event, default release config)",
+    "release_readme_test12_row": [
+      53.1,
+      37.6,
+      40.6,
+      31.3
+    ],
+    "overall_of_readme_row": 45.02,
+    "caveat": "identity of the leaderboard entry with this checkpoint is inferred, not certified by the server"
+  },
+  "event_only_test12_package": {
+    "file": "Garl_event_only_submission.zip",
+    "sha256": "da87e60b0ffd2849555467efb05066932896e4cf87c14e628d87d8e2c1ba9171",
+    "location_variable": "PHASE_TTC_GARLTTC_DATASET",
+    "checkpoint_sha256": "fcaf9be47e2dafc6f73c6c3ebd102595ae06119dcae78aea698a42627b2b4fef",
+    "inputs_sha256": "aedb9da5484ceedb642ef1cbc7cf6115dcf7f368e4444b55de947989fc19a362",
+    "scored": false
+  },
+  "parity": {
+    "event_release_runner_vs_frozen_test12_rows": 384,
+    "event_max_rel_height_gap": 5.6374012995914325e-06,
+    "full_release_runner_vs_sealed_eap64_rows": 64,
+    "full_max_abs_ttc_gap_s": 0.0001870245292376893,
+    "event_release_runner_vs_frozen_train40_max_abs_ttc_gap_s": 6.716012848251296e-05
+  },
+  "throughput": {
+    "test12": {
+      "fragments_logged": 14,
+      "rows_done": 6762,
+      "total": 6762,
+      "steady_rows_per_second": 1.936063440926832,
+      "wall_seconds": 3634.9,
+      "peak_vram_gib": 1.539
+    },
+    "train40": {
+      "fragments_logged": 12,
+      "rows_done": 11935,
+      "total": 11935,
+      "steady_rows_per_second": 1.9131700303343795,
+      "wall_seconds": 6392.1,
+      "peak_vram_gib": 1.539
+    }
+  },
+  "per_fold_retraining_cost_estimate": {
+    "measured_inference_rows_per_second": 1.9131700303343795,
+    "assumption": "data loading at the measured inference rate bounds training throughput; 50 epochs x 3 release stages x 5 folds on ~71k rows each",
+    "sample_visits": 53246400.0,
+    "days_streaming_from_media": 322.12389280949907,
+    "tensor_cache_gb_fp16_all_rows": 133.766316032,
+    "tensor_cache_build_hours": 12.884955712379965
+  },
+  "alias_consistency": {
+    "alias_tokens_compared": 957,
+    "max_abs_ttc_gap_alias_vs_canonical": 0.030393428229075425,
+    "test_inventory_sha256": "b78730abe68de7fbe06c6c98b25d5fa025c04d9303720b680ce0c0f575d2e526"
+  },
+  "labels_read": false
+}

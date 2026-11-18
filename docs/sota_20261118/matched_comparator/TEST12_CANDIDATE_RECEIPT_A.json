@@ -1,0 +1,60 @@
+{
+  "aliases": 957,
+  "arm": "GEO_LEARNED",
+  "candidate": "MATCHED_A_GEO_LEARNED_S7_TRAIN40",
+  "code_sha256": {
+    "__init__.py": "fe7e56c7afa9d13321d638d628411144c00759bcab69dd2c3cd923b5973cf985",
+    "evaluate.py": "6b15d1038d9bfeaca392fab613cf20f0a6b68ce2114e23da6237ed74b544134b",
+    "feasibility.py": "ece952925c702b43ac777dca13645523118df12398bce52af922964daf9cd8eb",
+    "features.py": "3531964d227789bfbb8af7e5504da3ba29235484295675ea056eb6233ef0a7cb",
+    "final_package.py": "7504aa2c98fbd1a2dac0c432f2c5ca460994ffaf86eeb2d502a823ce369a318c",
+    "garl_data.py": "230334238797267e4c22cfd819255a6085cec1ef104ad070ce6289711b6bf0ab",
+    "garl_runner.py": "01214ca952fc85f489c7e097ba62f852b69170d4e60d5399bd3c93f8876e19e7",
+    "projection.py": "eb99b98f3c86a6eebd5a85c02daed77742909913b561e7b9c5e28d9e1e1c61ea",
+    "report.py": "8941b6ce42b838e5713c342f3a6ee4066e9119c100344f8119b528ed4170889a",
+    "run_cv.py": "f0503f3ff136d28dddc26c6887fb6ecd77a8e7c30002bdc4bb67d8fc4323a9b2",
+    "run_s8.py": "d2e0f48c53d920bee96831a337975c33d7598fb9e9e90eb155f2331ac3c35907",
+    "sources.py": "ce91cc220474553213396f9b55888251a2ee9c8a2e6ece75cbbca3830ce05ed1"
+  },
+  "external_submission": false,
+  "fact_sheet": {
+    "method_name": "Box-geometry baseline (supplied regions only, 600 ms)",
+    "note": "Uses neither events nor images: only the benchmark-supplied 2D object regions of the same track in the causal 600 ms window (expansion slopes, truncation flags, frame count, size), fed to a 1,635-parameter MLP head trained on TRAIN40.",
+    "uses_event": false,
+    "uses_image": false
+  },
+  "finite_and_no_failures": true,
+  "inputs": 10,
+  "loss": "BAND (w_band/n_band, 0.5/0.3/0.1/0.1) fusion_loss",
+  "package": "A",
+  "parameters": 1635,
+  "phase_geometry_code_sha256": {
+    "geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
+    "heads.py": "b94bdfa134e262021351fcea633535deb47ee8a792764748cf3527085536d478",
+    "metrics.py": "8dc9fabfc655ba9f4b11db5cbc393e3955ca9b7695e692509366c5d4d217f187",
+    "package.py": "ac0426e9b5d3c959ed66aafc289f505671616196964f5424ee73d8eca69019ce",
+    "variants.py": "6b97ce3929b204332e0c8a171097b54fd0a0a4c2457b6463df629307c7c4bcf6",
+    "weights.py": "56147f2d3118cd8492adbeaeaccf2e64c8b480b4312490a6927669abe53fcfb5"
+  },
+  "physical_queries": 5805,
+  "population": 6762,
+  "private_targets_read": false,
+  "proposed_hypothesis": "A head that reads only the supplied object regions of the last 600 ms (no image, no event model) is scored to quantify how much of 23.47 (RGB_GEO_BAND) is box history alone; reported whatever the score, including if it is below 23.47.",
+  "protocol_sha256": "989a27f5a7dfb413bd61710c057bff495a0e9fabafbaec972e0a491599c84610",
+  "receipt_sha256": "cd4aaecfbd022faf89ac4f921bc4704c31d36e127e64402aa1ff5f190f7726fe",
+  "results_sha256": "6b61bd3d768d94de62c5430b035aa57bce7fea518e632a5d34d96b90d03638ab",
+  "schema": "matched_comparator_test12_candidate_receipt_v1",
+  "seed": 7,
+  "state_dict_sha256": "88e78a0759e49f8992f38cad987c4dc2478eae4894132436c104ab6c2d3037e5",
+  "status": "PACKAGED_NOT_SUBMITTED",
+  "token_order": "official test_inputs.parquet order",
+  "train_rows": 88744,
+  "trainer": "fit_head",
+  "updates": 12044,
+  "work_inputs_sha256": {
+    "test_inputs.npz": "1e3d9d5b6e8267711628d0b7d9cbafd2b62b534541b7ac20e85557a6749bb65f",
+    "train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d"
+  },
+  "zip_file": "MATCHED_A_GEO_LEARNED_S7_TRAIN40.zip",
+  "zip_sha256": "0be589c0a52cd3422402eb9aa0da6a1b2da185c880fdc54a19b937c25d3bf5b9"
+}

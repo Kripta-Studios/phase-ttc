@@ -1,0 +1,1251 @@
+{
+  "scope": "OUTPUT DISAGREEMENT ONLY; NOT ACCURACY; private Test12 labels not read",
+  "sets": [
+    "PACKAGE_A",
+    "SUBMITTED_23_47",
+    "ORIGINAL_35_80",
+    "GARL_FULL",
+    "GARL_EVENT"
+  ],
+  "matrix": [
+    {
+      "reference": "PACKAGE_A",
+      "candidate": "SUBMITTED_23_47",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 22,
+      "sign_change_rate": 0.003253475303164744,
+      "mid_between_mean": 18.892649829867356,
+      "mid_between_median": 12.702342883885807,
+      "mid_between_p90": 38.1819241807209,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 307,
+          "mid_between_mean": 17.321158423517304,
+          "mid_between_median": 11.352973894494662,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2198,
+          "mid_between_mean": 15.084598133332944,
+          "mid_between_median": 10.327404965562273,
+          "sign_changes": 3
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 764,
+          "mid_between_mean": 13.8460588565106,
+          "mid_between_median": 9.909866126243369,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 121,
+          "mid_between_mean": 39.83951328044411,
+          "mid_between_median": 29.894437271250993,
+          "sign_changes": 9
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3069,
+          "mid_between_mean": 19.46387607690832,
+          "mid_between_median": 14.042225435410213,
+          "sign_changes": 2
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 303,
+          "mid_between_mean": 46.683003508706115,
+          "mid_between_median": 36.08648358712668,
+          "sign_changes": 7
+        }
+      ]
+    },
+    {
+      "reference": "PACKAGE_A",
+      "candidate": "ORIGINAL_35_80",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 35,
+      "sign_change_rate": 0.005175983436853002,
+      "mid_between_mean": 37.25991989714778,
+      "mid_between_median": 28.589516359900923,
+      "mid_between_p90": 72.40688577940399,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 307,
+          "mid_between_mean": 60.12500473405084,
+          "mid_between_median": 38.492665048511995,
+          "sign_changes": 4
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2198,
+          "mid_between_mean": 36.28723050925879,
+          "mid_between_median": 26.884906973960234,
+          "sign_changes": 10
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 764,
+          "mid_between_mean": 33.81878006249632,
+          "mid_between_median": 29.086553361474465,
+          "sign_changes": 3
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 121,
+          "mid_between_mean": 82.13002758939868,
+          "mid_between_median": 72.92820616808257,
+          "sign_changes": 9
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3069,
+          "mid_between_mean": 33.32946913514881,
+          "mid_between_median": 27.546624634473584,
+          "sign_changes": 3
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 303,
+          "mid_between_mean": 51.717647359646186,
+          "mid_between_median": 35.19139476300799,
+          "sign_changes": 6
+        }
+      ]
+    },
+    {
+      "reference": "PACKAGE_A",
+      "candidate": "GARL_FULL",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 125,
+      "sign_change_rate": 0.018485655131617866,
+      "mid_between_mean": 44.08432317335028,
+      "mid_between_median": 31.483333857249708,
+      "mid_between_p90": 90.64282612282756,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 307,
+          "mid_between_mean": 64.71829810271666,
+          "mid_between_median": 43.30092457449884,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2198,
+          "mid_between_mean": 43.07387277436104,
+          "mid_between_median": 31.509789235873306,
+          "sign_changes": 14
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 764,
+          "mid_between_mean": 48.70496853725926,
+          "mid_between_median": 40.97999582028493,
+          "sign_changes": 15
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 121,
+          "mid_between_mean": 96.35689350490685,
+          "mid_between_median": 91.89638983828522,
+          "sign_changes": 10
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3069,
+          "mid_between_mean": 36.61129362692631,
+          "mid_between_median": 25.47028849297004,
+          "sign_changes": 60
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 303,
+          "mid_between_mean": 73.6747960561661,
+          "mid_between_median": 57.385809114254286,
+          "sign_changes": 25
+        }
+      ]
+    },
+    {
+      "reference": "PACKAGE_A",
+      "candidate": "GARL_EVENT",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 147,
+      "sign_change_rate": 0.021739130434782608,
+      "mid_between_mean": 49.75455512639563,
+      "mid_between_median": 35.1462283658022,
+      "mid_between_p90": 103.76878832436805,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 307,
+          "mid_between_mean": 103.57708212613248,
+          "mid_between_median": 86.91026769725288,
+          "sign_changes": 4
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2198,
+          "mid_between_mean": 52.34485259720696,
+          "mid_between_median": 37.127603524587435,
+          "sign_changes": 50
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 764,
+          "mid_between_mean": 47.6313652059544,
+          "mid_between_median": 35.12542053886717,
+          "sign_changes": 28
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 121,
+          "mid_between_mean": 99.48568972774197,
+          "mid_between_median": 82.74588140928425,
+          "sign_changes": 15
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3069,
+          "mid_between_mean": 37.28395851165666,
+          "mid_between_median": 28.14484291711321,
+          "sign_changes": 37
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 303,
+          "mid_between_mean": 88.23614322317964,
+          "mid_between_median": 73.5825729405285,
+          "sign_changes": 13
+        }
+      ]
+    },
+    {
+      "reference": "SUBMITTED_23_47",
+      "candidate": "PACKAGE_A",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 22,
+      "sign_change_rate": 0.003253475303164744,
+      "mid_between_mean": 18.892649829867356,
+      "mid_between_median": 12.702342883885807,
+      "mid_between_p90": 38.1819241807209,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 315,
+          "mid_between_mean": 24.018501457070904,
+          "mid_between_median": 11.352973894494662,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2176,
+          "mid_between_mean": 14.03716582381655,
+          "mid_between_median": 10.25817793526727,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 856,
+          "mid_between_mean": 14.538099100037453,
+          "mid_between_median": 11.224627901865215,
+          "sign_changes": 2
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 39,
+          "mid_between_mean": 64.65090747727888,
+          "mid_between_median": 50.27133972146718,
+          "sign_changes": 7
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3284,
+          "mid_between_mean": 21.652257373169142,
+          "mid_between_median": 15.11941504896256,
+          "sign_changes": 4
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 92,
+          "mid_between_mean": 38.797673078559846,
+          "mid_between_median": 31.743887623322756,
+          "sign_changes": 9
+        }
+      ]
+    },
+    {
+      "reference": "SUBMITTED_23_47",
+      "candidate": "ORIGINAL_35_80",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 15,
+      "sign_change_rate": 0.0022182786157941437,
+      "mid_between_mean": 27.607735349453716,
+      "mid_between_median": 24.781064557304056,
+      "mid_between_p90": 50.404955327841776,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 315,
+          "mid_between_mean": 40.66081516096897,
+          "mid_between_median": 27.822147562311038,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2176,
+          "mid_between_mean": 24.601387762635028,
+          "mid_between_median": 18.254943245836415,
+          "sign_changes": 7
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 856,
+          "mid_between_mean": 22.971296286026487,
+          "mid_between_median": 20.503374778202968,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 39,
+          "mid_between_mean": 68.65385541962718,
+          "mid_between_median": 48.85616048314542,
+          "sign_changes": 6
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3284,
+          "mid_between_mean": 29.400775756571072,
+          "mid_between_median": 28.608537245441973,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 92,
+          "mid_between_mean": 15.75709042416763,
+          "mid_between_median": 10.436043975290918,
+          "sign_changes": 1
+        }
+      ]
+    },
+    {
+      "reference": "SUBMITTED_23_47",
+      "candidate": "GARL_FULL",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 109,
+      "sign_change_rate": 0.01611949127477078,
+      "mid_between_mean": 37.646841726667994,
+      "mid_between_median": 27.22042995452735,
+      "mid_between_p90": 73.66087844518036,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 315,
+          "mid_between_mean": 65.39277455837686,
+          "mid_between_median": 39.029150146132,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2176,
+          "mid_between_mean": 37.84702463198688,
+          "mid_between_median": 27.286093949722215,
+          "sign_changes": 13
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 856,
+          "mid_between_mean": 39.840315153859024,
+          "mid_between_median": 34.45451734191606,
+          "sign_changes": 13
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 39,
+          "mid_between_mean": 84.99948887034942,
+          "mid_between_median": 71.6237748684047,
+          "sign_changes": 4
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3284,
+          "mid_between_mean": 32.95162795823983,
+          "mid_between_median": 24.322216830455055,
+          "sign_changes": 64
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 92,
+          "mid_between_mean": 65.02889258837226,
+          "mid_between_median": 38.58508239675757,
+          "sign_changes": 15
+        }
+      ]
+    },
+    {
+      "reference": "SUBMITTED_23_47",
+      "candidate": "GARL_EVENT",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 133,
+      "sign_change_rate": 0.019668737060041408,
+      "mid_between_mean": 43.36097927535265,
+      "mid_between_median": 30.495426485932093,
+      "mid_between_p90": 90.49880459452746,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 315,
+          "mid_between_mean": 103.6172005929695,
+          "mid_between_median": 82.28087348994814,
+          "sign_changes": 3
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2176,
+          "mid_between_mean": 48.01660617737497,
+          "mid_between_median": 35.03459657969962,
+          "sign_changes": 43
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 856,
+          "mid_between_mean": 43.5846957949205,
+          "mid_between_median": 31.6029132498745,
+          "sign_changes": 35
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 39,
+          "mid_between_mean": 91.6246378704102,
+          "mid_between_median": 81.87924673496482,
+          "sign_changes": 7
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3284,
+          "mid_between_mean": 33.10363518423307,
+          "mid_between_median": 25.31403527870785,
+          "sign_changes": 37
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 92,
+          "mid_between_mean": 70.53467618219473,
+          "mid_between_median": 60.1452530793091,
+          "sign_changes": 8
+        }
+      ]
+    },
+    {
+      "reference": "ORIGINAL_35_80",
+      "candidate": "PACKAGE_A",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 35,
+      "sign_change_rate": 0.005175983436853002,
+      "mid_between_mean": 37.25991989714778,
+      "mid_between_median": 28.589516359900923,
+      "mid_between_p90": 72.40688577940399,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 320,
+          "mid_between_mean": 54.57420606102448,
+          "mid_between_median": 34.76785184355916,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2281,
+          "mid_between_mean": 35.6678355395018,
+          "mid_between_median": 28.205278874608233,
+          "sign_changes": 4
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 766,
+          "mid_between_mean": 37.85230843645053,
+          "mid_between_median": 29.615913310924626,
+          "sign_changes": 4
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 6,
+          "mid_between_mean": 148.56493348794814,
+          "mid_between_median": 144.58349639563485,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3077,
+          "mid_between_mean": 35.05286866676153,
+          "mid_between_median": 27.732262869161993,
+          "sign_changes": 11
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 312,
+          "mid_between_mean": 49.31270765547386,
+          "mid_between_median": 34.88349276100732,
+          "sign_changes": 15
+        }
+      ]
+    },
+    {
+      "reference": "ORIGINAL_35_80",
+      "candidate": "SUBMITTED_23_47",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 15,
+      "sign_change_rate": 0.0022182786157941437,
+      "mid_between_mean": 27.607735349453716,
+      "mid_between_median": 24.781064557304056,
+      "mid_between_p90": 50.404955327841776,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 320,
+          "mid_between_mean": 34.5593198235091,
+          "mid_between_median": 25.31596450881593,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2281,
+          "mid_between_mean": 24.511016094396435,
+          "mid_between_median": 19.103334680183362,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 766,
+          "mid_between_mean": 23.82336050879691,
+          "mid_between_median": 20.05358742956137,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 6,
+          "mid_between_mean": 86.47194241625583,
+          "mid_between_median": 74.76193537676937,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3077,
+          "mid_between_mean": 29.34740657309966,
+          "mid_between_median": 28.486930963068943,
+          "sign_changes": 4
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 312,
+          "mid_between_mean": 34.11987355288849,
+          "mid_between_median": 25.311961094170776,
+          "sign_changes": 10
+        }
+      ]
+    },
+    {
+      "reference": "ORIGINAL_35_80",
+      "candidate": "GARL_FULL",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 114,
+      "sign_change_rate": 0.01685891748003549,
+      "mid_between_mean": 32.47074718378406,
+      "mid_between_median": 21.037829031494354,
+      "mid_between_p90": 67.21192549718823,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 320,
+          "mid_between_mean": 66.7405399362716,
+          "mid_between_median": 42.95573521016716,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2281,
+          "mid_between_mean": 34.379619012866875,
+          "mid_between_median": 23.90282238172687,
+          "sign_changes": 10
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 766,
+          "mid_between_mean": 30.7932187749875,
+          "mid_between_median": 23.27859858358518,
+          "sign_changes": 15
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 6,
+          "mid_between_mean": 74.89438339577644,
+          "mid_between_median": 66.58813930197644,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3077,
+          "mid_between_mean": 25.815792568933492,
+          "mid_between_median": 16.715160645441976,
+          "sign_changes": 50
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 312,
+          "mid_between_mean": 52.301740680026036,
+          "mid_between_median": 32.54557186384963,
+          "sign_changes": 38
+        }
+      ]
+    },
+    {
+      "reference": "ORIGINAL_35_80",
+      "candidate": "GARL_EVENT",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 132,
+      "sign_change_rate": 0.019520851818988466,
+      "mid_between_mean": 41.160812581036154,
+      "mid_between_median": 29.632789732670823,
+      "mid_between_p90": 82.3312015275286,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 320,
+          "mid_between_mean": 91.45189971939848,
+          "mid_between_median": 74.15603308937116,
+          "sign_changes": 2
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2281,
+          "mid_between_mean": 42.590083422934875,
+          "mid_between_median": 29.64870602050463,
+          "sign_changes": 37
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 766,
+          "mid_between_mean": 39.90301365679929,
+          "mid_between_median": 21.254404698287523,
+          "sign_changes": 41
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 6,
+          "mid_between_mean": 112.05600866239881,
+          "mid_between_median": 112.17962441636833,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3077,
+          "mid_between_mean": 32.95705683867234,
+          "mid_between_median": 26.95609193810185,
+          "sign_changes": 32
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 312,
+          "mid_between_mean": 61.76255791463807,
+          "mid_between_median": 52.491177778549,
+          "sign_changes": 19
+        }
+      ]
+    },
+    {
+      "reference": "GARL_FULL",
+      "candidate": "PACKAGE_A",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 125,
+      "sign_change_rate": 0.018485655131617866,
+      "mid_between_mean": 44.08432317335028,
+      "mid_between_median": 31.483333857249708,
+      "mid_between_p90": 90.64282612282756,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 366,
+          "mid_between_mean": 60.155076138900114,
+          "mid_between_median": 47.133996439817466,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2325,
+          "mid_between_mean": 43.33047306116306,
+          "mid_between_median": 33.261959783247065,
+          "sign_changes": 20
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 683,
+          "mid_between_mean": 61.721415209221654,
+          "mid_between_median": 42.14008489151745,
+          "sign_changes": 36
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 61,
+          "mid_between_mean": 145.50778496774012,
+          "mid_between_median": 151.5301034362348,
+          "sign_changes": 29
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3239,
+          "mid_between_mean": 36.41198545028909,
+          "mid_between_median": 26.417093620833693,
+          "sign_changes": 21
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 88,
+          "mid_between_mean": 72.3632184060924,
+          "mid_between_median": 43.72947121270124,
+          "sign_changes": 19
+        }
+      ]
+    },
+    {
+      "reference": "GARL_FULL",
+      "candidate": "SUBMITTED_23_47",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 109,
+      "sign_change_rate": 0.01611949127477078,
+      "mid_between_mean": 37.646841726667994,
+      "mid_between_median": 27.22042995452735,
+      "mid_between_p90": 73.66087844518036,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 366,
+          "mid_between_mean": 53.916159496443655,
+          "mid_between_median": 41.04552122319021,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2325,
+          "mid_between_mean": 37.51256139910071,
+          "mid_between_median": 28.549237207828195,
+          "sign_changes": 16
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 683,
+          "mid_between_mean": 53.856524648212606,
+          "mid_between_median": 29.75138698769763,
+          "sign_changes": 34
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 61,
+          "mid_between_mean": 140.1058319168779,
+          "mid_between_median": 140.04789317627035,
+          "sign_changes": 29
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3239,
+          "mid_between_mean": 29.59955130176261,
+          "mid_between_median": 23.82664988044476,
+          "sign_changes": 12
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 88,
+          "mid_between_mean": 72.89222021651784,
+          "mid_between_median": 40.55226822660394,
+          "sign_changes": 18
+        }
+      ]
+    },
+    {
+      "reference": "GARL_FULL",
+      "candidate": "ORIGINAL_35_80",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 114,
+      "sign_change_rate": 0.01685891748003549,
+      "mid_between_mean": 32.47074718378406,
+      "mid_between_median": 21.037829031494354,
+      "mid_between_p90": 67.21192549718823,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 366,
+          "mid_between_mean": 58.59553710661845,
+          "mid_between_median": 48.652718804452,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2325,
+          "mid_between_mean": 32.980313317520185,
+          "mid_between_median": 24.971513342083725,
+          "sign_changes": 17
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 683,
+          "mid_between_mean": 45.32407786399573,
+          "mid_between_median": 19.47902470423148,
+          "sign_changes": 41
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 61,
+          "mid_between_mean": 126.66687933708792,
+          "mid_between_median": 117.21012765745303,
+          "sign_changes": 30
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3239,
+          "mid_between_mean": 23.851469992774955,
+          "mid_between_median": 17.386959757570292,
+          "sign_changes": 7
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 88,
+          "mid_between_mean": 62.54615096842611,
+          "mid_between_median": 19.172998094288666,
+          "sign_changes": 19
+        }
+      ]
+    },
+    {
+      "reference": "GARL_FULL",
+      "candidate": "GARL_EVENT",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 198,
+      "sign_change_rate": 0.029281277728482696,
+      "mid_between_mean": 45.196504798751576,
+      "mid_between_median": 30.31176045343106,
+      "mid_between_p90": 97.29219774804905,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 366,
+          "mid_between_mean": 98.51997696563079,
+          "mid_between_median": 94.40077424806546,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2325,
+          "mid_between_mean": 48.85665510972008,
+          "mid_between_median": 35.43730635290277,
+          "sign_changes": 50
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 683,
+          "mid_between_mean": 55.50567950602654,
+          "mid_between_median": 29.275954562417024,
+          "sign_changes": 67
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 61,
+          "mid_between_mean": 137.97592390162683,
+          "mid_between_median": 143.19023229875708,
+          "sign_changes": 28
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3239,
+          "mid_between_mean": 31.44406757719125,
+          "mid_between_median": 24.334334380796754,
+          "sign_changes": 33
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 88,
+          "mid_between_mean": 88.57369780114003,
+          "mid_between_median": 59.278930021418134,
+          "sign_changes": 20
+        }
+      ]
+    },
+    {
+      "reference": "GARL_EVENT",
+      "candidate": "PACKAGE_A",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 147,
+      "sign_change_rate": 0.021739130434782608,
+      "mid_between_mean": 49.75455512639563,
+      "mid_between_median": 35.1462283658022,
+      "mid_between_p90": 103.76878832436805,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 158,
+          "mid_between_mean": 62.03628316539162,
+          "mid_between_median": 45.53525094175896,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2224,
+          "mid_between_mean": 48.776553377776025,
+          "mid_between_median": 38.22255714067227,
+          "sign_changes": 6
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 855,
+          "mid_between_mean": 53.92332845366244,
+          "mid_between_median": 37.584358920014964,
+          "sign_changes": 19
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 106,
+          "mid_between_mean": 139.93109184571068,
+          "mid_between_median": 137.37844082904357,
+          "sign_changes": 25
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3309,
+          "mid_between_mean": 43.096377670498136,
+          "mid_between_median": 30.308857743453732,
+          "sign_changes": 54
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 110,
+          "mid_between_mean": 132.87690033796724,
+          "mid_between_median": 98.6639297343709,
+          "sign_changes": 43
+        }
+      ]
+    },
+    {
+      "reference": "GARL_EVENT",
+      "candidate": "SUBMITTED_23_47",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 133,
+      "sign_change_rate": 0.019668737060041408,
+      "mid_between_mean": 43.36097927535265,
+      "mid_between_median": 30.495426485932093,
+      "mid_between_p90": 90.49880459452746,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 158,
+          "mid_between_mean": 60.90642753522719,
+          "mid_between_median": 41.31933434528598,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2224,
+          "mid_between_mean": 45.443019827187236,
+          "mid_between_median": 35.849071359122085,
+          "sign_changes": 3
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 855,
+          "mid_between_mean": 45.35761140964532,
+          "mid_between_median": 32.400333762531936,
+          "sign_changes": 17
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 106,
+          "mid_between_mean": 138.82022748135543,
+          "mid_between_median": 138.2650972463881,
+          "sign_changes": 25
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3309,
+          "mid_between_mean": 34.406947780335365,
+          "mid_between_median": 25.448441229573987,
+          "sign_changes": 43
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 110,
+          "mid_between_mean": 137.9105285482191,
+          "mid_between_median": 98.45249247362254,
+          "sign_changes": 45
+        }
+      ]
+    },
+    {
+      "reference": "GARL_EVENT",
+      "candidate": "ORIGINAL_35_80",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 132,
+      "sign_change_rate": 0.019520851818988466,
+      "mid_between_mean": 41.160812581036154,
+      "mid_between_median": 29.632789732670823,
+      "mid_between_p90": 82.3312015275286,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 158,
+          "mid_between_mean": 56.39400399886046,
+          "mid_between_median": 41.60855980373329,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2224,
+          "mid_between_mean": 40.80127883416679,
+          "mid_between_median": 29.52088045321601,
+          "sign_changes": 5
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 855,
+          "mid_between_mean": 38.42389404455864,
+          "mid_between_median": 24.96161876649111,
+          "sign_changes": 20
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 106,
+          "mid_between_mean": 131.41195864053972,
+          "mid_between_median": 124.26477101441372,
+          "sign_changes": 26
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3309,
+          "mid_between_mean": 35.66401589998828,
+          "mid_between_median": 28.966541304973944,
+          "sign_changes": 36
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 110,
+          "mid_between_mean": 126.20720251730474,
+          "mid_between_median": 83.78028025275655,
+          "sign_changes": 45
+        }
+      ]
+    },
+    {
+      "reference": "GARL_EVENT",
+      "candidate": "GARL_FULL",
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 198,
+      "sign_change_rate": 0.029281277728482696,
+      "mid_between_mean": 45.196504798751576,
+      "mid_between_median": 30.31176045343106,
+      "mid_between_p90": 97.29219774804905,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 158,
+          "mid_between_mean": 66.98892468043606,
+          "mid_between_median": 49.961611132362634,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2224,
+          "mid_between_mean": 47.46995717333602,
+          "mid_between_median": 34.9634876477703,
+          "sign_changes": 11
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 855,
+          "mid_between_mean": 47.374238713578535,
+          "mid_between_median": 33.97396856655901,
+          "sign_changes": 23
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 106,
+          "mid_between_mean": 131.21460350010685,
+          "mid_between_median": 130.34697580276242,
+          "sign_changes": 19
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3309,
+          "mid_between_mean": 36.20228329614038,
+          "mid_between_median": 25.099873807834445,
+          "sign_changes": 91
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 110,
+          "mid_between_mean": 138.67502816454976,
+          "mid_between_median": 115.11466323240597,
+          "sign_changes": 54
+        }
+      ]
+    }
+  ],
+  "additive_projection_anchor_RGB_GEO_BAND": [
+    {
+      "package": "A",
+      "arm": "GEO_LEARNED",
+      "fold_rows": 88744,
+      "anchor": "RGB_GEO_BAND",
+      "point": 26.81604360297169,
+      "ci95": [
+        25.924915680653513,
+        27.81613307685123
+      ],
+      "test_bin_share_by_group": {
+        "c": [
+          0.43174603174603177,
+          0.2920634920634921,
+          0.21904761904761905,
+          0.01904761904761905,
+          0.0380952380952381
+        ],
+        "s": [
+          0.4921875,
+          0.29825367647058826,
+          0.1645220588235294,
+          0.03768382352941176,
+          0.007352941176470588
+        ],
+        "l": [
+          0.4346368715083799,
+          0.3094972067039106,
+          0.18212290502793296,
+          0.054748603351955305,
+          0.01899441340782123
+        ],
+        "n": [
+          0.34419431279620855,
+          0.2668838862559242,
+          0.26273696682464454,
+          0.09597156398104266,
+          0.030213270142180094
+        ]
+      },
+      "replicates": 2000
+    }
+  ],
+  "disagreement_with_anchor_train_vs_test": {
+    "A": {
+      "train_oof_s7": 29.21137260446524,
+      "test": 19.669636338462862,
+      "ratio": 0.6733554292295107
+    }
+  },
+  "seeds_used_for_fold_side": [
+    7
+  ],
+  "cv_seeds": [
+    7,
+    13,
+    21
+  ]
+}
