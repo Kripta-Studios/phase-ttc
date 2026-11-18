@@ -1,0 +1,79 @@
+{
+  "aliases": 957,
+  "candidate": "PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAIN40",
+  "code_sha256": {
+    "__init__.py": "a81b9285f9d303b198fcf3d5bc8dfe8ba73dbc288120950d66b5af932f9ef5da",
+    "data.py": "88c0816294b6257115fafa269855841d9bf7c864925e7c5d85090f406f9e3714",
+    "evaluate.py": "102dc61265f720af90eecbf6cd695148def4a0e0b42ecbe4fd1983a36b055988",
+    "final_package.py": "02aed0adc81bfe48d9ffca2ce0db3dca421b56e982d68649c6b39ee8496a68cf",
+    "geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
+    "heads.py": "b94bdfa134e262021351fcea633535deb47ee8a792764748cf3527085536d478",
+    "metrics.py": "8dc9fabfc655ba9f4b11db5cbc393e3955ca9b7695e692509366c5d4d217f187",
+    "package.py": "ac0426e9b5d3c959ed66aafc289f505671616196964f5424ee73d8eca69019ce",
+    "report.py": "385357eacbaf85b74138c8d1b5315535747d150aada68ad165d3dc3372adc767",
+    "run_cv.py": "e50e713632b7a0e931dc6175189057faa247b2c2b94fa5b314a31310332412e5",
+    "variants.py": "6b97ce3929b204332e0c8a171097b54fd0a0a4c2457b6463df629307c7c4bcf6",
+    "weights.py": "56147f2d3118cd8492adbeaeaccf2e64c8b480b4312490a6927669abe53fcfb5"
+  },
+  "external_submission": false,
+  "finite_and_no_failures": true,
+  "inputs": 20,
+  "parameters": 1955,
+  "physical_queries": 5805,
+  "population": 6762,
+  "predictions_csv_sha256": "1e6ef1f628f8abf508f1c77f6f9621e4905d6203ca917fb0678eb67dfc61cee7",
+  "primary_variant": "RGB_GEO_BAND",
+  "private_targets_read": false,
+  "protocol_sha256": "7894046c035e5143576826b0f877d567830549bac3da6b456ddfb0f8d8c60126",
+  "receipt_sha256": "10d69e28df85eccc2bd64b71c02c9a09ac7e0acbda9fde2eeda31194107032c0",
+  "schema": "phase_geometry_test12_candidate_receipt_v1",
+  "seed": 7,
+  "selection_sha256": "4908a891f8039a62746dadaca2760a7d50271726ae750fa96846e13078c86169",
+  "source_files": {
+    "blocks": "12465d3b63dba27573461c098f2d19046e89c64c3d32444dfbf4b533fa5e8ec1",
+    "official_scorer": "f3bbf089ba6e47edfce1de522c92ddc969db2260fac7544e82bc017fedf82dce",
+    "released_checkpoint": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+    "submitted_zip": "5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc",
+    "train_annotations": "64e9a81232643ecce1d2f66e906c7cff6ea1e9e6958f81588b95e112693b11ad",
+    "train_data": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6"
+  },
+  "source_members": {
+    "oof_phase20": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_generated_fd84565b0df06d79.tar",
+      "member": "workspace/ejepa_final_runs/final/oof/PHASE20_CONTEXT.npz",
+      "sha256": "48207e3c5366057bfeba4e91ec40c145b344e8e7eb6fabc8966c82386d6c51cd"
+    },
+    "test_diagnostics": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_delivery_bf471efaacbee542.tar",
+      "member": "workspace/ejepa_final_runs/final/test12/staged_sequences/diagnostics/",
+      "sha256": ""
+    },
+    "test_inputs": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_inputs_63e2720817ba6521.tar",
+      "member": "workspace/ejepa_final_inputs/workspace/e-jepa-ttc-v16-multimodal-validation/artifacts/research_independent_20261012T165833Z/DEPENDENCIES/OFFICIAL_TEST12/test_inputs.parquet",
+      "sha256": "aedb9da5484ceedb642ef1cbc7cf6115dcf7f368e4444b55de947989fc19a362"
+    },
+    "test_inventory": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_inputs_63e2720817ba6521.tar",
+      "member": "workspace/ejepa_final_inputs/workspace/e-jepa-ttc-v16-multimodal-validation/artifacts/multimodal_research_20261012/test12_phase_only/INPUTS.json",
+      "sha256": "b78730abe68de7fbe06c6c98b25d5fa025c04d9303720b680ce0c0f575d2e526"
+    },
+    "train_cache": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_generated_fd84565b0df06d79.tar",
+      "member": "workspace/ejepa_final_runs/final/cache/PHASE_ONLY_EVENT_S7_TRAIN40.npz",
+      "sha256": "5a814615630f7e9ae372acf2123b2c9b2da880e9a950b402179adde44ba1293b"
+    }
+  },
+  "state_dict_sha256": "a2d68afc1232a7ebc74e0acd107917c758fe661f962f510f01d470b9d31f5229",
+  "status": "PACKAGED_NOT_SUBMITTED",
+  "submitted_zip_sha256": "5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc",
+  "token_order": "official test_inputs.parquet order",
+  "train_rows": 88744,
+  "updates": 12044,
+  "work_inputs_sha256": {
+    "test_inputs.npz": "1e3d9d5b6e8267711628d0b7d9cbafd2b62b534541b7ac20e85557a6749bb65f",
+    "train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d"
+  },
+  "zip_path": "artifacts\\sota_20261118\\geometry\\test12_candidate\\PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAIN40.zip",
+  "zip_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df"
+}
