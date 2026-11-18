@@ -375,7 +375,7 @@ Random initialization & 0.03719641 \\
 \begin{document}
 \papertitle{PHASE-TTC}{From Motion to Time}{A Causal Event--RGB System\\for Signed Time-to-Contact Estimation}{\'Alvaro Schwiedop Souto}
 \begin{abstract}
-Estimating time-to-contact from vision requires measuring how an object's apparent scale changes. Event cameras record rapid brightness changes, while RGB frames provide scene appearance; combining them requires reconciling different temporal and visual representations. We introduce PHASE-TTC, which estimates motion independently in each modality within supplied object regions and combines those estimates in a shared phase coordinate. A compact residual head corrects the RGB estimate using phase, timing, and observation-support features from up to 650\,ms of causal history. On the archived GarlTTC Test leaderboard of 28 October 2026, the submitted system ranks first of three entries, with Overall Motion-in-Depth error \OfficialPhasePublishedOverallMiD{}, a \OfficialOverallRelativeGain{} reduction relative to the Garl-TTC reference, which uses two observations 0.1\,s apart, and zero scorer-defined failures. Matched controls do not attribute this gain to the fusion design. With the same upstream models and temporal histories, equally sized readouts on EvTTC show no consistent advantage from event access or from phase over inverse-TTC parameterization, and refitted heads are not distinguishable from the RGB branch they correct. Learned corrections improve on equal mixtures of the branch outputs; their margin over a one-parameter calibrated mixture depends largely on one recording. Adding box expansion reduces road MAE from 0.282\,s to 0.221\,s with a fixed mixture and to 0.159\,s with a learned router on eight recordings, whereas the fixed mixture has the lower pooled error. On the benchmark's own training folds, adding causal box-expansion inputs from the supplied regions lowers the head's Overall MiD from 85.2 to 42.0, and to 41.3 with a band-weighted loss and no event inputs; fold levels are not comparable with the test score. Submitted once under a pre-registered protocol, this variant scores 23.47 Overall MiD on the test server, against 35.80 for the original system, which locates most of the available accuracy in the history of the supplied regions and not in event--RGB fusion. These secondary evaluations reuse development-inspected recordings. A single five-second replay on a laptop GPU delivered all 250 predictions with numerical parity and a 29.14\,ms p95 response, above a 20\,ms response deadline. In a later 72-pass study of six scenes, the two-packet queue policy completed one of 24 PHASE replays and delivered 9.6\% of offered outputs; a 64-packet queue delivered every output with per-scene p95 responses of 104--227\,ms.
+Estimating time-to-contact from vision requires measuring how an object's apparent scale changes. Event cameras record rapid brightness changes, while RGB frames provide scene appearance; combining them requires reconciling different temporal and visual representations. We introduce PHASE-TTC, which estimates motion independently in each modality within supplied object regions and combines those estimates in a shared phase coordinate. A compact residual head corrects the RGB estimate using phase, timing, and observation-support features from up to 650\,ms of causal history. On the archived GarlTTC Test leaderboard of 28 October 2026, the submitted system ranks first of three entries, with Overall Motion-in-Depth error \OfficialPhasePublishedOverallMiD{}, a \OfficialOverallRelativeGain{} reduction relative to the Garl-TTC reference, which uses two observations 0.1\,s apart, and zero scorer-defined failures. Matched controls do not attribute this gain to the fusion design. With the same upstream models and temporal histories, equally sized readouts on EvTTC show no consistent advantage from event access or from phase over inverse-TTC parameterization, and refitted heads are not distinguishable from the RGB branch they correct. Learned corrections improve on equal mixtures of the branch outputs; their margin over a one-parameter calibrated mixture depends largely on one recording. Adding box expansion reduces road MAE from 0.282\,s to 0.221\,s with a fixed mixture and to 0.159\,s with a learned router on eight recordings, whereas the fixed mixture has the lower pooled error. On the benchmark's own training folds, adding causal box-expansion inputs from the supplied regions lowers the head's Overall MiD from 85.2 to 42.0, and to 41.3 with a band-weighted loss and no event inputs; fold levels are not comparable with the test score. Submitted once under a pre-registered protocol, this variant scores 23.47 Overall MiD on the test server, against 35.80 for the original system, which locates most of the available accuracy in the history of the supplied regions and not in event--RGB fusion. In follow-up controls on development data, the supplied-box history alone accounts for all but about five fold points of that variant, the released reference event model is not separated from the RGB branch once both receive box history, and an event-derived content-scale input removes the failure of box geometry on frame-filling objects in a second dataset; none of these controls was scored on the test server. These secondary evaluations reuse development-inspected recordings. A single five-second replay on a laptop GPU delivered all 250 predictions with numerical parity and a 29.14\,ms p95 response, above a 20\,ms response deadline. In a later 72-pass study of six scenes, the two-packet queue policy completed one of 24 PHASE replays and delivered 9.6\% of offered outputs; a 64-packet queue delivered every output with per-scene p95 responses of 104--227\,ms.
 \end{abstract}
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{figures/publication_teaser.pdf}
@@ -896,7 +896,7 @@ PHASE-TTC combines modality-specific motion estimates and temporal context in a 
 \begingroup\small
 \setlength{\bibsep}{3pt}
 
-\begin{thebibliography}{32}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -1092,6 +1092,11 @@ Kaizhen Sun, Jinghang Li, Kuan Dai, Bangyan Liao, Wei Xiong, and Yi~Zhou.
 \newblock {EvTTC}: An event camera dataset for time-to-collision estimation.
 \newblock \emph{IEEE Robotics and Automation Letters}, 2025.
 \newblock URL \url{https://arxiv.org/abs/2412.05053}.
+
+\bibitem[Teed and Deng(2020)]{teed2020raft}
+Zachary Teed and Jia Deng.
+\newblock {RAFT}: Recurrent all-pairs field transforms for optical flow.
+\newblock In \emph{European Conference on Computer Vision (ECCV)}, 2020.
 
 \bibitem[Wolpert(1992)]{wolpert1992}
 David~H. Wolpert.
@@ -3814,4 +3819,71 @@ RGB all, events two slots & 85.94 & +0.72 $[+0.40,+1.06]$ & +0.64 $[+0.35,+0.96]
 Restricting both refiners to two slots costs 3.5 points with seed 7 and 2.9 averaged over three seeds; removing history entirely costs 5.6. RGB history accounts for most of the two-slot difference and event history for a smaller, resolved part. Almost all of the benefit is present with four slots. Seconds MAE does not follow the same order: three truncated arms have a lower point MAE than the released arm.
 
 This control bounds the role of history inside PHASE-TTC; it does not reproduce the two-frame regime of the reference method. Each PHASE observation already integrates about 200\,ms of RGB and 300\,ms of events, the producers are fixed, the recipe was developed with full history, and Garl-TTC was not retrained with longer support. On these folds, history beyond two slots explains a few points of an 85-point score, which is small beside the 9.2-point test difference in relative terms but cannot be mapped onto it.
+\subsection{Follow-up controls after the second submission}
+\label{sec:followup}
+\cohortline{DEVELOPMENT ONLY / TRAIN40 folds, 88,744 queries / FCWD, 597 development-exposed queries in 3 sequences / no test scoring}
+
+The second submission located most of the available accuracy in the history of the supplied regions (Appendix~\ref{sec:post-audit-geometry}). Five further controls examined that finding. Each fixed its arms and decision rule in a protocol file before its comparisons were computed; as before, file times and content hashes, not separate commits, attest the order. None read private test labels and none produced a test score. An independent read-only review regenerated every headline number below from stored per-query predictions and set the scope of the statements made here.
+
+\subsubsection{How much is box history alone}
+\label{sec:followup-matched}
+A head that receives only the ten box-geometry inputs, with no image and no event model, scores 46.09 Overall MiD on the TRAIN40 folds, against 41.27 for the submitted geometry variant. The RGB branch therefore contributes 4.82 points, with a paired sequence-bootstrap interval of $[3.36,6.25]$, beyond supplied-box history. Replacing the RGB-branch fields by the predictions of the released Garl-TTC event model, under the same head, loss, and folds, gives 40.57, a difference of $+0.70$ with an interval of $[-0.31,1.75]$ that includes zero. The Garl-TTC predictions are in-sample on these sequences, which favours that arm. With the supplied-box history made available to both, the folds do not separate the PHASE-TTC RGB branch from the reference event model, and this article does not claim that PHASE-TTC outperforms Garl-TTC under matched information. A stacked arm on the full Garl-TTC model was rejected by a pre-registered in-sample check: its training-fold score projected to between 29.6 and 32.5 on the test set, against the 45.03 it obtains, so a head fitted on it would trust it too much. Refitting the reference per fold was beyond the available compute. That comparison remains unresolved. A prediction package for the box-only head is pre-registered and has not been submitted.
+
+\subsubsection{Two-frame estimators from the literature}
+\label{sec:followup-literature}
+We ran three published two-frame estimators without fine-tuning on 4,000 TRAIN40 queries, 100 per sequence, giving each the same RGB pair 100\,ms apart and the same supplied region: Optical Expansion~\cite{yang2020expansion}, ScaleFlow++~\cite{ling2024scaleflowpp}, and an affine fit to RAFT flow~\cite{teed2020raft}. The subset was reduced from 6,000 queries by a pre-registered rule before any metric was computed.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lr}
+\toprule
+Readout on the 4,000-query subset & Overall MiD \\
+\midrule
+Geometry variant, out of fold & 39.4 \\
+Box-only head, out of fold & 44.4 \\
+Released head, out of fold & 84.5 \\
+ScaleFlow++, zero-shot & 114.0 \\
+ScaleFlow++, one linear scale fitted on the other blocks & 84.1 \\
+RAFT with affine fit, zero-shot & 136.5 \\
+Optical Expansion, zero-shot & 164.2 \\
+Size ratio of the two supplied boxes & 178.4 \\
+\bottomrule
+\end{tabular}
+\caption{Two-frame estimators and PHASE-TTC heads on the same TRAIN40 subset; lower is better. The estimators were not trained on this data and receive no box history, so the rows are not a like-for-like comparison.}
+\label{tab:followup-literature}
+\end{table}
+
+The best estimator is 74.6 points above the geometry variant, with an interval of $[62.2,87.8]$. The comparison is bounded in three ways. The estimators have no access to box history and were not fitted to this benchmark; the values are obtained under our 384-pixel crop protocol, under which they recover 63\% and 81\% of a synthetic 5\% zoom, so they are a bound for that protocol and not the ceiling of the methods; and nothing here concerns the test set. The dense estimators lose much less accuracy on truncated boxes than box geometry does, which motivated the last control below.
+
+\subsubsection{A second dataset: FCWD}
+\label{sec:followup-fcwd}
+FCWD provides three approach sequences with event data and object regions. Its labels have been open to this project since October and it has now been scored repeatedly, so every FCWD value in this section is development evidence and not a confirmation. Heads were fitted on TRAIN40 only and applied without adjustment; predictions were hashed before the labels were opened in each campaign. Scores are the relative TTC error in percent, averaged per sequence and then across the three sequences, on the 597 queries whose label lies inside the supported range. That eligibility rule depends on labels, is identical for all arms, and removes 33 queries from the end of the approach.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Arm & All (597) & Saturated box (82) & Other (515) \\
+\midrule
+Box-only head & 33.4 & 121.4 & 19.4 \\
+Sealed PHASE-TTC event context & 32.3 & 117.6 & 18.6 \\
+Event-branch fields plus geometry & 28.3 & 111.5 & 15.0 \\
+Public Garl-TTC event model, run locally & 26.8 & 37.8 & 25.1 \\
+Truncation-robust geometry & 23.4 & 60.0 & 17.6 \\
+Robust geometry plus event content scale & 16.1 & 22.2 & 15.2 \\
+\bottomrule
+\end{tabular}
+\caption{Relative TTC error (\%) on development-exposed FCWD queries; lower is better. Fitted arms are three-seed means. A box is saturated when it is truncated on both image axes; this stratum was first defined as a breakdown after an earlier scoring and later arms were designed against it.}
+\label{tab:followup-fcwd}
+\end{table}
+
+The box-only head transfers poorly because of one regime. Near contact the object fills the frame, the box edges stop moving, and box expansion carries no signal: on those 82 queries every PHASE-TTC arm available at that point exceeded 100\% error, while the locally run reference stayed at 37.8\%. Adding the PHASE-TTC event-branch fields improved the remaining queries and not the saturated ones. Geometry inputs made robust to truncation, fitted with synthetic truncation of training boxes, lowered the total to 23.4 but made the 46 real saturated rows of TRAIN40 worse.
+
+The last arm adds a scale measurement that does not depend on box edges: the isotropic scale change of the event image inside the region, estimated causally within the 650\,ms budget. On the TRAIN40 folds it lowers the robust head from 44.41 to 40.43 Overall MiD, a difference of $-3.97$ with an interval of $[-4.92,-3.09]$, with gains on truncated boxes ($-8.3$) and on synthetically saturated rows ($-44.2$). The 46 real saturated rows improve from 309 to 235 MiD and remain worse than the heads without robust inputs, 94 for the geometry variant, so that stratum is not solved on the benchmark's own data. On FCWD, with one sealed evaluation, the arm scores 16.1 against 23.4 for its base and 26.8 for the locally run reference, and 22.2 against 37.8 on saturated boxes; it is better in all three sequences. On the 14 eligible queries without a valid content measurement it is worse than its base, 130\% against 96\%.
+
+These FCWD values support a narrow statement: on development data, an event-derived content-scale input removes the saturated-box failure of box geometry. They do not establish generalization. Three sequences of one scenario give ten distinct bootstrap resamples; the arms use the supplied region with no delay, whereas the dataset's original cohort imposed 50\,ms; and published FCWD results of other methods, obtained under their own protocols, are lower than every value in Table~\ref{tab:followup-fcwd}. No state-of-the-art claim is made on FCWD.
+
+\subsubsection{Consequence for the event branch}
+\label{sec:followup-events}
+The variant that holds the best test score uses no event input. The content-scale control is the first in this project in which an event-derived signal gives a resolved improvement on the benchmark's training folds beyond box history. An RGB head with robust geometry and content scale improves on the submitted geometry variant by 2.42 points on the folds, with an interval of $[-2.90,-1.93]$. The pre-registered condition for building a test package required the upper end to lie below $-2.0$; it was not met, and no package was built. The role of events supported by this article is therefore specific: not the learned event branch of the original system, whose fields add 0.55 points to a geometry-augmented head, but a direct measurement of scale change that remains available when the supplied region stops being informative.
 \end{document}

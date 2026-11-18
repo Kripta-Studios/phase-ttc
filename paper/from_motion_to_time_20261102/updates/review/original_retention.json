@@ -54,7 +54,8 @@
     "sections/consolidation_details",
     "sections/local_hardware",
     "sections/extended_inference",
-    "sections/post_audit_controls"
+    "sections/post_audit_controls",
+    "sections/followup_controls"
   ],
   "all_original_sections_retained": true,
   "byte_identical_original_assets": {
