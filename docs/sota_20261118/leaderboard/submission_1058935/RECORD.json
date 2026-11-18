@@ -1,0 +1,25 @@
+{
+  "schema": "garlttc_submission_retrieval_v1",
+  "submission_id": 1058935,
+  "retrieved": "2026-11-18",
+  "retrieved_by": "repository owner, from the CodaBench submission record",
+  "uploaded_file": {
+    "name": "PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAI.zip",
+    "bytes": 89174,
+    "sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df",
+    "matches_preregistered_receipt": "docs/sota_20261118/SUBMISSION_RECEIPT_RGB_GEO_BAND_S7_TRAIN40.json (identical SHA-256)"
+  },
+  "scoring_result_zip_sha256": "66f9b7e23cb3d412f392b364efddbfbd1b05dfda6faa0e7c1fcd094f41847b21",
+  "prediction_result_zip_sha256": "803a14fd2f8b38a2bf9218edd3adf899ac82fad8513f63af28637643674a4e80",
+  "scores": {
+    "overall_MiD": 23.472377543653998,
+    "MiDc": 24.369316665712937,
+    "MiDs": 23.95223386792247,
+    "MiDl": 22.894232907201314,
+    "MiDn": 18.12625759700659,
+    "mean_MiD": 20.913352571757258,
+    "num_samples": 6762,
+    "failed_rate": 0.0
+  },
+  "fact_sheet": "not yet recorded; to be supplied by the owner"
+}

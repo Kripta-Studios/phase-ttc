@@ -59,7 +59,8 @@ confirmarlo de forma independiente.
 El 18 de noviembre se envió una sola vez, con recibo de prerregistro commiteado
 antes de subirlo, la variante elegida por la regla del control de geometría
 (rama RGB + expansión causal de las regiones suministradas + pérdida por banda,
-sin entradas de eventos). Envío `1058935`: **23,47 Overall MiD**, frente a 35,80
+sin entradas de eventos). Envío `1058935`, paquete verificado contra el recibo:
+**23,47 Overall MiD** (bandas c/s/l/n 24,37 / 23,95 / 22,89 / 18,13), frente a 35,80
 del sistema original y 45,03 de Garl-TTC (−34 % y −48 %). Es el segundo envío de
 la cuenta. El resultado sitúa la mayor parte de la precisión disponible en la
 historia de las regiones suministradas, no en la fusión de eventos y RGB.
