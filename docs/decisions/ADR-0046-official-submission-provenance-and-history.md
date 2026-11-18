@@ -216,6 +216,17 @@ empujarla al remoto; la decisión y la ejecución corresponden al propietario.
    `provenance.attribution`). Hace falta el registro de la cuenta (archivo
    descargable de la submission o recibo del navegador) para confirmar `5eb69749…`
    y la hora exacta con zona horaria.
+   **Comprobación del 2026-11-18.** CodaBench muestra para el envío un archivo de
+   89,0 kB. Ese tamaño no distingue entre los dos paquetes existentes: el TRAIN40
+   `5eb69749…` ocupa 88.968 bytes (27 de octubre, conservado en el almacén de
+   retorno del pod) y el V16 histórico `60b5a620…` ocupa 88.954 bytes (12 de
+   octubre). En la carpeta de descargas del propietario solo está el V16. Los dos
+   paquetes cubren los mismos 6.762 tokens pero predicen cosas distintas: ninguna
+   predicción coincide, la mediana de la diferencia es 0,58 s y el desacuerdo
+   medio en la coordenada de la métrica es 24,3 MiD. Por tanto importa cuál se
+   subió, y solo el archivo descargado desde «My submissions» de CodaBench lo
+   decide. Hasta entonces, que la puntuación 35,80 corresponda al modelo TRAIN40
+   descrito en el artículo es una inferencia apoyada en el nombre del envío.
 2. **Número total de envíos de la cuenta.** El propietario indica que la cuenta es
    `AlvaroSchwiedop` y ha aportado el leaderboard del 2026-11-18. **Respondida el
    2026-11-18 por declaración del propietario: hizo un único envío a CodaBench**,
