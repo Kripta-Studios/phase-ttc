@@ -1,0 +1,93 @@
+{
+  "aliases": 957,
+  "candidate": "PHASE_GEOMETRY_ROBUST_RGB_ROBUST_S7_TRAIN40",
+  "candidate_status": "ACCEPTED",
+  "code_sha256": {
+    "__init__.py": "8920b05d09dec463c1d3cbad53defb78a011019c99db79d81231776d8d2f724b",
+    "data.py": "9fd50733b6f363fe369a1bf8a5cb9e10996634290de9c376ebb2903e21cc68fb",
+    "evaluate.py": "7d587af5ec2d1788121b19a5a32fb638d2e1e95753ff984430d3a31e63c021f5",
+    "fcwd_eval.py": "e799d93cf416f4be2cb6ebfa5d52142976e830d2e1548a60e573427bbb85a0df",
+    "report.py": "5e71ca476363a840cb917a6464728291794a44b55c02399370c119877a0e3260",
+    "robust.py": "d7215055165475bf449c319744c27aabc4d4ccccd5c9e17096359f7e614da26e",
+    "run_cv.py": "26a119910debfc5f179b0b241dd169f9d346334d29ac466f3eba2eed0174a010",
+    "test12.py": "e503e0e802a4ce4ceb14fae9d1f6fa963202b0543572ae88592034c5da3829b4",
+    "variants.py": "b0879b06aa5bb4d8ad266407682d915c13a4af864349dbbe30d3f592e3e202e6"
+  },
+  "external_submission": false,
+  "finite_and_no_failures": true,
+  "history_budget": "650 ms causal (600 ms box window), unchanged from 1058935",
+  "hypothesis_draft": "Adding causal robust-geometry inputs (free-edge constant-velocity extrapolation and saturation flags) to the RGB_GEO_BAND head changes Test12 Overall MiD relative to 23.4724 mainly through queries with truncated boxes (10.0 % of physical queries); development-fold change versus RGB_GEO_BAND: -0.68 MiD [-1.00, -0.36]. The result would be reported whatever the score.",
+  "inputs": 33,
+  "package": {
+    "docs_copy": "docs/sota_20261118/geometry_robust/PHASE_GEOMETRY_ROBUST_RGB_ROBUST_S7_TRAIN40.zip",
+    "file_name": "PHASE_GEOMETRY_ROBUST_RGB_ROBUST_S7_TRAIN40.zip",
+    "sha256": "6a069149ee351c74ca94dd8651dd21090fd8bca73966dbba0fccc3dcfd421fe3",
+    "size_bytes": 89261
+  },
+  "parameters": 2371,
+  "physical_queries": 5805,
+  "population": 6762,
+  "predictions_csv_sha256": "ecf6773fb4a6d2f012f8848064c56b94bc620305081e474f4669ccfd512d9b4b",
+  "private_targets_read": false,
+  "receipt_sha256": "c11280766c576be4e970e07cc3e08ad953fd5daf7a972ff1f68d1abb6aa3cbc1",
+  "recipe": {
+    "file_name": "PROTOCOL.md",
+    "sha256": "8a00434674927996df78266abe7adcc5694b5d7d80645acfd4d2c6b22ad5ebd3"
+  },
+  "recommend_test_submission_by_rule": true,
+  "results_sha256": "6a823285fdb60e73409b763cb6c9dd0e727404d9c74dab8d8ac75bcba20a6832",
+  "schema": "geometry_robust_test12_candidate_receipt_v1",
+  "seed": 7,
+  "selection_sha256": "abff4c314988d6d3e6e535900f370d551869beb3a45c0f3e1cff2717cb532876",
+  "source_files": {
+    "blocks": "12465d3b63dba27573461c098f2d19046e89c64c3d32444dfbf4b533fa5e8ec1",
+    "official_scorer": "f3bbf089ba6e47edfce1de522c92ddc969db2260fac7544e82bc017fedf82dce",
+    "released_checkpoint": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+    "submitted_zip": "5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc",
+    "train_annotations": "64e9a81232643ecce1d2f66e906c7cff6ea1e9e6958f81588b95e112693b11ad",
+    "train_data": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6"
+  },
+  "source_members": {
+    "oof_phase20": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_generated_fd84565b0df06d79.tar",
+      "member": "workspace/ejepa_final_runs/final/oof/PHASE20_CONTEXT.npz",
+      "sha256": "48207e3c5366057bfeba4e91ec40c145b344e8e7eb6fabc8966c82386d6c51cd"
+    },
+    "test_diagnostics": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_delivery_bf471efaacbee542.tar",
+      "member": "workspace/ejepa_final_runs/final/test12/staged_sequences/diagnostics/",
+      "sha256": ""
+    },
+    "test_inputs": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_inputs_63e2720817ba6521.tar",
+      "member": "workspace/ejepa_final_inputs/workspace/e-jepa-ttc-v16-multimodal-validation/artifacts/research_independent_20261012T165833Z/DEPENDENCIES/OFFICIAL_TEST12/test_inputs.parquet",
+      "sha256": "aedb9da5484ceedb642ef1cbc7cf6115dcf7f368e4444b55de947989fc19a362"
+    },
+    "test_inventory": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_inputs_63e2720817ba6521.tar",
+      "member": "workspace/ejepa_final_inputs/workspace/e-jepa-ttc-v16-multimodal-validation/artifacts/multimodal_research_20261012/test12_phase_only/INPUTS.json",
+      "sha256": "b78730abe68de7fbe06c6c98b25d5fa025c04d9303720b680ce0c0f575d2e526"
+    },
+    "train_cache": {
+      "archive": "D:\\E_JEPA_POD2_RETURN_20261027\\final_generated_fd84565b0df06d79.tar",
+      "member": "workspace/ejepa_final_runs/final/cache/PHASE_ONLY_EVENT_S7_TRAIN40.npz",
+      "sha256": "5a814615630f7e9ae372acf2123b2c9b2da880e9a950b402179adde44ba1293b"
+    }
+  },
+  "state_dict_sha256": "bacfe523cd4be13905176b51c394861d1d5dd6a47c3198ced8f5e9969be48fa7",
+  "status": "PACKAGED_NOT_SUBMITTED",
+  "token_order": "official test_inputs.parquet order",
+  "train_population": 88744,
+  "train_rows": 88744,
+  "updates": 12044,
+  "upload": {
+    "note": "A formal pre-registration receipt (ADR-0047) is required before any upload.",
+    "performed_by_this_tool": false
+  },
+  "variant": "RGB_ROBUST",
+  "work_inputs_sha256": {
+    "robust_work.npz": "cb6f081f767bab42ad8ec78dcdc934c4620c7831feaa60e167589add0ca53b5b",
+    "test_inputs.npz": "1e3d9d5b6e8267711628d0b7d9cbafd2b62b534541b7ac20e85557a6749bb65f",
+    "train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d"
+  }
+}

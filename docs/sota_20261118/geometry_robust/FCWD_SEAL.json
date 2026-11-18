@@ -1,0 +1,38 @@
+{
+  "schema": "geometry_robust_fcwd_seal_v1",
+  "predictions": "PREDICTIONS_SEALED.csv",
+  "predictions_sha256": "bb1833412199bc8abc57ceab1f402fcd73764bafce45de4707546f8d4dfc78a1",
+  "queries": 630,
+  "variants": [
+    "GEO_ROBUST_AUG",
+    "GEO_ROBUST_AUG_MEM"
+  ],
+  "arms": [
+    "GEO_LEARNED_EAP_ZS_S13",
+    "GEO_LEARNED_EAP_ZS_S21",
+    "GEO_LEARNED_EAP_ZS_S7",
+    "GEO_ROBUST_AUG_MEM_S13",
+    "GEO_ROBUST_AUG_MEM_S21",
+    "GEO_ROBUST_AUG_MEM_S7",
+    "GEO_ROBUST_AUG_S13",
+    "GEO_ROBUST_AUG_S21",
+    "GEO_ROBUST_AUG_S7"
+  ],
+  "gt_ttc_opened": false,
+  "second_benchmark_seal_sha256": "b4d03940d84495354c77e17d2cea32a180d128f9e92152404922e10c02bdc07f",
+  "baseline_reproduced_from_recomputed_g_max_abs_ttc": 0.0,
+  "label_free_stratum_check": {
+    "both_truncated_current": 115,
+    "sat": 133,
+    "both_truncated_and_sat": 115,
+    "sat_not_both_truncated": 18
+  },
+  "heads_receipt_sha256": "63312542b37805b843d51b36205b8906a072657689d42a94efd210cf4ae9e99d",
+  "protocol_sha256": "8a00434674927996df78266abe7adcc5694b5d7d80645acfd4d2c6b22ad5ebd3",
+  "code_sha256": {
+    "fcwd_eval.py": "e799d93cf416f4be2cb6ebfa5d52142976e830d2e1548a60e573427bbb85a0df",
+    "robust.py": "d7215055165475bf449c319744c27aabc4d4ccccd5c9e17096359f7e614da26e",
+    "variants.py": "b0879b06aa5bb4d8ad266407682d915c13a4af864349dbbe30d3f592e3e202e6",
+    "run_cv.py": "26a119910debfc5f179b0b241dd169f9d346334d29ac466f3eba2eed0174a010"
+  }
+}

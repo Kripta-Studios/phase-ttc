@@ -1,0 +1,24 @@
+{
+  "schema": "geometry_robust_selection_v1",
+  "eligible": [
+    "RGB_ROBUST",
+    "RGB_ROBUST_AUG"
+  ],
+  "accepted": [
+    "RGB_ROBUST",
+    "RGB_ROBUST_AUG"
+  ],
+  "candidate": "RGB_ROBUST",
+  "candidate_status": "ACCEPTED",
+  "seed_mean_overall": {
+    "RGB_ROBUST": 40.598236223277084,
+    "RGB_ROBUST_AUG": 40.79876826946583
+  },
+  "candidate_delta_all_vs_RGB_GEO_BAND": -0.6826603742727404,
+  "candidate_delta_all_ci95": [
+    -1.003078868701238,
+    -0.36242597321907977
+  ],
+  "recommend_test_submission_by_rule": true,
+  "rule": "PROTOCOL.md \u00a75.2"
+}

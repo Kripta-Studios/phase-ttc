@@ -1,0 +1,304 @@
+{
+  "scope": "OUTPUT DISAGREEMENT ONLY; NOT ACCURACY; private Test12 labels not read",
+  "reference": "scored package 1058935 (Overall 23.47)",
+  "reference_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df",
+  "geometry_study_state_reproduces_scored_package_max_abs_ttc": 0.0,
+  "row_counts": {
+    "all": 6762,
+    "truncated_current": 588,
+    "not_truncated_current": 6174,
+    "sat": 0,
+    "window_not_clean": 862,
+    "robust_missing": 15
+  },
+  "by_subset": {
+    "all": {
+      "rows": 6762,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 4,
+      "sign_change_rate": 0.0005915409642117716,
+      "mid_between_mean": 6.288236703723164,
+      "mid_between_median": 4.208471266142124,
+      "mid_between_p90": 12.26722016581842,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 315,
+          "mid_between_mean": 6.877257844426215,
+          "mid_between_median": 5.316265613679732,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2176,
+          "mid_between_mean": 5.238870492175064,
+          "mid_between_median": 3.4452209331078087,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 856,
+          "mid_between_mean": 5.607665014740231,
+          "mid_between_median": 4.368224117135885,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 39,
+          "mid_between_mean": 19.31438793825768,
+          "mid_between_median": 9.416173754126493,
+          "sign_changes": 3
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 3284,
+          "mid_between_mean": 6.897551562398371,
+          "mid_between_median": 4.858765671928965,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 92,
+          "mid_between_mean": 8.151700711770646,
+          "mid_between_median": 3.570304513364061,
+          "sign_changes": 1
+        }
+      ]
+    },
+    "truncated_current": {
+      "rows": 588,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 3,
+      "sign_change_rate": 0.00510204081632653,
+      "mid_between_mean": 14.216643358382047,
+      "mid_between_median": 9.796174975749503,
+      "mid_between_p90": 29.62837009654148,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 23,
+          "mid_between_mean": 9.516389344889983,
+          "mid_between_median": 7.2657293778348455,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 93,
+          "mid_between_mean": 13.895235984958877,
+          "mid_between_median": 9.871292094899946,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 17,
+          "mid_between_mean": 11.609108184029566,
+          "mid_between_median": 10.845017909906097,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 2,
+          "mid_between_mean": 93.7396537323922,
+          "mid_between_median": 93.7396537323922,
+          "sign_changes": 2
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 443,
+          "mid_between_mean": 13.766673676545217,
+          "mid_between_median": 9.58856838059928,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 10,
+          "mid_between_mean": 36.47818078921795,
+          "mid_between_median": 14.783649314841067,
+          "sign_changes": 1
+        }
+      ]
+    },
+    "not_truncated_current": {
+      "rows": 6174,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 1,
+      "sign_change_rate": 0.00016196954972465177,
+      "mid_between_mean": 5.533150355660413,
+      "mid_between_median": 3.9957290249236466,
+      "mid_between_p90": 10.73934939536116,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 292,
+          "mid_between_mean": 6.669381048156809,
+          "mid_between_median": 5.277353221823413,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 2083,
+          "mid_between_mean": 4.852388499458359,
+          "mid_between_median": 3.348116585415728,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 839,
+          "mid_between_mean": 5.486062471381568,
+          "mid_between_median": 4.292370541661515,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 37,
+          "mid_between_mean": 15.291400598034198,
+          "mid_between_median": 8.960835913714298,
+          "sign_changes": 1
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 2841,
+          "mid_between_mean": 5.826442411899583,
+          "mid_between_median": 4.53879685139387,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 82,
+          "mid_between_mean": 4.697251921838049,
+          "mid_between_median": 3.1673835639231456,
+          "sign_changes": 0
+        }
+      ]
+    },
+    "sat": {
+      "rows": 0
+    },
+    "window_not_clean": {
+      "rows": 862,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 3,
+      "sign_change_rate": 0.0034802784222737818,
+      "mid_between_mean": 14.389351388921606,
+      "mid_between_median": 9.955442297022408,
+      "mid_between_p90": 30.254524752810656,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 23,
+          "mid_between_mean": 9.516389344889983,
+          "mid_between_median": 7.2657293778348455,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 94,
+          "mid_between_mean": 14.218129084144334,
+          "mid_between_median": 9.897044479014513,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 19,
+          "mid_between_mean": 10.700085681839504,
+          "mid_between_median": 10.070444669207038,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 2,
+          "mid_between_mean": 93.7396537323922,
+          "mid_between_median": 93.7396537323922,
+          "sign_changes": 2
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 713,
+          "mid_between_mean": 14.11520136220477,
+          "mid_between_median": 9.95460361025588,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 11,
+          "mid_between_mean": 35.75639106696844,
+          "mid_between_median": 17.89319200021748,
+          "sign_changes": 1
+        }
+      ]
+    },
+    "robust_missing": {
+      "rows": 15,
+      "coverage_candidate": 1.0,
+      "coverage_reference": 1.0,
+      "failures_candidate": 0,
+      "failures_reference": 0,
+      "sign_changes": 0,
+      "sign_change_rate": 0.0,
+      "mid_between_mean": 40.94854125771765,
+      "mid_between_median": 32.99103627123712,
+      "mid_between_p90": 71.94193219708514,
+      "mid_between_undefined": 0,
+      "by_reference_band": [
+        {
+          "band": "pred_c (0,3]",
+          "rows": 0,
+          "mid_between_mean": null,
+          "mid_between_median": null,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_s (3,6]",
+          "rows": 0,
+          "mid_between_mean": null,
+          "mid_between_median": null,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_l (6,10]",
+          "rows": 0,
+          "mid_between_mean": null,
+          "mid_between_median": null,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far (10,inf)",
+          "rows": 0,
+          "mid_between_mean": null,
+          "mid_between_median": null,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_n (-10,0]",
+          "rows": 15,
+          "mid_between_mean": 40.94854125771765,
+          "mid_between_median": 32.99103627123712,
+          "sign_changes": 0
+        },
+        {
+          "band": "pred_far_neg (-inf,-10]",
+          "rows": 0,
+          "mid_between_mean": null,
+          "mid_between_median": null,
+          "sign_changes": 0
+        }
+      ]
+    }
+  }
+}
