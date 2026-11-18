@@ -1,0 +1,41 @@
+{
+  "schema": "event_geometry_fcwd_seal_v1",
+  "predictions": "PREDICTIONS_SEALED.csv",
+  "predictions_sha256": "4ae1197240036b8ecfa02593426897aab4c48e7f4810fa35918e64760c9ad2e7",
+  "queries": 630,
+  "scored_arms": [
+    "EVT_GEO_BAND_GA_S13",
+    "EVT_GEO_BAND_GA_S21",
+    "EVT_GEO_BAND_GA_S7",
+    "EVT_GEO_BAND_S13",
+    "EVT_GEO_BAND_S21",
+    "EVT_GEO_BAND_S7",
+    "E_CTX"
+  ],
+  "label_free_diagnostic_arms": [
+    "EVT_GEO_BAND_GA_S13__OFFSET1700",
+    "EVT_GEO_BAND_GA_S21__OFFSET1700",
+    "EVT_GEO_BAND_GA_S7__OFFSET1700",
+    "EVT_GEO_BAND_S13__OFFSET1700",
+    "EVT_GEO_BAND_S21__OFFSET1700",
+    "EVT_GEO_BAND_S7__OFFSET1700",
+    "E_CTX__OFFSET1700"
+  ],
+  "primary_variant": "EVT_GEO_BAND",
+  "secondary_variant": "EVT_GEO_BAND_GA",
+  "gt_ttc_opened": false,
+  "eap_results_sha256": "7588120fa1b74e81ba794b174b4814ab81da3d04dbae83fa8f887ae9eacccfa0",
+  "final_fits_receipt_sha256": "3b4fbb28b1972fded3091ba866266790b4309c17388ffd24bce5220b8fe9039c",
+  "features_sha256": "37137beed077f411e7bccfcff00ee12389e71d54ef782e10b683830d6c04fda5",
+  "source_sha256": {
+    "operational/event_geometry/variants.py": "fce6d49cd2df0e9003ab0087089b4bdedf09a6e78c91ec9628b9be00656855c7",
+    "operational/event_geometry/history_inputs.py": "237d33d493292deb688186b0a70831bf8ed49d35d5147eb4e7bcbcdad4739c87",
+    "operational/event_geometry/fcwd_features.py": "ba1cf3e184729e5ab8b072cfdf6fdc793789c7826702da30eb9fcd7efa0bf5bd",
+    "operational/event_geometry/fcwd_eval.py": "1d630008fbb8e4c551abe566e38badc43382965d2d1a75619f77d1f73e1cdae4",
+    "operational/event_geometry/run_cv.py": "0debbd1490f63163bf1b91166d55d75f5d5e43d925d3a2cba3430f560e8d68e0",
+    "operational/second_benchmark/fcwd.py": "b7063a6f8dda10f9f9efc3bad8e4ae5402ca4accef4c7dea529a54139e2f906a",
+    "operational/phase_geometry/geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
+    "operational/phase_geometry/heads.py": "b94bdfa134e262021351fcea633535deb47ee8a792764748cf3527085536d478"
+  },
+  "protocol_sha256": "dc16fb0d1e9dfac510aa0236fa4c81f7deb298edf8781ce5cfe314229095d438"
+}
