@@ -1,0 +1,44 @@
+{
+  "schema": "saturation_scale_decision_v1",
+  "rule": "PROTOCOL.md \u00a74.1",
+  "primary": "GEO_ROBUST_AUG_CS",
+  "baseline": "GEO_ROBUST_AUG",
+  "D1_all_delta_le_0.5": true,
+  "D1_delta": -3.9737669121651904,
+  "D1_ci95": [
+    -4.923810163536537,
+    -3.087692755707536
+  ],
+  "D2_syn_sat_ci_upper_lt_0": true,
+  "D2_delta": -44.17672009564332,
+  "D2_ci95": [
+    -46.865898610813275,
+    -41.533286421142925
+  ],
+  "D3_real_sat_point_le_0": true,
+  "D3_delta": -74.2467353446732,
+  "D3_ci95_informative": [
+    -129.95777961792407,
+    -20.618348809745985
+  ],
+  "verdict": "SUPPORTED",
+  "test12_gate": {
+    "GEO_ROBUST_AUG_CS": {
+      "delta_all_vs_RGB_GEO_BAND": -0.8431609889995414,
+      "ci95": [
+        -1.816050259540623,
+        0.15670596532543488
+      ],
+      "passes": false
+    },
+    "RGB_ROBUST_CS": {
+      "delta_all_vs_RGB_GEO_BAND": -2.4170120919250686,
+      "ci95": [
+        -2.899045621150662,
+        -1.9287862306527277
+      ],
+      "passes": false
+    }
+  },
+  "test12_package_required": false
+}

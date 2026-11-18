@@ -1,0 +1,39 @@
+{
+  "schema": "saturation_scale_fcwd_seal_v1",
+  "predictions": "PREDICTIONS_SEALED.csv",
+  "predictions_sha256": "ea5d0b400f602259cea7cb50c17b0a0e8e9cf99181f1a13c5f24283c559ef2b4",
+  "queries": 630,
+  "primary": "GEO_ROBUST_AUG_CS",
+  "sensitivity": "CONTENT_FIXED",
+  "arms": [
+    "CONTENT_FIXED",
+    "GEO_ROBUST_AUG_CS_S13",
+    "GEO_ROBUST_AUG_CS_S21",
+    "GEO_ROBUST_AUG_CS_S7",
+    "GEO_ROBUST_AUG_S13",
+    "GEO_ROBUST_AUG_S21",
+    "GEO_ROBUST_AUG_S7",
+    "REFIT_GEO_ROBUST_AUG_S13",
+    "REFIT_GEO_ROBUST_AUG_S21",
+    "REFIT_GEO_ROBUST_AUG_S7"
+  ],
+  "gt_ttc_opened": false,
+  "baseline_source": "geometry_robust sealed PREDICTIONS_SEALED.csv",
+  "baseline_refit_max_abs_ttc_difference": 0.975372314453125,
+  "label_free_counts": {
+    "both_truncated_current": 115,
+    "content_valid": 616,
+    "content_valid_and_both_truncated": 115
+  },
+  "second_benchmark_seal_sha256": "b4d03940d84495354c77e17d2cea32a180d128f9e92152404922e10c02bdc07f",
+  "geometry_robust_seal_sha256": "17ab4b393b84aa0375c95836dbe4a2ca9b74741009bcfe3d46873881d70e1b86",
+  "heads_receipt_sha256": "253bc09bc841aae107afec1b0bc1b71e63d240d75eb5ebfbe0f0d4b8b5167bc0",
+  "content_receipt_sha256": "e214bcd82e59276b035fbf912c533f1990a4c5e6f24a672aaece9915a4730b14",
+  "protocol_sha256": "3548c916f16c8c2777df1cfa7b1d37ca62310bbe0bd35fe50daaf1c709d5d468",
+  "code_sha256": {
+    "content_scale.py": "baf5526f20f7e37e7efd85b6a983bb6e19765ea380229985c8df63b6cc95cd20",
+    "fcwd_eval.py": "5a22789b19ec68ec4028e4db38666d61748b01071da4bce90c3275ddbc9e780d",
+    "variants.py": "3ba2b279a96b9881a65668fd624b71f6caec434a1d8388ecc8a6514c44546579",
+    "run_cv.py": "9b2fbc0c8df76e645be009048cc3c8051e67ed9dcb048635891ff1482d337206"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "saturation_scale_fcwd_heads_v1",
+  "arms": [
+    "GEO_ROBUST_AUG",
+    "GEO_ROBUST_AUG_CS"
+  ],
+  "train_rows": 88744,
+  "train_population_with_copies": 177488,
+  "trainer": "fit_heads_stacked",
+  "data_read": "eAP TRAIN40 work inputs and their virtual-zoom copies only; no FCWD rows",
+  "content_work_sha256": "d701701a43e253163d68e2f1036d0cef93a487d3ce294cbb5c46d6c89ea7749c",
+  "fits": [
+    {
+      "arm": "GEO_ROBUST_AUG",
+      "seed": 7,
+      "updates": 12044,
+      "loss_mean_last100": 0.1848190724849701,
+      "state_path": "GEO_ROBUST_AUG_EAP_ALL_S7.state.pt",
+      "state_sha256": "8265bbe413b7ea1680586276897ad889d6a866687eb5cd0c1dfa3cce14003e4c"
+    },
+    {
+      "arm": "GEO_ROBUST_AUG",
+      "seed": 13,
+      "updates": 12044,
+      "loss_mean_last100": 0.18241432309150696,
+      "state_path": "GEO_ROBUST_AUG_EAP_ALL_S13.state.pt",
+      "state_sha256": "77c1ced0ffa6fbf59f2db35331084f8865f3c0527cab65cb3c9ba5509f429deb"
+    },
+    {
+      "arm": "GEO_ROBUST_AUG",
+      "seed": 21,
+      "updates": 12044,
+      "loss_mean_last100": 0.1849401295185089,
+      "state_path": "GEO_ROBUST_AUG_EAP_ALL_S21.state.pt",
+      "state_sha256": "c9ba20358cae6bf73dde12b80cc24043613d566361cd5d11c127cf2a9598105a"
+    },
+    {
+      "arm": "GEO_ROBUST_AUG_CS",
+      "seed": 7,
+      "updates": 12044,
+      "loss_mean_last100": 0.163148894906044,
+      "state_path": "GEO_ROBUST_AUG_CS_EAP_ALL_S7.state.pt",
+      "state_sha256": "b8ba0002ac5e52ccfbd7f23120077e997638b7efd886877cb6ac33705ca647df"
+    },
+    {
+      "arm": "GEO_ROBUST_AUG_CS",
+      "seed": 13,
+      "updates": 12044,
+      "loss_mean_last100": 0.15348508954048157,
+      "state_path": "GEO_ROBUST_AUG_CS_EAP_ALL_S13.state.pt",
+      "state_sha256": "904bb97b1a9babc9d8ff65c2f5080dea468a9f68aa03eaae4106598ab08c3b18"
+    },
+    {
+      "arm": "GEO_ROBUST_AUG_CS",
+      "seed": 21,
+      "updates": 12044,
+      "loss_mean_last100": 0.15923567116260529,
+      "state_path": "GEO_ROBUST_AUG_CS_EAP_ALL_S21.state.pt",
+      "state_sha256": "f047331dc46d8e97368b018b61bbb3a78d135bf3f65bdd8b0b36888816473ea2"
+    }
+  ]
+}

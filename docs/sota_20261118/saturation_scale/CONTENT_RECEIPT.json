@@ -1,0 +1,64 @@
+{
+  "schema": "saturation_scale_eap_content_v1",
+  "rows": 88744,
+  "fields": [
+    "k_content",
+    "phi_content",
+    "k_short",
+    "phi_short",
+    "n_valid",
+    "mean_score",
+    "mean_gain",
+    "rms_fit",
+    "log_events",
+    "valid",
+    "short_valid",
+    "rho_100",
+    "rho_200",
+    "rho_400",
+    "rho_600",
+    "score_100",
+    "score_200",
+    "score_400",
+    "score_600",
+    "lag_valid_100",
+    "lag_valid_200",
+    "lag_valid_400",
+    "lag_valid_600"
+  ],
+  "parameters": {
+    "tau_us": 30000,
+    "lags_us": [
+      100000,
+      200000,
+      400000,
+      600000
+    ],
+    "grid": 64,
+    "template": 40,
+    "k_search": [
+      -1.0,
+      3.0
+    ],
+    "coarse_step": 0.04,
+    "fine_step": 0.01,
+    "min_score": 0.15,
+    "min_template_events": 200
+  },
+  "valid_orig": 85708,
+  "valid_aug": 85646,
+  "window_reads": 74173,
+  "read_seconds": 4305.386825899928,
+  "compute_seconds": 16614.10893080152,
+  "worker_seconds": 21004.769848300013,
+  "targets_read": false,
+  "output_sha256": "d701701a43e253163d68e2f1036d0cef93a487d3ce294cbb5c46d6c89ea7749c",
+  "inputs_sha256": {
+    "train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d",
+    "robust_work.npz": "cb6f081f767bab42ad8ec78dcdc934c4620c7831feaa60e167589add0ca53b5b"
+  },
+  "code_sha256": {
+    "content_scale.py": "baf5526f20f7e37e7efd85b6a983bb6e19765ea380229985c8df63b6cc95cd20",
+    "eap_features.py": "b1c1813e34f7b133024eb3f2852eb3086f89e52acf2ea54052eb04bd54a5367d"
+  }
+}

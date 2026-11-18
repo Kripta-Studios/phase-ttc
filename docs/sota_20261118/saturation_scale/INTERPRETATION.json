@@ -1,0 +1,47 @@
+{
+  "schema": "saturation_scale_interpretation_v1",
+  "written": "2026-11-18, a mano, después de ver RESULTS.json y FCWD_RESULTS.json; cita las mismas cifras que las tablas",
+  "summary": [
+    "**Veredicto prerregistrado en eAP (§4.1): APOYADA.** GEO_ROBUST_AUG_CS frente a GEO_ROBUST_AUG: D1 ALL −3,97 MiD [−4,92, −3,09] (40,43 frente a 44,41); D2 SYN_SAT −44,2 [−46,9, −41,5]; D3 SAT real (las mismas 46 filas) −74,2 [−130,0, −20,6]. La mejora no se limita a la saturación: TRUNC −8,31 [−9,74, −6,86] y filas no truncadas −3,05 [−4,07, −2,07].",
+    "**SAT real de eAP, informado tal cual:** el primario baja de 309,0 a 234,8 MiD, pero sigue siendo **peor** que GEO_LEARNED (126,9; Δ +107,9 [−33,4, +237,4]) y que RGB_GEO_BAND (93,9; Δ +140,9 [+18,8, +261,5]). La regresión que introdujeron las entradas robustas en esas 46 filas se reduce, no desaparece. El experto fijo CONTENT_FIXED es el mejor brazo en ese estrato (89,4) y su fase tiene Spearman 0,97 con la fase objetivo allí (φ_rob 0,75): la señal de contenido existe en saturación real; es la cabeza la que todavía no se fía lo suficiente de ella (39 de las 46 filas tienen 3 bordes, ninguna 4; 13 secuencias).",
+    "**La medida de contenido por sí sola no sirve fuera de la saturación:** CONTENT_FIXED tiene 176,4 MiD de Overall en eAP (Spearman 0,71 con la fase objetivo frente a 0,94 de φ_rob en filas válidas). Su valor está en ser complementaria: es casi insensible al truncado y la cabeza la usa donde la geometría de caja falla.",
+    "**Puerta Test12 (§4.2): no superada, no se construye paquete.** RGB_ROBUST_CS mejora a RGB_GEO_BAND en −2,42 MiD [−2,90, −1,93] (38,86 frente a 41,28; mejor brazo de eAP), pero el extremo superior −1,93 no está por debajo de −2,0. GEO_ROBUST_AUG_CS: −0,84 [−1,82, +0,16]. Se respeta la regla aunque el margen es pequeño.",
+    "**FCWD (una sola evaluación sellada; desarrollo expuesto, no confirmación):** GEO_ROBUST_AUG_CS 16,1 ± 0,9 % RTE macro (s7 16,0, s13 15,2, s21 17,0) frente a 23,4 de GEO_ROBUST_AUG (Δ −7,3 [−7,8, −6,5], mejor en las 3 secuencias) y 26,8 de Garl-TTC local (Δ −10,8 [−12,2, −9,4]). En las 82 consultas con la caja truncada en ambos ejes baja de 60,0 a 22,2 (Garl 37,8; Δ frente a Garl −15,6 [−18,1, −10,9]); en las 515 restantes 15,2 (base 17,6, Garl 25,1). Criterio descriptivo §5: cierra la brecha. Con 3 secuencias de un mismo escenario, ya vistas desde octubre, los intervalos (10 multiconjuntos) son sólo indicativos.",
+    "**Sensibilidad CONTENT_FIXED en FCWD:** 31,1 en las truncadas en ambos ejes (mejor que la base 60,0 y que Garl 37,8 en punto, Δ frente a Garl −6,7 [−14,8, +1,5]) pero 35,3 de macro por su error fuera de saturación (36,2 en las no truncadas). Confirma el mecanismo: en saturación la información viene del contenido, no del prior aumentado; y la cabeza aprendida combina ambas fuentes mejor que cualquiera de las dos por separado.",
+    "**Lo que no se puede afirmar:** que FCWD confirme nada de forma independiente; que el SAT real de eAP esté resuelto (sigue peor que las cabezas sin entradas robustas); nada sobre Test12 (no se construyó paquete) ni sobre RGB (no se calculó ninguna variante RGB de contenido)."
+  ],
+  "deviations": [
+    "**Modalidad eventos en vez de RGB** (declarada en PROTOCOL.md §1.1 antes de calcular nada y aceptada por el coordinador): en FCWD no hay correspondencia espacial auditada evento→RGB, así que la característica se mide sobre imágenes de conteo de eventos en eAP y en FCWD.",
+    "**Piloto sin etiquetas antes del protocolo** (declarado en PROTOCOL.md §0): 600 filas de 3 secuencias, comparando sólo con la pendiente de caja; no se cambió ningún parámetro.",
+    "**Interrupción por memoria.** La primera ejecución de `eap_features run` (12 procesos, ~0,95 GB cada uno) fue detenida por el sistema por falta de RAM con 4 de 40 secuencias completas. Se reanudó (el diseño es reanudable por secuencia; los fragmentos `.pending` nunca se renombraron) con 4 procesos y un controlador que habría bajado a 2 si la RAM libre caía por debajo de 5 GB (no llegó a ocurrir; mínimo observado ≈ 9,3 GB). Mismo código y mismas entradas: las 4 secuencias previas y las 36 nuevas se calcularon con `eap_features.py` SHA-256 `b1c1813e34f7b133024eb3f2852eb3086f89e52acf2ea54052eb04bd54a5367d` y `content_scale.py` `baf5526f20f7e37e7efd85b6a983bb6e19765ea380229985c8df63b6cc95cd20` (registrados en CONTENT_RECEIPT.json).",
+    "**Correcciones de ruff en `eap_features.py` tras la extracción** (pedido del coordinador): tipos `Any` sustituidos por un `Protocol` de lector y `pd.DataFrame`, `zip(..., strict=True)` y formato. La versión ejecutada es `b1c1813e…5367d`; la versión del repositorio es `48d33f8679025ccdb995a84ce8a6a4b340ea24f8b3ca24a73f8e98f929c5e382`. Se comprobó que los AST son idénticos una vez quitadas las anotaciones, el `Protocol` y el argumento `strict` (que no cambia el resultado porque las longitudes coinciden).",
+    "**Ediciones de `fcwd_eval.py` tras la etapa `features`** (antes de `train`/`predict`): una línea del docstring acortada y la anotación de tipo de `draws` en `stratum_delta_ci`. El recibo FCWD_CONTENT_RECEIPT.json registra la versión anterior (`a96639c3…`); el sello registra la usada en `predict` (`5a22789b…`). La función de características no cambió.",
+    "**Réplica de GEO_ROBUST_AUG en FCWD no exacta:** el re-ajuste en una pila distinta difiere de las predicciones selladas de `geometry_robust` en hasta 0,98 s (macro 23,43 frente a 23,40). Las tablas usan como base las predicciones selladas de `geometry_robust`, como fija el protocolo. En eAP las réplicas coinciden en Overall (p. ej. 44,41 frente a 44,40); la diferencia máxima por fila de 120 s es una fila en la cota ±60 s que cambia de signo, como en `geometry_robust`.",
+    "**Orden de ejecución:** `fcwd_eval train` y `predict` (sello) se ejecutaron mientras terminaba la CV de eAP y antes de `evaluate`; `score` se ejecutó una sola vez, después de `evaluate`. Ningún resultado de FCWD cambió nada."
+  ],
+  "limitations": [
+    "Diseño y selección sólo en eAP TRAIN40 (40 secuencias; IC por remuestreo de secuencias). El SAT real tiene 46 filas en 13 secuencias, ninguna con 4 bordes: el IC de D3 es muy ancho y el primario sigue peor que GEO_LEARNED y RGB_GEO_BAND en ese estrato.",
+    "Las copias sintéticas usan eventos reales de una sub-región, pero con menos resolución que una cámara real de menor campo de visión, y sus campos RGB se copian de la fila original (optimista para RGB_ROBUST_CS en SYN_*).",
+    "FCWD: 3 secuencias del mismo escenario frontal, etiquetas expuestas desde octubre y 4 variantes evaluadas antes; esta es la quinta. El IC tiene 10 multiconjuntos. Es evidencia de desarrollo, no una confirmación independiente.",
+    "El estimador supone cambio de escala isótropo y velocidad de cierre constante en 600 ms, con centro previo tomado de la caja; rotaciones, objetos no rígidos o mucho movimiento lateral (> ±19 % de la caja) no se modelan. Depende del ruido de eventos y de los ajustes del sensor (eAP y FCWD usan cámaras distintas).",
+    "No se evaluó ninguna variante RGB de escala de contenido, ni Test12. No se reclama SOTA ni validez de seguridad."
+  ],
+  "reproduction": [
+    "Python con torch del worktree de integración (CPU; no se usó GPU), `PYTHONPATH=<repo>;<repo>/src`, y las variables `PHASE_TTC_GARLTTC_DATASET` (`E:\\GarlTTC_dataset` en la máquina original), `PHASE_TTC_EAP_RAW_ROOT` (`E:\\eAP_dataset`), `PHASE_TTC_FCWD_ROOT` (`E:\\FCWD_dataset`) y `PHASE_TTC_GARLTTC_BENCHMARK` (`E:\\Garl-TTC`, scorer oficial). Requiere `artifacts/sota_20261118/geometry/work` y `geometry_robust/work`, `geometry_robust/fcwd` y `second_benchmark`.",
+    "",
+    "```",
+    "A=artifacts/sota_20261118/saturation_scale",
+    "python -m operational.saturation_scale.eap_features run --out $A/work --workers 4",
+    "python -m operational.saturation_scale.eap_features merge --out $A/work",
+    "python -m operational.saturation_scale.run_cv --work $A/work --workers 2",
+    "python -m operational.saturation_scale.evaluate --work $A/work --docs docs/sota_20261118/saturation_scale",
+    "python -m operational.saturation_scale.fcwd_eval features",
+    "python -m operational.saturation_scale.fcwd_eval train",
+    "python -m operational.saturation_scale.fcwd_eval predict   # sella antes de abrir gt_ttc.csv",
+    "python -m operational.saturation_scale.fcwd_eval score",
+    "python -m operational.saturation_scale.report --docs docs/sota_20261118/saturation_scale",
+    "```",
+    "",
+    "Coste (CPU, máquina compartida): extracción eAP ≈ 5,8 h-proceso registradas (21.004 s; más el trabajo perdido de la ejecución interrumpida), ≈ 1 h 35 min de reloj en total; FCWD 4 min; CV 10 pilas con 2 procesos ≈ 4 min; ajustes FCWD y puntuación unos minutos. GPU: ninguna. Disco: ≈ 72 MB en `artifacts/sota_20261118/saturation_scale` y < 1 MB en `D:\\PHASE_TTC_SATSCALE_20261118` (piloto)."
+  ]
+}

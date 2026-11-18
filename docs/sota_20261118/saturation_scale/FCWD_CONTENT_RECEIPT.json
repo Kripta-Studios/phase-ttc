@@ -1,0 +1,14 @@
+{
+  "schema": "saturation_scale_fcwd_content_v1",
+  "queries": 630,
+  "valid": 616,
+  "gt_ttc_opened": false,
+  "content_sha256": "16fdca464ba70eb478dfae6e2e7fd357be5ba6c40b43e556ed9239c89d5b6c15",
+  "code_sha256": {
+    "content_scale.py": "baf5526f20f7e37e7efd85b6a983bb6e19765ea380229985c8df63b6cc95cd20",
+    "fcwd_eval.py": "a96639c3236a6c982c8afa8e7c062dbf7a4dd9166817d07643746ee496647495",
+    "variants.py": "3ba2b279a96b9881a65668fd624b71f6caec434a1d8388ecc8a6514c44546579",
+    "run_cv.py": "9b2fbc0c8df76e645be009048cc3c8051e67ed9dcb048635891ff1482d337206"
+  },
+  "seconds": 243.0290406999993
+}
