@@ -54,30 +54,40 @@ servidor de GarlTTC. El manuscrito lo recoge como declaración del autor, porque
 el leaderboard archivado muestra una entrada por participante y no permite
 confirmarlo de forma independiente.
 
+## Segundo envío al servidor de test: 23,47 Overall MiD
+
+El 18 de noviembre se envió una sola vez, con recibo de prerregistro commiteado
+antes de subirlo, la variante elegida por la regla del control de geometría
+(rama RGB + expansión causal de las regiones suministradas + pérdida por banda,
+sin entradas de eventos). Envío `1058935`: **23,47 Overall MiD**, frente a 35,80
+del sistema original y 45,03 de Garl-TTC (−34 % y −48 %). Es el segundo envío de
+la cuenta. El resultado sitúa la mayor parte de la precisión disponible en la
+historia de las regiones suministradas, no en la fusión de eventos y RGB.
+
 ## Controles posteriores al envío del 18 de noviembre
 
 El apéndice «Post-submission controls» añade tres controles con protocolo fijado
-antes de calcular las comparaciones. Ninguno usa etiquetas privadas ni se ha
-enviado al servidor. Sus tablas se generan con `scripts/build_post_audit.py` a
+antes de calcular las comparaciones. Ninguno usa etiquetas privadas; solo el
+candidato de geometría se envió al servidor, una vez. Sus tablas se generan con `scripts/build_post_audit.py` a
 partir de `data/post_audit_20261118/`.
 
 - **Geometría de cajas.** En los folds de entrenamiento, añadir a la cabeza la
   expansión causal de las regiones suministradas baja el Overall MiD de 85,17 a
   41,96, y a 41,27 con pérdida por banda y sin eventos (variante elegida por la
   regla prefijada). Los niveles de los folds no son comparables con el 35,80 del
-  test; la ganancia en test es de magnitud desconocida y su signo no está
-  garantizado.
+  test. Enviada después al servidor, esta variante puntúa 23,47 (sección
+  anterior).
 - **Historial de eventos alineado con el entrenamiento.** Con todo congelado, no
   mejora en EvTTC: +0,058 s de MAE [−0,004; +0,120] y +5,2 MiD [+0,9; +9,1].
 - **Historia más allá de dos observaciones.** Aporta unos 3 de 85 puntos en los
   folds (+3,51 [+2,67; +4,31] con la semilla 7). No reentrena Garl-TTC.
 
-**Identidad del paquete puntuado.** Existen dos paquetes de predicciones
-compatibles con el tamaño registrado por el servidor (89,0 kB): el TRAIN40
-descrito en el artículo y uno anterior de otro modelo. El servidor no guarda
-hash. La atribución de la puntuación 35,80 al sistema TRAIN40 se apoya en el
-nombre declarado del envío y en la declaración del autor, y queda sin verificar
-hasta recuperar el archivo subido. El manuscrito lo declara en la sección 4.
+**Identidad del paquete puntuado: verificada.** El archivo recuperado del
+registro de envíos de CodaBench el 18 de noviembre tiene SHA-256
+`5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc`, idéntico al
+paquete TRAIN40 descrito en el artículo, y el registro de puntuación que lo
+acompaña da 35,80145. El paquete anterior de otro modelo, de tamaño casi igual,
+no es el puntuado.
 
 ## Comparación de inferencia del 12 de noviembre
 

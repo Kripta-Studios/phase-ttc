@@ -84,7 +84,7 @@
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "b2c2184c61d3bd37dc77e8bc41b6d7c5e708870c1be447ef8d9a8ca415bc0459",
+      "expanded_sha256": "f4af44e9eb5d627950056923b40e243daa1cf0f92046a677fea883aed1ec2af2",
       "changed": true
     },
     {
@@ -150,13 +150,13 @@
     {
       "path": "sections\\official_results.tex",
       "original_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
-      "expanded_sha256": "17dbcd22c3f6968082668e99f2ea30b1bd912d1916d15cc984b2c69de31135fb",
+      "expanded_sha256": "689431c6a5b8506ad2db31594172863e14eee0f1bac586cbec52149fea1c7ded",
       "changed": true
     },
     {
       "path": "sections\\protocol.tex",
       "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
-      "expanded_sha256": "029a9833cd035922d52bce05c40a480486c56b0663126c28dfaa44044bb163d4",
+      "expanded_sha256": "3fe2d67e9897b9fbdcf00baea82a8d1cdaf6b5be3fb14855030da44cc4793e4d",
       "changed": true
     },
     {

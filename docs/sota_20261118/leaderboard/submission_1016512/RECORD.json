@@ -1,0 +1,25 @@
+{
+  "schema": "garlttc_submission_retrieval_v1",
+  "submission_id": 1016512,
+  "retrieved": "2026-11-18",
+  "retrieved_by": "repository owner, from the CodaBench submission record",
+  "uploaded_file": {
+    "name": "PHASE_ONLY_S7_TRAIN40_SCIENTIFIC_OO.zip",
+    "bytes": 88968,
+    "sha256": "5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc",
+    "matches_retained_package": "PHASE_ONLY_S7_TRAIN40_SCIENTIFIC_OOF.zip (identical SHA-256)"
+  },
+  "scoring_result_zip_sha256": "3eb5d42508295d9bac7a9c2ec73a0ec1572e091a1199ebaaef13d0f4550df494",
+  "prediction_result_zip_sha256": "ece82a3e119c0dffeeed97e9d130eb32ff49900fa7a921261ab9f00266257539",
+  "scores": {
+    "overall_MiD": 35.80145158082389,
+    "MiDc": 43.5189935425749,
+    "MiDs": 28.25675232393477,
+    "MiDl": 25.71789700925724,
+    "MiDn": 29.931394114302854,
+    "mean_MiD": 29.298890906303914,
+    "num_samples": 6762,
+    "failed_rate": 0.0
+  },
+  "note": "The uploaded package itself is not committed; it is retained in the pod-return archive."
+}

@@ -27,6 +27,14 @@ apart. This result measures the complete system: the matched controls in the
 paper do not show a benefit from event access or from the phase parameterization,
 so the gain is not attributed to event-RGB fusion.
 
+A second, pre-registered submission on 18 November 2026 tested that reading. A
+head that receives the RGB-branch estimates and the causal expansion of the
+supplied object regions, with a band-weighted loss and **no event inputs**,
+scores **23.47 Overall MiD** on GarlTTC Test (submission 1058935): 34% below the
+original system and 48% below Garl-TTC. Most of the accuracy available on this
+benchmark comes from the history of the supplied regions. Protocol, results and
+the submission ledger are in [docs/sota_20261118](docs/sota_20261118).
+
 ## Paper
 
 **[PHASE-TTC: From Motion to Time](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)**

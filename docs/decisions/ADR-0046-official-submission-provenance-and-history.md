@@ -216,6 +216,17 @@ empujarla al remoto; la decisión y la ejecución corresponden al propietario.
    `provenance.attribution`). Hace falta el registro de la cuenta (archivo
    descargable de la submission o recibo del navegador) para confirmar `5eb69749…`
    y la hora exacta con zona horaria.
+   **Resuelta el 2026-11-18.** El propietario recuperó desde el registro de envíos
+   de CodaBench el archivo subido (`PHASE_ONLY_S7_TRAIN40_SCIENTIFIC_OO.zip`,
+   88.968 bytes). Su SHA-256 es
+   `5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc`, idéntico al
+   paquete TRAIN40 conservado. El `scoring_result.zip` descargado junto a él
+   contiene `scores.json` con `overall_MiD` 35.80145158082389 sobre 6.762 muestras,
+   fechado el 2026-10-28 16:15. Ambos registros de resultado están en
+   `docs/sota_20261118/leaderboard/submission_1016512/`. La puntuación oficial
+   corresponde, por tanto, al sistema TRAIN40 descrito en el artículo. El texto
+   siguiente se conserva como registro de la duda previa.
+
    **Comprobación del 2026-11-18.** CodaBench muestra para el envío un archivo de
    89,0 kB. Ese tamaño no distingue entre los dos paquetes existentes: el TRAIN40
    `5eb69749…` ocupa 88.968 bytes (27 de octubre, conservado en el almacén de
