@@ -1,0 +1,129 @@
+{
+  "band_counts_population": {
+    "c": 9741,
+    "l": 17709,
+    "n": 37043,
+    "s": 24251
+  },
+  "band_counts_subset": {
+    "c": 446,
+    "l": 806,
+    "n": 1629,
+    "s": 1119
+  },
+  "blocks": {
+    "B0": [
+      "2cyv0Oedzg",
+      "5ilM1PX2vz",
+      "6h5yRW2LGc",
+      "WbCh1DRerJ",
+      "Z30i8WuL2N",
+      "pzJcg1OCfc",
+      "rhYxPcU29n",
+      "t79dBxj1WS"
+    ],
+    "B1": [
+      "2JkLL5W891",
+      "34K84TaN11",
+      "CzyQ8HKP6X",
+      "JaGC4Q9pgU",
+      "L36QTEoVkB",
+      "mHGFBekt7X",
+      "pBqGOb2vYq",
+      "qGsgzl4Q8B"
+    ],
+    "B2": [
+      "9ITOs4twfk",
+      "EllUE6bwVp",
+      "EuFGqTcqIz",
+      "LMHPShQkaU",
+      "OBneIVg4Cw",
+      "q2k6O0X6JY",
+      "vWp9XNYQ9V",
+      "wE9MZUmiJP"
+    ],
+    "B3": [
+      "2Y46OkK3ff",
+      "8mNnrXjpVB",
+      "A1Nhv0KtmL",
+      "GjMYZjmSQb",
+      "eX8t2nGd6O",
+      "pakWgyPNTL",
+      "qoohcdtLDH",
+      "xkiVthsGwf"
+    ],
+    "B4": [
+      "6WCDpro5rE",
+      "8SdieOgbva",
+      "ClXqVoZOFu",
+      "DGqicHUGWb",
+      "OYgB6RGWcq",
+      "Po6ePjWYAz",
+      "VLA3oBKFyX",
+      "nRcwUlHyAd"
+    ]
+  },
+  "box_size_quantiles_5_25_50_75_95": [
+    57.00569989718982,
+    104.13212087924461,
+    159.14615079449234,
+    227.0385429753339,
+    347.4966724196197
+  ],
+  "delta_us_values": [
+    100000
+  ],
+  "frame_ttc_at_query_equals_ttc_fraction": 1.0,
+  "manifest_sha256": "2d74e9b19776b17dd591d01eacc5ec25400ffb397f7a091f023d17e222e1d63a",
+  "manifest_source_sha256": "dfa14adcb77d499a11ffd975582489e2da53f874434f3195b16414aef355dec8",
+  "per_sequence": 100,
+  "per_sequence_counts": {
+    "2JkLL5W891": 100,
+    "2Y46OkK3ff": 100,
+    "2cyv0Oedzg": 100,
+    "34K84TaN11": 100,
+    "5ilM1PX2vz": 100,
+    "6WCDpro5rE": 100,
+    "6h5yRW2LGc": 100,
+    "8SdieOgbva": 100,
+    "8mNnrXjpVB": 100,
+    "9ITOs4twfk": 100,
+    "A1Nhv0KtmL": 100,
+    "ClXqVoZOFu": 100,
+    "CzyQ8HKP6X": 100,
+    "DGqicHUGWb": 100,
+    "EllUE6bwVp": 100,
+    "EuFGqTcqIz": 100,
+    "GjMYZjmSQb": 100,
+    "JaGC4Q9pgU": 100,
+    "L36QTEoVkB": 100,
+    "LMHPShQkaU": 100,
+    "OBneIVg4Cw": 100,
+    "OYgB6RGWcq": 100,
+    "Po6ePjWYAz": 100,
+    "VLA3oBKFyX": 100,
+    "WbCh1DRerJ": 100,
+    "Z30i8WuL2N": 100,
+    "eX8t2nGd6O": 100,
+    "mHGFBekt7X": 100,
+    "nRcwUlHyAd": 100,
+    "pBqGOb2vYq": 100,
+    "pakWgyPNTL": 100,
+    "pzJcg1OCfc": 100,
+    "q2k6O0X6JY": 100,
+    "qGsgzl4Q8B": 100,
+    "qoohcdtLDH": 100,
+    "rhYxPcU29n": 100,
+    "t79dBxj1WS": 100,
+    "vWp9XNYQ9V": 100,
+    "wE9MZUmiJP": 100,
+    "xkiVthsGwf": 100
+  },
+  "queries": 4000,
+  "schema": "phase_literature_baselines_subset_v1",
+  "seed": 20261120,
+  "sequences": 40,
+  "test12_private_labels_read": false,
+  "token_list_sha256": "b1978203e7ffbac2c7cfcb5ab6a3ad3446b94bd39dc67ca24e2c9cd1b79fee7f",
+  "truncated_fraction": 0.1475
+}

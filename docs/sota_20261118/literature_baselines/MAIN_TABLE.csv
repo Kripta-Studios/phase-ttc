@@ -1,0 +1,22 @@
+row,base,kind,description,label,overall,overall_seed_sd,failed_rate,MiDc,MiDs,MiDl,MiDn,ci95_low,ci95_high
+OEXP,OEXP,primary,"CV conversion, primary aggregation","Optical Expansion (VCN-exp, KITTI)",164.1899,0.0000,0.0000,231.3430,116.2888,91.1696,45.1479,135.7238,198.7471
+OEXP__EXP,OEXP,secondary,"EXP conversion, primary aggregation","Optical Expansion (VCN-exp, KITTI)",172.1235,0.0000,0.0000,245.7597,118.8808,92.8764,42.9175,142.9396,207.6605
+OEXP__INNER,OEXP,secondary,"CV conversion, inner 50% box","Optical Expansion (VCN-exp, KITTI)",129.1547,0.0000,0.0000,173.8189,100.8725,82.0711,37.7636,106.2876,156.5107
+OEXP__MEAN,OEXP,secondary,"CV conversion, mean over box","Optical Expansion (VCN-exp, KITTI)",205.9380,0.0000,0.0000,294.1456,138.5191,99.5379,73.5565,178.4851,237.2669
+OEXP__CAL,OEXP,calibrated,"a * CV phase, a fitted on the other 4 blocks (grouped CV)","Optical Expansion (VCN-exp, KITTI)",127.1766,0.0000,0.0000,178.5301,86.2043,81.5414,38.9608,91.5345,170.8125
+SFPP,SFPP,primary,"CV conversion, primary aggregation",ScaleFlow++ (KITTI FT),113.9850,0.0000,0.0000,160.0916,73.3612,59.4629,59.8454,99.8595,128.5207
+SFPP__EXP,SFPP,secondary,"EXP conversion, primary aggregation",ScaleFlow++ (KITTI FT),120.3816,0.0000,0.0000,172.4119,74.9825,59.0970,57.7121,106.2269,134.9302
+SFPP__INNER,SFPP,secondary,"CV conversion, inner 50% box",ScaleFlow++ (KITTI FT),103.9939,0.0000,0.0000,144.7753,72.6190,58.5687,39.6369,89.9906,118.4556
+SFPP__MEAN,SFPP,secondary,"CV conversion, mean over box",ScaleFlow++ (KITTI FT),138.6048,0.0000,0.0000,193.4606,78.0443,67.1621,117.4494,124.5247,153.0475
+SFPP__CAL,SFPP,calibrated,"a * CV phase, a fitted on the other 4 blocks (grouped CV)",ScaleFlow++ (KITTI FT),84.1185,0.0000,0.0000,111.1715,58.9851,65.6997,42.6722,70.9514,98.2218
+RAFT_AFF,RAFT_AFF,primary,"CV conversion, primary aggregation",RAFT-large + affine fit,136.4700,0.0000,0.0000,161.8331,79.7385,94.1255,222.1937,116.9838,160.1854
+RAFT_AFF__EXP,RAFT_AFF,secondary,"EXP conversion, primary aggregation",RAFT-large + affine fit,123.7125,0.0000,0.0000,142.4009,74.1455,85.7210,216.9624,108.4637,141.4312
+RAFT_AFF__INNER,RAFT_AFF,secondary,"CV conversion, inner 50% box",RAFT-large + affine fit,136.0471,0.0000,0.0000,191.6156,53.5440,177.0051,64.7562,94.2714,186.3943
+RAFT_AFF__CAL,RAFT_AFF,calibrated,"a * CV phase, a fitted on the other 4 blocks (grouped CV)",RAFT-large + affine fit,131.0552,0.0000,0.0000,156.4667,75.6274,83.7089,217.6272,114.3200,151.7173
+BOX2F,BOX2F,primary,"CV conversion, primary aggregation",Two-frame box scale ratio,178.3857,0.0000,0.0000,215.8516,139.5919,153.1564,132.6671,167.2998,189.1486
+BOX2F__EXP,BOX2F,secondary,"EXP conversion, primary aggregation",Two-frame box scale ratio,170.1675,0.0000,0.0000,202.2643,134.5673,149.3254,137.3265,160.1384,179.8040
+BOX2F__CAL,BOX2F,calibrated,"a * CV phase, a fitted on the other 4 blocks (grouped CV)",Two-frame box scale ratio,166.1532,0.0000,0.0000,207.9243,125.0511,129.8686,116.8881,156.4734,175.4711
+REL,REL,ours_oof,"sequence-grouped OOF, seed mean of per-row MiD (7/13/21)",Released PHASE-TTC head (OOF),84.5040,0.0772,0.0000,131.2810,38.5098,35.7745,37.3313,70.8671,98.1476
+RGB_GEO_BAND,RGB_GEO_BAND,ours_oof,"sequence-grouped OOF, seed mean of per-row MiD (7/13/21)",RGB+geometry head (OOF),39.4383,0.3395,0.0000,48.6059,27.8464,34.0060,33.8082,35.9442,42.9980
+GEO_LEARNED,GEO_LEARNED,ours_oof,"sequence-grouped OOF, seed mean of per-row MiD (7/13/21)",Geometry-only learned head (OOF),44.3975,0.3792,0.0000,51.1297,33.6510,44.5197,42.8543,40.6569,48.3945
+GEO_AREA,GEO_AREA,fixed_geometry,"fixed causal box-geometry expert (<=600 ms OLS), no learning",Fixed box-geometry estimator (<=600 ms),72.6887,0.0000,0.0000,97.9171,43.3517,51.2625,55.9839,66.5415,78.8971

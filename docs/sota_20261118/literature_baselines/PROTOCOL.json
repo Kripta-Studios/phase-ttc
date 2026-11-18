@@ -1,0 +1,105 @@
+{
+  "schema": "phase_literature_baselines_protocol_v1",
+  "written": "2026-11-18, before any baseline was run on eAP queries and before any comparison",
+  "question": "Zero-shot Overall MiD of published optical-expansion / motion-in-depth methods given our RGB endpoint pair and supplied boxes, on a fixed subset of public TRAIN40 queries, versus our OOF heads and classical box estimators.",
+  "test12_private_labels_read": false,
+  "selection_on_test": false,
+  "methods": {
+    "OEXP": {
+      "paper": "Yang & Ramanan, Upgrading Optical Flow to 3D Scene Flow through Optical Expansion, CVPR 2020",
+      "repository": "https://github.com/gengshan-y/expansion",
+      "commit": "dc1bc3f4a5ea8db32d182c2647dd6054df852382",
+      "license": "MIT",
+      "weights": "exp-kitti-trainval.pth",
+      "weights_url": "https://drive.google.com/uc?id=11Cf3NxbzGq2rdwdI2_HuQDlwIWNWMu7u",
+      "weights_sha256": "56ca4d00fa43ddc12d045f3af130bcb345424f7ee4f7065c79ee50e98ca052a2",
+      "settings": {"md": [4, 4, 4, 4, 4], "fac": 1, "exp_unc": false, "normalization": "submission.py: BGR, /255 minus mean of mean_L"},
+      "native_output": "dchange2 = log(Z2/Z1) in image-1 coordinates",
+      "rho": "dchange2"
+    },
+    "SFPP": {
+      "paper": "Ling et al., ScaleFlow++, arXiv:2407.09797",
+      "repository": "https://github.com/HanLingsgjk/CSCV",
+      "commit": "8406de13947478dc0fca0ca346d842b15455efc1",
+      "license": "BSD-3-Clause",
+      "weights": "ResScale_KITTI160FT.pth",
+      "weights_url": "https://drive.google.com/drive/folders/129lbJWkcMwxispcRVXOvUGF12GuHbhX3 (file id 1JHSEcs0kRIevnr0vQPRgofZQvFUSHF2b)",
+      "weights_sha256": "33351346c7937ae8746ff745de0e165f72d41b545f680615e6ece1dfd666d848",
+      "auxiliary_init_weights": {"resnet18-f37072fd.pth": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec"},
+      "settings": {"iters": 6, "mixed_precision": false, "test_mode": true},
+      "native_output": "dchange = Z2/Z1 in image-1 coordinates, clamped to [0.5, 1.5]",
+      "rho": "log(dchange)"
+    },
+    "RAFT_AFF": {
+      "paper": "Teed & Deng, RAFT, ECCV 2020 (torchvision implementation)",
+      "package": "torchvision 0.22.1",
+      "license": "BSD-3-Clause",
+      "weights": "Raft_Large_Weights.C_T_SKHT_V2",
+      "weights_url": "https://download.pytorch.org/models/raft_large_C_T_SKHT_V2-ff5fadd5.pth",
+      "weights_sha256": "ff5fadd56d26b40647388883af1547351ea17868b765c05b27231e72dd16a322",
+      "settings": {"num_flow_updates": 12, "input_range": [-1, 1]},
+      "native_output": "flow image1 -> image2 (pixels)",
+      "rho": "least-squares affine x2 = M x1 + c on region pixel centres, refit on the 80% smallest residuals; rho = -0.5 log|det M|"
+    },
+    "BOX2F": {
+      "native_output": "supplied boxes at both endpoints",
+      "rho": "0.5 log((w_t h_t)/(w_{t-D} h_{t-D})), w = x2-x1+1"
+    }
+  },
+  "dropped": {
+    "TPCV": {"repository": "https://github.com/HanLingsgjk/TPCV", "commit": "78871dc14a5ead46610f766ce02086fdab06bff8", "license": "BSD-3-Clause", "reason": "requires compiling the custom CUDA extension inverse_cuda (and alt_cuda_corr); superseded by ScaleFlow++ from the same authors"},
+    "BiTTC": {"repository": "https://github.com/NVlabs/BiTTC", "commit": "e47d97418c757a2fac050b4c91e9f2ae4368776a", "license": "NVIDIA Source Code License (non-commercial research/evaluation only, NVIDIA processors only)", "reason": "Python 3.6 / PyTorch 1.6 environment, fixed 384x1152 crop and a 72-scale x 97-shift sweep per pair: incompatible with the shared crop and the GPU budget"}
+  },
+  "secondary_weights_downloaded_not_evaluated": {
+    "robust.pth": "3d062d2615f587c5647d8c177f8dc1aed01008c97b728e37a7590fdcad4bac11",
+    "Demo_scaleflowpp.pth": "a68594e5829612902631fa44dfe929efc9f22698eb5486c05f68b1fcb6863e6a"
+  },
+  "subset": {
+    "population": "88,744 public TRAIN40 queries (data/train.parquet joined with annotations/train.parquet, pinned SHA-256)",
+    "per_sequence": 150,
+    "sequences": 40,
+    "bands": {"c": "(0,3]", "s": "(3,6]", "l": "(6,10]", "n": "(-10,0]"},
+    "allocation": "proportional to band counts within each sequence, largest remainder, ties in order c,s,l,n",
+    "sampling": "sorted sample_token within (sequence, band), permuted with numpy.random.default_rng([20261120, k]) where k is the sequence position in the sorted sequence list (one generator per sequence, bands in order c,s,l,n); first n taken",
+    "seed": 20261120,
+    "reduction_rule": "if the timing pilot projects more than 3.2 GPU hours, reduce per_sequence and take prefixes of the same permutations"
+  },
+  "input": {
+    "pair": "the two frames of the row (frame_timestamps_us), expected [t-100 ms, t]; image1 = query frame t, image2 = frame t-D",
+    "crop": "common square centred on the union of both boxes (edge coordinates [x1, x2+1)), side = max(union width, union height, 8) * 1.5, resampled to 384x384 with Pillow BILINEAR, outside pixels 0",
+    "resolution": 384,
+    "region": "crop pixels whose centre lies inside the query-frame box"
+  },
+  "conversion": {
+    "primary_CV": "phase = -log(1 - (0.1/D) (exp(rho) - 1)); argument <= 0 -> MAX_PHASE; T = phase_to_ttc(phase)",
+    "secondary_EXP": "phase = (0.1/D) rho",
+    "failure": "non-finite rho or empty region -> rho = 0, counted"
+  },
+  "aggregation": {
+    "primary": "median over region (RAFT_AFF: trimmed affine fit over region)",
+    "secondary": ["median over inner box (central 50% width and height)", "mean over region"]
+  },
+  "calibration": {
+    "rows": ["OEXP", "SFPP", "RAFT_AFF", "BOX2F"],
+    "model": "phase_cal = a * phase_CV_primary",
+    "fit": "for each held-out block B0..B4: weighted median of phi/phi_hat with weights w_i |phi_hat_i|, w_i = band weight / training-block band count; rows with phi_hat = 0 excluded",
+    "blocks": "docs/final_refit_20261017/NESTED_ROTATION_REVIEW.json"
+  },
+  "comparators": {
+    "fixed": ["BOX2F", "GEO_AREA"],
+    "oof_seed_mean": ["REL", "RGB_GEO_BAND", "GEO_LEARNED"],
+    "source": "artifacts/sota_20261118/geometry/OOF_PREDICTIONS.parquet, matched by sample_token"
+  },
+  "metric": {
+    "formula": "official GarlTTC MiD, Overall = 0.5c + 0.3s + 0.1l + 0.1n",
+    "official_scorer_sha256": "f3bbf089ba6e47edfce1de522c92ddc969db2260fac7544e82bc017fedf82dce",
+    "official_check_tolerance": 1e-6,
+    "bootstrap": {"replicates": 10000, "seed": 20261118, "unit": "sequence (40)", "paired_references": ["RGB_GEO_BAND", "BOX2F"]}
+  },
+  "sanity_checks": {
+    "synthetic_zoom": {"queries": "first 12 of the manifest", "sigma": [0.95, 0.98, 1.0, 1.02, 1.05], "truth": "rho = -log(sigma)", "criterion": "median rho_hat monotone decreasing in sigma and correct sign for sigma != 1"},
+    "author_sample": "CSCV 000019_10.png / 000019_11.png (KITTI, forward camera motion), forward order, expect log(Z2/Z1) < 0 over most of the scene for OEXP and SFPP; report median and inter-method correlation",
+    "timing_pilot": "first 40 manifest queries, timings only"
+  },
+  "resources": {"gpu_memory_gb_max": 7, "gpu_jobs_concurrent": 1, "workers_max": 2, "gpu_hours_max": 4}
+}
