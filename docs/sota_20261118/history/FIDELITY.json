@@ -1,0 +1,362 @@
+{
+  "environment": {
+    "cuda_version": "12.8",
+    "device": "cpu",
+    "git_commit": "33f3232dc97359338e31aa226f828d02abedaba8",
+    "gpu_name": null,
+    "host": "DESKTOP-2N393IP",
+    "python_version": "3.11.15",
+    "source_sha256": {
+      "__init__.py": "06f073d2eb79482d6d899bc3e8798796021e2cc9451be199ef56da95c3943c1c",
+      "archive.py": "c520ef90d9525feea96b0040294eec547dee219205c04d055e6c1784c19da8fc",
+      "fitting.py": "2e67e757969d9b6747bf027bfb4705fc3aea7f4011530dd63e5d0de9f67f9f77",
+      "metrics.py": "4178f89a5a6f0fd3a57d5cf3b6a1bcc0b15d7a17ebf163c886606562d83b46fc",
+      "run.py": "8ae8639c9a16d0de8ab967a21e0cd6ad31f57c5f60fc2da84ee31769c8d6a585",
+      "truncation.py": "3b4e454946c5d2e7dfd9d4b54e9205a61ac7579e9d275befa755b381a0a18611"
+    },
+    "torch_version": "2.11.0+cu128"
+  },
+  "every_query_generated_exactly_once": true,
+  "rgb_observation_span_us": {
+    "median": 200000.0,
+    "p05": 200000.0,
+    "p95": 200000.0,
+    "producer_frame_count_values": [
+      2,
+      3
+    ]
+  },
+  "rotations": {
+    "0": {
+      "event": {
+        "checkpoint_completed_updates": 2500,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "2cyv0Oedzg",
+          "5ilM1PX2vz",
+          "6h5yRW2LGc",
+          "WbCh1DRerJ",
+          "Z30i8WuL2N",
+          "pzJcg1OCfc",
+          "rhYxPcU29n",
+          "t79dBxj1WS"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.9802322387695312e-08,
+        "max_abs_diff_width_logits": null,
+        "refiner_groups": [
+          "2JkLL5W891",
+          "34K84TaN11",
+          "CzyQ8HKP6X",
+          "JaGC4Q9pgU",
+          "L36QTEoVkB",
+          "mHGFBekt7X",
+          "pBqGOb2vYq",
+          "qGsgzl4Q8B"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 18422,
+        "released_updates": 2500,
+        "scaled_updates": 2500
+      },
+      "rgb": {
+        "checkpoint_completed_updates": 2500,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "2cyv0Oedzg",
+          "5ilM1PX2vz",
+          "6h5yRW2LGc",
+          "WbCh1DRerJ",
+          "Z30i8WuL2N",
+          "pzJcg1OCfc",
+          "rhYxPcU29n",
+          "t79dBxj1WS"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.9802322387695312e-08,
+        "max_abs_diff_width_logits": 7.152557373046875e-07,
+        "refiner_groups": [
+          "2JkLL5W891",
+          "34K84TaN11",
+          "CzyQ8HKP6X",
+          "JaGC4Q9pgU",
+          "L36QTEoVkB",
+          "mHGFBekt7X",
+          "pBqGOb2vYq",
+          "qGsgzl4Q8B"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 18422,
+        "released_updates": 2500,
+        "scaled_updates": 2500
+      }
+    },
+    "1": {
+      "event": {
+        "checkpoint_completed_updates": 2434,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "2JkLL5W891",
+          "34K84TaN11",
+          "CzyQ8HKP6X",
+          "JaGC4Q9pgU",
+          "L36QTEoVkB",
+          "mHGFBekt7X",
+          "pBqGOb2vYq",
+          "qGsgzl4Q8B"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.2351741790771484e-08,
+        "max_abs_diff_width_logits": null,
+        "refiner_groups": [
+          "9ITOs4twfk",
+          "EllUE6bwVp",
+          "EuFGqTcqIz",
+          "LMHPShQkaU",
+          "OBneIVg4Cw",
+          "q2k6O0X6JY",
+          "vWp9XNYQ9V",
+          "wE9MZUmiJP"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 17929,
+        "released_updates": 2434,
+        "scaled_updates": 2434
+      },
+      "rgb": {
+        "checkpoint_completed_updates": 2434,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "2JkLL5W891",
+          "34K84TaN11",
+          "CzyQ8HKP6X",
+          "JaGC4Q9pgU",
+          "L36QTEoVkB",
+          "mHGFBekt7X",
+          "pBqGOb2vYq",
+          "qGsgzl4Q8B"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.2351741790771484e-08,
+        "max_abs_diff_width_logits": 7.152557373046875e-07,
+        "refiner_groups": [
+          "9ITOs4twfk",
+          "EllUE6bwVp",
+          "EuFGqTcqIz",
+          "LMHPShQkaU",
+          "OBneIVg4Cw",
+          "q2k6O0X6JY",
+          "vWp9XNYQ9V",
+          "wE9MZUmiJP"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 17929,
+        "released_updates": 2434,
+        "scaled_updates": 2434
+      }
+    },
+    "2": {
+      "event": {
+        "checkpoint_completed_updates": 2479,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "9ITOs4twfk",
+          "EllUE6bwVp",
+          "EuFGqTcqIz",
+          "LMHPShQkaU",
+          "OBneIVg4Cw",
+          "q2k6O0X6JY",
+          "vWp9XNYQ9V",
+          "wE9MZUmiJP"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.2351741790771484e-08,
+        "max_abs_diff_width_logits": null,
+        "refiner_groups": [
+          "2Y46OkK3ff",
+          "8mNnrXjpVB",
+          "A1Nhv0KtmL",
+          "GjMYZjmSQb",
+          "eX8t2nGd6O",
+          "pakWgyPNTL",
+          "qoohcdtLDH",
+          "xkiVthsGwf"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 18264,
+        "released_updates": 2479,
+        "scaled_updates": 2479
+      },
+      "rgb": {
+        "checkpoint_completed_updates": 2479,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "9ITOs4twfk",
+          "EllUE6bwVp",
+          "EuFGqTcqIz",
+          "LMHPShQkaU",
+          "OBneIVg4Cw",
+          "q2k6O0X6JY",
+          "vWp9XNYQ9V",
+          "wE9MZUmiJP"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.2351741790771484e-08,
+        "max_abs_diff_width_logits": 1.1920928955078125e-06,
+        "refiner_groups": [
+          "2Y46OkK3ff",
+          "8mNnrXjpVB",
+          "A1Nhv0KtmL",
+          "GjMYZjmSQb",
+          "eX8t2nGd6O",
+          "pakWgyPNTL",
+          "qoohcdtLDH",
+          "xkiVthsGwf"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 18264,
+        "released_updates": 2479,
+        "scaled_updates": 2479
+      }
+    },
+    "3": {
+      "event": {
+        "checkpoint_completed_updates": 2402,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "2Y46OkK3ff",
+          "8mNnrXjpVB",
+          "A1Nhv0KtmL",
+          "GjMYZjmSQb",
+          "eX8t2nGd6O",
+          "pakWgyPNTL",
+          "qoohcdtLDH",
+          "xkiVthsGwf"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.60770320892334e-08,
+        "max_abs_diff_width_logits": null,
+        "refiner_groups": [
+          "6WCDpro5rE",
+          "8SdieOgbva",
+          "ClXqVoZOFu",
+          "DGqicHUGWb",
+          "OYgB6RGWcq",
+          "Po6ePjWYAz",
+          "VLA3oBKFyX",
+          "nRcwUlHyAd"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 17697,
+        "released_updates": 2402,
+        "scaled_updates": 2402
+      },
+      "rgb": {
+        "checkpoint_completed_updates": 2402,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "2Y46OkK3ff",
+          "8mNnrXjpVB",
+          "A1Nhv0KtmL",
+          "GjMYZjmSQb",
+          "eX8t2nGd6O",
+          "pakWgyPNTL",
+          "qoohcdtLDH",
+          "xkiVthsGwf"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.2351741790771484e-08,
+        "max_abs_diff_width_logits": 1.1920928955078125e-06,
+        "refiner_groups": [
+          "6WCDpro5rE",
+          "8SdieOgbva",
+          "ClXqVoZOFu",
+          "DGqicHUGWb",
+          "OYgB6RGWcq",
+          "Po6ePjWYAz",
+          "VLA3oBKFyX",
+          "nRcwUlHyAd"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 17697,
+        "released_updates": 2402,
+        "scaled_updates": 2402
+      }
+    },
+    "4": {
+      "event": {
+        "checkpoint_completed_updates": 2230,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "6WCDpro5rE",
+          "8SdieOgbva",
+          "ClXqVoZOFu",
+          "DGqicHUGWb",
+          "OYgB6RGWcq",
+          "Po6ePjWYAz",
+          "VLA3oBKFyX",
+          "nRcwUlHyAd"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.2351741790771484e-08,
+        "max_abs_diff_width_logits": null,
+        "refiner_groups": [
+          "2cyv0Oedzg",
+          "5ilM1PX2vz",
+          "6h5yRW2LGc",
+          "WbCh1DRerJ",
+          "Z30i8WuL2N",
+          "pzJcg1OCfc",
+          "rhYxPcU29n",
+          "t79dBxj1WS"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 16432,
+        "released_updates": 2230,
+        "scaled_updates": 2230
+      },
+      "rgb": {
+        "checkpoint_completed_updates": 2230,
+        "checkpoint_device": "cuda",
+        "checkpoint_seed": 7,
+        "generation_equals_stitched_phase17": true,
+        "generation_groups": [
+          "6WCDpro5rE",
+          "8SdieOgbva",
+          "ClXqVoZOFu",
+          "DGqicHUGWb",
+          "OYgB6RGWcq",
+          "Po6ePjWYAz",
+          "VLA3oBKFyX",
+          "nRcwUlHyAd"
+        ],
+        "max_abs_diff_vs_released_phase20": 2.9802322387695312e-08,
+        "max_abs_diff_width_logits": 1.1920928955078125e-06,
+        "refiner_groups": [
+          "2cyv0Oedzg",
+          "5ilM1PX2vz",
+          "6h5yRW2LGc",
+          "WbCh1DRerJ",
+          "Z30i8WuL2N",
+          "pzJcg1OCfc",
+          "rhYxPcU29n",
+          "t79dBxj1WS"
+        ],
+        "refiner_groups_disjoint_from_generation": true,
+        "refiner_population": 16432,
+        "released_updates": 2230,
+        "scaled_updates": 2230
+      }
+    }
+  },
+  "schema": "history_ablation_fidelity_v1"
+}
