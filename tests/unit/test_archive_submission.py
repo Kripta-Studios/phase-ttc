@@ -128,8 +128,89 @@ def test_package_inside_repo_is_not_dirt(repo: Path, inputs: tuple[Path, Path]) 
 
 
 def test_unknown_commit(repo: Path, inputs: tuple[Path, Path], tmp_path: Path) -> None:
-    with pytest.raises(ArchiveRefusalError):
+    with pytest.raises(ArchiveRefusalError, match="commit not found"):
         _run(repo, inputs, tmp_path / "ledger", commit="0" * 40)
+    with pytest.raises(ArchiveRefusalError, match="commit not found"):
+        _run(repo, inputs, tmp_path / "ledger", commit="no-such-ref")
+
+
+def test_abbreviated_head_resolves_to_full_sha(
+    repo: Path, inputs: tuple[Path, Path], tmp_path: Path
+) -> None:
+    head = _git(repo, "rev-parse", "HEAD")
+    written = _run(repo, inputs, tmp_path / "ledger", commit=head[:10])
+    git = json.loads(written.read_text(encoding="utf-8"))["git"]
+    assert git["commit_requested"] == head[:10]
+    assert git["commit_resolved"] == git["head"] == head
+
+
+def test_refuses_commit_other_than_head(
+    repo: Path, inputs: tuple[Path, Path], tmp_path: Path
+) -> None:
+    first = _git(repo, "rev-parse", "HEAD")
+    (repo / "code.py").write_text("x = 2\n", encoding="utf-8")
+    _git(repo, "commit", "-q", "-am", "second")
+    ledger = tmp_path / "ledger"
+    with pytest.raises(ArchiveRefusalError, match="HEAD is"):
+        _run(repo, inputs, ledger, commit=first)
+    with pytest.raises(ArchiveRefusalError, match="HEAD is"):
+        _run(repo, inputs, ledger, commit=first, allow_dirty=True)
+    assert not receipt_path_for(ledger, "V1_test").exists()
+
+
+def test_producer_paths_record_blob_hashes(
+    repo: Path, inputs: tuple[Path, Path], tmp_path: Path
+) -> None:
+    (repo / "pkg").mkdir()
+    (repo / "pkg" / "run.py").write_text("print(1)\n", encoding="utf-8")
+    _git(repo, "add", "pkg/run.py")
+    _git(repo, "commit", "-q", "-m", "producer")
+    written = _run(
+        repo,
+        inputs,
+        tmp_path / "ledger",
+        producer_paths=[Path("pkg/run.py"), repo / "code.py"],
+    )
+    producers = json.loads(written.read_text(encoding="utf-8"))["git"]["producer_files"]
+    assert producers == [
+        {
+            "path": "code.py",
+            "blob_sha1": _git(repo, "rev-parse", "HEAD:code.py"),
+            "worktree_matches_commit": True,
+        },
+        {
+            "path": "pkg/run.py",
+            "blob_sha1": _git(repo, "rev-parse", "HEAD:pkg/run.py"),
+            "worktree_matches_commit": True,
+        },
+    ]
+
+
+def test_producer_edit_is_flagged_under_allow_dirty(
+    repo: Path, inputs: tuple[Path, Path], tmp_path: Path
+) -> None:
+    (repo / "code.py").write_text("x = 3\n", encoding="utf-8")
+    written = _run(
+        repo, inputs, tmp_path / "ledger", allow_dirty=True, producer_paths=[Path("code.py")]
+    )
+    (producer,) = json.loads(written.read_text(encoding="utf-8"))["git"]["producer_files"]
+    assert producer["worktree_matches_commit"] is False
+
+
+@pytest.mark.parametrize("path", ["missing.py", "../outside.py"])
+def test_refuses_producer_absent_from_commit(
+    repo: Path, inputs: tuple[Path, Path], tmp_path: Path, path: str
+) -> None:
+    ledger = tmp_path / "ledger"
+    with pytest.raises(ArchiveRefusalError, match="producer path"):
+        _run(repo, inputs, ledger, producer_paths=[Path(path)])
+    assert not receipt_path_for(ledger, "V1_test").exists()
+
+
+def test_refuses_untracked_producer(repo: Path, inputs: tuple[Path, Path], tmp_path: Path) -> None:
+    (repo / "new.py").write_text("y = 1\n", encoding="utf-8")
+    with pytest.raises(ArchiveRefusalError, match="does not exist in commit"):
+        _run(repo, inputs, tmp_path / "ledger", allow_dirty=True, producer_paths=[Path("new.py")])
 
 
 @pytest.mark.parametrize("variant", ["", "../escape", "has space", "a/b"])
@@ -176,3 +257,14 @@ def test_cli_exit_codes(
     assert main(argv) == 0
     assert main(argv) == 2
     assert "already exists" in capsys.readouterr().err
+    renamed = [*argv[:2], "CLI_2", *argv[3:]]
+    assert main([*renamed, "--producer-path", "missing.py"]) == 2
+    assert "does not exist in commit" in capsys.readouterr().err
+    first = _git(repo, "rev-parse", "HEAD")
+    (repo / "code.py").write_text("x = 2\n", encoding="utf-8")
+    _git(repo, "commit", "-q", "-am", "second")
+    stale = [*renamed[:6], first, *renamed[7:]]
+    assert stale[5] == "--commit"
+    assert main(stale) == 2
+    assert "HEAD is" in capsys.readouterr().err
+    assert main([*renamed, "--producer-path", "code.py"]) == 0

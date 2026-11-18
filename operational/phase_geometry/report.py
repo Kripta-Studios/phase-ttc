@@ -81,7 +81,23 @@ NOTES = """
 
 ## 17. Reproducción
 
-Con `PYTHONPATH=<repo>;<repo>/src` y el Python con torch del worktree de integración:
+Con `PYTHONPATH=<repo>;<repo>/src` y el Python con torch del worktree de integración.
+Las ubicaciones externas se leen sólo de variables de entorno (no hay valores por defecto;
+si falta una, `data.py` se detiene nombrándola). Todas las entradas se verifican por SHA-256.
+
+- `PHASE_TTC_POD_RETURN_ROOT`: directorio con `final_generated_fd84565b0df06d79.tar`,
+  `final_inputs_63e2720817ba6521.tar`, `final_delivery_bf471efaacbee542.tar` y
+  `FINAL_CANDIDATE/` (checkpoint publicado y ZIP enviado).
+  En la máquina original: `D:\\E_JEPA_POD2_RETURN_20261027`.
+- `PHASE_TTC_GARLTTC_DATASET`: raíz del dataset GarlTTC con `data/train.parquet` y
+  `annotations/train.parquet`. En la máquina original: `E:\\GarlTTC_dataset`.
+- `PHASE_TTC_GARLTTC_BENCHMARK`: raíz del repositorio Garl-TTC con
+  `garl_ttc_benchmark/codabench/scoring_program/score.py`.
+  En la máquina original: `E:\\Garl-TTC`.
+
+`docs/final_refit_20261017/NESTED_ROTATION_REVIEW.json` se resuelve contra `--root`
+(por defecto, el directorio actual). Con esos valores, las rutas registradas en los recibos
+son idénticas a las de la ejecución original.
 
 ```
 python -m operational.phase_geometry.data --work artifacts/sota_20261118/geometry/work

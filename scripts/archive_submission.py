@@ -8,10 +8,15 @@ contacts an external service and never uploads anything.
 Usage::
 
     python scripts/archive_submission.py PACKAGE.zip --variant NAME \
-        --hypothesis "..." --commit <sha> --recipe RECIPE.json --seed 7
+        --hypothesis "..." --commit <sha> --recipe RECIPE.json --seed 7 \
+        [--producer-path operational/x/run.py ...]
+
+``--commit`` must exist and resolve to the current ``HEAD``; each
+``--producer-path`` must exist in that commit and its git blob hash is recorded.
 
 Exit codes: 0 receipt written; 2 validation refusal (existing receipt, dirty
-tree without ``--allow-dirty``, unknown commit, unreadable package...).
+tree without ``--allow-dirty``, unknown commit, commit other than HEAD,
+producer path absent from the commit, unreadable package...).
 """
 
 from __future__ import annotations
@@ -29,7 +34,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-SCHEMA = "phase_ttc_submission_preregistration_receipt_v1"
+SCHEMA = "phase_ttc_submission_preregistration_receipt_v2"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LEDGER_DIR = REPO_ROOT / "docs" / "sota_20261118"
 VARIANT_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
@@ -102,17 +107,62 @@ def _git(repo: Path, *args: str) -> str:
     return completed.stdout
 
 
+def repo_top(repo: Path) -> Path:
+    """Return the resolved top-level directory of the repository containing ``repo``."""
+    return Path(_git(repo, "rev-parse", "--show-toplevel").strip()).resolve()
+
+
+def producer_blobs(repo: Path, commit: str, paths: Sequence[Path]) -> list[dict[str, Any]]:
+    """Return ``{path, blob_sha1, worktree_matches_commit}`` for each producer path.
+
+    ``paths`` are repository-relative (or absolute inside the repository). Each must
+    name a file (blob) in ``commit``; otherwise the receipt is refused.
+    """
+    top = repo_top(repo)
+    records: dict[str, dict[str, Any]] = {}
+    for path in paths:
+        candidate = path if path.is_absolute() else top / path
+        try:
+            relative = candidate.resolve().relative_to(top).as_posix()
+        except ValueError as exc:
+            raise ArchiveRefusalError(f"producer path is outside the repository: {path}") from exc
+        spec = f"{commit}:{relative}"
+        try:
+            _git(repo, "cat-file", "-e", spec)
+            kind = _git(repo, "cat-file", "-t", spec).strip()
+        except ArchiveRefusalError as exc:
+            raise ArchiveRefusalError(
+                f"producer path {relative!r} does not exist in commit {commit}"
+            ) from exc
+        if kind != "blob":
+            raise ArchiveRefusalError(
+                f"producer path {relative!r} is a {kind} in commit {commit}, not a file"
+            )
+        blob = _git(repo, "rev-parse", spec).strip()
+        on_disk = top / relative
+        matches = on_disk.is_file() and _git(top, "hash-object", "--", relative).strip() == blob
+        records[relative] = {
+            "path": relative,
+            "blob_sha1": blob,
+            "worktree_matches_commit": matches,
+        }
+    return [records[key] for key in sorted(records)]
+
+
 def read_git_state(repo: Path, commit: str, ignore: Sequence[Path] = ()) -> GitState:
     """Resolve ``commit`` and report whether the working tree is dirty.
 
     Paths in ``ignore`` (for example the package itself when it lives inside the
     repository) are excluded from the dirty check.
     """
-    resolved = _git(repo, "rev-parse", "--verify", "--quiet", f"{commit}^{{commit}}").strip()
+    try:
+        resolved = _git(repo, "rev-parse", "--verify", "--quiet", f"{commit}^{{commit}}").strip()
+    except ArchiveRefusalError:
+        resolved = ""
     if not resolved:
         raise ArchiveRefusalError(f"commit not found in repository: {commit}")
-    head = _git(repo, "rev-parse", "HEAD").strip()
-    top = Path(_git(repo, "rev-parse", "--show-toplevel").strip()).resolve()
+    head = _git(repo, "rev-parse", "--verify", "HEAD^{commit}").strip()
+    top = repo_top(repo)
     ignored: set[str] = set()
     for path in ignore:
         try:
@@ -151,6 +201,7 @@ def build_receipt(
     git_state: GitState,
     allow_dirty: bool,
     created_utc: str,
+    producers: Sequence[dict[str, Any]] = (),
 ) -> dict[str, Any]:
     """Assemble the receipt dictionary without writing it."""
     members = zip_listing(package)
@@ -177,6 +228,7 @@ def build_receipt(
             "tree_dirty": git_state.tree_dirty,
             "allow_dirty": allow_dirty,
             "dirty_paths": git_state.dirty_paths,
+            "producer_files": list(producers),
         },
         "upload": {
             "performed_by_this_tool": False,
@@ -198,6 +250,7 @@ def archive_submission(
     repo: Path = REPO_ROOT,
     allow_dirty: bool = False,
     now: datetime | None = None,
+    producer_paths: Sequence[Path] = (),
 ) -> Path:
     """Validate inputs and write a new, never-overwritten JSON receipt.
 
@@ -221,12 +274,18 @@ def archive_submission(
             "pre-register a new variant name instead of overwriting"
         )
     git_state = read_git_state(repo, commit, ignore=(package, recipe))
+    if not git_state.commit_is_head:
+        raise ArchiveRefusalError(
+            f"--commit {commit} resolves to {git_state.commit_resolved}, but HEAD is "
+            f"{git_state.head}; check out the producing commit before writing the receipt"
+        )
     if git_state.tree_dirty and not allow_dirty:
         shown = ", ".join(git_state.dirty_paths[:10])
         raise ArchiveRefusalError(
             f"git working tree is dirty ({len(git_state.dirty_paths)} paths: {shown}); "
             "commit first or pass --allow-dirty (recorded in the receipt)"
         )
+    producers = producer_blobs(repo, git_state.commit_resolved, producer_paths)
     stamp = (now or datetime.now(UTC)).astimezone(UTC).isoformat(timespec="seconds")
     receipt = build_receipt(
         package=package,
@@ -237,6 +296,7 @@ def archive_submission(
         git_state=git_state,
         allow_dirty=allow_dirty,
         created_utc=stamp,
+        producers=producers,
     )
     ledger_dir.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(receipt, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
@@ -256,7 +316,21 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("package", type=Path, help="ZIP package that would be uploaded")
     parser.add_argument("--variant", required=True, help="pre-registered variant name")
     parser.add_argument("--hypothesis", required=True, help="hypothesis this upload tests")
-    parser.add_argument("--commit", required=True, help="git commit of the producing code")
+    parser.add_argument(
+        "--commit",
+        required=True,
+        help="git commit of the producing code; must exist and equal the current HEAD",
+    )
+    parser.add_argument(
+        "--producer-path",
+        action="append",
+        type=Path,
+        default=[],
+        dest="producer_paths",
+        metavar="PATH",
+        help="repository file that produced the package (repeatable); must exist in --commit, "
+        "its git blob hash is recorded",
+    )
     parser.add_argument("--recipe", required=True, type=Path, help="frozen recipe file")
     parser.add_argument("--seed", required=True, type=int, help="seed of the frozen recipe")
     parser.add_argument(
@@ -288,6 +362,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             ledger_dir=args.ledger_dir,
             repo=args.repo,
             allow_dirty=args.allow_dirty,
+            producer_paths=args.producer_paths,
         )
     except ArchiveRefusalError as exc:
         print(f"refused: {exc}", file=sys.stderr)

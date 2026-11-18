@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import tarfile
 import time
 from collections.abc import Iterator
@@ -25,58 +26,87 @@ from . import geometry
 from .metrics import json_safe, ttc_to_phase
 
 FINAL = "workspace/ejepa_final_runs/final/"
-CANDIDATE = r"D:\E_JEPA_POD2_RETURN_20261027\FINAL_CANDIDATE"
 V16 = "workspace/ejepa_final_inputs/workspace/e-jepa-ttc-v16-multimodal-validation/artifacts/"
+ENV_POD_RETURN = "PHASE_TTC_POD_RETURN_ROOT"
+ENV_GARLTTC_DATASET = "PHASE_TTC_GARLTTC_DATASET"
+ENV_GARLTTC_BENCHMARK = "PHASE_TTC_GARLTTC_BENCHMARK"
+LOCATIONS: dict[str, str] = {
+    ENV_POD_RETURN: (
+        "the pod-2 return directory holding final_generated_fd84565b0df06d79.tar, "
+        "final_inputs_63e2720817ba6521.tar, final_delivery_bf471efaacbee542.tar and "
+        "FINAL_CANDIDATE/"
+    ),
+    ENV_GARLTTC_DATASET: (
+        "the GarlTTC dataset root holding data/train.parquet and annotations/train.parquet"
+    ),
+    ENV_GARLTTC_BENCHMARK: (
+        "the Garl-TTC repository root holding garl_ttc_benchmark/codabench/scoring_program/score.py"
+    ),
+}
+CANDIDATE = "FINAL_CANDIDATE/"
+# Every external location is named by an environment variable ("location"); relative paths
+# are joined to its value at use time.  Repository files use location "" (the --root).
 SOURCES: dict[str, dict[str, str]] = {
     "oof_phase20": {
-        "archive": r"D:\E_JEPA_POD2_RETURN_20261027\final_generated_fd84565b0df06d79.tar",
+        "location": ENV_POD_RETURN,
+        "archive": "final_generated_fd84565b0df06d79.tar",
         "member": FINAL + "oof/PHASE20_CONTEXT.npz",
         "sha256": "48207e3c5366057bfeba4e91ec40c145b344e8e7eb6fabc8966c82386d6c51cd",
     },
     "train_cache": {
-        "archive": r"D:\E_JEPA_POD2_RETURN_20261027\final_generated_fd84565b0df06d79.tar",
+        "location": ENV_POD_RETURN,
+        "archive": "final_generated_fd84565b0df06d79.tar",
         "member": FINAL + "cache/PHASE_ONLY_EVENT_S7_TRAIN40.npz",
         "sha256": "5a814615630f7e9ae372acf2123b2c9b2da880e9a950b402179adde44ba1293b",
     },
     "test_inputs": {
-        "archive": r"D:\E_JEPA_POD2_RETURN_20261027\final_inputs_63e2720817ba6521.tar",
+        "location": ENV_POD_RETURN,
+        "archive": "final_inputs_63e2720817ba6521.tar",
         "member": V16
         + "research_independent_20261012T165833Z/DEPENDENCIES/OFFICIAL_TEST12/test_inputs.parquet",
         "sha256": "aedb9da5484ceedb642ef1cbc7cf6115dcf7f368e4444b55de947989fc19a362",
     },
     "test_inventory": {
-        "archive": r"D:\E_JEPA_POD2_RETURN_20261027\final_inputs_63e2720817ba6521.tar",
+        "location": ENV_POD_RETURN,
+        "archive": "final_inputs_63e2720817ba6521.tar",
         "member": V16 + "multimodal_research_20261012/test12_phase_only/INPUTS.json",
         "sha256": "b78730abe68de7fbe06c6c98b25d5fa025c04d9303720b680ce0c0f575d2e526",
     },
     "test_diagnostics": {
-        "archive": r"D:\E_JEPA_POD2_RETURN_20261027\final_delivery_bf471efaacbee542.tar",
+        "location": ENV_POD_RETURN,
+        "archive": "final_delivery_bf471efaacbee542.tar",
         "member": FINAL + "test12/staged_sequences/diagnostics/",
         "sha256": "",
     },
 }
 FILES: dict[str, dict[str, str]] = {
     "train_data": {
-        "path": r"E:\GarlTTC_dataset\data\train.parquet",
+        "location": ENV_GARLTTC_DATASET,
+        "path": "data/train.parquet",
         "sha256": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6",
     },
     "train_annotations": {
-        "path": r"E:\GarlTTC_dataset\annotations\train.parquet",
+        "location": ENV_GARLTTC_DATASET,
+        "path": "annotations/train.parquet",
         "sha256": "64e9a81232643ecce1d2f66e906c7cff6ea1e9e6958f81588b95e112693b11ad",
     },
     "released_checkpoint": {
-        "path": CANDIDATE + r"\checkpoints\PHASE_ONLY_EVENT_S7_TRAIN40.pt",
+        "location": ENV_POD_RETURN,
+        "path": CANDIDATE + "checkpoints/PHASE_ONLY_EVENT_S7_TRAIN40.pt",
         "sha256": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
     },
     "submitted_zip": {
-        "path": CANDIDATE + r"\PHASE_ONLY_S7_TRAIN40_SCIENTIFIC_OOF.zip",
+        "location": ENV_POD_RETURN,
+        "path": CANDIDATE + "PHASE_ONLY_S7_TRAIN40_SCIENTIFIC_OOF.zip",
         "sha256": "5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc",
     },
     "official_scorer": {
-        "path": r"E:\Garl-TTC\garl_ttc_benchmark\codabench\scoring_program\score.py",
+        "location": ENV_GARLTTC_BENCHMARK,
+        "path": "garl_ttc_benchmark/codabench/scoring_program/score.py",
         "sha256": "f3bbf089ba6e47edfce1de522c92ddc969db2260fac7544e82bc017fedf82dce",
     },
     "blocks": {
+        "location": "",
         "path": "docs/final_refit_20261017/NESTED_ROTATION_REVIEW.json",
         "sha256": "12465d3b63dba27573461c098f2d19046e89c64c3d32444dfbf4b533fa5e8ec1",
     },
@@ -103,11 +133,63 @@ def sha256_file(path: Path) -> str:
         return hashlib.file_digest(stream, "sha256").hexdigest()
 
 
+class MissingLocationError(RuntimeError):
+    """An external input location is not configured."""
+
+
+def location_root(variable: str) -> Path:
+    """Directory named by ``variable``; fail with an actionable message if unset or missing."""
+    value = os.environ.get(variable, "").strip()
+    if not value:
+        raise MissingLocationError(
+            f"Environment variable {variable} is not set. Set it to {LOCATIONS[variable]} "
+            "(see docs/sota_20261118/geometry/REPORT.md, section 17)."
+        )
+    path = Path(value)
+    if not path.is_dir():
+        raise MissingLocationError(
+            f"{variable}={value} is not an existing directory; it must point to "
+            f"{LOCATIONS[variable]}."
+        )
+    return path
+
+
+def file_path(name: str, root: Path) -> Path:
+    """Resolve a pinned file against its configured location (or the repository root)."""
+    spec = FILES[name]
+    base = location_root(spec["location"]) if spec["location"] else root
+    return base / spec["path"]
+
+
+def archive_path(name: str) -> Path:
+    """Resolve the archive holding a pinned member against its configured location."""
+    spec = SOURCES[name]
+    return location_root(spec["location"]) / spec["archive"]
+
+
+def resolved_sources() -> dict[str, dict[str, str]]:
+    """Archive-member pins with absolute archive paths, as recorded in receipts."""
+    return {
+        name: {"archive": str(archive_path(name)), "member": s["member"], "sha256": s["sha256"]}
+        for name, s in SOURCES.items()
+    }
+
+
+def resolved_files() -> dict[str, dict[str, str]]:
+    """File pins with resolved paths (repository files stay relative), as recorded in receipts."""
+    return {
+        name: {
+            "path": str(file_path(name, Path())) if spec["location"] else spec["path"],
+            "sha256": spec["sha256"],
+        }
+        for name, spec in FILES.items()
+    }
+
+
 def verified_file(name: str, root: Path) -> Path:
     """Resolve a pinned file (relative paths against the repository root) and check its hash."""
     spec = FILES[name]
-    path = Path(spec["path"])
-    path = path if path.is_absolute() else root / path
+    path = file_path(name, root)
     digest = sha256_file(path)
     if digest != spec["sha256"]:
         raise ValueError(f"{name} differs from its pinned SHA-256: {path}")
@@ -117,7 +199,7 @@ def verified_file(name: str, root: Path) -> Path:
 def read_member(name: str) -> bytes:
     """Read one pinned archive member fully into memory and verify its SHA-256."""
     spec = SOURCES[name]
-    with tarfile.open(spec["archive"]) as archive:
+    with tarfile.open(archive_path(name)) as archive:
         handle = archive.extractfile(spec["member"])
         if handle is None:
             raise FileNotFoundError(spec["member"])
@@ -138,7 +220,7 @@ def iter_diagnostics() -> Iterator[tuple[str, bytes, dict[str, Any]]]:
     spec = SOURCES["test_diagnostics"]
     pending: dict[str, dict[str, Any]] = {}
     payloads: dict[str, bytes] = {}
-    with tarfile.open(spec["archive"]) as archive:
+    with tarfile.open(archive_path("test_diagnostics")) as archive:
         for member in archive:
             if not member.isfile() or not member.name.startswith(spec["member"]):
                 continue
@@ -302,8 +384,10 @@ def main() -> None:
     np.savez_compressed(work / "test_inputs.npz", **test)
     receipt = {
         "schema": "phase_geometry_data_receipt_v1",
-        "sources": SOURCES,
-        "files": {k: {**v, "verified": True} for k, v in FILES.items() if k != "submitted_zip"},
+        "sources": resolved_sources(),
+        "files": {
+            k: {**v, "verified": True} for k, v in resolved_files().items() if k != "submitted_zip"
+        },
         "train": train_receipt,
         "test": test_receipt,
         "outputs": {

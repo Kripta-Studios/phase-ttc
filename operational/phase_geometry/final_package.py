@@ -18,7 +18,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from .data import FILES, SOURCES, sha256_file, verified_file
+from .data import FILES, resolved_sources, sha256_file, verified_file
 from .metrics import json_safe
 from .package import build_submission, disagreement, read_zip, verify_package, write_zip
 from .run_cv import Job, run_job
@@ -159,7 +159,7 @@ def main() -> None:
         "work_inputs_sha256": {
             n: sha256_file(work / n) for n in ("train_inputs.npz", "test_inputs.npz")
         },
-        "source_members": SOURCES,
+        "source_members": resolved_sources(),
         "source_files": {k: v["sha256"] for k, v in FILES.items()},
         "code_sha256": code,
         "submitted_zip_sha256": sha256_file(submitted_path),

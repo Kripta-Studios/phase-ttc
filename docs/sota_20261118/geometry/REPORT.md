@@ -221,7 +221,23 @@ Regla descriptiva: un valor de Overall es *consistente* si nuestra estimación q
 
 ## 17. Reproducción
 
-Con `PYTHONPATH=<repo>;<repo>/src` y el Python con torch del worktree de integración:
+Con `PYTHONPATH=<repo>;<repo>/src` y el Python con torch del worktree de integración.
+Las ubicaciones externas se leen sólo de variables de entorno (no hay valores por defecto;
+si falta una, `data.py` se detiene nombrándola). Todas las entradas se verifican por SHA-256.
+
+- `PHASE_TTC_POD_RETURN_ROOT`: directorio con `final_generated_fd84565b0df06d79.tar`,
+  `final_inputs_63e2720817ba6521.tar`, `final_delivery_bf471efaacbee542.tar` y
+  `FINAL_CANDIDATE/` (checkpoint publicado y ZIP enviado).
+  En la máquina original: `D:\E_JEPA_POD2_RETURN_20261027`.
+- `PHASE_TTC_GARLTTC_DATASET`: raíz del dataset GarlTTC con `data/train.parquet` y
+  `annotations/train.parquet`. En la máquina original: `E:\GarlTTC_dataset`.
+- `PHASE_TTC_GARLTTC_BENCHMARK`: raíz del repositorio Garl-TTC con
+  `garl_ttc_benchmark/codabench/scoring_program/score.py`.
+  En la máquina original: `E:\Garl-TTC`.
+
+`docs/final_refit_20261017/NESTED_ROTATION_REVIEW.json` se resuelve contra `--root`
+(por defecto, el directorio actual). Con esos valores, las rutas registradas en los recibos
+son idénticas a las de la ejecución original.
 
 ```
 python -m operational.phase_geometry.data --work artifacts/sota_20261118/geometry/work
@@ -233,3 +249,68 @@ python -m operational.phase_geometry.final_package --work artifacts/sota_2026111
 python -m operational.phase_geometry.report --docs docs/sota_20261118/geometry
 ```
 
+## 18. Source provenance of the executed run
+
+*Adenda escrita a mano el 2026-11-18 tras una revisión de código; no la genera
+`report.py` y se perdería si este informe se regenera. No se ha vuelto a ejecutar ninguna
+etapa del pipeline. Las horas son mtimes de archivo locales (+01:00) y sólo son tan fiables
+como el sistema de archivos.*
+
+**Hashes registrados.**
+
+- `artifacts/sota_20261118/geometry/work/DATA_RECEIPT.json` (local, fuera de git; escrito
+  14:05:08) registra `data_source_sha256` =
+  `68257a7fb09c04e284bf6a6471b7f131b1e65ea218b7192c322fa385627cfc7e` y
+  `geometry_source_sha256` = `c5e0bda5…` (igual al `geometry.py` commiteado), y los NPZ de
+  trabajo `train_inputs.npz` `1af688cf…` y `test_inputs.npz` `1e3d9d5b…`.
+- `TEST12_CANDIDATE_RECEIPT.json` (commiteado; escrito 14:53:12) registra en `code_sha256`
+  los 12 módulos tal como estaban a las 14:53; los 12 coinciden byte a byte con el commit
+  `3fb633a0` (p. ej. `data.py` = `88c0816294b6257115fafa269855841d9bf7c864925e7c5d85090f406f9e3714`).
+  Sus `work_inputs_sha256` coinciden con los `outputs` de `DATA_RECEIPT.json`, es decir, el
+  paquete se construyó con los NPZ escritos por la versión `68257a7f…` de `data.py`.
+- Los hashes registrados en ambos recibos no se han modificado.
+
+**Cronología (mtimes).** 14:05:08 `data.py` escribe los NPZ y `DATA_RECEIPT.json`;
+14:08:58 ajuste `REL__ALL__S7` (réplica usada en la sección 10 y en la comparación de la
+sección 12); a partir de ~14:08 `run_cv` (163 trabajos pendientes, 3 workers; registros de
+trabajo entre 14:13:56 y 14:44). Durante esa ejecución se modificaron: `heads.py`,
+`package.py`, `run_cv.py`, `variants.py` y `weights.py` (los cinco en el mismo segundo,
+14:23:48, compatible con un formateo automático, pero no demostrable), `data.py` (14:24:12),
+`metrics.py` (14:24:41) y `evaluate.py` (14:25:08). Evaluación 14:46. El ajuste final sobre
+todas las filas `RGB_GEO_BAND__ALL__S7` es de 14:49:35, posterior a todas esas
+modificaciones; después se modificaron `final_package.py` (14:50:21) y `report.py`
+(14:51:30). A las 14:53:11 `final_package` se ejecutó de nuevo (el estado ya existía, sin
+reajuste) y escribió ZIP, `predictions.csv` y recibos. Commit `3fb633a0` a las 14:55:02;
+es el único commit que contiene estos archivos.
+
+**Qué cambió entre lo ejecutado y lo commiteado.** No es recuperable: no hay historial git
+anterior a `3fb633a0`, ningún otro worktree hermano contiene `operational/phase_geometry`,
+y los `.pyc` de `__pycache__` se recompilaron a partir de las fuentes actuales (su cabecera
+registra el mtime y el tamaño de los archivos actuales). Variantes triviales del `data.py`
+commiteado (finales de línea CRLF, sin salto final) no dan `68257a7f…`. Por tanto **no se
+puede establecer** si la diferencia de `data.py` es sólo de formato o cambia el
+comportamiento, ni qué versión de `heads.py`/`run_cv.py`/`variants.py`/`weights.py` usó
+cada trabajo de la CV (el proceso `run_cv` arrancó antes de las 14:23:48; los `.pyc`
+recompilados entre 14:27:44 y 14:28:07 indican que algún proceso importó las versiones
+nuevas a partir de entonces, sin que se sepa cuál). Por mtime, el ajuste final de 14:49:35 y
+la ejecución de empaquetado de 14:53 usaron las versiones commiteadas de todos los
+módulos salvo `data.py`, cuyo efecto llega sólo a través de los NPZ ya escritos. Que el
+`data.py` commiteado regenere esos NPZ byte a byte **no se ha comprobado**.
+
+**Reproducibilidad del ZIP candidato.** La sección 14.4 afirma que el ZIP se escribe con
+fecha fija para que su SHA-256 sea reproducible; el test unitario
+`test_zip_round_trip_order_and_reproducibility` sólo lo comprueba con datos sintéticos. En
+esta revisión se comprobó, con el `package.py` commiteado, que reconstruir el ZIP a partir
+de `candidate_predictions.npz` (`official_token`, `candidate_ttc`) da exactamente
+`8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df`, y `predictions.csv` da
+`1e6ef1f628f8abf508f1c77f6f9621e4905d6203ca917fb0678eb67dfc61cee7`. No se ha comprobado la
+reproducción de extremo a extremo (regenerar NPZ, reajustar la cabeza o volver a predecir
+desde el estado guardado).
+
+**Después de esta revisión.** Las rutas externas de `data.py` pasaron a variables de entorno
+(sección 17) y `final_package.py`/`report.py` se adaptaron; sus SHA-256 cambian otra vez
+(`data.py` `5915a694…`, `final_package.py` `fac04e85…`, `report.py` `3df3f788…`) y ya no
+coinciden con ninguno de los dos recibos. Con las variables apuntando a las ubicaciones
+originales, las entradas `sources`/`files` que el código nuevo escribiría en los recibos son
+idénticas a las registradas (comprobado sin ejecutar el pipeline), y `official_scorer`,
+`blocks` y `released_checkpoint` se resuelven y verifican su SHA-256 fijado.

@@ -25,8 +25,14 @@ Antes de subir un paquete se escribe un recibo con
 `scripts/archive_submission.py`, que registra:
 
 - **receta congelada** (archivo y SHA-256) y **semilla**;
-- **commit de código** resuelto, si coincide con HEAD y si el árbol estaba sucio
-  (un árbol sucio se rechaza salvo `--allow-dirty`, que queda registrado);
+- **commit de código**: `--commit` debe existir y resolver (SHA completo) al
+  mismo commit que `HEAD`; si no, se rechaza. También se registra si el árbol
+  estaba sucio (un árbol sucio se rechaza salvo `--allow-dirty`, que queda
+  registrado; `--allow-dirty` no exime de la comprobación de HEAD);
+- **archivos productores** (opcional, `--producer-path`, repetible): cada ruta,
+  relativa a la raíz del repositorio, debe existir como archivo en ese commit
+  (`git cat-file -e <commit>:<ruta>`); se registra su hash de blob git y si la
+  copia de trabajo coincide con él;
 - **SHA-256 del paquete**, tamaño y digest de su listado de miembros;
 - **hipótesis** que el envío pone a prueba;
 
@@ -76,8 +82,14 @@ histórico `1016512`.
 ```sh
 .venv/Scripts/python.exe scripts/archive_submission.py PACKAGE.zip \
   --variant V20_example --hypothesis "..." --commit <sha> \
-  --recipe path/to/OOF_RECIPE.json --seed 7
+  --recipe path/to/OOF_RECIPE.json --seed 7 \
+  --producer-path operational/phase_geometry/final_package.py \
+  --producer-path operational/phase_geometry/package.py
 ```
 
-Escribe `docs/sota_20261118/SUBMISSION_RECEIPT_<variante>.json`. Código de salida
-2 ante cualquier rechazo. Tests: `tests/unit/test_archive_submission.py`.
+Escribe `docs/sota_20261118/SUBMISSION_RECEIPT_<variante>.json` (esquema
+`phase_ttc_submission_preregistration_receipt_v2`; los productores quedan en
+`git.producer_files`). Código de salida 2 ante cualquier rechazo: recibo
+existente, commit inexistente o distinto de `HEAD`, árbol sucio sin
+`--allow-dirty`, ruta productora ausente del commit o fuera del repositorio,
+paquete ilegible. Tests: `tests/unit/test_archive_submission.py`.
