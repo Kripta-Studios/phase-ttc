@@ -1,0 +1,84 @@
+{
+  "schema": "phase_ttc_owner_supplied_leaderboard_snapshot_v1",
+  "as_of": "2026-11-18",
+  "benchmark": "GarlTTC Test",
+  "provenance": {
+    "kind": "owner_supplied",
+    "statement": "Pasted by the repository owner on 2026-11-18; not fetched by tooling. No API call, scraping or upload was performed to produce this file.",
+    "timezone_of_dates": "unknown (not verified)",
+    "precision": "two decimals as displayed"
+  },
+  "entries": [
+    {
+      "rank": 1,
+      "participant": "AlvaroSchwiedop",
+      "date": "2026-10-28 17:15",
+      "id": 1016512,
+      "uses_event": true,
+      "uses_image": true,
+      "method": "PHASE-TTC (TRAIN40, 650 ms causal history)",
+      "overall_MiD": 35.8,
+      "MiDc": 43.52,
+      "FRc": 0.0,
+      "MiDs": 28.26,
+      "FRs": 0.0,
+      "MiDl": 25.72,
+      "FRl": 0.0,
+      "MiDn": 29.93,
+      "FRn": 0.0,
+      "num_samples": 6762
+    },
+    {
+      "rank": 2,
+      "participant": "nail-hnu",
+      "date": "2026-06-28 16:02",
+      "id": 817519,
+      "uses_event": true,
+      "uses_image": true,
+      "method": "Garl-TTC",
+      "overall_MiD": 45.03,
+      "MiDc": 53.13,
+      "FRc": 0.0,
+      "MiDs": 37.58,
+      "FRs": 0.0,
+      "MiDl": 40.61,
+      "FRl": 0.0,
+      "MiDn": 31.29,
+      "FRn": 0.0,
+      "num_samples": 6762
+    },
+    {
+      "rank": 3,
+      "participant": "ahmed2204a",
+      "date": "2026-10-09 00:39",
+      "id": 970318,
+      "uses_event": null,
+      "uses_image": null,
+      "method": null,
+      "overall_MiD": 45.03,
+      "MiDc": 53.13,
+      "FRc": 0.0,
+      "MiDs": 37.59,
+      "FRs": 0.0,
+      "MiDl": 40.61,
+      "FRl": 0.0,
+      "MiDn": 31.28,
+      "FRn": 0.0,
+      "num_samples": 6762
+    }
+  ],
+  "comparison_with_archive": {
+    "archive": "paper/from_motion_to_time_20261102/data/official_benchmark.json",
+    "archive_as_of": "2026-10-28",
+    "same_entry_count": true,
+    "same_order": true,
+    "same_ids": true,
+    "metric_values_identical_at_two_decimals": true,
+    "differences": [
+      "The archive has no participant names or submission dates; this snapshot adds them as supplied by the owner.",
+      "The archive labels id 970318 as 'Unnamed public submission'; the snapshot shows participant ahmed2204a with method, uses_event and uses_image shown as n/a (stored here as null).",
+      "The archive stores uses_event/uses_image only for id 1016512; the snapshot adds true/true for id 817519.",
+      "The archive additionally holds full-precision scorer values for id 1016512 (overall_MiD 35.80145158082389); the snapshot is two-decimal only."
+    ]
+  }
+}
