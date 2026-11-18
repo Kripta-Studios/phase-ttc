@@ -1,0 +1,70 @@
+{
+  "created_utc": "2026-11-18T20:58:42+00:00",
+  "git": {
+    "allow_dirty": true,
+    "commit_is_head": true,
+    "commit_requested": "6f1e29d59bd7316a65a1a187802d680c4904dc3e",
+    "commit_resolved": "6f1e29d59bd7316a65a1a187802d680c4904dc3e",
+    "dirty_paths": [
+      "docs/sota_20261118/literature_baselines/MAIN_TABLE.csv",
+      "docs/sota_20261118/literature_baselines/PROTOCOL.json",
+      "docs/sota_20261118/literature_baselines/PROTOCOL.md",
+      "docs/sota_20261118/literature_baselines/REPORT.md",
+      "docs/sota_20261118/literature_baselines/RESULTS.json",
+      "docs/sota_20261118/literature_baselines/SUBSET.json",
+      "operational/literature_baselines/__init__.py",
+      "operational/literature_baselines/adapters.py",
+      "operational/literature_baselines/common.py",
+      "operational/literature_baselines/evaluate.py",
+      "operational/literature_baselines/frames.py",
+      "operational/literature_baselines/manifest.py",
+      "operational/literature_baselines/narrative.py",
+      "operational/literature_baselines/report.py",
+      "operational/literature_baselines/run.py",
+      "operational/literature_baselines/sanity.py",
+      "tests/unit/test_literature_baselines_common.py",
+      "tests/unit/test_literature_baselines_frames.py"
+    ],
+    "head": "6f1e29d59bd7316a65a1a187802d680c4904dc3e",
+    "producer_files": [
+      {
+        "blob_sha1": "34bdb282106d5af2b1c8a192776653134bee4a81",
+        "path": "operational/matched_comparator/final_package.py",
+        "worktree_matches_commit": true
+      },
+      {
+        "blob_sha1": "1709aa0f207f8133bf5a8970302d2f444b574a60",
+        "path": "operational/phase_geometry/heads.py",
+        "worktree_matches_commit": true
+      }
+    ],
+    "tree_dirty": true
+  },
+  "hypothesis": "A head that reads only the supplied object regions of the last 600 ms (no image, no event model) is scored to quantify how much of 23.47 (RGB_GEO_BAND) is box history alone; reported whatever the score, including if it is below 23.47.",
+  "package": {
+    "file_name": "MATCHED_A_GEO_LEARNED_S7_TRAIN40.zip",
+    "member_count": 1,
+    "members": [
+      {
+        "crc32": "7676c6b3",
+        "name": "submission.json",
+        "size_bytes": 648486
+      }
+    ],
+    "members_digest_sha256": "1296a234de05129c36b911c1c72b086f0275f8f65fd715a3eeeaf5ccdb933936",
+    "sha256": "0be589c0a52cd3422402eb9aa0da6a1b2da185c880fdc54a19b937c25d3bf5b9",
+    "size_bytes": 89455
+  },
+  "recipe": {
+    "file_name": "PROTOCOL.md",
+    "sha256": "989a27f5a7dfb413bd61710c057bff495a0e9fabafbaec972e0a491599c84610"
+  },
+  "schema": "phase_ttc_submission_preregistration_receipt_v2",
+  "seed": 7,
+  "upload": {
+    "codabench_submission_id": null,
+    "note": "Fill the ledger row after the single upload; never edit this receipt.",
+    "performed_by_this_tool": false
+  },
+  "variant": "MATCHED_A_GEO_LEARNED_S7_TRAIN40"
+}
