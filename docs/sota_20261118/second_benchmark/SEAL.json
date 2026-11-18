@@ -1,0 +1,83 @@
+{
+  "schema": "second_benchmark_fcwd_seal_v1",
+  "predictions": "PREDICTIONS_SEALED.csv",
+  "predictions_sha256": "b5021440b941e943d2a2b2e3029084b858304a62175e05fa2129a55cf2ce45d0",
+  "queries": 630,
+  "arms": [
+    "CONST_EAP_MEDIAN",
+    "GEO_AREA",
+    "GEO_AREA_10HZ",
+    "GEO_AREA_10HZ__L50",
+    "GEO_AREA__L50",
+    "GEO_LEARNED_EAP_ZS_20HZ_S13",
+    "GEO_LEARNED_EAP_ZS_20HZ_S13__L50",
+    "GEO_LEARNED_EAP_ZS_20HZ_S21",
+    "GEO_LEARNED_EAP_ZS_20HZ_S21__L50",
+    "GEO_LEARNED_EAP_ZS_20HZ_S7",
+    "GEO_LEARNED_EAP_ZS_20HZ_S7__L50",
+    "GEO_LEARNED_EAP_ZS_S13",
+    "GEO_LEARNED_EAP_ZS_S13__L50",
+    "GEO_LEARNED_EAP_ZS_S21",
+    "GEO_LEARNED_EAP_ZS_S21__L50",
+    "GEO_LEARNED_EAP_ZS_S7",
+    "GEO_LEARNED_EAP_ZS_S7__L50",
+    "GEO_TRUNC_AWARE",
+    "GEO_TRUNC_AWARE_10HZ",
+    "GEO_TRUNC_AWARE_10HZ__L50",
+    "GEO_TRUNC_AWARE__L50",
+    "SIZE_RATIO_LAST2",
+    "SIZE_RATIO_LAST2__L50"
+  ],
+  "constant_eap_median_ttc_s": 2.6563222889191644,
+  "inputs": [
+    {
+      "sequence_id": "FCWD1",
+      "bbox_csv": "sealed_labels/sequence_1/bounding_box.csv",
+      "bbox_sha256": "936fcaa0115ff1e7dbe09bedf472d1eba5196e700a4e82c79c1df86e3d4375b4",
+      "bbox_rows": 219,
+      "hdf5": "inputs/sequence_1/2024-03-02-10-35-27.hdf5",
+      "event_span_us": [
+        65,
+        17894991
+      ],
+      "queries": 214
+    },
+    {
+      "sequence_id": "FCWD2",
+      "bbox_csv": "sealed_labels/sequence_2/bounding_box.csv",
+      "bbox_sha256": "be8b5933038609c430b1d796038345280a589874fb6b10a06f5c7bdece16c88c",
+      "bbox_rows": 223,
+      "hdf5": "inputs/sequence_2/2024-03-02-10-37-09.hdf5",
+      "event_span_us": [
+        9,
+        17033900
+      ],
+      "queries": 218
+    },
+    {
+      "sequence_id": "FCWD3",
+      "bbox_csv": "sealed_labels/sequence_3/bounding_box.csv",
+      "bbox_sha256": "69291c08420cdc6629c05d57c57fa7c7c1fe87f5e00273869e6e106df42823d1",
+      "bbox_rows": 203,
+      "hdf5": "inputs/sequence_3/2024-03-02-10-38-25.hdf5",
+      "event_span_us": [
+        1307,
+        16511129
+      ],
+      "queries": 198
+    }
+  ],
+  "gt_ttc_opened": false,
+  "cohort_matches_committed_anchors": true,
+  "geo_learned_receipt_sha256": "e7db6263158100a1bd31818b8b09d8467b7666e9fa870133a867d794cfddd013",
+  "source_sha256": {
+    "operational/second_benchmark/fcwd.py": "b7063a6f8dda10f9f9efc3bad8e4ae5402ca4accef4c7dea529a54139e2f906a",
+    "operational/second_benchmark/run.py": "16e19f91318a187297e11760c9fd19fff34db55ce1d7e4aa11d16d24be19d1af",
+    "operational/second_benchmark/train_geo.py": "a2b83c8a8cf70b0eae4a38c9c68c53a7d6105555e17d83429bda3ae580c80c73",
+    "operational/phase_geometry/geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
+    "operational/phase_geometry/heads.py": "b94bdfa134e262021351fcea633535deb47ee8a792764748cf3527085536d478",
+    "operational/phase_geometry/metrics.py": "8dc9fabfc655ba9f4b11db5cbc393e3955ca9b7695e692509366c5d4d217f187",
+    "operational/sota_eval/fcwd_score.py": "cac2db7825550c9815a4e01ca75f62fe43a6a5bc549b5c0b696cea4aa113f7bb"
+  },
+  "protocol_sha256": "4367e0f48f1246b2009dfffd819a4c5496a1b11ca5932603e552180e10de6c2f"
+}
