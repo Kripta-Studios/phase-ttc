@@ -2,8 +2,9 @@
 
 ## Naming update — 2026-10-28
 
-The project's current public name is **PHASE-TTC: Causal Event–RGB Fusion for
-Time-to-Contact Estimation**, at `Kripta-Studios/phase-ttc`. The original E-JEPA-TTC
+The project's current public name is **PHASE-TTC: A Causal Event–RGB System for
+Time-to-Contact Estimation** (subtitle revised on 2026-11-19, see
+`docs/decisions/ADR-0048-subtitle-without-fusion-claim.md`), at `Kripta-Studios/phase-ttc`. The original E-JEPA-TTC
 specification below is preserved as the research charter. It describes the initial
 JEPA hypothesis, not a claim that every final model uses or benefits from JEPA.
 Keep historical experiment IDs, signed evidence, checkpoint paths and the

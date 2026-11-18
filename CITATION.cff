@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "PHASE-TTC: Causal Event-RGB Fusion for Time-to-Contact Estimation"
+title: "PHASE-TTC: A Causal Event-RGB System for Time-to-Contact Estimation"
 message: "Cite this software when using PHASE-TTC (formerly E-JEPA-TTC)."
 repository-code: "https://github.com/Kripta-Studios/phase-ttc"
 type: software

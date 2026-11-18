@@ -1,6 +1,6 @@
 # PHASE-TTC: From Motion to Time — edición ampliada
 
-**Causal Event–RGB Fusion for Signed Time-to-Contact Estimation**
+**A Causal Event–RGB System for Signed Time-to-Contact Estimation**
 
 <a href="https://github.com/Kripta-Studios/phase-ttc"><img src="../../docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="../../docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
 

@@ -1,6 +1,6 @@
 # PHASE-TTC
 
-**Causal Event–RGB Fusion for Time-to-Contact Estimation**
+**A Causal Event–RGB System for Time-to-Contact Estimation**
 
 [Paper](https://schwiedop.com/papers/phase-ttc/) ·
 [Project website](https://schwiedop.com/PHASE-TTC/) ·
@@ -289,7 +289,7 @@ and model revisions used in experiments. Code and released weights use the
 
 ```bibtex
 @misc{schwiedop2026phasettc,
-  title = {PHASE-TTC: From Motion to Time -- Causal Event--RGB Fusion for Signed Time-to-Contact Estimation},
+  title = {PHASE-TTC: From Motion to Time -- A Causal Event--RGB System for Signed Time-to-Contact Estimation},
   author = {Schwiedop Souto, {\'A}lvaro},
   year = {2026},
   howpublished = {Research preprint},
