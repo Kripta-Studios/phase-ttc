@@ -1,0 +1,76 @@
+{
+  "created_utc": "2026-11-18T16:58:40+00:00",
+  "git": {
+    "allow_dirty": false,
+    "commit_is_head": true,
+    "commit_requested": "3f9108a9bb9037f02930bda5c3f2da3e3b9e3921",
+    "commit_resolved": "3f9108a9bb9037f02930bda5c3f2da3e3b9e3921",
+    "dirty_paths": [],
+    "head": "3f9108a9bb9037f02930bda5c3f2da3e3b9e3921",
+    "producer_files": [
+      {
+        "blob_sha1": "625b57b86268fd8bb388c1c7c01ab43ea9288e1f",
+        "path": "operational/phase_geometry/data.py",
+        "worktree_matches_commit": true
+      },
+      {
+        "blob_sha1": "c2e28b136ee7147c077c00341c474ba6101f7a31",
+        "path": "operational/phase_geometry/final_package.py",
+        "worktree_matches_commit": true
+      },
+      {
+        "blob_sha1": "f820c0efa725e8d8eb1dbbc8166e548c57a17e3b",
+        "path": "operational/phase_geometry/geometry.py",
+        "worktree_matches_commit": true
+      },
+      {
+        "blob_sha1": "1709aa0f207f8133bf5a8970302d2f444b574a60",
+        "path": "operational/phase_geometry/heads.py",
+        "worktree_matches_commit": true
+      },
+      {
+        "blob_sha1": "bd66fc165db320603d675c1d465a3cefb093522a",
+        "path": "operational/phase_geometry/package.py",
+        "worktree_matches_commit": true
+      },
+      {
+        "blob_sha1": "2e5e1940c7ed5b0a3cb31c8a174d94e1a9a36153",
+        "path": "operational/phase_geometry/run_cv.py",
+        "worktree_matches_commit": true
+      },
+      {
+        "blob_sha1": "f89a2b480f5b5d4485a6e5a50a3a19dbaf18e1fa",
+        "path": "operational/phase_geometry/variants.py",
+        "worktree_matches_commit": true
+      }
+    ],
+    "tree_dirty": false
+  },
+  "hypothesis": "Adding causal box-expansion inputs from the supplied object regions to the RGB-anchored head, with a band-weighted loss and no event fields, lowers Overall MiD on the private GarlTTC test set below the 35.80 of submission 1016512. Development-fold evidence: 41.27 versus 85.17 for the released recipe (paired difference -43.90, interval [-53.38, -34.55]); label-free projections for the test set range from about 18 to 34, with 50 as the bound if the candidate's departures from the released head are uninformative. The result will be reported whatever the score, including if it is worse than 35.80.",
+  "package": {
+    "file_name": "PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAIN40.zip",
+    "member_count": 1,
+    "members": [
+      {
+        "crc32": "0fb81fb3",
+        "name": "submission.json",
+        "size_bytes": 648273
+      }
+    ],
+    "members_digest_sha256": "b00c219607f9a768e0ffe3e855b09a9f600aa820653d08c68f2c78d33c2e2b0e",
+    "sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df",
+    "size_bytes": 89174
+  },
+  "recipe": {
+    "file_name": "PROTOCOL.json",
+    "sha256": "7894046c035e5143576826b0f877d567830549bac3da6b456ddfb0f8d8c60126"
+  },
+  "schema": "phase_ttc_submission_preregistration_receipt_v2",
+  "seed": 7,
+  "upload": {
+    "codabench_submission_id": null,
+    "note": "Fill the ledger row after the single upload; never edit this receipt.",
+    "performed_by_this_tool": false
+  },
+  "variant": "RGB_GEO_BAND_S7_TRAIN40"
+}
