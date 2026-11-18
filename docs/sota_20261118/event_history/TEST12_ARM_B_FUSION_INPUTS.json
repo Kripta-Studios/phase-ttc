@@ -1,0 +1,107 @@
+{
+  "disagreement_vs_submitted": {
+    "all_physical": {
+      "frac_abs_gt_0.1s": 0.9567614125753661,
+      "max_abs_s": 33.96372413635254,
+      "mean_abs_s": 0.7416946420989912,
+      "median_abs_s": 0.46814870834350586,
+      "median_rel_pct": 8.8643127168553,
+      "p95_abs_s": 2.122043514251709,
+      "queries": 5805
+    },
+    "e_ctx_all_vs_delivered_e_ctx": {
+      "frac_abs_gt_0.1s": 0.8020671834625323,
+      "max_abs_s": 71.03244209289551,
+      "mean_abs_s": 0.6571656336772042,
+      "median_abs_s": 0.2763240337371826,
+      "median_rel_pct": 5.0819535028449,
+      "p95_abs_s": 1.2158590316772462,
+      "queries": 5805
+    },
+    "e_ctx_fallback_rows": null,
+    "event_gap_values_B": [
+      0.0,
+      0.05000000074505806
+    ],
+    "event_query_minus_anchor_range_B_s": [
+      0.000805000017862767,
+      0.019991999492049217
+    ],
+    "event_valid_fraction_values_B": [
+      0.125,
+      0.375,
+      0.625,
+      0.875
+    ],
+    "phase_only_rows": {
+      "frac_abs_gt_0.1s": 0.9567614125753661,
+      "max_abs_s": 33.96372413635254,
+      "mean_abs_s": 0.7416946420989912,
+      "median_abs_s": 0.46814870834350586,
+      "median_rel_pct": 8.8643127168553,
+      "p95_abs_s": 2.122043514251709,
+      "queries": 5805
+    },
+    "valid_count_distribution": {
+      "1": 2,
+      "3": 2,
+      "5": 2,
+      "7": 5799
+    }
+  },
+  "event_freeze_sha256": "b3c4514bebb54112e94ad9ab52f997e5676e3ee89139294ab1b265ee9a650934",
+  "event_pixel_diff": 5,
+  "external_submission": false,
+  "inputs_sha256": "b78730abe68de7fbe06c6c98b25d5fa025c04d9303720b680ce0c0f575d2e526",
+  "model_binding": {
+    "candidate": "PHASE_ONLY_EVENT_S7_TRAIN40_SCIENTIFIC_OOF",
+    "components": {
+      "E_A5": "a82e5b65ec9c3d302981438527f2cfccabbbf25c75f574946bd1e9dc97795758",
+      "E_C2F": "2b337dd76bd405c63ac9f96023a82196ee32e8180b86fe0015bfd67f0e2aeb57",
+      "E_CTX_MATCHED": "fec0ca9f2433a913ae1047cd0b47715a1dce39c4c2e4eecb9539f796434d137e",
+      "MODEL_SEAL.json": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+      "OOF_RECIPE.json": "e5ade2e986f30dbe672a13155b45a4288aa069b2b94a474951e4940900f0bd00",
+      "PAIR_E": "ccdd694f5d812a458c396fdb19bbffe439eff78fe38d57a7b288d4a4fd232680",
+      "PAIR_R": "dba94f1ae807d8e84ef68f50c93882a766a92cfc0b9a08da53c30fedbf509bc1",
+      "PHASE_ONLY_EVENT_S7_TRAIN40": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+      "R_A5": "3f09a2e06d4ff6aebaa64d8c1a8ccc0ade54eaa25b54bc11700fd70bd9701f29",
+      "R_C2F": "d5fa8fd9ed80df6141c3df8bd2ed8ac013c87e5e5bde7367a3b588c5b09e5a35",
+      "R_CTX": "a19f8188b859dcac7fb0cd4c68d0cd5c5c9a839ad84c0ac7ee1b3d61181d1852",
+      "event_normalizer": "19f9bf704de53a938e955ef1919e51881ec1f9c85c1d3e2cfd54aa6d76045f9f",
+      "rgb_normalizer": "d902dba58dc9738ed268e56fe57291fda1cf0dfb2e03be4da1171668e689bd59"
+    },
+    "model_seal_sha256": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+    "portable_paths_sha256": "4a4609591f80470dc304a68d20e3f1f707f5b88dc13ff04451d93e58d3b5465b",
+    "recipe_sha256": "78c83c09fc176846e1135df3b625a2455b71336becb9305589f55269058915c3"
+  },
+  "optimizer_updates": 0,
+  "output": "TEST12_ARM_B_FUSION_INPUTS.npz",
+  "output_sha256": "84cfedab859dad3aa6f1969ff36e1a07eef177531fab608e29a1a36b9151a003",
+  "parity_sample": {
+    "delivered_E_CTX_replay_phase_abs_diff": {
+      "max": 1.4625489711761475e-05,
+      "median": 1.0593794286251068e-06
+    },
+    "delivered_E_CTX_replay_ttc_abs_diff_s": {
+      "max": 0.004186153411865234,
+      "median": 0.000331878662109375
+    },
+    "head_on_saved_states_vs_submitted_max_abs_s": 0.0,
+    "queries": 40
+  },
+  "physical_queries": 5805,
+  "private_targets_read": false,
+  "schema": "event_history_match_test12_arm_b_v1",
+  "seconds": 3811.9363742999994,
+  "sources": {
+    "operational/event_history_match/__init__.py": "0e45c0d6dbba0cc30f391e8f5673f9aa4062966ab214861e0c3a85803bfec042",
+    "operational/event_history_match/engine.py": "108b84c2394c200aec437c377c7c63653274ebde37b2a00b0ac15399132fea57",
+    "operational/event_history_match/evttc.py": "818199be91f91093865d371b88dbae53543357b0515032fb75c7dd9825ba4d37",
+    "operational/event_history_match/history.py": "e76007ac6c8568ebabc58c5653524a153101ddd0f0ed8b1eff8d4acd495dc0f1",
+    "operational/event_history_match/score.py": "e703039fe3b10e6d316030b979c8516ea9d533f96ef8cd0ad7eec1e456e82514",
+    "operational/event_history_match/test12.py": "9a6b66edeb7b68c0aace2d97295d805ddccb4e347a3715da2ca38ef16d8c93f1"
+  },
+  "status": "COMPLETE",
+  "submitted_predictions_sha256": "1176515e71a41210a21709845c11e3944076b982902288196d0e47dc725d4a44",
+  "tensor_sha256_verified": true
+}
