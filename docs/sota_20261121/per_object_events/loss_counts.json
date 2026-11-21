@@ -1,0 +1,26 @@
+{
+  "predictions_sha256": "bb319566a37e04d78a918729eeb2bd97091ccefda914c72749b4ff62ae0ef5d8",
+  "counts": {
+    "before_closing_matches": 5,
+    "all_components_matches": 16,
+    "before_cap_matches": 16,
+    "frames_over_cap": 1,
+    "all_proposals": 1838,
+    "all_emitted": 271,
+    "all_components": 3989,
+    "after_filters": 1844,
+    "no_spatial_match": 149,
+    "new_no_previous_overlap": 12,
+    "emitted": 3,
+    "ambiguous": 1,
+    "observations": 165,
+    "distinct_objects": 23,
+    "distinct_objects_with_ttc": 2,
+    "supplied_box_tracker_ready": 160,
+    "observations_without_events": 0,
+    "misses_without_overlap": 17,
+    "misses_smaller_than_half": 42,
+    "misses_larger_than_double": 64,
+    "misses_with_comparable_area": 26
+  }
+}
