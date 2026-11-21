@@ -207,3 +207,9 @@ paper/from_motion_to_time_20261102/data/extended_service_20261112/** -text -whit
 docs/sota_20261121/geometry_service/PROTOCOL.md -text whitespace=cr-at-eol,-blank-at-eof
 docs/sota_20261121/geometry_service/RESULTS.json -text whitespace=cr-at-eol
 docs/sota_20261121/geometry_service/MANIFEST.json -text whitespace=cr-at-eol
+
+# Files mirrored from the shared-GPU trace archive retain the archived digests.
+docs/sota_20261121/geometry_service/rgb_gpu/MANIFEST.json -text whitespace=cr-at-eol,-blank-at-eof
+docs/sota_20261121/geometry_service/rgb_gpu/POPULATION.json -text whitespace=cr-at-eol,-blank-at-eof
+docs/sota_20261121/geometry_service/rgb_gpu/RESULTS.json -text whitespace=cr-at-eol,-blank-at-eof
+docs/sota_20261121/geometry_service/rgb_gpu/REPORT.md -text whitespace=cr-at-eol,-blank-at-eof

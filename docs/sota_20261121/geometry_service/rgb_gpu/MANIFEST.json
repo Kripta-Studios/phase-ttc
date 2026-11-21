@@ -1,0 +1,17 @@
+{
+  "files": {
+    "POPULATION.json": "0ddd6ad7cdff73b344f8d956d382db333407c0e9bce2db5be6a13dc98c06d898",
+    "REPORT.md": "d4f70fee67ab252fea2fcf79ff77cc838efc4f9bdbacab98638a40eb28627dd8",
+    "RESULTS.json": "44b6ca830fbc5b262b06ff18fe2b7c2b1cc3542ddd440e1c00334d8429dfa2e4",
+    "rgb_geo__supplied_000ms__objects_01__queue_02.json": "39ee10ae71b22a7590b51cbaf1ae5404f9e57acc7e9f8959b9090abe1ba9ffe4",
+    "rgb_geo__supplied_000ms__objects_01__queue_64.json": "aae763667432ae81c4e0e894d7ecbb2a7865ae4970159f0b24b6e7b293779726",
+    "rgb_geo__supplied_000ms__objects_04__queue_02.json": "a4d9362eccc4367c9f03ddd63ee8ce1e27ce53275ad2e6b2145c10df70665287",
+    "rgb_geo__supplied_000ms__objects_04__queue_64.json": "188573d3cd6942d9e5596aff08731fb34ea903f66e8851325ad00d5323ff5890",
+    "rgb_geo__supplied_050ms__objects_01__queue_02.json": "47dce0985aba776b5b70974e784322f78ee8ea0141db37f611eeea0c73a39c9b",
+    "rgb_geo__supplied_050ms__objects_01__queue_64.json": "70b06e0896c78a99c2754076719d39d44760ef58475f042138165cd3e0245a90",
+    "rgb_geo__supplied_050ms__objects_04__queue_02.json": "b9a31f014d2f72e1aa2a99f10655436841b153cd4b6fecf8d1ca3660725c5772",
+    "rgb_geo__supplied_050ms__objects_04__queue_64.json": "5646a71b3e6ebd2cdc3019d20e7e8cff9808bd65fab65eda6fe32558a0e38868"
+  },
+  "hash_algorithm": "sha256",
+  "schema": "phase_ttc_rgb_geometry_service_manifest_v1"
+}

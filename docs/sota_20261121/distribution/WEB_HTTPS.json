@@ -1,0 +1,29 @@
+{
+  "timestamp_utc": "2026-11-21T20:05:32.589850+00:00",
+  "source_commit": "e6815bfab1780373397b740e7916ceee6cacd267",
+  "token": "qualification-20261121-results",
+  "files": {
+    "/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.pdf": {
+      "bytes": 4049585,
+      "sha256": "2cf9162216848b7a7f5b498afdd1e39800628e9efd0b21aaadc945859f38d668"
+    },
+    "/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.tex": {
+      "bytes": 401125,
+      "sha256": "a330ad7524a3761eb7dcc00fc20e5f3d72514bf5fb3ee8bda6107a45d77ebfb1"
+    },
+    "/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip": {
+      "bytes": 42279833,
+      "sha256": "74801ed6b2cd340cd9c6c1d6b6f71563ce46e0732deb15ef389614cb6fdfc675"
+    },
+    "/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Short.pdf": {
+      "bytes": 613634,
+      "sha256": "a333adf83139af7d5663ab1d71415d1f1b80728a25b2fc81d00276f7561f6e0a"
+    }
+  },
+  "pages": [
+    "/PHASE-TTC/",
+    "/es/PHASE-TTC/",
+    "/papers/phase-ttc/",
+    "/es/papers/phase-ttc/"
+  ]
+}

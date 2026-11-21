@@ -9,7 +9,7 @@ cambios:
 | Modelo `AlvaroSchwiedop/PHASE-TTC` | `9c7ec9b886597cb3e744f148c51f6a16f2d29520` |
 | Modelo `AlvaroSchwiedop/PHASE-TTC-Adapt` | `9d30a6ccbfff1d461525e87edc74e9f4531d1e70` |
 | Space `AlvaroSchwiedop/PHASE-TTC` | `2c5fc66e84f7d5421aa17b6e6543d624ffcd1bc8` |
-| Web activa | `/var/www/schwiedop/releases/20261120T173106Z-test-result` |
+| Web anterior al despliegue | `/var/www/schwiedop/releases/20261120T173106Z-test-result` |
 
 Los materiales añaden el alcance A/B1/B2/C de la reproducción Geo, el tercer envío
 `1063261` de solo cajas, la brecha de 4,50325 puntos y las cuatro bandas, además de
@@ -20,11 +20,7 @@ fijan a la revisión pública verificada
 
 Los cinco assets de Hugging Face se publicaron y se leyeron de nuevo como usuario
 el 21 de noviembre. Sus revisiones resultantes y SHA-256 leídos están en
-[`HF_PUBLISHED.json`](HF_PUBLISHED.json). La web permanece preparada en staging,
-pero todavía no desplegada; la release activa indicada arriba sigue siendo el punto
-de rollback. Si SSH continúa devolviendo el banner y agotando el tiempo, el
-directorio de staging validado constituye el paquete web homologado para que el
-propietario lo transfiera y active con su inventario y cambio de symlink.
+[`HF_PUBLISHED.json`](HF_PUBLISHED.json). La web sirve la edición ampliada de 111 páginas y la breve de 9 mediante la release `qualification-20261121-results`. Se sincronizaron los 16 archivos afectados con la copia de trabajo del servidor y se conservó la release anterior para reversión. [Registro de la activación](WEB_DEPLOYMENT.json) · [Verificación HTTPS de las páginas y los cuatro archivos](WEB_HTTPS.json).
 
 ## Web
 
@@ -109,4 +105,4 @@ hf upload AlvaroSchwiedop/PHASE-TTC "$rollback/space/index.html" index.html --ty
 hf upload AlvaroSchwiedop/PHASE-TTC "$rollback/space/gradio_app.zip" gradio_app.zip --type space --commit-message "Rollback local app to 2c5fc66"
 ```
 
-Ningún comando de esta página se ejecutó contra los remotos.
+Los comandos de reversión documentados aquí quedaron sin ejecutar.

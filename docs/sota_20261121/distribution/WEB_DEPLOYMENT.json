@@ -1,0 +1,43 @@
+{
+  "status": "live",
+  "previous": "/var/www/schwiedop/releases/20261120T173106Z-test-result",
+  "release": "/var/www/schwiedop/releases/qualification-20261121-results",
+  "source_backup": "/home/kripta/qualification-20261121-results/source-before",
+  "changed": [
+    "build-paper.py",
+    "build-phase-article.py",
+    "build.py",
+    "public/PHASE-TTC/index.html",
+    "public/assets/paper-viewer.js",
+    "public/assets/phase-ttc-expanded-cover.jpg",
+    "public/es/PHASE-TTC/index.html",
+    "public/es/index.html",
+    "public/es/papers/phase-ttc/index.html",
+    "public/index.html",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.tex",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Short.pdf",
+    "public/papers/phase-ttc/expanded-edition.json",
+    "public/papers/phase-ttc/index.html"
+  ],
+  "sha256": {
+    "build-paper.py": "812982b098789ceb0f5ded61856536b3729ed6fc4079f50bc39f1afa18a6122e",
+    "build-phase-article.py": "c91deb72bf6953219ae3f8cef12834566d26ea7f5bd84a4e7050826d7e4a590e",
+    "build.py": "7cf78c0c005185c4d3ea7cc47d7129b343d0080a710cfb47b257869fdd395127",
+    "public/PHASE-TTC/index.html": "a5f0db3483a03ed64c954876afe7635ad9203121b3982e8507c223e3d7a25c3c",
+    "public/assets/paper-viewer.js": "d120bb41d81fd0c5abf8cf08d2dde788ef7bb18d2a8dc736c28fb68c86086ed3",
+    "public/assets/phase-ttc-expanded-cover.jpg": "6bb66a351df5056092d49ee7ba4df50d4f01899cb66d2aaeafde949544c22383",
+    "public/es/PHASE-TTC/index.html": "06cba22b0893e2d67316b2951ad3e408f4765fef86df6bb088d2734b7007551f",
+    "public/es/index.html": "05bf884a849be36da626f0ce878bb0c638dbdb1a2a7cef83cdca83f538cd4ede",
+    "public/es/papers/phase-ttc/index.html": "06a84241010b50a52a19251f9165b43a927e0a57390fc8e8f7494a6b430bd60d",
+    "public/index.html": "320716503b80972469a066e896cf73c30b2e6bcbb3f793c1abb3ce7cc05ede95",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.pdf": "2cf9162216848b7a7f5b498afdd1e39800628e9efd0b21aaadc945859f38d668",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded.tex": "a330ad7524a3761eb7dcc00fc20e5f3d72514bf5fb3ee8bda6107a45d77ebfb1",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip": "74801ed6b2cd340cd9c6c1d6b6f71563ce46e0732deb15ef389614cb6fdfc675",
+    "public/papers/phase-ttc/PHASE_TTC_From_Motion_to_Time_Short.pdf": "a333adf83139af7d5663ab1d71415d1f1b80728a25b2fc81d00276f7561f6e0a",
+    "public/papers/phase-ttc/expanded-edition.json": "23455272880aa5c3ee7f7dd04a3c0ff94ffc6ae790c62334e4d08b00b5da5294",
+    "public/papers/phase-ttc/index.html": "f0bbd660aac20c37495da15c3385eeb9ad7ce345787642780e37696c15ad3ea4"
+  },
+  "source_commit": "e6815bfab1780373397b740e7916ceee6cacd267"
+}

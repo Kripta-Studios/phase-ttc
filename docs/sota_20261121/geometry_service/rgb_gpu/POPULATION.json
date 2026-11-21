@@ -1,0 +1,82 @@
+{
+  "by_object_count": {
+    "1": [
+      {
+        "query_us": 7668800000,
+        "rows": [
+          53057
+        ],
+        "sequence": "VLA3oBKFyX",
+        "tokens": [
+          "VLA3oBKFyX_002568_7668800000"
+        ],
+        "tracks": [
+          "VLA3oBKFyX_002568"
+        ]
+      },
+      {
+        "query_us": 5763100000,
+        "rows": [
+          12249
+        ],
+        "sequence": "6WCDpro5rE",
+        "tokens": [
+          "6WCDpro5rE_003558_5763100000"
+        ],
+        "tracks": [
+          "6WCDpro5rE_003558"
+        ]
+      }
+    ],
+    "4": [
+      {
+        "query_us": 5288400000,
+        "rows": [
+          13808,
+          13809,
+          13810,
+          13811
+        ],
+        "sequence": "6h5yRW2LGc",
+        "tokens": [
+          "6h5yRW2LGc_001044_5288400000",
+          "6h5yRW2LGc_001769_5288400000",
+          "6h5yRW2LGc_002656_5288400000",
+          "6h5yRW2LGc_003049_5288400000"
+        ],
+        "tracks": [
+          "6h5yRW2LGc_001044",
+          "6h5yRW2LGc_001769",
+          "6h5yRW2LGc_002656",
+          "6h5yRW2LGc_003049"
+        ]
+      },
+      {
+        "query_us": 3082600000,
+        "rows": [
+          36201,
+          36202,
+          36203,
+          36204
+        ],
+        "sequence": "GjMYZjmSQb",
+        "tokens": [
+          "GjMYZjmSQb_000002_3082600000",
+          "GjMYZjmSQb_000735_3082600000",
+          "GjMYZjmSQb_000883_3082600000",
+          "GjMYZjmSQb_000926_3082600000"
+        ],
+        "tracks": [
+          "GjMYZjmSQb_000002",
+          "GjMYZjmSQb_000735",
+          "GjMYZjmSQb_000883",
+          "GjMYZjmSQb_000926"
+        ]
+      }
+    ]
+  },
+  "parquet": {
+    "eligible_rows": 84751,
+    "train_parquet_sha256": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6"
+  }
+}

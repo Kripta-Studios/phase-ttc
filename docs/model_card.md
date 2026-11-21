@@ -52,6 +52,13 @@ replay starts from supplied TRAIN40 boxes and excludes detector/tracker cost.
 This result covers only the CPU box-history path. See the
 [CPU report](sota_20261121/geometry_service/REPORT.md).
 
+The RGB + geometry replay ran while another training job occupied the GPU.
+Across eight 60-second cells it returned 1,886 valid responses from 24,000
+offers, with 22,114 queue drops and zero responses within 20 ms. The workload
+cycled two real instants per object count. Frames were already decoded and
+earlier observations cached. This measurement characterizes shared-GPU
+operation. [Load conditions and traces](sota_20261121/geometry_service/RGB_STATUS.md)
+
 The release expects supplied object regions and synchronized event/RGB inputs. It includes neither a general-purpose autonomous detector nor calibrated collision probabilities or confidence intervals. The paced 250-update replay measured 29.14 ms p95, above a 20 ms budget. Zero benchmark failures is a scoring result, not a safety assurance. Full original training requires external data and reconstruction of historical caches.
 
 Code and released weights: MIT. External datasets retain their own terms. See the [current paper](../paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf) for definitions, controls and complete evidence.

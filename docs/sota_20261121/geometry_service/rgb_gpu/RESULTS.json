@@ -1,0 +1,3623 @@
+{
+  "cells": [
+    {
+      "artifact": "rgb_geo__supplied_050ms__objects_01__queue_64.json",
+      "artifact_sha256": "70b06e0896c78a99c2754076719d39d44760ef58475f042138165cd3e0245a90",
+      "box_delay_ms": 50,
+      "cell_id": "rgb_geo__supplied_050ms__objects_01__queue_64",
+      "cold_call_ms": 138.5292,
+      "condition_cache_reused": false,
+      "decoded_media_binding": {
+        "count": 9,
+        "records_sha256": "0d267ca59977a864f94683e96c8f1b0d3a4e5fb6b8fd1409bc3581d2d87e83b8",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 408,
+        "count": 408,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 0.09688027717614467,
+        "max_ms": 12115.905,
+        "mean_ms": 10322.018362745097,
+        "min_ms": 168.8898,
+        "over_100ms_count": 408,
+        "over_50ms_count": 408,
+        "p50_ms": 11204.24,
+        "p95_ms": 11677.995009999997,
+        "p99_ms": 12083.059838,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 408,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2592,
+        "enqueued": 408,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 408
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 408,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64,
+      "scheduler_lateness_max_ms": 35.9493
+    },
+    {
+      "artifact": "rgb_geo__supplied_000ms__objects_04__queue_02.json",
+      "artifact_sha256": "a4d9362eccc4367c9f03ddd63ee8ce1e27ce53275ad2e6b2145c10df70665287",
+      "box_delay_ms": 0,
+      "cell_id": "rgb_geo__supplied_000ms__objects_04__queue_02",
+      "cold_call_ms": 151.7831,
+      "condition_cache_reused": false,
+      "decoded_media_binding": {
+        "count": 56,
+        "records_sha256": "de648882b9d409a38f43874d91fe32ab5a778f2518629ec71d9ef4a986c048ac",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 90,
+        "count": 90,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 0.4912562063814877,
+        "max_ms": 2261.8974,
+        "mean_ms": 2035.5976922222221,
+        "min_ms": 661.4451,
+        "over_100ms_count": 90,
+        "over_50ms_count": 90,
+        "p50_ms": 2049.96325,
+        "p95_ms": 2208.9738899999998,
+        "p99_ms": 2252.765911,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 90,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2910,
+        "enqueued": 90,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 90
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 360,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2,
+      "scheduler_lateness_max_ms": 32.7338
+    },
+    {
+      "artifact": "rgb_geo__supplied_000ms__objects_04__queue_64.json",
+      "artifact_sha256": "188573d3cd6942d9e5596aff08731fb34ea903f66e8851325ad00d5323ff5890",
+      "box_delay_ms": 0,
+      "cell_id": "rgb_geo__supplied_000ms__objects_04__queue_64",
+      "cold_call_ms": 196.2553,
+      "condition_cache_reused": true,
+      "decoded_media_binding": {
+        "count": 56,
+        "records_sha256": "de648882b9d409a38f43874d91fe32ab5a778f2518629ec71d9ef4a986c048ac",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15456,
+            "process_name": "C:\\Program Files\\Microsoft\\jdk-25.0.2.10-hotspot\\bin\\java.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 136,
+        "count": 136,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 0.024708224837335667,
+        "max_ms": 55908.0947,
+        "mean_ms": 40472.353096323524,
+        "min_ms": 784.1366,
+        "over_100ms_count": 136,
+        "over_50ms_count": 136,
+        "p50_ms": 50268.500499999995,
+        "p95_ms": 55792.243775,
+        "p99_ms": 55885.08047,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 136,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2864,
+        "enqueued": 136,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 136
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 544,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64,
+      "scheduler_lateness_max_ms": 97.1843
+    },
+    {
+      "artifact": "rgb_geo__supplied_050ms__objects_04__queue_64.json",
+      "artifact_sha256": "5646a71b3e6ebd2cdc3019d20e7e8cff9808bd65fab65eda6fe32558a0e38868",
+      "box_delay_ms": 50,
+      "cell_id": "rgb_geo__supplied_050ms__objects_04__queue_64",
+      "cold_call_ms": 191.9604,
+      "condition_cache_reused": false,
+      "decoded_media_binding": {
+        "count": 48,
+        "records_sha256": "c19930e3490d1934b697e0432c3e6f4d2b983a58669d174409f1a1c3db59788a",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12400,
+            "process_name": "C:\\Program Files\\Microsoft\\jdk-25.0.2.10-hotspot\\bin\\java.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15456,
+            "process_name": "C:\\Program Files\\Microsoft\\jdk-25.0.2.10-hotspot\\bin\\java.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 144,
+        "count": 144,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 0.02651209985341337,
+        "max_ms": 48913.9181,
+        "mean_ms": 37718.626797916666,
+        "min_ms": 836.1503,
+        "over_100ms_count": 144,
+        "over_50ms_count": 144,
+        "p50_ms": 47862.956000000006,
+        "p95_ms": 48717.528615,
+        "p99_ms": 48820.17434,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 144,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2856,
+        "enqueued": 144,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 144
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 576,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64,
+      "scheduler_lateness_max_ms": 32.3918
+    },
+    {
+      "artifact": "rgb_geo__supplied_050ms__objects_04__queue_02.json",
+      "artifact_sha256": "b9a31f014d2f72e1aa2a99f10655436841b153cd4b6fecf8d1ca3660725c5772",
+      "box_delay_ms": 50,
+      "cell_id": "rgb_geo__supplied_050ms__objects_04__queue_02",
+      "cold_call_ms": 161.176,
+      "condition_cache_reused": true,
+      "decoded_media_binding": {
+        "count": 48,
+        "records_sha256": "c19930e3490d1934b697e0432c3e6f4d2b983a58669d174409f1a1c3db59788a",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12400,
+            "process_name": "C:\\Program Files\\Microsoft\\jdk-25.0.2.10-hotspot\\bin\\java.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 80,
+        "count": 80,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 0.43915309538544167,
+        "max_ms": 2570.0332,
+        "mean_ms": 2277.11021625,
+        "min_ms": 664.6107,
+        "over_100ms_count": 80,
+        "over_50ms_count": 80,
+        "p50_ms": 2305.21435,
+        "p95_ms": 2527.95146,
+        "p99_ms": 2541.649606,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 80,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2920,
+        "enqueued": 80,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 80
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 320,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2,
+      "scheduler_lateness_max_ms": 47.3408
+    },
+    {
+      "artifact": "rgb_geo__supplied_000ms__objects_01__queue_02.json",
+      "artifact_sha256": "39ee10ae71b22a7590b51cbaf1ae5404f9e57acc7e9f8959b9090abe1ba9ffe4",
+      "box_delay_ms": 0,
+      "cell_id": "rgb_geo__supplied_000ms__objects_01__queue_02",
+      "cold_call_ms": 180.0422,
+      "condition_cache_reused": false,
+      "decoded_media_binding": {
+        "count": 11,
+        "records_sha256": "927dab15abc861c8c24959972bad0afef5767f214dcf5c23db69b6ea5cc6f8f3",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37816,
+            "process_name": "C:\\Program Files\\Microsoft\\jdk-25.0.2.10-hotspot\\bin\\java.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 313,
+        "count": 313,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 1.7407024290769968,
+        "max_ms": 673.849,
+        "mean_ms": 574.4807287539936,
+        "min_ms": 194.4258,
+        "over_100ms_count": 313,
+        "over_50ms_count": 313,
+        "p50_ms": 572.4496,
+        "p95_ms": 632.47498,
+        "p99_ms": 653.554256,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 313,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2687,
+        "enqueued": 313,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 313
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 313,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2,
+      "scheduler_lateness_max_ms": 49.4776
+    },
+    {
+      "artifact": "rgb_geo__supplied_000ms__objects_01__queue_64.json",
+      "artifact_sha256": "aae763667432ae81c4e0e894d7ecbb2a7865ae4970159f0b24b6e7b293779726",
+      "box_delay_ms": 0,
+      "cell_id": "rgb_geo__supplied_000ms__objects_01__queue_64",
+      "cold_call_ms": 160.6224,
+      "condition_cache_reused": true,
+      "decoded_media_binding": {
+        "count": 11,
+        "records_sha256": "927dab15abc861c8c24959972bad0afef5767f214dcf5c23db69b6ea5cc6f8f3",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 394,
+        "count": 394,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 0.09376423958418299,
+        "max_ms": 12060.0557,
+        "mean_ms": 10665.046764467006,
+        "min_ms": 215.9228,
+        "over_100ms_count": 394,
+        "over_50ms_count": 394,
+        "p50_ms": 11727.32025,
+        "p95_ms": 12018.932825,
+        "p99_ms": 12050.589413,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 394,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2606,
+        "enqueued": 394,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 394
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 394,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64,
+      "scheduler_lateness_max_ms": 28.4795
+    },
+    {
+      "artifact": "rgb_geo__supplied_050ms__objects_01__queue_02.json",
+      "artifact_sha256": "47dce0985aba776b5b70974e784322f78ee8ea0141db37f611eeea0c73a39c9b",
+      "box_delay_ms": 50,
+      "cell_id": "rgb_geo__supplied_050ms__objects_01__queue_02",
+      "cold_call_ms": 196.4671,
+      "condition_cache_reused": true,
+      "decoded_media_binding": {
+        "count": 9,
+        "records_sha256": "0d267ca59977a864f94683e96c8f1b0d3a4e5fb6b8fd1409bc3581d2d87e83b8",
+        "scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES"
+      },
+      "gpu_compute_processes": {
+        "after": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 36128,
+            "process_name": "C:\\Program Files\\Microsoft\\jdk-25.0.2.10-hotspot\\bin\\java.exe",
+            "used_memory": "[N/A]"
+          }
+        ],
+        "before": [
+          {
+            "pid": 2860,
+            "process_name": "[Insufficient Permissions]",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 2484,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12220,
+            "process_name": "C:\\Windows\\explorer.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14188,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 14164,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 16280,
+            "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17020,
+            "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 17744,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 12096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 10400,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 11964,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19480,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21364,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 6896,
+            "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15200,
+            "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26980,
+            "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 26592,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 40052,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21096,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 21016,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 29900,
+            "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 19744,
+            "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 49084,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 30976,
+            "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 50376,
+            "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 22160,
+            "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18444,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 4392,
+            "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 18784,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15628,
+            "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 37868,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          },
+          {
+            "pid": 15436,
+            "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+            "used_memory": "[N/A]"
+          }
+        ]
+      },
+      "latency_ms": {
+        "at_least_20ms_count": 321,
+        "count": 321,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 1.787226427810057,
+        "max_ms": 677.637,
+        "mean_ms": 559.5261934579439,
+        "min_ms": 148.9073,
+        "over_100ms_count": 321,
+        "over_50ms_count": 321,
+        "p50_ms": 563.5501,
+        "p95_ms": 628.5278,
+        "p99_ms": 644.91022,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 0
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 321,
+        "delivered_strictly_under_20ms": 0,
+        "dropped": 2679,
+        "enqueued": 321,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 321
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 321,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2,
+      "scheduler_lateness_max_ms": 38.157
+    }
+  ],
+  "created_utc": "2026-11-21T20:13:28.092327+00:00",
+  "detector_tracker_included": false,
+  "environment": {
+    "device": "cpu",
+    "git_commit": "e6815bfab1780373397b740e7916ceee6cacd267",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128",
+    "torch_threads": 2
+  },
+  "evidence_validity": {
+    "decision": "INVALIDATED",
+    "dedicated_model_workload": false,
+    "host_pause_valid": true,
+    "runner_visible": true
+  },
+  "execution_order": [
+    "rgb_geo__supplied_050ms__objects_01__queue_64",
+    "rgb_geo__supplied_000ms__objects_04__queue_02",
+    "rgb_geo__supplied_000ms__objects_04__queue_64",
+    "rgb_geo__supplied_050ms__objects_04__queue_64",
+    "rgb_geo__supplied_050ms__objects_04__queue_02",
+    "rgb_geo__supplied_000ms__objects_01__queue_02",
+    "rgb_geo__supplied_000ms__objects_01__queue_64",
+    "rgb_geo__supplied_050ms__objects_01__queue_02"
+  ],
+  "gpu_compute_processes": {
+    "after": [
+      {
+        "pid": 2860,
+        "process_name": "[Insufficient Permissions]",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 2484,
+        "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 12220,
+        "process_name": "C:\\Windows\\explorer.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 14188,
+        "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 14164,
+        "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 16280,
+        "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 17020,
+        "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 17744,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 12096,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 10400,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 11964,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 19480,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 21364,
+        "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 6896,
+        "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 15200,
+        "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 26980,
+        "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 26592,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 40052,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 21096,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 21016,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 29900,
+        "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 19744,
+        "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 49084,
+        "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 30976,
+        "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 50376,
+        "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 22160,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 18444,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 4392,
+        "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 18784,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 15628,
+        "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 37868,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 15436,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.11.15-windows-x86_64-none\\python.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 36128,
+        "process_name": "C:\\Program Files\\Microsoft\\jdk-25.0.2.10-hotspot\\bin\\java.exe",
+        "used_memory": "[N/A]"
+      }
+    ],
+    "audit": {
+      "dedicated_model_workload": false,
+      "foreign_python_pids": [
+        37868
+      ],
+      "limitation": "Windows WDDM reports N/A memory for some processes; non-Python GUI GPU clients remain listed and exclusivity is limited to visible Python model workloads",
+      "runner_pid": 15436,
+      "runner_visible": true
+    },
+    "before": [
+      {
+        "pid": 2860,
+        "process_name": "[Insufficient Permissions]",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 2484,
+        "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 12220,
+        "process_name": "C:\\Windows\\explorer.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 14188,
+        "process_name": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 14164,
+        "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 16280,
+        "process_name": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\157.0.4341.46\\msedgewebview2.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 17020,
+        "process_name": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 17744,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26092.119.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 12096,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 10400,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.AdvancedPaste.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 11964,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 19480,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette_0.8.10371.0_x64__8wekyb3d8bbwe\\Microsoft.CmdPal.UI.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 21364,
+        "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\AMDRSSrcExt.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 6896,
+        "process_name": "C:\\Program Files (x86)\\Jabra\\Direct6\\jabra-direct.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 15200,
+        "process_name": "C:\\Program Files\\AMD\\CNext\\CNext\\RadeonSoftware.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 26980,
+        "process_name": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 26592,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.25.3131.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 40052,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2609.15.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 21096,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerOCR.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 21016,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.PowerLauncher.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 29900,
+        "process_name": "C:\\Windows\\System32\\ApplicationFrameHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 19744,
+        "process_name": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 49084,
+        "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 30976,
+        "process_name": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 50376,
+        "process_name": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 22160,
+        "process_name": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2609.11.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 18444,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.ColorPickerUI.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 4392,
+        "process_name": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 18784,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Local\\PowerToys\\PowerToys.FancyZones.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 15628,
+        "process_name": "C:\\Windows\\System32\\ShellHost.exe",
+        "used_memory": "[N/A]"
+      },
+      {
+        "pid": 37868,
+        "process_name": "C:\\Users\\\u00c1lvaro Schwiedop\\AppData\\Roaming\\uv\\python\\cpython-3.12.13-windows-x86_64-none\\python.exe",
+        "used_memory": "[N/A]"
+      }
+    ],
+    "runner_pid": 15436
+  },
+  "gpu_telemetry": {
+    "after": {
+      "clocks.mem": "9001 MHz",
+      "clocks.sm": "2062 MHz",
+      "driver_version": "591.86",
+      "memory.total": "12227 MiB",
+      "memory.used": "8672 MiB",
+      "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "power.draw": "49.33 W",
+      "pstate": "P4",
+      "temperature.gpu": "87",
+      "utilization.gpu": "34 %"
+    },
+    "before": {
+      "clocks.mem": "14001 MHz",
+      "clocks.sm": "2565 MHz",
+      "driver_version": "591.86",
+      "memory.total": "12227 MiB",
+      "memory.used": "8296 MiB",
+      "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "power.draw": "53.51 W",
+      "pstate": "P0",
+      "temperature.gpu": "87",
+      "utilization.gpu": "23 %"
+    }
+  },
+  "head": {
+    "path": "artifacts\\sota_20261118\\geometry\\work\\jobs\\RGB_GEO_BAND__ALL__S7__M32.state.pt",
+    "sha256": "a2d68afc1232a7ebc74e0acd107917c758fe661f962f510f01d470b9d31f5229"
+  },
+  "host_pause_audit": {
+    "campaign_valid": true,
+    "cells_over_threshold": [],
+    "max_scheduler_lateness_ms": 97.1843,
+    "threshold_ms": 1000.0
+  },
+  "inputs": {
+    "decoded_media_scope": "DECODED_UINT8_PIXELS_NOT_RAW_TAR_BYTES",
+    "paths": {
+      "content_work_npz": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\artifacts\\sota_20261118\\saturation_scale\\work\\content_work.npz",
+      "eap_train_parquet": "E:\\eAP_dataset\\data\\train.parquet",
+      "garl_train_parquet": "E:\\GarlTTC_dataset\\data\\train.parquet",
+      "robust_work_npz": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\artifacts\\sota_20261118\\geometry_robust\\work\\robust_work.npz",
+      "train_inputs_npz": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\artifacts\\sota_20261118\\geometry\\work\\train_inputs.npz"
+    },
+    "sha256": {
+      "content_work_npz": "d701701a43e253163d68e2f1036d0cef93a487d3ce294cbb5c46d6c89ea7749c",
+      "eap_train_parquet": "69ffedab74ea28b295fe3ec2c2c83c08716bc31c216bc2ec9971f8ca9644a314",
+      "garl_train_parquet": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6",
+      "robust_work_npz": "cb6f081f767bab42ad8ec78dcdc934c4620c7831feaa60e167589add0ca53b5b",
+      "train_inputs_npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d"
+    },
+    "targets_read": false
+  },
+  "population": {
+    "by_object_count": {
+      "1": [
+        {
+          "query_us": 7668800000,
+          "rows": [
+            53057
+          ],
+          "sequence": "VLA3oBKFyX",
+          "tokens": [
+            "VLA3oBKFyX_002568_7668800000"
+          ],
+          "tracks": [
+            "VLA3oBKFyX_002568"
+          ]
+        },
+        {
+          "query_us": 5763100000,
+          "rows": [
+            12249
+          ],
+          "sequence": "6WCDpro5rE",
+          "tokens": [
+            "6WCDpro5rE_003558_5763100000"
+          ],
+          "tracks": [
+            "6WCDpro5rE_003558"
+          ]
+        }
+      ],
+      "4": [
+        {
+          "query_us": 5288400000,
+          "rows": [
+            13808,
+            13809,
+            13810,
+            13811
+          ],
+          "sequence": "6h5yRW2LGc",
+          "tokens": [
+            "6h5yRW2LGc_001044_5288400000",
+            "6h5yRW2LGc_001769_5288400000",
+            "6h5yRW2LGc_002656_5288400000",
+            "6h5yRW2LGc_003049_5288400000"
+          ],
+          "tracks": [
+            "6h5yRW2LGc_001044",
+            "6h5yRW2LGc_001769",
+            "6h5yRW2LGc_002656",
+            "6h5yRW2LGc_003049"
+          ]
+        },
+        {
+          "query_us": 3082600000,
+          "rows": [
+            36201,
+            36202,
+            36203,
+            36204
+          ],
+          "sequence": "GjMYZjmSQb",
+          "tokens": [
+            "GjMYZjmSQb_000002_3082600000",
+            "GjMYZjmSQb_000735_3082600000",
+            "GjMYZjmSQb_000883_3082600000",
+            "GjMYZjmSQb_000926_3082600000"
+          ],
+          "tracks": [
+            "GjMYZjmSQb_000002",
+            "GjMYZjmSQb_000735",
+            "GjMYZjmSQb_000883",
+            "GjMYZjmSQb_000926"
+          ]
+        }
+      ]
+    },
+    "parquet": {
+      "eligible_rows": 84751,
+      "train_parquet_sha256": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6"
+    }
+  },
+  "protocol": {
+    "box_delay_scope": "GEOMETRY_POOL_AND_RGB_OBSERVATION_AVAILABILITY",
+    "box_delays_ms": [
+      0,
+      50
+    ],
+    "deadline_ms_strict": 20.0,
+    "object_counts": [
+      1,
+      4
+    ],
+    "offered_duration_s": 60.0,
+    "queue_capacities": [
+      2,
+      64
+    ],
+    "rate_hz": 50.0,
+    "timing_boundary": {
+      "excluded": [
+        "model load and graph prime",
+        "PNG read/decode",
+        "older persistent RGB feature cache",
+        "independent eager parity reference"
+      ],
+      "inside": [
+        "queue wait",
+        "latest RGB crop and normalization",
+        "CUDA RGB producers",
+        "RGB context",
+        "causal delayed-box geometry",
+        "frozen head",
+        "GPU-to-host TTC synchronization"
+      ],
+      "starts": "scheduled absolute deadline before acquiring the preloaded-offer pointer and queue wait"
+    },
+    "unique_offers": 2,
+    "updates_per_cell": 3000
+  },
+  "schema": "phase_ttc_rgb_geometry_service_results_v1",
+  "scope": "HOST_PACED_PRELOADED_RGB_AND_SUPPLIED_BOX_REPLAY_NOT_SENSOR_CERTIFICATION",
+  "source_receipt": {
+    "git_commit": "e6815bfab1780373397b740e7916ceee6cacd267",
+    "git_dirty": true,
+    "git_status_porcelain": [
+      " M docs/sota_20261121/distribution/PUBLICATION.md",
+      "?? docs/sota_20261121/distribution/WEB_DEPLOYMENT.json",
+      "?? docs/sota_20261121/distribution/WEB_HTTPS.json",
+      "?? docs/sota_20261121/geometry_service/RGB_STATUS.md",
+      "?? docs/sota_20261121/geometry_service/rgb_gpu/"
+    ],
+    "sha256": {
+      "operational/geometry_service/replay.py": "106a85310949c67b3a5880c98f61ca057ad561bba9d6f4a591357f3ea29197a0",
+      "operational/geometry_service/rgb_run.py": "91b0ed93bb8c6c025c6e1b5cc2030c4c7e2b6591a69b4db0adf03a8b41da616f",
+      "operational/geometry_service/run.py": "c082e32409cc6781348fb99bd4875dbf58303dfc89d486a005a8f22de313185c",
+      "operational/phase_geometry/data.py": "5915a69460e59c087930a733bc476424e8e8dbbad1436d9d6b09c40962966949",
+      "operational/phase_geometry/geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
+      "operational/phase_geometry/heads.py": "b94bdfa134e262021351fcea633535deb47ee8a792764748cf3527085536d478",
+      "operational/phase_robust/bundle.py": "6237ef620d78af6ca8c1ed9ec5d3589ba0d07ea6ff2e8083df455ab87ed726f2",
+      "operational/rgb_port/infer_experts.py": "b6d12889078b8ffed23134a52ec653e7ac4aae56700c17384b866eac1231cc9f",
+      "operational/train40_runtime/context.py": "29a8051ca2a8fdb9521b2eca5ef6c59d8d914d5342a123ecf01250bafb65ecd8",
+      "operational/train40_runtime/measurement.py": "448cd81437f165f5c3b399f790f8be2867c75113ef11ec2fc123ea56fbf5bb42",
+      "operational/train40_runtime/paced.py": "dfbace7757071a7dc79b5538496bb03832d927a478d063f203d7a8997345afe8",
+      "operational/train40_runtime/paced_statistics.py": "dc278265315cf1957b14ec73042cec4cd7f9629131777102f84e0d015ccb3822",
+      "operational/train40_runtime/producers.py": "c4af8d6512b248911f0f9deb7e437f14d94bf78a32f3834677b0780a9782f785",
+      "operational/variant_latency/run.py": "3cd0ad7131f77b490d68e25cd2340e73149ea8c3c622c1b11cbb9f8eb3a9c230",
+      "scripts/final_train40_transfer.py": "1d4117685d2e5fd3ed442732458f82d0d8e1db0fb0653e47714bb5ab6a300730",
+      "src/e_jepa_ttc/rgb_port/data.py": "a33a0ddeb62b7a668d25e9d2e8f880261cc7e325d8bcfe953bcee18e4b0410ec"
+    }
+  },
+  "strict_service_gate": {
+    "capacity_decision": "FAIL",
+    "effective_decision": "INVALIDATED",
+    "passing_cells": 0,
+    "total_cells": 8
+  },
+  "targets_read": false,
+  "uploads": false,
+  "upstream_paths": {
+    "E_A5": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\E_A5.pt",
+    "E_C2F": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\E_C2F.pt",
+    "E_CTX_MATCHED": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\E_CTX_MATCHED.pt",
+    "MODEL_SEAL.json": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\MODEL_SEAL.json.json",
+    "OOF_RECIPE.json": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\OOF_RECIPE.json.json",
+    "PAIR_E": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\PAIR_E.pt",
+    "PAIR_R": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\PAIR_R.pt",
+    "PHASE_ONLY_EVENT_S7_TRAIN40": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\PHASE_ONLY_EVENT_S7_TRAIN40.pt",
+    "R_A5": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\R_A5.pt",
+    "R_C2F": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\R_C2F.pt",
+    "R_CTX": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\R_CTX.pt",
+    "event_normalizer": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\event_normalizer.json",
+    "rgb_normalizer": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v18-joint-measurement\\output\\huggingface\\PHASE-TTC\\model\\upstream\\components\\rgb_normalizer.json"
+  },
+  "upstream_sha256": {
+    "E_A5": "a82e5b65ec9c3d302981438527f2cfccabbbf25c75f574946bd1e9dc97795758",
+    "E_C2F": "2b337dd76bd405c63ac9f96023a82196ee32e8180b86fe0015bfd67f0e2aeb57",
+    "E_CTX_MATCHED": "fec0ca9f2433a913ae1047cd0b47715a1dce39c4c2e4eecb9539f796434d137e",
+    "MODEL_SEAL.json": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+    "OOF_RECIPE.json": "e5ade2e986f30dbe672a13155b45a4288aa069b2b94a474951e4940900f0bd00",
+    "PAIR_E": "ccdd694f5d812a458c396fdb19bbffe439eff78fe38d57a7b288d4a4fd232680",
+    "PAIR_R": "dba94f1ae807d8e84ef68f50c93882a766a92cfc0b9a08da53c30fedbf509bc1",
+    "PHASE_ONLY_EVENT_S7_TRAIN40": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+    "R_A5": "3f09a2e06d4ff6aebaa64d8c1a8ccc0ade54eaa25b54bc11700fd70bd9701f29",
+    "R_C2F": "d5fa8fd9ed80df6141c3df8bd2ed8ac013c87e5e5bde7367a3b588c5b09e5a35",
+    "R_CTX": "a19f8188b859dcac7fb0cd4c68d0cd5c5c9a839ad84c0ac7ee1b3d61181d1852",
+    "event_normalizer": "19f9bf704de53a938e955ef1919e51881ec1f9c85c1d3e2cfd54aa6d76045f9f",
+    "rgb_normalizer": "d902dba58dc9738ed268e56fe57291fda1cf0dfb2e03be4da1171668e689bd59"
+  },
+  "windows_power_request": {
+    "active": true,
+    "flags": 2147483713,
+    "reset_at_process_exit": true,
+    "scope": "current_process_main_thread"
+  }
+}

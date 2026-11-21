@@ -321,7 +321,9 @@ def test_trace_pack_accepts_rgb_service_cell_names(tmp_path: Path) -> None:
         "{}", encoding="utf-8"
     )
     (tmp_path / "RESULTS.json").write_text("{}", encoding="utf-8")
+    (tmp_path / "POPULATION.json").write_text("{}", encoding="utf-8")
     assert [path.name for path in pack.trace_files(tmp_path)] == [
+        "POPULATION.json",
         "RESULTS.json",
         "rgb_geo__supplied_000ms__objects_01__queue_02.json",
     ]

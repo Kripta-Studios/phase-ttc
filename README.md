@@ -70,6 +70,12 @@ all losses and intermediate-output discrepancies remain visible. The initial
 three-pass comparison remains historical evidence. Query-API timings are excluded
 from the article's deployment-response comparison.
 
+At 50 Hz with another training job sharing the GPU, the RGB + geometry service
+returned 1,886 valid responses from 24,000 offers and dropped 22,114. None
+arrived within 20 ms. The eight cells cycled two recorded instants per object
+count with decoded frames, cached history and supplied boxes. All 3,236
+delivered object predictions agreed with the reference. [Shared-GPU replay](docs/sota_20261121/geometry_service/RGB_STATUS.md)
+
 ## Architecture
 
 The released base model executes one nine-component inference chain. Training
