@@ -25,7 +25,7 @@ Como enlace contra una caché opaca, se regeneraron `geometry_raw` y `geometry_g
 
 ## Piloto real de I/O
 
-Se materializó en CPU un shard de 16 consultas (8 train, 8 exteriores) con RGB, eventos y cajas; después se leyó su caché temporal.
+Se materializó en CPU un shard de 16 consultas (8 train, 8 exteriores) con RGB, eventos y alturas visibles; después se leyó su caché temporal.
 
 | Ruta | Tiempo | Rendimiento | Δ pico RSS | Bytes exactos |
 |---|---:|---:|---:|---:|
@@ -34,13 +34,15 @@ Se materializó en CPU un shard de 16 consultas (8 train, 8 exteriores) con RGB,
 
 La extrapolación lineal del shard es 56,9 GB, 5,45 h de construcción desde medios y 2,34 h por pasada completa de caché. Es una proyección de I/O de un shard pequeño, no tiempo de entrenamiento. Sustituye, para esta configuración, a la estimación previa de 134 GB/12,9 h; no borra aquella estimación histórica.
 
-Se ejecutó además un smoke real, sin métrica de precisión y sin GPU. Garl visual recibió `[2,6,128,128]`, completó forward/backward/update (163 tensores con gradiente finito), guardó checkpoint y efectuó forward sobre dos filas exteriores. Garl RGB+eventos hizo lo mismo con `[2,46,128,128]` y 322 tensores con gradiente finito. Los tiempos del paso fueron 0,64 s y 4,27 s en CPU. La rama PHASE de cajas ya había completado entrenamiento y checkpoints; el productor PHASE RGB no se simuló porque no existe un trainer fold-aware integrado.
+Se ejecutó además un smoke real, sin métrica de precisión y sin GPU. Garl visual recibió `[2,6,128,128]`, completó forward/backward/update (163 tensores con gradiente finito), guardó checkpoint y efectuó forward sobre dos filas exteriores. Garl RGB+eventos hizo lo mismo con `[2,46,128,128]` y 322 tensores con gradiente finito. Los tiempos del paso fueron 0,64 s y 4,27 s en CPU.
+
+También se integró un adaptador fold-aware para el productor histórico PHASE RGB `R_A5`. Reutiliza `CausalScaleTTC`, el AdamW fijado y la pérdida causal del refit independiente. Sobre RGB real `[2,2,3,128,128]` del shard, dos filas de entrenamiento completaron forward/backward/update en CPU con 59 tensores de gradiente finito y checkpoint; dos filas exteriores pasaron después por forward sin leer etiquetas ni calcular precisión. El paso tardó 0,46 s. El alcance es deliberadamente menor que un fit histórico completo: el shard acotado no conserva las cajas completas ni los targets relacionales DINOv3, por lo que esos términos quedaron sin soporte. Esto demuestra arranque, aislamiento del fold y checkpoint de la arquitectura, no OOF ni resultado de precisión.
 
 ## Por qué no se lanzó un fold con ambos productores
 
 Un fold exterior deja aproximadamente 71.000 filas de entrenamiento: la medida anterior proyecta unas 4,36 h para construir su caché y 1,87 h por pasada, antes de cómputo del modelo. La receta Garl publicada usa 50 épocas y tres etapas. Para que la cabeza apilada sea exterior integral hacen falta además cuatro productores de validación interior y un refit exterior por arquitectura y semilla. No había una ventana GPU acordada —P1 mantenía la reserva— y la cadena PHASE equivalente tampoco estaba preparada con filiación exterior. Por tanto, el lanzamiento íntegro no era viable en esta ejecución. No se extrapola precisión ni se afirma OOF de productor.
 
-`NEXT_RUN.json` deja los comandos Garl reanudables y cuatro puntos de integración concretos. El principal faltante no es un flag de ejecución: hay que producir PHASE RGB dentro de cada rotación, en vez de consumir `arrays['features']` en `operational/matched_outer/pilot.py:98`. Para Garl, el adaptador rotatorio histórico debe propagar `mask_reader=None` en `scripts/materialize_garlttc_rotating_cache.py:271`; el adaptador acotado de P3 ya validó esa firma.
+`NEXT_RUN.json` deja los comandos Garl reanudables y cuatro puntos de integración concretos. `operational/matched_outer/phase_rgb_smoke.py` ya proporciona el filtro de secuencias y el paso real R_A5; para convertirlo en un outer completo debe alimentarse con `IndependentRGBProducerSource` por cada rotación, incluyendo cajas completas, caché nominal DINOv3 y 18 épocas CUDA, en vez de consumir `arrays['features']` en `operational/matched_outer/pilot.py:98`. Para Garl, el adaptador rotatorio histórico debe propagar `mask_reader=None` en `scripts/materialize_garlttc_rotating_cache.py:271`; el adaptador acotado de P3 ya validó esa firma.
 
 ## Fuentes y hashes
 
@@ -49,7 +51,7 @@ Un fold exterior deja aproximadamente 71.000 filas de entrenamiento: la medida a
 - Cajas/filas públicas: `03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6`.
 - Targets públicos: `64e9a81232643ecce1d2f66e906c7cff6ea1e9e6958f81588b95e112693b11ad`.
 - Scorer oficial: `f3bbf089ba6e47edfce1de522c92ddc969db2260fac7544e82bc017fedf82dce`; diferencia del fixture firmado con fallos: 0,0 (tolerancia 1e−6).
-- Índice completo: `EVIDENCE_INDEX.json`, con 43 artefactos locales y hashes del código ejecutado.
+- Índice completo: `EVIDENCE_INDEX.json`, con 51 artefactos locales y hashes del código ejecutado.
 
 ## Frontera commit-safe
 

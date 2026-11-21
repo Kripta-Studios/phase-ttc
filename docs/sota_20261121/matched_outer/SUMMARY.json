@@ -49,7 +49,13 @@
     "outer_rows_forwarded_per_variant": 2,
     "precision_metric_computed": false,
     "phase_box_head_forward_backward": true,
-    "phase_rgb_producer_forward_backward": false
+    "phase_rgb_producer_forward_backward": true,
+    "phase_rgb_historical_fit": "R_A5",
+    "phase_rgb_input_shape": [2, 2, 3, 128, 128],
+    "phase_rgb_finite_gradient_tensors": 59,
+    "phase_rgb_checkpoint_sha256": "10a1e0b4c8154fc4fec5bf0d3418a064dfb6da438596db678dc0866b153ead37",
+    "phase_rgb_outer_rows_forwarded": 2,
+    "phase_rgb_full_historical_objective": false
   },
   "not_completed": {
     "phase_rgb_box_outer": "existing PHASE20 training-side producers saw the held-out block; integral outer producer retraining was not run",
@@ -86,6 +92,9 @@
     "operational/matched_outer/run/io_probe/outer0_media_probe.pt.gz",
     "operational/matched_outer/run/smoke/*.pt",
     "operational/matched_outer/run/smoke/*_outer_forward.npz",
+    "operational/matched_outer/run/phase_rgb_smoke/*.pt",
+    "operational/matched_outer/run/phase_rgb_smoke/*.npz",
+    "operational/matched_outer/run/phase_rgb_smoke/PHASE_RGB_SMOKE_RECEIPT.json",
     "E:/GarlTTC_dataset/data/train.parquet",
     "E:/GarlTTC_dataset/annotations/train.parquet",
     "E:/eAP_dataset/**"

@@ -123,6 +123,7 @@ def main() -> None:
             "*.parquet",
             "io_probe/*",
             "smoke/*",
+            "phase_rgb_smoke/*",
         )
         for path in sorted(args.run_dir.glob(pattern))
         if path.is_file()
@@ -134,6 +135,7 @@ def main() -> None:
         Path(__file__).with_name("evidence.py"),
         Path(__file__).with_name("io_probe.py"),
         Path(__file__).with_name("smoke.py"),
+        Path(__file__).with_name("phase_rgb_smoke.py"),
         root / "operational/phase_geometry/geometry.py",
         root / "operational/phase_geometry/heads.py",
         root / "operational/phase_geometry/metrics.py",

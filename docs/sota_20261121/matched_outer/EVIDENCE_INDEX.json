@@ -173,6 +173,18 @@
       "bytes": 10255824,
       "sha256": "7403244932262446d51200c758a61e94d8112f50a3d7847368831fb65aaaeb72"
     },
+    "operational/matched_outer/run/phase_rgb_smoke/PHASE_RGB_SMOKE_RECEIPT.json": {
+      "bytes": 2547,
+      "sha256": "198015b5caae7ed1dc448e8588295af0169fe1af669769c7e88f7d05877da410"
+    },
+    "operational/matched_outer/run/phase_rgb_smoke/phase_r_a5_one_step.pt": {
+      "bytes": 5077385,
+      "sha256": "10a1e0b4c8154fc4fec5bf0d3418a064dfb6da438596db678dc0866b153ead37"
+    },
+    "operational/matched_outer/run/phase_rgb_smoke/phase_r_a5_outer_forward.npz": {
+      "bytes": 480,
+      "sha256": "e81820c2c1ecf796deadb4ad8e8a25dcb9273285608f81c86409b1cd289601cc"
+    },
     "operational/matched_outer/run/smoke/SMOKE_RECEIPT.json": {
       "bytes": 3310,
       "sha256": "d1e6cb08fe3c50b40819741d8917b0ff66a82745bc8a3fd3e7158557dafd827e"
@@ -201,21 +213,25 @@
     "rows": 88744,
     "status": "pass"
   },
-  "created_at_utc": "2026-11-21T16:04:42.777829+00:00",
+  "created_at_utc": "2026-11-21T16:16:44.987290+00:00",
   "git": {
-    "commit": "1cad8cdc6d6aa3716ce5bc1ce7c4fadc7441f25d",
+    "commit": "36ea4cc01d725f9334cef925f008b3d8130164d2",
     "dirty": true,
     "status_short": [
       " M .github/workflows/paper.yaml",
       " M README.md",
-      " M docs/decisions/ADR-0046-official-submission-provenance-and-history.md",
-      " M docs/decisions/ADR-0047-garlttc-submission-discipline.md",
       " M docs/model_card.md",
-      " M docs/sota_20261118/SUBMISSION_LEDGER.md",
+      " M docs/sota_20261121/benchmark_scope/REPORT.md",
+      " M docs/sota_20261121/matched_outer/NEXT_RUN.json",
+      " M docs/sota_20261121/matched_outer/REPORT.md",
+      " M docs/sota_20261121/matched_outer/SUMMARY.json",
+      " M operational/matched_outer/seal.py",
+      " M paper/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip",
       " M paper/README.md",
-      " M paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
+      " D paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
       " M paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.tex",
       " M paper/from_motion_to_time_20261102/README.md",
+      " M paper/from_motion_to_time_20261102/SOURCE_MANIFEST.json",
       " D paper/from_motion_to_time_20261102/build/validation.json",
       " M paper/from_motion_to_time_20261102/figures/audit_transfer_exceedance.pdf",
       " M paper/from_motion_to_time_20261102/figures/audit_transfer_sequences.pdf",
@@ -231,6 +247,8 @@
       " M paper/from_motion_to_time_20261102/figures/publication_runtime_clock.pdf",
       " M paper/from_motion_to_time_20261102/figures/publication_teaser.pdf",
       " M paper/from_motion_to_time_20261102/main.tex",
+      " M paper/from_motion_to_time_20261102/references.bib",
+      " M paper/from_motion_to_time_20261102/requirements-paper.txt",
       " M paper/from_motion_to_time_20261102/revision/build_receipt.json",
       " M paper/from_motion_to_time_20261102/revision/publication_contract.json",
       " M paper/from_motion_to_time_20261102/scripts/build_expanded.py",
@@ -243,21 +261,17 @@
       " M paper/from_motion_to_time_20261102/sections/methods.tex",
       " M paper/from_motion_to_time_20261102/sections/official_results.tex",
       " M paper/from_motion_to_time_20261102/sections/protocol.tex",
-      " M paper/requirements-paper.txt",
+      " M paper/from_motion_to_time_20261102/updates/review/expanded_validation.json",
+      " M paper/from_motion_to_time_20261102/updates/review/original_retention.json",
       " M tests/unit/test_paper_publication_binding.py",
       "?? docs/sota_20261121/distribution/",
       "?? docs/sota_20261121/geometry_service/",
-      "?? docs/sota_20261121/lineage/",
-      "?? docs/sota_20261121/matched_outer/EVIDENCE_INDEX.json",
-      "?? docs/sota_20261121/matched_outer/NEXT_RUN.json",
-      "?? docs/sota_20261121/matched_outer/REPORT.md",
-      "?? docs/sota_20261121/matched_outer/SUMMARY.json",
       "?? operational/geometry_service/",
-      "?? operational/matched_outer/",
+      "?? operational/matched_outer/phase_rgb_smoke.py",
+      "?? operational/matched_outer/test_phase_rgb_smoke.py",
       "?? paper/from_motion_to_time_20261102/data/benchmark_scope/",
       "?? paper/from_motion_to_time_20261102/data/followup/",
       "?? paper/from_motion_to_time_20261102/data/official_submissions/",
-      "?? paper/from_motion_to_time_20261102/main_short.pdf",
       "?? paper/from_motion_to_time_20261102/main_short.tex",
       "?? paper/from_motion_to_time_20261102/scripts/make_followup_tables.py",
       "?? paper/from_motion_to_time_20261102/scripts/make_official_submission_tables.py",
@@ -268,12 +282,12 @@
       "?? paper/from_motion_to_time_20261102/tables/followup_literature.tex",
       "?? paper/from_motion_to_time_20261102/tables/official_submissions.tex",
       "?? paper/from_motion_to_time_20261102/tables/official_submissions_short.tex",
-      "?? scripts/verify_submission_lineage.py",
+      "?? scripts/stage_qualification_web.py",
       "?? tests/regression/test_geometry_service_artifacts.py",
       "?? tests/unit/test_followup_publication_tables.py",
       "?? tests/unit/test_geometry_service.py",
       "?? tests/unit/test_official_submission_tables.py",
-      "?? tests/unit/test_submission_lineage_index.py"
+      "?? tests/unit/test_stage_qualification_web.py"
     ]
   },
   "inputs": {
@@ -293,8 +307,9 @@
     "operational/matched_outer/contracts.py": "3e07b8284c8402419f7817c07e64a4b23d9448a923ef1316dba24319e3e905fb",
     "operational/matched_outer/evidence.py": "247fbf733ed513ff49a1562443a3c7f32d0c11458cac1f1435456cb49496c09c",
     "operational/matched_outer/io_probe.py": "9f8ae7cba8f5c6cb76cef2e7e686fff2dce6a28126437554d8278f2f7ed36529",
+    "operational/matched_outer/phase_rgb_smoke.py": "1d6a76604f0a1e9740158d8304bc618f1ae5bf887a1dcd7c760f7636e9ea671c",
     "operational/matched_outer/pilot.py": "44705f77a1161fc4607e7c2badec9732d28c43b451380d9b91c9a5646734aff0",
-    "operational/matched_outer/seal.py": "2cfd0ab7726b497adbc1ce19b6ba15bc489f9a1fc58e4c96019ffbca32806368",
+    "operational/matched_outer/seal.py": "f3253700974bfa038567229a0d5619bd704b7d83e06ff5e9a758b22b59e993c2",
     "operational/matched_outer/smoke.py": "2415e6c39486872548f264667391c3886268f34373d14935fd59910ce4042d7f",
     "operational/phase_geometry/geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
     "operational/phase_geometry/heads.py": "b94bdfa134e262021351fcea633535deb47ee8a792764748cf3527085536d478",
