@@ -18,6 +18,7 @@ any callable, so no code from the archive can run.
 from __future__ import annotations
 
 import io
+import json
 import math
 import os
 import pickle
@@ -174,11 +175,22 @@ class ObjectSequence:
     ttc_gt: float | None
 
 
-def build_sequences(
+@dataclass(frozen=True)
+class TargetFreeObjectSequence:
+    """Prediction input built without reading or retaining ``ttc_imu``."""
+
+    bag_stamp: str
+    cam_id: int
+    object_id: int
+    ts_ns: NDArray[np.int64]
+    boxes_px: FloatArray
+
+
+def build_prediction_sequences(
     cameras: Iterable[Mapping[Any, Sequence[Any]]], sequence_len: int = SEQUENCE_LENGTH
-) -> list[ObjectSequence]:
-    """Mirror ``TSTTC.createIndex``: consecutive (``ts`` step 1e8) runs of ``sequence_len``."""
-    out: list[ObjectSequence] = []
+) -> list[TargetFreeObjectSequence]:
+    """Build prediction inputs while never accessing ``ttc_imu`` or another target field."""
+    out: list[TargetFreeObjectSequence] = []
     for camera in cameras:
         pending: dict[int, list[Any]] = {}
         for _, objects in sorted(camera.items(), key=lambda item: item[0]):
@@ -195,19 +207,52 @@ def build_sequences(
                 boxes = boxes * np.asarray([IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_HEIGHT])
                 last = run[-1]
                 out.append(
-                    ObjectSequence(
+                    TargetFreeObjectSequence(
                         bag_stamp=os.path.basename(str(last.bag_stamp)),
                         cam_id=int(last.cam_id),
                         object_id=int(last.id),
                         ts_ns=np.asarray([o.ts for o in run], dtype=np.int64),
                         boxes_px=boxes,
-                        ttc_gt=float(last.ttc_imu) if hasattr(last, "ttc_imu") else None,
                     )
                 )
     return out
 
 
-def detection_baseline(seq: ObjectSequence) -> float:
+def build_sequences(
+    cameras: Iterable[Mapping[Any, Sequence[Any]]], sequence_len: int = SEQUENCE_LENGTH
+) -> list[ObjectSequence]:
+    """Mirror ``TSTTC.createIndex``: consecutive (``ts`` step 1e8) runs of ``sequence_len``."""
+    # Compatibility reader for metric tests.  Operational prediction must call
+    # build_prediction_sequences, whose return type has no target attribute.
+    camera_list = list(cameras)
+    target_free = build_prediction_sequences(camera_list, sequence_len)
+    labels: dict[tuple[str, int, int, int], float] = {}
+    for camera in camera_list:
+        for _, objects in camera.items():
+            for obj in objects:
+                if hasattr(obj, "ttc_imu"):
+                    labels[
+                        (
+                            os.path.basename(str(obj.bag_stamp)),
+                            int(obj.cam_id),
+                            int(obj.id),
+                            int(obj.ts),
+                        )
+                    ] = float(obj.ttc_imu)
+    return [
+        ObjectSequence(
+            bag_stamp=seq.bag_stamp,
+            cam_id=seq.cam_id,
+            object_id=seq.object_id,
+            ts_ns=seq.ts_ns,
+            boxes_px=seq.boxes_px,
+            ttc_gt=labels.get((seq.bag_stamp, seq.cam_id, seq.object_id, int(seq.ts_ns[-1]))),
+        )
+        for seq in target_free
+    ]
+
+
+def detection_baseline(seq: ObjectSequence | TargetFreeObjectSequence) -> float:
     """Paper's "Detection" baseline: first/last box area ratio, ``T = gap*a/(1-a)``, a = s0/s1."""
     b = seq.boxes_px[[0, -1]]
     s = np.sqrt((b[:, 2] - b[:, 0]) * (b[:, 3] - b[:, 1]))
@@ -215,10 +260,25 @@ def detection_baseline(seq: ObjectSequence) -> float:
     return float(scale_ratio_to_ttc(s[0] / s[1], fps=1.0 / gap))
 
 
-def geometry_raw(seq: ObjectSequence) -> dict[str, float]:
+def geometry_raw(seq: ObjectSequence | TargetFreeObjectSequence) -> dict[str, float]:
     """``geometry.window_features`` over the six frames (500 ms span), query at the last one."""
     t_us = (seq.ts_ns - seq.ts_ns[-1]) // 1000
     return geometry.window_features(t_us, seq.boxes_px, 0, window_us=geometry.WINDOW_US)
+
+
+def prediction_bytes(sequences: Sequence[TargetFreeObjectSequence]) -> bytes:
+    """Canonical, target-free bytes for the official two-box Detection baseline."""
+    rows = [
+        {
+            "bag_stamp": seq.bag_stamp,
+            "cam_id": seq.cam_id,
+            "object_id": seq.object_id,
+            "target_ts_ns": int(seq.ts_ns[-1]),
+            "ttc_prediction": detection_baseline(seq),
+        }
+        for seq in sequences
+    ]
+    return json.dumps(rows, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("utf-8")
 
 
 __all__ = [
@@ -226,12 +286,15 @@ __all__ = [
     "RANGES",
     "AnnotationObject",
     "ObjectSequence",
+    "TargetFreeObjectSequence",
     "SafeAnnotationUnpickler",
     "bench2_root",
     "build_sequences",
+    "build_prediction_sequences",
     "detection_baseline",
     "geometry_raw",
     "load_annotations",
+    "prediction_bytes",
     "row_metrics",
     "scale_ratio_to_ttc",
     "summarize",

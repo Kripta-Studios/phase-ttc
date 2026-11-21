@@ -128,6 +128,29 @@ def test_build_sequences_and_detection_baseline_on_constant_velocity() -> None:
     assert raw["k_area"] > 0
 
 
+def test_target_free_prediction_bytes_do_not_depend_on_ttc_imu() -> None:
+    records = _approach(6)
+    camera = {r.ts: [r] for r in records}
+    original = tsttc.build_prediction_sequences([camera])
+
+    for record in records:
+        record.ttc_imu = -1234.5
+    changed = tsttc.build_prediction_sequences([{r.ts: [r] for r in records}])
+    for record in records:
+        del record.ttc_imu
+    censored = tsttc.build_prediction_sequences([{r.ts: [r] for r in records}])
+
+    assert tsttc.prediction_bytes(original) == tsttc.prediction_bytes(changed)
+    assert tsttc.prediction_bytes(original) == tsttc.prediction_bytes(censored)
+
+
+def test_compatibility_sequence_builder_accepts_one_shot_iterable() -> None:
+    records = _approach(6)
+    sequences = tsttc.build_sequences(iter([{r.ts: [r] for r in records}]))
+    assert len(sequences) == 1
+    assert sequences[0].ttc_gt == pytest.approx(records[-1].ttc_imu)
+
+
 def test_root_requires_environment_variable() -> None:
     with pytest.raises(RuntimeError, match="PHASE_TTC_BENCH2_ROOT"):
         tsttc.bench2_root({})
