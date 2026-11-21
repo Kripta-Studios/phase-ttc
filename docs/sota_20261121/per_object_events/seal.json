@@ -1,0 +1,9 @@
+{
+  "sha256": "bb319566a37e04d78a918729eeb2bd97091ccefda914c72749b4ff62ae0ef5d8",
+  "runner_sha256": "e2e1746eec23e912302d0024ed6e27bc7d8c43146baef1196e2ee182c206c84d",
+  "checkpoints": {
+    "GEO_LEARNED": "88e78a0759e49f8992f38cad987c4dc2478eae4894132436c104ab6c2d3037e5",
+    "GEO_ROBUST_AUG_CS": "b8ba0002ac5e52ccfbd7f23120077e997638b7efd886877cb6ac33705ca647df"
+  },
+  "protocol_sha256": "96988eec91d94cf9ad1366f878384d93e52f33ea6671a70544fd1f9a3d002a50"
+}
