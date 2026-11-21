@@ -1,0 +1,62 @@
+{
+  "prediction_sha256": "bb319566a37e04d78a918729eeb2bd97091ccefda914c72749b4ff62ae0ef5d8",
+  "detected": {
+    "0.5": {
+      "objects": 165,
+      "proposals": 1838,
+      "matched": 16,
+      "id_switches": 0,
+      "adjacent_pairs": 3,
+      "multi_instants": 45,
+      "instants": 96,
+      "arms": {
+        "GEO_LEARNED": {
+          "with_ttc": 3,
+          "mae_seconds": 5.155318633720843
+        },
+        "GEO_ROBUST_AUG_CS": {
+          "with_ttc": 3,
+          "mae_seconds": 4.794425394143231
+        }
+      }
+    },
+    "0.3": {
+      "objects": 165,
+      "proposals": 1838,
+      "matched": 39,
+      "id_switches": 4,
+      "adjacent_pairs": 12,
+      "multi_instants": 45,
+      "instants": 96,
+      "arms": {
+        "GEO_LEARNED": {
+          "with_ttc": 12,
+          "mae_seconds": 6.323637214853055
+        },
+        "GEO_ROBUST_AUG_CS": {
+          "with_ttc": 12,
+          "mae_seconds": 11.54702218771358
+        }
+      }
+    }
+  },
+  "supplied": {
+    "objects": 165,
+    "proposals": 165,
+    "matched": 165,
+    "id_switches": 0,
+    "adjacent_pairs": 142,
+    "multi_instants": 45,
+    "instants": 96,
+    "arms": {
+      "GEO_LEARNED": {
+        "with_ttc": 165,
+        "mae_seconds": 1.8610612860492959
+      },
+      "GEO_ROBUST_AUG_CS": {
+        "with_ttc": 165,
+        "mae_seconds": 1.5993029786799648
+      }
+    }
+  }
+}
