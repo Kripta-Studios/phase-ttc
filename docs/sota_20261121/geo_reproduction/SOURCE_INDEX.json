@@ -1,0 +1,23 @@
+{
+  "bundle": {
+    "cli_sha256": "5785632c42eb4d96adcdd97b85eaac3113afb22d3079276e3ecd46b0989f45a7",
+    "manifest_sha256": "29a4d8d2b46a5d434dc1d4ef6e5233d2ea0bb1ac1095fa82ff85d35846ae0a18",
+    "normalization_sha256": "b7a215d7ade6da0a396cb0a4ea665e10b57c763cf1bc18749165989051cef20d",
+    "state_sha256": "a2d68afc1232a7ebc74e0acd107917c758fe661f962f510f01d470b9d31f5229"
+  },
+  "created_utc": "2026-11-21T15:40:38.564914+00:00",
+  "git_commit": "390857a40d8badee353033eadccf3f2b8a758fe0",
+  "git_dirty": true,
+  "note": "Each RESULT binds its isolated inputs and runner code; no private Test12 labels were read.",
+  "result_files": {
+    "operational/geo_reproduction/runs/A_saved_predictions/NPZ_RESULT.json": "0f8264b3303c1d97e50d95b23f7de9daa56918be7f325e84f4d35f3a9f4a16ea",
+    "operational/geo_reproduction/runs/A_saved_predictions/RESULT.json": "b5335a1bdb27c3dd70899a7cb94c476ee423ca144fa0e01fc13290a1d39557f1",
+    "operational/geo_reproduction/runs/B_endpoint_replay/RESULT.json": "b5572f8c2103a2d2587e924b4a437acf4845742bc39b0a5f9d7c238c194aaa4f",
+    "operational/geo_reproduction/runs/B_media_pilot/RESULT.json": "81d0920dc4467626202c77ca639a4d47de36ef8be50885389e49ae3ba5e6264a",
+    "operational/geo_reproduction/runs/C_refit/RESULT.json": "ee74d4251d90c0b4b3844886e9714f357a47147376acabab2235a171934ac559",
+    "operational/geo_reproduction/runs/D_portable_bundle/RESULT.json": "2d1d77ca18566369a9bb21d2fd974b8b5cb622bdc55874ae4a05dda1f61c91e3",
+    "operational\\geo_reproduction\\runs\\B_media_multiseq\\RESULT.json": "5897e5304a4bef22b7846435786ea0b77938c5bf045989d56d198f540c009018",
+    "operational\\geo_reproduction\\runs\\D_readonly_clean\\READ_ONLY_TEST.json": "336f3fa4b354661630995de0d16909e6d0f9dc036881112999f15f4bf86e6b57"
+  },
+  "schema": "phase_geometry_replay_source_index_v1"
+}

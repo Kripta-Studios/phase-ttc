@@ -1,0 +1,21 @@
+{
+  "aliases": 957,
+  "bundle_isolated_copy": true,
+  "bundle_manifest_sha256": "29a4d8d2b46a5d434dc1d4ef6e5233d2ea0bb1ac1095fa82ff85d35846ae0a18",
+  "byte_identical": true,
+  "created_utc": "2026-11-21T15:40:38.564914+00:00",
+  "endpoint_inputs_isolated_copy": true,
+  "endpoint_inputs_sha256": "1e3d9d5b6e8267711628d0b7d9cbafd2b62b534541b7ac20e85557a6749bb65f",
+  "external_submission": false,
+  "git_commit": "390857a40d8badee353033eadccf3f2b8a758fe0",
+  "git_dirty": true,
+  "input_files_read_only": true,
+  "output_result_sha256": "2d1d77ca18566369a9bb21d2fd974b8b5cb622bdc55874ae4a05dda1f61c91e3",
+  "physical_queries": 5805,
+  "private_targets_read": false,
+  "rows": 6762,
+  "runner_sha256": "5785632c42eb4d96adcdd97b85eaac3113afb22d3079276e3ecd46b0989f45a7",
+  "schema": "phase_geometry_read_only_clean_test_v1",
+  "working_directory": "operational/geo_reproduction/runs/D_readonly_clean",
+  "zip_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df"
+}

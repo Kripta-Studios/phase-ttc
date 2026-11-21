@@ -1,0 +1,10 @@
+{
+  "aliases": 957,
+  "byte_identical": true,
+  "expected_zip_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df",
+  "physical_queries": 5805,
+  "private_targets_read": false,
+  "rows": 6762,
+  "schema": "phase_geometry_portable_replay_v1",
+  "zip_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df"
+}

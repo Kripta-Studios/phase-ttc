@@ -1,0 +1,13 @@
+{
+  "schema": "phase_geometry_replay_environment_v1",
+  "date": "2026-11-21",
+  "python": "3.11.15",
+  "torch": "2.11.0+cu128",
+  "cuda_runtime": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "numpy": "2.4.6",
+  "pandas": "3.0.3",
+  "pyarrow": "25.0.0",
+  "private_test_targets_read": false,
+  "external_submission": false
+}

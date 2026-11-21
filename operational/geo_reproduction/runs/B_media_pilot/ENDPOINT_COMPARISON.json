@@ -1,0 +1,18 @@
+{
+  "endpoint_tolerance_atol": 1e-06,
+  "endpoint_tolerance_pass": false,
+  "event_valid_frozen": 1,
+  "event_valid_replayed": 1,
+  "feature_max_abs_drift": 3.7066638469696045e-06,
+  "geometry_ttc_abs_drift": 6.830692291259766e-05,
+  "geometry_ttc_tolerance_pass": true,
+  "geometry_ttc_tolerance_seconds": 0.0001,
+  "historical_geometry_ttc_seconds": -1.8173774480819702,
+  "media_replay_geometry_ttc_seconds": -1.8174457550048828,
+  "physical_index": 0,
+  "released_ttc_abs_drift": 5.555152893066406e-05,
+  "rgb_valid_frozen": 1,
+  "rgb_valid_replayed": 1,
+  "sample_token": "3RUZHwnCwK_000017_720578076_725578151_3RUZHwnCwK_000017_12140300000",
+  "width_max_abs_drift": 5.1915645599365234e-05
+}

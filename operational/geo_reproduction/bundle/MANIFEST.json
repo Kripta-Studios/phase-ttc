@@ -1,0 +1,22 @@
+{
+  "schema": "phase_geometry_portable_bundle_v1",
+  "candidate": "PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAIN40",
+  "variant": "RGB_GEO_BAND",
+  "seed": 7,
+  "state_file": "RGB_GEO_BAND.state.pt",
+  "files": {
+    "RGB_GEO_BAND.state.pt": "a2d68afc1232a7ebc74e0acd107917c758fe661f962f510f01d470b9d31f5229",
+    "normalization.json": "b7a215d7ade6da0a396cb0a4ea665e10b57c763cf1bc18749165989051cef20d"
+  },
+  "endpoint_inputs_sha256": "1e3d9d5b6e8267711628d0b7d9cbafd2b62b534541b7ac20e85557a6749bb65f",
+  "expected_zip_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df",
+  "coverage": {
+    "logical_rows": 6762,
+    "physical_queries": 5805,
+    "aliases": 957,
+    "sequences": 12
+  },
+  "input_contract": "label-free sealed PHASE20 endpoints plus public causal geometry",
+  "private_targets_required": false,
+  "redistributable_scope": "head state, normalization contract, manifest; endpoint inputs are supplied separately"
+}

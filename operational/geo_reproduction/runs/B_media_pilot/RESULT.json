@@ -1,0 +1,165 @@
+{
+  "binding": {
+    "candidate": "PHASE_ONLY_EVENT_S7_TRAIN40_SCIENTIFIC_OOF",
+    "components": {
+      "E_A5": "a82e5b65ec9c3d302981438527f2cfccabbbf25c75f574946bd1e9dc97795758",
+      "E_C2F": "2b337dd76bd405c63ac9f96023a82196ee32e8180b86fe0015bfd67f0e2aeb57",
+      "E_CTX_MATCHED": "fec0ca9f2433a913ae1047cd0b47715a1dce39c4c2e4eecb9539f796434d137e",
+      "MODEL_SEAL.json": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+      "OOF_RECIPE.json": "e5ade2e986f30dbe672a13155b45a4288aa069b2b94a474951e4940900f0bd00",
+      "PAIR_E": "ccdd694f5d812a458c396fdb19bbffe439eff78fe38d57a7b288d4a4fd232680",
+      "PAIR_R": "dba94f1ae807d8e84ef68f50c93882a766a92cfc0b9a08da53c30fedbf509bc1",
+      "PHASE_ONLY_EVENT_S7_TRAIN40": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408",
+      "R_A5": "3f09a2e06d4ff6aebaa64d8c1a8ccc0ade54eaa25b54bc11700fd70bd9701f29",
+      "R_C2F": "d5fa8fd9ed80df6141c3df8bd2ed8ac013c87e5e5bde7367a3b588c5b09e5a35",
+      "R_CTX": "a19f8188b859dcac7fb0cd4c68d0cd5c5c9a839ad84c0ac7ee1b3d61181d1852",
+      "event_normalizer": "19f9bf704de53a938e955ef1919e51881ec1f9c85c1d3e2cfd54aa6d76045f9f",
+      "rgb_normalizer": "d902dba58dc9738ed268e56fe57291fda1cf0dfb2e03be4da1171668e689bd59"
+    },
+    "model_seal_sha256": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+    "portable_paths_sha256": "4a4609591f80470dc304a68d20e3f1f707f5b88dc13ff04451d93e58d3b5465b",
+    "recipe_sha256": "78c83c09fc176846e1135df3b625a2455b71336becb9305589f55269058915c3"
+  },
+  "candidate_path": "D:\\E_JEPA_POD2_RETURN_20261027\\FINAL_CANDIDATE",
+  "captured_tensors": {
+    "E_CTX_MATCHED.input_0": [
+      1,
+      8,
+      17
+    ],
+    "E_CTX_MATCHED.input_1": [
+      1,
+      8,
+      4
+    ],
+    "E_CTX_MATCHED.input_2": [
+      1,
+      8
+    ],
+    "E_CTX_MATCHED.input_3": [
+      1,
+      3
+    ],
+    "E_CTX_MATCHED.output_expert_index": [
+      1
+    ],
+    "E_CTX_MATCHED.output_point_phase": [
+      1
+    ],
+    "E_CTX_MATCHED.output_q10": [
+      1
+    ],
+    "E_CTX_MATCHED.output_q90": [
+      1
+    ],
+    "E_CTX_MATCHED.output_raw_location": [
+      1
+    ],
+    "E_CTX_MATCHED.output_raw_residual": [
+      1
+    ],
+    "E_CTX_MATCHED.output_relative_cost": [
+      1,
+      3
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.input_0": [
+      1,
+      340
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.input_1": [
+      1,
+      2
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.output_correction": [
+      1,
+      3
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.output_point_phase": [
+      1
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.output_q10": [
+      1
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.output_q90": [
+      1
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.output_raw_location": [
+      1
+    ],
+    "PHASE_ONLY_EVENT_S7_TRAIN40.output_ttc": [
+      1
+    ],
+    "R_CTX.input_0": [
+      1,
+      8,
+      17
+    ],
+    "R_CTX.input_1": [
+      1,
+      8,
+      4
+    ],
+    "R_CTX.input_2": [
+      1,
+      8
+    ],
+    "R_CTX.input_3": [
+      1,
+      3
+    ],
+    "R_CTX.output_expert_index": [
+      1
+    ],
+    "R_CTX.output_point_phase": [
+      1
+    ],
+    "R_CTX.output_q10": [
+      1
+    ],
+    "R_CTX.output_q90": [
+      1
+    ],
+    "R_CTX.output_raw_location": [
+      1
+    ],
+    "R_CTX.output_raw_residual": [
+      1
+    ],
+    "R_CTX.output_relative_cost": [
+      1,
+      3
+    ]
+  },
+  "created_utc": "2026-11-21T15:40:16.154902+00:00",
+  "device": "cuda",
+  "elapsed_seconds_including_media_decode": 1.8715363999945112,
+  "event_history_count": 1,
+  "event_source": "authenticated frozen public event tensor",
+  "git_commit": "390857a40d8badee353033eadccf3f2b8a758fe0",
+  "git_dirty": true,
+  "inputs_path": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\EVOCON_JEPA_Codex_Handoff\\e-jepa-ttc-v16-multimodal-validation\\artifacts\\multimodal_research_20261012\\test12_phase_only\\INPUTS.json",
+  "inputs_sha256": "b78730abe68de7fbe06c6c98b25d5fa025c04d9303720b680ce0c0f575d2e526",
+  "media_regenerated": {
+    "event_from_hdf5": false,
+    "rgb_from_tar": true
+  },
+  "output_hashes": {
+    "captured_endpoints.npz": "59b223c5c633ace7bf880502a54f4beb5688c1145986b63351d3c0625d4e266d",
+    "endpoint_comparison.json": "7ea3b51bc972e4d40c70af9cb3109885bcfda37eba49e479479222ba7391d37a"
+  },
+  "prediction_ttc_seconds": -1.991665005683899,
+  "private_targets_read": false,
+  "producer_observation_boundary": "NativeObservation (released Test12 ABI adapter)",
+  "reproduction_code": {
+    "bundle_cli.py": "5785632c42eb4d96adcdd97b85eaac3113afb22d3079276e3ecd46b0989f45a7",
+    "data.py": "5915a69460e59c087930a733bc476424e8e8dbbad1436d9d6b09c40962966949",
+    "media_pilot.py": "7b6b60e8b8b514444f1163431f8ba2bc4e5c045324dce7368f2feecb8ea66be2",
+    "package.py": "ac0426e9b5d3c959ed66aafc289f505671616196964f5424ee73d8eca69019ce",
+    "replay.py": "4367885313942f54cb3c09f4b21e154338a5ca2ca2e4d0be2dcb29e35748ca9d",
+    "run_cv.py": "e50e713632b7a0e931dc6175189057faa247b2c2b94fa5b314a31310332412e5"
+  },
+  "rgb_history_count": 1,
+  "sample_token": "3RUZHwnCwK_000017_720578076_725578151_3RUZHwnCwK_000017_12140300000",
+  "schema": "phase_geometry_real_media_pilot_v1",
+  "sequence_id": "3RUZHwnCwK"
+}

@@ -1,0 +1,26 @@
+{
+  "aliases": 957,
+  "byte_identical": false,
+  "created_utc": "2026-11-21T15:40:16.154902+00:00",
+  "frozen_candidate_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df",
+  "git_commit": "390857a40d8badee353033eadccf3f2b8a758fe0",
+  "git_dirty": true,
+  "physical_queries": 5805,
+  "replayed_zip": "operational\\geo_reproduction\\runs\\A_saved_predictions\\replayed.zip",
+  "replayed_zip_sha256": "931fcfd6111dae064cd1055f9579495755e5415f605d7db4ae7416bd0f7ef0bb",
+  "reproduction_code": {
+    "bundle_cli.py": "5785632c42eb4d96adcdd97b85eaac3113afb22d3079276e3ecd46b0989f45a7",
+    "data.py": "5915a69460e59c087930a733bc476424e8e8dbbad1436d9d6b09c40962966949",
+    "media_pilot.py": "7b6b60e8b8b514444f1163431f8ba2bc4e5c045324dce7368f2feecb8ea66be2",
+    "package.py": "ac0426e9b5d3c959ed66aafc289f505671616196964f5424ee73d8eca69019ce",
+    "replay.py": "4367885313942f54cb3c09f4b21e154338a5ca2ca2e4d0be2dcb29e35748ca9d",
+    "run_cv.py": "e50e713632b7a0e931dc6175189057faa247b2c2b94fa5b314a31310332412e5"
+  },
+  "schema": "phase_ttc_geo_replay_A_v1",
+  "source_hashes": {
+    "predictions.csv": "1e6ef1f628f8abf508f1c77f6f9621e4905d6203ca917fb0678eb67dfc61cee7"
+  },
+  "source_predictions": "artifacts\\sota_20261118\\geometry\\test12_candidate\\predictions.csv",
+  "source_predictions_sha256": "1e6ef1f628f8abf508f1c77f6f9621e4905d6203ca917fb0678eb67dfc61cee7",
+  "tokens": 6762
+}

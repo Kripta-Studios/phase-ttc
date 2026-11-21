@@ -1,0 +1,17 @@
+# Run directories may contain mounted copies of public media and model caches.
+# Only the measured summaries, prediction diagnostics and portable head are archived.
+/runs/*
+!/runs/A_saved_predictions/
+!/runs/B_endpoint_replay/
+!/runs/B_media_pilot/
+!/runs/B_media_multiseq/
+!/runs/C_refit/
+!/runs/D_portable_bundle/
+!/runs/D_readonly_clean/
+/runs/*/*
+!/runs/*/RESULT.json
+!/runs/A_saved_predictions/NPZ_RESULT.json
+!/runs/B_media_pilot/ENDPOINT_COMPARISON.json
+!/runs/C_refit/PER_SEQUENCE.csv
+!/runs/C_refit/PREDICTIONS.npz
+!/runs/D_readonly_clean/READ_ONLY_TEST.json

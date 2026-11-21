@@ -1,0 +1,15 @@
+{
+  "schema": "phase_geometry_rgb_geo_band_normalization_v1",
+  "variant": "RGB_GEO_BAND",
+  "phase20_divisor": 0.03,
+  "phase20_scaled_columns": [0, 1, 2, 3, 4, 10, 11, 12, 13, 14],
+  "selected_phase20_columns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "geometry_fields": [
+    "phi_area", "phi_height", "phi_width", "phi_area_last2", "n_frames",
+    "span", "trunc_x_current", "trunc_y_current", "rms_residual", "log_size"
+  ],
+  "geometry_phase_scale": 0.03,
+  "geometry_max_frames_normalizer": 7.0,
+  "input_dtype": "float32",
+  "input_width": 20
+}

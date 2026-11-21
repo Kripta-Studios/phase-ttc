@@ -1,0 +1,2 @@
+# The source index identifies run receipts by their original bytes.
+runs/** -text -whitespace
