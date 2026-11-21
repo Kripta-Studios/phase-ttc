@@ -1,0 +1,496 @@
+{
+  "cells": [
+    {
+      "artifact": "supplied_050ms__objects_01__queue_64.json",
+      "artifact_sha256": "733f95954e0f51ab5ed0bedec5fe2fa6d374d903f08e9b2c9928e569013eb521",
+      "box_delay_ms": 50,
+      "cell_id": "supplied_050ms__objects_01__queue_64",
+      "cold_call_ms": 38.0091,
+      "head_load_ms_excluded": 4096.5013,
+      "latency_ms": {
+        "at_least_20ms_count": 0,
+        "count": 3000,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 681.0028356958078,
+        "max_ms": 2.91,
+        "mean_ms": 1.4684226666666667,
+        "min_ms": 0.5638,
+        "over_100ms_count": 0,
+        "over_50ms_count": 0,
+        "p50_ms": 1.4499,
+        "p95_ms": 2.0523049999999996,
+        "p99_ms": 2.316046999999999,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 3000
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 3000,
+        "delivered_strictly_under_20ms": 3000,
+        "dropped": 0,
+        "enqueued": 3000,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 3000
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 3000,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64
+    },
+    {
+      "artifact": "supplied_000ms__objects_04__queue_02.json",
+      "artifact_sha256": "5424b6d467339d9fe635f3e685986ef0c9aa4c72941b61eb5dab4e5c35e26414",
+      "box_delay_ms": 0,
+      "cell_id": "supplied_000ms__objects_04__queue_02",
+      "cold_call_ms": 3.3599,
+      "head_load_ms_excluded": 2.0302,
+      "latency_ms": {
+        "at_least_20ms_count": 0,
+        "count": 3000,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 334.7804254420893,
+        "max_ms": 8.4285,
+        "mean_ms": 2.9870324666666663,
+        "min_ms": 1.4122,
+        "over_100ms_count": 0,
+        "over_50ms_count": 0,
+        "p50_ms": 2.71155,
+        "p95_ms": 5.16928,
+        "p99_ms": 6.829763999999985,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 3000
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 3000,
+        "delivered_strictly_under_20ms": 3000,
+        "dropped": 0,
+        "enqueued": 3000,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 3000
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 12000,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2
+    },
+    {
+      "artifact": "supplied_000ms__objects_04__queue_64.json",
+      "artifact_sha256": "521049f0daa9a51afa05b6593e2b8adf5bc9db2d4e07777239d7907e34fd4aba",
+      "box_delay_ms": 0,
+      "cell_id": "supplied_000ms__objects_04__queue_64",
+      "cold_call_ms": 2.1201,
+      "head_load_ms_excluded": 1.9417,
+      "latency_ms": {
+        "at_least_20ms_count": 0,
+        "count": 3000,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 356.1398105651985,
+        "max_ms": 5.1021,
+        "mean_ms": 2.8078860333333333,
+        "min_ms": 1.6271,
+        "over_100ms_count": 0,
+        "over_50ms_count": 0,
+        "p50_ms": 2.76135,
+        "p95_ms": 3.591435,
+        "p99_ms": 4.199634999999996,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 3000
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 3000,
+        "delivered_strictly_under_20ms": 3000,
+        "dropped": 0,
+        "enqueued": 3000,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 3000
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 12000,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64
+    },
+    {
+      "artifact": "supplied_050ms__objects_04__queue_64.json",
+      "artifact_sha256": "b744c823292dcbbd60128941cf797c866db675fcd3de8403bdd22994a54e2bd2",
+      "box_delay_ms": 50,
+      "cell_id": "supplied_050ms__objects_04__queue_64",
+      "cold_call_ms": 2.6442,
+      "head_load_ms_excluded": 1.9171,
+      "latency_ms": {
+        "at_least_20ms_count": 0,
+        "count": 3000,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 379.2178984780595,
+        "max_ms": 6.5762,
+        "mean_ms": 2.6370063333333333,
+        "min_ms": 1.3848,
+        "over_100ms_count": 0,
+        "over_50ms_count": 0,
+        "p50_ms": 2.6105,
+        "p95_ms": 3.436779999999999,
+        "p99_ms": 3.898606,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 3000
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 3000,
+        "delivered_strictly_under_20ms": 3000,
+        "dropped": 0,
+        "enqueued": 3000,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 3000
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 12000,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64
+    },
+    {
+      "artifact": "supplied_050ms__objects_04__queue_02.json",
+      "artifact_sha256": "8aa66d2cfc4ede940d6e874e0e37a986ec9d14ac36aafb1f5784667158302394",
+      "box_delay_ms": 50,
+      "cell_id": "supplied_050ms__objects_04__queue_02",
+      "cold_call_ms": 2.1575,
+      "head_load_ms_excluded": 1.6887,
+      "latency_ms": {
+        "at_least_20ms_count": 3,
+        "count": 2995,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 320.20715296592914,
+        "max_ms": 154.8274,
+        "mean_ms": 3.1229783305509184,
+        "min_ms": 1.5257,
+        "over_100ms_count": 3,
+        "over_50ms_count": 3,
+        "p50_ms": 2.8986,
+        "p95_ms": 4.04249,
+        "p99_ms": 6.261543999999996,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 2992
+      },
+      "objects": 4,
+      "offer_accounting": {
+        "completed": 2995,
+        "delivered_strictly_under_20ms": 2992,
+        "dropped": 5,
+        "enqueued": 2995,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 2995
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 11980,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2
+    },
+    {
+      "artifact": "supplied_000ms__objects_01__queue_02.json",
+      "artifact_sha256": "cd6a8d40626a9d616b575dafa3b246ed3ebe0ae995af5a9d188fa16ba473dfc2",
+      "box_delay_ms": 0,
+      "cell_id": "supplied_000ms__objects_01__queue_02",
+      "cold_call_ms": 1.4525,
+      "head_load_ms_excluded": 2.2351,
+      "latency_ms": {
+        "at_least_20ms_count": 0,
+        "count": 3000,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 644.2739103900035,
+        "max_ms": 8.0229,
+        "mean_ms": 1.5521348666666666,
+        "min_ms": 0.6946,
+        "over_100ms_count": 0,
+        "over_50ms_count": 0,
+        "p50_ms": 1.43885,
+        "p95_ms": 2.5650399999999984,
+        "p99_ms": 3.9860359999999995,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 3000
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 3000,
+        "delivered_strictly_under_20ms": 3000,
+        "dropped": 0,
+        "enqueued": 3000,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 3000
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 3000,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2
+    },
+    {
+      "artifact": "supplied_000ms__objects_01__queue_64.json",
+      "artifact_sha256": "5122a95c66e3e31d1a1faafb7cc61be36db542c764bd7adb0ccdc65bd8fa75b4",
+      "box_delay_ms": 0,
+      "cell_id": "supplied_000ms__objects_01__queue_64",
+      "cold_call_ms": 1.6886,
+      "head_load_ms_excluded": 4.2412,
+      "latency_ms": {
+        "at_least_20ms_count": 0,
+        "count": 3000,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 641.3228695093944,
+        "max_ms": 7.756,
+        "mean_ms": 1.559277,
+        "min_ms": 0.6151,
+        "over_100ms_count": 0,
+        "over_50ms_count": 0,
+        "p50_ms": 1.4069500000000001,
+        "p95_ms": 2.5394199999999887,
+        "p99_ms": 5.875658999999975,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 3000
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 3000,
+        "delivered_strictly_under_20ms": 3000,
+        "dropped": 0,
+        "enqueued": 3000,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 3000
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 3000,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 64
+    },
+    {
+      "artifact": "supplied_050ms__objects_01__queue_02.json",
+      "artifact_sha256": "b03d952a8edbc67c5a4bda28f4e20c1d443a39ed762fcc11b90578676ac3a9ee",
+      "box_delay_ms": 50,
+      "cell_id": "supplied_050ms__objects_01__queue_02",
+      "cold_call_ms": 1.3639,
+      "head_load_ms_excluded": 2.0751,
+      "latency_ms": {
+        "at_least_20ms_count": 0,
+        "count": 3000,
+        "inverse_mean_capacity_hz_not_sustained_throughput": 684.2655664771182,
+        "max_ms": 6.4968,
+        "mean_ms": 1.4614209,
+        "min_ms": 0.5716,
+        "over_100ms_count": 0,
+        "over_50ms_count": 0,
+        "p50_ms": 1.389,
+        "p95_ms": 2.1919799999999996,
+        "p99_ms": 3.4671949999999976,
+        "quantile_method": "linear",
+        "strictly_under_20ms_count": 3000
+      },
+      "objects": 1,
+      "offer_accounting": {
+        "completed": 3000,
+        "delivered_strictly_under_20ms": 3000,
+        "dropped": 0,
+        "enqueued": 3000,
+        "offered": 3000,
+        "source_errors": 0,
+        "valid": 3000
+      },
+      "parity": {
+        "atol": 1e-06,
+        "count": 3000,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "queue_capacity": 2
+    }
+  ],
+  "created_utc": "2026-11-21T16:14:49.526413+00:00",
+  "detector_tracker": {
+    "cost_measured": false,
+    "included": false,
+    "reason": "No frozen detector+tracker service artifact with an end-to-end input/output receipt and measured causal availability clock was identified for this run."
+  },
+  "environment": {
+    "device": "cpu",
+    "git_commit": "36ea4cc01d725f9334cef925f008b3d8130164d2",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128",
+    "torch_threads": 2
+  },
+  "execution_order": [
+    "supplied_050ms__objects_01__queue_64",
+    "supplied_000ms__objects_04__queue_02",
+    "supplied_000ms__objects_04__queue_64",
+    "supplied_050ms__objects_04__queue_64",
+    "supplied_050ms__objects_04__queue_02",
+    "supplied_000ms__objects_01__queue_02",
+    "supplied_000ms__objects_01__queue_64",
+    "supplied_050ms__objects_01__queue_02"
+  ],
+  "head": {
+    "path": "artifacts\\sota_20261118\\matched_comparator\\work\\final\\GEO_LEARNED__ALL__S7.state.pt",
+    "sha256": "88e78a0759e49f8992f38cad987c4dc2478eae4894132436c104ab6c2d3037e5"
+  },
+  "inputs": {
+    "population_rows": 88744,
+    "scheduled_offers": {
+      "1": 3000,
+      "4": 3000
+    },
+    "selected_unique_physical_instants": {
+      "1": 100,
+      "4": 100
+    },
+    "targets_read": false,
+    "train_inputs_sha256": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d",
+    "train_parquet_sha256": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6"
+  },
+  "protocol": {
+    "batch_per_object": 1,
+    "box_delays_ms": [
+      0,
+      50
+    ],
+    "cold_idle_s": 0.25,
+    "deadline_ms_strict": 20.0,
+    "execution_order_alternated_seed": 20261121,
+    "object_counts": [
+      1,
+      4
+    ],
+    "offered_duration_s": 60.0,
+    "queue_capacities": [
+      2,
+      64
+    ],
+    "rate_hz": 50.0,
+    "unique_offers_per_object_count": 100,
+    "updates_per_cell": 3000,
+    "warmup_calls_per_object": 5
+  },
+  "schema": "phase_ttc_geometry_service_results_v1",
+  "source_receipt": {
+    "git_commit": "36ea4cc01d725f9334cef925f008b3d8130164d2",
+    "git_dirty": true,
+    "git_status_porcelain": [
+      " M .github/workflows/paper.yaml",
+      " M README.md",
+      " M docs/model_card.md",
+      " M docs/sota_20261121/benchmark_scope/REPORT.md",
+      " M paper/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip",
+      " M paper/README.md",
+      " M paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
+      " M paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.tex",
+      " M paper/from_motion_to_time_20261102/README.md",
+      " M paper/from_motion_to_time_20261102/SOURCE_MANIFEST.json",
+      " M paper/from_motion_to_time_20261102/build/validation.json",
+      " M paper/from_motion_to_time_20261102/figures/audit_transfer_exceedance.pdf",
+      " M paper/from_motion_to_time_20261102/figures/audit_transfer_sequences.pdf",
+      " M paper/from_motion_to_time_20261102/figures/audit_transfer_summary.pdf",
+      " M paper/from_motion_to_time_20261102/figures/extended_buffered_traces.pdf",
+      " M paper/from_motion_to_time_20261102/figures/extended_coverage_cdf.pdf",
+      " M paper/from_motion_to_time_20261102/figures/persistent_latency_cdf.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_architecture.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_fusion.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_history.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_oof.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_runtime.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_runtime_clock.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_teaser.pdf",
+      " M paper/from_motion_to_time_20261102/main.tex",
+      " M paper/from_motion_to_time_20261102/references.bib",
+      " M paper/from_motion_to_time_20261102/requirements-paper.txt",
+      " M paper/from_motion_to_time_20261102/revision/build_receipt.json",
+      " M paper/from_motion_to_time_20261102/revision/publication_contract.json",
+      " M paper/from_motion_to_time_20261102/scripts/build_expanded.py",
+      " M paper/from_motion_to_time_20261102/scripts/package_expanded.py",
+      " M paper/from_motion_to_time_20261102/scripts/verify_publication.py",
+      " M paper/from_motion_to_time_20261102/sections/discussion.tex",
+      " M paper/from_motion_to_time_20261102/sections/final_model.tex",
+      " M paper/from_motion_to_time_20261102/sections/followup_controls.tex",
+      " M paper/from_motion_to_time_20261102/sections/introduction.tex",
+      " M paper/from_motion_to_time_20261102/sections/methods.tex",
+      " M paper/from_motion_to_time_20261102/sections/official_results.tex",
+      " M paper/from_motion_to_time_20261102/sections/protocol.tex",
+      " M paper/from_motion_to_time_20261102/updates/review/expanded_validation.json",
+      " M paper/from_motion_to_time_20261102/updates/review/original_retention.json",
+      " M tests/unit/test_paper_publication_binding.py",
+      "?? docs/sota_20261121/distribution/",
+      "?? docs/sota_20261121/geometry_service/",
+      "?? operational/geometry_service/",
+      "?? operational/matched_outer/phase_rgb_smoke.py",
+      "?? operational/matched_outer/test_phase_rgb_smoke.py",
+      "?? paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Short.pdf",
+      "?? paper/from_motion_to_time_20261102/data/benchmark_scope/",
+      "?? paper/from_motion_to_time_20261102/data/followup/",
+      "?? paper/from_motion_to_time_20261102/data/official_submissions/",
+      "?? paper/from_motion_to_time_20261102/main_short.pdf",
+      "?? paper/from_motion_to_time_20261102/main_short.tex",
+      "?? paper/from_motion_to_time_20261102/scripts/make_followup_tables.py",
+      "?? paper/from_motion_to_time_20261102/scripts/make_official_submission_tables.py",
+      "?? paper/from_motion_to_time_20261102/sections/declarations.tex",
+      "?? paper/from_motion_to_time_20261102/sections/short_article.tex",
+      "?? paper/from_motion_to_time_20261102/tables/followup_fcwd.tex",
+      "?? paper/from_motion_to_time_20261102/tables/followup_latency.tex",
+      "?? paper/from_motion_to_time_20261102/tables/followup_literature.tex",
+      "?? paper/from_motion_to_time_20261102/tables/official_submissions.tex",
+      "?? paper/from_motion_to_time_20261102/tables/official_submissions_short.tex",
+      "?? scripts/stage_qualification_web.py",
+      "?? tests/regression/test_geometry_service_artifacts.py",
+      "?? tests/unit/test_followup_publication_tables.py",
+      "?? tests/unit/test_geometry_service.py",
+      "?? tests/unit/test_official_submission_tables.py",
+      "?? tests/unit/test_stage_qualification_web.py"
+    ],
+    "sha256": {
+      "operational/geometry_service/replay.py": "0a02c1bb0292342d7a37903c0ac4bdc238245900561dc068900094aa711542de",
+      "operational/geometry_service/run.py": "c082e32409cc6781348fb99bd4875dbf58303dfc89d486a005a8f22de313185c",
+      "operational/phase_geometry/data.py": "5915a69460e59c087930a733bc476424e8e8dbbad1436d9d6b09c40962966949",
+      "operational/phase_geometry/geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
+      "operational/train40_runtime/measurement.py": "448cd81437f165f5c3b399f790f8be2867c75113ef11ec2fc123ea56fbf5bb42",
+      "operational/train40_runtime/paced.py": "dfbace7757071a7dc79b5538496bb03832d927a478d063f203d7a8997345afe8",
+      "operational/train40_runtime/paced_statistics.py": "dc278265315cf1957b14ec73042cec4cd7f9629131777102f84e0d015ccb3822",
+      "operational/variant_latency/run.py": "3cd0ad7131f77b490d68e25cd2340e73149ea8c3c622c1b11cbb9f8eb3a9c230"
+    }
+  },
+  "started_scope": "HOST_PACED_PRELOADED_SUPPLIED_BOX_REPLAY_NOT_SENSOR_CERTIFICATION",
+  "telemetry": {
+    "after": {
+      "cpu_frequency_mhz": 2500.0,
+      "cpu_percent": 12.5,
+      "cpu_temperature_c": null,
+      "cpu_temperature_note": "No portable CPU temperature sensor is exposed by psutil on Windows.",
+      "rss_bytes": 747233280,
+      "utc": "2026-11-21T16:14:49.526413+00:00"
+    },
+    "before": {
+      "cpu_frequency_mhz": 2006.0,
+      "cpu_percent": 90.0,
+      "cpu_temperature_c": null,
+      "cpu_temperature_note": "No portable CPU temperature sensor is exposed by psutil on Windows.",
+      "rss_bytes": 633331712,
+      "utc": "2026-11-21T16:06:14.174417+00:00"
+    }
+  },
+  "uploads": false
+}
