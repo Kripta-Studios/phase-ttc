@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -13,6 +14,37 @@ import verify_publication
 
 ROOT = Path(__file__).resolve().parents[1]
 STEM = "PHASE_TTC_From_Motion_to_Time_Expanded"
+SHORT_STEM = "PHASE_TTC_From_Motion_to_Time_Short"
+
+
+def build_short() -> dict[str, object]:
+    """Compile the short source and return its bound validation metadata."""
+    tex = shutil.which("pdflatex")
+    bib = shutil.which("bibtex.original") or shutil.which("bibtex") or shutil.which("bibtex8")
+    if not tex or not bib:
+        raise RuntimeError("pdfLaTeX and BibTeX are required for the short manuscript")
+    texargs = [tex, "-interaction=nonstopmode", "-halt-on-error"]
+    build_final.run(texargs + ["main_short.tex"], "short_pass1.log")
+    build_final.run([bib, "main_short"], "short_bibliography.log")
+    for number in range(2, 5):
+        build_final.run(texargs + ["main_short.tex"], f"short_pass{number}.log")
+    checks = build_final.check_log(ROOT / "main_short.log")
+    source_pdf = ROOT / "main_short.pdf"
+    target_pdf = ROOT / f"{SHORT_STEM}.pdf"
+    target_pdf.write_bytes(source_pdf.read_bytes())
+    import fitz
+
+    document = fitz.open(target_pdf)
+    text = "\n".join(page.get_text() for page in document)
+    if "??" in text:
+        raise RuntimeError("Short manuscript has unresolved references")
+    return {
+        "pdf": target_pdf.name,
+        "pages": len(document),
+        "words": len(text.split()),
+        "pdf_sha256": build_final.digest(target_pdf),
+        "latex_checks": checks,
+    }
 
 
 def render() -> None:
@@ -61,6 +93,8 @@ def render() -> None:
 
 def main() -> None:
     for script in (
+        "make_followup_tables.py",
+        "make_official_submission_tables.py",
         "build_consolidation.py",
         "build_local_comparison.py",
         "build_persistent_comparison.py",
@@ -81,7 +115,12 @@ def main() -> None:
         sys.argv.append("--skip-regenerate")
     sources = verify_publication.source_hashes(ROOT)
     build_final.main()
+    short_validation = build_short()
     render()
+    validation_path = ROOT / "build/validation.json"
+    validation = json.loads(validation_path.read_text(encoding="utf-8"))
+    validation["short_manuscript"] = short_validation
+    validation_path.write_text(json.dumps(validation, indent=2) + "\n", encoding="utf-8")
     receipt_path = ROOT / "revision/build_receipt.json"
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     receipt["new_analysis"] = "audit_20261104/corrected_transfer_statistics.json"

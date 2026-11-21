@@ -1,37 +1,67 @@
 \FloatBarrier
-\section{Official GarlTTC benchmark result}
+\section{Two official submissions and what they measure}
 \label{sec:official}
 
-\subsection{Public ranking and bandwise accuracy}
+\subsection{Private-test results}
 
-As of 28 October 2026, PHASE-TTC ranks first of the three entries on the official GarlTTC Test leaderboard. Submission \OfficialPhaseSubmissionID{}, listed as \emph{PHASE-TTC (TRAIN40, 650 ms causal history)}, records Overall MiD \OfficialPhasePublishedOverallMiD{} over \OfficialSampleCount{} scored tokens with a 0\% scorer-defined failure rate. The other two entries both display \OfficialGarlOverallMiD{}: the organizers' Garl-TTC reference and an unnamed submission from another participant without a method description. The ranking therefore compares PHASE-TTC with one documented method. \citep{codabench2026}
+Table~\ref{tab:official-submissions} places the two PHASE-TTC submissions beside the documented Garl-TTC reference. Lower MiD is better. The original event--RGB system obtained 35.80 Overall MiD on 28 October 2026. A second, pre-registered submission on 18 November retained the RGB branch, added the causal expansion of the supplied object regions, and removed event inputs; it obtained 23.47. Both scoring archives contain 6,762 tokens and zero scorer-defined failures. The second package was retrieved from the server record and matches its pre-submission receipt by SHA-256. The public leaderboard retains one row per participant, so its current view replaces the original row with PHASE-TTC-Geo; the dated scoring records preserve both results.
 
-The scorer returns Overall MiD \OfficialPhaseOverallMiD{} at full precision, consistent with the rounded public entry. Relative to Garl-TTC's published \OfficialGarlOverallMiD{}, PHASE-TTC reduces the ranking metric by \OfficialOverallRelativeGain{}. All four TTC bands improve (Table~\ref{tab:official-benchmark}); the large positive-TTC band has the largest relative reduction and the negative band the smallest. Percentage reductions combine the unrounded PHASE-TTC values with Garl-TTC's published two-decimal scores. \evidence{B01,B02}
+\begin{table}[htbp]
+\centering\footnotesize
+\input{tables/official_submissions}
+\caption{Official GarlTTC Test results over 6,762 tokens. ``Failure'' is the scorer-defined invalid-output rate, not a safety failure rate. The reference and PHASE systems use different models and temporal support.}
+\label{tab:official-submissions}
+\end{table}
 
+The second result is 34\% below the original system and 48\% below the reference. It supports a narrow attribution on this benchmark: causal history of the supplied regions contains most of the accuracy recovered after the first submission, while the event branch is unnecessary for the 23.47 result. It does not establish that box history will replace event measurements under delayed or noisy detections, frame-filling objects, or a different acquisition protocol.
+
+\subsection{Metric and band asymmetry}
+
+The scorer maps TTC to phase and reports
+\begin{equation}
+ \mathrm{MiD}(\widehat T,T)=10^4\left|\log\left(1-\frac{0.1}{T}\right)
+ -\log\left(1-\frac{0.1}{\widehat T}\right)\right|.
+\end{equation}
+It then weights the crucial, small, large, and negative TTC bands by 0.5, 0.3, 0.1, and 0.1. The metric therefore emphasizes approaching contacts below 6\,s and is more sensitive near its positive-domain boundary. It is not an error in seconds. The second submission reduces the crucial-band score from 43.52 to 24.37; that 19.15-point change contributes 9.58 of the 12.33 Overall points. Changes in the small, large, and negative bands contribute 1.29, 0.28, and 1.18 points. The weighted result should not be summarized as a uniform improvement across TTC regimes.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Entry & Overall & Crucial & Small & Large & Negative \\
+\midrule
+Garl-TTC reference & 45.03 & 53.13 & 37.58 & 40.61 & 31.29 \\
+PHASE-TTC original & 35.80 & 43.52 & 28.26 & 25.72 & 29.93 \\
+PHASE-TTC-Geo & \textbf{23.47} & 24.37 & 23.95 & 22.89 & 18.13 \\
+\bottomrule
+\end{tabular}
+\caption{Official band scores. Overall uses the 0.5/0.3/0.1/0.1 band weights rather than a sample-weighted mean.}
+\label{tab:official-submission-bands}
+\end{table}
+
+The 6,762 tokens represent 5,805 physical queries and 957 aliases. Aliases reuse predictions at the same sensor query. The scorer flags nonfinite TTC or $|\widehat T|<0.1$\,s as failures, then averages finite MiD values by band. Zero scorer-defined failures therefore certifies finite admissible outputs under that rule; it does not certify calibrated risk, localization, or safe operation.
+
+\subsection{Comparator and modality boundaries}
+
+The official reference row comes from the leaderboard and was not reproduced locally for Table~\ref{tab:official-submissions}. Garl-TTC and the original PHASE-TTC both use events, RGB, and supplied regions, but Garl-TTC estimates a height ratio from two observations 0.1\,s apart while PHASE-TTC aggregates up to 650\,ms of branch history. The benchmark does not standardize temporal support, training data, learned components, or runtime. The 35.80-versus-45.03 difference belongs to the complete systems.
+
+Separate local controls use the released Garl checkpoints under their native input contract. They select the latest causal RGB endpoint and the preceding endpoint nearest 100\,ms, construct a polarity-agnostic 20-plane event time volume at each endpoint with at most 100\,ms support, and use the supplied regions to form a common square crop. The adapter substitutes the measured endpoint separation in the height-ratio-to-TTC conversion; it does not refit the checkpoint. Full, event-only, and visual-only routes have different input availability, and these development-exposed runs are not the official leaderboard comparison (Appendix~\ref{app:competition-details}). In the later service experiment, a CPU path constructs Garl event volumes on cache misses and hashes prepared inputs inside the measured call. Its timing is specific to that implementation and is not a lower bound for Garl-TTC.
+
+The geometry submission changes both modality and measurement access. It uses no event input, but it receives 600\,ms of causal box expansion in addition to RGB-branch estimates. The leaderboard fact sheet displays its ``Uses Event'' field as empty rather than false. We retain that downloaded record and derive the no-event statement from the bound recipe and scored package, not from the empty form field.
+
+\subsection{Selection, exposure, and attribution}
+
+The original system was the author's first test submission. The geometry variant was chosen by a rule fixed on TRAIN40 development folds and then submitted once with a receipt that bound its code, seed, package, and hypothesis. Those folds showed 85.17 Overall MiD for the released recipe and 41.27 for the selected geometry head, but fold and server levels differ enough that these values must not be pooled or used as a calibration curve. The private result confirms the direction of the geometry intervention, not the size predicted by the folds.
+
+Only the two private-test scores use targets that the project did not inspect during development. Transfer, routing, event-history, literature-baseline, and FCWD controls reuse inspected recordings or open labels. They identify failure modes and plausible mechanisms without providing another independent test. Appendix~\ref{sec:post-audit-geometry} records the pre-registration and the full fold analysis; Appendix~\ref{sec:followup} records later matched controls and their exposure.
+
+\subsection{Original submission by band}
+
+Table~\ref{tab:official-benchmark} retains the full-precision calculation for the original submission and the dated reference. Percentage reductions combine the unrounded PHASE-TTC scorer values with the reference's displayed two-decimal values.
 
 \input{tables/official_benchmark}
 
-\subsection{Where the weighted difference comes from}
+For band $b$, the additive contribution to the original-versus-reference difference is $w_b(\mathrm{MiD}^{\mathrm{Garl}}_b-\mathrm{MiD}^{\mathrm{PHASE}}_b)$. The crucial and small bands contribute \OfficialCrucialSmallContributionShare{} of that Overall difference. This decomposition reflects the benchmark weights and must remain separate from sample-weighted mean MiD or TTC error in seconds.
 
-For band $b$, the additive contribution is $w_b(\mathrm{MiD}^{\mathrm{Garl}}_b-\mathrm{MiD}^{\mathrm{PHASE}}_b)$. The crucial and small bands contribute \OfficialCrucialSmallContributionShare{} of the Overall difference under weights 0.5 and 0.3. The large band's 0.1 weight limits its contribution despite its larger relative reduction; the negative band contributes least.
-
-
-
-
-
-\subsection{Metric and evaluation population}
-
-The four TTC bands cover $(0,3]$, $(3,6]$, $(6,10]$, and $(-10,0]$ seconds. MiD measures error in the motion-in-depth coordinate defined in Section~\ref{sec:protocol}. The ranking uses the weighted Overall MiD; the scorer also reports \texttt{mean\_MiD}, an unweighted average over finite per-query errors. \citep{garlscorer2026}
-
-The \OfficialSampleCount{} scored tokens represent 5,805 distinct physical queries and 957 aliases in the submitted package. Aliases reuse predictions at the same sensor query. The official failure criterion marks nonfinite TTC predictions or predictions with $|\widehat T|<0.1$\,s. Band scores average finite MiD values. The available aggregate outputs support bandwise analysis; studying individual errors requires per-query scores. \evidence{L44,B02}
-
-\subsection{Scope of the comparison}
-
-The official result establishes the accuracy of the complete forty-sequence event--RGB system with up to 650\,ms of causal history. Its gains span all four TTC bands; the high weights on imminent and short-horizon contact make these bands responsible for \OfficialCrucialSmallContributionShare{} of the weighted improvement. Systems on the leaderboard retain their own localization, supervision, and runtime choices. Section~\ref{sec:design-analysis} examines modality and temporal dependencies through controlled development comparisons.
-
-Three properties of the comparison qualify its interpretation. First, temporal support differs: Garl-TTC estimates TTC from two observations separated by 0.1\,s, whereas PHASE-TTC uses up to 650\,ms of causal history. The published benchmark rules contain no explicit limit on history, and the leaderboard entry declares the 650\,ms support, but the organizers have not confirmed its admissibility. An internal control bounds the contribution of context-refiner history beyond two slots at about three of 85 Overall MiD points on training folds, without retraining the reference (Appendix~\ref{sec:post-audit-history}). Second, both systems receive the benchmark's object regions; no detector is part of the evaluated chain. Third, the score reported here comes from the author's first submission to the test server, made before any test score was available to the project. This is the author's statement: the archived leaderboard response lists one entry per participant and cannot confirm it. A second submission, of a pre-registered geometry-augmented variant, was made on 18 November 2026 and is reported separately in Appendix~\ref{sec:post-audit-geometry}; these are the account's only two submissions. Project records state that the recipe, seed, and final training update were fixed before the system was scored and that no official score informed them, and the identity of the scored package is verified: the file retrieved from the server's submission record on 18 November 2026 has SHA-256 \texttt{5eb69749de7aff68}\ldots, identical to the retained TRAIN40 prediction package, and the accompanying scoring record reports Overall MiD \OfficialPhaseOverallMiD{}. An earlier package from a different model, of almost the same size, also exists locally; it is not the scored one.
-
-The submitted predictions are also not regenerated exactly on the current platform. Replaying the released weights on different hardware and operating system changes 504 of 5,805 physical-query outputs beyond the original tolerance (Section~\ref{sec:canonical-cadence}). Converting the largest admissible displacement of each replayed output to the benchmark coordinate gives a mean bound of 0.010 MiD, at most 0.016 within any predicted-TTC band, and a maximum of 0.30 for a single query. This drift cannot account for the 9.23-point difference from the reference, although the private labels needed to rescore the replay are unavailable.
-
-The official result measures the submitted system on private test targets. The exploratory EvTTC transfer compares frozen routes on development-exposed, positive-TTC sequences with annotated object regions. Section~\ref{sec:runtime} evaluates execution time separately, including deadline misses.
+The current platform does not regenerate the historical original predictions byte for byte. A native replay changes 504 of 5,805 physical-query TTC values beyond the historical tolerance. Converting the largest admissible displacement of each replayed output to the benchmark coordinate gives a mean bound of 0.010 MiD and a maximum of 0.30 for one query, without access to private targets. The scored package and its official result remain the evidence for 35.80; local repeatability does not replace them.
 \FloatBarrier

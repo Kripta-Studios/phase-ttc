@@ -1,0 +1,17 @@
+{
+  "schema": "phase_ttc_train40_box_provenance_summary_v1",
+  "population": "TRAIN40 final supplied image box per query; target TTC columns excluded",
+  "offered": 88744,
+  "valid": 88744,
+  "missing_calibration": 0,
+  "invalid_projection_or_box": 0,
+  "within_one_pixel": 88744,
+  "within_two_pixels": 88744,
+  "exact_after_clip_and_integer_truncation": 88744,
+  "operation": "Project eight 3D cuboid corners with K_event, take extrema, clip to image, apply dataset integer truncation",
+  "scope_limit": "Establishes TRAIN40 supplied-box provenance only; reads no TTC or Test12 value and does not establish Test12 box provenance",
+  "repository_source": "docs/sota_20261121/benchmark_scope/TRAIN40_BOX_PROJECTION.json",
+  "repository_source_sha256": "0a575acbfd4c2558d61dc1b4f40672593874443b8d3ea5613a791f7de7b2e392",
+  "audit_script": "scripts/audit_train40_box_provenance.py",
+  "audit_script_sha256": "04c660b338bfd4f47d46860bd37e52ce119f62166598d6f5168fe67e62ca12ad"
+}

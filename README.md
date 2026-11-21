@@ -44,13 +44,14 @@ geometric adaptation and execution measurements.
 - [Read online](https://schwiedop.com/papers/phase-ttc/)
 - [Download the PDF](paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf)
 - [LaTeX source](paper/from_motion_to_time_20261102/main.tex)
+- [Short-form LaTeX source](paper/from_motion_to_time_20261102/main_short.tex)
 - [Download the source bundle](paper/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
 - [Matched-comparison data and protocols](paper/from_motion_to_time_20261102/data/consolidation)
 - [Expanded persistent-service evidence](paper/from_motion_to_time_20261102/data/extended_service_20261112)
 - [Six-scene, 72-pass inference comparison](paper/from_motion_to_time_20261102/revision/extended_inference_report.md)
 - [Initial three-pass comparison](paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md)
 
-The PDF contains the main article and a technical supplement with implementation
+The expanded PDF contains the main article and a technical supplement with implementation
 details, additional experiments and reproduction records. The 13 November update
 adds a complete inference chapter: 72 fresh-process PHASE/Garl passes across six
 EvTTC scenes, with continuous intervals of 3.1–9.3 seconds and two queue policies.
@@ -87,22 +88,26 @@ timing conventions and signed output policy.
 **PHASE-TTC-Adapt** adds causal box-expansion estimates and three quality routers
 of 688 parameters each. It keeps the original nine components frozen and
 averages the three adapted TTC predictions. This is a separate model with a
-local evaluation, not a replacement for the benchmarked submission.
+local evaluation. It is not PHASE-TTC-Geo, the separately fitted no-event head
+used for the second official submission.
 
 ## Results
 
 ### Official benchmark
 
-| System | Overall MiD ↓ | Scorer-defined failure rate ↓ |
-|---|---:|---:|
-| Garl-TTC reference | 45.03 | 0% |
-| PHASE-TTC | **35.8015** | **0%** |
+| System | Inputs and temporal support | Overall MiD ↓ | Scorer-defined failure rate ↓ |
+|---|---|---:|---:|
+| Garl-TTC reference | Event + RGB; two observations 0.1 s apart; supplied regions | 45.03 | 0% |
+| PHASE-TTC, 28 October | Event + RGB; up to 650 ms; supplied regions | 35.8015 | 0% |
+| PHASE-TTC-Geo, 18 November | RGB + 600 ms supplied-box history; no event input | **23.4724** | **0%** |
 
-The evaluation uses private test labels and 6,762 submission tokens, including
+Each evaluation uses private test labels and 6,762 submission tokens, including
 aliases of physical queries. The [scoring records](paper/data/official_benchmark.json)
-and paper document the submission, TTC bands and failure criterion. The reported
-rank refers to that recorded evaluation; it is not a claim about the live
-leaderboard or all published TTC methods.
+and [second-submission record](docs/sota_20261118/leaderboard/submission_1058935/RECORD.json)
+document the TTC bands and failure criterion. The public leaderboard retains one
+row per participant and now displays PHASE-TTC-Geo; the 28 October result remains
+in its dated archive. These rows compare complete systems with different temporal
+support and do not rank all published TTC methods.
 
 ### Transfer and matched readout controls
 
@@ -170,11 +175,12 @@ and official score remain distinct from local reproduction.
 The Hugging Face repositories contain frozen weights, normalizers, custom
 runtime code, example inputs, evaluation records and training recipes.
 
-| Repository | Contents |
-|---|---|
-| [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) | The benchmarked nine-component base system. |
-| [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) | The base system plus the three-router geometric adaptation. |
-| [Demo Space](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC) | Recorded examples and instructions for local inference. |
+| Repository or record | Weights | Verified score and protocol |
+|---|---|---|
+| [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) | Original nine-component weights | 35.8015 Overall MiD; submission 1016512; TRAIN40 and 650 ms causal-history protocol. |
+| [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) | Original system plus three local quality routers | No official server score for these router weights; 434-query development evaluation only. |
+| [PHASE-TTC-Geo record](docs/sota_20261118/SUBMISSION_LEDGER.md) | Scored package is archived in the submission evidence, not either Hub repository | 23.4724 Overall MiD; submission 1058935; RGB plus supplied-box history, band loss, no event input. |
+| [Demo Space](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC) | Recorded examples of the original system | Instructions for local inference; not the PHASE-TTC-Geo package. |
 
 Use a fresh **Python 3.12** environment:
 
@@ -246,6 +252,12 @@ uv run --no-sync pytest -q
 
 ## Build the paper
 
+> **Current edition.** The files directly under `paper/` are the sealed
+> 28 October 2026 historical snapshot and are retained byte for byte. They
+> contain superseded claims (the 468-query transfer cohort and an unqualified
+> "Rank 1"). For citation and publication, use the
+> [corrected expanded edition](paper/from_motion_to_time_20261102/README.md).
+
 From the repository root:
 
 ```bash
@@ -253,6 +265,19 @@ python paper/from_motion_to_time_20261102/scripts/build_expanded.py
 python paper/from_motion_to_time_20261102/scripts/verify_publication.py
 python paper/from_motion_to_time_20261102/scripts/package_expanded.py
 ```
+
+The short-form source reuses the same tables, figures and bibliography:
+
+```bash
+cd paper/from_motion_to_time_20261102
+pdflatex -interaction=nonstopmode -halt-on-error main_short.tex
+bibtex main_short
+pdflatex -interaction=nonstopmode -halt-on-error main_short.tex
+pdflatex -interaction=nonstopmode -halt-on-error main_short.tex
+```
+
+Its final page count must be checked against the selected venue template before
+submission; `main_short.tex` does not claim compliance with an unspecified venue.
 
 The build requires NumPy, Matplotlib, Pillow, PyMuPDF, pdfLaTeX and BibTeX,
 including the XCharter, newtxmath and TikZ packages. It regenerates result tables
@@ -292,8 +317,9 @@ for safety-critical control.
 
 Please cite the [paper](https://schwiedop.com/papers/phase-ttc/) and use
 [CITATION.cff](CITATION.cff) for software citation metadata. Pin the repository
-and model revisions used in experiments. Code and released weights use the
-[MIT license](LICENSE); external datasets retain their own licenses.
+and model revisions used in experiments. Project-authored code and PHASE-TTC
+weights use the [MIT license](LICENSE). Third-party models and datasets retain
+their providers' terms; the MIT license does not relicense them.
 
 ```bibtex
 @misc{schwiedop2026phasettc,

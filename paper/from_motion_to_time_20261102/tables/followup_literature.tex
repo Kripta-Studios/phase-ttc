@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lr}
+\toprule
+Readout on the 4,000-query subset & Overall MiD \\
+\midrule
+Geometry variant, out of fold & 39.4 \\
+Box-only head, out of fold & 44.4 \\
+Released head, out of fold & 84.5 \\
+ScaleFlow++, zero-shot & 114.0 \\
+ScaleFlow++, one linear scale fitted on the other blocks & 84.1 \\
+RAFT with affine fit, zero-shot & 136.5 \\
+Optical Expansion, zero-shot & 164.2 \\
+Size ratio of the two supplied boxes & 178.4 \\
+\bottomrule
+\end{tabular}
+\caption{Two-frame estimators and PHASE-TTC heads on the same TRAIN40 subset; lower is better. The estimators were not trained on this data and receive no box history, so the rows are not a like-for-like comparison.}
+\label{tab:followup-literature}
+\end{table}

@@ -25,6 +25,7 @@ def manuscript(tmp_path):
     (tmp_path / "sections/protocol.tex").write_text("fold-local PHASE20")
     for suffix in (".pdf", ".tex"):
         (tmp_path / (publication.STEM + suffix)).write_bytes(b"compiled artifact")
+    (tmp_path / publication.SHORT_STEM).with_suffix(".pdf").write_bytes(b"short artifact")
     (tmp_path / "build/validation.json").write_text('{"checked": true}')
     before = publication.source_hashes(tmp_path)
     publication.record_build(tmp_path, before)
@@ -36,7 +37,14 @@ def test_unchanged_build_can_be_packaged(manuscript):
 
 
 @pytest.mark.parametrize(
-    "path", ["main.tex", "sections/protocol.tex", "sections/new.tex", "sections/trials.jsonl"]
+    "path",
+    [
+        "main.tex",
+        "requirements-paper.txt",
+        "sections/protocol.tex",
+        "sections/new.tex",
+        "sections/trials.jsonl",
+    ],
 )
 def test_changed_or_added_source_requires_rebuild(manuscript, path):
     (manuscript / path).write_text("later scientific correction")
@@ -58,6 +66,14 @@ def test_changed_artifact_or_validation_requires_rebuild(manuscript, path):
         publication.verify(manuscript)
 
 
+def test_short_pdf_is_a_bound_publication_artifact(manuscript):
+    short_pdf = "PHASE_TTC_From_Motion_to_Time_Short.pdf"
+    assert short_pdf in publication.ARTIFACTS
+    (manuscript / short_pdf).write_bytes(b"different short build")
+    with pytest.raises(ValueError, match="rebuild"):
+        publication.verify(manuscript)
+
+
 def test_missing_binding_fails_closed(manuscript):
     (manuscript / "revision/publication_contract.json").unlink()
     with pytest.raises(ValueError, match="rebuild"):
@@ -69,6 +85,19 @@ def test_source_edit_during_compilation_cannot_be_sealed(manuscript):
     (manuscript / "main.tex").write_text("changed while compiling")
     with pytest.raises(ValueError, match="during compilation"):
         publication.record_build(manuscript, before)
+
+
+def test_isolated_carriage_return_in_tex_reference_is_rejected(tmp_path):
+    tex = tmp_path / "section.tex"
+    tex.write_bytes(rb"Section~\ref{sec:runtime}" + b"\n" + rb"Section~\ref{sec:broken}" + b"\r")
+    with pytest.raises(ValueError, match="isolated carriage return.*section.tex:2"):
+        publication.validate_tex_sources(tmp_path)
+
+
+def test_crlf_tex_source_is_not_an_isolated_carriage_return(tmp_path):
+    tex = tmp_path / "section.tex"
+    tex.write_bytes(rb"Section~\ref{sec:runtime}" + b"\r\n")
+    publication.validate_tex_sources(tmp_path)
 
 
 def test_historical_review_receipts_do_not_change_build_inputs(manuscript):

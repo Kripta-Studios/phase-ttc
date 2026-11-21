@@ -4,9 +4,20 @@
 
 <a href="https://github.com/Kripta-Studios/phase-ttc"><img src="../../docs/media/github-logo.png" width="22" height="22" alt="GitHub"></a> [GitHub](https://github.com/Kripta-Studios/phase-ttc) · <a href="https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/"><img src="../../docs/media/linkedin-logo.png" width="22" height="22" alt="LinkedIn"></a> [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-schwiedop-souto-92718b339/)
 
-Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; actualización del 18 de noviembre de 2026
+Álvaro Schwiedop Souto · Edición ampliada del 2 de noviembre de 2026; actualización editorial del 21 de noviembre de 2026
 
-Esta es la actualización y ampliación del artículo original de 52 páginas. Conserva sus 19 archivos de secciones, las figuras, los datos publicados, los métodos completos, las ablations históricas, las trazas por secuencia y el índice de evidencia. El artículo breve de siete páginas preparado antes no lo sustituye.
+La fuente modular mantiene dos cuerpos. `main.tex` construye la edición de
+archivo con el suplemento completo. `main_short.tex` construye un artículo breve
+desde `sections/short_article.tex` y reutiliza las tablas, figuras y bibliografía
+de la edición de archivo. El recuento final de páginas debe validarse con la
+plantilla de la publicación elegida; esta fuente no declara conformidad con un
+límite de páginas aún no especificado.
+
+Esta es la actualización y ampliación del artículo original de 52 páginas.
+Conserva las figuras, los datos publicados, los métodos completos, las
+ablations históricas, las trazas por secuencia y el índice de evidencia. El
+artículo breve archivado que se preparó antes y el nuevo `main_short.tex` son
+entregas distintas; ninguno sustituye la edición de archivo.
 
 ## Auditoría de alcance de afirmaciones del 18 de noviembre
 
@@ -15,7 +26,7 @@ evidencia guardada y el código. No encontró discrepancias numéricas; sí corr
 el alcance de varias afirmaciones. Esta entrega no añade entrenamientos,
 inferencia de sensores ni envíos oficiales. Cambios:
 
-- **Benchmark oficial.** El resumen y la sección 4 indican que el leaderboard
+- **Benchmark oficial.** El resumen y la sección de resultados indican que el leaderboard
   archivado tiene tres entradas, que Garl-TTC usa dos observaciones separadas
   0,1 s frente a los 650 ms de PHASE-TTC, que las regiones de objeto son las del
   benchmark y que el archivo no registra el número de envíos de la cuenta ni un
@@ -144,6 +155,23 @@ experimentos en revisiones anteriores describen aquellas ediciones históricas.
 
 `main.tex` es la fuente modular. `PHASE_TTC_From_Motion_to_Time_Expanded.tex` consolida estilo, texto, tablas y bibliografía; necesita las carpetas de figuras incluidas en el ZIP. El PDF correspondiente contiene el artículo y el suplemento completos.
 
+`main_short.tex` es la fuente breve reproducible. Se compila desde esta carpeta:
+
+```powershell
+pdflatex -interaction=nonstopmode -halt-on-error main_short.tex
+bibtex main_short
+pdflatex -interaction=nonstopmode -halt-on-error main_short.tex
+pdflatex -interaction=nonstopmode -halt-on-error main_short.tex
+```
+
+`scripts/make_official_submission_tables.py` regenera las tablas de envíos de
+ambas fuentes desde `data/official_submissions/records.json`. Ese registro
+conserva los valores a precisión completa y los SHA-256 de
+`../../paper/data/official_benchmark.json` y
+`../../docs/sota_20261118/leaderboard/submission_1058935/RECORD.json`; cuando
+existen en el checkout, el generador verifica ambos hashes. La opción `--check`
+falla si cualquiera de las dos tablas está obsoleta.
+
 El [ZIP de fuentes publicado en GitHub](../PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip)
 se regenera al empaquetar y contiene la evidencia y el PDF verificados.
 
@@ -153,7 +181,7 @@ python scripts/verify_publication.py
 python scripts/package_expanded.py
 ```
 
-El constructor verifica los hashes y las proyecciones numéricas de la evidencia histórica, regenera las tablas nuevas desde JSON y compila las dos fuentes. Requiere Python con NumPy, Matplotlib, Pillow y PyMuPDF, además de pdfLaTeX y BibTeX con XCharter, newtxmath, TikZ, tcolorbox y los paquetes habituales. No entrena modelos ni realiza inferencia ni acceso de red. Las figuras históricas se conservan sin alteraciones.
+El constructor verifica los hashes y las proyecciones numéricas de la evidencia histórica, regenera las tablas nuevas desde JSON y compila la edición expandida, su fuente consolidada y `main_short.tex`. El contrato de publicación sella también `PHASE_TTC_From_Motion_to_Time_Short.pdf`; el empaquetador lo copia a `output/pdf/` y lo incluye en el ZIP. Las tablas de FCWD, literatura y latencia de `sections/followup_controls.tex` se generan con `scripts/make_followup_tables.py`; sus CSV/JSON sellados y el manifiesto SHA-256 están en `data/followup/`. `python scripts/make_followup_tables.py --check` falla si una tabla o su manifiesto está obsoleto. Requiere Python con NumPy, Matplotlib, Pillow y PyMuPDF, además de pdfLaTeX y BibTeX con XCharter, newtxmath, TikZ, tcolorbox y los paquetes habituales. No entrena modelos ni realiza inferencia ni acceso de red. Las figuras históricas se conservan sin alteraciones.
 
 La revisión del 4 de noviembre incorpora tres figuras con datos reales de EvTTC usados en la web del proyecto: escena RGB/eventos, recortes temporales del vehículo y los doce canales de entrada de eventos. Las imágenes conservan sus bytes originales, sus timestamps, la atribución y los hashes de extracción en `data/real_sensor_excerpt/`. El constructor comprueba estos archivos con `scripts/verify_sensor_excerpt.py`; `ASSETS.md` explica las transformaciones de visualización. La ampliación visual no añade experimentos ni modifica resultados.
 
@@ -200,6 +228,30 @@ La fuente arXiv suministrada sirvió como referencia de ritmo tipográfico, jera
 `build/validation.json` registra páginas, palabras, figuras, tablas y comprobaciones LaTeX; `updates/review/original_retention.json` compara la versión ampliada con los originales. Las páginas renderizadas se inspeccionan antes de la entrega. El ZIP incluye los recibos finales y un manifiesto SHA-256.
 
 La ampliación conserva los límites científicos: las mejoras locales expuestas no son validación independiente; la adaptación no tiene nueva puntuación oficial acreditada; la corrección canónica posterior no sustituye el modelo entregado; el replay medido no cumple todos los plazos de 20 ms.
+
+## Declaraciones y distribución
+
+El autor confirma que la investigación no recibió financiación y que
+no existen conflictos de interés. El código y los pesos publicados usan MIT; los
+modelos y datasets de terceros conservan sus propias licencias y no se
+relicencian aquí. En particular, el profesor DINOv3 de los estudios V8 está
+sujeto a la licencia DINOv3 de Meta.
+
+Antes de publicar una nueva edición se deben cotejar como una sola matriz:
+
+| Identidad | Pesos o paquete | Resultado | Protocolo y límite |
+|---|---|---|---|
+| PHASE-TTC | Hub `AlvaroSchwiedop/PHASE-TTC` | 35,8015; envío 1016512 | Sistema event--RGB original, hasta 650 ms; registro archivado del 28 de octubre. |
+| PHASE-TTC-Adapt | Hub `AlvaroSchwiedop/PHASE-TTC-Adapt` | Evaluación local de 434 consultas | Tres routers; no es el paquete puntuado con 23,47. |
+| PHASE-TTC-Geo | Paquete sellado del envío 1058935; no está en los dos repositorios Hub anteriores | 23,4724; 0 % de fallos del scorer | RGB + historia causal de cajas, sin eventos; segundo envío del 18 de noviembre. |
+
+La entrega requiere PDF largo, PDF breve si la sede lo admite, fuentes, ZIP,
+hashes de PDF/ZIP/pesos vistos desde el lado del lector, fichas de modelo
+sincronizadas y pasos de restauración. La ficha descargada de CodaBench conserva
+vacío el campo `Uses Event` de PHASE-TTC-Geo; el texto `sin eventos` procede de
+la receta sellada, no de completar ese campo retrospectivamente. El ZIP de la
+Space aún requiere comprobar que su copia de `app.py` coincide con el texto
+publicado.
 
 ## Reestructuración narrativa y revisión gráfica del 11 de noviembre
 

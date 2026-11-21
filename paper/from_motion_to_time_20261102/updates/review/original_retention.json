@@ -22,14 +22,15 @@
   ],
   "expanded_section_inputs": [
     "sections/introduction",
+    "sections/official_results",
     "sections/final_model",
     "sections/protocol",
-    "sections/official_results",
     "sections/transfer",
     "sections/design_analysis",
     "sections/quality_adaptation",
     "sections/runtime",
     "sections/discussion",
+    "sections/declarations",
     "sections/implementation_details",
     "sections/evttc_competition",
     "sections/adaptation_details",
@@ -85,7 +86,7 @@
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "f4af44e9eb5d627950056923b40e243daa1cf0f92046a677fea883aed1ec2af2",
+      "expanded_sha256": "60402ace4d74a7dfa6c3ff49122d10d092cbc6a87006ca0751d06be813519714",
       "changed": true
     },
     {
@@ -115,7 +116,7 @@
     {
       "path": "sections\\final_model.tex",
       "original_sha256": "ee946529c93a4985d3612d356949e05c68965065c3d51083644b0540142d6181",
-      "expanded_sha256": "1028ced66d04d20795b040745a7de06d024a6cf4979abbd2af093c69604fc6cd",
+      "expanded_sha256": "3df608b352fbbc3e128ccb87a49b403de476365429a84d5eadb2456260148a60",
       "changed": true
     },
     {
@@ -127,7 +128,7 @@
     {
       "path": "sections\\introduction.tex",
       "original_sha256": "2ea165727c8fe22993ffd76dbcad20188bfba40a2f0f076097ba3703b4b91f89",
-      "expanded_sha256": "612bfd82603d5bf31e75cd04dc3c70ff2a229cf2b8158c122895c54a0a071e79",
+      "expanded_sha256": "ebd93ec3a70b9abe30ce6dd695e591394411e7a28bf064ba42aa0a6a7d36056b",
       "changed": true
     },
     {
@@ -139,7 +140,7 @@
     {
       "path": "sections\\methods.tex",
       "original_sha256": "bd58d2c11d810846437a08f3ad5e6437eac9bc80a7f45a1ee1d3194a5b9f7b6b",
-      "expanded_sha256": "5ea074a8df5b620fb3e07953e42d9fb1cbd009dcf4abf73b1302c037eaa06ae2",
+      "expanded_sha256": "7f256e37a388cba1939a2c8c5ce2925b1caf3db1013f4c17323f9ec514642dd3",
       "changed": true
     },
     {
@@ -151,13 +152,13 @@
     {
       "path": "sections\\official_results.tex",
       "original_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
-      "expanded_sha256": "689431c6a5b8506ad2db31594172863e14eee0f1bac586cbec52149fea1c7ded",
+      "expanded_sha256": "b0f62eb5e0319b8e33eabdcbb8378f11dd5916341e88b706fe3c76f3973caf92",
       "changed": true
     },
     {
       "path": "sections\\protocol.tex",
       "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
-      "expanded_sha256": "3fe2d67e9897b9fbdcf00baea82a8d1cdaf6b5be3fb14855030da44cc4793e4d",
+      "expanded_sha256": "0b4a0a10d0813490349f22ca7223db4fafeb12c2a038c544c7c9c79fb7619f22",
       "changed": true
     },
     {

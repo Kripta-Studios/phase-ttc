@@ -1,0 +1,59 @@
+{
+  "schema": "phase_ttc_official_submissions_v1",
+  "scope": "Dated official GarlTTC Test records; values are scorer or leaderboard aggregates, not private labels",
+  "samples": 6762,
+  "reference": {
+    "label": "Garl-TTC reference",
+    "submission_id": 817519,
+    "date": "2026-06-28",
+    "sensor_inputs": "Events + RGB",
+    "support_long": "Supplied regions; two observations 0.1 s apart",
+    "support_short": "Regions; two observations 0.1 s apart",
+    "scores": {
+      "overall_MiD": 45.03,
+      "MiDc": 53.13,
+      "MiDs": 37.58,
+      "MiDl": 40.61,
+      "MiDn": 31.29,
+      "failed_rate": 0.0
+    },
+    "source": "paper/data/official_benchmark.json#/competitor",
+    "source_sha256": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532"
+  },
+  "original": {
+    "label": "PHASE-TTC original",
+    "submission_id": 1016512,
+    "date": "2026-10-28",
+    "sensor_inputs": "Events + RGB",
+    "support_long": "Supplied regions; up to 650 ms causal history",
+    "support_short": "Regions; up to 650 ms history",
+    "scores": {
+      "overall_MiD": 35.80145158082389,
+      "MiDc": 43.5189935425749,
+      "MiDs": 28.25675232393477,
+      "MiDl": 25.71789700925724,
+      "MiDn": 29.931394114302854,
+      "failed_rate": 0.0
+    },
+    "source": "paper/data/official_benchmark.json#/phase_submission",
+    "source_sha256": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532"
+  },
+  "geometry": {
+    "label": "PHASE-TTC-Geo",
+    "submission_id": 1058935,
+    "date": "2026-11-18",
+    "sensor_inputs": "RGB; no event input",
+    "support_long": "Supplied regions; 600 ms box history within the 650 ms budget",
+    "support_short": "Regions; 600 ms box history",
+    "scores": {
+      "overall_MiD": 23.472377543653998,
+      "MiDc": 24.369316665712937,
+      "MiDs": 23.95223386792247,
+      "MiDl": 22.894232907201314,
+      "MiDn": 18.12625759700659,
+      "failed_rate": 0.0
+    },
+    "source": "docs/sota_20261118/leaderboard/submission_1058935/RECORD.json#/scores",
+    "source_sha256": "f3eaee1c517cf3af0d37c6b9654bab4ce8d972fc17a44eaf85168df427ef2f76"
+  }
+}

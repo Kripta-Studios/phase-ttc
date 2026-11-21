@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lllrrrr}
+\toprule
+Variant & Device & History & Median & p95 & Maximum & $<20$ ms \\
+\midrule
+Box-only head & CPU & --- & 0.39 & 0.98 & 1.63 & yes \\
+Geometry variant & GPU & cached & 28.75 & 36.22 & 42.64 & no \\
+Geometry variant & GPU & recomputed & 114.72 & 157.26 & 181.15 & no \\
+Content-scale variant & CPU & cached & 69.68 & 83.79 & 100.72 & no \\
+\bottomrule
+\end{tabular}
+\caption{Isolated per-query compute latency in milliseconds on 600 TRAIN40 queries. Input reading and queueing are excluded; meeting the deadline requires every measured query to remain below 20 ms.}
+\label{tab:followup-latency}
+\end{table}

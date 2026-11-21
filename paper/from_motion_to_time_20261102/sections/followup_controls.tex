@@ -12,25 +12,7 @@ A head that receives only the ten box-geometry inputs, with no image and no even
 \label{sec:followup-literature}
 We ran three published two-frame estimators without fine-tuning on 4,000 TRAIN40 queries, 100 per sequence, giving each the same RGB pair 100\,ms apart and the same supplied region: Optical Expansion~\cite{yang2020expansion}, ScaleFlow++~\cite{ling2024scaleflowpp}, and an affine fit to RAFT flow~\cite{teed2020raft}. The subset was reduced from 6,000 queries by a pre-registered rule before any metric was computed.
 
-\begin{table}[htbp]
-\centering\small
-\begin{tabular}{lr}
-\toprule
-Readout on the 4,000-query subset & Overall MiD \\
-\midrule
-Geometry variant, out of fold & 39.4 \\
-Box-only head, out of fold & 44.4 \\
-Released head, out of fold & 84.5 \\
-ScaleFlow++, zero-shot & 114.0 \\
-ScaleFlow++, one linear scale fitted on the other blocks & 84.1 \\
-RAFT with affine fit, zero-shot & 136.5 \\
-Optical Expansion, zero-shot & 164.2 \\
-Size ratio of the two supplied boxes & 178.4 \\
-\bottomrule
-\end{tabular}
-\caption{Two-frame estimators and PHASE-TTC heads on the same TRAIN40 subset; lower is better. The estimators were not trained on this data and receive no box history, so the rows are not a like-for-like comparison.}
-\label{tab:followup-literature}
-\end{table}
+\input{tables/followup_literature}
 
 The best estimator is 74.6 points above the geometry variant, with an interval of $[62.2,87.8]$. The comparison is bounded in three ways. The estimators have no access to box history and were not fitted to this benchmark; the values are obtained under our 384-pixel crop protocol, under which they recover 63\% and 81\% of a synthetic 5\% zoom, so they are a bound for that protocol and not the ceiling of the methods; and nothing here concerns the test set. The dense estimators lose much less accuracy on truncated boxes than box geometry does, which motivated the last control below.
 
@@ -38,23 +20,7 @@ The best estimator is 74.6 points above the geometry variant, with an interval o
 \label{sec:followup-fcwd}
 FCWD provides three approach sequences with event data and object regions. Its labels have been open to this project since October and it has now been scored repeatedly, so every FCWD value in this section is development evidence and not a confirmation. Heads were fitted on TRAIN40 only and applied without adjustment; predictions were hashed before the labels were opened in each campaign. Scores are the relative TTC error in percent, averaged per sequence and then across the three sequences, on the 597 queries whose label lies inside the supported range. That eligibility rule depends on labels, is identical for all arms, and removes 33 queries from the end of the approach.
 
-\begin{table}[htbp]
-\centering\small
-\begin{tabular}{lrrr}
-\toprule
-Arm & All (597) & Saturated box (82) & Other (515) \\
-\midrule
-Box-only head & 33.4 & 121.4 & 19.4 \\
-Sealed PHASE-TTC event context & 32.3 & 117.6 & 18.6 \\
-Event-branch fields plus geometry & 28.3 & 111.5 & 15.0 \\
-Public Garl-TTC event model, run locally & 26.8 & 37.8 & 25.1 \\
-Truncation-robust geometry & 23.4 & 60.0 & 17.6 \\
-Robust geometry plus event content scale & 16.1 & 22.2 & 15.2 \\
-\bottomrule
-\end{tabular}
-\caption{Relative TTC error (\%) on development-exposed FCWD queries; lower is better. Fitted arms are three-seed means. A box is saturated when it is truncated on both image axes; this stratum was first defined as a breakdown after an earlier scoring and later arms were designed against it.}
-\label{tab:followup-fcwd}
-\end{table}
+\input{tables/followup_fcwd}
 
 The box-only head transfers poorly because of one regime. Near contact the object fills the frame, the box edges stop moving, and box expansion carries no signal: on those 82 queries every PHASE-TTC arm available at that point exceeded 100\% error, while the locally run reference stayed at 37.8\%. Adding the PHASE-TTC event-branch fields improved the remaining queries and not the saturated ones. Geometry inputs made robust to truncation, fitted with synthetic truncation of training boxes, lowered the total to 23.4 but made the 46 real saturated rows of TRAIN40 worse.
 
@@ -68,4 +34,6 @@ The variant that holds the best test score uses no event input. The content-scal
 
 \subsubsection{Response time of the variants}
 \label{sec:followup-latency}
-We timed the newer variants per query at batch size one on 600 TRAIN40 queries from 12 sequences, with every stage measured live on the laptop used for the runtime study and input reading excluded, as there. These are isolated compute times on a different dataset, not the queued 50\,Hz service responses of Section~ef{sec:runtime}, so the two are not directly comparable. The box-only head takes 0.39\,ms at the median and 1.63\,ms at most on CPU, and is the only variant that meets the 20\,ms deadline on every query. The submitted geometry variant, which keeps the RGB branch, takes 28.8\,ms at the median and 36.2\,ms at the 95th percentile on GPU when earlier observations are cached, and 114.7\,ms when the whole history is recomputed; the RGB producers account for three quarters of the cached time, and that stage ran slower than in warm-up, possibly from thermal state, which was not isolated. The content-scale variant takes 69.7\,ms at the median on CPU with caching, of which 52.4\,ms is the scale estimation, an unoptimized implementation. Removing the event branch therefore does not by itself bring the best-scoring variant under the deadline.
+We timed the newer variants per query at batch size one on 600 TRAIN40 queries from 12 sequences, with every stage measured live on the laptop used for the runtime study and input reading excluded, as there. These are isolated compute times on a different dataset, not the queued 50\,Hz service responses of Section~\ref{sec:runtime}, so the two are not directly comparable. The box-only head takes 0.39\,ms at the median and 1.63\,ms at most on CPU, and is the only variant that meets the 20\,ms deadline on every query. The submitted geometry variant, which keeps the RGB branch, takes 28.8\,ms at the median and 36.2\,ms at the 95th percentile on GPU when earlier observations are cached, and 114.7\,ms when the whole history is recomputed; the RGB producers account for three quarters of the cached time, and that stage ran slower than in warm-up, possibly from thermal state, which was not isolated. The content-scale variant takes 69.7\,ms at the median on CPU with caching, of which 52.4\,ms is the scale estimation, an unoptimized implementation. Removing the event branch therefore does not by itself bring the best-scoring variant under the deadline.
+
+\input{tables/followup_latency}

@@ -140,7 +140,7 @@ The transport extension derives event-native motion evidence from dense features
 \end{equation}
 Out-of-bounds candidates are masked before softmax. The resulting summaries include translation, anisotropic and isotropic divergence, flow magnitude, confidence margin, entropy, and forward--reverse cycle error, with additional foreground-weighted variants. Coarse-to-fine models mix measurements from two scales through a learned gate. Shifted views replace a $[B,C,K,H,W]$ unfolded tensor to reduce intermediate memory. \evidence{M08}
 
-Training-time RGB distillation introduces privileged visual supervision. The A4 DINOv3 teacher \citep{dinov3} supplies local cosine-similarity maps at six fixed feature-grid offsets. An L1 loss transfers these spatial relationships without requiring equal channel dimensions; slicing avoids circular wraparound. The student consumes events alone at inference, making this route privileged distillation rather than label-free self-supervision. \evidence{M09}
+Training-time RGB distillation introduces privileged visual supervision. The A4 DINOv3 teacher \citep{dinov3} supplies local cosine-similarity maps at six fixed feature-grid offsets. An L1 loss transfers these spatial relationships without requiring equal channel dimensions; slicing avoids circular wraparound. The student consumes events alone at inference, making this route privileged distillation rather than label-free self-supervision. Meta distributes the teacher code and weights under the provider's DINOv3 License; the project's MIT license does not relicense those materials. \evidence{M09}
 
 \subsection{Phase-domain routing and temporal refinement}
 \label{sec:phase-refinement}
@@ -183,7 +183,7 @@ Context heads receive PHASE17 fields standardized by per-coordinate means and po
 
 \subsection{Observed field ranges and the event-history mismatch}
 \label{sec:field-ranges}
-Table~\ref{tab:field-ranges} lists the values that the timing and support fields take at the fusion input in three populations: the 88,744 out-of-fold TRAIN40 rows that fit the head, the 5,805 physical Test12 queries of the submission, and the 460 EvTTC transfer queries. The first, second, and fourth RGB timing fields and the second event timing field are zero everywhere. Raw location and emitted point phase coincide in 99.6\% of training rows and in all 460 transfer rows. On the transfer cohort the ten timing and support fields are constant or vary by less than $10^{-4}$, so the head acts there on the five phase values of each modality and, effectively, on four distinct values per modality.
+Table~\ref{tab:field-ranges} lists the values that the timing and support fields take at the fusion input in three populations: the 88,744 out-of-fold TRAIN40 rows that fit the head, the 5,805 physical Test12 queries of the submission, and the 460 EvTTC transfer queries. Exactly 4 of the 20 descriptor columns are constant in TRAIN40, 6 in Test12, and 9 in EvTTC. Raw location and emitted point phase coincide in 99.6\% of training rows and in all 460 transfer rows, which creates two additional near-duplicate pairs rather than constant columns. The EvTTC RGB-gap field ranges from 0.099547 to 0.100105\,s; its 0.000558\,s span exceeds the $10^{-4}$ tolerance used in the field audit. The fusion descriptor therefore has less effective variation on this cohort, but it is not a ten-value input.
 
 \begin{table}[htbp]
 \centering\small

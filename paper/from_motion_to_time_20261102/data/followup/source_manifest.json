@@ -1,0 +1,10 @@
+{
+  "schema": "phase_ttc_followup_table_sources_v1",
+  "files": {
+    "event_geometry_fcwd.csv": "8b97dd9d3e658457626c95e8d98aa01d75aa30f62f9caba211fe02c49c20b10e",
+    "geometry_robust_fcwd.csv": "a7731701e9fb10c68579cd2ebcdd20d964c20cd82661d2ee5347328160590da1",
+    "literature_main.csv": "3b8c7a1e0f7fc4ff542264cb346a7be29d028a6870b64df8f5342b0c0c726f9a",
+    "saturation_scale_fcwd.csv": "8c4db23629cd2e822daf91a7d87b030e9a52672b6d9afb6c3ee7ccc0d7f4714c",
+    "variant_latency_results.json": "2e6d567dfaa3bf383ade0733b99dabb6d7249328693fde1caf81d9210c899d0d"
+  }
+}

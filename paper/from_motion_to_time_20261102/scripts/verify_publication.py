@@ -40,12 +40,31 @@ SOURCE_SUFFIXES = {
     ".yaml",
     ".yml",
 }
-ARTIFACTS = (STEM + ".pdf", STEM + ".tex", "build/validation.json")
+SHORT_STEM = "PHASE_TTC_From_Motion_to_Time_Short"
+ARTIFACTS = (
+    STEM + ".pdf",
+    STEM + ".tex",
+    SHORT_STEM + ".pdf",
+    "build/validation.json",
+)
 
 
 def digest(path: Path) -> str:
     """Return the SHA-256 of the exact file bytes."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def validate_tex_sources(root: Path) -> None:
+    """Reject isolated carriage returns that TeX would interpret as source text."""
+    for path in sorted(root.rglob("*.tex")):
+        if "build" in path.relative_to(root).parts:
+            continue
+        data = path.read_bytes()
+        for offset, byte in enumerate(data):
+            if byte == 13 and (offset + 1 == len(data) or data[offset + 1] != 10):
+                line = data[:offset].count(b"\n") + 1
+                relative = path.relative_to(root).as_posix()
+                raise ValueError(f"isolated carriage return in TeX source {relative}:{line}")
 
 
 def source_hashes(root: Path) -> dict[str, str]:
@@ -54,6 +73,8 @@ def source_hashes(root: Path) -> dict[str, str]:
         root / name
         for name in (
             "main.tex",
+            "main_short.tex",
+            "requirements-paper.txt",
             "paper_style.sty",
             "references.bib",
             "updates/evidence_tables.tex",
@@ -86,6 +107,7 @@ def source_hashes(root: Path) -> dict[str, str]:
 
 def record_build(root: Path, before: dict[str, str]) -> None:
     """Seal artifacts only if scientific inputs stayed unchanged during compilation."""
+    validate_tex_sources(root)
     if source_hashes(root) != before:
         raise ValueError("Manuscript inputs changed during compilation; rebuild before packaging")
     receipt = {
@@ -99,6 +121,7 @@ def record_build(root: Path, before: dict[str, str]) -> None:
 
 def verify(root: Path) -> dict[str, object]:
     """Reject stale sources, missing bindings, or modified compiled artifacts."""
+    validate_tex_sources(root)
     path = root / CONTRACT
     if not path.is_file():
         raise ValueError("Missing publication binding; rebuild with scripts/build_expanded.py")

@@ -18,6 +18,8 @@ PHASE-TTC deploys a causal chain of nine fitted components comprising four modal
 
 Each query includes supplied object coordinates. A common spatial frame covers both endpoint regions and preserves apparent scale change, which independent tight crops can erase. The evaluated system therefore assumes external localization.
 
+A label-free provenance audit reconstructs the final supplied box for all 88,744 TRAIN40 queries. It projects the eight annotated 3D cuboid corners with the event-camera calibration, takes coordinate extrema, clips them to the image, and applies the dataset's integer truncation. The four stored box edges are reproduced after that truncation for 88,744 of 88,744 queries, with no missing calibration or invalid projection. The audit excludes TTC columns and private-test inputs. It establishes the geometric origin of TRAIN40 boxes, not target leakage or the provenance of individual Test12 boxes.
+
 Both branches use observations available by query time \(t\), with up to 650\,ms of causal history. Runtime begins at its declared measurement boundary and ends when the host receives the complete TTC output. Figure~\ref{fig:causal-history} separates the sensing interval from response time; its observation marks are schematic. \evidence{M03,M22,L43,L44}
 
 \begin{figure}[H]

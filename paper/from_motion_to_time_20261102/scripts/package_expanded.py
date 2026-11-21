@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ORIGINAL = ROOT.parent
 REPO = ORIGINAL.parent
 STEM = "PHASE_TTC_From_Motion_to_Time_Expanded"
+SHORT_STEM = "PHASE_TTC_From_Motion_to_Time_Short"
 
 
 def digest(path: Path) -> str:
@@ -46,7 +47,8 @@ def publication_files() -> list[Path]:
             "GUIA_REESCRITURA_NATURAL_PAPEL.tex",
             "GUIA_REESCRITURA_NATURAL_PAPEL.pdf",
         }
-        and path.relative_to(ROOT).as_posix() not in {"main.pdf", "SOURCE_MANIFEST.json"}
+        and path.relative_to(ROOT).as_posix()
+        not in {"main.pdf", "main_short.pdf", "SOURCE_MANIFEST.json"}
     ]
 
 
@@ -121,6 +123,7 @@ def main() -> None:
     output.mkdir(parents=True, exist_ok=True)
     for suffix in [".tex", ".pdf"]:
         shutil.copy2(ROOT / (STEM + suffix), output / (STEM + suffix))
+    shutil.copy2(ROOT / (SHORT_STEM + ".pdf"), output / (SHORT_STEM + ".pdf"))
     for directory in ["figures", "updates/figures"]:
         (output / directory).mkdir(parents=True, exist_ok=True)
         for path in (ROOT / directory).iterdir():
@@ -137,12 +140,15 @@ def main() -> None:
     receipt = {
         "pdf": STEM + ".pdf",
         "pdf_sha256": digest(output / (STEM + ".pdf")),
+        "short_pdf": SHORT_STEM + ".pdf",
+        "short_pdf_sha256": digest(output / (SHORT_STEM + ".pdf")),
         "source_zip_sha256": digest(archive_path),
         "files": len(files),
         "pages": validation["pages"],
         "words": validation["words"],
         "figures": validation["figures"],
         "tables": validation["tables"],
+        "short_pages": validation["short_manuscript"]["pages"],
         "publication_binding": binding,
     }
     (output / f"{STEM}_delivery.json").write_text(json.dumps(receipt, indent=2) + "\n")
