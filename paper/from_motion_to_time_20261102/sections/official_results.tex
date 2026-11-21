@@ -1,10 +1,10 @@
 \FloatBarrier
-\section{Two official submissions and what they measure}
+\section{Three official submissions and what they measure}
 \label{sec:official}
 
 \subsection{Private-test results}
 
-Table~\ref{tab:official-submissions} places the two PHASE-TTC submissions beside the documented Garl-TTC reference. Lower MiD is better. The original event--RGB system obtained 35.80 Overall MiD on 28 October 2026. A second, pre-registered submission on 18 November retained the RGB branch, added the causal expansion of the supplied object regions, and removed event inputs; it obtained 23.47. Both scoring archives contain 6,762 tokens and zero scorer-defined failures. The second package was retrieved from the server record and matches its pre-submission receipt by SHA-256. The public leaderboard retains one row per participant, so its current view replaces the original row with PHASE-TTC-Geo; the dated scoring records preserve both results.
+Table~\ref{tab:official-submissions} places the three PHASE-TTC submissions beside the documented Garl-TTC reference. Lower MiD is better. The original event--RGB system obtained 35.80 Overall MiD on 28 October 2026. A pre-registered RGB-plus-box-history submission obtained 23.47 on 18 November after removing event inputs. A third, pre-registered comparator on 21 November removed the RGB estimates as well and read only 600\,ms of supplied-box history; it obtained 27.98. All three scoring archives contain the same 6,762 tokens and zero scorer-defined failures. The downloaded third record, including its four band scores, is preserved in repository commit \texttt{8fa8dda6}. Because the public leaderboard retains one row per participant, dated submission records rather than a current leaderboard row preserve the three results.
 
 \begin{table}[htbp]
 \centering\footnotesize
@@ -13,7 +13,7 @@ Table~\ref{tab:official-submissions} places the two PHASE-TTC submissions beside
 \label{tab:official-submissions}
 \end{table}
 
-The second result is 34\% below the original system and 48\% below the reference. It supports a narrow attribution on this benchmark: causal history of the supplied regions contains most of the accuracy recovered after the first submission, while the event branch is unnecessary for the 23.47 result. It does not establish that box history will replace event measurements under delayed or noisy detections, frame-filling objects, or a different acquisition protocol.
+The 23.47 result is 34\% below the original system and 48\% below the reference. The matched box-only comparator is 4.50325 MiD points higher than 23.47238; equivalently, adding the RGB estimates reduces Overall MiD by 16.10\% relative to the 27.97563 comparator. These official rows establish that supplied-region history alone is strong but does not reproduce the RGB-plus-geometry score under the tested recipes. They do not isolate a sensor-level causal effect or establish that supplied boxes replace event measurements under delayed or noisy detections, frame-filling objects, or another acquisition protocol.
 
 \subsection{Metric and band asymmetry}
 
@@ -33,6 +33,7 @@ Entry & Overall & Crucial & Small & Large & Negative \\
 Garl-TTC reference & 45.03 & 53.13 & 37.58 & 40.61 & 31.29 \\
 PHASE-TTC original & 35.80 & 43.52 & 28.26 & 25.72 & 29.93 \\
 PHASE-TTC-Geo & \textbf{23.47} & 24.37 & 23.95 & 22.89 & 18.13 \\
+Box-history comparator & 27.98 & 26.39 & 28.00 & 32.94 & 30.89 \\
 \bottomrule
 \end{tabular}
 \caption{Official band scores. Overall uses the 0.5/0.3/0.1/0.1 band weights rather than a sample-weighted mean.}
@@ -47,13 +48,13 @@ The official reference row comes from the leaderboard and was not reproduced loc
 
 Separate local controls use the released Garl checkpoints under their native input contract. They select the latest causal RGB endpoint and the preceding endpoint nearest 100\,ms, construct a polarity-agnostic 20-plane event time volume at each endpoint with at most 100\,ms support, and use the supplied regions to form a common square crop. The adapter substitutes the measured endpoint separation in the height-ratio-to-TTC conversion; it does not refit the checkpoint. Full, event-only, and visual-only routes have different input availability, and these development-exposed runs are not the official leaderboard comparison (Appendix~\ref{app:competition-details}). In the later service experiment, a CPU path constructs Garl event volumes on cache misses and hashes prepared inputs inside the measured call. Its timing is specific to that implementation and is not a lower bound for Garl-TTC.
 
-The geometry submission changes both modality and measurement access. It uses no event input, but it receives 600\,ms of causal box expansion in addition to RGB-branch estimates. The leaderboard fact sheet displays its ``Uses Event'' field as empty rather than false. We retain that downloaded record and derive the no-event statement from the bound recipe and scored package, not from the empty form field.
+The geometry submission changes both modality and measurement access. It uses no event input, but it receives 600\,ms of causal box expansion in addition to RGB-branch estimates. The leaderboard fact sheet displays its ``Uses Event'' field as empty rather than false. We retain that downloaded record and derive the no-event statement from the bound recipe and scored package, not from the empty form field. The third submission uses the same supplied-box history and a learned geometry head but no RGB image estimates and no event input. It is an official matched comparator, not a replacement release for PHASE-TTC-Geo.
 
 \subsection{Selection, exposure, and attribution}
 
-The original system was the author's first test submission. The geometry variant was chosen by a rule fixed on TRAIN40 development folds and then submitted once with a receipt that bound its code, seed, package, and hypothesis. Those folds showed 85.17 Overall MiD for the released recipe and 41.27 for the selected geometry head, but fold and server levels differ enough that these values must not be pooled or used as a calibration curve. The private result confirms the direction of the geometry intervention, not the size predicted by the folds.
+The original system was the author's first test submission. The geometry variant was chosen by a rule fixed on TRAIN40 development folds and then submitted once with a receipt that bound its code, seed, package, and hypothesis. Those folds showed 85.17 Overall MiD for the released recipe and 41.27 for the selected geometry head, but fold and server levels differ enough that these values must not be pooled or used as a calibration curve. The private result confirms the direction of the geometry intervention, not the size predicted by the folds. The box-only comparator was likewise bound before its third upload and was reported whether or not it beat 23.47. Its 27.98 score provides a private-test ablation of RGB estimates conditional on the fitted heads and shared box-history contract.
 
-Only the two private-test scores use targets that the project did not inspect during development. Transfer, routing, event-history, literature-baseline, and FCWD controls reuse inspected recordings or open labels. They identify failure modes and plausible mechanisms without providing another independent test. Appendix~\ref{sec:post-audit-geometry} records the pre-registration and the full fold analysis; Appendix~\ref{sec:followup} records later matched controls and their exposure.
+Only the three private-test scores use targets that the project did not inspect during development. They are sequential exposures to the same server, not independent test sets: the earlier score was known before each later recipe was uploaded. Transfer, routing, event-history, literature-baseline, and FCWD controls reuse inspected recordings or open labels. They identify failure modes and plausible mechanisms without providing another independent test. Appendix~\ref{sec:post-audit-geometry} records the second submission and its fold analysis; the third submission record and pre-registered matched-comparator protocol preserve the box-only comparison. Appendix~\ref{sec:followup} records later controls and their exposure.
 
 \subsection{Original submission by band}
 

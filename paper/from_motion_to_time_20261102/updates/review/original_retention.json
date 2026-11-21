@@ -86,7 +86,7 @@
     {
       "path": "sections\\discussion.tex",
       "original_sha256": "f026ea8575d6c0a05a08dd715c270f210baff7c7eb7e6ed24c9c73b23ffcef4c",
-      "expanded_sha256": "60402ace4d74a7dfa6c3ff49122d10d092cbc6a87006ca0751d06be813519714",
+      "expanded_sha256": "62015c1a7cbd2d4df97c95fcc4911eb329dad8158ece33c42aaf6bae2b58c0a0",
       "changed": true
     },
     {
@@ -128,7 +128,7 @@
     {
       "path": "sections\\introduction.tex",
       "original_sha256": "2ea165727c8fe22993ffd76dbcad20188bfba40a2f0f076097ba3703b4b91f89",
-      "expanded_sha256": "ebd93ec3a70b9abe30ce6dd695e591394411e7a28bf064ba42aa0a6a7d36056b",
+      "expanded_sha256": "a0cafa2bb5e2c2a95d229bf3de1e8c6d10062391e15ddf8777f3034acc202c0f",
       "changed": true
     },
     {
@@ -152,13 +152,13 @@
     {
       "path": "sections\\official_results.tex",
       "original_sha256": "a2ee9ff34d7e46bbf640999aee0838929476d41e7eea9d8fadd6d95413f23084",
-      "expanded_sha256": "b0f62eb5e0319b8e33eabdcbb8378f11dd5916341e88b706fe3c76f3973caf92",
+      "expanded_sha256": "c92f82c6286f7559fde98789ec8970e3fe65ea5a35d8da6642f5b156e39d6edc",
       "changed": true
     },
     {
       "path": "sections\\protocol.tex",
       "original_sha256": "f5c29a14917ade22e8930c1ba8a938316aa82e2b23b733e9bf58ec069081a00e",
-      "expanded_sha256": "0b4a0a10d0813490349f22ca7223db4fafeb12c2a038c544c7c9c79fb7619f22",
+      "expanded_sha256": "793b5a924e8f750b88546b7ef2907b28fffb31407169130a327ebd364daa8cb0",
       "changed": true
     },
     {

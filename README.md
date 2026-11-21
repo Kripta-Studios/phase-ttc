@@ -32,8 +32,18 @@ head that receives the RGB-branch estimates and the causal expansion of the
 supplied object regions, with a band-weighted loss and **no event inputs**,
 scores **23.47 Overall MiD** on GarlTTC Test (submission 1058935): 34% below the
 original system and 48% below Garl-TTC. Most of the accuracy available on this
-benchmark comes from the history of the supplied regions. Protocol, results and
+benchmark is associated in TRAIN40 controls with the history of the supplied
+regions; the private score confirms the selected recipe, not that causal attribution. Protocol, results and
 the submission ledger are in [docs/sota_20261118](docs/sota_20261118).
+
+A third pre-registered submission on 21 November removes the RGB estimates as
+well and reads only the same 600 ms supplied-box history. This matched box-only
+comparator scores **27.97563 Overall MiD** (submission 1063261), versus
+**23.47238** for PHASE-TTC-Geo: an absolute gap of **4.50325** and a **16.10%**
+error reduction for RGB plus geometry relative to box-only. Both rows contain
+6,762 tokens and 0% scorer-defined failures. The downloaded result is preserved
+in commit `8fa8dda6`; this is a third sequential use of the same private server,
+not an independent test set.
 
 ## Paper
 
@@ -100,13 +110,15 @@ used for the second official submission.
 | Garl-TTC reference | Event + RGB; two observations 0.1 s apart; supplied regions | 45.03 | 0% |
 | PHASE-TTC, 28 October | Event + RGB; up to 650 ms; supplied regions | 35.8015 | 0% |
 | PHASE-TTC-Geo, 18 November | RGB + 600 ms supplied-box history; no event input | **23.4724** | **0%** |
+| Box-history comparator, 21 November | 600 ms supplied-box history; no image or event input | 27.9756 | 0% |
 
 Each evaluation uses private test labels and 6,762 submission tokens, including
 aliases of physical queries. The [scoring records](paper/data/official_benchmark.json)
-and [second-submission record](docs/sota_20261118/leaderboard/submission_1058935/RECORD.json)
-document the TTC bands and failure criterion. The public leaderboard retains one
-row per participant and now displays PHASE-TTC-Geo; the 28 October result remains
-in its dated archive. These rows compare complete systems with different temporal
+and the [second](docs/sota_20261118/leaderboard/submission_1058935/RECORD.json)
+and [third submission records](docs/sota_20261118/leaderboard/submission_1063261/RECORD.json)
+document the TTC bands and failure criterion. The archived 18 November leaderboard
+displays PHASE-TTC-Geo and retains one row per participant; no post-third-upload
+leaderboard snapshot is asserted here. These rows compare systems with different temporal
 support and do not rank all published TTC methods.
 
 ### Transfer and matched readout controls
@@ -170,6 +182,14 @@ unresolved discrepancy: 504 of 5,805 native-replay queries exceed the original
 tolerance, with a maximum TTC difference of 0.4968 s. The archived submission
 and official score remain distinct from local reproduction.
 
+A later CPU box-only service executes eight host-paced 60-second cells at 50 Hz,
+3,000 offers per cell. Seven satisfy the strict all-offers-under-20-ms gate; one
+records five drops. In aggregate, 23,992 of 24,000 offers finish below 20 ms and
+23,995 return valid outputs, so the strict gate fails. The replay cycles supplied
+TRAIN40 boxes and excludes detector/tracker cost. This result covers only the
+CPU box-history path. See the
+[CPU report](docs/sota_20261121/geometry_service/REPORT.md).
+
 ## Download and run
 
 The Hugging Face repositories contain frozen weights, normalizers, custom
@@ -180,6 +200,7 @@ runtime code, example inputs, evaluation records and training recipes.
 | [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) | Original nine-component weights | 35.8015 Overall MiD; submission 1016512; TRAIN40 and 650 ms causal-history protocol. |
 | [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) | Original system plus three local quality routers | No official server score for these router weights; 434-query development evaluation only. |
 | [PHASE-TTC-Geo record](docs/sota_20261118/SUBMISSION_LEDGER.md) | Scored package is archived in the submission evidence, not either Hub repository | 23.4724 Overall MiD; submission 1058935; RGB plus supplied-box history, band loss, no event input. |
+| [Box-history comparator record](docs/sota_20261118/leaderboard/submission_1063261/RECORD.json) | Separate scored comparator; not a Hub release | 27.97563 Overall MiD; submission 1063261; supplied-box history only, no image or event input. |
 | [Demo Space](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC) | Recorded examples of the original system | Instructions for local inference; not the PHASE-TTC-Geo package. |
 
 Use a fresh **Python 3.12** environment:

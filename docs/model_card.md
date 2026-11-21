@@ -10,9 +10,17 @@ PHASE-TTC estimates signed time-to-contact from causal event/RGB observations an
 | [PHASE-TTC](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC) | Original frozen nine-component system. Archived 28 October [GarlTTC Test rank 1 of 3 entries](https://www.codabench.org/competitions/17289/#/results-tab): Overall MiD 35.80145 versus 45.03, 20.49% reduction, 6,762 scored tokens, 0% scorer-defined failure. |
 | [PHASE-TTC-Adapt](https://huggingface.co/AlvaroSchwiedop/PHASE-TTC-Adapt) | Original system plus three 688-parameter geometric quality routers trained on 2,608 development queries. Separate 434-query local evaluation; these weights have no verified official score. |
 | [PHASE-TTC-Geo submission record](sota_20261118/SUBMISSION_LEDGER.md) | A different head using RGB-branch estimates and 600 ms of supplied-box history, with no event input. Submission 1058935 obtained 23.4724 Overall MiD and 0% scorer-defined failures on 18 November. Its scored package is not either Hub model repository. |
+| [Box-history comparator record](sota_20261118/leaderboard/submission_1063261/RECORD.json) | A matched learned head using only 600 ms of supplied-box history, with no image or event input. Submission 1063261 obtained 27.97563 Overall MiD and 0% scorer-defined failures on 21 November. It is an official comparator, not a downloadable PHASE-TTC release. |
 | [Recorded demo](https://huggingface.co/spaces/AlvaroSchwiedop/PHASE-TTC) | Recorded examples and download commands; live inference runs locally with the supplied CLI or Gradio app. |
 
 The adaptation's final fit uses 24 road recordings plus Slider-500. Its ten evaluation recordings are excluded from that fit, but earlier development exposure applies. The local offline negative-output interpolation gives original/adapted MAE 0.82498/0.33590 s and relative error 49.894/17.250%. Slider-750's official original score remains unreconciled. Later router and canonical-cadence experiments did not replace these checkpoints. PHASE-TTC-Geo is a separate fitted head, not a renamed PHASE-TTC-Adapt router.
+
+The official box-only comparator is 4.50325 MiD points above PHASE-TTC-Geo
+(27.97563 versus 23.47238); equivalently, RGB plus geometry reduces error by
+16.10% relative to box-only under these recipes. Both use the same 6,762-token
+server population and have zero scorer-defined failures. The uploads are
+sequential exposures to one private test server, not independent test sets. The
+third downloaded scoring record is preserved in commit `8fa8dda6`.
 
 The corrected original transfer study uses 460 eligible queries from 508 fixed candidates across 32 development-exposed sequences. Original fusion improves pooled MAE and p95 over RGB, while median and relative error favor RGB. Paired sequence-level confidence intervals include zero.
 
@@ -36,6 +44,13 @@ Small-queue losses and all failed checks are retained. Neither parameter counts
 nor these runs establish a universal latency bound or continuous 20 ms responses.
 See the [expanded inference report](../paper/from_motion_to_time_20261102/revision/extended_inference_report.md)
 and the [initial comparison](../paper/from_motion_to_time_20261102/revision/persistent_comparison_report.md).
+
+The later CPU box-only service covers eight host-paced 60-second cells and
+24,000 offers. Seven cells pass its strict 20 ms rule; one records five drops,
+so the all-cell gate fails despite 23,992 offers completing below 20 ms. This
+replay starts from supplied TRAIN40 boxes and excludes detector/tracker cost.
+This result covers only the CPU box-history path. See the
+[CPU report](sota_20261121/geometry_service/REPORT.md).
 
 The release expects supplied object regions and synchronized event/RGB inputs. It includes neither a general-purpose autonomous detector nor calibrated collision probabilities or confidence intervals. The paced 250-update replay measured 29.14 ms p95, above a 20 ms budget. Zero benchmark failures is a scoring result, not a safety assurance. Full original training requires external data and reconstruction of historical caches.
 

@@ -1,10 +1,10 @@
 {
-  "pages": 109,
-  "words": 50288,
+  "pages": 111,
+  "words": 50749,
   "figures": 30,
   "tables": 65,
   "all_fonts_embedded": true,
-  "pdf_sha256": "dbb87ec39619ce198cc75807c95090a477107d8f4cbd5f5eff204048992b1461",
+  "pdf_sha256": "2cf9162216848b7a7f5b498afdd1e39800628e9efd0b21aaadc945859f38d668",
   "latex_checks": {
     "overfull_boxes": 0,
     "missing_glyphs": 0,
@@ -15,8 +15,8 @@
   "short_manuscript": {
     "pdf": "PHASE_TTC_From_Motion_to_Time_Short.pdf",
     "pages": 9,
-    "words": 4007,
-    "pdf_sha256": "cd2a1348a281791bcda3d6c1a8b92b3349050997c11867b75f7b2a8687fd6595",
+    "words": 4135,
+    "pdf_sha256": "a333adf83139af7d5663ab1d71415d1f1b80728a25b2fc81d00276f7561f6e0a",
     "latex_checks": {
       "overfull_boxes": 0,
       "missing_glyphs": 0,

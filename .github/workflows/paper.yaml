@@ -80,6 +80,7 @@ jobs:
             paper/revision/*_validation.log
             paper/revision/*pass*.log
             paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf
+            paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Short.pdf
             paper/from_motion_to_time_20261102/revision/publication_contract.json
             paper/from_motion_to_time_20261102/data/followup/source_manifest.json
             paper/PHASE_TTC_From_Motion_to_Time_Expanded_sources.zip
@@ -94,5 +95,7 @@ jobs:
             paper/*.log
             paper/revision/*.log
             paper/revision/*.json
+            paper/from_motion_to_time_20261102/*.log
+            paper/from_motion_to_time_20261102/build/validation.json
           if-no-files-found: warn
           retention-days: 7

@@ -60,10 +60,10 @@ inferencia de sensores ni envíos oficiales. Cambios:
 - **Bibliografía.** Pasa de 13 a 32 entradas, con una subsección de trabajo
   relacionado sobre TTC por expansión, TTC con eventos y fusión eventos–imagen.
 
-Actualización del mismo día: el autor declara haber realizado un único envío al
-servidor de GarlTTC. El manuscrito lo recoge como declaración del autor, porque
-el leaderboard archivado muestra una entrada por participante y no permite
-confirmarlo de forma independiente.
+Nota histórica de aquella auditoría: el autor declaró entonces un único envío al
+servidor de GarlTTC. El historial de la cuenta recuperado después documenta tres
+envíos terminados, `1016512`, `1058935` y `1063261`; la declaración anterior se
+conserva solo para explicar el estado del texto fechado.
 
 ## Segundo envío al servidor de test: 23,47 Overall MiD
 
@@ -73,14 +73,27 @@ antes de subirlo, la variante elegida por la regla del control de geometría
 sin entradas de eventos). Envío `1058935`, paquete verificado contra el recibo:
 **23,47 Overall MiD** (bandas c/s/l/n 24,37 / 23,95 / 22,89 / 18,13), frente a 35,80
 del sistema original y 45,03 de Garl-TTC (−34 % y −48 %). Es el segundo envío de
-la cuenta. El resultado sitúa la mayor parte de la precisión disponible en la
-historia de las regiones suministradas, no en la fusión de eventos y RGB.
+la cuenta. Los controles TRAIN40 sitúan la mayor mejora de desarrollo en la
+historia de las regiones suministradas; el resultado privado valida la receta,
+no una atribución causal a esa señal.
+
+## Tercer envío: comparador de solo cajas
+
+El 21 de noviembre se puntuó el comparador prerregistrado que conserva los mismos
+600 ms de historia de regiones suministradas y elimina también las estimaciones
+RGB. El envío `1063261` obtuvo **27,97563 Overall MiD** (bandas c/s/l/n
+26,38540 / 28,00007 / 32,93790 / 30,89121), con 6.762 tokens y cero fallos del
+scorer. Frente a 23,47238 para RGB más geometría, la diferencia es 4,50325 y la
+reducción relativa al comparador de solo cajas es 16,10 %. Es el tercer uso
+secuencial del mismo servidor privado, no un test independiente. El registro
+descargado quedó preservado en el commit `8fa8dda6`.
 
 ## Controles posteriores al envío del 18 de noviembre
 
 El apéndice «Post-submission controls» añade tres controles con protocolo fijado
-antes de calcular las comparaciones. Ninguno usa etiquetas privadas; solo el
-candidato de geometría se envió al servidor, una vez. Sus tablas se generan con `scripts/build_post_audit.py` a
+antes de calcular las comparaciones. Ninguno usa etiquetas privadas. En el corte
+del 18 de noviembre solo el candidato RGB más geometría se había enviado; el
+comparador de solo cajas se puntuó después, como tercer envío. Sus tablas se generan con `scripts/build_post_audit.py` a
 partir de `data/post_audit_20261118/`.
 
 - **Geometría de cajas.** En los folds de entrenamiento, añadir a la cabeza la
@@ -100,6 +113,16 @@ registro de envíos de CodaBench el 18 de noviembre tiene SHA-256
 paquete TRAIN40 descrito en el artículo, y el registro de puntuación que lo
 acompaña da 35,80145. El paquete anterior de otro modelo, de tamaño casi igual,
 no es el puntuado.
+
+## Servicio CPU de geometría del 21 de noviembre
+
+El ensayo de solo cajas ejecuta ocho celdas host-paced de 60 segundos y 3.000
+ofertas a 50 Hz cada una. Siete cumplen el gate estricto; una pierde cinco
+ofertas. En total, 23.992 de 24.000 terminan antes de 20 ms y 23.995 producen
+respuesta válida, por lo que el gate global falla. Parte de cajas TRAIN40
+suministradas y no incluye detector ni tracker. Este resultado solo cubre la ruta
+CPU de historia de cajas. Véase el
+[informe CPU](../../docs/sota_20261121/geometry_service/REPORT.md).
 
 ## Comparación de inferencia del 12 de noviembre
 
@@ -168,7 +191,8 @@ pdflatex -interaction=nonstopmode -halt-on-error main_short.tex
 ambas fuentes desde `data/official_submissions/records.json`. Ese registro
 conserva los valores a precisión completa y los SHA-256 de
 `../../paper/data/official_benchmark.json` y
-`../../docs/sota_20261118/leaderboard/submission_1058935/RECORD.json`; cuando
+`../../docs/sota_20261118/leaderboard/submission_1058935/RECORD.json` y
+`../../docs/sota_20261118/leaderboard/submission_1063261/RECORD.json`; cuando
 existen en el checkout, el generador verifica ambos hashes. La opción `--check`
 falla si cualquiera de las dos tablas está obsoleta.
 
@@ -244,6 +268,7 @@ Antes de publicar una nueva edición se deben cotejar como una sola matriz:
 | PHASE-TTC | Hub `AlvaroSchwiedop/PHASE-TTC` | 35,8015; envío 1016512 | Sistema event--RGB original, hasta 650 ms; registro archivado del 28 de octubre. |
 | PHASE-TTC-Adapt | Hub `AlvaroSchwiedop/PHASE-TTC-Adapt` | Evaluación local de 434 consultas | Tres routers; no es el paquete puntuado con 23,47. |
 | PHASE-TTC-Geo | Paquete sellado del envío 1058935; no está en los dos repositorios Hub anteriores | 23,4724; 0 % de fallos del scorer | RGB + historia causal de cajas, sin eventos; segundo envío del 18 de noviembre. |
+| Comparador de solo cajas | Paquete sellado del envío 1063261; no es un modelo Hub | 27,97563; 0 % de fallos del scorer | Historia causal de cajas, sin imagen ni eventos; tercer envío del 21 de noviembre. |
 
 La entrega requiere PDF largo, PDF breve si la sede lo admite, fuentes, ZIP,
 hashes de PDF/ZIP/pesos vistos desde el lado del lector, fichas de modelo
