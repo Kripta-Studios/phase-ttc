@@ -135,6 +135,25 @@ def test_source_archive_keeps_audited_logs_but_excludes_latex_logs(tmp_path, mon
     assert actual.isdisjoint(excluded)
 
 
+def test_paper_workflow_normalizes_runtime_table_before_expanded_build() -> None:
+    """Linux must normalize the generated table before the builder snapshots inputs."""
+    source = (SCRIPT.parents[3] / ".github" / "workflows" / "paper.yaml").read_text(
+        encoding="utf-8"
+    )
+
+    committed_verifier = source.index(
+        "python paper/from_motion_to_time_20261102/scripts/verify_publication.py"
+    )
+    generator = source.index(
+        "python paper/from_motion_to_time_20261102/scripts/make_deployment_table.py"
+    )
+    builder = source.index(
+        "python paper/from_motion_to_time_20261102/scripts/build_expanded.py"
+    )
+
+    assert committed_verifier < generator < builder
+
+
 def test_original_asset_inventory_uses_manifest_not_local_build_products(tmp_path, monkeypatch):
     monkeypatch.syspath_prepend(str(SCRIPT.parent))
     package_spec = importlib.util.spec_from_file_location(

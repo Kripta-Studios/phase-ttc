@@ -24,6 +24,19 @@ el 21 de noviembre. Sus revisiones resultantes y SHA-256 leídos están en
 
 ## Web
 
+Para recompilar el paquete de fuentes en Linux desde el directorio que contiene
+`main.tex`, ejecutar los siguientes comandos. El primero regenera la tabla de
+configuración de latencia con los saltos de línea locales antes de que el
+constructor tome la huella de los archivos. El contrato verifica el material
+distribuido antes de esa regeneración.
+
+```sh
+python scripts/verify_publication.py
+python scripts/make_deployment_table.py
+python scripts/build_expanded.py
+python scripts/verify_publication.py
+```
+
 `scripts/stage_qualification_web.py` copia y parchea de forma fail-closed los tres
 builders, `paper-viewer.js` y `expanded-edition.json`; cuenta las páginas reales,
 instala el PDF ampliado, el `.tex`, el ZIP de fuentes y el PDF corto, y emite
