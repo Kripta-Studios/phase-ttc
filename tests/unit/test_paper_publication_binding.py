@@ -147,9 +147,7 @@ def test_paper_workflow_normalizes_runtime_table_before_expanded_build() -> None
     generator = source.index(
         "python paper/from_motion_to_time_20261102/scripts/make_deployment_table.py"
     )
-    builder = source.index(
-        "python paper/from_motion_to_time_20261102/scripts/build_expanded.py"
-    )
+    builder = source.index("python paper/from_motion_to_time_20261102/scripts/build_expanded.py")
 
     assert committed_verifier < generator < builder
 
