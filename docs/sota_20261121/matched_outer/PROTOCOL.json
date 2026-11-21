@@ -1,0 +1,70 @@
+{
+  "protocol_id": "PHASE_TTC_MATCHED_OUTER_V1_20261121",
+  "status": "frozen_before_pilot_results",
+  "frozen_date": "2026-11-21",
+  "population": "eAP TRAIN40 public signed TTC rows",
+  "unit_of_independence": "sequence_id; acquisition session is not available and no stronger independence is claimed",
+  "outer_design": {
+    "folds": 5,
+    "held_out_sequences_per_fold": 8,
+    "training_sequences_per_fold": 32,
+    "seeds": [7, 13, 21],
+    "fold_0": ["2cyv0Oedzg", "5ilM1PX2vz", "6h5yRW2LGc", "WbCh1DRerJ", "Z30i8WuL2N", "pzJcg1OCfc", "rhYxPcU29n", "t79dBxj1WS"],
+    "fold_1": ["2JkLL5W891", "34K84TaN11", "CzyQ8HKP6X", "JaGC4Q9pgU", "L36QTEoVkB", "mHGFBekt7X", "pBqGOb2vYq", "qGsgzl4Q8B"],
+    "fold_2": ["9ITOs4twfk", "EllUE6bwVp", "EuFGqTcqIz", "LMHPShQkaU", "OBneIVg4Cw", "q2k6O0X6JY", "vWp9XNYQ9V", "wE9MZUmiJP"],
+    "fold_3": ["2Y46OkK3ff", "8mNnrXjpVB", "A1Nhv0KtmL", "GjMYZjmSQb", "eX8t2nGd6O", "pakWgyPNTL", "qoohcdtLDH", "xkiVthsGwf"],
+    "fold_4": ["6WCDpro5rE", "8SdieOgbva", "ClXqVoZOFu", "DGqicHUGWb", "OYgB6RGWcq", "Po6ePjWYAz", "VLA3oBKFyX", "nRcwUlHyAd"]
+  },
+  "inner_design": {
+    "rule": "For outer fold k, the other four frozen blocks are a four-fold inner rotation. Every learned producer, normalizer, refiner and stacking head used to create an inner validation row excludes that row's complete sequence. Final outer prediction uses producers refit only on the 32 outer-training sequences and a stack trained only from inner OOF rows of those same 32 sequences.",
+    "checkpoint_selection": "inner validation signed Overall MiD, then failure rate; outer rows are never inspected for selection",
+    "cache_key": ["protocol_sha256", "outer_fold", "inner_fold_or_refit", "seed", "producer_weight_sha256", "modality", "history_budget_ms"]
+  },
+  "primary_contrast": {
+    "name": "PHASE_RGB_BOX minus GARL_RGB_BOX",
+    "direction": "negative favors PHASE",
+    "metric": "0.5*MiDc + 0.3*MiDs + 0.1*MiDl + 0.1*MiDn",
+    "aggregation": "mean predictions across seeds, paired row MiD differences, sequence-cluster bootstrap with 10000 replicates and seed 20261121",
+    "minimum_relevant_improvement_mid": 2.0,
+    "decision": "PHASE wins only if the upper 95% paired bootstrap bound is below -2.0 MiD; GARL wins only if the lower bound is above +2.0 MiD; otherwise architectural superiority remains open",
+    "failures": "Report coverage and failure rate for every arm. Primary contrast requires each arm to cover at least 99% and their absolute coverage difference to be at most 0.5 percentage points. Otherwise it is inconclusive. The official finite-row result is accompanied by a common-support sensitivity; missing rows are never silently imputed."
+  },
+  "secondary_contrasts": [
+    "PHASE_RGB_EVENT_BOX minus GARL_RGB_EVENT_BOX under the same 600 ms box history",
+    "each learned arm minus BOX_LEARNED_A",
+    "each arm minus GEOMETRIC_FIXED and CONSTANT_TRAIN"
+  ],
+  "temporal_budgets": {
+    "short_ms": 200,
+    "long_ms": 600,
+    "rule": "History comparisons use boxes available by the query time and identical raw support. An arm needing more history is incompatible for that budget unless retrained for it."
+  },
+  "query_contract": {
+    "required_identity": ["physical_query_id", "official_alias", "sequence_id", "track_id", "region_id"],
+    "required_clocks": ["query_timestamp_us", "capture_start_us", "capture_end_us", "box_available_us", "raw_observation_start_us", "raw_observation_end_us"],
+    "required_state": ["signed_ttc_target", "history_missing_reason", "model_fields"],
+    "causality": "capture_end_us <= box_available_us <= query_timestamp_us; every raw observation ends no later than query_timestamp_us; a future box invalidates the run",
+    "alias_rule": "aliases inherit a physical prediction and do not create independent training/evaluation rows"
+  },
+  "arms": {
+    "CONSTANT_TRAIN": {"learned": true, "model_fields": [], "history_ms": 0},
+    "GEOMETRIC_FIXED": {"learned": false, "model_fields": ["causal_boxes"], "history_ms": 600},
+    "BOX_LEARNED_A": {"learned": true, "model_fields": ["causal_boxes", "box_availability_clock"], "history_ms": 600},
+    "PHASE_RGB_BOX": {"learned": true, "model_fields": ["rgb", "causal_boxes", "box_availability_clock"], "history_ms": 600},
+    "GARL_RGB_BOX": {"learned": true, "model_fields": ["rgb", "causal_boxes", "box_availability_clock"], "history_ms": 600},
+    "PHASE_RGB_EVENT_BOX": {"learned": true, "model_fields": ["rgb", "events", "causal_boxes", "box_availability_clock"], "history_ms": 600},
+    "GARL_RGB_EVENT_BOX": {"learned": true, "model_fields": ["rgb", "events", "causal_boxes", "box_availability_clock"], "history_ms": 600},
+    "GARL_OFFICIAL_DESCRIPTIVE": {"learned": true, "model_fields": ["rgb", "events", "release_roi"], "history_ms": 100, "eligible_for_primary": false}
+  },
+  "pilot": {
+    "outer_fold": 0,
+    "seed": 7,
+    "order": ["contract_and_scorer_fixture", "boxes_only_from_existing_causal_tables", "one_media_shard_cpu", "one_temporal_cache_shard_cpu", "eligible_learned_branches"],
+    "inspection_rule": "If pilot rows enter the five-fold result, no precision result may be used to modify this protocol. Only parity, lineage, I/O, memory and wall-time are inspected until all five folds close.",
+    "advance_rule": "Advance a branch to all five folds and seeds only when lineage is complete, scorer parity passes, no outer sequence reaches any learned level, and projected local storage and elapsed time fit the measured resources."
+  },
+  "scorer_fixture": {
+    "signed_ttc": true,
+    "required": "reproduce the pinned official scorer on a fixture containing positive, negative and failed predictions before any precision result is accepted"
+  }
+}
