@@ -34,6 +34,12 @@ docs/train40_runtime_council_20261028/*_GENERATED.* -text -whitespace
 *.hdf5 binary
 *.h5 binary
 
+# Published HF assets are SHA-256-bound to the exact bytes recorded in HF_PUBLISHED.json.
+docs/sota_20261121/distribution/hf/PHASE-TTC/README.md -text whitespace=cr-at-eol
+docs/sota_20261121/distribution/hf/PHASE-TTC-Adapt/README.md -text whitespace=cr-at-eol
+docs/sota_20261121/distribution/space/README.md -text whitespace=cr-at-eol
+docs/sota_20261121/distribution/space/index.html -text whitespace=cr-at-eol
+
 # The publication bundle contains SHA-256-bound inputs with original line endings.
 paper/** -text whitespace=cr-at-eol
 paper/from_motion_to_time_20261102/audit_20261104/sources/** -text -whitespace

@@ -1,0 +1,19 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.10.0+cpu
+torchvision==0.25.0+cpu
+numpy>=1.26,<3
+scipy>=1.14,<2
+Pillow>=10,<13
+h5py>=3.11,<4
+hdf5plugin>=5,<8
+pandas>=2.2,<4
+pyarrow>=17
+PyYAML>=6
+psutil>=7
+pydantic>=2.7,<3
+omegaconf>=2.3,<3
+huggingface_hub>=1.0,<3
+jsonschema>=4.26
+gdown>=5
+scikit-learn>=1.5,<2
+gradio==6.31.0

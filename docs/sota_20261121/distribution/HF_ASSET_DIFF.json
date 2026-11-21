@@ -1,0 +1,58 @@
+{
+  "schema": "phase_ttc_hf_asset_diff_v1",
+  "prepared_date": "2026-11-21",
+  "evidence_commit": "8fa8dda64bcdf846331191eb4ad4c8171b979699",
+  "note": "Only these five remote paths are in publication scope; source directories and cache files are excluded.",
+  "assets": [
+    {
+      "repo": "AlvaroSchwiedop/PHASE-TTC",
+      "repo_type": "model",
+      "source_revision": "9c7ec9b886597cb3e744f148c51f6a16f2d29520",
+      "remote_path": "README.md",
+      "local_path": "hf/PHASE-TTC/README.md",
+      "before_sha256": "27e1253959bd6f9f905ee80e224b4d0011a86a5ac441d0a57db365fec11b2f00",
+      "after_sha256": "684c536b57cfbec77f942c0e5d306d450fe9396c818165e2d27eda252ed91bed",
+      "after_bytes": 12083
+    },
+    {
+      "repo": "AlvaroSchwiedop/PHASE-TTC-Adapt",
+      "repo_type": "model",
+      "source_revision": "9d30a6ccbfff1d461525e87edc74e9f4531d1e70",
+      "remote_path": "README.md",
+      "local_path": "hf/PHASE-TTC-Adapt/README.md",
+      "before_sha256": "da3cf2d0d2b8d369a4f5274af8d4e1d7eb856009a4d8fa8a05131d0dabdfb5df",
+      "after_sha256": "e52ac22b4fdbb3dfa901e205780643d30bd05125ec8e7892ae55679cb1e2f36c",
+      "after_bytes": 10223
+    },
+    {
+      "repo": "AlvaroSchwiedop/PHASE-TTC",
+      "repo_type": "space",
+      "source_revision": "2c5fc66e84f7d5421aa17b6e6543d624ffcd1bc8",
+      "remote_path": "README.md",
+      "local_path": "space/README.md",
+      "before_sha256": "555ea8ecb845c51978f63b4d958445a07770b7c7e1bb3a9c674cdd81c86b84bc",
+      "after_sha256": "0afacac56688c92aed2052df0e6fa42ad2886ca9788b22142b074e7fd57f8346",
+      "after_bytes": 4193
+    },
+    {
+      "repo": "AlvaroSchwiedop/PHASE-TTC",
+      "repo_type": "space",
+      "source_revision": "2c5fc66e84f7d5421aa17b6e6543d624ffcd1bc8",
+      "remote_path": "index.html",
+      "local_path": "space/index.html",
+      "before_sha256": "dabef81b2b1bfdd5748a4e4da8c14935b27ecd89676187564d44412327788f1c",
+      "after_sha256": "aeb537c67eac527c7a28d1d820d2943834f324e28b3b39ab91844d469de92efd",
+      "after_bytes": 17966
+    },
+    {
+      "repo": "AlvaroSchwiedop/PHASE-TTC",
+      "repo_type": "space",
+      "source_revision": "2c5fc66e84f7d5421aa17b6e6543d624ffcd1bc8",
+      "remote_path": "gradio_app.zip",
+      "local_path": "space/gradio_app.zip",
+      "before_sha256": "4ec24f934f79f15ceb3d5af2d0b7aa2d1d06dfbdc707ef67599266ee52eb69bc",
+      "after_sha256": "4169a9f33dc79db9942c4640c8b36598a8ebed8e4d88df921a35ef9b91ea7889",
+      "after_bytes": 6223
+    }
+  ]
+}

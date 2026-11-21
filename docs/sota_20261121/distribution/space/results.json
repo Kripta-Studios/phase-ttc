@@ -1,0 +1,67 @@
+{
+  "revisions": {
+    "PHASE-TTC": "692c102a5a05336b4f05c7a297a93499d4afe18e",
+    "PHASE-TTC-Adapt": "4b6f1f21c3b17cbb71d3e81749d3acb6b1f79c9c"
+  },
+  "examples": {
+    "synthetic": {
+      "PHASE-TTC": {
+        "variant": "original",
+        "status": "ok",
+        "original_ttc_seconds": 2.895109176635742,
+        "rgb_ttc_seconds": 2.740684986114502,
+        "event_ttc_seconds": 2.984147548675537,
+        "ttc_seconds": 2.895109176635742,
+        "query_us": 650000,
+        "event_history_count": 4,
+        "rgb_history_count": 4,
+        "reason": "fused_event_rgb",
+        "device": "cpu"
+      },
+      "PHASE-TTC-Adapt": {
+        "variant": "adapted",
+        "status": "ok",
+        "original_ttc_seconds": 2.895109176635742,
+        "rgb_ttc_seconds": 2.740684986114502,
+        "event_ttc_seconds": 2.984147548675537,
+        "ttc_seconds": 1.276572346687317,
+        "query_us": 650000,
+        "event_history_count": 4,
+        "rgb_history_count": 4,
+        "reason": "fused_event_rgb",
+        "device": "cpu",
+        "geometry_reason": "available"
+      }
+    },
+    "real": {
+      "PHASE-TTC": {
+        "variant": "original",
+        "status": "ok",
+        "original_ttc_seconds": 3.4358718395233154,
+        "rgb_ttc_seconds": 3.597015142440796,
+        "event_ttc_seconds": 3.955888032913208,
+        "ttc_seconds": 3.4358718395233154,
+        "query_us": 520329,
+        "event_history_count": 4,
+        "rgb_history_count": 4,
+        "reason": "fused_event_rgb",
+        "device": "cpu"
+      },
+      "PHASE-TTC-Adapt": {
+        "variant": "adapted",
+        "status": "ok",
+        "original_ttc_seconds": 3.4358718395233154,
+        "rgb_ttc_seconds": 3.597015142440796,
+        "event_ttc_seconds": 3.955888032913208,
+        "ttc_seconds": 3.844980478286743,
+        "query_us": 520329,
+        "event_history_count": 4,
+        "rgb_history_count": 4,
+        "reason": "fused_event_rgb",
+        "device": "cpu",
+        "geometry_reason": "available"
+      }
+    }
+  },
+  "recorded": true
+}

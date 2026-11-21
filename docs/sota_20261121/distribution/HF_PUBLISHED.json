@@ -1,0 +1,31 @@
+[
+  {
+    "type": "model",
+    "repo": "AlvaroSchwiedop/PHASE-TTC",
+    "previous": "9c7ec9b886597cb3e744f148c51f6a16f2d29520",
+    "revision": "5d1b1e7baeb10281cfcd5f177d6d7e86e9201543",
+    "reader_sha256": {
+      "README.md": "684c536b57cfbec77f942c0e5d306d450fe9396c818165e2d27eda252ed91bed"
+    }
+  },
+  {
+    "type": "model",
+    "repo": "AlvaroSchwiedop/PHASE-TTC-Adapt",
+    "previous": "9d30a6ccbfff1d461525e87edc74e9f4531d1e70",
+    "revision": "513ed0331949863546c72d6fc36c368e2c63e5ac",
+    "reader_sha256": {
+      "README.md": "e52ac22b4fdbb3dfa901e205780643d30bd05125ec8e7892ae55679cb1e2f36c"
+    }
+  },
+  {
+    "type": "space",
+    "repo": "AlvaroSchwiedop/PHASE-TTC",
+    "previous": "2c5fc66e84f7d5421aa17b6e6543d624ffcd1bc8",
+    "revision": "40b79c547746efac2caed3bf8e01eb5b813f8d50",
+    "reader_sha256": {
+      "README.md": "0afacac56688c92aed2052df0e6fa42ad2886ca9788b22142b074e7fd57f8346",
+      "index.html": "aeb537c67eac527c7a28d1d820d2943834f324e28b3b39ab91844d469de92efd",
+      "gradio_app.zip": "4169a9f33dc79db9942c4640c8b36598a8ebed8e4d88df921a35ef9b91ea7889"
+    }
+  }
+]
