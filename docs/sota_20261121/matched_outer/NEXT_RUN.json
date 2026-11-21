@@ -1,0 +1,44 @@
+{
+  "artifact_type": "phase_ttc_matched_outer_resume_recipe_v1",
+  "status": "implementation_gaps_explicit",
+  "protocol_sha256": "c5a6260e033760909834dcc32ffe3bbefda480087c640f4fc8198c1785a76508",
+  "completed_smoke": {
+    "garl_visual_only": "real CPU forward/backward/update/checkpoint on two outer-fold training rows; two exterior rows forwarded without scoring",
+    "garl_rgbe_late_fusion": "real CPU forward/backward/update/checkpoint on two outer-fold training rows; two exterior rows forwarded without scoring",
+    "phase_box_head": "real forward/backward checkpoints exist for all five outer folds and three seeds",
+    "phase_rgb_producer": "not run; no fold-aware trainer is integrated",
+    "precision_inspected": false
+  },
+  "garl_outer_commands_after_cache_manifests_exist": [
+    "python scripts/train_garl_release_cache.py --release-root <GARL_RELEASE> --cache-manifest <OUTER0_INNER0_MANIFEST> --output-dir <RUN>/garl_rgb/outer0/inner0/seed7 --variant visual_only --seed 7 --epochs 50 --batch-size 128 --num-workers 4 --device cuda",
+    "python scripts/train_garl_release_cache.py --release-root <GARL_RELEASE> --cache-manifest <OUTER0_REFIT_MANIFEST> --output-dir <RUN>/garl_rgb/outer0/refit/seed7 --variant visual_only --seed 7 --epochs 50 --batch-size 128 --num-workers 4 --device cuda",
+    "python scripts/train_garl_release_cache.py --release-root <GARL_RELEASE> --cache-manifest <OUTER0_INNER0_MANIFEST> --output-dir <RUN>/garl_rgbe/outer0/inner0/seed7 --variant rgbe_late_fusion --seed 7 --epochs 50 --batch-size 128 --num-workers 4 --device cuda"
+  ],
+  "required_rotation": "repeat inner0..inner3 plus refit for seeds 7,13,21; then repeat outer0..outer4 without changing protocol",
+  "missing_integrations": [
+    {
+      "file": "scripts/materialize_garlttc_rotating_cache.py",
+      "line": 271,
+      "change": "propagate mask_reader=None to the current _materialize_row API (P3 bounded adapter already proves this call); then build fold/inner-specific lossless manifests keyed by protocol, fold and producer hash"
+    },
+    {
+      "file": "operational/matched_outer/pilot.py",
+      "line": 98,
+      "change": "replace precomputed PHASE20 consumption for architecture arms with fold-aware producer outputs; existing arrays['features'] cannot be used for integral outer claims"
+    },
+    {
+      "file": "new operational/matched_outer/phase_producer.py",
+      "change": "implement or bind the original PHASE RGB producer trainer with explicit train-sequence allowlist, inner validation predictions, refit checkpoint and weight/normalizer lineage; no equivalent runnable trainer exists in this handoff"
+    },
+    {
+      "file": "new operational/matched_outer/stack.py",
+      "change": "train the common box stack only from four inner OOF producer tables and evaluate once on the exterior eight sequences; reject any cache whose producer hash/fold key differs"
+    }
+  ],
+  "resume_gate": [
+    "dedicated GPU window",
+    "at least 57 GB scratch for one full retained cache or rotating-cache consumer",
+    "all four inner producer checkpoints plus refit checkpoint have complete exclusion lineage",
+    "no outer precision inspected before all five folds close"
+  ]
+}

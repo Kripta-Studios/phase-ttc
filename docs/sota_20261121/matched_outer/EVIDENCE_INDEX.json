@@ -1,0 +1,311 @@
+{
+  "artifact_type": "phase_ttc_matched_outer_evidence_seal_v1",
+  "artifacts": {
+    "operational/matched_outer/run/CONTRACT_EVIDENCE.json": {
+      "bytes": 741,
+      "sha256": "4ea8cbe0129600314fd2b42b4106a9cfef61705284d4289677048beb684061ac"
+    },
+    "operational/matched_outer/run/LEVEL_LINEAGE.csv": {
+      "bytes": 18622,
+      "sha256": "5ba9f69481e277ab69b40a362b6b1e2ea6177e86055290d503af8ddf483fc5e7"
+    },
+    "operational/matched_outer/run/QUERY_CONTRACT.parquet": {
+      "bytes": 4830556,
+      "sha256": "39b9b838d0c03867b374c4d75a65cae5cbc5afcb60a0d23e8c713fd827d8c335"
+    },
+    "operational/matched_outer/run/QUERY_CONTRACT_SAMPLE.csv": {
+      "bytes": 7408,
+      "sha256": "4b9e300464c2172e87253cfe2d9bc691de42337470b6e44c22ded59d72ee0d45"
+    },
+    "operational/matched_outer/run/RUN_RECEIPT.json": {
+      "bytes": 8489,
+      "sha256": "031d50b068ea248897d933cc7f83d874cf8819b493cfe3d114bea47715367969"
+    },
+    "operational/matched_outer/run/WEIGHT_LINEAGE.csv": {
+      "bytes": 10227,
+      "sha256": "d770a8fa97ebd23564fb4354826c4945ac324b0ad97b19181a3ced898ee50726"
+    },
+    "operational/matched_outer/run/fold0/box_head_seed13.npz": {
+      "bytes": 164390,
+      "sha256": "3c5841b6bef9d482a95719233c367300720f40c63585ae0b6f3eec9d9d55e371"
+    },
+    "operational/matched_outer/run/fold0/box_head_seed13.state.pt": {
+      "bytes": 10661,
+      "sha256": "e70c7c25d010585100a7dad4a8a1dae88d8bc776cf610daaffa833abec2099a1"
+    },
+    "operational/matched_outer/run/fold0/box_head_seed21.npz": {
+      "bytes": 164542,
+      "sha256": "6e8f31e432eb6af20008d0868357e0cd13592d9be56914839834237b1eb6a9b3"
+    },
+    "operational/matched_outer/run/fold0/box_head_seed21.state.pt": {
+      "bytes": 10661,
+      "sha256": "743d8620d4ae483585991825e1f9132d2c43873df361b0e327a1fdafc372b820"
+    },
+    "operational/matched_outer/run/fold0/box_head_seed7.npz": {
+      "bytes": 164574,
+      "sha256": "1d459f8bdafc2aa054ed221b9d1a9bfddcda95e1514a3492bb4c47fd91d5b614"
+    },
+    "operational/matched_outer/run/fold0/box_head_seed7.state.pt": {
+      "bytes": 10645,
+      "sha256": "f26a41389b97299ea3a2b7544b9ee7adf09f02cab5cc326e0d548b482ede01a2"
+    },
+    "operational/matched_outer/run/fold0/fixed_references.npz": {
+      "bytes": 151070,
+      "sha256": "26e9e4cae061ba06348842a81b5ec7be580394cf1c0872ea81df980106e1d906"
+    },
+    "operational/matched_outer/run/fold1/box_head_seed13.npz": {
+      "bytes": 183436,
+      "sha256": "5f0c7a73dd1df178261f66d77c1bc5abcfcf04bbd8ebddb062c962210d75817d"
+    },
+    "operational/matched_outer/run/fold1/box_head_seed13.state.pt": {
+      "bytes": 10661,
+      "sha256": "8af713f7eeb719e3ff4997e1d52f2167b07cd0e5d492e7d1c204a7ab9341f695"
+    },
+    "operational/matched_outer/run/fold1/box_head_seed21.npz": {
+      "bytes": 183468,
+      "sha256": "3fb24c301c81fdc2b23f70aa700f324e5a413b60c90e17c4ef79809e118aeefd"
+    },
+    "operational/matched_outer/run/fold1/box_head_seed21.state.pt": {
+      "bytes": 10661,
+      "sha256": "19e7cb5463fcad652b4e5b06fb3ddb8e9c6f2b27ec7714156a4cc8e4895d289b"
+    },
+    "operational/matched_outer/run/fold1/box_head_seed7.npz": {
+      "bytes": 183475,
+      "sha256": "60b5e3b8c5e819b95e3ea90648bcbf86307ad19821e932d4191a64d6bd669ce6"
+    },
+    "operational/matched_outer/run/fold1/box_head_seed7.state.pt": {
+      "bytes": 10645,
+      "sha256": "b637a432d1d14d183df72a12e8593fcff73567f8be6903cae075fe00ad31f373"
+    },
+    "operational/matched_outer/run/fold1/fixed_references.npz": {
+      "bytes": 169148,
+      "sha256": "584bda6fbaf70c7d3f7e2ab68911e29e9caf729e111c49da812070b6a4b90e74"
+    },
+    "operational/matched_outer/run/fold2/box_head_seed13.npz": {
+      "bytes": 179015,
+      "sha256": "c87ace8044cee81958f849b0b370d5575c520d7e343f377d1d76e2f34498db0a"
+    },
+    "operational/matched_outer/run/fold2/box_head_seed13.state.pt": {
+      "bytes": 10661,
+      "sha256": "16089e863a40f6fa34092ca800b762e6eb070216699e5bf329d2159e03c29f0b"
+    },
+    "operational/matched_outer/run/fold2/box_head_seed21.npz": {
+      "bytes": 178815,
+      "sha256": "2c56f41a7ac43ec0896dc8dd7ad55efae4b735e4bb053c3f58cdaadfc0fa195d"
+    },
+    "operational/matched_outer/run/fold2/box_head_seed21.state.pt": {
+      "bytes": 10661,
+      "sha256": "49a8c1d846463a5de346892854d368e54d13980a26585c26565490c9f7901421"
+    },
+    "operational/matched_outer/run/fold2/box_head_seed7.npz": {
+      "bytes": 178889,
+      "sha256": "54e6d1b147259a835f220e83570655158472f4a9c36410711e5a0000ad2d7a09"
+    },
+    "operational/matched_outer/run/fold2/box_head_seed7.state.pt": {
+      "bytes": 10645,
+      "sha256": "da060942f6f1e7e5b7b2e6e17b87bbc66cd516f5b1984642f111f50e7ff59aa9"
+    },
+    "operational/matched_outer/run/fold2/fixed_references.npz": {
+      "bytes": 164539,
+      "sha256": "32e242b512987ef0c2e6de06262484f6b9914aef7e1e0a2776002cf61306934e"
+    },
+    "operational/matched_outer/run/fold3/box_head_seed13.npz": {
+      "bytes": 182387,
+      "sha256": "850cee5c6532358e65f991299d6040215a757138dc064613e0f036d464cd8113"
+    },
+    "operational/matched_outer/run/fold3/box_head_seed13.state.pt": {
+      "bytes": 10661,
+      "sha256": "6ce1a7064e402acad3e6a0c06980020c05315fc76060b701b411a86de8994c74"
+    },
+    "operational/matched_outer/run/fold3/box_head_seed21.npz": {
+      "bytes": 182485,
+      "sha256": "b2df3f4e51ef5b99d633768ecf335ea022951acba050f8913f3e726c15a0946a"
+    },
+    "operational/matched_outer/run/fold3/box_head_seed21.state.pt": {
+      "bytes": 10661,
+      "sha256": "871ba0182b8e31acc7bcd0e7b9c9b00d82151eaa88e41a00855e0071ad8b2f75"
+    },
+    "operational/matched_outer/run/fold3/box_head_seed7.npz": {
+      "bytes": 182601,
+      "sha256": "9d429ee5284234e7854684abf9164033dc9b99e4e5b41f6190219e6834763a55"
+    },
+    "operational/matched_outer/run/fold3/box_head_seed7.state.pt": {
+      "bytes": 10645,
+      "sha256": "028f2ab8881b86dd0eac1aef0e077f1b3be3cd919e3e0ebd263013575c203a51"
+    },
+    "operational/matched_outer/run/fold3/fixed_references.npz": {
+      "bytes": 167872,
+      "sha256": "64ece6c7b90999605851a14b8fddbeb6e4c7908877f6fa70783278928b6c981c"
+    },
+    "operational/matched_outer/run/fold4/box_head_seed13.npz": {
+      "bytes": 176540,
+      "sha256": "e746eb4c502effdc543514ae426b6e84d4cf1013e2cf0e3471be145fa44c42af"
+    },
+    "operational/matched_outer/run/fold4/box_head_seed13.state.pt": {
+      "bytes": 10661,
+      "sha256": "41858f8d8e39ce5da92bcf1288eb06ed6f1329009373a1d1394ad4eb3b7823e0"
+    },
+    "operational/matched_outer/run/fold4/box_head_seed21.npz": {
+      "bytes": 176632,
+      "sha256": "e6f516b1def2f07af4c2f6c1381508634b9868233b55813d025eaa05f9cda029"
+    },
+    "operational/matched_outer/run/fold4/box_head_seed21.state.pt": {
+      "bytes": 10661,
+      "sha256": "a3a2e9ec3f8f555dd777204df1c570df1d18e22bb93614455aac86dab5a5b049"
+    },
+    "operational/matched_outer/run/fold4/box_head_seed7.npz": {
+      "bytes": 176633,
+      "sha256": "cd4398a008d1cee74d1d2a73d8fd0e6331b1bd819fd6912d73b5fb0ff810acdf"
+    },
+    "operational/matched_outer/run/fold4/box_head_seed7.state.pt": {
+      "bytes": 10645,
+      "sha256": "b9ef8a126e430d5e292fac3c8bcf07a619ecf3b74e15fe3c516c2d76f7c909f2"
+    },
+    "operational/matched_outer/run/fold4/fixed_references.npz": {
+      "bytes": 162485,
+      "sha256": "df42e592840100118261dbcf0a6c89128164642a97f90774c6a9647f9a82922b"
+    },
+    "operational/matched_outer/run/io_probe/IO_PROBE.json": {
+      "bytes": 1372,
+      "sha256": "76a840aa1a9bbe212b33aa631111a541f0f6fac5277629fb1fc35ba1493cf4d4"
+    },
+    "operational/matched_outer/run/io_probe/outer0_media_probe.pt.gz": {
+      "bytes": 10255824,
+      "sha256": "7403244932262446d51200c758a61e94d8112f50a3d7847368831fb65aaaeb72"
+    },
+    "operational/matched_outer/run/smoke/SMOKE_RECEIPT.json": {
+      "bytes": 3310,
+      "sha256": "d1e6cb08fe3c50b40819741d8917b0ff66a82745bc8a3fd3e7158557dafd827e"
+    },
+    "operational/matched_outer/run/smoke/rgbe_late_fusion_one_step.pt": {
+      "bytes": 973295915,
+      "sha256": "1193bac685a4469e2060f5863055659204db555f805e9c5c8a11b49f9efc0730"
+    },
+    "operational/matched_outer/run/smoke/rgbe_late_fusion_outer_forward.npz": {
+      "bytes": 480,
+      "sha256": "4515595bbbe8966971c1f0f12f97c02cc13903ff5cd576cd62cc4afd74d02ba0"
+    },
+    "operational/matched_outer/run/smoke/visual_only_one_step.pt": {
+      "bytes": 98592867,
+      "sha256": "ee183a08b6cdc3a74871bd717b3314a139defa27bb0d2c9f7ff4002f5b8e2eda"
+    },
+    "operational/matched_outer/run/smoke/visual_only_outer_forward.npz": {
+      "bytes": 477,
+      "sha256": "4032fdd58b47335fd58652185bfc2b2bdbfe4eff0180c5c57fafbdeb491c0b6b"
+    }
+  },
+  "causal_geometry_binding": {
+    "box_disagreements": 0,
+    "geometry_g_exact": true,
+    "geometry_raw_exact": true,
+    "rows": 88744,
+    "status": "pass"
+  },
+  "created_at_utc": "2026-11-21T16:04:42.777829+00:00",
+  "git": {
+    "commit": "1cad8cdc6d6aa3716ce5bc1ce7c4fadc7441f25d",
+    "dirty": true,
+    "status_short": [
+      " M .github/workflows/paper.yaml",
+      " M README.md",
+      " M docs/decisions/ADR-0046-official-submission-provenance-and-history.md",
+      " M docs/decisions/ADR-0047-garlttc-submission-discipline.md",
+      " M docs/model_card.md",
+      " M docs/sota_20261118/SUBMISSION_LEDGER.md",
+      " M paper/README.md",
+      " M paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.pdf",
+      " M paper/from_motion_to_time_20261102/PHASE_TTC_From_Motion_to_Time_Expanded.tex",
+      " M paper/from_motion_to_time_20261102/README.md",
+      " D paper/from_motion_to_time_20261102/build/validation.json",
+      " M paper/from_motion_to_time_20261102/figures/audit_transfer_exceedance.pdf",
+      " M paper/from_motion_to_time_20261102/figures/audit_transfer_sequences.pdf",
+      " M paper/from_motion_to_time_20261102/figures/audit_transfer_summary.pdf",
+      " M paper/from_motion_to_time_20261102/figures/extended_buffered_traces.pdf",
+      " M paper/from_motion_to_time_20261102/figures/extended_coverage_cdf.pdf",
+      " M paper/from_motion_to_time_20261102/figures/persistent_latency_cdf.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_architecture.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_fusion.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_history.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_oof.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_runtime.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_runtime_clock.pdf",
+      " M paper/from_motion_to_time_20261102/figures/publication_teaser.pdf",
+      " M paper/from_motion_to_time_20261102/main.tex",
+      " M paper/from_motion_to_time_20261102/revision/build_receipt.json",
+      " M paper/from_motion_to_time_20261102/revision/publication_contract.json",
+      " M paper/from_motion_to_time_20261102/scripts/build_expanded.py",
+      " M paper/from_motion_to_time_20261102/scripts/package_expanded.py",
+      " M paper/from_motion_to_time_20261102/scripts/verify_publication.py",
+      " M paper/from_motion_to_time_20261102/sections/discussion.tex",
+      " M paper/from_motion_to_time_20261102/sections/final_model.tex",
+      " M paper/from_motion_to_time_20261102/sections/followup_controls.tex",
+      " M paper/from_motion_to_time_20261102/sections/introduction.tex",
+      " M paper/from_motion_to_time_20261102/sections/methods.tex",
+      " M paper/from_motion_to_time_20261102/sections/official_results.tex",
+      " M paper/from_motion_to_time_20261102/sections/protocol.tex",
+      " M paper/requirements-paper.txt",
+      " M tests/unit/test_paper_publication_binding.py",
+      "?? docs/sota_20261121/distribution/",
+      "?? docs/sota_20261121/geometry_service/",
+      "?? docs/sota_20261121/lineage/",
+      "?? docs/sota_20261121/matched_outer/EVIDENCE_INDEX.json",
+      "?? docs/sota_20261121/matched_outer/NEXT_RUN.json",
+      "?? docs/sota_20261121/matched_outer/REPORT.md",
+      "?? docs/sota_20261121/matched_outer/SUMMARY.json",
+      "?? operational/geometry_service/",
+      "?? operational/matched_outer/",
+      "?? paper/from_motion_to_time_20261102/data/benchmark_scope/",
+      "?? paper/from_motion_to_time_20261102/data/followup/",
+      "?? paper/from_motion_to_time_20261102/data/official_submissions/",
+      "?? paper/from_motion_to_time_20261102/main_short.pdf",
+      "?? paper/from_motion_to_time_20261102/main_short.tex",
+      "?? paper/from_motion_to_time_20261102/scripts/make_followup_tables.py",
+      "?? paper/from_motion_to_time_20261102/scripts/make_official_submission_tables.py",
+      "?? paper/from_motion_to_time_20261102/sections/declarations.tex",
+      "?? paper/from_motion_to_time_20261102/sections/short_article.tex",
+      "?? paper/from_motion_to_time_20261102/tables/followup_fcwd.tex",
+      "?? paper/from_motion_to_time_20261102/tables/followup_latency.tex",
+      "?? paper/from_motion_to_time_20261102/tables/followup_literature.tex",
+      "?? paper/from_motion_to_time_20261102/tables/official_submissions.tex",
+      "?? paper/from_motion_to_time_20261102/tables/official_submissions_short.tex",
+      "?? scripts/verify_submission_lineage.py",
+      "?? tests/regression/test_geometry_service_artifacts.py",
+      "?? tests/unit/test_followup_publication_tables.py",
+      "?? tests/unit/test_geometry_service.py",
+      "?? tests/unit/test_official_submission_tables.py",
+      "?? tests/unit/test_submission_lineage_index.py"
+    ]
+  },
+  "inputs": {
+    "C:/Users/\u00c1lvaro Schwiedop/Desktop/KriptaStudios/EVOCON_JEPA_Codex_Handoff/e-jepa-ttc-v18-joint-measurement/artifacts/sota_20261118/geometry/work/DATA_RECEIPT.json": "35d1b769778a57c86fac6f0e3274f1fad3fd027a06d6dd9aa23856bb4a688335",
+    "C:/Users/\u00c1lvaro Schwiedop/Desktop/KriptaStudios/EVOCON_JEPA_Codex_Handoff/e-jepa-ttc-v18-joint-measurement/artifacts/sota_20261118/geometry/work/train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d",
+    "D:/EVOCON_ARCHIVE_20261119/simplex_t/T1/local_source_mirror/garl/annotations/train.parquet": "64e9a81232643ecce1d2f66e906c7cff6ea1e9e6958f81588b95e112693b11ad",
+    "D:/EVOCON_ARCHIVE_20261119/simplex_t/T1/local_source_mirror/garl/data/train.parquet": "03dd3022db4b5f43bb10244fc8778476d74351e764f73a90c8566af949c17fd6"
+  },
+  "protocol_sha256": "c5a6260e033760909834dcc32ffe3bbefda480087c640f4fc8198c1785a76508",
+  "query_contract_validation": {
+    "aliases": 0,
+    "physical_queries": 88744,
+    "rows": 88744,
+    "status": "pass"
+  },
+  "runner_sha256": {
+    "operational/matched_outer/contracts.py": "3e07b8284c8402419f7817c07e64a4b23d9448a923ef1316dba24319e3e905fb",
+    "operational/matched_outer/evidence.py": "247fbf733ed513ff49a1562443a3c7f32d0c11458cac1f1435456cb49496c09c",
+    "operational/matched_outer/io_probe.py": "9f8ae7cba8f5c6cb76cef2e7e686fff2dce6a28126437554d8278f2f7ed36529",
+    "operational/matched_outer/pilot.py": "44705f77a1161fc4607e7c2badec9732d28c43b451380d9b91c9a5646734aff0",
+    "operational/matched_outer/seal.py": "2cfd0ab7726b497adbc1ce19b6ba15bc489f9a1fc58e4c96019ffbca32806368",
+    "operational/matched_outer/smoke.py": "2415e6c39486872548f264667391c3886268f34373d14935fd59910ce4042d7f",
+    "operational/phase_geometry/geometry.py": "c5e0bda5ed8b20fd0104c85c612ea7eb757fb18e93c48af7f4633d059e3d0a37",
+    "operational/phase_geometry/heads.py": "b94bdfa134e262021351fcea633535deb47ee8a792764748cf3527085536d478",
+    "operational/phase_geometry/metrics.py": "8dc9fabfc655ba9f4b11db5cbc393e3955ca9b7695e692509366c5d4d217f187",
+    "operational/phase_geometry/variants.py": "6b97ce3929b204332e0c8a171097b54fd0a0a4c2457b6463df629307c7c4bcf6",
+    "operational/phase_geometry/weights.py": "56147f2d3118cd8492adbeaeaccf2e64c8b480b4312490a6927669abe53fcfb5"
+  },
+  "scope": {
+    "box_branches_complete": true,
+    "garl_rgb_box_complete": false,
+    "phase_rgb_box_complete": false,
+    "primary_architecture_contrast_available": false
+  }
+}

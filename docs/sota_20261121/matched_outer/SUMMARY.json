@@ -1,0 +1,93 @@
+{
+  "artifact_type": "phase_ttc_matched_outer_summary_v1",
+  "protocol_sha256": "c5a6260e033760909834dcc32ffe3bbefda480087c640f4fc8198c1785a76508",
+  "status": "box_branches_complete_architecture_contrast_resource_blocked",
+  "completed": {
+    "folds": 5,
+    "seeds": [7, 13, 21],
+    "sequences": 40,
+    "physical_queries": 88744,
+    "learned_box_weights": 15,
+    "box_run_cpu_seconds": 200.50324320001528,
+    "scorer_absolute_difference": 0.0,
+    "causal_geometry_recomputed_exactly": true,
+    "future_box_rows": 0,
+    "future_observation_rows": 0
+  },
+  "box_results": {
+    "constant_train_overall_mid": 198.08355161189172,
+    "geometric_fixed_overall_mid": 61.91742321485954,
+    "box_learned_seed_mean_overall_mid": 46.08711701402043,
+    "box_learned_seed_sd_overall_mid": 0.10255219331983009,
+    "box_learned_mean_prediction_overall_mid": 46.258934689582865,
+    "box_learned_minus_geometric_fixed_mid": -15.652609668220718,
+    "box_learned_minus_geometric_fixed_ci95": [-16.931884857226457, -14.464356229817472]
+  },
+  "io_probe": {
+    "rows": 16,
+    "roles": {"train": 8, "outer": 8},
+    "cpu_only": true,
+    "media_rows_per_second": 4.523557826838172,
+    "media_wall_seconds": 3.5370389000163414,
+    "media_peak_rss_delta_bytes": 259760128,
+    "cache_rows_per_second": 10.535886810986298,
+    "cache_wall_seconds": 1.518619199981913,
+    "cache_peak_rss_delta_bytes": 200540160,
+    "shard_bytes": 10255824,
+    "full_cache_bytes_linear": 56883927816,
+    "full_media_build_seconds_linear": 19618.186258940637,
+    "full_cache_read_seconds_linear": 8423.02139269968,
+    "projection_is_not_training_time": true
+  },
+  "no_precision_smoke": {
+    "garl_visual_only_forward_backward": true,
+    "garl_visual_only_input_shape": [2, 6, 128, 128],
+    "garl_visual_only_checkpoint_sha256": "ee183a08b6cdc3a74871bd717b3314a139defa27bb0d2c9f7ff4002f5b8e2eda",
+    "garl_rgbe_forward_backward": true,
+    "garl_rgbe_input_shape": [2, 46, 128, 128],
+    "garl_rgbe_checkpoint_sha256": "1193bac685a4469e2060f5863055659204db555f805e9c5c8a11b49f9efc0730",
+    "outer_rows_forwarded_per_variant": 2,
+    "precision_metric_computed": false,
+    "phase_box_head_forward_backward": true,
+    "phase_rgb_producer_forward_backward": false
+  },
+  "not_completed": {
+    "phase_rgb_box_outer": "existing PHASE20 training-side producers saw the held-out block; integral outer producer retraining was not run",
+    "garl_rgb_box_outer": "official release producer retraining was not run",
+    "phase_rgb_event_box_outer": "integral nested producer chain was not run",
+    "garl_rgb_event_box_outer": "integral nested producer chain was not run",
+    "primary_architecture_contrast": "not computed; no fabricated OOF values"
+  },
+  "resource_block": {
+    "one_outer_train_rows_approx": 70995,
+    "one_outer_cache_build_hours_linear": 4.36,
+    "one_outer_cache_read_hours_per_pass_linear": 1.87,
+    "garl_release_recipe": "50 epochs and three stages",
+    "nested_requirement": "four inner producers plus one outer refit per architecture and seed",
+    "gpu_used": false,
+    "decision": "do not launch full producer training from this pilot"
+  },
+  "commit_safe": [
+    "operational/matched_outer/*.py",
+    "operational/matched_outer/run/.gitignore",
+    "docs/sota_20261121/matched_outer/PROTOCOL.json",
+    "docs/sota_20261121/matched_outer/PROTOCOL.md",
+    "docs/sota_20261121/matched_outer/FREEZE_RECEIPT.json",
+    "docs/sota_20261121/matched_outer/EVIDENCE_INDEX.json",
+    "docs/sota_20261121/matched_outer/NEXT_RUN.json",
+    "docs/sota_20261121/matched_outer/SUMMARY.json",
+    "docs/sota_20261121/matched_outer/REPORT.md"
+  ],
+  "local_only_excluded_from_git": [
+    "operational/matched_outer/run/QUERY_CONTRACT.parquet",
+    "operational/matched_outer/run/fold*/box_head_seed*.npz",
+    "operational/matched_outer/run/fold*/box_head_seed*.state.pt",
+    "operational/matched_outer/run/fold*/fixed_references.npz",
+    "operational/matched_outer/run/io_probe/outer0_media_probe.pt.gz",
+    "operational/matched_outer/run/smoke/*.pt",
+    "operational/matched_outer/run/smoke/*_outer_forward.npz",
+    "E:/GarlTTC_dataset/data/train.parquet",
+    "E:/GarlTTC_dataset/annotations/train.parquet",
+    "E:/eAP_dataset/**"
+  ]
+}
