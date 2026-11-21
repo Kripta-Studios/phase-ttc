@@ -1,0 +1,34 @@
+{
+  "schema": "garlttc_submission_retrieval_v1",
+  "submission_id": 1063261,
+  "submitted_as_displayed": "2026-11-21 17:24",
+  "time_zone": null,
+  "account_history_source": "owner-provided CodaBench submission-history table",
+  "retrieved": "2026-11-21",
+  "uploaded_file": {
+    "name": "MATCHED_A_GEO_LEARNED_S7_TRAIN40.zip",
+    "bytes": 89455,
+    "sha256": "0be589c0a52cd3422402eb9aa0da6a1b2da185c880fdc54a19b937c25d3bf5b9",
+    "binding": "The owner identifies this file as uploaded. The local candidate is byte-identical to the preregistered ZIP. The returned archives do not independently attest the uploaded file hash."
+  },
+  "prediction_result_zip_sha256": "5db7fa2096f8059c619a6d3170da80c4ea82c969a8cd814b5cf021406af1b2c1",
+  "scoring_result_zip_sha256": "e55bc12ec76f237b9d039ea45f8447d935319666b5e36faa932d8442ed26c5d7",
+  "scores": {
+    "MiDc": 26.385397492383852,
+    "FRc": 0.0,
+    "MiDs": 28.000069754622153,
+    "FRs": 0.0,
+    "MiDl": 32.93789844113244,
+    "FRl": 0.0,
+    "MiDn": 30.89121343332767,
+    "FRn": 0.0,
+    "mean_MiD": 30.239584429903136,
+    "overall_MiD": 27.975630860024584,
+    "num_samples": 6762,
+    "failed_rate": 0.0
+  },
+  "prediction_archive_contents": [
+    "metadata"
+  ],
+  "public_leaderboard_after_submission": null
+}

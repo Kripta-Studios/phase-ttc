@@ -62,11 +62,7 @@ TRAIN40 de las 18:40.
 
 ## Historial de envíos
 
-El propietario reafirmó el 21 de noviembre el total histórico de dos subidas:
-`1016512` y `1058935`. Los tres ficheros de Descargas citados ahora —paquete,
-`prediction_result.zip` y `scoring_result.zip`— pertenecen todos a `1058935`.
-`MATCHED_A_GEO_LEARNED_S7_TRAIN40` sigue preparado y **no subido**. No se ha
-creado un recibo ni una puntuación para una tercera subida.
+El historial de la cuenta aportado el 21 de noviembre recoge tres envíos. El comparador de solo cajas, `1063261`, obtuvo **27,97563**. Los nombres de los ZIP de salida se repiten entre envíos; sus bytes se archivan por ID. [Registro del tercer envío](../../sota_20261118/leaderboard/submission_1063261/RECORD.json).
 
 ## Verificación
 

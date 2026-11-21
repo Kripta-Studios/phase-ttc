@@ -130,7 +130,7 @@
       "sequences_completed": 12,
       "rgb_from_real_media": true,
       "events_from_real_media": false,
-      "endpoint_tolerance_atol": 0.000001,
+      "endpoint_tolerance_atol": 1e-06,
       "endpoint_tolerance_pass_queries": 0,
       "geometry_ttc_tolerance_seconds": 0.0001,
       "geometry_ttc_tolerance_pass_queries": 5,
@@ -142,7 +142,11 @@
     "C_three_seed_refit": {
       "result": "../../../operational/geo_reproduction/runs/C_refit/RESULT.json",
       "result_sha256": "ee74d4251d90c0b4b3844886e9714f357a47147376acabab2235a171934ac559",
-      "seeds": [7, 13, 21],
+      "seeds": [
+        7,
+        13,
+        21
+      ],
       "physical_queries_per_seed": 5805,
       "seed7_exact_rows": 5805,
       "alternate_seed_tail_note": "Pairwise maximum absolute TTC differences reach 85.75 s (7 vs 13) and 120.0 s (7 vs 21); private targets were not read, so no private Overall is inferred."
@@ -161,16 +165,20 @@
     "weights_note": "The nine released TRAIN40 checkpoints are identified by hash and project documentation states MIT. The Geo state is identified by hash but is not added to this index as a new published weight bundle."
   },
   "submission_history": {
-    "owner_declared_upload_count": 2,
-    "uploads": [1016512, 1058935],
-    "declaration_date": "2026-11-21 (reconfirms the two-upload total already recorded on 2026-11-18)",
+    "owner_declared_upload_count": 3,
+    "uploads": [
+      1016512,
+      1058935,
+      1063261
+    ],
+    "declaration_date": "2026-11-21 (after the third submission)",
     "downloaded_files_for_1058935": [
       "PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAI.zip",
       "prediction_result.zip",
       "scoring_result.zip"
     ],
-    "matched_a_status": "prepared_not_uploaded",
-    "warning": "The three downloaded files are the package and two result archives of submission 1058935, not three submissions. No receipt or score exists for a third upload."
+    "matched_a_status": "scored",
+    "warning": "The owner supplied account history and result downloads for submission 1063261. The public leaderboard after that submission has not been archived here."
   },
   "versioned_artifacts": [
     {
@@ -196,6 +204,18 @@
     {
       "path": "docs/sota_20261118/leaderboard/submission_1058935/scoring_result.zip",
       "sha256": "66f9b7e23cb3d412f392b364efddbfbd1b05dfda6faa0e7c1fcd094f41847b21"
+    },
+    {
+      "path": "docs/sota_20261118/leaderboard/submission_1063261/prediction_result.zip",
+      "sha256": "5db7fa2096f8059c619a6d3170da80c4ea82c969a8cd814b5cf021406af1b2c1"
+    },
+    {
+      "path": "docs/sota_20261118/leaderboard/submission_1063261/scoring_result.zip",
+      "sha256": "e55bc12ec76f237b9d039ea45f8447d935319666b5e36faa932d8442ed26c5d7"
+    },
+    {
+      "path": "docs/sota_20261118/leaderboard/submission_1063261/RECORD.json",
+      "sha256": "889b66db6d3a8accd94264f94d872c21e8d99522cf15a94dca3c38e5fe97e738"
     }
   ]
 }

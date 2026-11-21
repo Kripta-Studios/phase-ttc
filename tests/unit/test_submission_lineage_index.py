@@ -19,8 +19,8 @@ def test_lineage_index_binds_git_blobs_and_versioned_artifacts() -> None:
     payload = json.loads(INDEX.read_text(encoding="utf-8"))
 
     assert payload["schema"] == "phase_ttc_submission_lineage_v1"
-    assert payload["submission_history"]["owner_declared_upload_count"] == 2
-    assert payload["submission_history"]["matched_a_status"] == "prepared_not_uploaded"
+    assert payload["submission_history"]["owner_declared_upload_count"] == 3
+    assert payload["submission_history"]["matched_a_status"] == "scored"
     assert payload["claims"]["end_to_end_geo_reproduction"] is False
 
     for binding in payload["train40_parent"]["preserved_source_blob_bindings"]:
