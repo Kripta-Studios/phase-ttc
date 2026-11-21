@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,17 +17,36 @@ OUTPUTS = {
 }
 
 
-def digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def digest_lf(path: Path) -> str:
+    """Hash content after normalizing only CRLF line endings to LF."""
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def git_blob_digest(path: Path) -> str | None:
+    """Hash the exact HEAD blob when Git metadata is available."""
+    if not (REPO / ".git").exists():
+        return None
+    relative = path.relative_to(REPO).as_posix()
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(REPO), "cat-file", "blob", f"HEAD:{relative}"],
+            capture_output=True,
+            check=False,
+        )
+    except FileNotFoundError:
+        return None
+    if result.returncode != 0:
+        return None
+    return hashlib.sha256(result.stdout).hexdigest()
 
 
 def load() -> dict[str, object]:
     evidence = json.loads(EVIDENCE.read_text(encoding="utf-8"))
-    if evidence.get("schema") != "phase_ttc_official_submissions_v1":
+    if evidence.get("schema") != "phase_ttc_official_submissions_v3":
         raise ValueError("unknown official-submission evidence schema")
     if evidence.get("samples") != 6762:
         raise ValueError("official-submission population changed")
-    for key in ("reference", "original", "geometry"):
+    for key in ("reference", "original", "geometry", "box_only"):
         row = evidence[key]
         scores = row["scores"]
         required = {"overall_MiD", "MiDc", "MiDs", "MiDl", "MiDn", "failed_rate"}
@@ -40,10 +60,16 @@ def validate_repository_sources(evidence: dict[str, object]) -> None:
         "reference": REPO / "paper/data/official_benchmark.json",
         "original": REPO / "paper/data/official_benchmark.json",
         "geometry": REPO / "docs/sota_20261118/leaderboard/submission_1058935/RECORD.json",
+        "box_only": REPO / "docs/sota_20261118/leaderboard/submission_1063261/RECORD.json",
     }
     for key, path in paths.items():
-        if path.is_file() and digest(path) != evidence[key]["source_sha256"]:
-            raise ValueError(f"source hash changed for {key}: {path}")
+        if not path.is_file():
+            continue
+        if digest_lf(path) != evidence[key]["source_lf_sha256"]:
+            raise ValueError(f"source content changed for {key}: {path}")
+        blob_hash = git_blob_digest(path)
+        if blob_hash is not None and blob_hash != evidence[key]["source_sha256"]:
+            raise ValueError(f"source Git blob changed for {key}: {path}")
 
 
 def fmt_date(value: str) -> str:
@@ -57,7 +83,7 @@ def fmt_date(value: str) -> str:
 
 
 def build_tables(evidence: dict[str, object]) -> dict[str, str]:
-    rows = [evidence[key] for key in ("reference", "original", "geometry")]
+    rows = [evidence[key] for key in ("reference", "original", "geometry", "box_only")]
     long_lines = [
         r"\begin{tabularx}{\linewidth}{@{}p{.17\linewidth}p{.12\linewidth}p{.17\linewidth}Xp{.085\linewidth}p{.07\linewidth}@{}}",
         r"\toprule",

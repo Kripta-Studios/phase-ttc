@@ -1,5 +1,5 @@
 {
-  "schema": "phase_ttc_official_submissions_v1",
+  "schema": "phase_ttc_official_submissions_v3",
   "scope": "Dated official GarlTTC Test records; values are scorer or leaderboard aggregates, not private labels",
   "samples": 6762,
   "reference": {
@@ -18,7 +18,8 @@
       "failed_rate": 0.0
     },
     "source": "paper/data/official_benchmark.json#/competitor",
-    "source_sha256": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532"
+    "source_sha256": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532",
+    "source_lf_sha256": "60193615af675393dca1b25b076cac178c45a207d35a623b1e687ea66fe4a950"
   },
   "original": {
     "label": "PHASE-TTC original",
@@ -36,7 +37,8 @@
       "failed_rate": 0.0
     },
     "source": "paper/data/official_benchmark.json#/phase_submission",
-    "source_sha256": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532"
+    "source_sha256": "f7bc1a8bd786f8149ff6ce44ad60bfe43aaa8f7e7833d04b07f4b6ce004aa532",
+    "source_lf_sha256": "60193615af675393dca1b25b076cac178c45a207d35a623b1e687ea66fe4a950"
   },
   "geometry": {
     "label": "PHASE-TTC-Geo",
@@ -54,6 +56,26 @@
       "failed_rate": 0.0
     },
     "source": "docs/sota_20261118/leaderboard/submission_1058935/RECORD.json#/scores",
-    "source_sha256": "f3eaee1c517cf3af0d37c6b9654bab4ce8d972fc17a44eaf85168df427ef2f76"
+    "source_sha256": "65a757d2749844890386f65d7e45e767968ec1588b0536464900de889859a817",
+    "source_lf_sha256": "65a757d2749844890386f65d7e45e767968ec1588b0536464900de889859a817"
+  },
+  "box_only": {
+    "label": "Box-history comparator",
+    "submission_id": 1063261,
+    "date": "2026-11-21",
+    "sensor_inputs": "No image or event input",
+    "support_long": "Supplied regions; 600 ms box history",
+    "support_short": "Regions only; 600 ms history",
+    "scores": {
+      "overall_MiD": 27.975630860024584,
+      "MiDc": 26.385397492383852,
+      "MiDs": 28.000069754622153,
+      "MiDl": 32.93789844113244,
+      "MiDn": 30.89121343332767,
+      "failed_rate": 0.0
+    },
+    "source": "docs/sota_20261118/leaderboard/submission_1063261/RECORD.json#/scores",
+    "source_sha256": "889b66db6d3a8accd94264f94d872c21e8d99522cf15a94dca3c38e5fe97e738",
+    "source_lf_sha256": "889b66db6d3a8accd94264f94d872c21e8d99522cf15a94dca3c38e5fe97e738"
   }
 }
