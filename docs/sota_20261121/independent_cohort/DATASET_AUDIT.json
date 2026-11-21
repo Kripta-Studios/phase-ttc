@@ -1,0 +1,56 @@
+{
+  "schema": "phase_ttc_independent_dataset_audit_v1",
+  "audit_date": "2026-11-21",
+  "decision": "no_independent_sessions_available_or_reserved",
+  "datasets": [
+    {
+      "name": "FCWD",
+      "local_evidence": "E:/FCWD_dataset; three timestamped HDF5 recordings, calibration and gt_ttc",
+      "session_overlap": "FCWD1/2/3 used repeatedly for model and diagnostic development since 2026-10-08",
+      "access_authorized": true,
+      "independent_cohort_eligible": false,
+      "reason": "development exposed; only three recordings from the same day and scenario"
+    },
+    {
+      "name": "eAP",
+      "local_evidence": "E:/eAP_dataset; 40 train and 12 test sequence directories",
+      "session_overlap": "TRAIN40 trained geometry/content heads; two Test12 official submissions were made and both returned scores were inspected",
+      "access_authorized": true,
+      "independent_cohort_eligible": false,
+      "reason": "already inspected/used and not a newly reserved session cohort"
+    },
+    {
+      "name": "EvTTC",
+      "local_evidence": "repository manifests and transfer splits",
+      "session_overlap": "used by the project for transfer, representation and alignment experiments",
+      "access_authorized": true,
+      "independent_cohort_eligible": false,
+      "reason": "already inspected/used; not newly captured blind sessions"
+    },
+    {
+      "name": "TSTTC",
+      "local_evidence": "D:/PHASE_TTC_BENCH2_20261120 contains paper and public repository only; no annotation archive",
+      "session_overlap": "none established because the recordings are absent",
+      "access_authorized": false,
+      "independent_cohort_eligible": false,
+      "reason": "account-gated data unavailable; test labels/server unavailable; optional frozen transfer only if later authorized"
+    },
+    {
+      "name": "GarlTTC local package",
+      "local_evidence": "E:/GarlTTC_dataset",
+      "session_overlap": "derived from the eAP training/submission population",
+      "access_authorized": true,
+      "independent_cohort_eligible": false,
+      "reason": "dataset alias/package overlap, not new sessions"
+    },
+    {
+      "name": "Boreas-Objects-V1",
+      "local_evidence": "metadata-only audit of pyboreas splits.py at commit 8e100ff82ecd4992511da61b016398dbd230f205; no sensor or label files opened",
+      "session_overlap": "not previously used by PHASE-TTC, but all 37 public train intervals and 16 test intervals share the single sequence/session ID boreas-objects-v1",
+      "access_authorized": true,
+      "independent_cohort_eligible": false,
+      "candidate_status": "metadata_shortlisted_not_reserved",
+      "reason": "one physical session cannot meet the session-level design; no official TTC target, and a target-blind independent TTC derivation has not been frozen"
+    }
+  ]
+}

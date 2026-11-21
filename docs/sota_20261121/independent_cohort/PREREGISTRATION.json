@@ -1,0 +1,39 @@
+{
+  "schema": "phase_ttc_independent_cohort_v1",
+  "status": "planned",
+  "created_utc": "2026-11-21T00:00:00Z",
+  "known_session_ids": [
+    "FCWD1",
+    "FCWD2",
+    "FCWD3",
+    "boreas-objects-v1"
+  ],
+  "sessions": [],
+  "freeze": {
+    "model_sha256": null,
+    "detector_sha256": null,
+    "tracker_sha256": null,
+    "evaluator_sha256": null,
+    "delay_policy_sha256": null
+  },
+  "design": {
+    "primary_metric": "session_macro_rte",
+    "practical_margin_rte_points": 3.0,
+    "ci95_half_width_target_rte_points": 2.0,
+    "minimum_independent_sessions": 12,
+    "estimated_independent_sessions": 64,
+    "planning_session_sd_rte_points": 8.16074274105768,
+    "sample_size_formula": "ceil((1.96 * planning_session_sd_rte_points / ci95_half_width_target_rte_points)^2)",
+    "sampling_strata": [
+      "approach",
+      "recede",
+      "occlusion",
+      "saturation"
+    ],
+    "box_modes": [
+      "supplied_immediate",
+      "supplied_delayed_50ms",
+      "detector_real"
+    ]
+  }
+}

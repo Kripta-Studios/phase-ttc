@@ -1,0 +1,22 @@
+{
+  "schema": "phase_ttc_fcwd_p4_audit_v1",
+  "sources": {
+    "docs/sota_20261118/second_benchmark/RESULTS.json": "19e636752cfa3eea675a68290a950094ae759fe2de470ba572089c23dbaf4809",
+    "docs/sota_20261118/saturation_scale/FCWD_RESULTS.json": "b5712d5693ffa85cca5eb8cd6167d7d969cb06a5b46aa46e08fd7065dc1a4e81"
+  },
+  "anchors": 630,
+  "scorable": 597,
+  "outside_truth_support": 33,
+  "content_invalid": 14,
+  "content_scale_mean_per_sequence_rte_rounded_1dp": {
+    "FCWD1": 25.4,
+    "FCWD2": 12.4,
+    "FCWD3": 10.4
+  },
+  "content_invalid_delta_vs_no_content_by_seed": {
+    "7": 37.61601731620813,
+    "13": 1.181063994958393,
+    "21": 62.591152554002676
+  },
+  "interpretation": "development_exposed_not_independent"
+}

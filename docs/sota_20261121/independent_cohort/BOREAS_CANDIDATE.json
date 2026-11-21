@@ -1,0 +1,49 @@
+{
+  "schema": "phase_ttc_candidate_shortlist_v1",
+  "status": "metadata_shortlisted_not_reserved",
+  "audited_utc_date": "2026-11-21",
+  "selection": {
+    "session_ids": [
+      "boreas-objects-v1"
+    ],
+    "obj_train_scene_intervals": 37,
+    "obj_test_scene_intervals": 16,
+    "physical_session_count": 1,
+    "split_source_commit": "8e100ff82ecd4992511da61b016398dbd230f205",
+    "split_source_sha256": "e57488ff5f3234f97ba1f321de836920c4434aa1bce32b5569475c7b943517a4"
+  },
+  "selection_sha256": "d49323945f1adda7a4fd8cce0572eb6e4102864925eb0ef7dbc237286af41bf4",
+  "sources": {
+    "split": "https://github.com/utiasASRL/pyboreas/blob/8e100ff82ecd4992511da61b016398dbd230f205/pyboreas/data/splits.py",
+    "data_reference": "https://github.com/utiasASRL/pyboreas/blob/8e100ff82ecd4992511da61b016398dbd230f205/DATA_REFERENCE.md",
+    "registry": "https://registry.opendata.aws/boreas/"
+  },
+  "metadata_findings": {
+    "anonymous_access": "AWS S3 supports --no-sign-request",
+    "license": "CC BY 4.0",
+    "sensors": [
+      "camera",
+      "128-beam lidar",
+      "post-processed Applanix GNSS/IMU"
+    ],
+    "calibration": [
+      "camera intrinsics",
+      "camera-lidar extrinsics",
+      "Applanix-lidar extrinsics"
+    ],
+    "synchronization": "camera exposure pulses and lidar UTC/PPS are documented",
+    "labels": "public 3D object labels exist at approximately 5 Hz; not opened in this audit",
+    "known_risk": "public pyboreas issue 41 reports inconsistent tracking UUIDs in some consecutive frames"
+  },
+  "exclusions": [
+    "Do not count the 37 scene intervals as independent sessions.",
+    "Do not project 3D labels into RGB as model inputs or supplied-box inputs.",
+    "Do not derive or inspect TTC before model, population and truth derivation are frozen.",
+    "Do not call this an official Boreas TTC benchmark."
+  ],
+  "reservation_blockers": [
+    "Only one physical acquisition session is identified by the official object split.",
+    "No official TTC label or TTC evaluation protocol exists.",
+    "An independent, target-blind TTC construction and UUID repair policy remain unspecified."
+  ]
+}
