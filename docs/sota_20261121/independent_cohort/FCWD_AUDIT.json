@@ -1,8 +1,9 @@
 {
   "schema": "phase_ttc_fcwd_p4_audit_v1",
+  "source_hash_scheme": "SHA-256 of UTF-8 source bytes with LF line endings",
   "sources": {
-    "docs/sota_20261118/second_benchmark/RESULTS.json": "19e636752cfa3eea675a68290a950094ae759fe2de470ba572089c23dbaf4809",
-    "docs/sota_20261118/saturation_scale/FCWD_RESULTS.json": "b5712d5693ffa85cca5eb8cd6167d7d969cb06a5b46aa46e08fd7065dc1a4e81"
+    "docs/sota_20261118/second_benchmark/RESULTS.json": "2a25e3908afa1a19715821d674f139fc580c9ed1ea7cfca7349e4169f36f0ad3",
+    "docs/sota_20261118/saturation_scale/FCWD_RESULTS.json": "c4717ba802a517915a4b675ffba9d04b0b7fc9fc90a7dee1559e7320df84e267"
   },
   "anchors": 630,
   "scorable": 597,

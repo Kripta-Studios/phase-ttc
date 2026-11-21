@@ -36,6 +36,16 @@ def test_lineage_index_binds_git_blobs_and_versioned_artifacts() -> None:
     for artifact in payload["versioned_artifacts"]:
         assert _sha256(ROOT / artifact["path"]) == artifact["sha256"]
 
+    for name, result in payload["reproduction_evidence"].items():
+        if not isinstance(result, dict) or "result" not in result:
+            continue
+        result_path = (INDEX.parent / result["result"]).resolve()
+        assert _sha256(result_path) == result["result_sha256"], name
+
+    portable = payload["reproduction_evidence"]["portable_bundle"]
+    read_only = (INDEX.parent / portable["read_only_test"]).resolve()
+    assert _sha256(read_only) == portable["read_only_test_sha256"]
+
 
 def test_lineage_verifier_accepts_repository_only_mode() -> None:
     result = subprocess.run(

@@ -13,7 +13,8 @@ def _read(path: str | Path) -> tuple[dict[str, Any], str]:
     value = json.loads(payload)
     if not isinstance(value, dict):
         raise ValueError(f"{path} must contain an object")
-    return value, hashlib.sha256(payload).hexdigest()
+    # These Git text files can be checked out with CRLF on Windows.
+    return value, hashlib.sha256(payload.replace(b"\r\n", b"\n")).hexdigest()
 
 
 def fcwd_audit(second_benchmark_path: str | Path, saturation_path: str | Path) -> dict[str, Any]:
@@ -48,9 +49,10 @@ def fcwd_audit(second_benchmark_path: str | Path, saturation_path: str | Path) -
     }
     return {
         "schema": "phase_ttc_fcwd_p4_audit_v1",
+        "source_hash_scheme": "SHA-256 of UTF-8 source bytes with LF line endings",
         "sources": {
-            str(second_benchmark_path): second_hash,
-            str(saturation_path): saturation_hash,
+            Path(second_benchmark_path).as_posix(): second_hash,
+            Path(saturation_path).as_posix(): saturation_hash,
         },
         "anchors": anchors,
         "scorable": scorable,

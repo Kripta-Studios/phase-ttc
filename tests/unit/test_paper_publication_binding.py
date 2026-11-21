@@ -120,7 +120,12 @@ def test_source_archive_keeps_audited_logs_but_excludes_latex_logs(tmp_path, mon
         "data/verification_protocol.log",
         "build/validation.json",
     }
-    excluded = {"main.log", "build/page-01.png", "figures/diagram.log"}
+    excluded = {
+        "main.log",
+        "main_short.pdf",
+        "build/page-01.png",
+        "figures/diagram.log",
+    }
     for name in kept | excluded:
         path = tmp_path / name
         path.parent.mkdir(parents=True, exist_ok=True)

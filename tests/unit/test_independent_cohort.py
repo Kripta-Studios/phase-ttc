@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from pathlib import Path
 
 import pytest
 
@@ -245,6 +246,17 @@ def test_fcwd_audit_preserves_630_597_33_and_content_failures() -> None:
     )
     checked_in = protocol.load_json("docs/sota_20261121/independent_cohort/FCWD_AUDIT.json")
     assert checked_in == report
+
+
+def test_fcwd_source_hash_is_stable_across_checkout_line_endings(tmp_path: Path) -> None:
+    src = Path("docs/sota_20261118/second_benchmark/RESULTS.json")
+    paired = Path("docs/sota_20261118/saturation_scale/FCWD_RESULTS.json")
+    lf = src.read_bytes().replace(b"\r\n", b"\n")
+    copy = tmp_path / src.name
+    copy.write_bytes(lf)
+    observed = audit.fcwd_audit(copy, paired)
+    copy.write_bytes(lf.replace(b"\n", b"\r\n"))
+    assert audit.fcwd_audit(copy, paired) == observed
 
 
 def test_checked_in_manifest_and_inventory_do_not_claim_an_independent_session() -> None:
