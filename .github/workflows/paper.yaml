@@ -64,7 +64,6 @@ jobs:
           paper/from_motion_to_time_20261102/requirements-paper.txt
       - name: Regenerate, validate, and compile both manuscript editions
         run: |
-          python scripts/ci_paper_validation.py
           # Normalize this generated table before build_expanded snapshots all
           # scientific inputs. The committed package preserves CRLF bytes,
           # while the Linux generator intentionally emits LF.
@@ -72,6 +71,9 @@ jobs:
           python paper/from_motion_to_time_20261102/scripts/build_expanded.py
           python paper/from_motion_to_time_20261102/scripts/verify_publication.py
           python paper/from_motion_to_time_20261102/scripts/package_expanded.py
+            # The expanded archive verifies the original published figures. Build
+            # the historical edition only after its original bytes are archived.
+            python scripts/ci_paper_validation.py
       - name: Archive the compiled manuscript and validation receipts
         uses: actions/upload-artifact@v4
         with:

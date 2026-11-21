@@ -149,7 +149,9 @@ def test_paper_workflow_normalizes_runtime_table_before_expanded_build() -> None
     )
     builder = source.index("python paper/from_motion_to_time_20261102/scripts/build_expanded.py")
 
-    assert committed_verifier < generator < builder
+    package = source.index("python paper/from_motion_to_time_20261102/scripts/package_expanded.py")
+    historical_build = source.index("python scripts/ci_paper_validation.py\n")
+    assert committed_verifier < generator < builder < package < historical_build
 
 
 def test_original_asset_inventory_uses_manifest_not_local_build_products(tmp_path, monkeypatch):
