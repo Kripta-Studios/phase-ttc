@@ -12,9 +12,10 @@ con variantes elegidas a la vista de la puntuación equivalen a ajustar sobre te
 algo prohibido por `AGENTS.md` §3.1 («No elegir hiperparámetros usando el test»).
 [ADR-0046](ADR-0046-official-submission-provenance-and-history.md) muestra que,
 para el envío `1016512`, no hay preregistro, el código se commiteó después de
-ejecutarse (`2ad7a057`), el hash del archivo subido no está confirmado por el
-servidor y el número total de envíos (uno, según declaración del propietario del
-2026-11-18) no puede confirmarse desde el archivo. Esta decisión
+ejecutarse (`2ad7a057`) y el número total de envíos no puede reconstruirse sólo
+desde el leaderboard. El hash del archivo subido fue confirmado después mediante
+el archivo recuperado del registro de CodaBench; la duda original queda conservada
+en ADR-0046 con su resolución. Esta decisión
 evita que esos huecos se repitan.
 
 ## Decisión
@@ -58,6 +59,14 @@ servicios externos, y se niega a sobrescribir un recibo existente.
 subidas de la cuenta, con una fila por envío. Los campos desconocidos se escriben
 como `desconocido`, nunca se rellenan por inferencia. La primera fila es el envío
 histórico `1016512`.
+
+Una variante preparada no se convierte en subida por tener ZIP o recibo. Se
+mantiene con estado `preparado, no subido` hasta que exista evidencia del acto de
+subida; los archivos de paquete, `prediction_result.zip` y `scoring_result.zip`
+de una misma submission tampoco cuentan como tres envíos. La confirmación del
+propietario del 2026-11-21 mantiene el total en dos (`1016512`, `1058935`) y A
+solo-cajas fuera de ese total. El índice P1 está en
+[`docs/sota_20261121/lineage`](../sota_20261121/lineage/README.md).
 
 ### 4. La puntuación del leaderboard nunca selecciona recetas
 

@@ -1,0 +1,201 @@
+{
+  "schema": "phase_ttc_submission_lineage_v1",
+  "cutoff_date": "2026-11-21",
+  "scope": "Evidence index for GarlTTC submission 1058935 and its frozen TRAIN40 parent",
+  "claims": {
+    "package_1058935_byte_identical_to_preregistered_zip": true,
+    "train40_preserved_sources_match_selected_git_blobs": true,
+    "train40_code_committed_before_execution": false,
+    "saved_csv_repackages_byte_identically": false,
+    "frozen_endpoint_replay_zip_byte_identical": true,
+    "three_seed_refit_from_authenticated_endpoint_inputs_completed": true,
+    "end_to_end_geo_reproduction": false,
+    "reason_end_to_end_geo_reproduction_is_open": "B1 starts from authenticated frozen PHASE20 endpoints, not raw media. B2 regenerated RGB from real media for one query in each of 12 sequences (12 of 5,805 physical queries) but still uses the frozen public event tensor. It passes the 1e-4 s geometry-TTC gate on 5/12 queries and the 1e-6 endpoint gate on 0/12, so it is bounded evidence, not end-to-end parity."
+  },
+  "environment": {
+    "tested_python": "../phase-ttc-main-integration/.venv/Scripts/python.exe",
+    "python_version": "3.11.15",
+    "torch_version": "2.11.0+cu128",
+    "torch_cuda_version": "12.8",
+    "cuda_available_on_2026_11_21": true,
+    "checkout_venv_status": "not suitable for P1: historical audit found its Torch import non-functional",
+    "bare_python_status": "Windows Store alias; do not use for reproduction"
+  },
+  "train40_parent": {
+    "retroactive_commit": "2ad7a05797799caf1bcdc9202c307d244f9fe31d",
+    "warning": "This commit was created after the 18-27 October execution. Blob equality proves preservation of the selected source bytes, not a pre-execution Git state and not absence of edits before the snapshot.",
+    "preserved_source_archive": {
+      "external_relative_path": "frozen_code_91972eaa97dcf9b0.tar",
+      "sha256": "91972eaa97dcf9b02314ac32fde8d9fa1bb6155289de225212b46b003c4a721a"
+    },
+    "preserved_source_blob_bindings": [
+      {
+        "commit": "2ad7a05797799caf1bcdc9202c307d244f9fe31d",
+        "path": "operational/final_refit/export.py",
+        "git_blob_sha1": "3a8cea1c7ef1de889f3d8b80cfe515c4a301ff92"
+      },
+      {
+        "commit": "2ad7a05797799caf1bcdc9202c307d244f9fe31d",
+        "path": "operational/final_refit/scientific_oof_final.py",
+        "git_blob_sha1": "d665d07a60049df857acb4d08df9f8ffac3ea0dd"
+      },
+      {
+        "commit": "2ad7a05797799caf1bcdc9202c307d244f9fe31d",
+        "path": "operational/final_refit/test12.py",
+        "git_blob_sha1": "2a2f4f0e6ccf959b6a113576803029c9d6f99e61"
+      },
+      {
+        "commit": "2ad7a05797799caf1bcdc9202c307d244f9fe31d",
+        "path": "operational/final_refit/fold_sources.py",
+        "git_blob_sha1": "927064aeb92fa1002bfeaf71f53c3a8dd1a37025"
+      },
+      {
+        "commit": "2ad7a05797799caf1bcdc9202c307d244f9fe31d",
+        "path": "operational/final_refit/shared_resources.py",
+        "git_blob_sha1": "7559a4cae243a7d8b441deb5689e0e3e1050c9f5"
+      }
+    ],
+    "recipe": {
+      "external_relative_path": "FINAL_CANDIDATE/OOF_RECIPE.json",
+      "file_sha256": "e5ade2e986f30dbe672a13155b45a4288aa069b2b94a474951e4940900f0bd00",
+      "canonical_recipe_identity_sha256": "78c83c09fc176846e1135df3b625a2455b71336becb9305589f55269058915c3",
+      "note": "The serialized file hash and the recipe identity hash name different objects."
+    },
+    "checkpoint_sha256": {
+      "E_A5.pt": "a82e5b65ec9c3d302981438527f2cfccabbbf25c75f574946bd1e9dc97795758",
+      "E_C2F.pt": "2b337dd76bd405c63ac9f96023a82196ee32e8180b86fe0015bfd67f0e2aeb57",
+      "R_A5.pt": "3f09a2e06d4ff6aebaa64d8c1a8ccc0ade54eaa25b54bc11700fd70bd9701f29",
+      "R_C2F.pt": "d5fa8fd9ed80df6141c3df8bd2ed8ac013c87e5e5bde7367a3b588c5b09e5a35",
+      "PAIR_E.pt": "ccdd694f5d812a458c396fdb19bbffe439eff78fe38d57a7b288d4a4fd232680",
+      "PAIR_R.pt": "dba94f1ae807d8e84ef68f50c93882a766a92cfc0b9a08da53c30fedbf509bc1",
+      "E_CTX_MATCHED.pt": "fec0ca9f2433a913ae1047cd0b47715a1dce39c4c2e4eecb9539f796434d137e",
+      "R_CTX.pt": "a19f8188b859dcac7fb0cd4c68d0cd5c5c9a839ad84c0ac7ee1b3d61181d1852",
+      "PHASE_ONLY_EVENT_S7_TRAIN40.pt": "a24bfc72ca7f53a93d53db806b6866c6a5a4b6abde074b5dfec50436b7005408"
+    },
+    "normalizer_sha256": {
+      "event_normalizer.json": "19f9bf704de53a938e955ef1919e51881ec1f9c85c1d3e2cfd54aa6d76045f9f",
+      "rgb_normalizer.json": "d902dba58dc9738ed268e56fe57291fda1cf0dfb2e03be4da1171668e689bd59"
+    },
+    "model_seal_sha256": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4",
+    "prediction_receipt_sha256": "e07405d43903aaf85442f0c673c79f088abd7dc293f422d505f75aa5fa158b20",
+    "physical_queries": 5805,
+    "tokens": 6762,
+    "submitted_parent_zip_sha256": "5eb69749de7aff682eea640d843ee635379702337d929c86f50472264f1d88bc"
+  },
+  "geo_candidate": {
+    "first_source_commit": "3fb633a05cce7fb53efc3d1dc66e0a8243bcf28f",
+    "package_commit": "3f9108a9bb9037f02930bda5c3f2da3e3b9e3921",
+    "code_receipt_path": "docs/sota_20261118/geometry/TEST12_CANDIDATE_RECEIPT.json",
+    "code_receipt_sha256": "e9da46f51ea30c694a873bf2877de6206c05198097f6ca2e68df6ef154856523",
+    "executed_data_source_sha256": "68257a7fb09c04e284bf6a6471b7f131b1e65ea218b7192c322fa385627cfc7e",
+    "executed_data_source_recovered": false,
+    "candidate_state_dict_sha256": "a2d68afc1232a7ebc74e0acd107917c758fe661f962f510f01d470b9d31f5229",
+    "input_sha256": {
+      "train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d",
+      "test_inputs.npz": "1e3d9d5b6e8267711628d0b7d9cbafd2b62b534541b7ac20e85557a6749bb65f"
+    },
+    "physical_queries": 5805,
+    "tokens": 6762,
+    "candidate_zip_sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df",
+    "retrieved_submission_id": 1058935,
+    "retrieved_prediction_result_sha256": "803a14fd2f8b38a2bf9218edd3adf899ac82fad8513f63af28637643674a4e80",
+    "retrieved_scoring_result_sha256": "66f9b7e23cb3d412f392b364efddbfbd1b05dfda6faa0e7c1fcd094f41847b21",
+    "official_overall_mid": 23.472377543653998,
+    "failed_rate": 0.0,
+    "statement": "The recovered uploaded ZIP is byte-identical to the preregistered candidate. A CSV-only repackage is not byte-identical. B1 reproduces all endpoint predictions with zero drift and rebuilds the exact ZIP. C refits seeds 7, 13 and 21 from authenticated endpoint inputs; seed 7 matches every historical physical prediction, while alternate seeds have unstable tails. B2 covers 12 of 5,805 physical queries, one per sequence, but retains the frozen public event tensor and is not end-to-end parity."
+  },
+  "reproduction_evidence": {
+    "created_utc": "2026-11-21T15:40:38.564914+00:00",
+    "source_index": "../geo_reproduction/SOURCE_INDEX.json",
+    "source_index_scope": "Hashes bind each result to its isolated inputs and runner code; the final index records git_commit 390857a40d8badee353033eadccf3f2b8a758fe0 and git_dirty=true.",
+    "A_saved_predictions": {
+      "result": "../../../operational/geo_reproduction/runs/A_saved_predictions/RESULT.json",
+      "result_sha256": "b5335a1bdb27c3dd70899a7cb94c476ee423ca144fa0e01fc13290a1d39557f1",
+      "byte_identical": false,
+      "replayed_zip_sha256": "931fcfd6111dae064cd1055f9579495755e5415f605d7db4ae7416bd0f7ef0bb"
+    },
+    "B1_endpoint_replay": {
+      "result": "../../../operational/geo_reproduction/runs/B_endpoint_replay/RESULT.json",
+      "result_sha256": "b5572f8c2103a2d2587e924b4a437acf4845742bc39b0a5f9d7c238c194aaa4f",
+      "physical_queries": 5805,
+      "tokens": 6762,
+      "max_abs_ttc_seconds": 0.0,
+      "zip_byte_identical": true
+    },
+    "B2_media_replay_bounded": {
+      "result": "../../../operational/geo_reproduction/runs/B_media_multiseq/RESULT.json",
+      "result_sha256": "5897e5304a4bef22b7846435786ea0b77938c5bf045989d56d198f540c009018",
+      "physical_queries_completed": 12,
+      "physical_queries_total": 5805,
+      "sequences_completed": 12,
+      "rgb_from_real_media": true,
+      "events_from_real_media": false,
+      "endpoint_tolerance_atol": 0.000001,
+      "endpoint_tolerance_pass_queries": 0,
+      "geometry_ttc_tolerance_seconds": 0.0001,
+      "geometry_ttc_tolerance_pass_queries": 5,
+      "geometry_ttc_abs_drift_seconds_median": 0.00018930435180664062,
+      "geometry_ttc_abs_drift_seconds_max": 0.000843048095703125,
+      "estimated_full_run_seconds_after_load": 6801.669979823346,
+      "estimated_full_run_note": "Linear estimate from the 12 measured queries after model load; not a measured 5,805-query run."
+    },
+    "C_three_seed_refit": {
+      "result": "../../../operational/geo_reproduction/runs/C_refit/RESULT.json",
+      "result_sha256": "ee74d4251d90c0b4b3844886e9714f357a47147376acabab2235a171934ac559",
+      "seeds": [7, 13, 21],
+      "physical_queries_per_seed": 5805,
+      "seed7_exact_rows": 5805,
+      "alternate_seed_tail_note": "Pairwise maximum absolute TTC differences reach 85.75 s (7 vs 13) and 120.0 s (7 vs 21); private targets were not read, so no private Overall is inferred."
+    },
+    "portable_bundle": {
+      "manifest": "../../../operational/geo_reproduction/bundle/MANIFEST.json",
+      "state_sha256": "a2d68afc1232a7ebc74e0acd107917c758fe661f962f510f01d470b9d31f5229",
+      "read_only_test": "../../../operational/geo_reproduction/runs/D_readonly_clean/READ_ONLY_TEST.json",
+      "read_only_test_sha256": "336f3fa4b354661630995de0d16909e6d0f9dc036881112999f15f4bf86e6b57"
+    }
+  },
+  "licensing": {
+    "code_and_released_weights": "MIT, as stated in README.md and docs/model_card.md; LICENSE is the repository license",
+    "external_datasets": "retain their own terms and are not redistributed by this index",
+    "garlttc_scorer": "external dependency; this index records its historical hash but does not grant redistribution rights",
+    "weights_note": "The nine released TRAIN40 checkpoints are identified by hash and project documentation states MIT. The Geo state is identified by hash but is not added to this index as a new published weight bundle."
+  },
+  "submission_history": {
+    "owner_declared_upload_count": 2,
+    "uploads": [1016512, 1058935],
+    "declaration_date": "2026-11-21 (reconfirms the two-upload total already recorded on 2026-11-18)",
+    "downloaded_files_for_1058935": [
+      "PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAI.zip",
+      "prediction_result.zip",
+      "scoring_result.zip"
+    ],
+    "matched_a_status": "prepared_not_uploaded",
+    "warning": "The three downloaded files are the package and two result archives of submission 1058935, not three submissions. No receipt or score exists for a third upload."
+  },
+  "versioned_artifacts": [
+    {
+      "path": "docs/engineering_history_20261027/evidence/MODEL_SEAL.original.json",
+      "sha256": "cf5f4eac22e572679c77cd0f6a16425f978600597d4be77f0b1e576c226165a4"
+    },
+    {
+      "path": "docs/engineering_history_20261027/evidence/TEST12_PREDICTION_RECEIPT.original.json",
+      "sha256": "e07405d43903aaf85442f0c673c79f088abd7dc293f422d505f75aa5fa158b20"
+    },
+    {
+      "path": "docs/sota_20261118/geometry/TEST12_CANDIDATE_RECEIPT.json",
+      "sha256": "e9da46f51ea30c694a873bf2877de6206c05198097f6ca2e68df6ef154856523"
+    },
+    {
+      "path": "docs/sota_20261118/geometry/PHASE_GEOMETRY_RGB_GEO_BAND_S7_TRAIN40.zip",
+      "sha256": "8590f1151bb8b8db5baa5ae364675356a47ca93a3ee58139421f3d80d0f831df"
+    },
+    {
+      "path": "docs/sota_20261118/leaderboard/submission_1058935/prediction_result.zip",
+      "sha256": "803a14fd2f8b38a2bf9218edd3adf899ac82fad8513f63af28637643674a4e80"
+    },
+    {
+      "path": "docs/sota_20261118/leaderboard/submission_1058935/scoring_result.zip",
+      "sha256": "66f9b7e23cb3d412f392b364efddbfbd1b05dfda6faa0e7c1fcd094f41847b21"
+    }
+  ]
+}

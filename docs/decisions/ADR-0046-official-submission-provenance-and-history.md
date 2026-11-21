@@ -209,6 +209,43 @@ empujarla al remoto; la decisión y la ejecución corresponden al propietario.
    `git log --first-parent main` como historia del proyecto.
 4. Las recomendaciones de la tabla anterior quedan pendientes del propietario.
 
+## Adenda de procedencia P1 (2026-11-21)
+
+El [índice de procedencia](../sota_20261121/lineage/README.md) separa ahora dos
+cadenas que no deben confundirse:
+
+1. **TRAIN40 (27 de octubre).** El archivo preservado
+   `frozen_code_91972eaa97dcf9b0.tar` tiene SHA-256 `91972eaa…`. Se comprobó que
+   cinco fuentes seleccionadas de inferencia, sellado y exportación son exactamente
+   los blobs enumerados en `2ad7a057` (el manifiesto da las rutas y SHA-1 de blob).
+   Esto confirma preservación de esos bytes, no un commit anterior a la ejecución:
+   `2ad7a057` sigue siendo posterior al ajuste y al ZIP. Los nueve checkpoints y
+   dos normalizadores se rehasharon en el retorno del pod y coinciden con
+   `MODEL_SEAL.json` (`cf5f4eac…`). El checkpoint final es `a24bfc72…`; el ZIP
+   padre es `5eb69749…`.
+2. **Geo (18 de noviembre).** El recibo candidato liga 5.805 consultas físicas,
+   6.762 tokens, NPZ de entrada, estado `a2d68afc…`, doce hashes de código y ZIP
+   `8590f115…`. Los doce archivos registrados coinciden con el primer commit
+   `3fb633a0`; el paquete prerregistrado coincide byte a byte con el recuperado de
+   la submission `1058935`. Una reproducción del 21 de noviembre separó tres
+   niveles. **A** desde el CSV guardado no conserva los bytes del ZIP. **B1** desde
+   endpoints PHASE20 autenticados reproduce con deriva cero las 5.805 consultas y
+   el ZIP exacto. **C** reajusta semillas 7/13/21 desde esos inputs; seed 7 coincide
+   en todas las filas y las semillas alternativas muestran colas inestables. **B2**
+   desde medios cubre 12/5.805 consultas, una por secuencia: RGB procede del TAR
+   real y eventos del tensor congelado. El gate de endpoint 1e-6 pasa 0/12 y el de
+   TTC geométrico 1e-4 s pasa 5/12 (deriva mediana 1,893e-4 s; máxima 8,430e-4 s).
+   No se reclama una réplica completa sensor-a-salida. Los JSON y hashes están en el
+   [índice de reproducción](../sota_20261121/geo_reproduction/SOURCE_INDEX.json).
+
+El propietario confirmó el 21 de noviembre que los tres ficheros entonces
+presentes en Descargas (`PHASE_GEOMETRY_…zip`, `prediction_result.zip` y
+`scoring_result.zip`) pertenecen todos a la misma submission `1058935`; no son
+tres envíos. Reafirmó el total histórico de dos subidas, `1016512` y `1058935`.
+La variante solo-cajas `MATCHED_A_GEO_LEARNED_S7_TRAIN40` permanece preparada y
+no subida. Esta declaración contextualiza el registro; no crea un recibo ni una
+puntuación nuevos.
+
 ## Preguntas abiertas
 
 1. **Hash y hora del archivo realmente subido a CodaBench.** Los resultados del
