@@ -1,0 +1,55 @@
+{
+  "schema": "p5_reliability_manifest_v1",
+  "files": {
+    "PROTOCOL.md": {
+      "sha256": "dad0a9a0e492fde8f553bdf19355adb5c2fad89db360c54ae6fc74dc1a118a57",
+      "bytes": 4285,
+      "contains_cr": false
+    },
+    "ATTEMPT_LOG.md": {
+      "sha256": "eb0b0035d7cb2017d29a7c409f96bb81defbe54e29739d5501cbe6abb1e78da1",
+      "bytes": 994,
+      "contains_cr": false
+    },
+    "RESULTS.json": {
+      "sha256": "29505dc4e4e2d958dfb67769ece8f543e3b38bae033b4f84fb97fac6eee78d5d",
+      "bytes": 16749,
+      "contains_cr": false
+    },
+    "DECISION.json": {
+      "sha256": "83111cf51476edf48c3faf0366f26ea8a27077a682042ecab56272838706e1ab",
+      "bytes": 548,
+      "contains_cr": false
+    },
+    "STRATA.csv": {
+      "sha256": "be25e1d46c72805c36620145d8609d841c858a55ff48b78ba94dbd292c0cd5f2",
+      "bytes": 947,
+      "contains_cr": false
+    },
+    "PER_SEQUENCE.csv": {
+      "sha256": "6d6918c4450d61397ac4b66bf5c7f2f2199024a50f6138067a28dd2aa87a5ad4",
+      "bytes": 2955,
+      "contains_cr": false
+    },
+    "FAILURES.csv": {
+      "sha256": "b7a5f409398a27acba1be4a11dc14c4eaf3788e1be1bc34e6d828247a6282661",
+      "bytes": 386,
+      "contains_cr": false
+    },
+    "NO_FUTURE.json": {
+      "sha256": "8becb6e99a9324b9a9ab4213cc1671b84dca73ea031c1237d44795952e4f1732",
+      "bytes": 1771,
+      "contains_cr": false
+    },
+    "PREDICTIONS.npz": {
+      "sha256": "ecfc3d3d5fcbd1c64f006bf080c482296b0428e4c28cf864356759e7b06bdbb9",
+      "bytes": 5436418,
+      "contains_cr": null
+    },
+    "REPORT.md": {
+      "sha256": "5d200b6da585b3c821247b7541030dd30620b5859d374d24b9dcb48d0b574261",
+      "bytes": 1809,
+      "contains_cr": false
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gates": {
+    "all_ci_upper_lt_0": true,
+    "coverage_exact": true,
+    "difficult_ci_upper_lt_0": true,
+    "difficult_gain_point_le_minus_2": true,
+    "fallback_exact": true,
+    "free_noninferiority_ci_upper_le_0.5": true
+  },
+  "posthoc_validity": {
+    "causal_receipt_scope": "structural receipt over cached producers; not a full producer replay",
+    "mean_prediction_score_coverage_exact": false,
+    "structural_causal_receipt_passes": true
+  },
+  "preregistered_efficacy_verdict": "ADVANCE",
+  "verdict": "INCONCLUSIVE_COVERAGE"
+}

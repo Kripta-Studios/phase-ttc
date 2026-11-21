@@ -1,0 +1,39 @@
+{
+  "causal_source_sha256": {
+    "operational\\geometry_robust\\robust.py": "d7215055165475bf449c319744c27aabc4d4ccccd5c9e17096359f7e614da26e",
+    "operational\\saturation_scale\\eap_features.py": "48d33f8679025ccdb995a84ce8a6a4b340ea24f8b3ca24a73f8e98f929c5e382"
+  },
+  "checks": {
+    "box_source_discards_frames_after_query": true,
+    "content_lags_strictly_backward": true,
+    "content_source_uses_past_half_open_window": true,
+    "content_targets_not_read": true,
+    "content_tau_positive": true,
+    "fcwd_not_in_opened_inputs": true,
+    "fold_sequences_disjoint": true,
+    "geometry_targets_not_used": true,
+    "saved_event_clocks_positive": true,
+    "test12_not_in_opened_inputs": true
+  },
+  "clock_ranges": {
+    "clock_domains_directly_compared": false,
+    "event_end_us": [
+      46754160,
+      1204197846
+    ],
+    "query_timestamp_us": [
+      554400000,
+      19611600000
+    ]
+  },
+  "inputs": {
+    "artifacts\\sota_20261118\\geometry\\work\\DATA_RECEIPT.json": "35d1b769778a57c86fac6f0e3274f1fad3fd027a06d6dd9aa23856bb4a688335",
+    "artifacts\\sota_20261118\\geometry\\work\\train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d",
+    "artifacts\\sota_20261118\\geometry_robust\\work\\robust_work.npz": "cb6f081f767bab42ad8ec78dcdc934c4620c7831feaa60e167589add0ca53b5b",
+    "artifacts\\sota_20261118\\saturation_scale\\work\\CONTENT_RECEIPT.json": "64d77225c46f4fcb890c71a299584f07b526d17ce11afb97ba4e63d923e28881",
+    "artifacts\\sota_20261118\\saturation_scale\\work\\content_work.npz": "d701701a43e253163d68e2f1036d0cef93a487d3ce294cbb5c46d6c89ea7749c"
+  },
+  "passes": true,
+  "schema": "p5_reliability_no_future_v1",
+  "scope": "structural receipt over cached producers; not a full producer replay"
+}

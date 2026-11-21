@@ -62,6 +62,9 @@ The first execution was invalidated because its band-mass vector was computed on
 targets before selecting the 32 training sequences. No result from that execution is admissible.
 The valid run computes band mass from `truth[train_rows]` inside each fold; a regression test
 changes every exterior target and requires identical training rows and masses. The valid run is
-written to a new directory. As conservative run-validity checks (not post-hoc efficacy tuning),
-the no-future receipt must pass and every arm/seed must have complete scorer support; otherwise
-the efficacy gates are reported but the operational verdict is `INVALID_RUN`.
+written to a new directory. After observing that averaging opposite-sign predictions can create
+an undefined MiD even when each seed is finite, scorer coverage was added as a **post-hoc
+validity diagnostic**, not retroactively called a preregistered gate. The report preserves the
+frozen efficacy verdict separately and labels the operational interpretation inconclusive when
+mean-prediction coverage is incomplete. The no-future artifact is likewise a structural
+provenance receipt over cached producers, not a per-event replay.

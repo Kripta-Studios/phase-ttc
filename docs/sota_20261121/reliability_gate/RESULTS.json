@@ -1,0 +1,679 @@
+{
+  "contrasts": {
+    "ALL": {
+      "band_ci95": {
+        "c": [
+          -1.2452529951709896,
+          -0.4426364874349544
+        ],
+        "l": [
+          -0.460362514686502,
+          -0.14854578958373085
+        ],
+        "n": [
+          -0.2626070347933666,
+          0.10743964279983173
+        ],
+        "s": [
+          -0.6103115060500939,
+          -0.19725650455179697
+        ]
+      },
+      "band_point": {
+        "c": -0.8252335524317366,
+        "l": -0.3024457144947003,
+        "n": -0.07333249970037964,
+        "s": -0.3922194168610051
+      },
+      "ci95": [
+        -0.7708107437794819,
+        -0.38099123757786696
+      ],
+      "ci95_high": -0.38099123757786696,
+      "ci95_low": -0.7708107437794819,
+      "clusters_with_rows": 40,
+      "point": -0.5678604226936778,
+      "replicates": 10000,
+      "requested_rows": 88744,
+      "rows": 88743,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "APPROACHING": {
+      "band_ci95": {
+        "c": [
+          -1.2452529951709896,
+          -0.4426364874349544
+        ],
+        "l": [
+          -0.460362514686502,
+          -0.14854578958373085
+        ],
+        "n": [
+          null,
+          null
+        ],
+        "s": [
+          -0.6103115060500939,
+          -0.19725650455179697
+        ]
+      },
+      "band_point": {
+        "c": -0.8252335524317366,
+        "l": -0.3024457144947003,
+        "n": null,
+        "s": -0.3922194168610051
+      },
+      "ci95": [
+        -0.8491323151264505,
+        -0.41436749708773246
+      ],
+      "ci95_high": -0.41436749708773246,
+      "ci95_low": -0.8491323151264505,
+      "clusters_with_rows": 40,
+      "point": -0.6228079696929332,
+      "replicates": 10000,
+      "requested_rows": 51701,
+      "rows": 51701,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "AWAY": {
+      "band_ci95": {
+        "c": [
+          null,
+          null
+        ],
+        "l": [
+          null,
+          null
+        ],
+        "n": [
+          -0.2626070347933666,
+          0.10743964279983173
+        ],
+        "s": [
+          null,
+          null
+        ]
+      },
+      "band_point": {
+        "c": null,
+        "l": null,
+        "n": -0.07333249970037964,
+        "s": null
+      },
+      "ci95": [
+        -0.2626070347933666,
+        0.10743964279983173
+      ],
+      "ci95_high": 0.10743964279983173,
+      "ci95_low": -0.2626070347933666,
+      "clusters_with_rows": 40,
+      "point": -0.07333249970037964,
+      "replicates": 10000,
+      "requested_rows": 37043,
+      "rows": 37042,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "BAND_c": {
+      "band_ci95": {
+        "c": [
+          -1.2452529951709896,
+          -0.4426364874349544
+        ],
+        "l": [
+          null,
+          null
+        ],
+        "n": [
+          null,
+          null
+        ],
+        "s": [
+          null,
+          null
+        ]
+      },
+      "band_point": {
+        "c": -0.8252335524317366,
+        "l": null,
+        "n": null,
+        "s": null
+      },
+      "ci95": [
+        -1.2452529951709896,
+        -0.4426364874349544
+      ],
+      "ci95_high": -0.4426364874349544,
+      "ci95_low": -1.2452529951709896,
+      "clusters_with_rows": 40,
+      "point": -0.8252335524317366,
+      "replicates": 10000,
+      "requested_rows": 9741,
+      "rows": 9741,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "BAND_l": {
+      "band_ci95": {
+        "c": [
+          null,
+          null
+        ],
+        "l": [
+          -0.460362514686502,
+          -0.14854578958373085
+        ],
+        "n": [
+          null,
+          null
+        ],
+        "s": [
+          null,
+          null
+        ]
+      },
+      "band_point": {
+        "c": null,
+        "l": -0.3024457144947003,
+        "n": null,
+        "s": null
+      },
+      "ci95": [
+        -0.460362514686502,
+        -0.14854578958373085
+      ],
+      "ci95_high": -0.14854578958373085,
+      "ci95_low": -0.460362514686502,
+      "clusters_with_rows": 40,
+      "point": -0.3024457144947003,
+      "replicates": 10000,
+      "requested_rows": 17709,
+      "rows": 17709,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "BAND_n": {
+      "band_ci95": {
+        "c": [
+          null,
+          null
+        ],
+        "l": [
+          null,
+          null
+        ],
+        "n": [
+          -0.2626070347933666,
+          0.10743964279983173
+        ],
+        "s": [
+          null,
+          null
+        ]
+      },
+      "band_point": {
+        "c": null,
+        "l": null,
+        "n": -0.07333249970037964,
+        "s": null
+      },
+      "ci95": [
+        -0.2626070347933666,
+        0.10743964279983173
+      ],
+      "ci95_high": 0.10743964279983173,
+      "ci95_low": -0.2626070347933666,
+      "clusters_with_rows": 40,
+      "point": -0.07333249970037964,
+      "replicates": 10000,
+      "requested_rows": 37043,
+      "rows": 37042,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "BAND_s": {
+      "band_ci95": {
+        "c": [
+          null,
+          null
+        ],
+        "l": [
+          null,
+          null
+        ],
+        "n": [
+          null,
+          null
+        ],
+        "s": [
+          -0.6103115060500939,
+          -0.19725650455179697
+        ]
+      },
+      "band_point": {
+        "c": null,
+        "l": null,
+        "n": null,
+        "s": -0.3922194168610051
+      },
+      "ci95": [
+        -0.6103115060500939,
+        -0.19725650455179697
+      ],
+      "ci95_high": -0.19725650455179697,
+      "ci95_low": -0.6103115060500939,
+      "clusters_with_rows": 40,
+      "point": -0.3922194168610051,
+      "replicates": 10000,
+      "requested_rows": 24251,
+      "rows": 24251,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "CONTENT_INVALID": {
+      "band_ci95": {
+        "c": [
+          0.0,
+          0.0
+        ],
+        "l": [
+          0.0,
+          0.0
+        ],
+        "n": [
+          0.0,
+          0.0
+        ],
+        "s": [
+          0.0,
+          0.0
+        ]
+      },
+      "band_point": {
+        "c": 0.0,
+        "l": 0.0,
+        "n": 0.0,
+        "s": 0.0
+      },
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "ci95_high": 0.0,
+      "ci95_low": 0.0,
+      "clusters_with_rows": 40,
+      "point": 0.0,
+      "replicates": 10000,
+      "requested_rows": 3036,
+      "rows": 3036,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "DIFFICULT": {
+      "band_ci95": {
+        "c": [
+          -4.4767496606102215,
+          -1.6012865452961964
+        ],
+        "l": [
+          -5.5333260162972415,
+          -1.8750809212490231
+        ],
+        "n": [
+          -1.567259419155246,
+          0.6914053664617226
+        ],
+        "s": [
+          -4.4285442574416845,
+          -1.5924300192139873
+        ]
+      },
+      "band_point": {
+        "c": -2.9849981560481047,
+        "l": -3.681107325076734,
+        "n": -0.45257954913386583,
+        "s": -3.0138507852649665
+      },
+      "ci95": [
+        -3.534986847103934,
+        -2.069841503553131
+      ],
+      "ci95_high": -2.069841503553131,
+      "ci95_low": -3.534986847103934,
+      "clusters_with_rows": 40,
+      "point": -2.810023001024602,
+      "replicates": 10000,
+      "requested_rows": 13307,
+      "rows": 13306,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "FREE": {
+      "band_ci95": {
+        "c": [
+          0.0,
+          0.0
+        ],
+        "l": [
+          0.0,
+          0.0
+        ],
+        "n": [
+          0.0,
+          0.0
+        ],
+        "s": [
+          0.0,
+          0.0
+        ]
+      },
+      "band_point": {
+        "c": 0.0,
+        "l": 0.0,
+        "n": 0.0,
+        "s": 0.0
+      },
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "ci95_high": 0.0,
+      "ci95_low": 0.0,
+      "clusters_with_rows": 40,
+      "point": 0.0,
+      "replicates": 10000,
+      "requested_rows": 75429,
+      "rows": 75429,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "SAT_REAL": {
+      "band_ci95": {
+        "c": [
+          -26.882485435014658,
+          5.72591686544346
+        ],
+        "l": [
+          null,
+          null
+        ],
+        "n": [
+          3.7899094940306384,
+          34.06820571946491
+        ],
+        "s": [
+          -32.07304505463725,
+          -14.8961705836681
+        ]
+      },
+      "band_point": {
+        "c": -7.329301737066511,
+        "l": null,
+        "n": 14.600736366760461,
+        "s": -25.093947701802183
+      },
+      "ci95": [
+        -21.701397312378212,
+        -3.670994806133143
+      ],
+      "ci95_high": -3.670994806133143,
+      "ci95_low": -21.701397312378212,
+      "clusters_with_rows": 13,
+      "point": -10.814179491553181,
+      "replicates": 10000,
+      "requested_rows": 46,
+      "rows": 46,
+      "seed": 20261121,
+      "sequences": 13
+    },
+    "SYN_SAT": {
+      "band_ci95": {
+        "c": [
+          -15.937231222217472,
+          -7.630843419857513
+        ],
+        "l": [
+          -20.10144575223291,
+          -13.69936099505227
+        ],
+        "n": [
+          -94.36906493443303,
+          -33.92407467553627
+        ],
+        "s": [
+          -15.923694977675046,
+          -10.259828421247077
+        ]
+      },
+      "band_point": {
+        "c": -11.886620741196799,
+        "l": -16.79395273917007,
+        "n": -63.106253672742405,
+        "s": -13.114537343710515
+      },
+      "ci95": [
+        -22.369502796616572,
+        -13.421688265448925
+      ],
+      "ci95_high": -13.421688265448925,
+      "ci95_low": -22.369502796616572,
+      "clusters_with_rows": 40,
+      "point": -17.867692214902803,
+      "replicates": 10000,
+      "requested_rows": 14799,
+      "rows": 14795,
+      "seed": 20261121,
+      "sequences": 40
+    },
+    "TRUNC": {
+      "band_ci95": {
+        "c": [
+          -4.4767496606102215,
+          -1.6012865452961964
+        ],
+        "l": [
+          -5.5317545588324055,
+          -1.875008734634231
+        ],
+        "n": [
+          -1.5882109732289542,
+          0.6072987897662485
+        ],
+        "s": [
+          -4.420612002954361,
+          -1.5889818894081307
+        ]
+      },
+      "band_point": {
+        "c": -2.9849981560481047,
+        "l": -3.6785790920237966,
+        "n": -0.4938799077096458,
+        "s": -3.009083542643541
+      },
+      "ci95": [
+        -3.5352390044994704,
+        -2.0754776244602464
+      ],
+      "ci95_high": -2.0754776244602464,
+      "ci95_low": -3.5352390044994704,
+      "clusters_with_rows": 40,
+      "point": -2.812470040790459,
+      "replicates": 10000,
+      "requested_rows": 13304,
+      "rows": 13303,
+      "seed": 20261121,
+      "sequences": 40
+    }
+  },
+  "decision": {
+    "gates": {
+      "all_ci_upper_lt_0": true,
+      "coverage_exact": true,
+      "difficult_ci_upper_lt_0": true,
+      "difficult_gain_point_le_minus_2": true,
+      "fallback_exact": true,
+      "free_noninferiority_ci_upper_le_0.5": true
+    },
+    "posthoc_validity": {
+      "causal_receipt_scope": "structural receipt over cached producers; not a full producer replay",
+      "mean_prediction_score_coverage_exact": false,
+      "structural_causal_receipt_passes": true
+    },
+    "preregistered_efficacy_verdict": "ADVANCE",
+    "verdict": "INCONCLUSIVE_COVERAGE"
+  },
+  "executed_fold_artifacts": {
+    "F0": {
+      "predictions_sha256": "9580f5305d050134600392c51ebf5b10831a176db39f68396dbe23a7b19304fa",
+      "receipt_sha256": "1c83af1571fed47661c605c26ff1d6953725103a8f1b65b9d792ce484f8d75d8",
+      "weights_sha256": "fabc9e7bf645150157ab2a1ae354e7dee4a508fa35b418b8019b7add01b63714"
+    },
+    "F1": {
+      "predictions_sha256": "3dcefba0d900073f5e59958d7692d619378aa2f666ca656913bb7b17a10c54d0",
+      "receipt_sha256": "c78fb5892a235986e718a6a039abdd62ce6b6030aa1b42f142ea29ffa2b3073d",
+      "weights_sha256": "b2be3fc771e38788d974d831276a1e1263193af6864fd1c1ba33ab20e49cd8f2"
+    },
+    "F2": {
+      "predictions_sha256": "f2673fab29cb08c416e446c0a0d3b24c4cc26f66b56324414ea51bf021d26c8a",
+      "receipt_sha256": "e3295d2eb18a1e145c68aa5e21ef8bcc09b760f4d3786c28882847eb5767d842",
+      "weights_sha256": "09159316494255e2e99fa671f40223450f342a7ee0d5a82db06644e510058c26"
+    },
+    "F3": {
+      "predictions_sha256": "abd65ea387acfb714727946e149c5274a58f258f568280d0aac006c33e8335a5",
+      "receipt_sha256": "565b2efb04c19e36ccde290b992a3bf3ce71156d7c575509fc54b53c3bc30186",
+      "weights_sha256": "71acb050067da129775b18f45663f788447ed96f8eefad3f75db96ea5f6d7fff"
+    },
+    "F4": {
+      "predictions_sha256": "8bb9830ca880e4d0902c78f42ca8d93c0fd59bf2d59627e318d3a7df2953b00c",
+      "receipt_sha256": "b7656d68b6f2414811dd8fd0d563009346778b759b35e944a807abd416dc01c0",
+      "weights_sha256": "2ba534b99534535126a56cc854f84b39498d2441b7d26a3c923744eee7238e9d"
+    }
+  },
+  "failures": 3,
+  "fallback_exact": true,
+  "fallback_rows": 75437,
+  "forbidden": {
+    "fcwd_used": false,
+    "test12_used": false,
+    "uploaded": false
+  },
+  "full_system_oof": false,
+  "head_only_oof": true,
+  "inputs": {
+    "artifacts\\sota_20261118\\geometry\\work\\train_inputs.npz": "1af688cf3da1faa71ae71b0be18421d2c35f11a43ecc2b346534ad567bd9b65d",
+    "artifacts\\sota_20261118\\geometry_robust\\work\\robust_work.npz": "cb6f081f767bab42ad8ec78dcdc934c4620c7831feaa60e167589add0ca53b5b",
+    "artifacts\\sota_20261118\\saturation_scale\\work\\content_work.npz": "d701701a43e253163d68e2f1036d0cef93a487d3ce294cbb5c46d6c89ea7749c"
+  },
+  "outputs": {
+    "predictions_sha256": "ecfc3d3d5fcbd1c64f006bf080c482296b0428e4c28cf864356759e7b06bdbb9"
+  },
+  "p3_link": "docs/superpowers/plans/2026-11-21-continuacion-phase-ttc.md#p3--comparaci\u00f3n-emparejada-y-pliegues-exteriores-completos",
+  "parameters_each": 2659,
+  "protocol_sha256": "dad0a9a0e492fde8f553bdf19355adb5c2fad89db360c54ae6fc74dc1a118a57",
+  "rows": 88744,
+  "schema": "p5_reliability_gate_results_v1",
+  "score_support": {
+    "RELIABILITY_CONTENT_MEAN_TTC": {
+      "coverage_percent": 100.0,
+      "failure_rate_percent": 0.0011268367438925448,
+      "failure_rows": 1,
+      "rows": 88744,
+      "scored_rows": 88744
+    },
+    "RELIABILITY_CONTENT_S13": {
+      "coverage_percent": 100.0,
+      "failure_rate_percent": 0.0,
+      "failure_rows": 0,
+      "rows": 88744,
+      "scored_rows": 88744
+    },
+    "RELIABILITY_CONTENT_S21": {
+      "coverage_percent": 100.0,
+      "failure_rate_percent": 0.0,
+      "failure_rows": 0,
+      "rows": 88744,
+      "scored_rows": 88744
+    },
+    "RELIABILITY_CONTENT_S7": {
+      "coverage_percent": 100.0,
+      "failure_rate_percent": 0.0,
+      "failure_rows": 0,
+      "rows": 88744,
+      "scored_rows": 88744
+    },
+    "RELIABILITY_NULL_MEAN_TTC": {
+      "coverage_percent": 99.9988731632561,
+      "failure_rate_percent": 0.0022536734877850895,
+      "failure_rows": 2,
+      "rows": 88744,
+      "scored_rows": 88743
+    },
+    "RELIABILITY_NULL_S13": {
+      "coverage_percent": 100.0,
+      "failure_rate_percent": 0.0,
+      "failure_rows": 0,
+      "rows": 88744,
+      "scored_rows": 88744
+    },
+    "RELIABILITY_NULL_S21": {
+      "coverage_percent": 100.0,
+      "failure_rate_percent": 0.0,
+      "failure_rows": 0,
+      "rows": 88744,
+      "scored_rows": 88744
+    },
+    "RELIABILITY_NULL_S7": {
+      "coverage_percent": 100.0,
+      "failure_rate_percent": 0.0,
+      "failure_rows": 0,
+      "rows": 88744,
+      "scored_rows": 88744
+    }
+  },
+  "seeds": [
+    7,
+    13,
+    21
+  ],
+  "sequences": 40,
+  "status": "EXPLORATORY_HEAD_ONLY_OOF",
+  "weight_replay": {
+    "checks": 30,
+    "max_abs_ttc_gap_s": 0.0,
+    "per_job": {
+      "F0_RELIABILITY_CONTENT_S13": 0.0,
+      "F0_RELIABILITY_CONTENT_S21": 0.0,
+      "F0_RELIABILITY_CONTENT_S7": 0.0,
+      "F0_RELIABILITY_NULL_S13": 0.0,
+      "F0_RELIABILITY_NULL_S21": 0.0,
+      "F0_RELIABILITY_NULL_S7": 0.0,
+      "F1_RELIABILITY_CONTENT_S13": 0.0,
+      "F1_RELIABILITY_CONTENT_S21": 0.0,
+      "F1_RELIABILITY_CONTENT_S7": 0.0,
+      "F1_RELIABILITY_NULL_S13": 0.0,
+      "F1_RELIABILITY_NULL_S21": 0.0,
+      "F1_RELIABILITY_NULL_S7": 0.0,
+      "F2_RELIABILITY_CONTENT_S13": 0.0,
+      "F2_RELIABILITY_CONTENT_S21": 0.0,
+      "F2_RELIABILITY_CONTENT_S7": 0.0,
+      "F2_RELIABILITY_NULL_S13": 0.0,
+      "F2_RELIABILITY_NULL_S21": 0.0,
+      "F2_RELIABILITY_NULL_S7": 0.0,
+      "F3_RELIABILITY_CONTENT_S13": 0.0,
+      "F3_RELIABILITY_CONTENT_S21": 0.0,
+      "F3_RELIABILITY_CONTENT_S7": 0.0,
+      "F3_RELIABILITY_NULL_S13": 0.0,
+      "F3_RELIABILITY_NULL_S21": 0.0,
+      "F3_RELIABILITY_NULL_S7": 0.0,
+      "F4_RELIABILITY_CONTENT_S13": 0.0,
+      "F4_RELIABILITY_CONTENT_S21": 0.0,
+      "F4_RELIABILITY_CONTENT_S7": 0.0,
+      "F4_RELIABILITY_NULL_S13": 0.0,
+      "F4_RELIABILITY_NULL_S21": 0.0,
+      "F4_RELIABILITY_NULL_S7": 0.0
+    }
+  }
+}
